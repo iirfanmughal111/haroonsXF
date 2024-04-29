@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_tv",
+    "title": "Episode image width (search results)",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "unit",
+    "value_parameters": "",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "150px",
+    "display_order": 120
+}

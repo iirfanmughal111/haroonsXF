@@ -1,0 +1,9 @@
+<xf:title>{{ phrase('trakt_tv_x_crews', {'name': $tv.tv_title}) }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<div class="block">
+	<xf:macro template="trakt_tv_crews_macros" name="crew_list"
+			  arg-tv="{$tv}" arg-crews="{$crews}" arg-page="{$page}"
+			  arg-hasMore="{$hasMore}" />
+</div>

@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="connected_account_provider_test_th_amazon" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('email') }}">{{ $providerData.email ?: phrase('n_a') }}</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_battlenet" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('thuserimprovements_api_key') }}">{$provider.options.api_key}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_deviantart" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('email') }}">{{ $providerData.email ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('picture') }}">
+		<xf:if is="$providerData.avatar_url">
+			<img src="{$providerData.avatar_url}" width="48" />
+		<xf:else />
+			N/A
+		</xf:if>
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_discord" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('email') }}">{{ $providerData.email ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('picture') }}">
+		<xf:if is="$providerData.avatar_url">
+			<img src="{$providerData.avatar_url}" width="48" />
+		<xf:else />
+			N/A
+		</xf:if>
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_dropbox" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('thuserimprovements_app_key') }}">{$provider.options.app_key}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('email') }}">{{ $providerData.email ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('picture') }}">
+		<xf:if is="$providerData.avatar_url">
+			<img src="{$providerData.avatar_url}" width="48" />
+		<xf:else />
+			N/A
+		</xf:if>
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_instagram" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('picture') }}">
+		<xf:if is="$providerData.avatar_url">
+			<img src="{$providerData.avatar_url}" width="48" />
+		<xf:else />
+			N/A
+		</xf:if>
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_pinterest" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_reddit" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_th_twitch" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('email') }}">{{ $providerData.email ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('picture') }}">
+		<xf:if is="$providerData.avatar_url">
+			<img src="{$providerData.avatar_url}" width="48" />
+		<xf:else />
+			N/A
+		</xf:if>
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_th_amazon" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_amazon_api_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_amazon_api_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_battlenet" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[api_key]" value="{$options.api_key}"
+	label="{{ phrase('thuserimprovements_api_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_battlenet_api_id_explain') }}" />
+
+<xf:textboxrow name="options[api_secret]" value="{$options.api_secret}"
+	label="{{ phrase('thuserimprovements_api_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_battlenet_api_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_deviantart" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_deviantart_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_deviantart_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_discord" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_discord_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_discord_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_dropbox" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[app_key]" value="{$options.app_key}"
+	label="{{ phrase('thuserimprovements_app_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_dropbox_app_id_explain') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_dropbox_app_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_instagram" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_instagram_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_instagram_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_pinterest" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[app_id]" value="{$options.app_id}"
+	label="{{ phrase('app_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_pinterest_api_id_explain') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_pinterest_api_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_reddit" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[app_id]" value="{$options.app_id}"
+	label="{{ phrase('app_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_reddit_app_id_explain') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_reddit_app_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_steam" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[key]" value="{$options.key}"
+	label="{{ phrase('thuserimprovements_api_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_steam_api_id_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_tumblr" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[consumer_key]" value="{$options.consumer_key}"
+	label="{{ phrase('thuserimprovements_consumer_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_tumblr_api_id_explain') }}" />
+
+<xf:textboxrow name="options[secret_key]" value="{$options.secret_key}"
+	label="{{ phrase('thuserimprovements_secret_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_tumblr_api_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_th_twitch" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_twitch_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('thuserimprovements_twitch_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="thuserimprovements_trophy_category_delete" version_id="1030017" version_string="1.3.0 Alpha 7"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('trophies/thui-category/delete', $category) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link('trophies/thui-category/edit', $category) }}">{$category.title}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="admin" title="thuserimprovements_trophy_category_edit" version_id="1030017" version_string="1.3.0 Alpha 7"><![CDATA[<xf:if is="$category.isInsert()">
+	<xf:title>{{ phrase('thuserimprovements_add_trophy_category') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('thuserimprovements_edit_trophy_category:') }} {$category.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$category.isUpdate()">
+	<xf:button href="{{ link('trophies/thui-category/delete', $category) }}"
+		icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('trophies/thui-category/save', $category) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="trophy_category_id" value="{$category.trophy_category_id}"
+				maxlength="{{ max_length($category, 'trophy_category_id') }}"
+				label="{{ phrase('thuserimprovements_trophy_category_id') }}"
+				dir="ltr" />
+
+			<xf:textboxrow name="title" value="{{ $category.exists() ? $category.MasterTitle.phrase_text : '' }}"
+				label="{{ phrase('title') }}" />
+
+			<xf:macro template="display_order_macros" name="row"
+				arg-value="{$category.display_order}" />
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+
+</xf:form>]]></template>
+  <template type="admin" title="thuserimprovements_trophy_category_select" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:checkboxrow>
+	<xf:option name="th_hidden" value="1" selected="{$trophy.th_hidden}">
+		{{ phrase('thuserimprovements_hidden_trophy') }}
+	</xf:option>
+</xf:checkboxrow>
+
+<xf:selectrow name="th_predecessor" value="{$trophy.th_predecessor}"
+			  label="{{ phrase('thuserimprovements_predecessor') }}">
+	<xf:option value="0" />
+	<xf:foreach loop="$trophies" value="$predecessor">
+		<xf:option value="{$predecessor.trophy_id}">{$predecessor.title}</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<xf:selectrow name="th_trophy_category_id" value="{$trophy.th_trophy_category_id}"
+			  label="{{ phrase('thuserimprovements_trophy_category') }}">
+
+	<xf:option value="" />
+	<xf:foreach loop="$categories" value="$category">
+		<xf:option value="{$category.trophy_category_id}">{$category.title}</xf:option>
+	</xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="admin" title="thuserimprovements_trophy_icon_select" version_id="1020570" version_string="1.2.5"><![CDATA[<hr class="formRowSep" />
+
+<xf:radiorow name="th_icon_type" value="{$trophy.th_icon_type}"
+			 label="{{ phrase('thuserimprovements_trophy_icon') }}">
+
+	<xf:option value="">{{ phrase('none') }}</xf:option>
+	<xf:option value="fa" label="{{ phrase('admin_navigation_icon') }}">
+		<xf:textbox name="th_icon_fa"
+					value="{{ $trophy.th_icon_type == 'fa' ? $trophy.th_icon_value : '' }}"
+					maxlength="{{ max_length($trophy, 'th_icon_value') }}"
+					dir="ltr" />
+	</xf:option>
+	<xf:option value="image" label="{{ phrase('image') }}">
+		<xf:textbox name="th_icon_image"
+					value="{{ $trophy.th_icon_type == 'image' ? $trophy.th_icon_value : '' }}"
+					maxlength="{{ max_length($trophy, 'th_icon_value') }}"
+					dir="ltr" />
+	</xf:option>
+</xf:radiorow>
+
+<xf:codeeditorrow name="th_icon_css" value="{$trophy.th_icon_css}"
+				mode="css" data-line-wrapping="true"
+				class="codeEditor--autoSize"
+				label="{{ phrase('thuserimprovements_icon_css') }}" />
+
+<hr class="formRowSep" />]]></template>
+  <template type="admin" title="thuserimprovements_trophy_list" version_id="1030017" version_string="1.3.0 Alpha 7"><![CDATA[<xf:if is="{$trophies.uncategorized} is not empty">
+	<div class="block">
+		<div class="block-container">
+			<xf:if is="{{ count($trophyCategories) > 1 }}">
+				<h2 class="block-header">
+					{{ phrase('thuserimprovements_uncategorized') }}
+				</h2>
+			</xf:if>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="{$trophies.uncategorized}" value="$trophy">
+						<xf:datarow
+									label="{$trophy.title}"
+									hint="{{ $trophy.th_hidden ? '[' . phrase('thuserimprovements_hidden_trophy') . ']' : '' }} {{ phrase('points:') }} {$trophy.trophy_points}"
+									href="{{ link('trophies/edit', $trophy) }}"
+									delete="{{ link('trophies/delete', $trophy) }}" />
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:foreach loop="$trophyCategories" key="$category_id" value="$category">
+	<div class="block">
+		<div class="block-container">
+			<h2 class="block-header">
+				{{ anchor_target('trophy_category_id' . $category.trophy_category_id) }}
+				<a href="{{ link('trophies/thui-category/edit', $category) }}" class="u-pullRight">{{ phrase('edit') }}</a>
+				{$category.title}
+			</h2>
+			<div class="block-body">
+				<xf:if is="{$trophies.{$category_id}} is not empty">
+					<xf:datalist>
+						<xf:foreach loop="{$trophies.{$category_id}}" value="$trophy">
+							<xf:datarow
+								label="{$trophy.title}"
+								hint="{{ phrase('points:') }} {$trophy.trophy_points}"
+								href="{{ link('trophies/edit', $trophy) }}"
+								delete="{{ link('trophies/delete', $trophy) }}" />
+						</xf:foreach>
+					</xf:datalist>
+				<xf:else />
+					<div class="block-row">
+						{{ phrase('thuserimprovements_no_trophies_have_been_created_for_category_yet', {
+							'link': link('trophies/add', null, {
+								'trophy_category_id': $category_id
+							})
+						}) }}
+					</div>
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</xf:foreach>]]></template>
+  <template type="admin" title="thuserimprovements_trophy_list_reward" version_id="1030017" version_string="1.3.0 Alpha 7"><![CDATA[<xf:if is="$trophies is not empty">
+	<xf:form class="block" action="{{ link('trophies/thui-reward-save') }}" ajax="true">
+		<div class="block-container">
+			<h2 class="block-header">
+				{{ phrase('thuserimprovements_reward_trophies') }}
+			</h2>
+			<div class="block-body">
+				<xf:textboxrow name="users" ac="true" label="{{ phrase('users') }}"/>
+
+				<xf:if is="$trophies.uncategorized is not empty">
+					<xf:checkboxrow name="trophies" label="{{ phrase('thuserimprovements_uncategorized_trophies') }}">
+						<xf:foreach loop="$trophies.uncategorized" value="$trophy">
+							<xf:option value="{$trophy.trophy_id}" label="{$trophy.title}" />
+						</xf:foreach>
+					</xf:checkboxrow>
+				</xf:if>
+
+				<xf:foreach loop="$trophyCategories" value="$category">
+					<xf:if is="{$trophies.{$category.trophy_category_id}} is not empty">
+						<xf:checkboxrow name="trophies" label="{$category.title}">
+							<xf:foreach loop="{$trophies.{$category.trophy_category_id}}" value="$trophy">
+								<xf:option value="{$trophy.trophy_id}" label="{$trophy.title}" />
+							</xf:foreach>
+						</xf:checkboxrow>
+					</xf:if>
+				</xf:foreach>
+			</div>
+			<xf:submitrow sticky="true" icon="save" />
+		</div>
+	</xf:form>
+</xf:if>]]></template>
+  <template type="admin" title="widget_def_options_thui_progress_bar" version_id="1020591" version_string="1.2.5 Patch Level 1"><![CDATA[]]></template>
+  <template type="public" title="connected_account_associated_th_amazon" version_id="1020570" version_string="1.2.5"><![CDATA[<img src="styles/themehouse/userimprovements/logo-amazon.svg" width="48" alt="" />
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_battlenet" version_id="1020570" version_string="1.2.5"><![CDATA[<img src="styles/themehouse/userimprovements/logo-battlenet.svg" width="48" alt="" />
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_deviantart" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</xf:if>
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_discord" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</xf:if>
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_dropbox" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</xf:if>
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_instagram" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</xf:if>
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_pinterest" version_id="1020570" version_string="1.2.5"><![CDATA[<img src="styles/themehouse/userimprovements/logo-pinterest.svg" width="48" alt="" />
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_reddit" version_id="1020570" version_string="1.2.5"><![CDATA[<img src="styles/themehouse/userimprovements/logo-reddit.svg" width="48" alt="" />
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_th_twitch" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</xf:if>
+
+<div>{{ $providerData.username ?: phrase('unknown_account') }}</div>]]></template>
+  <template type="public" title="thuserimprovements_account_privacy" version_id="1030017" version_string="1.3.0 Alpha 7"><![CDATA[<xf:if is="$xf.visitor.hasPermission('klUI', 'klUIManageUsernamePrivacy')">
+	<xf:macro name="privacy_option"
+			  arg-user="{$xf.visitor}"
+			  arg-name="th_view_username_changes"
+			  arg-label="{{ phrase('thuserimprovements_view_username_changes:') }}" />
+</xf:if>
+
+<xf:if is="$xf.visitor.hasPermission('klUI', 'klUIManageStatsPrivacy')">
+	<xf:macro name="privacy_option"
+			  arg-user="{$xf.visitor}"
+			  arg-name="th_view_profile_stats"
+			  arg-label="{{ phrase('thuserimprovements_view_profile_stats:') }}" />
+</xf:if>
+
+<xf:if is="$xf.options.klUiProfileViews">
+	<xf:macro name="privacy_option"
+			  arg-user="{$xf.visitor}"
+			  arg-name="th_view_profile_views"
+			  arg-label="{{ phrase('thuserimprovements_view_profile_views:') }}" />
+</xf:if>
+
+
+<xf:macro name="privacy_option" arg-user="!" arg-name="!" arg-label="!" arg-hideEveryone="{{ false }}" arg-hideFollowed="{{ false }}">
+	<dl class="inputLabelPair">
+		<dt>{$label}</dt>
+		<dd>
+			<xf:select name="privacy[{$name}]" value="{$user.Privacy.{$name}}">
+				<xf:if is="!$hideEveryone">
+					<xf:option value="everyone">{{ phrase('all_visitors') }}</xf:option>
+				</xf:if>
+				<xf:option value="members">{{ phrase('members_only') }}</xf:option>
+				<xf:if is="!$hideFollowed">
+					<xf:option value="followed">{{ phrase('people_you_follow') }}</xf:option>
+				</xf:if>
+				<xf:option value="none">{{ phrase('nobody') }}</xf:option>
+			</xf:select>
+		</dd>
+	</dl>
+</xf:macro>]]></template>
+  <template type="public" title="thuserimprovements_app_username_styles.less" version_id="1020570" version_string="1.2.5"><![CDATA[.username--deactivated {.xf-klUIDisabledUsername()}
+
+<xf:foreach loop="range(1, 27)" value="$x">
+.username--color-{$x} {color: @xf-klUIUsernameColor{$x}}
+</xf:foreach>]]></template>
+  <template type="public" title="thuserimprovements_change_username" version_id="1030094" version_string="1.3.0 Patch Level 4"><![CDATA[<xf:if is="$canTHUIChangeName">
+	<xf:textboxrow name="user[username]" value="{$xf.visitor.username}"
+				   maxlength="{{ max_length($xf.visitor, 'user_name') }}"
+				   label="{{ phrase('user_name') }}"
+				   explain="{{ phrase('thuserimprovements_change_username_across_site') }}" />
+<xf:else />
+	<xf:if is="$nextTHUIChangeOn">
+		<dl class="formRow formRow--input">
+			<dt>
+				<div class="formRow-labelWrapper">
+					<label class="formRow-label">{{ phrase('user_name') }}</label></div>
+			</dt>
+			<dd>
+				<div>
+					{{ phrase('thuserimprovements_next_change_on', {'time': date_time($nextTHUIChangeOn)}) }}
+				</div>
+				<div class="formRow-explain">{{ phrase('thuserimprovements_change_username_across_site') }}</div>
+			</dd>
+		</dl>
+	</xf:if>
+</xf:if>]]></template>
+  <template type="public" title="thuserimprovements_core_button.less" version_id="1020570" version_string="1.2.5"><![CDATA[// ############################ KL/UI BUTTONS #################
+
+.button,
+a.button // needed for specificity over a:link
+{
+	&.button--provider
+	{
+		&--th_dropbox
+		{
+			.m-buttonColorVariation(#007ee5, white);
+			.m-buttonIcon(@fa-var-dropbox, .58em);
+		}
+		&--th_deviantart
+		{
+			.m-buttonColorVariation(#05CC47, white);
+			.m-buttonIcon(@fa-var-deviantart, .58em);
+		}
+		&--th_amazon
+		{
+			.m-buttonColorVariation(#fad776, black);
+			.m-buttonIcon(@fa-var-amazon, .58em);
+		}
+		&--th_reddit
+		{
+			.m-buttonColorVariation(#FF5700, white);
+			.m-buttonIcon(@fa-var-reddit-alien, .58em);
+		}
+		&--th_twitch
+		{
+			.m-buttonColorVariation(#6441A4, white);
+			.m-buttonIcon(@fa-var-twitch, .58em);
+		}
+		&--th_instagram
+		{
+			.m-buttonColorVariation(#cd486b, white);
+			.m-buttonIcon(@fa-var-instagram, .58em);
+		}
+		&--th_pinterest
+		{
+			.m-buttonColorVariation(#BD081C, #f6f5f3);
+			.m-buttonIcon(@fa-var-pinterest-p, .58em);
+		}
+		&--th_battlenet
+		{
+			.m-buttonColorVariation(#01a8d8, white);
+			.button-text::before {
+				background: url(styles/themehouse/userimprovements/logo-battlenet.svg);
+				width: 17px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-position: center;
+				content: ' ';
+				display: inline-block;
+				margin-left: -3px;
+				filter: invert(100%);
+				margin-top: -8px;
+				margin-right: 0;
+			}
+		}
+		&--th_discord
+		{
+			.m-buttonColorVariation(#7289DA, white);
+			.button-text::before {
+				background: url(styles/themehouse/userimprovements/logo-discord.svg);
+				width: 17px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-position: center;
+				content: ' ';
+				display: inline-block;
+				margin-left: -3px;
+				margin-top: -8px;
+				margin-right: 0;
+			}
+		}
+	}
+}]]></template>
+  <template type="public" title="thuserimprovements_help_page_trophies" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[<xf:css src="thuserimprovements_help_page_trophies.less" />
+
+<xf:if is="$trophies.uncategorized is not empty">
+	<div class="block">
+		<div class="block-container">
+			<ol class="block-body">
+				<xf:foreach loop="$trophies.uncategorized" value="$trophy">
+					<xf:macro template="thuserimprovements_trophy_macros" name="trophy_item" arg-trophy="{$trophy}" />
+				</xf:foreach>
+			</ol>
+			<div class="block-footer">
+				<xf:set var="{$trophiesEarned.uncategorized}" value="0" />
+				<xf:foreach loop="$trophies.uncategorized" value="$trophy">
+					<xf:if is="$trophy.earned">
+						<xf:set var="{$trophiesEarned.uncategorized}" value="{{$trophiesEarned.uncategorized + 1}}" />
+					</xf:if>
+				</xf:foreach>
+				{{ phrase('thuserimprovements_own_x_out_of_y_trophies_in_this_category', {
+				'earned': $trophiesEarned.uncategorized,
+				'total': count($trophies.uncategorized)
+				})}}
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:foreach loop="$trophyCategories" key="$categoryId" value="$category">
+	<xf:if is="{$trophies.{$categoryId}} is not empty">
+		<div class="block">
+			<div class="block-container">
+				<h2 class="block-header">
+					{{ anchor_target('trophy_category_id' . $category.trophy_category_id) }}
+					<a href="{{ link('trophy-categories', $category) }}">{$category.title}</a>
+				</h2>
+				<ol class="block-body">
+					<xf:foreach loop="{$trophies.{$categoryId}}" value="$trophy">
+						<xf:macro template="thuserimprovements_trophy_macros" name="trophy_item" arg-trophy="{$trophy}" />
+					</xf:foreach>
+				</ol>
+				<div class="block-footer">
+					<xf:set var="{$trophiesEarned.{$categoryId}}" value="0" />
+					<xf:foreach loop="{$trophies.{$categoryId}}" value="$trophy">
+						<xf:if is="$trophy.earned">
+							<xf:set var="{$trophiesEarned.{$categoryId}}" value="{{$trophiesEarned.{$categoryId} + 1}}" />
+						</xf:if>
+					</xf:foreach>
+					{{ phrase('thuserimprovements_own_x_out_of_y_trophies_in_this_category', {
+					'earned': {$trophiesEarned.{$categoryId}},
+					'total': count({$trophies.{$categoryId}})
+					})}}
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:foreach>]]></template>
+  <template type="public" title="thuserimprovements_help_page_trophies.less" version_id="1020570" version_string="1.2.5"><![CDATA[.trophy--earned .contentRow-figure--fixedSmall {
+	position: relative;
+}
+
+span.trophy--earned {
+	color: @xf-textColorAttention;
+}
+
+.trophy--earned .contentRow-figure--fixedSmall span.trophy--earned {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: .5em;
+}
+
+.trophy--current {
+	font-weight: bold;
+}
+
+h3.contentRow-header {
+	font-size: .95em;
+}
+
+.block-row.block-row--separated .block-row.block-row--separated {
+	padding: @xf-paddingMedium;
+}]]></template>
+  <template type="public" title="thuserimprovements_member_about" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[<h4 class="block-textHeader">{{ phrase('trophies') }}</h4>
+<ol class="listPlain">
+	<xf:foreach loop="$trophies.uncategorized" value="$trophy">
+		<xf:macro template="thuserimprovements_trophy_macros" name="user_trophy_item" arg-trophy="{$trophy}" />
+	</xf:foreach>
+</ol>
+
+<xf:foreach loop="$trophyCategories" key="$category_id" value="$category">
+	<xf:if is="{$trophies.{$category_id}} is not empty">
+		<h4 class="block-textHeader">{$category.title}</h4>
+		<ol class="listPlain">
+			<xf:foreach loop="{$trophies.{$category_id}}" value="$trophy">
+				<xf:macro template="thuserimprovements_trophy_macros" name="user_trophy_item" arg-trophy="{$trophy}" />
+			</xf:foreach>
+		</ol>
+	</xf:if>
+</xf:foreach>]]></template>
+  <template type="public" title="thuserimprovements_member_notable_macros" version_id="1030095" version_string="1.3.0 Patch Level 5"><![CDATA[<xf:macro name="trophies" arg-active="!" arg-trophies="!">
+	<xf:if is="$trophies is not empty">
+		<xf:if is="{$active.sort_order} === 'message_count'">
+			<xf:macro name="trophy_progress" arg-trophies="{$trophies}"
+					  arg-rule="messages_posted" arg-dataKey="messages"
+					  arg-progressValue="{$xf.visitor.message_count}"
+					  />
+			<xf:elseif is="{$active.sort_order} === 'reaction_score'" />
+			<xf:macro name="trophy_progress" arg-trophies="{$trophies}"
+					  arg-rule="reaction_score" arg-dataKey="reactions"
+					  arg-progressValue="{$xf.visitor.reaction_score}"
+					  />
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="trophy_progress" arg-trophies="!" arg-rule="!" arg-dataKey="!" arg-progressValue="0">
+	<xf:if contentcheck="true">
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body block-row th-trophyProgressContainer">
+					<ul class="th-trophyProgressBarContainer">
+						<xf:contentcheck>
+							<xf:foreach loop="$trophies" value="$trophy">
+								<xf:macro template="thuserimprovements_trophy_progress_macros"
+										  name="trophy_progress_bar" arg-trophy="{$trophy}"
+										  arg-rule="{$rule}" arg-dataKey="{$dataKey}"
+										  arg-previousTrophy="{$previousTrophy}"
+										  arg-progressValue="{$progressValue}"/>
+								<xf:set var="$previousTrophy" value="{$trophy}" />
+							</xf:foreach>
+						</xf:contentcheck>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="thuserimprovements_member_trophies" version_id="1030012" version_string="1.3.0 Alpha 2"><![CDATA[<div class="block">
+	<div class="block-container">
+		<xf:if is="$trophies is not empty">
+			<ol class="block-body">
+				<xf:foreach loop="$trophies.uncategorized" value="$trophy">
+					<xf:macro template="thuserimprovements_trophy_macros" name="user_trophy_item" arg-trophy="{$trophy}" />
+				</xf:foreach>
+			</ol>
+
+			<xf:foreach loop="$trophyCategories" key="$category_id" value="$category">
+				<xf:if is="{$trophies.{$category_id}} is not empty">
+					<h2 class="block-header">
+						{{ anchor_target('trophy_category_id' . $category.trophy_category_id) }}
+						{$category.title}
+					</h2>
+					<ol class="block-body">
+						<xf:foreach loop="{$trophies.{$category_id}}" value="$trophy">
+							<xf:macro template="thuserimprovements_trophy_macros" name="user_trophy_item" arg-trophy="{$trophy}" />
+						</xf:foreach>
+					</ol>
+				</xf:if>
+			</xf:foreach>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('x_has_not_been_awarded_any_trophies_yet', {'name': $user.username}) }}</div>
+		</xf:if>
+		<div class="block-footer block-footer--split">
+			<span class="block-footer-counter">{{ phrase('total_points:') }} {{ number($user.trophy_points) }}</span>
+			<span class="block-footer-controls">
+				<xf:button href="{{ link('help', {'page_name': 'trophies'}) }}">
+					{{ phrase('view_all_available_trophies') }}
+				</xf:button>
+			</span>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="thuserimprovements_self_deactivate" version_id="1030017" version_string="1.3.0 Alpha 7"><![CDATA[<xf:title>{{ phrase('thuserimprovements_deactivate_account') }}</xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<xf:form action="{{ link('account/thui-deactivate') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<div class="block-row">
+				<xf:if is="$xf.visitor->hasPermission('klUI', 'klUISelfReactivate')">
+					<xf:if is="$xf.visitor->hasPermission('klUI', 'klUISelfReactivationTime') === -1">
+						{{ phrase('thuserimprovements_reactivate_account_anytime') }}
+						<xf:else />
+						{{ phrase('thuserimprovements_reactivate_account_within_x_days', {'days': $xf.visitor->hasPermission('klUI', 'klUISelfReactivationTime')}) }}
+					</xf:if>
+					<xf:else />
+					{{ phrase('thuserimprovements_deactivation_is_permanent') }}
+				</xf:if>
+			</div>
+		</div>
+		<dl class="formRow formSubmitRow formSubmitRow--sticky" data-xf-init="form-submit-row" style="height: 41.7143px;">
+			<dt></dt>
+			<dd>
+				<div class="formSubmitRow-main">
+					<div class="formSubmitRow-bar"></div>
+					<div class="formSubmitRow-controls"><button class="button button--primary button--icon"><span class="button-text">{{ phrase('thuserimprovements_deactivate_account') }}</span></button></div>
+				</div>
+			</dd>
+		</dl>
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="thuserimprovements_self_reactivate" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:title>{{ phrase('thuserimprovements_reactivate_account') }}</xf:title>
+
+<xf:form class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<div class="block-row">
+				<p>
+					{{ phrase('thuserimprovements_reactivate_account_question') }}
+				</p>
+				<xf:if is="$record.latest_restore_date <= $xf.time + 63072000">
+					<p>
+						{{ phrase('thuserimprovements_latest_restore_date') }}: <xf:date time="$record.latest_restore_date" />
+					</p>
+				</xf:if>
+			</div>
+		</div>
+		<dl class="formRow formSubmitRow formSubmitRow--sticky" data-xf-init="form-submit-row" style="height: 41.7143px;">
+			<dt></dt>
+			<dd>
+				<div class="formSubmitRow-main">
+					<div class="formSubmitRow-bar"></div>
+					<div class="formSubmitRow-controls"><button class="button button--primary button--icon"><span class="button-text">{{ phrase('thuserimprovements_reactivate_account') }}</span></button></div>
+				</div>
+			</dd>
+		</dl>
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="thuserimprovements_trophy_category_view" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[<xf:title>{$trophyCategory.title}</xf:title>
+
+<xf:breadcrumb href="{{ link('trophies') }}">{{ phrase('trophies') }}</xf:breadcrumb>
+
+<xf:css src="thuserimprovements_trophy_view.less" />
+
+<xf:macro template="thuserimprovements_trophy_progress_macros"
+	name="trophy_progress"
+	arg-trophies="{$trophies}"
+	arg-trophyProgressCriteria="{$trophyProgressCriteria}"
+	arg-progressValue="{$progressValue}" />
+
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-tabHeader block-tabHeader--trophyTabs tabs hScroller" data-xf-init="tabs h-scroller" role="tablist"
+			data-panes=".js-trophyCategoryTabPanes" data-state="replace">
+			<span class="hScroller-scroll">
+				<!--[XF:tabs:start]-->
+				<a class="tabs-tab is-active"
+					role="tab" tabindex="0" aria-controls="trophies">{{ phrase('trophies') }}</a>
+				<!--[XF:tabs:after_trophies]-->
+				<xf:if is="{$trophyProgressCriteria.valueKey}">
+					<a class="tabs-tab"
+						role="tab" tabindex="1" aria-controls="{$trophyProgressCriteria.valueKey}">{$trophyProgressCriteria.statsPhrase}</a>
+				</xf:if>
+				<!--[XF:tabs:end]-->
+			</span>
+		</h2>
+	</div>
+</div>
+
+<ul class="block tabPanes js-trophyCategoryTabPanes">
+	<!--[XF:tab_panes:start]-->
+	<li class="is-active" role="tabpanel" id="trophies">
+		<xf:if is="$trophiesPrepared is not empty">
+			<div class="block-container">
+				<ol class="block-body">
+					<xf:foreach loop="$trophiesPrepared" value="$trophy">
+						<xf:macro template="thuserimprovements_trophy_macros" name="trophy_item" arg-trophy="{$trophy}" arg-showRecentlyAwardedUsers="{{ true }}" />
+					</xf:foreach>
+				</ol>
+				<div class="block-footer">
+					<xf:set var="$trophiesEarned" value="0" />
+					<xf:foreach loop="$trophiesPrepared" value="$trophy">
+						<xf:if is="$trophy.earned">
+							<xf:set var="{$trophiesEarned}" value="{{ $trophiesEarned + 1 }}" />
+						</xf:if>
+					</xf:foreach>
+					{{ phrase('thuserimprovements_own_x_out_of_y_trophies_in_this_category', {
+						'earned': $trophiesEarned,
+						'total': count($trophiesPrepared)
+					})}}
+				</div>
+			</div>
+		<xf:else />
+			<div class="blockMessage">{{ phrase('thuserimprovements_there_no_trophies_in_this_category') }}</div>
+		</xf:if>
+	</li>
+	<!--[XF:tab_panes:after_trophies]-->
+	<xf:if is="{$trophyProgressCriteria.valueKey}">
+		<li data-href="{{ link('trophies/stats/' . $trophyProgressCriteria.valueKey, '', $trophyProgressCriteria.additionalData) }}" role="tabpanel" aria-labelledby="{$trophyProgressCriteria.valueKey}">
+			<div class="blockMessage">{{ phrase('loading...') }}</div>
+		</li>
+	</xf:if>
+	<!--[XF:tab_panes:end]-->
+</ul>
+
+<xf:widgetpos id="thuserimprovements_trophy_category_view_sidebar" position="sidebar" />]]></template>
+  <template type="public" title="thuserimprovements_trophy_macros" version_id="1030095" version_string="1.3.0 Patch Level 5"><![CDATA[<xf:macro name="user_trophy_item" arg-trophy="!">
+	<li class="block-row block-row--separated">
+		<div class="contentRow">
+			<span class="contentRow-figure contentRow-figure--text contentRow-figure--fixedSmall">
+				<xf:macro name="trophy" arg-trophy="{$trophy.Trophy}" arg-extraCss="{$trophy.Trophy.th_icon_css}" />
+			</span>
+			<div class="contentRow-main">
+				<span class="contentRow-extra"><xf:date time="{$trophy.award_date}" /></span>
+				<h2 class="contentRow-header">
+					<a href="{{ link('trophies', $trophy) }}">{$trophy.Trophy.title}</a>
+
+					<xf:if is="$trophy.Trophy.trophy_points && $xf.options.klUIShowPoints">
+						<xf:if is="$trophy.Trophy.trophy_points === 1">
+							{{ phrase('thuserimprovements_one_trophy_point') }}
+							<xf:else />
+							<span data-xf-init="tooltip" title="{{ phrase('thuserimprovements_x_trophy_points', {'points': {$trophy.Trophy.trophy_points|number}}) }}">
+								{{ phrase('thuserimprovements_x_trophy_points', {'points': {$trophy.Trophy.trophy_points|number_short}}) }}
+							</span>
+						</xf:if>
+					</xf:if>
+				</h2>
+				<div class="contentRow-minor">{$trophy.Trophy.description|raw}</div>
+			</div>
+		</div>
+	</li>
+</xf:macro>
+
+<xf:macro name="trophy" arg-trophy="!" arg-extraCss="">
+	<xf:if is="$trophy.th_icon_type === 'fa'">
+		<i class="fa fa-{$trophy.th_icon_value} {$trophy.th_icon_value}" style="{$extraCss}"></i>
+	<xf:elseif is="$trophy.th_icon_type === 'image'" />
+		<img src="{$trophy.th_icon_value}" style="max-width: 60px; max-height: 38px;" style="{$extraCss}" />
+	<xf:else />
+		<span style="{$extraCss}">{$trophy.trophy_points|number_short}</span>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="trophy_item" arg-trophy="!" arg-showRecentlyAwardedUsers="{{ false }}">
+	<xf:css src="thuserimprovements_help_page_trophies.less" />
+	<li class="block-row block-row--separated trophy--{{ $trophy.earned ? 'earned' : 'unearned' }}">
+		<span id="trophy-{$trophy.entity.trophy_id}"></span>
+		<div class="contentRow {{ ($depth % 100000) > 0 ? 'contentRow-child' : '' }}">
+			<span class="contentRow-figure contentRow-figure--text contentRow-figure--fixedSmall">
+				<xf:macro name="trophy" arg-trophy="{$trophy.entity}" arg-extraCss="{$trophy.entity.th_icon_css}" />
+				<xf:if is="$trophy.earned">
+					<span class="trophy--earned fa fa-check" data-xf-init="tooltip" title="{{ phrase('thuserimprovements_earned') }}"></span>
+				</xf:if>
+			</span>
+			<div class="contentRow-main">
+				<h2 class="contentRow-header">
+					<xf:if is="$trophy.entity.th_hidden && !$trophy.earned">
+						{{ phrase('thuserimprovements_hidden_trophy') }}
+						<xf:else />
+						<a href="{{ link('trophies', $trophy.entity) }}">{$trophy.entity.title}</a>
+					</xf:if>
+					<xf:if is="$trophy.max_level > 1 && $xf.options.klUITrophyProgress">
+						{{ phrase('thuserimprovements_level_x_y', {'is': {$trophy.level}, 'max': {$trophy.max_level}}) }}
+					</xf:if>
+
+					<xf:if is="$trophy.entity.trophy_points && $xf.options.klUIShowPoints">
+						<xf:if is="$trophy.entity.trophy_points === 1">
+							{{ phrase('thuserimprovements_one_trophy_point') }}
+							<xf:else />
+							<span data-xf-init="tooltip" title="{{ phrase('thuserimprovements_x_trophy_points', {'points': {$trophy.entity.trophy_points|number}}) }}">
+								{{ phrase('thuserimprovements_x_trophy_points', {'points': {$trophy.entity.trophy_points|number_short}}) }}
+							</span>
+						</xf:if>
+					</xf:if>
+				</h2>
+				<div class="contentRow-minor">
+					<xf:if is="$trophy.entity.th_hidden && !$trophy.earned">
+						{{ phrase('thuserimprovements_hidden_trophy_desc') }}
+						<xf:else />
+						{$trophy.entity.description|raw}
+					</xf:if>
+				</div>
+				<xf:if is="{$showRecentlyAwardedUsers}">
+					<ul class="listHeap">
+						<xf:foreach loop="{$trophy.entity.RecentlyAwardedUsers}" value="$user">
+							<li>
+								<xf:avatar user="$user.User" size="s" img="true" />
+							</li>
+						</xf:foreach>
+					</ul>
+				</xf:if>
+				<ol class="block-body">
+					<xf:if is="$trophy.level > 1 && $xf.options.klUIFullTrophyProgress">
+						<xf:foreach loop="$trophy.predecessors" value="$pred">
+							<xf:macro name="small_trophy" arg-trophy="{$pred}" arg-earned="{{ true }}" arg-showRecentlyAwardedUsers="{$showRecentlyAwardedUsers}" />
+						</xf:foreach>
+					</xf:if>
+					<xf:if is="$trophy.level > 1 && $xf.options.klUIFullTrophyProgress &&
+							   $trophy.max_level > $trophy.level && $xf.options.klUITrophyFollowers">
+						<xf:macro name="small_trophy" arg-trophy="{$trophy.entity}" arg-current="{{ true }}" arg-earned="{$trophy.earned}" arg-showRecentlyAwardedUsers="{$showRecentlyAwardedUsers}" />
+					</xf:if>
+					<xf:if is="$trophy.max_level > $trophy.level && $xf.options.klUITrophyFollowers">
+						<xf:foreach loop="$trophy.followers" value="$foll">
+							<xf:macro name="small_trophy" arg-trophy="{$foll}" arg-showRecentlyAwardedUsers="{$showRecentlyAwardedUsers}" />
+						</xf:foreach>
+					</xf:if>
+				</ol>
+			</div>
+		</div>
+	</li>
+</xf:macro>
+
+<xf:macro name="small_trophy" arg-trophy="!" arg-current="{{ false }}" arg-earned="{{ false }}" arg-showRecentlyAwardedUsers="{{ false }}">
+	<li class="block-row block-row--separated{{ $current ? ' trophy--current' : '' }}{{ $earned ? ' trophy--earned' : '' }}">
+		<h3 class="contentRow-header">
+			<xf:if is="!$earned && $trophy->th_hidden">
+				{{ phrase('thuserimprovements_hidden_trophy') }}
+				<xf:else />
+				<a href="{{ link('trophies', $trophy) }}">{$trophy.title}</a>
+			</xf:if>
+
+			<xf:if is="$trophy.trophy_points && $xf.options.klUIShowPoints">
+				<xf:if is="$trophy.trophy_points === 1">
+					<span data-xf-init="tooltip" title="{{ phrase('thuserimprovements_one_trophy_point') }}">
+					{{ phrase('thuserimprovements_one_trophy_point') }}
+					</span>
+					<xf:else />
+					<span data-xf-init="tooltip" title="{{ phrase('thuserimprovements_x_trophy_points', {'points': {$trophy.trophy_points|number}}) }}">
+					{{ phrase('thuserimprovements_x_trophy_points', {'points': {$trophy.trophy_points|number_short}}) }}
+					</span>
+				</xf:if>
+			</xf:if>
+
+			<xf:if is="$earned">
+				<span class="trophy--earned fa fa-check" data-xf-init="tooltip" title="{{ phrase('thuserimprovements_earned') }}"></span>
+			</xf:if>
+		</h3>
+
+		<div class="contentRow-minor">
+			<xf:if is="$trophy.th_hidden && !$earned">
+				{{ phrase('thuserimprovements_hidden_trophy_desc') }}
+				<xf:else />
+				{$trophy.description|raw}
+			</xf:if>
+		</div>
+
+		<xf:if is="{$showRecentlyAwardedUsers}">
+			<ul class="listHeap">
+				<xf:foreach loop="{$trophy.RecentlyAwardedUsers}" value="$user">
+					<li>
+						<xf:avatar user="$user.User" size="xs" img="true" />
+					</li>
+				</xf:foreach>
+			</ul>
+		</xf:if>
+	</li>
+</xf:macro>]]></template>
+  <template type="public" title="thuserimprovements_trophy_progress_bar.less" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[.th-trophyProgressContainer {
+	overflow: auto;
+}
+
+.th-trophyProgressBarContainer {
+	list-style: none;
+	display: flex;
+	padding: 0;
+	margin: 0;
+}
+
+.th-trophyProgress {
+	display: block;
+	flex: 1;
+	.contentRow-figure {
+		display: block;
+		margin: 0 auto;
+		padding: 5px;
+	}
+	.th-trophyProgress-trophyTitle {
+		display: block;
+		text-align: center;
+		font-size: @xf-fontSizeNormal;
+		padding: 20px 5px 10px;
+		&.th-trophyProgress-trophyTitle--selected {
+			font-weight: 700;
+		}
+	}
+	&:first-child .th-trophyProgressBar .th-trophyProgressBar-bar::before {
+		content: '0';
+		position: absolute;
+		left: 0;
+		bottom: -20px;
+		width: 40px;
+		text-align: left;
+		font-size: @xf-fontSizeSmaller;
+	}
+	&:first-child .th-trophyProgressBar, &:first-child .th-trophyProgressBar .th-trophyProgressBar-bar {
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px;
+	}
+	&:last-child .th-trophyProgressBar {
+		border-top-right-radius: 20px;
+		border-bottom-right-radius: 20px;
+		.th-trophyProgressBar-bar.th-trophyProgressBar-bar--full {
+			border-top-right-radius: 20px;
+			border-bottom-right-radius: 20px;
+		}
+		.th-trophyProgressBar-max {
+			right: 0;
+			text-align: right;
+		}
+	}
+	&:not(:last-child) .th-trophyProgressBar {
+		border-right: 0;
+	}
+}
+
+.th-trophyProgressBar {
+	display: block;
+	position: relative;
+    background: @xf-thuserimprovements_trophyProgressBarBackground;
+	border: 1px solid @xf-thuserimprovements_trophyProgressBarBorder;
+	.th-trophyProgressBar-bar {
+		min-width: 10px;
+		height: 20px;
+		background-color: @xf-thuserimprovements_trophyProgressBarForeground;
+		&:not(.th-trophyProgressBar-bar--full) {
+			border-top-right-radius: 20px;
+			border-bottom-right-radius: 20px;
+		}
+		&.th-trophyProgressBar-bar--empty {
+			width: 0;
+			min-width: 0;
+		}
+		&.th-trophyProgressBar-bar--full {
+			width: 100%;
+		}
+	}
+	.th-trophyProgressBar-max {
+		position: absolute;
+		right: -20px;
+		bottom: -20px;
+		width: 40px;
+		text-align: center;
+		font-size: @xf-fontSizeSmaller;
+	}
+}]]></template>
+  <template type="public" title="thuserimprovements_trophy_progress_macros" version_id="1030013" version_string="1.3.0 Alpha 3"><![CDATA[<xf:macro name="trophy_progress" arg-trophyProgressCriteria="!" arg-trophies="!" arg-selectedTrophy="" arg-progressValue="">
+	<xf:if is="$trophyProgressCriteria">
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body block-row">
+					<ul class="th-trophyProgressBarContainer">
+						<xf:foreach loop="$trophies" value="$trophy">
+							<xf:macro name="trophy_progress_bar" arg-trophy="{$trophy}"
+								arg-rule="{$trophyProgressCriteria.rule}" arg-dataKey="{$trophyProgressCriteria.dataKey}"
+								arg-previousTrophy="{$previousTrophy}"
+								arg-progressValue="{{ $progressValue !== null ? $progressValue : $xf.visitor.{$trophyProgressCriteria.valueKey} }}"
+								arg-selected="{{ $selectedTrophy && $selectedTrophy.trophy_id === $trophy.trophy_id }}" />
+							<xf:set var="$previousTrophy" value="{$trophy}" />
+						</xf:foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="trophy_progress_bar" arg-trophy="!" arg-rule="!" arg-dataKey="!" arg-previousTrophy="" arg-progressValue="0" arg-selected="{{ false }}">
+	<xf:css src="thuserimprovements_trophy_progress_bar.less" />
+	<xf:foreach loop="$trophy.user_criteria" value="$userCriteria">
+		<xf:if is="{$userCriteria.rule} === {$rule} && {$userCriteria.data.{$dataKey}}">
+			<xf:set var="$max" value="{$userCriteria.data.{$dataKey}}" />
+		</xf:if>
+	</xf:foreach>
+	<xf:if is="$previousTrophy">
+		<xf:foreach loop="$previousTrophy.user_criteria" value="$userCriteria">
+			<xf:if is="{$userCriteria.rule} === {$rule} && {$userCriteria.data.{$dataKey}}">
+				<xf:set var="$min" value="{$userCriteria.data.{$dataKey}}" />
+			</xf:if>
+		</xf:foreach>
+	</xf:if>
+	<xf:if is="$max">
+		<xf:if is="$progressValue > $min && ($max - $min) != 0">
+			<xf:if is="$progressValue < $max">
+				<xf:set var="$progress" value="{{ (($progressValue - $min) / ($max - $min)) * 100 }}" />
+			<xf:else />
+				<xf:set var="$progress" value="{{ 100 }}" />
+			</xf:if>
+		</xf:if>
+		<li class="th-trophyProgress">
+			<span class="contentRow-figure contentRow-figure--text contentRow-figure--fixedSmall">
+				<xf:macro template="thuserimprovements_trophy_macros" name="trophy" arg-trophy="{$trophy}" />
+			</span>
+			<div class="th-trophyProgressBar">
+				<div class="th-trophyProgressBar-bar{{ $progress == 100 ? ' th-trophyProgressBar-bar--full' : (!$progress ? ' th-trophyProgressBar-bar--empty' : '') }}"
+					{{ ($progress && $progress != 100) ? 'style="width: ' . $progress . '%;"' : '' }}></div>
+				<span class="th-trophyProgressBar-max">{$max|number_short(1)}</span>
+			</div>
+			<xf:if is="{$selected}">
+				<span class="th-trophyProgress-trophyTitle th-trophyProgress-trophyTitle--selected">{$trophy.title}</span>
+			<xf:else />
+				<span class="th-trophyProgress-trophyTitle"><a href="{{ link('trophies', $trophy) }}">{$trophy.title}</a></span>
+			</xf:if>
+
+		</li>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="thuserimprovements_trophy_showcase_macros" version_id="1030097" version_string="1.3.0 Patch Level 7"><![CDATA[<xf:macro name="showcase_display" arg-user="!" arg-position="!">
+	<xf:if is="$xf.options.klUIProfileTrophyShowcase AND $user">
+		<xf:if contentcheck="true">
+			<div class="trophyShowcase trophyShowcase--{$position}">
+				<xf:if is="{{ $xf.options.klUIProfileTrophyShowcase == 3 && $user.user_id === $xf.visitor.user_id }}">
+					<a class="trophyIconItem"
+					   data-xf-init="tooltip"
+					   title="{{ phrase('th_userimprovements_edit_showcase') }}"
+					   href="{{ link('members/thui-trophies/showcase-select', $xf.visitor) }}"
+					   data-xf-click="overlay">
+						<xf:fa icon="fa-edit" />
+					</a>
+				</xf:if>
+				<xf:contentcheck>
+					<xf:if is="$xf.options.klUIProfileTrophyShowcase == 1">
+						<xf:macro name="showcase_items"
+								  arg-trophies="{$user.getTHUILatestTrophies($position)}" />
+						<xf:elseif is="$xf.options.klUIProfileTrophyShowcase == 2" />
+						<xf:macro name="showcase_items"
+								  arg-trophies="{$user.getTHUIHighestTrophies($position)}" />
+						<xf:elseif is="$xf.options.klUIProfileTrophyShowcase == 3" />
+						<xf:macro name="showcase_items"
+								  arg-trophies="{$user.getTHUIUserChoiceTrophies($position)}" />
+					</xf:if>
+				</xf:contentcheck>
+			</div>
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="showcase_items" arg-trophies="!">
+	<xf:css src="thuserimprovements_trophy_showcase_macros.less" />
+
+	<xf:foreach loop="$trophies" value="$trophy">
+		<a href="{{ link('trophies', $trophy.Trophy) }}"
+		   class="trophyIconItem"
+		   title="{$trophy.Trophy.title}"
+		   data-xf-init="tooltip">
+			<xf:if is="$trophy.Trophy.th_icon_type === 'fa'">
+				<i class="fa far fa-{$trophy.Trophy.th_icon_value} {$trophy.Trophy.th_icon_value}" 
+				   style="{$trophy.Trophy.th_icon_css}"></i>
+				<xf:elseif is="$trophy.Trophy.th_icon_type === 'image'" />
+				<img src="{$trophy.Trophy.th_icon_value}" style="{$trophy.Trophy.th_icon_css}"/>
+				<xf:else />
+				<span style="{$trophy.Trophy.th_icon_css}">{$trophy.Trophy.trophy_points}</span>
+			</xf:if>
+		</a>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="public" title="thuserimprovements_trophy_showcase_macros.less" version_id="1030097" version_string="1.3.0 Patch Level 7"><![CDATA[.trophyShowcase {
+	.xf-klUITrophyShowcase();
+
+	.trophyIconItem {
+		.xf-klUITrophyIconItem();
+		cursor: pointer;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	&.trophyShowcase--link:hover {
+		cursor: pointer;
+		text-decoration: none;
+		.xf-klUITrophyShowcase();
+	}
+
+	&.trophyShowcase--postbit {
+		.xf-klUITrophyShowcasePostbit();
+
+		.trophyIconItem {
+			.xf-klUITrophyIconItemPostbit();
+			cursor: pointer;
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	&.trophyShowcase--profile {
+		.xf-klUITrophyShowcaseProfile();
+
+		.trophyIconItem {
+			.xf-klUITrophyIconItemProfile();
+			cursor: pointer;
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+}
+
+.dataList-cell--first {
+	.inputChoices label.iconic:not(.iconic--labelled) > input + i {
+		top: -.7em;
+	}
+}
+
+.block-footer {
+	.selected-amount {
+		&.error {
+			color: red;
+		}
+	}
+}]]></template>
+  <template type="public" title="thuserimprovements_trophy_showcase_select" version_id="1030097" version_string="1.3.0 Patch Level 7"><![CDATA[<xf:title>{{ phrase('thuserimprovements_trophy_showcase_select') }}</xf:title>
+
+<xf:css src="thuserimprovements_trophy_showcase_macros.less" />
+
+<xf:form action="{{ link('members/thui-trophies/showcase-select', $xf.visitor) }}"
+		 class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$trophies" value="$trophy">
+					<xf:datarow>
+						<xf:cell class="dataList-cell--first">
+							<xf:checkbox name="trophy_ids[]">
+								<xf:option value="{$trophy.trophy_id}" id="trophy-{$trophy.trophy_id}" class="kl-trophy-select" selected="{$trophy.th_showcased}" />
+							</xf:checkbox>
+						</xf:cell>
+						<xf:cell class="dataList-cell--imageSmall" style="width: 48px;">
+							<a href="{{ link('trophies', $trophy.Trophy) }}" class="trophyIconItem" title="{$trophy.Trophy.title}" data-xf-init="tooltip">
+								<xf:if is="$trophy.Trophy.th_icon_type === 'fa'">
+									<i class="fa fa-{$trophy.Trophy.th_icon_value} {$trophy.Trophy.th_icon_value}"></i>
+									<xf:elseif is="$trophy.Trophy.th_icon_type === 'image'" />
+									<img src="{$trophy.Trophy.th_icon_value}"/>
+									<xf:else />
+									{$trophy.Trophy.trophy_points}
+								</xf:if>
+							</a>
+						</xf:cell>
+						<xf:cell class="dataList-cell--link dataList-cell--main" hash="{$character.character_id}" style="width: 100%">
+							<label for="trophy-{$trophy.trophy_id}">
+								<div class="dataList-mainRow">{$trophy.Trophy.title}</div>
+							</label>
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+		<div class="block-footer">
+			{{ phrase('thuserimprovements_trophies_selected:') }} <span class="selected-amount">{$amountSelected}</span><xf:if is="!$unlimited">/<span class="max-amount">{$amount}</span></xf:if>
+		</div>
+		<xf:js>
+			var selectedAmount = {$amountSelected},
+			maxAmount = {$amount};
+
+			$('.kl-trophy-select').on('change', function(event) {
+			if($(event.currentTarget).is(':checked')) {
+			selectedAmount += 1;
+			}
+			else {
+			selectedAmount -= 1;
+			}
+
+			$('.selected-amount').html(selectedAmount);
+
+			if(selectedAmount > maxAmount) {
+			$('.block-footer .selected-amount').addClass('error');
+			}
+			else {
+			$('.block-footer .selected-amount').removeClass('error');
+			}
+			});
+		</xf:js>
+		<xf:submitrow icon="save" sticky="true" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="thuserimprovements_trophy_stats" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[<xf:title>{$title}</xf:title>
+
+<div class="block">
+	<xf:if is="$users is not empty">
+		<div class="block-container">
+			<ol class="block-body">
+				<xf:foreach loop="$users" key="$userId" value="$user">
+					<li class="block-row block-row--separated">
+						<xf:macro template="member_list_macros"
+							name="item"
+							arg-user="{{ $userKey ? $user.{$userKey} : $user }}"
+							arg-extraData="{$user.{$extraData}}"
+							arg-extraDataBig="{{ true }}" />
+					</li>
+				</xf:foreach>
+			</ol>
+		</div>
+	<xf:else />
+		<div class="block-row">{{ phrase('no_users_match_specified_criteria') }}</div>
+	</xf:if>
+</div>]]></template>
+  <template type="public" title="thuserimprovements_trophy_view" version_id="1030097" version_string="1.3.0 Patch Level 7"><![CDATA[<xf:if is="$trophy.trophy_points === 1">
+	<xf:set var="$trophyPoints">{{ phrase('thuserimprovements_one_trophy_point') }}</xf:set>
+<xf:else />
+	<xf:set var="$trophyPoints">{{ phrase('thuserimprovements_x_trophy_points', {'points': {$trophy.trophy_points|number_short}}) }}</xf:set>
+</xf:if>
+
+<xf:title page="{$page}">{$trophy.title} {$trophyPoints}</xf:title>
+<xf:description>{$trophy.description}</xf:description>
+
+<xf:breadcrumb href="{{ link('trophies') }}">{{ phrase('trophies') }}</xf:breadcrumb>
+<xf:if is="$trophy.THUITrophyCategory is not empty">
+	<xf:breadcrumb href="{{ link('trophy-categories', $trophy.THUITrophyCategory) }}">{$trophy.THUITrophyCategory.title}</xf:breadcrumb>
+</xf:if>
+
+<xf:css src="thuserimprovements_trophy_view.less" />
+
+<xf:macro template="thuserimprovements_trophy_progress_macros"
+	name="trophy_progress"
+	arg-trophies="{$trophies}"
+	arg-trophyProgressCriteria="{$trophyProgressCriteria}"
+	arg-progressValue="{$progressValue}"
+	arg-selectedTrophy="{$trophy}" />
+
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-tabHeader block-tabHeader--trophyTabs tabs hScroller" data-xf-init="tabs h-scroller" role="tablist"
+			data-panes=".js-trophyTabPanes" data-state="replace">
+			<span class="hScroller-scroll">
+				<!--[XF:tabs:start]-->
+				<a class="tabs-tab is-active"
+					role="tab" tabindex="0" aria-controls="awarded">{{ phrase('thuserimprovements_awarded') }} ({$total})</a>
+				<!--[XF:tabs:after_awarded]-->
+				<xf:if is="{$trophyProgressCriteria.valueKey}">
+					<a class="tabs-tab"
+						role="tab" tabindex="1" aria-controls="{$trophyProgressCriteria.valueKey}">{$trophyProgressCriteria.statsPhrase}</a>
+				</xf:if>
+				<!--[XF:tabs:end]-->
+			</span>
+		</h2>
+	</div>
+</div>
+
+<ul class="block tabPanes js-trophyTabPanes">
+	<!--[XF:tab_panes:start]-->
+	<li class="is-active" role="tabpanel" id="awarded">
+		<xf:if is="$userTrophies is not empty">
+			<div class="block-container">
+				<ol class="block-body">
+					<xf:foreach loop="$userTrophies" value="$userTrophy">
+						<li class="block-row block-row--separated">
+							<xf:if is="{$trophyProgressCriteria.valueSubKey}">
+								<xf:macro template="member_list_macros"
+									name="item"
+									arg-user="{$userTrophy.User}"
+									arg-extraData="{$userTrophy.User.{$trophyProgressCriteria.valueKey}.{$trophyProgressCriteria.valueSubKey}}"
+									arg-extraDataBig="{{ true }}" />
+							<xf:elseif is="{$trophyProgressCriteria.valueKey}" />
+								<xf:macro template="member_list_macros"
+									name="item"
+									arg-user="{$userTrophy.User}"
+									arg-extraData="{$userTrophy.User.{$trophyProgressCriteria.valueKey}}"
+									arg-extraDataBig="{{ true }}" />
+							<xf:else />
+								<xf:macro template="member_list_macros"
+									name="item"
+									arg-user="{$userTrophy.User}" />
+							</xf:if>
+						</li>
+					</xf:foreach>
+				</ol>
+			</div>
+			<xf:pagenav link="trophies" data="{$trophy}" page="{$page}" perpage="{$perPage}" total="{$total}"
+				wrapperclass="block-outer block-outer--after" />
+		<xf:else />
+			<div class="blockMessage">{{ phrase('thuserimprovements_no_users_have_earned_this_trophy') }}</div>
+		</xf:if>
+	</li>
+	<!--[XF:tab_panes:after_awarded]-->
+	<xf:if is="{$trophyProgressCriteria.valueKey}">
+		<li data-href="{{ link('trophies/stats/' . $trophyProgressCriteria.valueKey, '', $trophyProgressCriteria.additionalData) }}" role="tabpanel" aria-labelledby="{$trophyProgressCriteria.valueKey}">
+			<div class="blockMessage">{{ phrase('loading...') }}</div>
+		</li>
+	</xf:if>
+	<!--[XF:tab_panes:end]-->
+</ul>
+
+<xf:widgetpos id="thuserimprovements_trophy_view_sidebar" position="sidebar" />]]></template>
+  <template type="public" title="thuserimprovements_trophy_view.less" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[.block-tabHeader.block-tabHeader--trophyTabs {
+    border-bottom: none;
+}]]></template>
+  <template type="public" title="thuserimprovements_username_change_history" version_id="1030017" version_string="1.3.0 Alpha 7"><![CDATA[<xf:if is="$user.canViewTHUIUsernameHistory() && $username_changes.count()">
+	<div class="buttonGroup-buttonWrapper kl-ui-username-change-button-wrapper">
+		<xf:button class="button--link menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true"></xf:button>
+		<div class="menu" data-menu="menu" aria-hidden="true">
+			<div class="menu-content kl-username-change-menu-content">
+				<h4 class="menu-header">{{ phrase('thuserimprovements_also_known_as') }}</h4>
+				<!--[XF:find_menu:top]-->
+				<xf:foreach loop="$username_changes" value="$record">
+					<dl class="menu-linkRow"><dt>{$record.old_username}</dt><dd><span class="record-until">{{ phrase('thuserimprovements_until') }}</span> <xf:if is="$xf.visitor.hasPermission('klUI', 'klUIViewNameChangeTime')"><xf:date time="$record.change_date" /></xf:if></dd></dl>
+				</xf:foreach>
+			</div>
+		</div>
+	</div>
+	<xf:css src="thuserimprovements_username_change_history.less" />
+</xf:if>]]></template>
+  <template type="public" title="thuserimprovements_username_change_history.less" version_id="1020570" version_string="1.2.5"><![CDATA[.kl-ui-username-change-button-wrapper {
+	display: inline-block;
+
+	.button.button--link {
+		background: none;
+		border: none;
+		position: relative;
+		top: -5px;
+		padding: 0 10px;
+		left: -10px;
+	}
+}
+
+.kl-username-change-menu-content {
+	dl {
+		margin: 0;
+	}
+
+	dd,
+	dt {
+		display: inline-block;
+	}
+
+	dd {
+		float: right;
+		
+		.record-until {
+			color: @xf-textColorMuted;
+		}
+	}
+}]]></template>
+  <template type="public" title="thuserimprovements_username_color_select" version_id="1030093" version_string="1.3.0 Patch Level 3"><![CDATA[<xf:if is="$xf.visitor->hasPermission('klUI', 'klUIChoseUsernameColor')">
+	<xf:css src="thuserimprovements_username_color_select.less" />
+
+	<div id="th_name_color_selector">
+		<xf:radiorow name="user[th_name_color_id]" value="{$xf.visitor.th_name_color_id}">
+			<xf:foreach loop="$thuiUsernameColorValues" value="$color">
+				<xf:option value="{$color}"></xf:option>
+			</xf:foreach>
+			<xf:label>{{ phrase('thuserimprovements_nickname_color') }}</xf:label>
+		</xf:radiorow>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="thuserimprovements_username_color_select.less" version_id="1020570" version_string="1.2.5"><![CDATA[#th_name_color_selector .inputChoices {
+	width: 224px;
+}
+
+#th_name_color_selector .inputChoices-choice {
+	display: inline-block;
+    margin: 0 -4.1px 0 0;
+    padding: 0;
+}
+
+#th_name_color_selector .iconic.iconic--radio.iconic--labelled {
+	text-indent: -9999;
+	font-size: 0;
+}
+
+#th_name_color_selector label.iconic > input[type="radio"] + i {
+	position: static;
+	text-align: center;
+    line-height: 32px;
+    height: 32px;
+    width: 32px;
+    font-size: 13px;
+	cursor: pointer;
+	display: block;
+	position: relative;
+}
+#th_name_color_selector label.iconic > input[type="radio"] + i:hover,
+#th_name_color_selector label.iconic > input[type="radio"]:active + i,
+#th_name_color_selector label.iconic > input[type="radio"]:focus + i {
+	outline: 1px solid #141414;
+	z-index: 2;
+}
+
+#th_name_color_selector label.iconic > input[type="radio"] + i:before {
+	content: " ";
+}
+#th_name_color_selector label.iconic > input[type="radio"]:checked + i:before {
+	content: "\f00c";
+	color: #FFF;
+}
+
+#th_name_color_selector label.iconic > input[type="radio"][value="0"] + i:before {
+	content: "\f12d";
+	color: @xf-textColor;
+}
+
+
+<xf:foreach loop="range(1, 27)" value="$x">
+#th_name_color_selector label.iconic > input[type="radio"][value="{$x}"] + i {
+	background-color: @xf-klUIUsernameColor{$x};
+}
+</xf:foreach>]]></template>
+  <template type="public" title="thuserimprovements_widget_user_title_ladder" version_id="1020570" version_string="1.2.5"><![CDATA[<xf:css src="thuserimprovements_widget_user_title_ladder.less" />
+
+<xf:if is="$xf.visitor.user_id">
+	<div class="block"{{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">{$title}</h3>
+			<div class="block-body block-row">
+				<div class="user-title-ladder-progress--container" title="{$tooltip}" data-xf-init="tooltip">
+					<div class="user-title-ladder-progress--bar" style="width: {$progress}%">
+						&nbsp;<xf:if is="$progress >= 50">{$progress}%</xf:if>
+					</div>
+					<xf:if is="$progress < 50">{$progress}%</xf:if>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="thuserimprovements_widget_user_title_ladder.less" version_id="1020570" version_string="1.2.5"><![CDATA[.user-title-ladder-progress--container {
+	.xf-klUIUTLPContainer();
+}
+
+.user-title-ladder-progress--bar {
+	.xf-klUIUTLPBar();
+}]]></template>
+</templates>

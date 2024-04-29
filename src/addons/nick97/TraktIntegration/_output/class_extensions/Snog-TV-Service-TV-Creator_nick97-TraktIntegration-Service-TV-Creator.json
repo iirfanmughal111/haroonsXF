@@ -1,0 +1,6 @@
+{
+    "from_class": "Snog\\TV\\Service\\TV\\Creator",
+    "to_class": "nick97\\TraktIntegration\\Service\\TV\\Creator",
+    "execute_order": 10,
+    "active": true
+}

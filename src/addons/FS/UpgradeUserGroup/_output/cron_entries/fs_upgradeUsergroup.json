@@ -1,0 +1,17 @@
+{
+    "cron_class": "FS\\UpgradeUserGroup\\Cron\\UpgradeUserGroupCron",
+    "cron_method": "upgradeUsergroup",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            -1
+        ],
+        "minutes": [
+            0
+        ]
+    },
+    "active": true
+}

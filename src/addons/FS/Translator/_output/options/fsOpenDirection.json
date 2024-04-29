@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "left=Left\nright=Right\ntop=Top\nbottom=Bottom",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "left",
+    "relations": {
+        "fs_translator": 8
+    }
+}

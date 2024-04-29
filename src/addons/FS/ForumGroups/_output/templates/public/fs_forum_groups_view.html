@@ -1,0 +1,193 @@
+<xf:title>{$group.name}</xf:title>
+
+<xf:css src="fs_forum_gorups_style.less" />
+
+<xf:sidenav>
+	
+	<!-- Avatar -->
+	
+	<div class="block groupAvatar-block">
+           <xf:if is="$subForums.AvatarAttachment">
+        <a href="{{ link('forumGroups', $subForums) }}"
+       class="groupAvatar groupAvatar--link groupAvatar--default" style="background-color:#e08585;color:#8f2424">
+			<img src="{{ $subForums.AvatarAttachment.thumbnail_url }}"
+                 class="groupAvatar--img bbImage" width="250" height="250"
+                 data-width="{$subForums.AvatarAttachment.width}"
+                 data-height="{$subForums.AvatarAttachment.height}"
+                 alt="{$subForums.title}"/>
+    </a>
+			   
+			<xf:else />
+			   <xf:comment>
+            <span class="groupAvatar--text groupAvatar--dynamic">{$xf.visitor.username}</span>
+			   </xf:comment>
+			  <xf:avatar user="$subForums.User" size="l" />
+			</xf:if>
+    </div>
+	
+	<!-- Avatar -->
+
+</xf:sidenav>
+
+<div class="groupWrapper groupWrapper-{$subForums.node_id}">
+
+	<!-- Header -->
+
+	<xf:page option="headerHtml">
+        <div class="contentRow contentRow--hideFigureNarrow">
+            <div class="contentRow-main">
+                <div class="p-title">
+                    <h1 class="p-title-value">
+                        {$subForums.title}
+                    </h1>
+                
+				<xf:if is="$subForums.node_state == 'visible'">
+					<div class="p-title-pageAction">
+						<a href="{{ link('forums/post-thread', $subForums) }}" class="button--cta button button--icon button--icon--write"><span class="button-text">
+							{{ phrase('post_thread') }}
+						</span></a>
+
+						<xf:if is="$xf.visitor.user_id && $subForums.room_path && $xf.visitor.user_id == $subForums.user_id">
+							<a href="{{ link($subForums.room_path) }}" class="button--cta button button--icon"><span class="button-text">
+							<i class="fas fa-comment-dots"></i> {{ phrase('fs_forum_groups_room_chat') }}
+						</span></a>
+						</xf:if>
+
+						<xf:if is="$xf.visitor.user_id && $xf.visitor.user_id == $subForums.user_id">
+							<a href="{{ link('forumGroups/moderator-list', $subForums) }}" class="button--cta button button--icon button--icon--list"><span class="button-text">
+							{{ phrase('fs_forum_group_moderator_list') }}
+						</span></a>
+						</xf:if>
+					</div>
+					</xf:if>
+					
+					</div>
+				<div class="p-description">
+                        {$subForums.description}
+                    </div>
+            </div>
+        </div>
+    </xf:page>
+
+	<!-- Header -->
+
+	<!-- Cover Header -->
+
+	<div class="block">
+        <div class="block-container groupCover-header">
+            <div class="block-body">
+               <div class="groupCover groupCoverFrame groupCover--default" style="background-color:#{{$subForums.getRandomColor()}};color:#fff">
+        <a href="{{ link('forumGroups', $subForums) }}" style="color:#fff">
+                <xf:if is="$subForums.CoverAttachment">
+                <img data-crop="{$subForums->getCoverCropData()|json}"
+                     class="groupCover--img groupCover--lazy" data-xf-init="fs-forum-groups-cover-setup"
+                     {{ ($subForums.getImageAttributes()) ? (' ' . $subForums.getImageAttributes()) : '' }}/>
+            <xf:else />
+                <span class="groupCover--text">{{ snippet($subForums.title, 25) }}</span>
+            </xf:if>
+        </a>
+    </div>
+            </div>
+
+            <xf:if is="$isEditing is not empty">
+                <xf:macro name="cover_editor_setup" arg-group="{$group}"
+                          arg-width="{$baseWidth}"
+                          arg-height="{$baseHeight}" />
+            <xf:else />
+				
+				<xf:if is="$subForums.node_state == 'visible'">
+				 <div class="gridCard--header--actions">
+		   
+			<div class="buttonGroup-buttonWrapper">
+                <xf:button class="button--link menuTrigger"
+                       data-xf-click="menu"
+                       aria-expanded="false"
+                       aria-haspopup="true" title="{{ phrase('more_options')|for_attr }}"><xf:fa icon="fa-cog" /></xf:button>
+					<div class="menu" data-menu="menu" aria-hidden="true">
+                    <div class="menu-content">
+                                <a href="{{ link('forumGroups/add-moderator', $subForums) }}"
+                                       class="menu-linkRow"
+                                       data-xf-click="overlay">
+                                {{  phrase('fs_forum_groups_moderator')  }}
+                            </a>
+						
+						<a href="{{ link('forumGroups/avatar', $subForums) }}"
+                                       class="menu-linkRow"
+                                       data-xf-click="overlay">
+                                {{  phrase('fs_forum_groups_upload_avatar')  }}
+                            </a>
+						
+						<a href="{{ link('forumGroups/cover', $subForums) }}"
+                                       class="menu-linkRow"
+                                       data-xf-click="overlay">
+                                {{  phrase('fs_forum_groups_upload_cover')  }}
+                            </a>
+                           
+                            <hr class="menu-separator" />
+                    </div>
+                </div>
+            </div>   
+			   
+		   </div>
+				
+            </xf:if>
+			</xf:if>
+        </div>
+		
+	<!-- Approval Status -->
+		
+		<xf:if is="$subForums.node_state == 'moderated' or $subForums.node_state == 'deleted'">
+		<div class="block-outer">
+			<dl class="blockStatus" style="margin-top: 10px;">
+				<dt>{{ phrase('status') }}</dt>
+					<xf:if is="$subForums.node_state == 'deleted'">
+						<dd class="blockStatus-message blockStatus-message--deleted">
+							<xf:macro template="deletion_macros" name="notice" arg-log="{$thread.DeletionLog}" />
+						</dd>
+					<xf:elseif is="$subForums.node_state == 'moderated'" />
+						<dd class="blockStatus-message blockStatus-message--moderated">
+							{{ phrase('awaiting_approval_before_being_displayed_publicly') }}
+						</dd>
+					</xf:if>
+			</dl>
+		</div>
+		</xf:if>
+    </div>
+	
+	<!-- Approval Status -->
+
+	<!-- Cover Header -->
+		
+	<!-- Thread Lists -->
+	
+	<xf:if is="$subForums.node_state == 'visible'">
+	
+	<xf:if is="$threads is not empty">
+		<div class="block-container">
+		<div class="block-body">
+				<div class="structItemContainer">
+					
+						<div class="structItemContainer-group js-threadList">
+							<xf:if is="$threads is not empty">
+								<xf:foreach loop="$threads" value="$thread">
+									<xf:macro name="fs_forum_groups_thread_list_macros::item"
+										arg-thread="{$thread}"
+										arg-forum="{$forum}"
+										args="null"  />
+								</xf:foreach>
+							</xf:if>
+						</div>		
+			</div>
+			</div>
+		</div>
+					<xf:else />
+						<div class="blockMessage  ">
+							<div class="structItem-cell">{{ phrase('there_no_threads_in_this_forum') }}</div>
+						</div>
+					</xf:if>
+					
+	</xf:if>
+	
+	<!-- Thread Lists -->
+	
+</div>

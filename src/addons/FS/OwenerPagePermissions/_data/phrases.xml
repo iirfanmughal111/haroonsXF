@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="permission.ownerPagePost_approveUnapprove" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Approve / unapprove ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_comment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Comment on ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_deleteAny" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Delete any ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_deleteOwn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Delete own ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_editAny" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit any ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_editOwn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit own ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_hardDeleteAny" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Hard-delete any ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_inlineMod" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can use inline moderation on ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_manageOwn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Manage ownerPage posts on own profile]]></phrase>
+  <phrase title="permission.ownerPagePost_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post new ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_react" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[React to ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_undelete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Undelete ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_uploadAttachment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload attachments to ownerPage posts and comments]]></phrase>
+  <phrase title="permission.ownerPagePost_uploadVideo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload video/audio to ownerPage posts and comments]]></phrase>
+  <phrase title="permission.ownerPagePost_view" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[View ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_viewAttachment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[View attachments to ownerPage posts and comments]]></phrase>
+  <phrase title="permission.ownerPagePost_viewDeleted" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[View deleted ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_viewModerated" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[View unapproved ownerPage posts]]></phrase>
+  <phrase title="permission.ownerPagePost_warn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Give warnings on ownerPage posts]]></phrase>
+  <phrase title="permission_interface.OwnerPagePostModeratorPermissions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[OwnerPage post moderator permissions]]></phrase>
+  <phrase title="permission_interface.OwnerPagePostPermissions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[OwnerPage post permissions]]></phrase>
+</phrases>

@@ -1,0 +1,1 @@
+Requires <a href="https://xenforo.com/community/resources/ozzmodz-covers.8589/" target="_blank">[OzzModz] Covers</a> add-on installed. Select "none" to disable. The file size of the selected option must not exceed the max. file cover size.

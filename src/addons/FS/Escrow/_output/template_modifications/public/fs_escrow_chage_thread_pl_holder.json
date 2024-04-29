@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread",
+    "description": "fs_escrow_chage_thread_pl_holder",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:prefixinputrow.*?finalhtml=\"{\\$titleFinalHtml}\" \\/>/is",
+    "replace": "<xf:if is=\"$forum.node_id == $xf.options.fs_escrow_applicable_forum\">\n\t<xf:prefixinputrow\n\t\t\t\tlabel=\"{{ phrase('title') }}\"\n\t\t\t\tprefixes=\"{$prefixes}\"\n\t\t\t\ttype=\"thread\"\n\t\t\t\tprefix-value=\"{{ $forum.draft_thread.prefix_id ?: ($thread.prefix_id ?: $forum.default_prefix_id) }}\"\n\t\t\t\ttextbox-value=\"{{ $title ?: $thread.title ?: $forum.draft_thread.title }}\"\n\t\t\t\ttextbox-class=\"input--title\"\n\t\t\t\tplaceholder=\"{{ phrase('fs_escrow_place_holder') }}\"\n\t\t\t\trowtype=\"fullWidth noLabel\"\n\t\t\t\tautofocus=\"autofocus\"\n\t\t\t\tmaxlength=\"{{ max_length('XF:Thread', 'title') }}\"\n\t\t\t\thelp-href=\"{{ link('forums/prefix-help', $forum) }}\"\n\t\t\t\tfinalhtml=\"{$titleFinalHtml}\" />\n\t\t<xf:else />\n\t$0\n</xf:if>"
+}

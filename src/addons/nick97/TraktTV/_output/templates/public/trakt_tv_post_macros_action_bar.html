@@ -1,0 +1,9 @@
+<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.traktTV.tv_season && $thread.traktTV.tv_episode)">
+	<xf:if is="$post.canEdit()">
+		<xf:js src="xf/message.js" min="1" />
+		<a href="{{ link('tvTrakt/episode/update', $post) }}"
+			class="actionBar-action actionBar-action--updateEpisode actionBar-action--menuItem"
+			data-menu-closer="true">{{ phrase('trakt_tv_update_episode') }}</a>
+		<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+	</xf:if>
+</xf:if>

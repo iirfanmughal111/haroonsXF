@@ -1,0 +1,1 @@
+The default sort order when a new season forum is created is descending. To sort them in ascending order, check this box.

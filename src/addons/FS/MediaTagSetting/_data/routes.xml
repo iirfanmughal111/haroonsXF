@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="media-tag" format=":int&lt;id,title&gt;/" controller="FS\MediaTagSetting:MediaTag" context="fs_media_tag"/>
+</routes>

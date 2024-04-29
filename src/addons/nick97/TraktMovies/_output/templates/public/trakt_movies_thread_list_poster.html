@@ -1,0 +1,17 @@
+<xf:if is="$thread.traktMovie is not empty">
+	<div class="structItem-cell structItem-cell--movie">
+		<img class="moviePoster" src="{{ $thread.traktMovie.getImageUrl('s') }}" />
+	</div>
+<xf:else />
+	<div class="structItem-cell structItem-cell--movie">
+		<div class="structItem-iconContainer">
+			<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+			<xf:if is="$thread.getUserPostCount()">
+				<xf:avatar user="$xf.visitor" size="s"
+					href=""
+					class="avatar--separated structItem-secondaryIcon"
+					title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() })|for_attr }}" />
+			</xf:if>
+		</div>
+	</div>
+</xf:if>

@@ -1,0 +1,2232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="snog_tv_forum_type_config_tv" version_id="2020000" version_string="2.2.0"><![CDATA[<xf:checkboxrow name="type_config[available_genres]" value="{$forum.type_config.available_genres}" listclass="field listColumns"
+	label="{{ phrase('snog_tv_available_genre') }}"
+	explain="{{ phrase('snog_tv_available_genre_explain') }}">
+
+	<xf:options source="$availableGenres" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="snog_tv_option_macros" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[<xf:macro name="option_form_block" arg-group="" arg-options="!" arg-containerBeforeHtml="" arg-tabs="!">
+	<xf:if is="$options is not empty">
+		<div class="block">
+			<xf:form action="{{ link('options/update') }}" ajax="true" class="block-container">
+				{$containerBeforeHtml|raw}
+				<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" data-state="replace" role="tablist">
+					<span class="hScroller-scroll">
+						<!--[XF:tabs:start]-->
+						<xf:foreach loop="$tabs" key="$tabId" i="$i" value="$tab">
+							<a class="tabs-tab {{ $tab.active ? 'is-active' : '' }}" role="tab" tabindex="{$i}"
+							   id="{$tabId}"
+							   aria-controls="{$tabId}"
+							   href="{{ link('options/groups', $group) }}#{$tabId}">
+								{$tab.label}
+							</a>
+						</xf:foreach>
+						<!--[XF:tabs:end]-->
+					</span>
+				</h2>
+
+				<ul class="tabPanes">
+					<xf:foreach loop="$tabs" key="$tabId" i="$i" value="$tab">
+						<li class="{{ $tab.active ? 'is-active' : '' }}" role="tabpanel" aria-labelledby="general-options">
+							<div class="block-body">
+								<xf:foreach loop="$options" value="$option" if="{{ $option.Relations.{$group.group_id}.display_order >= $tab.start && $option.Relations.{$group.group_id}.display_order < $tab.end }}">
+
+									<xf:if is="$group">
+										<xf:set var="$curHundred"
+											value="{{ floor($option.Relations.{$group.group_id}.display_order / 100) }}"/>
+										<xf:if is="{{ $curHundred > $hundred }}">
+											<xf:set var="$hundred" value="{$curHundred}"/>
+											<hr class="formRowSep"/>
+										</xf:if>
+									</xf:if>
+
+									<xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}"/>
+								</xf:foreach>
+							</div>
+						</li>
+					</xf:foreach>
+				</ul>
+
+				<xf:submitrow sticky="true" icon="save"/>
+			</xf:form>
+		</div>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="admin" title="snog_tv_tools_rebuild" version_id="2020061" version_string="2.2.0 Release Candidate 11"><![CDATA[<span class="u-anchorTarget" id="job-snogTv"></span>
+
+<xf:form action="{{ link('tools/rebuild') }}" class="block">
+	<div class="block-container">
+		<h2 class="block-header">[OzzModz] TMDb TV Thread Starter</h2>
+		<div class="block-body">
+			<xf:radiorow name="job">
+			
+				<xf:option value="Snog\TV:TvRatingRebuild">{{ phrase('snog_tv_recalculate_ratings') }}</xf:option>
+				<xf:option value="Snog\TV:TvForumRatingRebuild">{{ phrase('snog_tv_recalculate_forum_ratings') }}</xf:option>
+				
+				<xf:option value="Snog\TV:TvThreadRebuild" label="{{ phrase('snog_tv_rebuild_tv_threads') }}" hint="{{ phrase('snog_tv_rebuild_tv_threads_explain') }}" data-hide="true">
+					<xf:checkbox name="options[rebuildTypes]">
+						<xf:option value="credits">{{ phrase('snog_tv_credits') }}</xf:option>
+						<xf:option value="videos">{{ phrase('snog_tv_videos') }}</xf:option>
+					</xf:checkbox>
+				</xf:option>
+
+				<xf:option value="Snog\TV:TvPostRebuild">{{ phrase('snog_tv_rebuild_episode_posts') }}</xf:option>
+				<xf:option value="Snog\TV:TvCreditsRebuild">{{ phrase('snog_tv_rebuild_credits') }}</xf:option>
+				<xf:option value="Snog\TV:TvPersonsRebuild">{{ phrase('snog_tv_rebuild_persons') }}</xf:option>
+
+				<xf:option value="Snog\TV:TvVideoRebuild">{{ phrase('snog_tv_rebuild_videos') }}</xf:option>
+				<xf:option value="Snog\TV:TvWatchProviderRebuild">{{ phrase('snog_tv_rebuild_watch_providers') }}</xf:option>
+				<xf:option value="Snog\TV:TvProductionCompaniesRebuild">{{ phrase('snog_tv_rebuild_tv_production_companies') }}</xf:option>
+				<xf:option value="Snog\TV:TvNetworksRebuild">{{ phrase('snog_tv_rebuild_tv_networks') }}</xf:option>
+				
+				<xf:if is="is_addon_active('ThemeHouse/Covers')">
+					<xf:option value="Snog\TV:TvThreadCoverUpdate">{{ phrase('snog_tv_rebuild_thread_covers') }}</xf:option>
+				</xf:if>
+			</xf:radiorow>
+			
+			<xf:formrow label="{{ phrase('snog_tv_tools_local_images') }}" explain="{{ phrase('snog_tv_download_images_explain') }}">
+				<xf:radio name="job">
+					<xf:option value="Snog\TV:TvThreadImageDownload" label="{{ phrase('snog_tv_download_thread_poster_images') }}" />
+					<xf:option value="Snog\TV:TvForumImageDownload" label="{{ phrase('snog_tv_download_forum_poster_images') }}" />
+					<xf:option value="Snog\TV:TvPostImageDownload" label="{{ phrase('snog_tv_download_episode_images') }}" />
+					<xf:option value="Snog\TV:TvPersonsImageDownload" label="{{ phrase('snog_tv_download_person_images') }}" />
+					<xf:option value="Snog\TV:TvNetworkImageDownload" label="{{ phrase('snog_tv_download_network_images') }}" />
+					<xf:option value="Snog\TV:TvCompanyImageDownload" label="{{ phrase('snog_tv_download_company_images') }}" />
+				</xf:radio>
+			</xf:formrow>
+		</div>
+		
+		<xf:submitrow submit="{{ phrase('rebuild_now') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="widget_def_options_snog_tv_poster_slider" version_id="2020047" version_string="2.2.0 Beta 17"><![CDATA[<hr class="formRowSep" />
+
+<xf:checkboxrow>
+	<xf:option name="options[advanced_mode]" value="1" selected="{$options.advanced_mode}"
+			   label="{{ phrase('advanced_mode') }}"
+			   hint="{{ phrase('if_enabled_html_for_your_page_will_not_be_contained_within_block') }}" />
+</xf:checkboxrow>
+
+<xf:radiorow name="options[order]" value="{$options.order}" label="{{ phrase('display_order') }}">
+	<xf:option value="latest">{{ phrase('snog_tv_latest_shows') }}</xf:option>
+	<xf:option value="rating">{{ phrase('snog_tv_most_rated_shows') }}</xf:option>
+	<xf:option value="random">{{ phrase('snog_tv_random_shows') }}</xf:option>
+	<xf:option value="last_post_date">{{ phrase('last_reply_date') }}</xf:option>
+</xf:radiorow>
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+				 label="{{ phrase('maximum_entries') }}" />
+	
+<xf:textboxrow name="options[image_width]" value="{$options.image_width}"
+					 label="{{ phrase('snog_tv_image_width') }}" />
+	
+<xf:textboxrow name="options[image_height]" value="{$options.image_height}"
+					 label="{{ phrase('snog_tv_image_height') }}" />
+
+<xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+	label="{{ phrase('forum_limit') }}"
+	explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+	<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+	<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+		<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+			{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+	
+<xf:checkboxrow>
+	<xf:option name="options[show_rating]" value="1" selected="$options.show_rating"
+			   label="{{ phrase('snog_tv_show_rating') }}" />
+</xf:checkboxrow>
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('snog_tv_slider_options') }}</span>
+	</span>
+</h3>
+
+<div class="block-body block-body--collapsible is-active">
+	<xf:numberboxrow name="options[slider][items]" value="{$options.slider.items}" min="1"
+					 label="{{ phrase('snog_tv_slider_items') }}" />
+	
+	<hr class="formRowSep" />
+	
+	<xf:formrow rowtype="input" label="{{ phrase('snog_tv_slider_items_items_wide') }}">
+		<div class="inputGroup">
+			<xf:numberbox name="options[slider][itemsWide]" value="{$options.slider.itemsWide}" min="1" />
+
+			<span class="inputGroup-text">{{ phrase('snog_tv_breakpoint:') }}</span>
+			<xf:numberbox name="options[slider][breakpointWide]" value="{$options.slider.breakpointWide}" min="1" />
+			<span class="inputGroup-text">{{ phrase('units_pixels') }}</span>
+		</div>
+	</xf:formrow>
+
+	<xf:formrow rowtype="input" label="{{ phrase('snog_tv_slider_items_items_medium') }}">
+		<div class="inputGroup">
+			<xf:numberbox name="options[slider][itemsMedium]" value="{$options.slider.itemsMedium}" min="1" />
+
+			<span class="inputGroup-text">{{ phrase('snog_tv_breakpoint:') }}</span>
+			<xf:numberbox name="options[slider][breakpointMedium]" value="{$options.slider.breakpointMedium}" min="1" />
+			<span class="inputGroup-text">{{ phrase('units_pixels') }}</span>
+		</div>
+	</xf:formrow>
+
+	<hr class="formRowSep" />
+
+	<xf:checkboxrow>
+		<xf:option name="options[slider][auto]" value="1" selected="{$options.slider.auto}"
+				   label="{{ phrase('snog_tv_slider_auto_play') }}"
+				   data-hide="true">
+			<xf:dependent>
+				<xf:numberbox name="options[slider][pause]" value="{$options.slider.pause}" min="1" />
+				<p class="formRow-explain">{{ phrase('snog_tv_slider_pause') }}</p>
+			</xf:dependent>
+		</xf:option>
+		
+		<xf:option name="options[slider][controls]" value="1" selected="$options.slider.controls" label="{{ phrase('snog_tv_slider_controls') }}" />
+		<xf:option name="options[slider][pauseOnHover]" selected="{$options.slider.pauseOnHover}" label="{{ phrase('snog_tv_slider_pause_on_hover') }}" />
+		<xf:option name="options[slider][loop]" selected="{$options.slider.loop}" label="{{ phrase('snog_tv_slider_loop_slides') }}" />
+		<xf:option name="options[slider][pager]" selected="{$options.slider.pager}" label="{{ phrase('snog_tv_slider_pager') }}" />
+	</xf:checkboxrow>
+</div>]]></template>
+  <template type="admin" title="widget_def_options_snog_tv_slider" version_id="2020047" version_string="2.2.0 Beta 17"><![CDATA[<hr class="formRowSep" />
+
+<xf:radiorow name="options[order]" value="{$options.order}" label="{{ phrase('display_order') }}">
+	<xf:option value="latest">{{ phrase('snog_tv_latest_shows') }}</xf:option>
+	<xf:option value="rating">{{ phrase('snog_tv_most_rated_shows') }}</xf:option>
+	<xf:option value="random">{{ phrase('snog_tv_random_shows') }}</xf:option>
+	<xf:option value="last_post_date">{{ phrase('last_reply_date') }}</xf:option>
+</xf:radiorow>
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+				 label="{{ phrase('maximum_entries') }}" />
+
+<xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+	label="{{ phrase('forum_limit') }}"
+	explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+	<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+	<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+		<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+			{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<xf:checkboxrow label="{{ phrase('snog_tv_slider_widget_shown_elements') }}">
+	<xf:option name="options[show_plot]" value="1" selected="$options.show_plot" label="{{ phrase('snog_tv_overview') }}" />
+	<xf:option name="options[show_genres]" value="1" selected="$options.show_genres" label="{{ phrase('snog_tv_genre') }}" />
+	<xf:option name="options[show_director]" value="1" selected="$options.show_genres" label="{{ phrase('snog_tv_director') }}" />
+	<xf:option name="options[show_cast]" value="1" selected="$options.show_cast" label="{{ phrase('snog_tv_cast') }}" />
+	<xf:option name="options[show_release]" value="1" selected="$options.show_release" label="{{ phrase('snog_tv_first_aired') }}" />
+	<xf:option name="options[show_last_air_date]" value="1" selected="$options.show_last_air_date" label="{{ phrase('snog_tv_last_air_date') }}" />
+	<xf:option name="options[show_status]" value="1" selected="$options.show_status" label="{{ phrase('snog_tv_status') }}" />
+</xf:checkboxrow>
+
+<xf:checkboxrow label="{{ phrase('snog_tv_slider_options') }}">
+	<xf:option name="options[slider][auto]" value="1" selected="{$options.slider.auto}"
+			   label="{{ phrase('snog_tv_slider_auto_play') }}"
+			   data-hide="true">
+		<xf:dependent>
+			<xf:numberbox name="options[slider][pause]" value="{$options.slider.pause}" min="1" />
+			<p class="formRow-explain">{{ phrase('snog_tv_slider_pause') }}</p>
+		</xf:dependent>
+	</xf:option>
+	
+	<xf:option name="options[slider][controls]" value="1" selected="$options.slider.controls" label="{{ phrase('snog_tv_slider_controls') }}" />
+	<xf:option name="options[slider][pauseOnHover]" selected="{$options.slider.pauseOnHover}" label="{{ phrase('snog_tv_slider_pause_on_hover') }}" />
+	<xf:option name="options[slider][loop]" selected="{$options.slider.loop}" label="{{ phrase('snog_tv_slider_loop_slides') }}" />
+	<xf:option name="options[slider][pager]" selected="{$options.slider.pager}" label="{{ phrase('snog_tv_slider_pager') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="public" title="search_result_snog_tv_post" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[<xf:css src="snog_tv.less" />
+
+<li class="block-row block-row--separated {{ $post.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $post.User.username ?: $post.username }}">
+	<div class="contentRow {{ !$post.isVisible() ? 'is-deleted' : '' }}">
+
+		<span class="contentRow-figure">
+			<img class="episodeImage episodeImage--search" src="{{ $post.TVPost.getEpisodeImageUrl('s') }}" />
+		</span>
+		<div class="contentRow-main">
+			<h3 class="contentRow-title">
+				<a href="{{ link('threads/post', $post.Thread, {'post_id': $post.post_id}) }}">{{ prefix('thread', $post.Thread) . highlight($post.Thread.title, $options.term) }}</a>
+			</h3>
+
+			<div>
+				<xf:if is="$post.TVPost.tv_title">
+					<b><span itemprop="name">{$post.TVPost.tv_title}</span></b><br />
+					<b>{{ phrase('snog_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.TVPost.tv_season}">{$post.TVPost.tv_season}<br />
+					<b>{{ phrase('snog_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.TVPost.tv_episode}">{$post.TVPost.tv_episode}<br />
+					<b>{{ phrase('snog_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.TVPost.tv_aired}">{$post.TVPost.tv_aired}<br /><br />
+					<xf:if is="$post.TVPost.tv_guest"><b>{{ phrase('snog_tv_guest_stars') }}: </b>{$post.TVPost.tv_guest}<br /></xf:if>
+				<xf:elseif is="$post.Thread is not empty && $post.Thread.TV.tv_season" />
+					<b><span itemprop="name">{$post.Thread.TV.tv_title}</span></b><br />
+					<b>{{ phrase('snog_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.Thread.TV.tv_season}">{$post.Thread.TV.tv_season}<br />
+					<b>{{ phrase('snog_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.Thread.TV.tv_episode}">{$post.Thread.TV.tv_episode}<br />
+					<b>{{ phrase('snog_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.Thread.TV.tv_release}">{$post.Thread.TV.tv_release}<br /><br />
+					<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('snog_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
+				</xf:if>
+			</div>
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<xf:if is="$options.mod == 'post' && $post.canUseInlineModeration()">
+						<li><xf:checkbox standalone="true">
+							<xf:option value="{$post.post_id}" class="js-inlineModToggle"
+								data-xf-init="tooltip"
+								title="{{ phrase('select_for_moderation') }}" />
+						</xf:checkbox></li>
+					</xf:if>
+					<li><xf:username user="{$post.User}" defaultname="{$post.username}" /></li>
+					<li>{{ phrase('post_x', {'position': number($post.position + 1)}) }}</li>
+					<li><xf:date time="{$post.post_date}" /></li>
+					<li>{{ phrase('forum:') }} <a href="{{ link('forums', $post.Thread.Forum) }}">{$post.Thread.Forum.title}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</li>]]></template>
+  <template type="public" title="search_result_snog_tv_thread" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[<li class="block-row block-row--separated {{ $thread.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $thread.User.username ?: $thread.username }}">
+	<xf:css src="snog_tv.less" />
+	
+	<div class="contentRow {{ !$thread.isVisible() ? 'is-deleted' : '' }}">
+		<span class="contentRow-figure">
+			<img class="tvPoster" src="{{ $thread.TV.getImageUrl('s') }}" />
+		</span>
+		<div class="contentRow-main">
+			<h3 class="contentRow-title">
+				<a href="{{ link('threads', $thread) }}">{{ prefix('thread', $thread) . highlight($thread.title, $options.term) }}</a>
+			</h3>
+
+			<div>
+				<xf:macro template="snog_tv_thread_list_tv_macros" name="tv_info" arg-thread="{$thread}" />
+			</div>
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<xf:if is="$options.mod == 'thread' && $thread.canUseInlineModeration()">
+						<li><xf:checkbox standalone="true">
+							<xf:option value="{$thread.thread_id}" class="js-inlineModToggle"
+								data-xf-init="tooltip"
+								title="{{ phrase('select_for_moderation') }}" />
+						</xf:checkbox></li>
+					</xf:if>
+					<li><xf:username user="{$thread.User}" defaultname="{$thread.username}" /></li>
+					<li>{{ phrase('thread') }}</li>
+					<li><xf:date time="{$thread.post_date}" /></li>
+					<xf:if is="$xf.options.enableTagging && $thread.tags">
+						<li>
+							<xf:macro template="tag_macros" name="simple_list"
+								arg-tags="{$thread.tags}"
+								arg-containerClass="contentRow-minor"
+								arg-highlightTerm="{{ $options.tag ?: $options.term}}" />
+						</li>
+					</xf:if>
+					<li>{{ phrase('replies:') }} {$thread.reply_count|number}</li>
+					<li>{{ phrase('forum:') }} <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</li>]]></template>
+  <template type="public" title="snog_tv.less" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[/* FIX FOR UiX2 STYLE PROBLEM */
+.structItem .structItem-cell--main .structItem-minor {display: block;}
+
+.tvhint{
+	font-size: @xf-fontSizeSmaller;
+	color: @xf-textColorMuted;
+}
+
+.message-tv {
+	display: flex;
+	width: 100%;
+	padding-top: 10px;
+	overflow:hidden;
+	
+	&.message-tv--reverse
+	{
+		flex-direction: row-reverse;
+	}
+	
+	.message-tv-sidebar
+	{
+		flex: 1;
+		width: 200px;
+		margin: 0 15px 0 15px;
+		float: left;
+		text-align: center;
+		vertical-align:top;
+
+		.message-tv-sidebar-poster
+		{
+			padding-bottom: 10px;
+			img {
+				max-width: 185px;
+			}
+		}
+	}
+	
+	.message-tv-main
+	{
+		width: 100%;
+		
+		.message--tv
+		{
+			height: auto;
+			min-width: 200px;
+			text-align:left;
+			vertical-align:top;
+			overflow:hidden;
+			padding: 10px !important;
+		}
+	}
+	
+	.tv-providers 
+	{
+		.tv-provider img
+		{
+			height: @xf-snog_tv_watchProviderImgHeight;
+			width: @xf-snog_tv_watchProviderImgWidth;
+		}
+	}
+
+	.tv-companies 
+	{
+		.tv-company img
+		{
+			height: @xf-snog_tv_productionCompanyImgHeight;
+			width: @xf-snog_tv_productionCompanyImgWidth;
+		}
+	}
+
+	.tv-networks 
+	{
+		.tv-network img
+		{
+			height: @xf-snog_tv_networkImgHeight;
+			width: @xf-snog_tv_networkImgWidth;
+		}
+	}
+}
+
+.episodeInputBlock {
+	display: block;
+	width: 100%;
+	overflow: hidden;
+}
+
+.episodeBlockInput
+{
+	width:130px;
+	margin-right:5px;
+	float:left;
+}
+
+
+
+.messageEpisode {
+	height:auto;
+	min-width:128px;
+	overflow: hidden;
+	text-align:left;
+	vertical-align:top;
+	margin-bottom: 10px;
+	border: 1px solid @xf-borderColorLight;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 10px !important;
+}
+
+.episodeImage
+{
+	width: @xf-snog_tv_episodeImageWidth;
+	height: @xf-snog_tv_episodeImageHeight;
+	float:left;
+	display:block;
+	vertical-align:middle;
+	overflow:hidden;
+	
+	&--search {
+		width: @xf-snog_tv_episodeSearchImageWidth;
+		height: @xf-snog_tv_episodeSearchImageHeight;
+	}
+}
+
+.episodeInfo {
+	height:auto;
+	width:auto;
+	padding-left:10px;
+	padding-top:5px;
+	min-width:128px;
+	text-align:left;
+	vertical-align:bottom;
+	overflow:hidden;
+}
+
+.episodePlot {
+	height:auto;
+	clear:both;
+	min-width:128px;
+	text-align:left;
+	padding-top:10px;
+	overflow:hidden;
+}
+
+.tvinfo {
+	display:none;
+}
+
+.tvthreadlistMain {
+	height: 133px;
+}
+
+.tvthreadlistInfo {
+	vertical-align: middle !important;
+}
+
+.tvthreadlistReplies {
+	padding-top:27px !important;
+}
+
+.TagPoster1 {
+	padding-left:10px;
+	width:190px;
+	vertical-align:top;
+	overflow:hidden;
+}
+
+.TagPoster1 img {
+	max-width: 185px;
+}
+
+.controls.faint {
+	text-align:right !important;
+}
+
+.tmdbnotice {
+	width:100%;
+	text-align:center;
+	color: @xf-dimmedTextColor;
+	font-size:10px;
+}
+
+.structItem-cell {
+	&.structItem-cell--tv
+	{
+		text-align: center;
+		width: 92px !important;
+		position: relative;
+	}
+	
+	.structItem-secondaryIcon
+	{
+		position: absolute;
+		right: +10px !important;
+		bottom: -5px;
+	}
+}
+
+.tvPoster {
+	margin-top:5px;
+	width: @xf-snog_tv_posterImageWidth;
+	height: @xf-snog_tv_posterImageHeight;
+	position: relative;
+}
+
+.tvnode-poster
+{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	width: 87px;
+	padding: @xf-paddingLarge 0 @xf-paddingMedium @xf-paddingLarge;
+}
+
+.tvblock-poster {
+	display: block;
+	float: left;
+	width: 110px;
+	height: 155px;
+	padding: 10px 0 5px 10px;
+	overflow:hidden;
+}
+
+.tvblockinfo {
+	display: block;
+	width: calc(~'100% - 110px');
+	float:left;
+	padding: 10px 10px 5px 10px;
+	font-size: @xf-fontSizeSmall;
+	color: @xf-textColor;
+}
+
+.tvExplain
+{
+	display: block;
+	font-style: normal;
+	.xf-formExplain();
+
+	.m-textColoredLinks();
+}
+
+.message-tvUserInfo
+{
+	.xf-messageUserBlock(no-border);
+	border-top: @xf-messageUserBlock--border-width solid @xf-messageUserBlock--border-color;
+
+	&:last-child
+	{
+		.m-borderBottomRadius(@block-borderRadius-inner);
+	}
+
+	.contentRow-figure
+	{
+		width: @xf-messageUserBlockWidth;
+		text-align: center;
+	}
+
+	.contentRow-main
+	{
+		padding-left: 2 * (@xf-messagePadding);
+		text-align: left;
+	}
+
+	@media (max-width: @xf-messageSingleColumnWidth)
+	{
+		.contentRow-figure
+		{
+			width: auto;
+		}
+
+		.contentRow-main
+		{
+			padding-left: @xf-paddingLarge;
+		}
+	}
+}]]></template>
+  <template type="public" title="snog_tv_add_episode" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:if is="$xf.visitor.hasPermission('tvthreads_interface', 'new_episode')">
+	<xf:pageaction>
+		<xf:button href="{{ link('forums/newepisode', $forum) }}" class="button--cta" icon="write">
+			{{ phrase('snog_tv_add_episode') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_add_info" version_id="2010071" version_string="2.1.0.1"><![CDATA[<xf:title>{{ phrase('snog_tv_add_info') }}</xf:title>
+
+<xf:form action="{{ link('tv/addinfo', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow label="{{ phrase('snog_tv_link') }}" name="tmdb" value="" />
+			
+			<xf:checkboxrow>
+				<xf:option name="changetitle" value="1" selected="false" >{{ phrase('snog_tv_change_title') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+		
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('snog_tv_add_info') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_add_season" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:if is="$xf.visitor.hasPermission('tvthreads_interface', 'new_season')">
+	<xf:pageaction>
+		<xf:button href="{{ link('forums/newseason', $forum) }}" class="button--cta" icon="write" overlay="true">
+			{{ phrase('snog_tv_add_season') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_add_show" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:if is="$xf.visitor.hasPermission('tvthreads_interface', 'new_show')">
+	<xf:pageaction>
+		<xf:button href="{{ link('forums/addtvforum', $category) }}" class="button--cta" icon="write" overlay="true">
+			{{ phrase('snog_tv_add_show') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_casts" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[<xf:title>{{ phrase('snog_tv_x_casts', {'name': $tv.tv_title}) }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<div class="block">
+	<xf:macro template="snog_tv_casts_macros" name="cast_list"
+			  arg-tv="{$tv}" arg-casts="{$casts}" arg-page="{$page}"
+			  arg-hasMore="{$hasMore}" />
+</div>]]></template>
+  <template type="public" title="snog_tv_casts_macros" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[<xf:macro name="cast_list" arg-tv="!" arg-casts="!" arg-page="1" arg-hasMore="{{ false }}">
+	<ul class="listPlain listColumns listColumns--3 listColumns--spaced js-tvCastsList{$tv.tv_id}">
+		<xf:foreach loop="{$casts}" value="$cast">
+			<li>
+				<xf:macro name="cast_info" arg-cast="{$cast}" />
+			</li>
+		</xf:foreach>
+	</ul>
+
+	<xf:if is="$hasMore">
+		<div class="block-footer js-tvCastsLoadMore{$tv.tv_id}">
+			<span class="block-footer-controls">
+				<xf:button href="{{ link('tv/casts', $tv, {'page': $page + 1}) }}"
+					data-xf-click="inserter"
+					data-append=".js-tvCastsList{$tv.tv_id}"
+					data-replace=".js-tvCastsLoadMore{$tv.tv_id}">
+					{{ phrase('more...') }}
+				</xf:button>
+			</span>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="cast_info" arg-cast="!">
+	<div class="block-row block-row--separated">
+		<div class="contentRow movieTab--casts">
+			<span class="contentRow-figure contentRow-figure--fixedMedium contentRow-figure--fixedMedium contentRow-figure--fluidWidth">
+				<img src="{{ $cast.Person.image_url ?: base_url(property('snog_tv_castPersonSmallImageUrl')) }}" />
+			</span>
+
+			<div class="contentRow-main">
+				<xf:macro name="person_menu" arg-person="{$cast.Person}" />
+				<h3 class="block-textHeader">
+					{$cast.Person.name}
+				</h3>
+				<xf:if is="$cast.total_episode_count">
+					<div>{{ phrase('snog_tv_total_x_episodes', {'count': $cast.total_episode_count}) }}</div>
+				</xf:if>
+				<xf:if is="$cast.roles">
+					<div>
+						<ul class="listInline listInline--bullet u-muted">
+							<xf:foreach loop="{$cast.roles}" value="{$role}">
+								<li>{$role.character} ({{ phrase('snog_tv_x_episodes', {'count': $role.episode_count}) }})</li>
+							</xf:foreach>
+						</ul>	
+					</div>
+				<xf:else />
+					<div>{$cast.character}</div>
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+
+<xf:macro name="person_menu" arg-person="!">
+	<xf:if contentcheck="true">
+		<div class="contentRow-extra">
+
+			<xf:button class="button--link menuTrigger"
+					   data-xf-click="menu"
+					   aria-label="{{ phrase('more_options') }}"
+					   aria-expanded="false"
+					   aria-haspopup="true">
+				<xf:fa icon="fa-cog" />
+			</xf:button>
+
+			<div class="menu" data-menu="menu" aria-hidden="true">
+				<div class="menu-content">
+					<xf:contentcheck>
+						<xf:if is="$person.canUpdate()">
+							<a href="{{ link('tv/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('snog_tv_update_person_info') }}</a>
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="snog_tv_cover_image" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[<xf:title>{{ phrase('thcovers_modify_cover_image') }}</xf:title>
+
+<xf:css src="th_covers.less" />
+
+<xf:form action="{{ link('covers/tv-update', {'content_type': $contentType, 'content_id': $contentId}) }}"
+		 ajax="true" upload="true" class="block" data-xf-init="cover-upload">
+	<div class="block-container">
+		<xf:inforow rowtype="confirm">
+			<xf:if is="{$hasNewBackdrop}">
+				{{ phrase('snog_tv_backdrop_available') }}<br /><br />
+				<span style="text-align:center;"><img src="https://image.tmdb.org/t/p/{$xf.options.TvThreads_backdropCoverSize}{$backdropPath}" alt="" /></span>
+			<xf:else />
+				{{ phrase('snog_tv_new_backdrop_not_available') }}
+				<xf:if is="{$backdropPath}">
+					<strong>{{ phrase('snog_tv_reupload_old_backdrop') }}</strong>
+				</xf:if>
+			</xf:if>
+		</xf:inforow>
+
+		<xf:submitrow submit="{{ phrase('okay') }}" rowtype="simple" class="js-overlayClose" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_crews" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[<xf:title>{{ phrase('snog_tv_x_crews', {'name': $tv.tv_title}) }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<div class="block">
+	<xf:macro template="snog_tv_crews_macros" name="crew_list"
+			  arg-tv="{$tv}" arg-crews="{$crews}" arg-page="{$page}"
+			  arg-hasMore="{$hasMore}" />
+</div>]]></template>
+  <template type="public" title="snog_tv_crews_macros" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[<xf:macro name="crew_list" arg-tv="!" arg-crews="!" arg-page="1" arg-hasMore="{{ false }}">
+	<ul class="listPlain listColumns listColumns--3 listColumns--spaced js-tvCrewsList{$tv.tv_id}">
+		<xf:foreach loop="{$crews}" value="$crew">
+			<li>
+				<xf:macro name="crew_info" arg-crew="{$crew}" />
+			</li>
+		</xf:foreach>
+	</ul>
+
+	<xf:if is="$hasMore">
+		<div class="block-footer js-tvCrewsLoadMore{$tv.tv_id}">
+			<span class="block-footer-controls">
+				<xf:button href="{{ link('tv/crews', $tv, {'page': $page + 1}) }}"
+					data-xf-click="inserter"
+					data-append=".js-tvCrewsList{$tv.tv_id}"
+					data-replace=".js-tvCrewsLoadMore{$tv.tv_id}">
+					{{ phrase('more...') }}
+				</xf:button>
+			</span>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="crew_info" arg-crew="!">
+	<div class="block-row block-row--separated">
+		<div class="contentRow movieTab--crews">
+			<span class="contentRow-figure contentRow-figure--fixedMedium contentRow-figure--fixedMedium contentRow-figure--fluidWidth">
+				<img src="{{ $crew.Person.image_url ?: base_url(property('snog_tv_crewPersonSmallImageUrl')) }}" />
+			</span>
+
+			<div class="contentRow-main">
+				<xf:macro name="person_menu" arg-person="{$crew.Person}" />
+				<h3 class="block-textHeader">
+					{$crew.Person.name} ({$crew.department})
+				</h3>
+				<xf:if is="$crew.total_episode_count">
+					<div>{{ phrase('snog_tv_total_x_episodes', {'count': $crew.total_episode_count}) }}</div>
+				</xf:if>
+				<xf:if is="$crew.jobs">
+					<div>
+						<ul class="listInline listInline--bullet u-muted">
+							<xf:foreach loop="{$cast.jobs}" value="{$job}">
+								<li>{$job.job} ({{ phrase('snog_tv_x_episodes', {'count': $job.episode_count}) }})</li>
+							</xf:foreach>
+						</ul>	
+					</div>
+				<xf:else />
+					<div>{$cast.job}</div>
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="person_menu" arg-person="!">
+	<xf:if contentcheck="true">
+		<div class="contentRow-extra">
+
+			<xf:button class="button--link menuTrigger"
+					   data-xf-click="menu"
+					   aria-label="{{ phrase('more_options') }}"
+					   aria-expanded="false"
+					   aria-haspopup="true">
+				<xf:fa icon="fa-cog" />
+			</xf:button>
+
+			<div class="menu" data-menu="menu" aria-hidden="true">
+				<div class="menu-content">
+					<xf:contentcheck>
+						<xf:if is="$person.canUpdate()">
+							<a href="{{ link('tv/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('snog_tv_update_person_info') }}</a>
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="snog_tv_edit_episode" version_id="2020058" version_string="2.2.0 Release Candidate 8"><![CDATA[<xf:title>{{ phrase('snog_tv_edit_episode') }}</xf:title>
+
+<xf:breadcrumb source="$post.Thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('tv/episode/edit', $post) }}" ajax="true" class="block"
+	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $post.canEdit()) ? ' post-edit' : '' }}"
+	data-preview-url="{{ link('posts/preview', $post) }}">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$xf.visitor.hasPermission('forum', 'snog_edit_episodes')">
+				<xf:textboxrow label="{{ phrase('title') }}" name="tv_title" value="{$tvshow.tv_title}" />
+
+				<xf:numberboxrow label="{{ phrase('snog_tv_season') }}" name="tv_season" value="{$tvshow.tv_season}" min="0" />
+
+				<xf:numberboxrow label="{{ phrase('snog_tv_episode') }}" name="tv_episode" value="{$tvshow.tv_episode}" min="1" />
+			
+				<xf:textboxrow label="{{ phrase('snog_tv_air_date') }}" name="tv_aired" value="{$tvshow.tv_aired}" maxlength="10" />
+
+				<xf:textarearow label="{{ phrase('snog_tv_guest_stars') }}" name="tv_guest" value="{$tvshow.tv_guest}" autosize="true" />
+
+				<xf:textarearow label="{{ phrase('snog_tv_overview') }}" name="tv_plot" value="{$tvshow.tv_plot}" autosize="true" />
+			<xf:else />
+				<input type="hidden" name="tv_title" value="{$tvshow.tv_title}" />
+				<input type="hidden" name="tv_season" value="{$tvshow.tv_season}" min="0" />
+				<input type="hidden" name="tv_episode" value="{$tvshow.tv_episode}" min="1" />
+			
+				<input type="hidden" name="tv_aired" value="{$tvshow.tv_aired}" />
+				<input type="hidden" name="tv_guest" value="{$tvshow.tv_guest}" />
+
+				<input type="hidden" name="tv_plot" value="{$tvshow.tv_plot}" />
+			</xf:if>
+
+			<xf:editorrow name="message" value="{$tvshow.message}"
+						  attachments="{$attachmentData.attachments}"
+						  rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}"
+						  data-min-height="100"
+						  maxlength="{$xf.options.messageMaxLength}" />
+
+			<xf:formrow rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}">
+				<xf:if is="$attachmentData">
+					<xf:macro template="helper_attach_upload" name="upload_block" arg-attachmentData="{$attachmentData}" />
+				</xf:if>
+				<xf:button class="button--link u-jsOnly" data-xf-click="preview-click" icon="preview" />
+			</xf:formrow>
+		</div>
+
+		<xf:submitrow icon="save" sticky="true" rowtype="{{ $quickEdit ? 'simple' : '' }}">
+			<xf:html>
+				<xf:if is="$quickEdit">
+					<xf:button class="js-cancelButton">{{ phrase('button.cancel') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_edit_show" version_id="2020008" version_string="2.2.0 8"><![CDATA[<xf:title>{{ phrase('snog_tv_edit_show') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('tv/edit', $tvshow) }}" ajax="true" class="block"
+	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $thread.canEdit()) ? ' post-edit' : '' }}"
+	data-preview-url="{{ link('posts/preview', $post) }}">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$xf.visitor.hasPermission('forum', 'snog_edit_shows')">
+				<xf:textboxrow label="{{ phrase('title') }}" name="tv_title" value="{$tvshow.tv_title}" />
+
+				<xf:textboxrow label="{{ phrase('snog_tv_genre') }}" name="tv_genres" value="{$tvshow.tv_genres}" />
+
+				<xf:textarearow label="{{ phrase('snog_tv_creator') }}" name="tv_director" value="{$tvshow.tv_director}" autosize="true" />
+
+				<xf:textarearow label="{{ phrase('snog_tv_cast') }}" name="tv_cast" value="{$tvshow.tv_cast}" autosize="true" />
+
+				<xf:dateinputrow label="{{ phrase('snog_tv_first_aired') }}" name="first_air_date" value="{{ $tvshow.first_air_date ? date($tvshow.first_air_date) : '' }}" />
+				<xf:dateinputrow label="{{ phrase('snog_tv_last_air_date') }}" name="last_air_date" value="{{ $tvshow.last_air_date ? date($tvshow.last_air_date) : '' }}" />
+				
+				<xf:textboxrow label="{{ phrase('snog_tv_status') }}" name="status" value="{$tvshow.status}" />
+
+				<xf:textarearow label="{{ phrase('snog_tv_overview') }}" name="tv_plot" value="{$tvshow.tv_plot}" autosize="true" />
+				
+				<xf:textboxrow label="{{ phrase('snog_tv_trailer') }}" name="tv_trailer" value="{$tvshow.tv_trailer}" explain="{{ phrase('snog_tv_trailer_explain') }}"/>
+			<xf:else />
+				<input type="hidden" name="tv_title" value="{$tvshow.tv_title}" />
+				<input type="hidden" name="tv_genres" value="{$tvshow.tv_genres}" />
+				<input type="hidden" name="tv_director" value="{$tvshow.tv_director}" />
+				<input type="hidden" name="tv_cast" value="{$tvshow.tv_cast}" />
+				<input type="hidden" name="tv_release" value="{$tvshow.tv_release}" />
+				<input type="hidden" name="tv_plot" value="{$tvshow.tv_plot}" />
+				<input type="hidden" name="tv_trailer" value="{$tvshow.tv_trailer}" />
+			</xf:if>
+			
+			<xf:if is="$tvshow.comment">
+				<xf:editorrow name="message" value="{$tvshow.comment}"
+					attachments="{$attachmentData.attachments}"
+					rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}"
+					data-min-height="100"
+					maxlength="{$xf.options.messageMaxLength}" />
+
+				<xf:formrow rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}">
+					<xf:if is="$attachmentData">
+						<xf:macro template="helper_attach_upload" name="upload_block" arg-attachmentData="{$attachmentData}" />
+					</xf:if>
+					<xf:button class="button--link u-jsOnly" data-xf-click="preview-click" icon="preview" />
+				</xf:formrow>
+			</xf:if>
+	
+		</div>
+
+		<xf:submitrow icon="save" sticky="true" rowtype="{{ $quickEdit ? 'simple' : '' }}">
+			<xf:html>
+				<xf:if is="$quickEdit">
+					<xf:button class="js-cancelButton">{{ phrase('button.cancel') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_edit_show_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$post.isFirstPost() && $thread.TV is not empty && !$thread.TV.tv_episode">
+	<xf:if is="$post.canEdit()">
+		<xf:if is="($xf.visitor.hasPermission('forum', 'snog_edit_shows') && !$thread.TV.comment) || $thread.TV.comment">
+			<xf:js src="xf/message.js" min="1" />
+			<a href="{{ link('tv/edit', $thread.TV) }}"
+				class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
+				data-xf-click="quick-edit"
+				data-editor-target="#js-post-{$post.post_id} .js-quickEditTarget"
+				data-menu-closer="true">{{ phrase('edit') }}</a>
+			<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+		</xf:if>
+	</xf:if>
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_filter_removal" version_id="2010070" version_string="2.1.0"><![CDATA[<xf:if is="$filters.tvgenre">
+	<li><a href="{{ link('forums', $forum, $filters|replace('tvgenre', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_tv_genre') }}:</span>
+		{$filters.tvgenre}</a></li>
+</xf:if>
+<xf:if is="$filters.tvcast">
+	<li><a href="{{ link('forums', $forum, $filters|replace('tvcast', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_tv_cast') }}:</span>
+		{$filters.tvcast}</a></li>
+</xf:if>
+<xf:if is="$filters.creator">
+	<li><a href="{{ link('forums', $forum, $filters|replace('creator', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_tv_creator') }}:</span>
+		{$filters.creator}</a></li>
+</xf:if>
+<xf:if is="$filters.tv_title">
+	<li><a href="{{ link('forums', $forum, $filters|replace('tv_title', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_tv_title') }}:</span>
+		{$filters.tv_title}</a></li>
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_forum_filters_type_tv" version_id="2020057" version_string="2.2.0 Release Candidate 7"><![CDATA[<xf:extends template="forum_filters" />
+
+<xf:extension name="before_date_limit">
+	<div class="menu-row menu-row--separated">
+		{{ phrase('snog_tv_genre:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="genre" value="{{ $filters.genre ? $filters.genre : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('snog_tv_director:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="director" value="{{ $filters.director ? $filters.director : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('snog_tv_cast:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="cast" value="{{ $filters.cast ? $filters.cast : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('snog_tv_title:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="tv_title" value="{{ $filters.tv_title ? $filters.tv_title : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('snog_tv_status:') }}
+		<div class="u-inputSpacer">
+			<xf:select name="tv_status">
+				<xf:option value="">{{ phrase('any') }}</xf:option>
+				<xf:option value="Returning Series">{{ phrase('snog_tv_status_returning_series') }}</xf:option>
+				<xf:option value="Ended">{{ phrase('snog_tv_status_ended') }}</xf:option>
+				<xf:option value="Canceled">{{ phrase('snog_tv_status_cancelled') }}</xf:option>
+			</xf:select>
+		</div>
+	</div>
+</xf:extension>]]></template>
+  <template type="public" title="snog_tv_forum_view_type_tv" version_id="2020000" version_string="2.2.0"><![CDATA[<xf:extends template="forum_view" />
+
+<xf:extension name="above_node_list">
+	<xf:css src="snog_tv.less" />
+	
+	<xf:if is="$forum.TVForum is not empty">
+		<xf:css src="snog_tv.less" />
+		<xf:if is="$xf.options.TvThreads_use_rating && !$forum.TVForum.tv_parent_id">
+			<div class="block-outer">
+				<div class="block-outer-opposite">
+					<xf:set var="$rating" value="{$forum.TVForum.tv_rating}" />
+					<xf:set var="$voteString" value="{{ ($forum.TVForum.tv_votes == 1 ? phrase('snog_tv_vote') : phrase('votes')) }}" />
+					<div style="margin-bottom:10px;">
+
+						<xf:macro template="rating_macros" name="stars_text"
+								  arg-rating="{$rating}"
+								  arg-text="{{ phrase('rating') }}: {$forum.TVForum.tv_rating}/5 {$forum.TVForum.tv_votes} {$voteString}" />
+
+						<xf:if is="$xf.visitor.user_id">
+							<xf:button class="button--link" href="{{ link('tvshow/rate-show', $forum) }}" overlay="true">
+								{{ phrase('snog_tv_change_rating') }}
+							</xf:button>
+						</xf:if>
+					</div>
+				</div>
+			</div>
+		</xf:if>
+
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body block-body--contained">
+					<div class="tvblock-poster">
+						<xf:if is="$forum.TVForum.tv_parent_id">
+							<img src="{$forum.TVForum.getSeasonPosterUrl()}" />
+						<xf:else />
+							<img src="{$forum.TVForum.getForumPosterUrl()}" />
+						</xf:if>
+					</div>
+					<div class="tvblockinfo">
+						{$forum.TVForum.tv_plot}<br /><br />
+						<xf:if is="$forum.TVForum.tv_genres">{{ phrase('snog_tv_genre') }}: {$forum.TVForum.tv_genres|raw}<br /></xf:if>
+						{{ phrase('snog_tv_first_aired') }}: {$forum.TVForum.tv_release}<br />
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:extension>
+
+<xf:extension name="below_thread_list"><span class="tvhint">{{ phrase('snog_tv_information')}}</span></xf:extension>]]></template>
+  <template type="public" title="snog_tv_new_forum" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[<xf:title>{{ phrase('snog_tv_add_show') }}</xf:title>
+
+<xf:form action="{{ link('forums/add-tv-forum', $node) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow label="{{ phrase('snog_tv_link') }}" name="tvlink" />
+		</div>
+
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_new_poster" version_id="2020057" version_string="2.2.0 Release Candidate 7"><![CDATA[<xf:title>{{ phrase('snog_tv_check_poster') }}</xf:title>
+
+<xf:form action="{{ link('tv/poster', $tvshow) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				<xf:if is="{$newposter}">
+					{{ phrase('snog_tv_poster_available') }}<br /><br />
+					<span style="text-align:center;"><img src="https://image.tmdb.org/t/p/{$xf.options.TvThreads_largePosterSize}{$posterpath}" alt="" /></span>
+				<xf:else />
+					{{ phrase('snog_tv_poster_not_available') }}
+					<xf:if is="{$posterpath}">
+						<strong>{{ phrase('snog_tv_reupload_old_poster') }}</strong>
+					</xf:if>
+				</xf:if>
+			</xf:inforow>
+			
+			<xf:if is="{$posterpath}">
+				<input type="hidden" name="posterpath" value="{$posterpath}" />
+				<xf:submitrow submit="{{ phrase('snog_tv_save_poster') }}" rowtype="simple" />
+			</xf:if>
+
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_new_season" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[<xf:title>{{ phrase('snog_tv_add_season') }}</xf:title>
+
+<xf:form action="{{ link('forums/new-season', $node) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow label="{{ phrase('snog_tv_season_number') }}" name="season" explain="{{ phrase('snog_tv_season_number_explain') }}" />
+		</div>
+
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_node_info" version_id="2000170" version_string="2.0.1"><![CDATA[<xf:css src="snog_tv.less" />
+<div class="node-description">
+	<xf:if is="$node.TVForum.tv_genres">{{ phrase('snog_tv_genre') }}: {$node.TVForum.tv_genres|raw}<br /></xf:if>
+	<xf:if is="$node.TVForum.tv_director">{{ phrase('snog_tv_creator') }}: {$node.TVForum.tv_director|raw}<br /></xf:if>
+	<xf:if is="$node.TVForum.tv_release">{{ phrase('snog_tv_first_aired') }}: {$node.TVForum.tv_release}</xf:if>
+</div>]]></template>
+  <template type="public" title="snog_tv_node_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="tvnode-poster">
+	<xf:if is="$node.TVForum.tv_parent_id">
+		<img src="{$node.TVForum.getSeasonPosterUrl()}" />
+	<xf:else />
+		<img src="{$node.TVForum.getForumPosterUrl()}" />
+	</xf:if>
+</div>]]></template>
+  <template type="public" title="snog_tv_post_macros" version_id="2020060" version_string="2.2.0 Release Candidate 10"><![CDATA[<xf:macro name="tv"
+	arg-post="!"
+	arg-thread="!"
+	arg-forum="{{ null }}"
+	arg-crews="{{ [] }}"
+	arg-crewsTotal="0"
+	arg-crewsHasMore="{{ false }}"
+	arg-casts="{{ [] }}"
+	arg-castsTotal="0"
+	arg-castsHasMore="{{ false }}"
+	arg-videos="{{ [] }}"
+	arg-videosTotal="0"
+	arg-videosHasMore="{{ false }}"
+	arg-companies="{{ [] }}"
+	arg-networks="{{ [] }}">
+
+	<xf:css src="message.less" />
+
+	<xf:extension name="before"></xf:extension>
+
+	<article class="message message--tv js-post js-inlineModContainer
+		{{ $thread.discussion_state == 'moderated' ? 'is-moderated' : '' }}
+		{{ $thread.discussion_state == 'deleted' ? 'is-deleted' : '' }}"
+		data-author="{{ $post.User.username ?: $post.username }}"
+		data-content="post-{$post.post_id}"
+		id="js-post-{$post.post_id}">
+
+		<span class="u-anchorTarget" id="post-{$post.post_id}"></span>
+		<div class="message-inner">
+			<div class="message-cell message-cell--main">
+				<div class="message-expandWrapper js-expandWatch is-expanded">
+					<div class="message-expandContent js-expandContent">
+						<div class="message-main js-quickEditTarget">
+
+							<xf:macro name="post_macros::post_attribution"
+									  arg-post="{$post}"
+									  arg-thread="{$thread}"
+									  arg-mainClass="listInline--bullet"
+									  arg-showPosition="{{ false }}" />
+
+							<xf:macro name="post_macros::post_notices" arg-post="{$post}" arg-thread="{$thread}" />
+
+							<div class="message-content js-messageContent">
+								<!--[XF:snog_tv_tv_block_top]-->
+								<div class="message-tv{{ property('snog_tv_messagePosterPosition') == 'right' ? ' message-tv--reverse' : ''}}">
+									<div class="message-tv-sidebar">
+										
+										<div class="message-tv-sidebar-poster">
+											<xf:if is="$post.TVPost">
+												<img src="{$post.TVPost.episode_image_url}" />
+											<xf:else />
+												<img src="{$thread.TV.getImageUrl('l', 1)}" />
+											</xf:if>
+											
+											<xf:if is="$xf.options.TvThreads_use_rating">
+												<xf:macro name="rating_block" arg-thread="{$thread}" />
+											</xf:if>
+										</div>
+										
+										<xf:if is="{{ property('snog_tv_messageCompaniesPosition') == 'left' }}">
+											<xf:if is="$companies is not empty">
+												<div class="messageTV tv-companies">
+													<xf:if is="{{ property('snog_tv_messageCompaniesTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('snog_tv_production_companies:') }}</h4>
+													</xf:if>
+													<xf:macro name="production_company_list" arg-companies="{$companies}" />
+												</div>
+											</xf:if>
+										</xf:if>
+
+										<xf:if is="{{ property('snog_tv_messageNetworksPosition') == 'left' }}">
+											<xf:if is="$networks is not empty">
+												<div class="messageTV tv-networks">
+													<xf:if is="{{ property('snog_tv_messageNetworksTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('snog_tv_networks:') }}</h4>
+													</xf:if>
+													<xf:macro name="network_list" arg-networks="{$networks}" />
+												</div>
+											</xf:if>
+										</xf:if>
+									</div>
+
+									<div class="message-tv-main">
+										<!--[XF:snog_tv_tv_message_top]-->
+										<div class="message message--tv">
+											<xf:if is="$post.TVPost">
+												<xf:if is="$post.TVPost.tv_title">
+													<b><span itemprop="name">{$post.TVPost.tv_title}</span></b><br />
+													<b>{{ phrase('snog_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.TVPost.tv_season}">{$post.TVPost.tv_season}<br />
+													<b>{{ phrase('snog_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.TVPost.tv_episode}">{$post.TVPost.tv_episode}<br />
+													<b>{{ phrase('snog_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.TVPost.tv_aired}">{$post.TVPost.tv_aired}<br /><br />
+													<xf:if is="$post.TVPost.tv_guest"><b>{{ phrase('snog_tv_guest_stars') }}: </b>{$post.TVPost.tv_guest}<br /></xf:if>
+												<xf:elseif is="$post.Thread is not empty && $post.Thread.TV.tv_season" />
+													<b><span itemprop="name">{$post.Thread.TV.tv_title}</span></b><br />
+													<b>{{ phrase('snog_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.Thread.TV.tv_season}">{$post.Thread.TV.tv_season}<br />
+													<b>{{ phrase('snog_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.Thread.TV.tv_episode}">{$post.Thread.TV.tv_episode}<br />
+													<b>{{ phrase('snog_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.Thread.TV.tv_release}">{$post.Thread.TV.tv_release}<br /><br />
+													<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('snog_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
+												</xf:if>
+											<xf:else />
+												<xf:if is="$xf.options.TvThreads_showThread.title"><b>{{ phrase('title') }}:</b> {$thread.TV.tv_title}<br /></xf:if>
+												<xf:if is="$xf.options.TvThreads_showThread.genres && $thread.TV.tv_genres"><p><b>{{ phrase('snog_tv_genre') }}:</b> {$thread.TV.tv_genres}</p></xf:if>
+												<xf:if is="$xf.options.TvThreads_showThread.director && $thread.TV.tv_director"><p><b>{{ phrase('snog_tv_director') }}:</b> {$thread.TV.tv_director}</p></xf:if>
+												<xf:if is="$xf.options.TvThreads_showThread.cast && $thread.TV.tv_cast"><p><b>{{ phrase('snog_tv_cast') }}:</b> {$thread.TV.tv_cast}</p></xf:if>
+												<xf:if is="$xf.options.TvThreads_showThread.release && $thread.TV.first_air_date"><p><b>{{ phrase('snog_tv_first_aired') }}:</b> <xf:date time="{$thread.TV.first_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.TvThreads_showThread.last_air_date && $thread.TV.last_air_date"><p><b>{{ phrase('snog_tv_last_air_date') }}:</b> <xf:date time="{$thread.TV.last_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.TvThreads_showThread.status && $thread.TV.status is not empty"><p><b>{{ phrase('snog_tv_status') }}:</b> {$thread.TV.status}</p></xf:if>
+												<xf:if is="$xf.options.TvThreads_showThread.plot && $thread.TV.tv_plot"><b>{{ phrase('snog_tv_overview') }}:</b> {$thread.TV.tv_plot}</xf:if>
+											</xf:if>
+										</div>
+										<!--[XF:snog_tv_tv_message_bottom]-->
+										
+										<xf:if is="{{ property('snog_tv_messageCompaniesPosition') == 'right' }}">
+											<xf:if is="$companies is not empty">
+												<div class="message message--tv tv-companies">
+													<xf:if is="{{ property('snog_tv_messageCompaniesTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('snog_tv_production_companies') }}</h4>
+													</xf:if>
+													<xf:macro name="production_company_list" arg-companies="{$companies}" />
+												</div>
+											</xf:if>
+										</xf:if>
+
+										<xf:if is="{{ property('snog_tv_messageNetworksPosition') == 'right' }}">
+											<xf:if is="$networks is not empty">
+												<div class="message message--tv tv-networks">
+													<xf:if is="{{ property('snog_tv_messageNetworksTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('snog_tv_networks') }}</h4>
+													</xf:if>
+													<xf:macro name="network_list" arg-networks="{$networks}" />
+												</div>
+											</xf:if>
+										</xf:if>
+
+										<xf:extension name="watch_providers">
+											<xf:set var="$watchProviders" value="{$thread.TV.getWatchProviders()}" />
+											<xf:if is="$watchProviders">
+												<div class="message message--tv tv-providers">
+													<h4 class="block-textHeader">
+														{{ phrase('snog_tv_where_to_watch') }}
+														<div class="u-pullRight">
+															<xf:select value="{{ $xf.visitor.Option.snog_tv_tmdb_watch_region ?: $xf.options.TvThreads_watchProviderRegion }}">
+																<xf:foreach loop="{{ $thread.TV.getWatchProviderCountries() }}" key="$region" value="$phrase">
+																	<xf:option value="{$region}" data-xf-init="disabler" data-container=".js-tvWatchData-{$region}" data-hide="on">
+																		{$phrase}
+																	</xf:option>
+																</xf:foreach>
+															</xf:select>
+														</div>
+													</h4>
+
+													<xf:foreach loop="$watchProviders" key="$region" value="$watchProvider" if="$watchProvider.link">
+
+														<div class="js-tvWatchData-{$region}">
+															<xf:if is="$watchProvider.flatrate">
+																{{ phrase('snog_tv_streaming:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.flatrate}" />
+															</xf:if>
+
+															<xf:if is="$watchProvider.buy">
+																{{ phrase('snog_tv_buy:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.buy}" />
+															</xf:if>
+
+															<xf:if is="$watchProvider.rent">
+																{{ phrase('snog_tv_rent:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.rent}" />
+															</xf:if>
+
+															<br />
+															<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('snog_tv_more_details_on_tmdb') }}</xf:button>
+														</div>
+													</xf:foreach>
+												</div>
+
+											</xf:if>
+										</xf:extension>
+									</div>
+								</div>
+								<!--[XF:snog_tv_tv_block_bottom]-->
+
+								<xf:if is="!$xf.options.TvThreads_force_comments">
+									<article class="message-body">
+										{{ bb_code($thread.TV.comment, 'post', $post.User, {
+											'attachments': $post.attach_count ? $post.Attachments : [],
+											'viewAttachments': $thread.canViewAttachments()
+										}) }}
+									</article>
+								</xf:if>
+
+								<xf:if contentcheck="true">
+									<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" role="tablist">
+										<span class="hScroller-scroll">
+											<xf:contentcheck>
+												<!--[XF:snog_tv_tabs_start]-->
+												<xf:if is="$xf.options.TvThreads_showThread.trailer_tab && $thread.TV.tv_trailer">
+													<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="tv-trailer">
+														{{ phrase('snog_tv_trailer') }}
+													</a>
+												</xf:if>
+												<!--[XF:snog_tv_tabs_before_cast]-->
+												<xf:if is="$xf.options.TvThreads_showThread.cast_tab && $casts is not empty">
+													<a class="tabs-tab" role="tab" tabindex="0" aria-controls="tv-cast">
+														{{ phrase('snog_tv_cast') }}
+													</a>
+												</xf:if>
+												<!--[XF:snog_tv_tabs_before_crew]-->
+												<xf:if is="$xf.options.TvThreads_showThread.crew_tab && $crews is not empty">
+													<a class="tabs-tab" role="tab" tabindex="0" aria-controls="tv-crew">
+														{{ phrase('snog_tv_crew') }}
+													</a>
+												</xf:if>
+												<!--[XF:snog_tv_tabs_before_videos]-->
+												<xf:if is="$xf.options.TvThreads_showThread.videos_tab && $videos is not empty">
+													<a class="tabs-tab" role="tab" tabindex="0" aria-controls="tv-crew">
+														{{ phrase('snog_tv_videos') }}
+													</a>
+												</xf:if>
+												<!--[XF:snog_tv_tabs_end]-->
+											</xf:contentcheck>
+										</span>
+									</h2>
+								</xf:if>
+								
+								<xf:if contentcheck="true">
+									<ul class="tabPanes">
+										<xf:contentcheck>
+											<!--[XF:snog_tv_tabPanes_start]-->
+											<xf:if is="$xf.options.TvThreads_showThread.trailer_tab && $thread.TV.tv_trailer">
+												<li class="block-body is-active" role="tabpanel" id="tv-trailer">
+													<div class="block-row">
+														<div class="bbMediaWrapper">
+															<div class="bbMediaWrapper-inner">
+																<iframe width="500"
+																	height="300"
+																	allowfullscreen
+																	src="https://www.youtube.com/embed/{$thread.TV.tv_trailer}?wmode=opaque&start=0"
+																	style="border:none;"></iframe>
+															</div>
+														</div>
+													</div>
+												</li>
+											</xf:if>
+											
+											<!--[XF:snog_tv_tabPanes_before_casts]-->
+											<xf:if is="$xf.options.TvThreads_showThread.cast_tab && $casts is not empty">
+												<li class="block-body" role="tabpanel" id="tv-casts">
+													<div class="block-row">
+														<xf:macro template="snog_tv_casts_macros" name="cast_list"
+															  arg-tv="{$thread.TV}" arg-casts="{$casts}" arg-page="1"
+															  arg-hasMore="{$castsHasMore}" />
+													</div>
+												</li>
+											</xf:if>
+											
+											<!--[XF:snog_tv_tabPanes_before_crew]-->
+											<xf:if is="$xf.options.TvThreads_showThread.crew_tab && $crews is not empty">
+												<li class="block-body" role="tabpanel" id="tv-crew">
+													<div class="block-row">
+														<xf:macro template="snog_tv_crews_macros" name="crew_list"
+															  arg-tv="{$thread.TV}" arg-crews="{$crews}" arg-page="1"
+															  arg-hasMore="{$crewsHasMore}" />
+													</div>
+												</li>
+											</xf:if>
+											
+											<!--[XF:snog_tv_tabPanes_before_videos]-->
+											<xf:if is="$xf.options.TvThreads_showThread.videos_tab && $videos is not empty">
+												<li class="block-body" role="tabpanel" id="tv-videos">
+													<div class="block-row">
+														<xf:macro template="snog_tv_videos_macros" name="video_list"
+															  arg-tv="{$thread.TV}" arg-videos="{$videos}" arg-page="1"
+															  arg-hasMore="{$videosHasMore}" />
+													</div>
+												</li>
+											</xf:if>
+											<!--[XF:snog_tv_tabPanes_end]-->
+										</xf:contentcheck>
+									</ul>
+								</xf:if>
+
+								<xf:macro name="post_macros::post_last_edit" arg-post="{$post}" />
+							</div>
+
+							<xf:macro name="post_macros::post_footer" arg-post="{$post}" arg-thread="{$thread}" />
+						</div>
+					</div>
+					<div class="message-expandLink js-expandLink"><a role="button" tabindex="0">{{ phrase('click_to_expand') }}</a></div>
+				</div>
+			</div>
+		</div>
+
+		<aside class="message-tvUserInfo">
+			<div class="message-cell">
+				<xf:macro name="author_info" arg-user="{$post.User}" arg-fallbackName="{$post.username}" />
+			</div>
+		</aside>
+
+	</article>
+
+	<xf:ad position="post_below_container" arg-post="{$post}" />
+
+</xf:macro>
+
+<xf:macro name="network_list" arg-networks="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$networks}" value="$network">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a href="{$network.homepage}" target="_blank" class="tv-network" data-xf-init="tooltip" title="{$network.name}">
+						<xf:if is="$network.image_url is not empty">
+							<img src="{$network.image_url}" alt="{$network.name}"> 
+						<xf:else />
+							{$network.name}
+						</xf:if>
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="production_company_list" arg-companies="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$companies}" value="$company">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a href="{$company.homepage}" target="_blank" class="tv-company" data-xf-init="tooltip" title="{$company.name}">
+						<xf:if is="$company.image_url is not empty">
+							<img src="{$company.image_url}" alt="{$company.name}"> 
+						<xf:else />
+							{$company.name}
+						</xf:if>
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="watch_provider_list" arg-providerType="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$providerType}" value="$watchProvider">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a class="tv-provider" data-xf-init="tooltip" title="{$watchProvider.provider_name}">
+						<img src="https://www.themoviedb.org/t/p/original/{$watchProvider.logo_path}" width="{{ property('snog_tv_watchProviderImgSize') }}" height="{{ property('snog_tv_watchProviderImgSize') }}"> 
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="author_info" arg-user="!" arg-fallbackName="">
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="$user" size="m" defaultname="{$fallbackName}" />
+		</div>
+		<div class="contentRow-main">
+
+			<div class="message-articleUserFirstLine">
+				<div class="message-articleWrittenBy u-srOnly">{{ phrase('article_written_by') }}</div>
+				<h3 class="message-articleUserName">
+					<xf:username user="$user" rich="true" defaultname="{$fallbackName}" />
+				</h3>
+
+				<xf:if contentcheck="true">
+					<div class="message-articleUserBlurb">
+						<xf:contentcheck>
+							<xf:userblurb user="$user" tag="div" />
+						</xf:contentcheck>
+					</div>
+				</xf:if>
+			</div>
+
+			<xf:if contentcheck="true">
+				<div class="message-articleUserAbout">
+					<xf:contentcheck>
+						<xf:if is="$user.Profile.about != ''">
+							{{ bb_code($user.Profile.about, 'user:about', $user) }}
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<xf:if contentcheck="true">
+				<div class="message-articleUserBanners">
+					<xf:contentcheck><xf:userbanners user="$user" /></xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<div class="message-articleUserStats">
+				<ul class="listInline listInline--bullet">
+					<!--[XF:stats:start]-->
+					<li><dl class="pairs pairs--inline">
+						<dt>{{ phrase('messages') }}</dt>
+						<dd>{$user.message_count|number}</dd>
+					</dl></li>
+					<!--[XF:stats:after_messages]-->
+					<li><dl class="pairs pairs--inline">
+						<dt>{{ phrase('reaction_score') }}</dt>
+						<dd>{$user.reaction_score|number}</dd>
+					</dl></li>
+					<!--[XF:stats:after_likes]-->
+					<!--[XF:stats:after_reactions]-->
+					<xf:if is="$xf.options.enableTrophies">
+						<li><dl class="pairs pairs--inline">
+							<dt>{{ phrase('points') }}</dt>
+							<dd>{$user.trophy_points|number}</dd>
+						</dl></li>
+					</xf:if>
+					<!--[XF:stats:end]-->
+				</ul>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="rating_block" arg-thread="!">
+	<xf:set var="$rating" value="{$thread.TV.tv_rating}" />
+	<div style="padding-top: 10px;">
+		<xf:macro template="rating_macros" name="stars_text"
+			arg-rating="{$rating}" arg-text=" " />
+	</div>
+
+	<div>{$thread.TV.tv_rating}/5 {$thread.TV.tv_votes} {{ phrase('votes') }}</div>
+
+	<xf:if is="$xf.visitor.user_id">
+		<div>
+			<xf:button class="button--link button--wrap" href="{{ link('tv/rate', $thread.TV) }}" overlay="true">
+				{{ phrase('snog_tv_change_rating') }}
+			</xf:button>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="post" extends="post_macros::post">
+	<xf:extension name="user_content">
+		<xf:if is="$post.TVPost is not empty">
+
+			<div class="message messageEpisode" itemprop="episode" itemscope itemtype="http://schema.org/TVEpisode">
+				<xf:if is="$post.Thread.TV is not empty">
+					<b><meta itemprop="partOfTVSeries" content="{$thread.TV.tv_title}">{$thread.TV.tv_title}</b><br />
+				</xf:if>
+
+				<div class="episodeImage">
+					<xf:if is="$post.Thread.TV.tv_season && $post.Thread.TV.tv_image">
+						<img src="{$post.Thread.TV.getEpisodePosterUrl()}" />
+					<xf:else />
+						<img src="{$post.TVPost.getEpisodeImageUrl()}" />
+					</xf:if>
+				</div>
+
+				<div class="episodeInfo">
+					<xf:if is="$post.TVPost.tv_title">
+						<b><span itemprop="name">{$post.TVPost.tv_title}</span></b><br />
+						<b>{{ phrase('snog_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.TVPost.tv_season}">{$post.TVPost.tv_season}<br />
+						<b>{{ phrase('snog_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.TVPost.tv_episode}">{$post.TVPost.tv_episode}<br />
+						<b>{{ phrase('snog_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.TVPost.tv_aired}">{$post.TVPost.tv_aired}<br /><br />
+						<xf:if is="$post.TVPost.tv_guest"><b>{{ phrase('snog_tv_guest_stars') }}: </b>{$post.TVPost.tv_guest}<br /></xf:if>
+					<xf:elseif is="$post.Thread is not empty && $post.Thread.TV.tv_season" />
+						<b><span itemprop="name">{$post.Thread.TV.tv_title}</span></b><br />
+						<b>{{ phrase('snog_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.Thread.TV.tv_season}">{$post.Thread.TV.tv_season}<br />
+						<b>{{ phrase('snog_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.Thread.TV.tv_episode}">{$post.Thread.TV.tv_episode}<br />
+						<b>{{ phrase('snog_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.Thread.TV.tv_release}">{$post.Thread.TV.tv_release}<br /><br />
+						<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('snog_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
+					</xf:if>
+				</div>
+
+				<div class="episodePlot">
+					<xf:if is="$post.TVPost.tv_plot">
+						{$post.TVPost.tv_plot}
+					<xf:elseif is="$post.Thread.TV.tv_season && $post.Thread.TV.tv_plot" />
+						{$post.Thread.TV.tv_plot}
+					</xf:if>
+				</div>
+			</div><br />
+
+			<xf:if is="$post.TVPost.message">
+				{{ bb_code($post.TVPost.message, 'post', $post.User, {
+					'attachments': $post.attach_count ? $post.Attachments : [],
+					'viewAttachments': $thread.canViewAttachments()
+				}) }}
+			</xf:if>
+		<xf:else/>
+			<xf:extensionparent />
+		</xf:if>
+	</xf:extension>
+
+</xf:macro>]]></template>
+  <template type="public" title="snog_tv_post_macros_action_bar" version_id="2020058" version_string="2.2.0 Release Candidate 8"><![CDATA[<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.TV.tv_season && $thread.TV.tv_episode)">
+	<xf:if is="$post.canEdit()">
+		<xf:js src="xf/message.js" min="1" />
+		<a href="{{ link('tv/episode/update', $post) }}"
+			class="actionBar-action actionBar-action--updateEpisode actionBar-action--menuItem"
+			data-menu-closer="true">{{ phrase('snog_tv_update_episode') }}</a>
+		<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+	</xf:if>
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_post_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="p-body-header">
+	<div class="p-title">
+		<h1 class="p-title-value"></h1>
+		<div class="p-title-pageAction">
+			<xf:button href="{{ link('forums/post-thread', $forum) }}" class="button--cta" icon="write">
+				{{ phrase('post_thread') }}
+			</xf:button>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="snog_tv_quick_reply_episode" version_id="2000770" version_string="2.0.7"><![CDATA[<xf:css src="snog_tv.less" />
+<br />
+<div class="episodeInputBlock">
+<span class="tvExplain">{{ phrase('snog_tv_post_episode') }}:</span>
+	<div class="episodeBlockInput">
+		<xf:textbox name="season" placeholder="Season number" autosize="true" size="10" maxlength="10" />	
+	</div>
+	<div class="episodeBlockInput">
+		<xf:textbox name="episode" placeholder="Episode number" autosize="true" size="10" maxlength="10" />
+	</div>
+</div>]]></template>
+  <template type="public" title="snog_tv_quick_reply_forum" version_id="2000070" version_string="2.0.0"><![CDATA[<xf:if is="!$xf.options.TvThreads_mix">
+	<xf:set var="$placeholder" value="{{ phrase('snog_tv_post_show') }}" />
+	<xf:set var="$titleholder" value="{{ phrase('snog_tv_post_new_show') }}" />
+<xf:else />
+	<xf:set var="$placeholder" value="{{ phrase('snog_tv_post_show_title') }}" />
+	<xf:set var="$titleholder" value="{{ phrase('snog_tv_post_show_thread') }}" />	
+</xf:if>
+
+<xf:prefixinput maxlength="{{ max_length('XF.Thread', 'title') }}"
+	placeholder="{$placeholder}"
+	title="{$titleholder}"
+	prefix-value="{$forum.default_prefix_id}"
+	type="thread"
+	prefixes="{{ $forum.getUsablePrefixes() }}"
+	data-xf-init="tooltip" />
+
+<span class="tvhint">{{ phrase('snog_tv_show_lookup') }}</span>]]></template>
+  <template type="public" title="snog_tv_rate" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[<xf:title>{$tvshow.tv_title}</xf:title>
+
+<xf:form action="{{ link('tv/rate', $tvshow) }}" ajax="true" class="block">
+	<div class="block-container">
+			<div class="block-body">
+				<xf:macro template="rating_macros" name="rating"
+						  arg-row="{{ true }}"
+						  arg-name="rating"
+						  arg-currentRating="{$userRating.rating}"
+						  arg-rowLabel="{{ phrase('rating') }}"
+						  arg-rowHint=""
+						  arg-rowExplain="{{ phrase('snog_tv_already_rated') }}" />
+		</div>
+
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('submit_rating') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_rate_show" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[<xf:title>{$tvshow.tv_title}</xf:title>
+
+<xf:form action="{{ link('tvshow/rate-show', $tvshow) }}" ajax="true" class="block">
+	<div class="block-container">
+			<div class="block-body">
+				<xf:macro template="rating_macros" name="rating"
+						  arg-row="{{ true }}"
+						  arg-name="rating"
+						  arg-currentRating="{$userRating.rating}"
+						  arg-rowLabel="{{ phrase('rating') }}"
+						  arg-rowHint=""
+						  arg-rowExplain="{{ phrase('snog_tv_already_rated') }}" />
+		</div>
+		
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('submit_rating') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="snog_tv_rating_stars" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<li>
+	<xf:macro template="rating_macros" name="stars" arg-rating="{$thread.TV.tv_rating}"/>
+</li>]]></template>
+  <template type="public" title="snog_tv_search_result_thread_poster" version_id="2020036" version_string="2.2.0 Beta 6"><![CDATA[<xf:css src="snog_tv.less" />
+<img class="tvPoster" src="{$thread.TV.getImageUrl('s')}" />]]></template>
+  <template type="public" title="snog_tv_slider.less" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[.carousel-tvPosterSlider
+{
+	.carousel-item-simple
+	{
+		border-radius: @xf-blockBorderRadius;
+		width: 100%;
+		min-width: 0;
+		margin: 0 auto;
+	}
+	
+	.carousel-item-image
+	{ 
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: flex-end;
+		justify-content: center;
+		position: relative;
+		text-align: center;
+		word-break: break-word;
+		color: rgb(255, 255, 255);
+
+		.carousel-item-caption
+		{
+			position: absolute;
+			margin: 0;
+			word-break: break-word;
+			background: rgba(0, 0, 0, 0.5);
+			height: 2.5em;
+			width: 100%;
+			line-height: 2.5;
+		}
+	}
+	
+	.carousel-item-label
+	{
+		position: absolute;
+		top: 0;
+		word-break: break-word;
+		background: rgba(0, 0, 0, 0.5);
+		right: 0;
+		margin: 10px;
+		padding: 5px;
+
+	}
+}]]></template>
+  <template type="public" title="snog_tv_thread_list_poster" version_id="2020036" version_string="2.2.0 Beta 6"><![CDATA[<xf:if is="$thread.TV is not empty">
+	<div class="structItem-cell structItem-cell--tv">
+		<img class="tvPoster" src="{$thread.TV.getImageUrl('s')}" />
+	</div>
+<xf:else />
+	<xf:css src="snog_tv.less" />
+	<div class="structItem-cell structItem-cell--tv">
+		<div class="structItem-iconContainer">
+			<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+			<xf:if is="$thread.getUserPostCount()">
+				<xf:avatar user="$xf.visitor" size="s"
+					href=""
+					class="avatar--separated structItem-secondaryIcon"
+					title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() })|for_attr }}" />
+			</xf:if>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_thread_list_tv_macros" version_id="2020036" version_string="2.2.0 Beta 6"><![CDATA[<xf:macro name="item" extends="thread_list_macros::item">
+	<xf:extension name="icon_cell">
+		<xf:if is="$thread.TV is not empty">
+			<xf:include template="snog_tv_thread_list_poster" />
+		<xf:else />
+			<xf:extensionparent />
+		</xf:if>
+	</xf:extension>
+	
+	<xf:extension name="main_cell">
+		<xf:if is="$thread.TV is not empty">
+			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+				<xf:if contentcheck="true">
+					<ul class="structItem-statuses">
+					<xf:contentcheck>
+					<xf:extension name="statuses">
+						<xf:if is="property('reactionSummaryOnLists') == 'status' && $thread.first_post_reactions">
+							<li><xf:reactions summary="true" reactions="{$thread.first_post_reactions}" /></li>
+						</xf:if>
+						<xf:extension name="before_status_state"></xf:extension>
+						<xf:if is="$thread.discussion_state == 'moderated'">
+							<li>
+								<i class="structItem-status structItem-status--moderated" aria-hidden="true" title="{{ phrase('awaiting_approval')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('awaiting_approval') }}</span>
+							</li>
+						</xf:if>
+						<xf:if is="$thread.discussion_state == 'deleted'">
+							<li>
+								<i class="structItem-status structItem-status--deleted" aria-hidden="true" title="{{ phrase('deleted')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('deleted') }}</span>
+							</li>
+						</xf:if>
+						<xf:if is="!$thread.discussion_open">
+							<li>
+								<i class="structItem-status structItem-status--locked" aria-hidden="true" title="{{ phrase('locked')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('locked') }}</span>
+							</li>
+						</xf:if>
+
+						<xf:extension name="status_sticky">
+							<xf:if is="$thread.sticky">
+								<li>
+									<i class="structItem-status structItem-status--sticky" aria-hidden="true" title="{{ phrase('sticky')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('sticky') }}</span>
+								</li>
+							</xf:if>
+						</xf:extension>
+
+						<xf:extension name="before_status_watch"></xf:extension>
+						<xf:if is="{$showWatched} AND {$xf.visitor.user_id}">
+							<xf:if is="{$thread.Watch.{$xf.visitor.user_id}}">
+								<li>
+									<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('thread_watched')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('thread_watched') }}</span>
+								</li>
+								<xf:elseif is="!$forum AND {$thread.Forum.Watch.{$xf.visitor.user_id}}" />
+								<li>
+									<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('forum_watched')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('forum_watched') }}</span>
+								</li>
+							</xf:if>
+						</xf:if>
+
+						<xf:extension name="before_status_type">
+							<xf:if is="$xf.options.tmdbthreads_use_rating">
+								<ul class="structItem-extraInfo">
+									<li>
+										<xf:macro template="rating_macros" name="stars"
+												  arg-rating="{$thread.TV.tv_rating}" />
+									</li>
+								</ul>
+							</xf:if>
+						</xf:extension>
+						
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							<xf:extension name="thread_type_redirect">
+								<li>
+									<i class="structItem-status structItem-status--redirect" aria-hidden="true" title="{{ phrase('redirect')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('redirect') }}</span>
+								</li>
+							</xf:extension>
+						<xf:elseif is="$thread.discussion_type == 'question' && $thread.type_data.solution_post_id" />
+							<xf:extension name="thread_type_question_solved">
+								<li>
+									<i class="structItem-status structItem-status--solved" aria-hidden="true" title="{{ phrase('solved')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('solved') }}</span>
+								</li>
+							</xf:extension>
+						<xf:elseif is="!$forum || $forum.forum_type_id == 'discussion'" />
+							<xf:extension name="thread_type_icon">
+								<xf:if is="$thread.discussion_type != 'discussion'">
+									<xf:set var="$threadTypeHandler" value="{{ $thread.getTypeHandler() }}" />
+									<xf:if is="$threadTypeHandler.getTypeIconClass()">
+										<li>
+											<xf:set var="$threadTypePhrase" value="{{ $threadTypeHandler.getTypeTitle() }}" />
+											<xf:fa class="structItem-status" icon="{{ $threadTypeHandler.getTypeIconClass() }}" title="{$threadTypePhrase|for_attr}" />
+											<span class="u-srOnly">{$threadTypePhrase}</span>
+										</li>
+									</xf:if>
+								</xf:if>
+							</xf:extension>
+						</xf:if>
+					</xf:extension>
+					</xf:contentcheck>
+					</ul>
+				</xf:if>
+
+				<div class="structItem-title">
+					<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+					<xf:if is="$thread.prefix_id">
+						<xf:if is="$forum">
+							<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+						<xf:else />
+							{{ prefix('thread', $thread, 'html', '') }}
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>
+				</div>
+
+				<div class="structItem-minor">
+					<xf:if contentcheck="true">
+						<ul class="structItem-extraInfo">
+						<xf:contentcheck>
+							<xf:if is="property('reactionSummaryOnLists') == 'minor_opposite' && $thread.first_post_reactions">
+								<li><xf:reactions summary="true" reactions="{$thread.first_post_reactions}" /></li>
+							</xf:if>
+							<xf:if is="{$extraInfo}">
+								<li>{$extraInfo}</li>
+							<xf:elseif is="$allowEdit AND $thread.canEdit() AND $thread.canUseInlineModeration()" />
+								<xf:if is="!$allowInlineMod OR !$forum">
+									<xf:set var="$editParams" value="{{ {
+										'_xfNoInlineMod': !$allowInlineMod ? 1 : null,
+										 '_xfForumName': !$forum ? 1 : 0
+									} }}" />
+								<xf:else />
+									<xf:set var="$editParams" value="{{ [] }}" />
+								</xf:if>
+								<xf:if is="$thread.discussion_type != 'redirect'">
+									<li class="structItem-extraInfoMinor">
+										<a href="{{ link('threads/edit', $thread) }}" data-xf-click="overlay" data-cache="false" data-href="{{ link('threads/edit', $thread, $editParams) }}">
+											{{ phrase('edit') }}
+										</a>
+									</li>
+								</xf:if>
+							</xf:if>
+							<xf:if is="$chooseName">
+								<li><xf:checkbox standalone="true">
+									<xf:option name="{$chooseName}[]" value="{$thread.thread_id}" class="js-chooseItem" />
+								</xf:checkbox></li>
+							<xf:elseif is="$allowInlineMod AND $thread.canUseInlineModeration()" />
+								<li><xf:checkbox standalone="true">
+									<xf:option value="{$thread.thread_id}" class="js-inlineModToggle"
+										data-xf-init="tooltip"
+										title="{{ phrase('select_for_moderation') }}"
+										label="{{ phrase('select_for_moderation') }}"
+										hiddenlabel="true"
+									/>
+								</xf:checkbox></li>
+							</xf:if>
+						</xf:contentcheck>
+						</ul>
+					</xf:if>
+
+					<xf:if is="$thread.discussion_state == 'deleted'">
+						<xf:if is="{$extraInfo}"><span class="structItem-extraInfo">{$extraInfo}</span></xf:if>
+
+						<xf:macro template="deletion_macros" name="notice" arg-log="{$thread.DeletionLog}" />
+					<xf:else />
+						<div>
+							<xf:macro name="tv_info" arg-thread="{$thread}" arg-onlyInclude="{{ $xf.options.TvThreads_threadListInfo }}" />
+							<ul class="structItem-parts">
+								<li><xf:username user="$thread.User" defaultname="{$thread.username}" /></li>
+								<li class="structItem-startDate"><a href="{{ link('threads', $thread) }}" rel="nofollow"><xf:date time="{$thread.post_date}" /></a></li>
+								<xf:if is="!$forum">
+									<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
+								</xf:if>
+							</ul>
+						</div>
+
+						<xf:if is="$thread.discussion_type != 'redirect' && $thread.reply_count >= $xf.options.messagesPerPage && $xf.options.lastPageLinks">
+							<span class="structItem-pageJump">
+							<xf:foreach loop="{{ last_pages($thread.reply_count + 1, $xf.options.messagesPerPage, $xf.options.lastPageLinks) }}" value="$p">
+								<a href="{{ link('threads', $thread, {'page': $p}) }}">{$p}</a>
+							</xf:foreach>
+							</span>
+						</xf:if>
+					</xf:if>
+					
+				</div>
+			</div>
+		<xf:else />
+			<xf:extensionparent />
+		</xf:if>
+	</xf:extension>
+
+</xf:macro>
+
+<xf:macro name="tv_info" arg-thread="!" arg-onlyInclude="{{ null }}">
+	<!--[XF:snog_tv_thread_list_info_top]-->
+	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.TV.tv_title}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.TV.tv_genres"><b>{{ phrase('snog_tv_genre') }}:</b> {$thread.TV.tv_genres}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.TV.tv_director"><b>{{ phrase('snog_tv_creator') }}:</b> {$thread.TV.tv_director}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.first_air_date) && $thread.TV.first_air_date"><b>{{ phrase('snog_tv_first_aired') }}:</b> {{ date($thread.TV.first_air_date) }}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.last_air_date) && $thread.TV.last_air_date"><b>{{ phrase('snog_tv_last_air_date') }}:</b> {{ date($thread.TV.last_air_date) }}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.TV.status is not empty"><b>{{ phrase('snog_tv_status') }}:</b> {$thread.TV.status}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.plot) && $thread.TV.tv_plot is not empty"><b>{{ phrase('snog_tv_overview') }}:</b> {$thread.TV.tv_plot}<br /></xf:if>
+	<!--[XF:snog_tv_thread_list_info_bottom]-->
+</xf:macro>]]></template>
+  <template type="public" title="snog_tv_thread_type_fields_tv" version_id="2020008" version_string="2.2.0 8"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
+	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
+<xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
+	<xf:set var="$rowType" value="fullWidth mergeNext" />
+<xf:else />
+	<xf:set var="$rowType" value="" />
+</xf:if>
+
+<xf:if is="$thread.Forum.TVForum is not empty && $thread.Forum.TVForum.tv_parent_id">
+	<xf:textboxrow name="snog_tv_tv_id" value="{$thread.TV.tv_episode}"
+				   label="{{ phrase('snog_tv_episode_number') }}"
+				   explain="{{ phrase('snog_tv_episode_enter_episode_number') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+<xf:else />
+	<xf:textboxrow name="snog_tv_tv_id" value="{$thread.TV.tv_id}"
+				   label="{{ phrase('snog_tv_post_show_title') }}"
+				   explain="{{ phrase('snog_tv_show_lookup') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+</xf:if>]]></template>
+  <template type="public" title="snog_tv_thread_view_type_tv" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[<xf:extends template="thread_view" />
+
+<xf:extension name="content_top">
+	<xf:css src="snog_tv.less" />
+</xf:extension>
+
+<xf:extension name="thread_action_buttons">
+	<xf:if is="{{ property('snog_tv_posterUpdateButtonPosition') == 'default' && $thread.TV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+		<xf:button href="{{ link('tv/poster', $thread.TV) }}" class="button--link" overlay="true">
+			{{ phrase('snog_tv_check_poster') }}
+		</xf:button>
+	</xf:if>
+	<xf:if is="$xf.options.TvThreads_update && !$thread.TV && $canAddInfo">
+		<xf:button href="{{ link('tv/add-info', $thread) }}" class="button--link" overlay="true">
+			{{ phrase('snog_tv_add_info') }}
+		</xf:button>
+	</xf:if>
+	<xf:extensionparent />
+</xf:extension>
+
+<xf:extension name="above_messages_below_pinned">
+	<xf:if is="$thread.TV is not empty && $page <= 1">
+		<span class="tvhint">{{ phrase('snog_tv_information_thread')}}</span>
+	</xf:if>
+</xf:extension>]]></template>
+  <template type="public" title="snog_tv_videos" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[<xf:title>{{ phrase('snog_tv_x_videos', {'name': $tv.tv_title}) }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<div class="block">
+	<xf:macro template="snog_tv_videos_macros" name="video_list"
+			  arg-tv="{$tv}" arg-videos="{$videos}" arg-page="{$page}"
+			  arg-hasMore="{$hasMore}" />
+</div>]]></template>
+  <template type="public" title="snog_tv_videos_macros" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[<xf:macro name="video_list" arg-tv="!" arg-videos="!" arg-page="1" arg-hasMore="{{ false }}">
+	<ul class="listPlain js-tvVideoList{$tv.tv_id}">
+		<xf:foreach loop="{$videos}" value="$video">
+			<li class="block-row block-row--separated">
+				<xf:macro name="video_info" arg-video="{$video}" />
+			</li>
+		</xf:foreach>
+	</ul>
+
+	<xf:if is="$hasMore">
+		<div class="block-footer js-tvVideoLoadMore{$tv.tv_id}">
+			<span class="block-footer-controls">
+				<xf:button href="{{ link('tv/videos', $tv, {'page': $page + 1}) }}"
+					data-xf-click="inserter"
+					data-append=".js-tvVideoList{$tv.tv_id}"
+					data-replace=".js-tvVideoLoadMore{$tv.tv_id}">
+					{{ phrase('more...') }}
+				</xf:button>
+			</span>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="video_info" arg-video="!">
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:if is="$video.site == 'YouTube'">
+				<iframe width="300" src="https://www.youtube.com/embed/{$video.key}?wmode=opaque&showinfo=0&controls=2&start=0"
+						height="150"
+						allowfullscreen
+						frameborder="0">
+				</iframe>
+			</xf:if>
+		</div>
+		<div class="contentRow-main">
+			<h2 class="contentRow-title">{$video.name}</h2>
+			<div class="contentRow-minor">
+				<ul class="listInline listInline--bullet">
+					<li>{$video.type}</li>
+					<li><xf:date time="{$video.published_at}" /></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="widget_snog_tv_poster_slider" version_id="2020061" version_string="2.2.0 Release Candidate 11"><![CDATA[<xf:set var="$template">
+	<xf:if is="$tvShows is not empty">
+		<xf:css src="carousel.less" />
+		<xf:css src="lightslider.less" />
+		<xf:css src="snog_tv_slider.less" />
+
+		<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js" />
+		<xf:js dev="Snog/TV/slider.js" prod="Snog/TV/slider.min.js" addon="Snog/TV" />
+
+		<div class="carousel carousel-tvPosterSlider carousel--withFooter" {{ widget_data($widget) }}>
+			<ul class="carousel-body" data-xf-init="snog-tv-slider"
+				data-xf-snog-tv-slider="{$options.slider|json}">
+
+				<xf:foreach loop="$tvShows" value="$tv">
+					<li>
+						<div class="carousel-item-simple">
+							<a class="carousel-item-image" href="{{ link('threads', $tv.Thread) }}">
+								<img src="{$tv.getImageUrl()}" style="width: {$options.image_width}; height: {$options.image_height}" />
+
+								<xf:if is="{$options.show_rating}">
+									<span class="carousel-item-label">
+										<xf:fa icon="star" /> {$tv.tv_rating}
+									</span>
+								</xf:if>
+								
+								<span class="carousel-item-caption" title="{$tv.Thread.title}">
+									{$tv.Thread.title}
+								</span>
+							</a>
+						</div>
+					</li>
+				</xf:foreach>
+			</ul>
+
+		</div>
+	</xf:if>
+</xf:set>
+
+<xf:if is="!$options.advanced_mode">
+	<xf:if contentcheck="true">
+	<div class="block">
+		<div class="block-container" {{ widget_data($widget) }}>
+			<xf:if is="$title">
+				<h3 class="block-minorHeader">{$title}</h3>
+			</xf:if>
+			<div class="block-body block-row">
+				<xf:contentcheck>{$template|raw}</xf:contentcheck>
+			</div>
+		</div>
+	</div>
+	</xf:if>
+<xf:else />
+	{$template|raw}
+</xf:if>]]></template>
+  <template type="public" title="widget_snog_tv_slider" version_id="2020047" version_string="2.2.0 Beta 17"><![CDATA[<xf:if is="$tvShows is not empty">
+
+	<xf:css src="carousel.less" />
+	<xf:css src="lightslider.less" />
+	<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js, xf/carousel.js" />
+	<xf:js dev="Snog/TV/slider.js" prod="Snog/TV/slider.min.js" addon="Snog/TV" />
+
+	<div class="carousel carousel--withFooter" {{ widget_data($widget) }}>
+		<ul class="carousel-body carousel-body--show2" data-xf-init="snog-tv-slider"
+			data-xf-snog-tv-slider="{$options.slider|json}">
+			<xf:foreach loop="$tvShows" value="$tv">
+				<li>
+					<div class="carousel-item">
+						<div class="contentRow">
+							<div class="contentRow-figure">
+								<span class="contentRow-figureIcon"><img src="{$tv.getImageUrl()}" /></span>
+							</div>
+
+							<div class="contentRow-main">
+								<div class="contentRow-title">
+									<a href="{{ link('threads', $tv.Thread) }}">{$tv.Thread.title}</a>
+									<span class="label"><xf:fa icon="star" /> {$tv.tv_rating}</span>
+								</div>
+
+								<xf:if is="$options.show_plot && $tv.tv_plot">
+									<div class="contentRow-lesser">
+										{{ snippet($tv.tv_plot, 150) }}
+									</div>
+								</xf:if>
+
+								<div class="contentRow-minor contentRow-minor--smaller">
+									<ul class="listInline listInline--bullet">
+										<xf:if is="$options.show_genres && $tv.tv_genres"><li><b>{{ phrase('snog_tv_genre') }}:</b> {$tv.tv_genres}</li></xf:if>
+										<xf:if is="$options.show_director && $tv.tv_director"><li><b>{{ phrase('snog_tv_director') }}:</b> {$tv.tv_director}</li></xf:if>
+										<xf:if is="$options.show_cast && $tv.tv_cast"><li><b>{{ phrase('snog_tv_cast') }}:</b> {$tv.tv_cast}</li></xf:if>
+										<xf:if is="$options.show_release && $tv.first_air_date"><li><b>{{ phrase('snog_tv_first_aired') }}:</b> <xf:date time="{$tv.first_air_date}" /></li></xf:if>
+										<xf:if is="$options.show_last_air_date && $tv.last_air_date"><li><b>{{ phrase('snog_tv_last_air_date') }}:</b> <xf:date time="{$tv.last_air_date}" /></li></xf:if>
+										<xf:if is="$options.show_status && $tv.status is not empty"><li><b>{{ phrase('snog_tv_status') }}:</b> {$tv.status}</li></xf:if>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</xf:foreach>
+		</ul>
+	</div>
+</xf:if>]]></template>
+</templates>

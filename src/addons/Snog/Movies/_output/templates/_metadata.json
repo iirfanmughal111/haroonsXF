@@ -1,0 +1,22 @@
+{
+    "public/snog_movies_post_macros.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "8ca5ac92b92da50f0641ab213f4986e0"
+    },
+    "public/snog_movies_thread_type_fields_movie.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "fd2c014b9e9d3f08b6e82f9d7742f5c1"
+    },
+    "public/snog_movies_thread_view_type_movie.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "994b22284ff5f39737cfc543aea029cd"
+    },
+    "public/widget_snog_movies_poster_slider.html": {
+        "version_id": 2020049,
+        "version_string": "2.2.0 Beta 19",
+        "hash": "2d7afb5da59be9c362a3dec11adc8e74"
+    }
+}

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_auto_forum_manage_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+  <xf:if is="$autoForumManager.forum_manage_id"> {{ phrase('fs_edit_auto_forum') }}
+  <xf:else /> {{ phrase('fs_auto_forum_manage') }} </xf:if>
+</xf:title>
+<xf:form
+  action="{{ link('forumMng/save', $autoForumManager) }}"
+  ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <ul class="inputList">
+		<li>
+			<xf:if is="$autoForumManager.forum_manage_id">
+				<xf:selectrow name="listData[]"
+			label="{{ phrase('fs_auto_forum_manager_forums') }}"
+			hint="{{ phrase('required') }}"
+        	required="required"
+			>
+			<xf:foreach loop="$forums" value="$forum">
+				<xf:option value="{$forum.value}" disabled="{$forum.disabled}"
+			selected="{{$autoForumManager.node_id == $forum.value }}"
+				>{$forum.label}</xf:option>
+			</xf:foreach>
+		</xf:selectrow>
+			<xf:else/>
+			<xf:selectrow name="listData[]" multiple="multiple" size="7"
+			label="{{ phrase('fs_auto_forum_manager_forums') }}"
+			hint="{{ phrase('required') }}"
+        	required="required"
+			>
+			<xf:foreach loop="$forums" value="$forum">
+				<xf:option value="{$forum.value}" disabled="{$forum.disabled}">{$forum.label}</xf:option>
+			</xf:foreach>
+		</xf:selectrow>
+		  </xf:if>
+		  </li>
+	</ul>
+		
+		<xf:selectrow
+        name="admin_id"
+        label="{{ phrase('fs_auto_forum_manager_select_admin') }}"
+        hint="{{ phrase('required') }}"
+        required="required"
+      >
+        <xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+        <xf:foreach loop="$allAdmins" value="$admin">
+          <xf:option
+            value="{$admin.user_id}"
+			selected="{{$admin.user_id== $autoForumManager.admin_id }}"
+            >{$admin.username}</xf:option
+          >
+        </xf:foreach>
+      </xf:selectrow>
+
+      <xf:formrow
+        rowtype="input"
+        label="{{ phrase('fs_auto_forum_manager_days') }}"
+        hint="{{ phrase('required') }}"
+      >
+        <xf:numberboxrow
+          name="total_days"
+          placeholder="{{ phrase('fs_auto_forum_manager_days_place') }}"
+          data-i="0"
+          rowtype="fullWidth"
+          value="{$autoForumManager.last_login_days}"
+        />
+      </xf:formrow>
+    </div>
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_auto_forum_manage_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_auto_forum_manage_title') }}</xf:title>
+
+<xf:pageaction>
+  <xf:button href="{{ link('forumMng/add') }}" icon="add">{{ phrase('fs_auto_forum_manage_add') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+  <div class="block-outer">
+		<xf:macro
+		  template="filter_macros"
+		  name="quick_filter"
+		  arg-key="forumMng"
+		  arg-class="block-outer-opposite"
+		/>
+  </div>
+
+  <div class="block-container">
+
+  <xf:if is="$autoForumManager is not empty">
+	<div class="block-body">
+			<xf:datalist data-xf-init="responsive-data-list">
+					
+				<xf:macro
+					name="table_list"
+					arg-autoForumManagerData="{$autoForumManager}"
+				  />
+
+
+				   </xf:datalist>
+				<div class="block-footer">
+					  <span class="block-footer-counter"
+						>{{ display_totals($totalReturn, $total) }}</span
+					  >
+				</div>
+		    
+		</div>
+       <xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+		
+       </xf:if>
+    
+ </div>
+
+
+   <xf:pagenav
+			page="{$page}"
+			perpage="{$perPage}"
+			total="{$total}"
+			link="forumMng"
+			wrapperclass="block"
+		  />
+</xf:form>
+<xf:macro
+  name="table_list"
+  arg-autoForumManagerData="{$autoForumManager}"
+>
+  <xf:datarow rowtype="header">
+    <xf:cell> {{ phrase('fs_cell_auto_forum_admin') }} </xf:cell>
+    <xf:cell> {{ phrase('fs_cell_auto_forum_name') }} </xf:cell>
+    <xf:cell> {{ phrase('fs_cell_auto_forum_days') }} </xf:cell>
+    <xf:cell class="dataList-cell--min"></xf:cell>
+	 <xf:cell class="dataList-cell--min"></xf:cell>
+  </xf:datarow>
+  <xf:foreach loop="{$autoForumManagerData}" value="$value">
+    <xf:datarow>
+		
+          <xf:cell> {$value.User.username} </xf:cell>
+          <xf:cell> {$value.Node.title} </xf:cell>
+          <xf:cell> {$value.last_login_days} </xf:cell>
+		
+	<xf:action href="{{ link('forumMng/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+      <xf:delete
+        href="{{ link('forumMng/delete', $value) }}"
+        overlay="true"
+      />
+    </xf:datarow>
+  </xf:foreach>
+</xf:macro>]]></template>
+</templates>

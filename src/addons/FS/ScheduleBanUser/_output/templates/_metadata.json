@@ -1,0 +1,12 @@
+{
+    "public/fs_sch_user_ban_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cbd52732289948ad38f964bdebd76546"
+    },
+    "public/fs_user_ban_addEdit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3da9b5637926ef23e8c2756ec77b4b14"
+    }
+}

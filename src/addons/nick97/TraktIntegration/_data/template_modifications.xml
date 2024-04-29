@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="snog_movies_post_macros" modification_key="snog_movies_post_macros_btn_to_trakt" description="snog_movies_post_macros_btn_to_trakt" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('snog_movies_more_details_on_tmdb') }}</xf:button>]]></find>
+    <replace><![CDATA[<xf:if is="$thread.getTraktMovLink($thread.Movie.tmdb_id)">
+	<xf:button href="https://trakt.tv/movies/{{$thread.getTraktMovLink($thread.Movie.tmdb_id)}}"  target="_blank">{{ phrase('nick97_trakt_more_details') }}</xf:button>
+	<xf:else />
+	<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('snog_movies_more_details_on_tmdb') }}</xf:button>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="snog_movies_thread_view_type_movie" modification_key="nick97_add_sync_btn_movies" description="nick97_add_sync_btn_movies" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="thread_action_buttons">]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="{{ $thread.Movie && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'snog_movies_movie' || $thread.discussion_type == 'nick97_trakt_movies') }}">
+	<xf:button href="{{ link('movies/sync', $thread.Movie) }}" class="button--link" overlay="true">
+		{{ phrase('nick97_trakt_movies_sync') }}
+	</xf:button>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="snog_tv_post_macros" modification_key="snog_tv_post_macros_to_trakt" description="snog_tv_post_macros_to_trakt" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('snog_tv_more_details_on_tmdb') }}</xf:button>]]></find>
+    <replace><![CDATA[<xf:if is="$thread.getTraktTVLink($thread.TV.tv_id)">
+	<xf:button href="https://trakt.tv/shows/{{$thread.getTraktTVLink($thread.TV.tv_id)}}"  target="_blank">{{ phrase('nick97_trakt_more_details') }}</xf:button>
+	<xf:else />
+	<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('snog_tv_more_details_on_tmdb') }}</xf:button>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="snog_tv_thread_view_type_tv" modification_key="snog_tv_thread_view_type_tv_add_sync_btn" description="snog_tv_thread_view_type_tv_add_sync_btn" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="thread_action_buttons">]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="{{ $thread.TV && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'snog_tv' || $thread.discussion_type == 'nick97_trakt_tv') }}">
+	<xf:button href="{{ link('tv/sync', $thread.TV) }}" class="button--link" overlay="true">
+		{{ phrase('nick97_trakt_tv_sync') }}
+	</xf:button>
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

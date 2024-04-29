@@ -1,0 +1,45 @@
+<xf:macro name="video_list" arg-movie="!" arg-videos="!" arg-page="1" arg-hasMore="{{ false }}">
+	<ul class="listPlain js-movieVideoList{$movie.trakt_id}">
+		<xf:foreach loop="{$videos}" value="$video">
+			<li class="block-row block-row--separated">
+				<xf:macro name="video_info" arg-video="{$video}" />
+			</li>
+		</xf:foreach>
+	</ul>
+
+	<xf:if is="$hasMore">
+		<div class="block-footer js-movieVideoLoadMore{$movie.trakt_id}">
+			<span class="block-footer-controls">
+				<xf:button href="{{ link('traktMovies/videos', $movie, {'page': $page + 1}) }}"
+					data-xf-click="inserter"
+					data-append=".js-movieVideoList{$movie.trakt_id}"
+					data-replace=".js-movieVideoLoadMore{$movie.trakt_id}">
+					{{ phrase('more...') }}
+				</xf:button>
+			</span>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="video_info" arg-video="!">
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:if is="$video.site == 'YouTube'">
+				<iframe width="300" src="https://www.youtube.com/embed/{$video.key}?wmode=opaque&showinfo=0&controls=2&start=0"
+						height="150"
+						allowfullscreen
+						frameborder="0">
+				</iframe>
+			</xf:if>
+		</div>
+		<div class="contentRow-main">
+			<h2 class="contentRow-title">{$video.name}</h2>
+			<div class="contentRow-minor">
+				<ul class="listInline listInline--bullet">
+					<li>{$video.type}</li>
+					<li><xf:date time="{$video.published_at}" /></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</xf:macro>

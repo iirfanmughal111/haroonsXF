@@ -1,0 +1,9 @@
+{
+    "template": "account_visitor_menu",
+    "description": "nick97_watch_list_add_tab_in_account_visitor_menu",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:account_links:bottom]-->",
+    "replace": "<li><a href=\"{{ link('account/watchlist') }}\" class=\"menu-linkRow\">{{ phrase('my_watch_list') }}</a></li>\n\n$0"
+}

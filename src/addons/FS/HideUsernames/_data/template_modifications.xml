@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="thread_list_macros" modification_key="fs_hide_usernames_wid_latest_posts" description="fs_hide_usernames_wid_latest_posts" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>]]></find>
+    <replace><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_user_names', 'hide') }}">
+
+	<li>{{ phrase('latest_x', {'name': $thread.User.username}) }}</li>
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

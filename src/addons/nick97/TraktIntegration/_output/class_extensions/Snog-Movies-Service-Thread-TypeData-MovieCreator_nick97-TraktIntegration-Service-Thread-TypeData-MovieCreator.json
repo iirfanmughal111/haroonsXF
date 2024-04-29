@@ -1,0 +1,6 @@
+{
+    "from_class": "Snog\\Movies\\Service\\Thread\\TypeData\\MovieCreator",
+    "to_class": "nick97\\TraktIntegration\\Service\\Thread\\TypeData\\MovieCreator",
+    "execute_order": 10,
+    "active": true
+}

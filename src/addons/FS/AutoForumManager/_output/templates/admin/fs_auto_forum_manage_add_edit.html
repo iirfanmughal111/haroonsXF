@@ -1,0 +1,74 @@
+<xf:title>
+  <xf:if is="$autoForumManager.forum_manage_id"> {{ phrase('fs_edit_auto_forum') }}
+  <xf:else /> {{ phrase('fs_auto_forum_manage') }} </xf:if>
+</xf:title>
+<xf:form
+  action="{{ link('forumMng/save', $autoForumManager) }}"
+  ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <ul class="inputList">
+		<li>
+			<xf:if is="$autoForumManager.forum_manage_id">
+				<xf:selectrow name="listData[]"
+			label="{{ phrase('fs_auto_forum_manager_forums') }}"
+			hint="{{ phrase('required') }}"
+        	required="required"
+			>
+			<xf:foreach loop="$forums" value="$forum">
+				<xf:option value="{$forum.value}" disabled="{$forum.disabled}"
+			selected="{{$autoForumManager.node_id == $forum.value }}"
+				>{$forum.label}</xf:option>
+			</xf:foreach>
+		</xf:selectrow>
+			<xf:else/>
+			<xf:selectrow name="listData[]" multiple="multiple" size="7"
+			label="{{ phrase('fs_auto_forum_manager_forums') }}"
+			hint="{{ phrase('required') }}"
+        	required="required"
+			>
+			<xf:foreach loop="$forums" value="$forum">
+				<xf:option value="{$forum.value}" disabled="{$forum.disabled}">{$forum.label}</xf:option>
+			</xf:foreach>
+		</xf:selectrow>
+		  </xf:if>
+		  </li>
+	</ul>
+		
+		<xf:selectrow
+        name="admin_id"
+        label="{{ phrase('fs_auto_forum_manager_select_admin') }}"
+        hint="{{ phrase('required') }}"
+        required="required"
+      >
+        <xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+        <xf:foreach loop="$allAdmins" value="$admin">
+          <xf:option
+            value="{$admin.user_id}"
+			selected="{{$admin.user_id== $autoForumManager.admin_id }}"
+            >{$admin.username}</xf:option
+          >
+        </xf:foreach>
+      </xf:selectrow>
+
+      <xf:formrow
+        rowtype="input"
+        label="{{ phrase('fs_auto_forum_manager_days') }}"
+        hint="{{ phrase('required') }}"
+      >
+        <xf:numberboxrow
+          name="total_days"
+          placeholder="{{ phrase('fs_auto_forum_manager_days_place') }}"
+          data-i="0"
+          rowtype="fullWidth"
+          value="{$autoForumManager.last_login_days}"
+        />
+      </xf:formrow>
+    </div>
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>

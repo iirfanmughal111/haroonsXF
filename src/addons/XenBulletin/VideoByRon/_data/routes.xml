@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="by-rons" format=":int&lt;ron_id,title&gt;/" controller="XenBulletin\VideoByRon:ByRon" context="xb_videos_by_ron"/>
+  <route route_type="public" route_prefix="by-rons" format=":int&lt;video_id&gt;/" controller="XenBulletin\VideoByRon:ByRons" context="xb_videos"/>
+</routes>

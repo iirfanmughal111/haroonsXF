@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="nick97_movies_explain_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the Trakt Link or ID for your movie? Go to <a href="https://trakt.tv/movies/trending" target="_blank" >Trakt Movies</a> and look it up.]]></phrase>
+  <phrase title="nick97_movies_link_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt link or Movie ID]]></phrase>
+  <phrase title="nick97_trakt_api_key_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
+  <phrase title="nick97_trakt_more_details" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[More details on Trakt]]></phrase>
+  <phrase title="nick97_trakt_movies_sync" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sync]]></phrase>
+  <phrase title="nick97_trakt_request_empty_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A non-empty request body is required...!]]></phrase>
+  <phrase title="nick97_trakt_request_method_not_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Method Not Allowed...!]]></phrase>
+  <phrase title="nick97_trakt_request_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Requested data not found...!]]></phrase>
+  <phrase title="nick97_trakt_request_not_success" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Server not responding please try again...!]]></phrase>
+  <phrase title="nick97_trakt_request_server_error" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Server Error...!]]></phrase>
+  <phrase title="nick97_trakt_request_unauthorized" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unauthorized, Authentication has been denied for this request.]]></phrase>
+  <phrase title="nick97_trakt_request_unsported_media" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unsupported Media Type..!]]></phrase>
+  <phrase title="nick97_trakt_tv_sync" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sync]]></phrase>
+  <phrase title="nick97_tv_episode_enter_episode_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[All you need to enter is the episode number for this season. (EXAMPLE: 5)]]></phrase>
+  <phrase title="nick97_tv_episode_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode number]]></phrase>
+  <phrase title="nick97_tv_post_show_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV show link or TV show ID]]></phrase>
+  <phrase title="nick97_tv_show_lookup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the Trakt Link or ID for your TV show? Go to <a href="https://trakt.tv/shows/trending" target="_blank" >Trakt TV Show</a> and look it up.]]></phrase>
+  <phrase title="nick97_you_sure_you_want_to_sync" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm if you want to sync?]]></phrase>
+  <phrase title="option.nick97_trakt_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key]]></phrase>
+  <phrase title="option_explain.nick97_trakt_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your Trakt API key]]></phrase>
+  <phrase title="option_group.nick97traktIntegration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Integration]]></phrase>
+  <phrase title="option_group_description.nick97traktIntegration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Options for the Trakt Movies and TV Show]]></phrase>
+  <phrase title="thread_type.nick97_trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movies]]></phrase>
+  <phrase title="thread_type_plural.nick97_trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movies]]></phrase>
+</phrases>

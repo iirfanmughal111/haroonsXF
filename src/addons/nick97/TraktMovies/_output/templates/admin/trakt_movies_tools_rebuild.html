@@ -1,0 +1,24 @@
+<span class="u-anchorTarget" id="job-TraktMovies"></span>
+
+<xf:form action="{{ link('tools/rebuild') }}" class="block">
+	<div class="block-container">
+		<h2 class="block-header">[nick97] Trakt Movie Thread Starter</h2>
+		<div class="block-body">
+			<xf:radiorow name="job">
+				<xf:option value="nick97\TraktMovies:MovieRatingRebuild">{{ phrase('trakt_movies_recalculate_ratings') }}</xf:option>
+				<xf:option value="nick97\TraktMovies:MovieRebuild">{{ phrase('trakt_movies_rebuild_general_movie_info') }}</xf:option>
+				<xf:option value="nick97\TraktMovies:MovieCreditsRebuild">{{ phrase('trakt_movies_rebuild_credits') }}</xf:option>
+				<xf:option value="nick97\TraktMovies:MoviePersonsRebuild">{{ phrase('trakt_movies_rebuild_persons') }}</xf:option>
+				<xf:option value="nick97\TraktMovies:MovieVideosRebuild">{{ phrase('trakt_movies_rebuild_videos') }}</xf:option>
+				<xf:option value="nick97\TraktMovies:MovieWatchProvidersRebuild">{{ phrase('trakt_movies_rebuild_watch_providers') }}</xf:option>
+				<xf:option value="nick97\TraktMovies:MovieProductionCompaniesRebuild">{{ phrase('trakt_movies_rebuild_movie_production_companies') }}</xf:option>
+				
+				<xf:if is="is_addon_active('ThemeHouse/Covers')">
+					<xf:option value="nick97\TraktMovies:MovieThreadCoverUpdate">{{ phrase('trakt_movies_rebuild_thread_covers') }}</xf:option>
+				</xf:if>
+			</xf:radiorow>
+		</div>
+		
+		<xf:submitrow submit="{{ phrase('rebuild_now') }}" />
+	</div>
+</xf:form>

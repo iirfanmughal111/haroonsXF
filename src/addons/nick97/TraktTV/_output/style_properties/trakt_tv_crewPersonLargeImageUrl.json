@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_tv",
+    "title": "Default crew person avatar (large)",
+    "description": "Recommended size 300x450",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "string",
+    "value_parameters": "asset=trakt_tv_crew",
+    "depends_on": "",
+    "value_group": "trakt_tv_thumbnail",
+    "property_value": "data/assets/trakt_tv_crew/no-photo-large.jpg",
+    "display_order": 10000
+}

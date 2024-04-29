@@ -1,0 +1,12 @@
+{
+    "admin/fs_auto_forum_manage_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ebd40a0d0ca1fc185cef52aa219aa843"
+    },
+    "admin/fs_auto_forum_manage_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "93e7a542d5a5524f075e6b9a97630e0a"
+    }
+}

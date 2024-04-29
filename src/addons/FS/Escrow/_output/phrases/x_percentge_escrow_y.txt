@@ -1,0 +1,1 @@
+{name} received percentge a escrow named {title}.

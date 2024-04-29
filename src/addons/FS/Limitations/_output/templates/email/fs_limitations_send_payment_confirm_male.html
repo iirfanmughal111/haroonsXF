@@ -1,0 +1,40 @@
+<style>
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td {
+		border: 1px solid #dddddd;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+</style>
+
+<mail:subject>{{ phrase('receipt_for_your_account_upgrade_at_x', {'board_title': $xf.options.boardTitle}) }}</mail:subject>
+
+<p>{{ phrase('thank_you_for_purchasing_account_upgrade_at_x', {'board_url': link('canonical:index'), 'board_title': $xf.options.boardTitle}) }}</p>
+<br/>
+<table>
+	<tr>
+		<td>{{ phrase('Username') }} </td>
+		<td>{$username}</td>
+	</tr>
+	<tr>
+		<td>{{ phrase('purchased_item') }} </td>
+		<td>{$title}</td>
+	</tr>
+	<tr>
+		<td> {{ phrase('price') }}</td>
+		<td>${$price}</td>
+	</tr>
+</table>
+<br/>
+<xf:if is="$xf.toUser.canUseContactForm()">
+	<p>{{ phrase('thank_you_for_your_purchase_questions_contact_us', {'contacturl': link('canonical:misc/contact') }) }}</p>
+	<xf:else />
+	<p>{{ phrase('thank_you_for_your_purchase') }}</p>
+</xf:if>

@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_movies",
+    "title": "Watch provider image size",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "unit",
+    "value_parameters": "units={{ phrase('units_pixels') }}",
+    "depends_on": "",
+    "value_group": "trakt_movies_message",
+    "property_value": "48px",
+    "display_order": 1050
+}

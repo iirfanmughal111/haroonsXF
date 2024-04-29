@@ -1,0 +1,21 @@
+<?php
+return array (
+  'con_acc_desc.facebook' => '',
+  'con_acc_desc.github' => '',
+  'con_acc_desc.google' => '',
+  'con_acc_desc.linkedin' => '',
+  'con_acc_desc.microsoft' => '',
+  'con_acc_desc.nick_trakt' => '',
+  'con_acc_desc.th_amazon' => '',
+  'con_acc_desc.th_battlenet' => '',
+  'con_acc_desc.th_deviantart' => '',
+  'con_acc_desc.th_discord' => '',
+  'con_acc_desc.th_dropbox' => '',
+  'con_acc_desc.th_instagram' => '',
+  'con_acc_desc.th_pinterest' => '',
+  'con_acc_desc.th_reddit' => '',
+  'con_acc_desc.th_tumblr' => '',
+  'con_acc_desc.th_twitch' => '',
+  'con_acc_desc.twitter' => '',
+  'con_acc_desc.yahoo' => '',
+);

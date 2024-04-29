@@ -1,0 +1,15 @@
+{
+    "edit_format": "callback",
+    "edit_format_params": "nick97\\TraktTV\\Option\\Category::renderSelectMultiple",
+    "data_type": "array",
+    "sub_options": [
+        "*"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "[]",
+    "relations": {
+        "traktTvThreads": 500
+    }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="Snog\Movies\Helper\Tmdb" to_class="nick97\TraktIntegration\Helper\Tmdb" execute_order="10" active="1"/>
+  <extension from_class="Snog\Movies\Pub\Controller\Movies" to_class="nick97\TraktIntegration\Pub\Controller\Movies" execute_order="10" active="1"/>
+  <extension from_class="Snog\Movies\Service\Movie\Creator" to_class="nick97\TraktIntegration\Service\Movie\Creator" execute_order="10" active="1"/>
+  <extension from_class="Snog\Movies\Service\Thread\TypeData\MovieCreator" to_class="nick97\TraktIntegration\Service\Thread\TypeData\MovieCreator" execute_order="10" active="1"/>
+  <extension from_class="Snog\TV\Helper\Tmdb\Show" to_class="nick97\TraktIntegration\Helper\Tmdb\Show" execute_order="10" active="1"/>
+  <extension from_class="Snog\TV\Pub\Controller\TV" to_class="nick97\TraktIntegration\Pub\Controller\TV" execute_order="10" active="1"/>
+  <extension from_class="Snog\TV\Service\Thread\TypeData\TvCreator" to_class="nick97\TraktIntegration\Service\Thread\TypeData\TvCreator" execute_order="10" active="1"/>
+  <extension from_class="Snog\TV\Service\TV\Creator" to_class="nick97\TraktIntegration\Service\TV\Creator" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Thread" to_class="nick97\TraktIntegration\XF\Entity\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\ForumType\Discussion" to_class="nick97\TraktIntegration\XF\ForumType\Discussion" execute_order="10" active="1"/>
+  <extension from_class="XF\Service\Thread\Creator" to_class="nick97\TraktIntegration\XF\Service\Thread\Creator" execute_order="10" active="1"/>
+</class_extensions>

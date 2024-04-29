@@ -1,0 +1,62 @@
+{
+    "z61_condition_title.1.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "977099e6a067ca17fab6c55e3a0eaf2a"
+    },
+    "z61_condition_title.2.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "03c2e7e41ffc181a4e84080b4710e81e"
+    },
+    "z61_condition_title.3.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1144b6ccb76cfd1baced41990442dcee"
+    },
+    "z61_condition_title.4.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9c19852359652591c0339a2efc477ee0"
+    },
+    "z61_condition_title.5.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fe9df624be34d8a4733c0e1ec21b1604"
+    },
+    "z61_listing_type_title.1.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "82790ae10c011c210623bb01e6744481"
+    },
+    "z61_listing_type_title.2.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5a6d8f8f62e559c7ef501dc85a49ac96"
+    },
+    "z61_listing_type_title.3.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d14344c0d615e086a5515eb7c7abc929"
+    },
+    "z61_package_title.1.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "54dcc43dcedbe067cf3591401bff4481"
+    },
+    "z61_package_title.2.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "96cf21b238d4e3c1f6ad50aa100d6ffc"
+    }
+}

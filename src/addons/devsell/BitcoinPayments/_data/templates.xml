@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_ncp_coinbase_commerce" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:textboxrow name="options[api_key]" value="{$profile.options.api_key}"
+	label="{{ phrase('ncp_cc_api_key') }}"
+	explain="{{ phrase('ncp_cc_api_key_explain', {'boardUrl': $xf.options.boardUrl}) }}"/>
+
+<xf:textboxrow name="options[webhook_secret]" value="{$profile.options.webhook_secret}"
+	label="{{ phrase('ncp_cc_webhook_secret') }}"
+	explain="{{ phrase('ncp_cc_webhook_secret_explain', { 'boardUrl': $xf.options.boardUrl, 'url': 'payment_callback.php?_xfProvider=ncp_coinbase_commerce' }) }}"/>]]></template>
+  <template type="public" title="ncp_payment_initiate_cbcommerce" version_id="11170" version_string="1.1.1"><![CDATA[<xf:css src="payment_initiate.less" />
+<xf:js src="xf/payment.js" min="1" />
+
+<xf:title>{{ phrase('enter_payment_details') }}</xf:title>
+
+<div class="blocks">
+	<xf:form action="{{ link('purchase/process', null, {'request_key': $purchaseRequest.request_key}) }}" class="block block--paymentInitiate">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow id="card-errors-container" rowclass="u-hidden">
+					<div class="block-rowMessage block-rowMessage--error block-rowMessage--iconic u-hidden" id="card-errors"></div>
+				</xf:inforow>
+
+				<hr class="formRowSep" />
+				
+				<iframe src="{{ $paymentUrl }}"></iframe>
+
+				<xf:formrow label="" rowtype="button">
+					<xf:button type="submit" icon="payment">
+						{{ phrase('pay_x', {'cost': $purchase.cost|currency($purchase.currency)}) }}
+					</xf:button>
+				</xf:formrow>
+			</div>
+		</div>
+	</xf:form>
+</div>]]></template>
+</templates>

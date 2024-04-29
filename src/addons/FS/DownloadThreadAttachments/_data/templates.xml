@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_export_post_attachments_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_export_post_attachments') }}</xf:title>
+
+
+<xf:form action="{{ link('posts/export-attachments',$post) }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_export_all_attachments_of_the_following_post:') }}
+				<strong>{$post.Thread.title}</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow class="js-overlayClose" icon="export" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="fs_export_thread_attachments_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_export_thread_attachments') }}</xf:title>
+
+
+<xf:form action="{{ link('threads/export-attachments',$thread) }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_export_all_attachments_of_the_following_thread:') }}
+				<strong>{$thread.title}</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow class="js-overlayClose" icon="export" />
+	</div>
+</xf:form>]]></template>
+</templates>

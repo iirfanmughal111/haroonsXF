@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="fs_user_names" permission_id="can_see_usernames" permission_type="flag" interface_group_id="fs_hide_usernames" display_order="1"/>
+  <permission permission_group_id="fs_user_names" permission_id="hide" permission_type="flag" interface_group_id="fs_hide_usernames" display_order="1"/>
+</permissions>

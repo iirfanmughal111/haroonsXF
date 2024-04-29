@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="bh_brand" format=":int&lt;brand_id,brand_title&gt;/" controller="XenBulletins\BrandHub:Brand" context="bh_brand"/>
+  <route route_type="admin" route_prefix="bh_category" format=":int&lt;category_id,category_title&gt;/" controller="XenBulletins\BrandHub:Category" context="bh_category"/>
+  <route route_type="admin" route_prefix="bh_item" format=":int&lt;item_id,item_title&gt;/" controller="XenBulletins\BrandHub:Item" context="bh_item"/>
+  <route route_type="admin" route_prefix="item-field" sub_name="fields" format="fields/:str&lt;field_id&gt;/" controller="XenBulletins\BrandHub:ItemField" context="custom_item_fields"/>
+  <route route_type="public" route_prefix="bh_brands" format=":int&lt;brand_id,brand_title&gt;/" controller="XenBulletins\BrandHub:Brands" context="bh_brand_hub"/>
+  <route route_type="public" route_prefix="bh_brands" sub_name="item" format="item/:int&lt;item_id,item_title&gt;/" controller="XenBulletins\BrandHub:Item" context="bh_brand_hub"/>
+  <route route_type="public" route_prefix="bh_brands" sub_name="review" format="item/:+int&lt;item_id,item_title&gt;/review/:+int&lt;item_rating_id&gt;/" controller="XenBulletins\BrandHub:ItemReview"/>
+  <route route_type="public" route_prefix="bh_item" sub_name="ownerpage" format="ownerpage/:int&lt;page_id&gt;/:+int&lt;item_id&gt;/" controller="XenBulletins\BrandHub:OwnerPage" context="bh_brand_hub"/>
+</routes>

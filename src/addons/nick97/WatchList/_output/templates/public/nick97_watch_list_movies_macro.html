@@ -1,0 +1,290 @@
+<xf:macro name="stats" arg-stats="!">
+
+	<xf:css src="nick97_stats.less" />
+
+	<div class="stats-p-body-section">
+		<div class="p-body-section-header">
+			<div class="statsContainer">
+				<div class="statsBox">
+					<h2>{{ phrase('nick97_watch_list_stats') }}</h2>
+				</div>
+
+				<xf:comment>
+
+					<xf:if is="true">
+
+						<div class="statsBox right_statsvideo">
+							<h2><i class="fas fa-chevron-right"></i></h2>
+						</div>
+
+					</xf:if>
+
+				</xf:comment>
+			</div>
+		</div>
+	</div>
+
+	<div class="myContainer">
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-tv"></i> {{ phrase('nick97_watch_list_tv_time') }}</h1>
+			<div class="myContainer1">
+				<div class="myBox-body">
+					<h2>
+						{$stats.moviesTime.months}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_month') }}
+					</h5>
+				</div>
+				<div class="myBox-body">
+					<h2>
+						{$stats.moviesTime.days}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_days') }}
+					</h5>
+				</div>
+
+				<div class="myBox-body">
+					<h2>
+						{$stats.moviesTime.hours}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_hours') }}
+					</h5>
+				</div>
+			</div>
+		</div>
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-tv"></i> {{ phrase('nick97_stats_episode_watched') }}</h1>
+			<div class="myBox-body">
+				<h1>
+					{$stats.episodesWatched}
+				</h1>
+			</div>
+		</div>
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-film"></i> {{ phrase('nick97_stats_movie_time') }}</h1>
+			<div class="myContainer1">
+				<div class="myBox-body">
+					<h2>
+						{$stats.episodesTime.months}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_month') }}
+					</h5>
+				</div>
+				<div class="myBox-body">
+					<h2>
+						{$stats.episodesTime.days}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_days') }}
+					</h5>
+				</div>
+
+				<div class="myBox-body">
+					<h2>
+						{$stats.episodesTime.hours}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_hours') }}
+					</h5>
+				</div>
+			</div>
+		</div>
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-film"></i> {{ phrase('nick97_stats_movie_watched') }}</h1>
+			<div class="myBox-body">
+				<h1>
+					{$stats.moviesWatched}
+				</h1>
+			</div>
+		</div>
+	</div>
+
+</xf:macro>
+
+
+
+<xf:macro name="movies" arg-movies="!">
+
+	<xf:css src="nick97_watch_list_movies.less" />
+
+	<div class="p-body-section">
+		<div class="p-body-section-header">
+			<div class="container">
+				<div class="box">
+					<h2>{{ phrase('nick97_watch_list_movies') }}</h2>
+				</div>
+
+				<xf:if is="count($movies) > 1">
+
+					<div class="right_watch_list box">
+						<h2><i class="fas fa-chevron-right"></i></h2>
+					</div>
+
+				</xf:if>
+			</div>
+		</div>
+	</div>
+
+	<xf:if is="count($movies) > 0">
+
+
+		<div id="container">
+
+
+			<div id="list-container">
+
+
+
+				<div class='list watch_list' style="">
+
+					<xf:foreach loop="{$movies}" value="$movie">
+
+						<div class='item'>
+							<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
+								<img src="{$movie.getImageUrl()}" style="width: 185px; height: 278px; border-radius: 6px;" />
+							</a>
+						</div>
+
+					</xf:foreach>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<xf:else />
+
+		<div class="empty">{{ phrase('nick97_watch_list_movies_empty') }}</div>
+
+	</xf:if>
+
+
+	<xf:js>
+
+		$(document).ready(function(){
+		$(".right_watch_list").click(function(){
+		var item_width = $('#list-container div.watch_list div.item').width(); 
+		var left_value = item_width * (-1); 
+		var left_indent = parseInt($('#list-container div.watch_list').css('left')) - item_width;
+		$('#list-container div.watch_list ').animate({'left' : left_indent}, 100, function () {
+		$('#list-container div.watch_list div.item:last').after($('#list-container div.watch_list div.item:first'));                  
+		$('#list-container div.watch_list').css({'left' : left_value});
+		});
+		});
+
+		$(".left_watch_list").click(function(){
+		var item_width = $('#list-container div.watch_list div.item').width(); 
+		var right_value = item_width * (+1); 
+		var right_indent = parseInt($('#list-container div.watch_list').css('right')) + item_width;
+		$('#list-container div.watch_list ').animate({'right' : right_indent}, 100, function () {
+		$('#list-container div.watch_list div.item:first').before($('#list-container div.watch_list div.item:last'));                  
+		$('#list-container div.watch_list').css({'right' : right_value});
+		});
+		});
+		});
+
+	</xf:js>
+
+</xf:macro>
+
+
+<xf:macro name="tvShow" arg-tvShows="!">
+
+	<xf:css src="nick97_watch_list_tv_shows.less" />
+
+
+	<div class="p-body-section1">
+		<div class="p-body-section-header1">
+			<div class="container1">
+				<div class="box1">
+					<h2>{{ phrase('nick97_watch_list_tv_shows') }}</h2>
+				</div>
+
+				<xf:if is="count($tvShows) > 1">
+
+					<div class="right_watch_list1 box1">
+						<h2><i class="fas fa-chevron-right"></i></h2>
+					</div>
+
+				</xf:if>
+			</div>
+		</div>
+	</div>
+
+	<xf:if is="count($tvShows) > 0">
+
+		<div id="container1">
+
+			<xf:comment>
+
+				<div id="arrowL1" class="left_watch_list1" style="">
+					<i class="fa fa-chevron-left"></i>
+				</div>
+				<div id="arrowR1" class="right_watch_list1"  style="">
+					<i class="fa fa-chevron-right"></i>
+				</div>	
+
+			</xf:comment>
+
+			<div id="list-container1">
+
+
+				<div class='list1 watch_list1' style="">
+
+					<xf:foreach loop="{$tvShows}" value="$movie">
+
+						<div class='item1'>
+							<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
+								<img src="{$movie.getImageUrl()}" style="width: 185px; height: 278px; border-radius: 6px;" />
+							</a>
+						</div>
+
+					</xf:foreach>		
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<xf:else />
+
+		<div class="empty">{{ phrase('nick97_watch_list_tv_show_empty') }}</div>
+
+	</xf:if>
+
+
+	<xf:js>
+
+		$(document).ready(function(){
+		$(".right_watch_list1").click(function(){
+		var item_width = $('#list-container1 div.watch_list1 div.item1').width(); 
+		var left_value = item_width * (-1); 
+		var left_indent = parseInt($('#list-container1 div.watch_list1').css('left')) - item_width;
+		$('#list-container1 div.watch_list1 ').animate({'left' : left_indent}, 100, function () {
+		$('#list-container1 div.watch_list1 div.item1:last').after($('#list-container1 div.watch_list1 div.item1:first'));                  
+		$('#list-container1 div.watch_list1').css({'left' : left_value});
+		});
+		});
+
+		$(".left_watch_list1").click(function(){
+		var item_width = $('#list-container1 div.watch_list1 div.item1').width(); 
+		var right_value = item_width * (+1); 
+		var right_indent = parseInt($('#list-container1 div.watch_list1').css('right')) + item_width;
+		$('#list-container1 div.watch_list1 ').animate({'right' : right_indent}, 100, function () {
+		$('#list-container1 div.watch_list1 div.item1:first').before($('#list-container1 div.watch_list1 div.item1:last'));                  
+		$('#list-container1 div.watch_list1').css({'right' : right_value});
+		});
+		});
+		});
+
+	</xf:js>
+
+</xf:macro>

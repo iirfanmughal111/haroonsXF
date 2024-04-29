@@ -1,0 +1,11 @@
+{
+    "parent_navigation_id": "forums",
+    "display_order": 300,
+    "navigation_type_id": "basic",
+    "type_config": {
+        "link": "{{ link('forums/') }}{$xf.options.fs_questionAnswerForum}&your_questions=1",
+        "display_condition": "$xf.visitor.user_id && $xf.reply.containerKey == 'node-'.$xf.options.fs_questionAnswerForum",
+        "extra_attributes": []
+    },
+    "enabled": true
+}

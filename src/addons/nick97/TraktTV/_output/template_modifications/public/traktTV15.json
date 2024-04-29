@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Changes script for quick reply to allow clearing of other fields (js: nick97/TraktTV/message.min.js)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:js src=\"xf/message.js\" min=\"1\" />",
+    "replace": "<xf:if is=\"$thread.traktTV is not empty && !$thread.traktTV.tv_episode\">\n\t<xf:js src=\"nick97/TraktTV/message.min.js\" />\n<xf:else />\n\t$0\n</xf:if>"
+}

@@ -1,0 +1,13 @@
+{
+    "group_name": "fs_forum_gorups",
+    "title": "Group avatar border radius",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "unit",
+    "value_parameters": "",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "50%",
+    "display_order": 120
+}

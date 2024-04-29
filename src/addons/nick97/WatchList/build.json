@@ -1,0 +1,6 @@
+{
+  "additional_files": ["styles/nick97/TraktLogo"],
+  "exec": [
+    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/nick97/WatchList/_build/built.txt'"
+  ]
+}

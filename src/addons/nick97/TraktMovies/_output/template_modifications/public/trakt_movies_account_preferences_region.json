@@ -1,0 +1,9 @@
+{
+    "template": "account_preferences",
+    "description": "Add input (region code)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"helper_account\" name=\"email_options_row\" ",
+    "replace": "<xf:if is=\"!in_array('', $xf.options.traktthreads_watchProviderRegions)\">\n\t\t\t\t<xf:selectrow name=\"option[nick97_movies_trakt_watch_region]\" value=\"{$xf.visitor.Option.nick97_movies_trakt_watch_region}\"\n\t\t\t\t\tlabel=\"{{ phrase('nick97_movies_trakt_watch_region') }}\">\n\n\t\t\t\t\t<xf:options source=\"$traktMoviesWatchRegions\" />\n\t\t\t\t</xf:selectrow>\n\t\t\t</xf:if>\n$0"
+}

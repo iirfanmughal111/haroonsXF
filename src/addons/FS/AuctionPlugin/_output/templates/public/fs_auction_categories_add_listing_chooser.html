@@ -1,0 +1,30 @@
+<xf:title>{{ phrase('fs_auctions_add_auction_to...') }}</xf:title>
+
+<xf:macro name="category_list" arg-children="{$categories}" />
+
+<xf:macro name="category_list" arg-children="!" arg-depth="0">
+	<xf:foreach loop="$children" value="$category">
+		<div class="block-row block-row--clickable block-row--separated fauxBlockLink">
+		<div class="contentRow contentRow--alignMiddle{{ $depth > 1 ? ' u-depth' . ($depth - 1) : '' }}">
+			<div class="contentRow-main">
+				<h2 class="contentRow-title">
+					<a href="{{ link('auction/categories/add', $category) }}" class="fauxBlockLink-blockLink">
+						{$category.title}
+					</a>
+				</h2>
+				<xf:if is="$category.description">
+					<div class="contentRow-minor contentRow-minor--singleLine">
+						{$category.description|strip_tags}
+					</div>
+				</xf:if>
+			</div>
+			<div class="contentRow-suffix">
+				<dl class="pairs pairs--rows pairs--rows--centered">
+					<dt>{{ phrase('fs_auction_auctions') }}</dt>
+					<dd>{$category.auctions_count|number_short}</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	</xf:foreach>
+</xf:macro>

@@ -1,0 +1,322 @@
+<xf:css src="bh_brandHub_list.less" />
+<xf:title class="bh-title">{{$item.Brand.brand_title}} {{ $item.item_title }} </xf:title>	
+<div>{{ $item.Category.category_title }} </div>
+<div class="title-rating">
+<xf:macro template="rating_macros" name="stars" arg-rating="{$item.rating_avg}" arg-class="ratingStars--smaller" /> ({{$item.rating_count}})
+
+</div>
+
+
+<xf:breadcrumb source="$item.getBreadcrumbs(false)" />
+
+<xf:pageaction>
+	<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_canUploadPhotos')">
+	<xf:button href="{{ link('bh_brands/item/uploadphoto', $item) }}" class="button--cta"  overlay="true">{{ phrase('bh_upload_photos', {'itemTitle': $item.item_title}) }}</xf:button>
+
+	</xf:if>
+	<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_canSetItemMainPhoto')">
+ 		<xf:button href="{{ link('bh_brands/item/mainphoto', $item) }}" class="" overlay="true">{{ phrase('bh_main_photo') }}</xf:button>
+	</xf:if>
+</xf:pageaction>
+
+<div class="itemPageNav">
+	
+	<br>
+	<div style="float:right;">
+		<xf:macro name="navigation" arg-pageSelected="{$pageSelected}"  arg-route="bh_brands/item"  arg-alreadySub="{$alreadySub}" 
+		  arg-item="{$item}" />
+	</div>	
+		
+</div>
+<div class="clearfix"></div>
+
+
+
+<xf:if is="$filmStripParams">
+<div class="media">
+	
+	<xf:if is="{$filmStripParams.prevItem}">
+		
+	<a href="{{ link('bh_brands/item',$item,{'attachment_id':$filmStripParams.prevItem.attachment_id}) }}" class="media-button media-button--prev" data-xf-key="ArrowLeft"><i class="media-button-icon"></i></a>	
+	
+		</xf:if>
+
+		 <div class="media-container">
+
+     	<xf:if is="{$mainItem}">
+        <xf:macro template="bh_item_filmstrip_view_macros" name="main_content" arg-mainItem="{$mainItem}" arg-item="{$item}" />
+		 </xf:if>
+		</div>
+	
+	
+
+	<xf:if is="$filmStripParams.nextItem">
+		<a href="{{ link('bh_brands/item',$item,{'attachment_id':$filmStripParams.nextItem.attachment_id}) }}" class="media-button media-button--next" data-xf-key="ArrowRight"><i class="media-button-icon"></i></a>
+	
+	</xf:if>
+		
+</div>
+
+	
+ <div class="block js-mediaInfoBlock">
+	 
+	<xf:if is="$filmStripParams.Items">
+	<xf:macro template="bh_item_filmstrip_view_macros" name="attachment_film_strip" arg-mainItem="{$mainItem}" arg-filmStripParams="{$filmStripParams}" arg-item="{$item}" />
+	 </xf:if>
+</div>
+		</xf:if>
+
+
+		
+	<xf:sidebar key="shareSidebar">
+			<div class="block">
+				<div class="block-container">
+					<div class="block-body block-row">
+					<xf:if contentcheck="true">
+						<h3 class="block-minorHeader">{{  phrase('bh_specifications') }}</h3>
+								<xf:contentcheck>
+								   <xf:macro template="item_custom_fields_macros_public" name="custom_fields_view"
+									  arg-type="bhItemfield"
+									  arg-group="below_record"
+									  arg-onlyInclude="{$category.field_cache}"
+									  arg-set="{$item.custom_fields}"	 
+									  arg-rowType="noGutter"
+									  arg-rowClass="mediaItem-input"
+									  arg-onlyInclude="{$category.field_cache}"
+									  arg-wrapperClass="resourceBody-fields resourceBody-fields--before"  />
+								</xf:contentcheck>
+						</xf:if>
+
+						</div>
+				</div>
+			</div>
+		</xf:sidebar>
+
+
+	<xf:sidebar key="">
+			<div class="block">
+				<div class="block-container">
+					<xf:if contentcheck="true">
+ 					<h3 class="block-minorHeader">{{  phrase('bh_x_item_community_rankings', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<div class="block-body block-row">
+
+							<xf:contentcheck>
+								<xf:datalist data-xf-init="responsive-data-list">
+									
+								<xf:if is="$itemPosition.categoryItemReviewPosition">
+										<xf:datarow>
+												<xf:cell>#{{$itemPosition.categoryItemReviewPosition}} user rating of {{$itemPosition.totalcategoryItems}} {{$item.Category.category_title }} items</xf:cell>
+										</xf:datarow>
+								</xf:if>
+								<xf:if is="$itemPosition.categoryItemViewPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.categoryItemViewPosition}} Viewed of {{$itemPosition.totalcategoryItems}} {{$item.Category.category_title }} items</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+									
+                          		<xf:if is="$itemPosition.categoryItemDiscussionPosition">
+										<xf:datarow>
+												<xf:cell>#{{$itemPosition.categoryItemDiscussionPosition}} discussed of {{$itemPosition.totalcategoryItems}} {{$item.Category.category_title }} items</xf:cell>
+										</xf:datarow>
+								</xf:if>
+									
+							
+								<xf:if is="$itemPosition.overallItemReviewPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.overallItemReviewPosition}} user rating of {{$itemPosition.totalItems}} items overall</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+									
+								<xf:if is="$itemPosition.overallItemViewPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.overallItemViewPosition}} Viewed of {{$itemPosition.totalItems}} items overall</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+									
+								<xf:if is="$itemPosition.overallItemDiscussionPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.overallItemDiscussionPosition}} discussed of {{$itemPosition.totalItems}} items overall</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+								
+								
+									
+								 </xf:datalist>
+							</xf:contentcheck>
+
+							</div>
+					</xf:if>
+				</div>
+			</div>
+		</xf:sidebar>
+
+<xf:macro  template="bh_ad_macros" name="sideBar_itemdetail" />
+	<div class='clearfix'></div>
+
+<h3 class="block-body block-row block-row--separated">{{ phrase('bh_about_the_x_item', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3><br>
+<div class="block-container">
+	<div class="block-row">
+	<blockquote class="message-body">
+		{{ bb_code($item.Description.description, 'description', $item.Description) }}
+		<br>
+		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_can_edit_itemDescript')">
+			<a href="{{ link('bh_brands/item/edit', $item) }}" data-xf-click="overlay">{{ phrase('edit') }}</a>
+		</xf:if>
+		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'react') && $xf.visitor.user_id">
+			<xf:extension name="footer">
+				<xf:macro name="item_reaction_footer" arg-item="{$item}"  />
+			</xf:extension>
+		</xf:if>
+	</blockquote>
+			</div>
+</div>
+
+<div class='clearfix'></div>
+
+<xf:if contentcheck="true">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body block-row">
+
+				<h3 class="block-minorHeader">{{  phrase('bh_specifications') }}</h3>
+				<xf:contentcheck>
+					<xf:macro template="item_custom_fields_macros_public" name="custom_fields_view"
+							  arg-type="bhItemfield"
+							  arg-group="above_record"
+							  arg-onlyInclude="{$category.field_cache}"
+							  arg-set="{$item.custom_fields}"	 
+							  arg-rowType="noGutter"
+							  arg-rowClass="mediaItem-input"
+							  arg-onlyInclude="{$category.field_cache}"
+							  arg-wrapperClass="resourceBody-fields resourceBody-fields--before"  />
+				</xf:contentcheck>
+				<br>
+			</div>
+		</div>
+	</div>
+</xf:if>
+<div class='clearfix'></div>
+
+
+<div class="block" id="discussion">
+				<div class="block-container">
+					<div class="block-header">
+						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+					</div>
+							<div class="block-body block-row block-row--separated">
+								<div class="block-body">
+									<xf:datalist data-xf-init="responsive-data-list">
+										
+										<xf:if is="$discussions is not empty">
+											<xf:foreach loop="$discussions" value="$discussion">
+											<xf:if is="$discussion.isUnread()">
+												<xf:datarow>
+													<xf:cell style="font-weight:700;" href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ prefix('thread', $discussion) }}{{ $discussion.title }}</xf:cell>
+												</xf:datarow>
+												<xf:else />
+													<xf:datarow>
+													<xf:cell href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ $discussion.title }}</xf:cell>
+												</xf:datarow>
+												</xf:if>
+											</xf:foreach>
+											<xf:if is="$item.discussion_count > $xf.options.bh_discussions_on_item ">
+													<xf:datarow>
+														<xf:cell href="{{ link('bh_brands/item/itemthreads', $item) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}</xf:cell>
+													</xf:datarow>
+												</xf:if>
+										<xf:else />
+											<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+										</xf:if>
+
+									</xf:datalist>
+								</div>
+							</div>			
+				</div>
+			</div>
+
+
+<div class='clearfix'></div>
+
+<xf:macro  template="bh_ad_macros" name="center_itemdetail1" />
+	<div class='clearfix'></div>
+
+<xf:include template="bh_user_reviews" />
+	<div class='clearfix'></div>
+
+<xf:macro  template="bh_ad_macros" name="center_itemdetail2" />
+	<div class='clearfix'></div>
+
+<xf:include template="bh_item_owner_page" />
+	<div class='clearfix'></div>
+
+
+
+
+<xf:macro name="navigation" arg-pageSelected="!" arg-route="" arg-item=""  arg-alreadySub="">
+	
+	<xf:if is="property('findThreadsNavStyle') == 'tabs'">
+		
+		<xf:include template="whiteThreeButton"/>
+		
+		<div class="tabs tabs--standalone">
+			
+			
+			<div class="hScroller" data-xf-init="h-scroller">
+				<span class="hScroller-scroll">
+					<xf:macro name="links"
+						arg-pageSelected="{$pageSelected}"
+						arg-baseClass="tabs-tab"
+						arg-selectedClass="is-active"
+						arg-route="{$route}"
+						arg-item="{$item}"
+						 />
+				</span>
+			</div>
+		</div>
+	
+		<xf:page option="sideNavTitle">{{ phrase('bh_brand_lists') }}</xf:page>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="links" arg-pageSelected="!" arg-baseClass="!" arg-selectedClass="!" arg-route="" arg-item="">
+   
+	
+	<a class="{$baseClass} {{ ($pageSelected == 'overview') ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $item) }}" rel="nofollow">{{ phrase('bh_overview') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'discussion' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}.'/#discussion', $item) }}" rel="nofollow">{{ phrase('bh_discussion') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'reviews' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}.'/#reviews', $item) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'ownerPage' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}.'/#ownerPage', $item) }}" rel="nofollow">{{ phrase('bh_owner_page') }}</a>
+</xf:macro>
+
+<xf:macro name="item_reaction_footer" arg-item="!">
+	<footer class="message-footer">
+		<xf:if contentcheck="true">
+			<div class="message-actionBar actionBar">
+				<xf:contentcheck>
+					<xf:macro name="item_action_bar" arg-item="{$item}" />
+				</xf:contentcheck>
+			</div>
+		</xf:if>
+
+		<div class="reactionsBar js-reactionsList {{ $item.reactions ? 'is-active' : '' }}">
+					<xf:reactions content="{$item}" link="bh_brands/item/reactions" />
+		</div>
+
+		<div class="js-historyTarget message-historyTarget toggleTarget" data-href="trigger-href"></div>
+	</footer>
+</xf:macro>
+
+
+<xf:macro name="item_action_bar" arg-item="!">
+	<xf:if contentcheck="true">
+		<div class="actionBar-set actionBar-set--external">
+		<xf:contentcheck>
+			<xf:react content="{$item}" link="bh_brands/item/react" list=".js-reactionsList" />
+		</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>

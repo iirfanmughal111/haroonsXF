@@ -1,0 +1,41 @@
+<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_crud_edit_record') }} : {$data.name} <xf:breadcrumb href="#">{{
+		phrase('fs_crud_edit_record') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_crud_new_record') }}
+		<xf:breadcrumb href="#">{{ phrase('Add Record') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('crud/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="name"
+						   value="{$data.name}"
+						   label="Name"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:textboxrow
+						   name="class"
+						   value="{$data.class}"
+						   label="Class"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:numberboxrow
+							 name="rollNo"
+							 value="{$data.rollNo}"
+							 label="Roll No"
+							 autosize="true"
+							 row="5"
+							 />
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

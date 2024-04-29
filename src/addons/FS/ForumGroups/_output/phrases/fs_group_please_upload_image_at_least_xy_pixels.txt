@@ -1,0 +1,1 @@
+Please upload an image that have at least {width}x{height} pixels.

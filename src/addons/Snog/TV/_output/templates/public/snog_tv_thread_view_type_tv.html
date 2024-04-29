@@ -1,0 +1,25 @@
+<xf:extends template="thread_view" />
+
+<xf:extension name="content_top">
+	<xf:css src="snog_tv.less" />
+</xf:extension>
+
+<xf:extension name="thread_action_buttons">
+	<xf:if is="{{ property('snog_tv_posterUpdateButtonPosition') == 'default' && $thread.TV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+		<xf:button href="{{ link('tv/poster', $thread.TV) }}" class="button--link" overlay="true">
+			{{ phrase('snog_tv_check_poster') }}
+		</xf:button>
+	</xf:if>
+	<xf:if is="$xf.options.TvThreads_update && !$thread.TV && $canAddInfo">
+		<xf:button href="{{ link('tv/add-info', $thread) }}" class="button--link" overlay="true">
+			{{ phrase('snog_tv_add_info') }}
+		</xf:button>
+	</xf:if>
+	<xf:extensionparent />
+</xf:extension>
+
+<xf:extension name="above_messages_below_pinned">
+	<xf:if is="$thread.TV is not empty && $page <= 1">
+		<span class="tvhint">{{ phrase('snog_tv_information_thread')}}</span>
+	</xf:if>
+</xf:extension>

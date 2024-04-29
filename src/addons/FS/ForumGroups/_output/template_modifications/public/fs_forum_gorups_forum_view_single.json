@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_forum_gorups_forum_view_single",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$canInlineMod\">\n\t<xf:js src=\"xf/inline_mod.js\" min=\"1\" />\n</xf:if>",
+    "replace": "$0\n\n<xf:if is=\"$forum.Node.parent_node_id == $xf.options.fs_forum_groups_applicable_forum\">\n\t\t\t<xf:if is=\"!$nodeTree\">\n\t\t\t  <xf:macro\n\t\t\t  template=\"fs_forum_groups_forum_view_single\"\n\t\t\t  name=\"fs_forum_groups_forum_view_single_macro\"\n\t\t\t  arg-subForums=\"{$forum.Node}\"\n\t\t\t  />\n\t\t\t</xf:if>\n</xf:if>"
+}

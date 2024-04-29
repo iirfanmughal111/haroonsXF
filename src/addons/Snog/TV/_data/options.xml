@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="TvThreads_aggregateCredits" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="12"/>
+  </option>
+  <option option_id="TvThreads_apikey" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="TvThreads" display_order="1"/>
+  </option>
+  <option option_id="TvThreads_backdropCoverSize" edit_format="select" data_type="string" advanced="0">
+    <default_value>none</default_value>
+    <edit_format_params>none={{ phrase('none') }}
+original=original
+w1920_and_h800_multi_faces=w1920_and_h800_multi_faces
+w1400_and_h450_face=w1400_and_h450_face</edit_format_params>
+    <relation group_id="TvThreads" display_order="3120"/>
+  </option>
+  <option option_id="TvThreads_castsLimit" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>30</default_value>
+    <relation group_id="TvThreads" display_order="1000"/>
+  </option>
+  <option option_id="TvThreads_category" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Snog\TV\Option\Category::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="500"/>
+  </option>
+  <option option_id="TvThreads_cdn_path" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="TvThreads" display_order="3020"/>
+  </option>
+  <option option_id="TvThreads_changesLanguage" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>en</default_value>
+    <relation group_id="TvThreads" display_order="21"/>
+  </option>
+  <option option_id="TvThreads_companiesLimit" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>10</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="TvThreads" display_order="1030"/>
+  </option>
+  <option option_id="TvThreads_creditsLimit" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>30</default_value>
+    <relation group_id="TvThreads" display_order="1010"/>
+  </option>
+  <option option_id="TvThreads_crosslink" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="325"/>
+  </option>
+  <option option_id="TvThreads_episode_exclude" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="520"/>
+  </option>
+  <option option_id="TvThreads_fetchCompanies" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="TvThreads" display_order="14"/>
+  </option>
+  <option option_id="TvThreads_fetchCredits" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="TvThreads" display_order="11"/>
+  </option>
+  <option option_id="TvThreads_fetchNetworks" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="TvThreads" display_order="15"/>
+  </option>
+  <option option_id="TvThreads_fetchVideos" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="TvThreads" display_order="13"/>
+  </option>
+  <option option_id="TvThreads_force_comments" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="330"/>
+  </option>
+  <option option_id="TvThreads_forum" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Snog\TV\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="debug" display_order="10000001"/>
+  </option>
+  <option option_id="TvThreads_language" edit_format="textbox" data_type="string" validation_class="Snog\TV\Option\Language" validation_method="verifyOption" advanced="0">
+    <default_value>en</default_value>
+    <edit_format_params>size=5
+maxlength=5</edit_format_params>
+    <relation group_id="TvThreads" display_order="2"/>
+  </option>
+  <option option_id="TvThreads_largeCompanyLogoSize" edit_format="select" data_type="string" advanced="0">
+    <default_value>w185</default_value>
+    <edit_format_params>w92=w92
+w154=w154
+w185=w185
+w342=w342
+w500=w500
+w780=w780
+original=original</edit_format_params>
+    <relation group_id="TvThreads" display_order="3140"/>
+  </option>
+  <option option_id="TvThreads_largeNetworkLogoSize" edit_format="select" data_type="string" advanced="0">
+    <default_value>w185</default_value>
+    <edit_format_params>w92=w92
+w154=w154
+w185=w185
+w342=w342
+w500=w500
+w780=w780
+original=original</edit_format_params>
+    <relation group_id="TvThreads" display_order="3160"/>
+  </option>
+  <option option_id="TvThreads_largePosterSize" edit_format="select" data_type="string" advanced="0">
+    <default_value>w780</default_value>
+    <edit_format_params>w92=w92
+w154=w154
+w185= w185
+w342=w342
+w500=w500
+w780=w780
+original=original</edit_format_params>
+    <relation group_id="TvThreads" display_order="3110"/>
+  </option>
+  <option option_id="TvThreads_multiple" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="100"/>
+  </option>
+  <option option_id="TvThreads_networksLimit" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>10</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="TvThreads" display_order="1031"/>
+  </option>
+  <option option_id="TvThreads_replaceSearchTemplate" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="1100"/>
+  </option>
+  <option option_id="TvThreads_showThread" edit_format="checkbox" data_type="array" advanced="0">
+    <default_value>{"genres":1,"release":1,"last_air_date":1,"status":1,"director":1,"cast":1,"plot":1,"production_companies":1,"trailer_tab":1,"cast_tab":1,"crew_tab":1,"videos_tab":1}</default_value>
+    <edit_format_params>genres={{ phrase('snog_tv_genre') }}
+release={{ phrase('snog_tv_first_aired') }}
+last_air_date={{ phrase('snog_tv_last_air_date') }}
+status={{ phrase('snog_tv_status') }}
+director={{ phrase('snog_tv_creator') }}
+cast={{ phrase('snog_tv_cast') }}
+plot={{ phrase('snog_tv_overview') }}
+networks={{ phrase('snog_tv_networks') }}
+production_companies={{ phrase('snog_tv_production_companies') }}
+trailer_tab={{ phrase('snog_tv_trailer') }}
+cast_tab={{ phrase('snog_tv_cast_tab') }}
+crew_tab={{ phrase('snog_tv_crew_tab') }}
+videos_tab={{ phrase('snog_tv_videos_tab') }}</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="1050"/>
+  </option>
+  <option option_id="TvThreads_smallCompanyLogoWidth" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>92</default_value>
+    <edit_format_params>units={{ phrase('units_pixels') }}
+min=1</edit_format_params>
+    <relation group_id="TvThreads" display_order="3130"/>
+  </option>
+  <option option_id="TvThreads_smallNetworkLogoWidth" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>92</default_value>
+    <edit_format_params>units={{ phrase('units_pixels') }}
+min=1</edit_format_params>
+    <relation group_id="TvThreads" display_order="3150"/>
+  </option>
+  <option option_id="TvThreads_smallPosterWidth" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>185</default_value>
+    <edit_format_params>units={{ phrase('units_pixels') }}
+min=1</edit_format_params>
+    <relation group_id="TvThreads" display_order="3100"/>
+  </option>
+  <option option_id="TvThreads_sort" edit_format="select" data_type="string" advanced="0">
+    <default_value>DESC</default_value>
+    <edit_format_params>DESC={{ phrase('descending') }}
+ASC={{ phrase('ascending') }}</edit_format_params>
+    <relation group_id="TvThreads" display_order="510"/>
+  </option>
+  <option option_id="TvThreads_syncTitle" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="TvThreads" display_order="110"/>
+  </option>
+  <option option_id="TvThreads_threadListInfo" edit_format="checkbox" data_type="array" advanced="0">
+    <default_value>{"title":1,"genres":1,"first_air_date":1,"last_air_date":1,"status":1,"director":1}</default_value>
+    <edit_format_params>title={{ phrase('snog_tv_title') }}
+genres={{ phrase('snog_tv_genre') }}
+first_air_date={{ phrase('snog_tv_first_aired') }}
+last_air_date={{ phrase('snog_tv_last_air_date') }}
+status={{ phrase('snog_tv_status') }}
+director={{ phrase('snog_tv_creator') }}
+plot={{ phrase('snog_tv_overview') }}</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="1040"/>
+  </option>
+  <option option_id="TvThreads_titleYear" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="TvThreads" display_order="120"/>
+  </option>
+  <option option_id="TvThreads_trackChanges" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="19"/>
+  </option>
+  <option option_id="TvThreads_trackChangesAiringToday" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="20"/>
+  </option>
+  <option option_id="TvThreads_trackChangesPeriod" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>1</default_value>
+    <edit_format_params>units={{ phrase('units_days') }}</edit_format_params>
+    <relation group_id="TvThreads" display_order="22"/>
+  </option>
+  <option option_id="TvThreads_trackCommunityChanges" edit_format="checkbox" data_type="array" advanced="1">
+    <default_value>[]</default_value>
+    <edit_format_params>images={{ phrase('image') }}
+name={{ phrase('name') }}
+overview={{ phrase('snog_tv_overview') }}
+status={{ phrase('snog_tv_status') }}
+season_regular={{ phrase('snog_tv_regular_cast') }}
+release_dates={{ phrase('snog_tv_release_date') }}
+videos={{ phrase('snog_tv_videos') }}
+imdb_id=IMDB ID</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="20"/>
+  </option>
+  <option option_id="TvThreads_update" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="debug" display_order="999999999"/>
+  </option>
+  <option option_id="TvThreads_useLocalImages" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="TvThreads" display_order="3000"/>
+  </option>
+  <option option_id="TvThreads_use_genres" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="320"/>
+  </option>
+  <option option_id="TvThreads_use_rating" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="10"/>
+  </option>
+  <option option_id="TvThreads_usecdn" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="3010"/>
+  </option>
+  <option option_id="TvThreads_videosLimit" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>10</default_value>
+    <relation group_id="TvThreads" display_order="1020"/>
+  </option>
+  <option option_id="TvThreads_watchProviderRegion" edit_format="callback" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>Snog\TV\Option\Country::renderSelect</edit_format_params>
+    <relation group_id="TvThreads" display_order="610"/>
+  </option>
+  <option option_id="TvThreads_watchProviderRegions" edit_format="callback" data_type="array" advanced="0">
+    <default_value>["US"]</default_value>
+    <edit_format_params>Snog\TV\Option\Country::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="600"/>
+  </option>
+</options>

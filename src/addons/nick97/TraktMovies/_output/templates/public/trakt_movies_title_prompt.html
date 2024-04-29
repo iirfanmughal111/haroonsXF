@@ -1,0 +1,20 @@
+<xf:css src="trakt_movies.less" />
+	
+<xf:if is="!$xf.options.traktthreads_mix">
+	<xf:set var="$placeholder" value="{{ phrase('trakt_movies_link_id') }}" />
+<xf:else />
+	<xf:set var="$placeholder" value="{{ phrase('trakt_movies_title_link_id') }}" />
+</xf:if>
+	
+<xf:prefixinputrow
+	label="{{ phrase('title') }}"
+	prefixes="{$prefixes}"
+	type="thread"
+	prefix-value="{{ $thread.prefix_id ?: $forum.default_prefix_id }}"
+	textbox-value="{{ $thread.title ?: $forum.draft_thread.title }}"
+	textbox-class="input--title"
+	placeholder="{$placeholder}"
+	rowtype="fullWidth noLabel"
+	autofocus="autofocus"
+	maxlength="{{ max_length('XF:Thread', 'title') }}" 
+	explain="{{ phrase('trakt_movies_explain_link') }}" />

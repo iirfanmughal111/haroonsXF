@@ -1,0 +1,47 @@
+<xf:extends template="forum_filters" />
+
+<xf:extension name="before_date_limit">
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_tv_genre:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="genre" value="{{ $filters.genre ? $filters.genre : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_tv_director:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="director" value="{{ $filters.director ? $filters.director : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_tv_cast:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="cast" value="{{ $filters.cast ? $filters.cast : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_tv_title:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="tv_title" value="{{ $filters.tv_title ? $filters.tv_title : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_tv_status:') }}
+		<div class="u-inputSpacer">
+			<xf:select name="tv_status">
+				<xf:option value="">{{ phrase('any') }}</xf:option>
+				<xf:option value="Returning Series">{{ phrase('trakt_tv_status_returning_series') }}</xf:option>
+				<xf:option value="Ended">{{ phrase('trakt_tv_status_ended') }}</xf:option>
+				<xf:option value="Canceled">{{ phrase('trakt_tv_status_cancelled') }}</xf:option>
+			</xf:select>
+		</div>
+	</div>
+</xf:extension>

@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_thread_thumbnail_sorting",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "\"<xf:if is=\\\"\\$stickyThreads is not empty\\\">.*?</xf:if>\"si",
+    "replace": "$0\n<xf:if is=\"$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)\">\n\n\t<div class=\"sorting-heading\">\n\t\t<div class=\"sorting-heading-title\">\n\t\t\t<h1>\n\t\t\t\t{$forum.Node.title}\n\t\t\t</h1>\n\t\t</div>\n\t\t<xf:if is=\"count($forum.prefixes)\">\n\t\t\t<div class=\"sorting\">\n\t\t\t\t<span>Sort By:</span>\n\n\t\t\t\t<ul>\n\t\t\t\t\t<xf:set var=\"$prefixesGroups\" value=\"{{$forum.getPrefixesGroups()}}\"/>\n\t\t\t\t\t<xf:foreach\n\t\t\t\t\t\t\t\tloop=\"$prefixesGroups.prefixGroups\"\n\t\t\t\t\t\t\t\tkey=\"$prefixGroupId\"\n\t\t\t\t\t\t\t\tvalue=\"$prefixGroup\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t<xf:foreach\n\t\t\t\t\t\t\t\t\tloop=\"{$prefixesGroups.prefixesGrouped.{$prefixGroupId}}\"\n\t\t\t\t\t\t\t\t\tkey=\"$prefix_id\"\n\t\t\t\t\t\t\t\t\tvalue=\"$prefix\"\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<xf:if is=\"in_array($prefix_id,$forum.prefix_cache)\">\n\n\t\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t\t<a href=\"{{ link('forums', $forum, {'prefix_id': $prefix_id}) }}\" class=\"sorting-button active\">{$prefix.title}</a>\n\t\t\t\t\t\t\t\t</li>\n\n\t\t\t\t\t\t\t</xf:if>\n\n\t\t\t\t\t\t</xf:foreach>\n\t\t\t\t\t</xf:foreach>\n\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</xf:if>\n\t</div>\n\n</xf:if>"
+}

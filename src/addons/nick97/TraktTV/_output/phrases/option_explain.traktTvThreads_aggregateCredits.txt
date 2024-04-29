@@ -1,0 +1,2 @@
+If checked, cast & crew data for TV shows will be fetched all the entire cast & crew for all episodes belonging to a TV show.</br>
+This can be a large amount of data and will affect performance.

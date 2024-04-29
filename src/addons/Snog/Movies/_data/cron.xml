@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="snogMoviesConvert" cron_class="\Snog\Movies\Cron\Convert" cron_method="Process" active="0"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57]}]]></entry>
+  <entry entry_id="snogMoviesWatchProvider" cron_class="Snog\Movies\Cron\MovieWatchProviderUpdate" cron_method="runDaily" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="snog_movies_changes" cron_class="Snog\Movies\Cron\MovieChanges" cron_method="run" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+</cron>

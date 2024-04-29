@@ -1,0 +1,2 @@
+This will help to keep track of last-aired data changes since the <a href="https://developers.themoviedb.org/3/changes/get-movie-change-list">/movie/changes</a> endpoint doesn't report added episodes.<br/>
+<b>Note:</b> This will overwrite all your manual edits if the TV has been updated.

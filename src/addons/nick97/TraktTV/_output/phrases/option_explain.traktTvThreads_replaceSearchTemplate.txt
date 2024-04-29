@@ -1,0 +1,1 @@
+Check this option if you want to display TV data in XF search/tag results.

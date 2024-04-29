@@ -1,0 +1,13 @@
+{
+    "edit_format": "radio",
+    "edit_format_params": "left=left\nright=right",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "left",
+    "relations": {
+        "fs_translator": 35
+    }
+}

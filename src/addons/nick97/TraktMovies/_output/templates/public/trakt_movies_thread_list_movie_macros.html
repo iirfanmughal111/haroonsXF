@@ -1,0 +1,208 @@
+<xf:macro name="item" extends="thread_list_macros::item">
+	<xf:extension name="icon_cell">
+		<xf:if is="$thread.traktMovie is not empty">
+			<xf:include template="trakt_movies_thread_list_poster" />
+		<xf:else />
+			<xf:extensionparent />
+		</xf:if>
+	</xf:extension>
+	
+	<xf:extension name="main_cell">
+		<xf:if is="$thread.traktMovie is not empty">
+			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+				<xf:if contentcheck="true">
+					<ul class="structItem-statuses">
+					<xf:contentcheck>
+					<xf:extension name="statuses">
+						<xf:if is="property('reactionSummaryOnLists') == 'status' && $thread.first_post_reactions">
+							<li><xf:reactions summary="true" reactions="{$thread.first_post_reactions}" /></li>
+						</xf:if>
+						<xf:extension name="before_status_state"></xf:extension>
+						<xf:if is="$thread.discussion_state == 'moderated'">
+							<li>
+								<i class="structItem-status structItem-status--moderated" aria-hidden="true" title="{{ phrase('awaiting_approval')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('awaiting_approval') }}</span>
+							</li>
+						</xf:if>
+						<xf:if is="$thread.discussion_state == 'deleted'">
+							<li>
+								<i class="structItem-status structItem-status--deleted" aria-hidden="true" title="{{ phrase('deleted')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('deleted') }}</span>
+							</li>
+						</xf:if>
+						<xf:if is="!$thread.discussion_open">
+							<li>
+								<i class="structItem-status structItem-status--locked" aria-hidden="true" title="{{ phrase('locked')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('locked') }}</span>
+							</li>
+						</xf:if>
+
+						<xf:extension name="status_sticky">
+							<xf:if is="$thread.sticky">
+								<li>
+									<i class="structItem-status structItem-status--sticky" aria-hidden="true" title="{{ phrase('sticky')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('sticky') }}</span>
+								</li>
+							</xf:if>
+						</xf:extension>
+
+						<xf:extension name="before_status_watch"></xf:extension>
+						<xf:if is="{$showWatched} AND {$xf.visitor.user_id}">
+							<xf:if is="{$thread.Watch.{$xf.visitor.user_id}}">
+								<li>
+									<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('thread_watched')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('thread_watched') }}</span>
+								</li>
+								<xf:elseif is="!$forum AND {$thread.Forum.Watch.{$xf.visitor.user_id}}" />
+								<li>
+									<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('forum_watched')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('forum_watched') }}</span>
+								</li>
+							</xf:if>
+						</xf:if>
+
+						<xf:extension name="before_status_type">
+							<xf:if is="$xf.options.traktthreads_use_rating">
+								<ul class="structItem-extraInfo">
+									<li>
+										<xf:macro template="rating_macros" name="stars"
+												  arg-rating="{$thread.traktMovie.trakt_rating}" />
+									</li>
+								</ul>
+							</xf:if>
+						</xf:extension>
+						
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							<xf:extension name="thread_type_redirect">
+								<li>
+									<i class="structItem-status structItem-status--redirect" aria-hidden="true" title="{{ phrase('redirect')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('redirect') }}</span>
+								</li>
+							</xf:extension>
+						<xf:elseif is="$thread.discussion_type == 'question' && $thread.type_data.solution_post_id" />
+							<xf:extension name="thread_type_question_solved">
+								<li>
+									<i class="structItem-status structItem-status--solved" aria-hidden="true" title="{{ phrase('solved')|for_attr }}"></i>
+									<span class="u-srOnly">{{ phrase('solved') }}</span>
+								</li>
+							</xf:extension>
+						<xf:elseif is="!$forum || $forum.forum_type_id == 'discussion'" />
+							<xf:extension name="thread_type_icon">
+								<xf:if is="$thread.discussion_type != 'discussion'">
+									<xf:set var="$threadTypeHandler" value="{{ $thread.getTypeHandler() }}" />
+									<xf:if is="$threadTypeHandler.getTypeIconClass()">
+										<li>
+											<xf:set var="$threadTypePhrase" value="{{ $threadTypeHandler.getTypeTitle() }}" />
+											<xf:fa class="structItem-status" icon="{{ $threadTypeHandler.getTypeIconClass() }}" title="{$threadTypePhrase|for_attr}" />
+											<span class="u-srOnly">{$threadTypePhrase}</span>
+										</li>
+									</xf:if>
+								</xf:if>
+							</xf:extension>
+						</xf:if>
+					</xf:extension>
+					</xf:contentcheck>
+					</ul>
+				</xf:if>
+
+				<div class="structItem-title">
+					<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+					<xf:if is="$thread.prefix_id">
+						<xf:if is="$forum">
+							<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+						<xf:else />
+							{{ prefix('thread', $thread, 'html', '') }}
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>
+				</div>
+
+				<div class="structItem-minor">
+					<xf:if contentcheck="true">
+						<ul class="structItem-extraInfo">
+						<xf:contentcheck>
+							<xf:if is="property('reactionSummaryOnLists') == 'minor_opposite' && $thread.first_post_reactions">
+								<li><xf:reactions summary="true" reactions="{$thread.first_post_reactions}" /></li>
+							</xf:if>
+							<xf:if is="{$extraInfo}">
+								<li>{$extraInfo}</li>
+							<xf:elseif is="$allowEdit AND $thread.canEdit() AND $thread.canUseInlineModeration()" />
+								<xf:if is="!$allowInlineMod OR !$forum">
+									<xf:set var="$editParams" value="{{ {
+										'_xfNoInlineMod': !$allowInlineMod ? 1 : null,
+										 '_xfForumName': !$forum ? 1 : 0
+									} }}" />
+								<xf:else />
+									<xf:set var="$editParams" value="{{ [] }}" />
+								</xf:if>
+								<xf:if is="$thread.discussion_type != 'redirect'">
+									<li class="structItem-extraInfoMinor">
+										<a href="{{ link('threads/edit', $thread) }}" data-xf-click="overlay" data-cache="false" data-href="{{ link('threads/edit', $thread, $editParams) }}">
+											{{ phrase('edit') }}
+										</a>
+									</li>
+								</xf:if>
+							</xf:if>
+							<xf:if is="$chooseName">
+								<li><xf:checkbox standalone="true">
+									<xf:option name="{$chooseName}[]" value="{$thread.thread_id}" class="js-chooseItem" />
+								</xf:checkbox></li>
+							<xf:elseif is="$allowInlineMod AND $thread.canUseInlineModeration()" />
+								<li><xf:checkbox standalone="true">
+									<xf:option value="{$thread.thread_id}" class="js-inlineModToggle"
+										data-xf-init="tooltip"
+										title="{{ phrase('select_for_moderation') }}"
+										label="{{ phrase('select_for_moderation') }}"
+										hiddenlabel="true"
+									/>
+								</xf:checkbox></li>
+							</xf:if>
+						</xf:contentcheck>
+						</ul>
+					</xf:if>
+
+					<xf:if is="$thread.discussion_state == 'deleted'">
+						<xf:if is="{$extraInfo}"><span class="structItem-extraInfo">{$extraInfo}</span></xf:if>
+
+						<xf:macro template="deletion_macros" name="notice" arg-log="{$thread.DeletionLog}" />
+					<xf:else />
+						<div>
+							<xf:macro name="movie_info" arg-thread="{$thread}" arg-onlyInclude="{{ $xf.options.traktthreads_threadListInfo }}" />
+							<ul class="structItem-parts">
+								<li><xf:username user="$thread.User" defaultname="{$thread.username}" /></li>
+								<li class="structItem-startDate"><a href="{{ link('threads', $thread) }}" rel="nofollow"><xf:date time="{$thread.post_date}" /></a></li>
+								<xf:if is="!$forum">
+									<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
+								</xf:if>
+							</ul>
+						</div>
+
+						<xf:if is="$thread.discussion_type != 'redirect' && $thread.reply_count >= $xf.options.messagesPerPage && $xf.options.lastPageLinks">
+							<span class="structItem-pageJump">
+							<xf:foreach loop="{{ last_pages($thread.reply_count + 1, $xf.options.messagesPerPage, $xf.options.lastPageLinks) }}" value="$p">
+								<a href="{{ link('threads', $thread, {'page': $p}) }}">{$p}</a>
+							</xf:foreach>
+							</span>
+						</xf:if>
+					</xf:if>
+					
+				</div>
+			</div>
+		<xf:else />
+			<xf:extensionparent />
+		</xf:if>
+	</xf:extension>
+
+</xf:macro>
+
+<xf:macro name="movie_info" arg-thread="!" arg-onlyInclude="{{ null }}">
+	<!--[XF:trakt_movies_thread_list_info_top]-->
+	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.traktMovie.trakt_title}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.tagline) && $thread.traktMovie.trakt_tagline"><b>{{ phrase('trakt_movies_tagline') }}:</b> {$thread.traktMovie.trakt_tagline}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.traktMovie.trakt_genres"><b>{{ phrase('trakt_movies_genre') }}:</b> {$thread.traktMovie.trakt_genres}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.traktMovie.trakt_director"><b>{{ phrase('trakt_movies_director') }}:</b> {$thread.traktMovie.trakt_director}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.runtime) && $thread.traktMovie.trakt_runtime"><b>{{ phrase('trakt_movies_runtime') }}:</b> {$thread.traktMovie.trakt_runtime}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.traktMovie.trakt_status"><b>{{ phrase('trakt_movies_status') }}:</b> {$thread.traktMovie.trakt_status}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.release_date) && $thread.traktMovie.trakt_release"><b>{{ phrase('trakt_movies_release') }}:</b> {$thread.traktMovie.trakt_release}<br /></xf:if>
+	<!--[XF:trakt_movies_thread_list_info_bottom]-->
+</xf:macro>

@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="alert_fs_bitcoin_send_alert" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[{{ phrase('send') }}]]></template>
+  <template type="public" title="fs_bitcoin_upgrade_cards_index" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:title>{{phrase('fs_bitcoin_account_upgrade')}}</xf:title>
+
+<xf:css src="user_upgrad_card.less"/>
+
+<xf:js src="{{'bionomics/upgrade.js?'.$xf.time}}"  />
+<div class="creditsPricingCards" id="recurringCreditsCards">
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box1-top">
+			{{phrase('fs_bitcoin_integ_premium_top',{'title':$premiumUpgrade.title,'cost_amount':$premiumUpgrade.cost_amount,'length_unit':$premiumUpgrade.length_unit})}}
+		</div>
+		{{phrase('fs_bitcoin_integ_premium_body')}}
+		
+		<xf:if is="$premiumUpgrade && !$premiumUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_premium_companion" class=" button box1-btn"  >
+				{{phrase('upgrade')}}
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+			
+	</div>
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box2-top">
+				{{phrase('fs_bitcoin_integ_top_ten_top',{'title':$providerCityUpgrade.title,'cost_amount':$providerCityUpgrade.cost_amount,'length_unit':$providerCityUpgrade.length_unit})}}
+		
+	
+		</div>
+		{{phrase('fs_bitcoin_integ_top_ten_body')}}
+		<xf:if is="$providerCityUpgrade && !$providerCityUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_city" class=" button box2-btn"  >
+				{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+	</div>
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box3-top">
+				{{phrase('fs_bitcoin_integ_vip_top',{'title':$vipUpgrade.title,'cost_amount':$vipUpgrade.cost_amount,'length_unit':$vipUpgrade.length_unit})}}
+		
+		</div>
+		{{phrase('fs_bitcoin_integ_vip_body')}}
+	    <xf:if is="$vipUpgrade && !$vipUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_vip_companion" class=" button box3-btn"  >
+			{{phrase('upgrade')}} 
+			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}"></a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+		
+	</div>
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box4-top">
+			{{phrase('fs_bitcoin_integ_provider_top',{'title':$providerVipUpgrade.title,'cost_amount':$providerVipUpgrade.cost_amount,'length_unit':$providerVipUpgrade.length_unit})}}
+		
+			
+		</div>
+		{{phrase('fs_bitcoin_integ_provider_body')}} 
+		<xf:if is="$providerVipUpgrade && !$providerVipUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_vip" class=" button box4-btn"  >
+					{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+	</div>
+</div>
+<div id="purchase_bitcoin"></div>]]></template>
+  <template type="public" title="fs_encrpt_bitcoin_purchase" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	.paymnet_btc_img{
+	margin-left:3px;
+	display:inline-block;
+	width:25px;
+	height:25px;
+	}
+	#blockoPayModal.modal .modal-dialog {
+    max-width: 300px !important;
+    top: initial !important;
+    bottom: initial !important;
+    left: 0px !important;
+    right: 0px !important;
+    margin: 15px auto !important;
+		
+}
+	#blockoPayModal.modal .modal-content {
+    background: #f4f4f4;
+    display: block;
+    color: #000;
+}
+	#blockoPayModal.modal .form-group {
+    margin-bottom: 15px;
+}
+#blockoPayModal.modal .modal-content {
+    background: #f4f4f4;
+    display: block;
+    color: #000;
+}
+	@media (min-width: 768px){
+		#blockoPayModal.modal .modal-content {
+			-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+		}
+	}
+#blockoPayModal.modal .modal-header {
+    text-align: left;
+    border: none;
+    padding-bottom: 7px;
+    display: block;
+}
+#blockoPayModal.modal .modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+#blockoPayModal.modal .modal-body {
+    position: relative;
+    padding: 15px;
+}
+
+element.style {
+}
+<style>
+#blockoPayModal.modal .modal-body {
+    padding-top: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: auto !important;
+}
+<style>
+#blockoPayModal.modal .modal-body {
+    position: relative;
+    padding: 15px;
+}
+<style>
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+#blockoPayModal.modal .modal-content {
+    background: #f4f4f4;
+    display: block;
+    color: #000;
+}
+#blockoPayModal.modal {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+#blockoPayModal.modal .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+#blockoPayModal.modal .btn {
+    font-weight: bold;
+    position: initial !important;
+}
+#blockoPayModal.modal .btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+#blockoPayModal.modal .btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#blockoPayModal.modal .modal-header .close {
+    margin-top: -2px;
+    width: auto;
+}
+#blockoPayModal.modal button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+#blockoPayModal.modal .close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+	#blockoPayModal.modal a {
+    color: #337ab7;
+    text-decoration: none;
+}
+	#blockoPayModal.modal a {
+    background-color: transparent;
+}
+#blockoPayBtnQrCode {
+    display: block;
+    width: 150px;
+    margin: 0 auto 9px;
+    border: 1px solid #888888;
+    padding: 6px 6px 1px;
+    background: #ffffff;
+}
+#blockoPayBtnResponse {
+    text-align: center;
+}
+#blockoPayModal.modal .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+#blockoPayBtnBTCAmount {
+    text-align: center;
+    color: #059e66 !important;
+    font-weight: normal;
+}
+#blockoPayModal.modal .form-control[disabled], #blockoPayModal.modal .form-control[readonly], #blockoPayModal.modal fieldset[disabled] .form-control {
+    background-color: #eee;
+    opacity: 1;
+}
+#blockoPayModal.modal .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+	.blockonomics_message div:first-child {
+		
+		    display: grid !important;
+   			 place-items: center;
+	}
+	.blockonomics_message div:first-child > div {
+		max-width: 100% !important;
+	}
+
+	#bitcoinpay{
+		width:auto !important;
+	}
+	
+</style>
+
+
+
+<div class="overlay-container is-active modal fade in show myElement" style="display: block;padding-right: 15px;"id="blockoPayModal" tabindex="-1" role="dialog" aria-labelledby="blockoPayModalLabel" style="padding-right: 15px;">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="myModalLabel">{{$userUpgrade.title}}</h4>
+				<p class="modal-desc">{{$userUpgrade.description}}</p>
+			</div>
+			<div class="modal-body">
+
+				<div class="form-group">
+					<input type="email" class="form-control" id="email" placeholder="Email Address">
+				</div>
+				
+				<div class="form-group">
+					<input type="text" class="form-control" id="name" placeholder="Name">
+				</div>
+
+				<div class="form-group centered">
+					<button type="submit" class="btn btn-warning" onclick="pay('{{$encrypt}}')">Pay {{$userUpgrade.cost_amount}} {{$userUpgrade.cost_currency}}</button>
+				</div>
+
+				<div id="bitcoinpay" style="width: 100%;"></div>
+
+				<div id="blockoPayBtnSuccess" style="display: none;">
+					<p class="message"> <span id="blockoPayBtnTick">✔</span> </p>
+					<p>Thank you, your order has been received.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://blockonomics.co/js/pay_widget.js?'.{{$xf.time}}"></script>
+
+<script>
+
+		
+	function pay(encrypt) {
+
+		var encrypt = encrypt;
+		
+		var email = document.getElementById('email').value;
+		
+		Blockonomics.widget({
+			msg_area: 'bitcoinpay',
+			uid: '07f50d8e6a44405c',
+			email: email,
+			extra_data:encrypt,
+			
+		});
+		
+	}
+
+
+	$(document).ready(function() {
+		
+		$(".close").click(function() {
+			$(".myElement").css("display", "none"); // Change color to red
+		});
+	});
+
+</script>]]></template>
+  <template type="public" title="fs_purchase_by_bitcoin.js" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:js>
+!(function ($, window, document, _undefined) {
+  "use strict";
+
+  var socialPostType = "";
+
+  XF.ShowUpgradeBox = XF.Click.newHandler({
+    eventNameSpace: "ShowUpgradeBox",
+
+    init: function () {},
+
+    click: function (e) {
+      e.preventDefault();
+
+      var $targetUrl = $(e.currentTarget).data("validation-url");
+
+	console.log(this);
+      var $premiumId ={{$xf.options.fs_bitcoin_premium_companion_group_id}};
+      alert($premiumId);
+      //  $targetUrl =
+      //    "http://localhost/xenforo/index.php?account-upgrade/purchase";
+      XF.ajax("get", $targetUrl, $targetUrl, function (data) {
+        if (data.html) {
+          $("#purchase_bitcoin").empty();
+          $("#purchase_bitcoin").append(data.html.content);
+        }
+      });
+    },
+  });
+
+  XF.ClosePostBox = XF.Click.newHandler({
+    eventNameSpace: "XFClosePostBox",
+
+    init: function () {},
+
+    click: function (e) {
+      e.preventDefault();
+
+      $("#social_post").empty();
+      $("#response-error-message").text("");
+      $(".post_pop_box").hide();
+      $(".import_textbox_url").val(null);
+      socialPostType = "";
+    },
+  });
+
+  XF.Click.register("show-upgrade-box", "XF.ShowUpgradeBox");
+  XF.Click.register("close-post-box", "XF.ClosePostBox");
+})(jQuery, window, document);
+	</xf:js>]]></template>
+  <template type="public" title="user_upgrad_card.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.creditsPricingCards {
+	display: flex;
+	justify-content: center;
+	width: 90%;
+	margin: 0 auto;
+
+}
+.creditsPricingCard {
+	width: 300px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 7.5px;
+	padding: 15px;
+	text-align: center;
+	box-sizing: border-box;
+	min-width: 260px;
+	background: white;
+}
+.creditsPricingCard button {
+	border: none;
+	padding: 10px 20px;
+	margin-top: 15px;
+	cursor: pointer;
+	border-radius: 0.375rem;
+	font-weight: bold;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease-in-out;
+}
+.creditsPricingCardTop {
+	color: #fff;
+	padding: 10px;
+	margin: -15px -15px 15px -15px;
+}
+.user-upgrades__block ul li:before {
+	content: "\f058";
+	font-family: "Font Awesome 5 Pro";
+	font-size: 16px;
+	left: 0;
+	position: absolute;
+}
+.user-upgrades__block {
+/**	border-bottom: 1px solid #f1f1f2; **/
+	padding: 16px 15px;
+}
+.user-upgrades__block ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.user-upgrades__block ul li {
+	color: #01050e;
+	font-size: 15px;
+	margin: 7px 0;
+	padding-left: 24px;
+	position: relative;
+	text-align: justify;
+}
+
+.box1-top{
+	background: linear-gradient(315deg, #facc6b 0%, #fabc3c 74%);
+	min-height: 131px;
+}
+
+.box1-upgrades__block ul li:before{
+	color: #ffb306;
+}
+
+.box1-btn{
+	background: linear-gradient(315deg, #facc6b 0%, #fabc3c 74%) !important;
+	color: #fff;
+	border: none !important;
+	margin-top: 7px;
+}
+
+.box2-top{
+	background: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+	min-height: 131px;
+}
+
+.box2-upgrades__block ul li:before{
+	color: #29b175;
+}
+
+.box2-btn{
+	background: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%) !important;
+	color: #fff;
+	border: none !important;
+}
+
+.box3-top{
+	background: linear-gradient(105.1deg, #5EA5EA 3.2%, #CAE5FF 138.92%);
+	min-height: 131px;
+}
+
+.box3-upgrades__block ul li:before{
+	color: #84b6f0;
+}
+
+.box3-btn{
+	background: linear-gradient(105.1deg, #5EA5EA 3.2%, #CAE5FF 138.92%) !important;
+	color: #fff;
+	border: none !important;
+	margin-top: 7px;
+}
+
+
+.box4-top{
+	background: linear-gradient(315deg, #3bb78f 0%, #000 74%);
+	min-height: 131px;
+}
+
+.box4-upgrades__block ul li:before{
+	color: #112e24;
+}
+
+.box4-btn{
+	background: linear-gradient(315deg, #3bb78f 0%, #081813 74%) !important;
+	color: #fff;
+	border: none !important;
+}
+
+.paymnet_btc_img{
+	margin-left:3px;
+	display:inline-block;
+	width:25px;
+	height:25px;
+}]]></template>
+</templates>

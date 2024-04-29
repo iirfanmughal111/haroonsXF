@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Add Download all Attachment Button on thread-view",
+    "execution_order": 10,
+    "enabled": false,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$canInlineMod\">",
+    "replace": "<xf:comment>\n\t<xf:if is=\"$thread.canViewAttachments() && $thread.getAttachmentPostIds()\">\n\t\t<xf:button href=\"{{ link('threads/exportAttachments', $thread) }}\" class=\"button--link\" overlay=\"true\" icon=\"export\">\n\t\t\t{{ phrase('fs_download_all_attachments') }}\n\t\t</xf:button>\n\t</xf:if>\n</xf:comment>\n$0"
+}

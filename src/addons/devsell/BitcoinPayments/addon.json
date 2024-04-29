@@ -1,0 +1,16 @@
+{
+  "legacy_addon_id": "",
+  "title": "[BS] Bitcoin Payments",
+  "description": "Accept Bitcoincurrencies (Bitcoin, Ethereum, etc.) as a payment method.",
+  "version_id": 11170,
+  "version_string": "1.1.1",
+  "dev": "devsell",
+  "dev_url": "https://devsell.io",
+  "faq_url": "",
+  "support_url": "https://devsell.io/contact",
+  "extra_urls": {
+    "Documentation": "https://x.devsell.io/Bitcoin-payments-docs"
+  },
+  "require": [],
+  "icon": "logo.jpg"
+}

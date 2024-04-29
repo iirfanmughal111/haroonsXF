@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_movies",
+    "title": "Default crew person avatar (small)",
+    "description": "Recommended size 138x175",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "string",
+    "value_parameters": "asset=trakt_movies_crew_small",
+    "depends_on": "",
+    "value_group": "trakt_movies_thumbnail",
+    "property_value": "data/assets/trakt_movies_crew/no-photo-small.jpg",
+    "display_order": 10001
+}

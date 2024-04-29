@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="FS_NodeIcon_delete_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('please_confirm_delete_icon') }}</xf:title>
+
+<xf:form action="{{ link('forums/delete-icon', $node) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				
+				<xf:formrow rowtype="fullWidth noLabel">
+					<img src="{{ base_url($node.getIcon()) }}" />
+				</xf:formrow>
+			</xf:inforow>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="FS_NodeIcon_delete_icon_unread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('please_confirm_delete_icon') }}</xf:title>
+
+<xf:form action="{{ link('forums/delete-icon-unread', $node) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				
+				<xf:formrow rowtype="fullWidth noLabel">
+					<img src="{{ base_url($node.getIconUnread()) }}" />
+				</xf:formrow>
+			</xf:inforow>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="Fs_NodeIcon_icon.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.node-icon--custom
+{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	padding: @xf-paddingLarge 0 @xf-paddingLarge @xf-paddingLarge;
+	background-size: 60% 60%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.subNodeMenu .subNodeLink.subNodeLink--custom
+{
+	&::before
+	{
+		display: none;
+	}
+	
+	.subNodeLink--icon
+	{
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		padding-right: .3em;
+		text-decoration: none;
+		background-size: cover;
+		background-position: center;
+		vertical-align: middle;
+	}
+}]]></template>
+</templates>

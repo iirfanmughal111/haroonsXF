@@ -1,0 +1,24 @@
+<xf:title>{{ phrase('trakt_tv_add_info') }}</xf:title>
+
+<xf:form action="{{ link('tvTrakt/addinfo', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow label="{{ phrase('trakt_tv_link') }}" name="trakt" value="" />
+			
+			<xf:checkboxrow>
+				<xf:option name="changetitle" value="1" selected="false" >{{ phrase('trakt_tv_change_title') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+		
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('trakt_tv_add_info') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:form>

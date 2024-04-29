@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Position below bottom breadcrumbs",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:ad position=\"container_breadcrumb_bottom_below\" \\/>/isU",
+    "replace": "$0\n<xf:if is=\"property('gtf_positions') == 'below_bottom_breadcrumbs'\">\n\t<xf:include template=\"cxf_google_translate_forum\" />\n</xf:if>"
+}

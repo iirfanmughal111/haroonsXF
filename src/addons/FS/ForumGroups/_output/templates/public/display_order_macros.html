@@ -1,0 +1,24 @@
+<xf:macro name="row"
+	arg-name="display_order"
+	arg-value=""
+	arg-step="1"
+	arg-label="{{ phrase('display_order') }}"
+	arg-hint=""
+	arg-readOnly=""
+	arg-explain="">
+
+	<xf:numberboxrow name="{$name}" value="{$value}" min="0" step="{$step}"
+		label="{$label}"
+		hint="{$hint}"
+		explain="{$explain}"
+		readonly="{{ $readOnly ? 'readonly' : '' }}" />
+</xf:macro>
+
+<xf:macro name="input"
+	arg-name="display_order"
+	arg-value=""
+	arg-step="1"
+	arg-readOnly="">
+
+	<xf:numberbox name="{$name}" value="{$value}" min="0" step="{$step}" readonly="{{ $readOnly ? 'readonly' : '' }}" />
+</xf:macro>

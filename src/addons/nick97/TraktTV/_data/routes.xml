@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="public" route_prefix="tvTrakt" format=":int&lt;thread_id,title&gt;/" controller="nick97\TraktTV:TV"/>
+  <route route_type="public" route_prefix="tvTrakt" sub_name="episode" format="episode/:int&lt;post_id&gt;/" controller="nick97\TraktTV:TVPost"/>
+  <route route_type="public" route_prefix="tvTrakt" sub_name="person" format="person/:int&lt;person_id,name&gt;/" controller="nick97\TraktTV:Person"/>
+  <route route_type="public" route_prefix="tvshowTrakt" format=":int&lt;node_id,title&gt;/" controller="nick97\TraktTV:TV"/>
+</routes>

@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "Attachment List with Like",
+    "description": "Improves look of attachment list below posts with Like",
+    "version_id": 103,
+    "version_string": "1.0.3",
+    "dev": "HoU Devs",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": "file-shield"
+}

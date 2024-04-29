@@ -1,0 +1,3 @@
+<p><b>{title}</b></p>
+<h2>{cost_amount}</h2>
+<p>{length} / {length_unit}</p>

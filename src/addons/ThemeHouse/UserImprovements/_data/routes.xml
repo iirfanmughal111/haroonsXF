@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="trophies" sub_name="thui-category" format="thui-category/:str&lt;trophy_category_id&gt;/" controller="XF:Trophy" context="trophies" action_prefix="THUICategory"/>
+  <route route_type="public" route_prefix="trophies" format=":int&lt;trophy_id,title&gt;/" controller="ThemeHouse\UserImprovements:Trophy"/>
+  <route route_type="public" route_prefix="trophy-categories" format=":str&lt;trophy_category_id&gt;/" controller="ThemeHouse\UserImprovements:TrophyCategory"/>
+</routes>

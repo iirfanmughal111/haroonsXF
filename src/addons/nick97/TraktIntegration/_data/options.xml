@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="nick97_trakt_api_key" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="nick97traktIntegration" display_order="1"/>
+  </option>
+</options>

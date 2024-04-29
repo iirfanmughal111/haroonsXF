@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.node_ids" version_id="1000100" version_string="1.0.1"><![CDATA[Applicable forums]]></phrase>
+  <phrase title="option_explain.node_ids" version_id="1000100" version_string="1.0.1"><![CDATA[Select the forums on which quick reply box will be removed.]]></phrase>
+  <phrase title="option_group.form_thread_moderation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Form Thread Moderation]]></phrase>
+  <phrase title="option_group_description.form_thread_moderation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="parent_thread" version_id="1000200" version_string="1.0.2"><![CDATA[Parent Thread]]></phrase>
+  <phrase title="permission.formThreadModeration_canViewParentThread" version_id="1000200" version_string="1.0.2"><![CDATA[Can View Parent Thread]]></phrase>
+  <phrase title="permission_interface.formThreadModeration" version_id="1000200" version_string="1.0.2"><![CDATA[Form Thread Moderation]]></phrase>
+</phrases>

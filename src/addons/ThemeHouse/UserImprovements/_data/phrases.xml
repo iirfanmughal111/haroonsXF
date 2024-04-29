@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="con_acc.th_amazon" version_id="1020570" version_string="1.2.5"><![CDATA[Amazon]]></phrase>
+  <phrase title="con_acc.th_battlenet" version_id="1020570" version_string="1.2.5"><![CDATA[Battle.net]]></phrase>
+  <phrase title="con_acc.th_deviantart" version_id="1020570" version_string="1.2.5"><![CDATA[DeviantArt]]></phrase>
+  <phrase title="con_acc.th_discord" version_id="1020570" version_string="1.2.5"><![CDATA[Discord]]></phrase>
+  <phrase title="con_acc.th_dropbox" version_id="1020570" version_string="1.2.5"><![CDATA[Dropbox]]></phrase>
+  <phrase title="con_acc.th_instagram" version_id="1020570" version_string="1.2.5"><![CDATA[Instagram]]></phrase>
+  <phrase title="con_acc.th_pinterest" version_id="1020570" version_string="1.2.5"><![CDATA[Pinterest]]></phrase>
+  <phrase title="con_acc.th_reddit" version_id="1020570" version_string="1.2.5"><![CDATA[Reddit]]></phrase>
+  <phrase title="con_acc.th_tumblr" version_id="1020570" version_string="1.2.5"><![CDATA[Tumblr]]></phrase>
+  <phrase title="con_acc.th_twitch" version_id="1020570" version_string="1.2.5"><![CDATA[Twitch]]></phrase>
+  <phrase title="con_acc_desc.th_amazon" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_battlenet" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_deviantart" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_discord" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_dropbox" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_instagram" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_pinterest" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_reddit" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_tumblr" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.th_twitch" version_id="1020570" version_string="1.2.5"><![CDATA[]]></phrase>
+  <phrase title="cron_entry.thui_profileviewcounters" version_id="1020570" version_string="1.2.5"><![CDATA[[TH] User Improvements: Update profile view counters]]></phrase>
+  <phrase title="option.klUIFullTrophyProgress" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[Show full trophy progress]]></phrase>
+  <phrase title="option.klUIPostbitShowcase" version_id="1000270" version_string="1.0.2"><![CDATA[Postbit showcase]]></phrase>
+  <phrase title="option.klUIProfileShowcase" version_id="1020570" version_string="1.2.5"><![CDATA[Profile showcase]]></phrase>
+  <phrase title="option.klUIProfileTrophyShowcase" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase]]></phrase>
+  <phrase title="option.klUISeparateTrophyTab" version_id="1010170" version_string="1.1.1"><![CDATA[Separate trophy tab]]></phrase>
+  <phrase title="option.klUIShowPoints" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[Display trophy points]]></phrase>
+  <phrase title="option.klUITrophyFollowers" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[Show followers]]></phrase>
+  <phrase title="option.klUITrophyProgress" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[Show trophy progress]]></phrase>
+  <phrase title="option.klUiProfileViews" version_id="1000035" version_string="1.0.0 Beta 5"><![CDATA[Track profile views]]></phrase>
+  <phrase title="option.kl_ui_profile_views" version_id="1000035" version_string="1.0.0 Beta 5"><![CDATA[Log profile views]]></phrase>
+  <phrase title="option.thuserimprovements_member_tooltip_showcase" version_id="1020570" version_string="1.2.5"><![CDATA[Member tooltip showcase]]></phrase>
+  <phrase title="option_explain.klUIFullTrophyProgress" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[If enabled, this will show a list of all already earned predecessor trophies in addition to the last earned trophy of that line.]]></phrase>
+  <phrase title="option_explain.klUIPostbitShowcase" version_id="1000270" version_string="1.0.2"><![CDATA[Enables the trophy showcase in the user postbit.]]></phrase>
+  <phrase title="option_explain.klUIProfileShowcase" version_id="1000270" version_string="1.0.2"><![CDATA[Enables the trophy showcase in the user profile.]]></phrase>
+  <phrase title="option_explain.klUIProfileTrophyShowcase" version_id="1020570" version_string="1.2.5"><![CDATA[The trophy showcase is a dedicated area in a member's profile, post bit, and tooltip that is filled with a set of trophies as defined here. The actual number of trophies shown in the showcase is permission controlled.]]></phrase>
+  <phrase title="option_explain.klUISeparateTrophyTab" version_id="1010170" version_string="1.1.1"><![CDATA[If enabled, trophies will be shown as separate tab in the user profile instead of inside the about tab.]]></phrase>
+  <phrase title="option_explain.klUIShowPoints" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[Determines, whether trophy points are shown next to the trophy name. This is especially useful if you fit your trophies with images, as these will overwrite the points shown with icons.]]></phrase>
+  <phrase title="option_explain.klUITrophyFollowers" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[If enabled, will show all follow-up trophies that are still open below the current trophy level.]]></phrase>
+  <phrase title="option_explain.klUITrophyProgress" version_id="1000033" version_string="1.0.0 Beta 3"><![CDATA[If enabled, will show a counter next to the trophy title when at least one predecessor or follower exists, showing how far into the trophy line the user is.]]></phrase>
+  <phrase title="option_explain.klUiProfileViews" version_id="1000035" version_string="1.0.0 Beta 5"><![CDATA[If enabled, profile views will be tracked and a counter will be shown on each users profile how often his profile has been visited.]]></phrase>
+  <phrase title="option_explain.kl_ui_profile_views" version_id="1020570" version_string="1.2.5"><![CDATA[If enabled, your board will track all profile visits for each member, with a counter on their profile showing how often it has been visited.]]></phrase>
+  <phrase title="option_explain.thuserimprovements_member_tooltip_showcase" version_id="1020570" version_string="1.2.5"><![CDATA[Enables the trophy showcase in the member tooltip.]]></phrase>
+  <phrase title="option_group.thuserimprovements" version_id="1020570" version_string="1.2.5"><![CDATA[[TH] User Improvements]]></phrase>
+  <phrase title="option_group_description.thuserimprovements" version_id="1020570" version_string="1.2.5"><![CDATA[Options for the [TH] User Improvements add-on.]]></phrase>
+  <phrase title="permission.klUIModerator_klUIBypassPSBPrivacy" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Bypass profile stats bar privacy]]></phrase>
+  <phrase title="permission.klUIModerator_klUIBypassUNCPrivacy" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Bypass username change history privacy]]></phrase>
+  <phrase title="permission.klUIModerator_klUISeeDeactivatedProfile" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[View deactivated profiles]]></phrase>
+  <phrase title="permission.klUI_klUIChangeUsername" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Change username]]></phrase>
+  <phrase title="permission.klUI_klUIChangeUsernameTime" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Days between username changes]]></phrase>
+  <phrase title="permission.klUI_klUIChoseUsernameColor" version_id="1020570" version_string="1.2.5"><![CDATA[Select username color]]></phrase>
+  <phrase title="permission.klUI_klUIManageStatsPrivacy" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Manage profile stats privacy]]></phrase>
+  <phrase title="permission.klUI_klUIManageUsernamePrivacy" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Manage username history privacy]]></phrase>
+  <phrase title="permission.klUI_klUINoLimit" version_id="1000070" version_string="1.0.0"><![CDATA[No time limit between changes]]></phrase>
+  <phrase title="permission.klUI_klUIResetProfileViews" version_id="1000035" version_string="1.0.0 Beta 5"><![CDATA[Can reset profile view counter]]></phrase>
+  <phrase title="permission.klUI_klUISelfDeactivate" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Can self-deactivate account]]></phrase>
+  <phrase title="permission.klUI_klUISelfReactivate" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Can self-reactivate account]]></phrase>
+  <phrase title="permission.klUI_klUISelfReactivationTime" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Time limit for self reactivation (days)]]></phrase>
+  <phrase title="permission.klUI_klUITSS_postbit" version_id="1000470" version_string="1.0.4"><![CDATA[Trophy showcase size (Postbit)]]></phrase>
+  <phrase title="permission.klUI_klUITSS_profile" version_id="1000470" version_string="1.0.4"><![CDATA[Trophy showcase size (Profile)]]></phrase>
+  <phrase title="permission.klUI_klUITSS_tooltip" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase size (Tooltip)]]></phrase>
+  <phrase title="permission.klUI_klUIViewNameChangeTime" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[View username change dates]]></phrase>
+  <phrase title="permission.klUI_klUIViewUsernameChanges" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[View username changes]]></phrase>
+  <phrase title="permission_interface.klUI" version_id="1020570" version_string="1.2.5"><![CDATA[[TH] User Improvements permissions]]></phrase>
+  <phrase title="permission_interface.klUIModerator" version_id="1020570" version_string="1.2.5"><![CDATA[[TH] User Improvements moderator permissions]]></phrase>
+  <phrase title="style_prop.klUIDisabledUsername" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Disabled user name]]></phrase>
+  <phrase title="style_prop.klUITrophyIconItem" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase item]]></phrase>
+  <phrase title="style_prop.klUITrophyIconItemPostbit" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase item - Postbit]]></phrase>
+  <phrase title="style_prop.klUITrophyIconItemProfile" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase item - Member profile]]></phrase>
+  <phrase title="style_prop.klUITrophyShowcase" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase container]]></phrase>
+  <phrase title="style_prop.klUITrophyShowcasePostbit" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase container - Postbit]]></phrase>
+  <phrase title="style_prop.klUITrophyShowcaseProfile" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase container - Member profile]]></phrase>
+  <phrase title="style_prop.klUIUTLPBar" version_id="1020570" version_string="1.2.5"><![CDATA[Progress bar]]></phrase>
+  <phrase title="style_prop.klUIUTLPContainer" version_id="1020570" version_string="1.2.5"><![CDATA[Progress bar container]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor1" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 1]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor10" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 10]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor11" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 11]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor12" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 12]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor13" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 13]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor14" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 14]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor15" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 15]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor16" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 16]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor17" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 17]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor18" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 18]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor19" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 19]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor2" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 2]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor20" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 20]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor21" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 21]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor22" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 22]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor23" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 23]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor24" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 24]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor25" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 25]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor26" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 26]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor27" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 27]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor3" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 3]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor4" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 4]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor5" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 5]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor6" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 6]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor7" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 7]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor8" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 8]]></phrase>
+  <phrase title="style_prop.klUIUsernameColor9" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[User name color 9]]></phrase>
+  <phrase title="style_prop.thuserimprovements_trophyProgressBarBackground" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[Trophy progress bar background color]]></phrase>
+  <phrase title="style_prop.thuserimprovements_trophyProgressBarBorder" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[Trophy progress bar border color]]></phrase>
+  <phrase title="style_prop.thuserimprovements_trophyProgressBarForeground" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[Trophy progress bar foreground color]]></phrase>
+  <phrase title="style_prop_desc.klUIDisabledUsername" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Controls the richtext styling of disabled user names.]]></phrase>
+  <phrase title="style_prop_desc.klUITrophyIconItem" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy showcase item styling]]></phrase>
+  <phrase title="style_prop_desc.klUITrophyIconItemPostbit" version_id="1000470" version_string="1.0.4"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUITrophyIconItemProfile" version_id="1000470" version_string="1.0.4"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUITrophyShowcase" version_id="1000270" version_string="1.0.2"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUITrophyShowcasePostbit" version_id="1000470" version_string="1.0.4"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUITrophyShowcaseProfile" version_id="1000470" version_string="1.0.4"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUTLPBar" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Styling for the progress bar.]]></phrase>
+  <phrase title="style_prop_desc.klUIUTLPContainer" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Styling for the progress bar container.]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor1" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor10" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor11" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor12" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor13" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor14" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor15" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor16" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor17" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor18" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor19" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor2" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor20" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor21" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor22" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor23" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor24" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor25" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor26" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor27" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor3" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor4" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor5" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor6" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor7" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor8" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.klUIUsernameColor9" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.thuserimprovements_trophyProgressBarBackground" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.thuserimprovements_trophyProgressBarBorder" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.thuserimprovements_trophyProgressBarForeground" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.klUIUTL" version_id="1030095" version_string="1.3.0 Patch Level 5"><![CDATA[[TH] User Improvements: User title ladder]]></phrase>
+  <phrase title="style_prop_group.klUIUsernameColors" version_id="1030095" version_string="1.3.0 Patch Level 5"><![CDATA[[TH] User Improvements: User name colors]]></phrase>
+  <phrase title="style_prop_group.thuserimprovements_trophies" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[[TH] User Improvements: Trophies]]></phrase>
+  <phrase title="style_prop_group_desc.klUIUTL" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[Styling related to the user title ladder widget.]]></phrase>
+  <phrase title="style_prop_group_desc.klUIUsernameColors" version_id="1000031" version_string="1.0.0 Beta 1"><![CDATA[All available user name colors can be modified here.]]></phrase>
+  <phrase title="style_prop_group_desc.thuserimprovements_trophies" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[Styling related to trophies and the trophy showcase.]]></phrase>
+  <phrase title="thuserimprovements_account_has_been_deactivated" version_id="1020570" version_string="1.2.5"><![CDATA[This account has been deactivated.]]></phrase>
+  <phrase title="thuserimprovements_add_trophy_category" version_id="1020570" version_string="1.2.5"><![CDATA[Add trophy category]]></phrase>
+  <phrase title="thuserimprovements_also_known_as" version_id="1020570" version_string="1.2.5"><![CDATA[Also known as]]></phrase>
+  <phrase title="thuserimprovements_amazon_api_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://login.amazon.com/manageApps" target="_blank">Amazon application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_amazon_api_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Amazon application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_api_key" version_id="1020570" version_string="1.2.5"><![CDATA[API key]]></phrase>
+  <phrase title="thuserimprovements_api_secret" version_id="1020570" version_string="1.2.5"><![CDATA[API secret]]></phrase>
+  <phrase title="thuserimprovements_app_key" version_id="1020570" version_string="1.2.5"><![CDATA[App key]]></phrase>
+  <phrase title="thuserimprovements_awarded" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[Awarded]]></phrase>
+  <phrase title="thuserimprovements_battlenet_api_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://dev.battle.net/apps/mykeys" target="_blank">Battle.net application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_battlenet_api_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Battle.net application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_change_username_across_site" version_id="1020570" version_string="1.2.5"><![CDATA[Allows you to change your username across the site.]]></phrase>
+  <phrase title="thuserimprovements_consumer_key" version_id="1020570" version_string="1.2.5"><![CDATA[Consumer key]]></phrase>
+  <phrase title="thuserimprovements_deactivate_account" version_id="1020570" version_string="1.2.5"><![CDATA[Deactivate account]]></phrase>
+  <phrase title="thuserimprovements_deactivation_is_permanent" version_id="1020570" version_string="1.2.5"><![CDATA[Account deactivation is permanent and cannot be undone.]]></phrase>
+  <phrase title="thuserimprovements_deviantart_client_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://deviantart.com/developers/apps" target="_blank">DeviantArt application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_deviantart_client_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the DeviantArt application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_disabled" version_id="1020570" version_string="1.2.5"><![CDATA[Disabled]]></phrase>
+  <phrase title="thuserimprovements_discord_client_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://discordapp.com/developers/applications/me" target="_blank">Discord application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_discord_client_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Discord application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_dropbox_app_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://dropbox.com/developers/apps" target="_blank">Dropbox application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_dropbox_app_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Dropbox application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_earned" version_id="1020570" version_string="1.2.5"><![CDATA[Earned]]></phrase>
+  <phrase title="thuserimprovements_edit_trophy_category" version_id="1020570" version_string="1.2.5"><![CDATA[Edit trophy category]]></phrase>
+  <phrase title="thuserimprovements_hidden_trophy" version_id="1020570" version_string="1.2.5"><![CDATA[Hidden trophy]]></phrase>
+  <phrase title="thuserimprovements_hidden_trophy_desc" version_id="1020570" version_string="1.2.5"><![CDATA[This trophy is hidden. Details are visible once it has been earned.]]></phrase>
+  <phrase title="thuserimprovements_highest_points_trophies" version_id="1020570" version_string="1.2.5"><![CDATA[Highest points trophies]]></phrase>
+  <phrase title="thuserimprovements_highest_reaction_score" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[Highest reaction score]]></phrase>
+  <phrase title="thuserimprovements_icon_css" version_id="1020570" version_string="1.2.5"><![CDATA[Icon CSS]]></phrase>
+  <phrase title="thuserimprovements_instagram_client_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://www.instagram.com/developer" target="_blank">Instagram application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_instagram_client_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Instagram application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_latest_restore_date" version_id="1020570" version_string="1.2.5"><![CDATA[Latest restore date]]></phrase>
+  <phrase title="thuserimprovements_latest_trophies" version_id="1020570" version_string="1.2.5"><![CDATA[Latest trophies]]></phrase>
+  <phrase title="thuserimprovements_level_x_y" version_id="1020570" version_string="1.2.5"><![CDATA[({is}/{max})]]></phrase>
+  <phrase title="thuserimprovements_most_messages" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[Most messages]]></phrase>
+  <phrase title="thuserimprovements_name_changes" version_id="1020570" version_string="1.2.5"><![CDATA[User name changes]]></phrase>
+  <phrase title="thuserimprovements_next_change_on" version_id="1020570" version_string="1.2.5"><![CDATA[Next change on {time}]]></phrase>
+  <phrase title="thuserimprovements_nickname_color" version_id="1020570" version_string="1.2.5"><![CDATA[User name color]]></phrase>
+  <phrase title="thuserimprovements_no_trophies_have_been_created_for_category_yet" version_id="1020570" version_string="1.2.5"><![CDATA[No trophies have been created for this category yet. <a href="{link}">Add one</a>.]]></phrase>
+  <phrase title="thuserimprovements_no_users_have_earned_this_trophy" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[No users have earned this trophy.]]></phrase>
+  <phrase title="thuserimprovements_one_trophy_point" version_id="1020570" version_string="1.2.5"><![CDATA[(1 point)]]></phrase>
+  <phrase title="thuserimprovements_own_x_out_of_y_trophies_in_this_category" version_id="1020570" version_string="1.2.5"><![CDATA[You've earned {earned} out of {total} trophies in this category.]]></phrase>
+  <phrase title="thuserimprovements_pinterest_api_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://developers.pinterest.com/apps/" target="_blank">Pinterest application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_pinterest_api_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Pinterest application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_predecessor" version_id="1020570" version_string="1.2.5"><![CDATA[Predecessor]]></phrase>
+  <phrase title="thuserimprovements_profile_views" version_id="1020570" version_string="1.2.5"><![CDATA[Profile views]]></phrase>
+  <phrase title="thuserimprovements_progress_bar_like_count" version_id="1020570" version_string="1.2.5"><![CDATA[Likes]]></phrase>
+  <phrase title="thuserimprovements_progress_bar_message_count" version_id="1020570" version_string="1.2.5"><![CDATA[Messages]]></phrase>
+  <phrase title="thuserimprovements_progress_bar_tooltip" version_id="1020570" version_string="1.2.5"><![CDATA[{has} / {needs} {word}]]></phrase>
+  <phrase title="thuserimprovements_progress_bar_tooltip_max" version_id="1020570" version_string="1.2.5"><![CDATA[You climbed to the top!]]></phrase>
+  <phrase title="thuserimprovements_progress_bar_trophy_points" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy points]]></phrase>
+  <phrase title="thuserimprovements_reactivate_account" version_id="1020570" version_string="1.2.5"><![CDATA[Reactivate account]]></phrase>
+  <phrase title="thuserimprovements_reactivate_account_anytime" version_id="1020570" version_string="1.2.5"><![CDATA[You may reactivate your account at any point in the future.]]></phrase>
+  <phrase title="thuserimprovements_reactivate_account_question" version_id="1020570" version_string="1.2.5"><![CDATA[Do you want to reactivate your account now?]]></phrase>
+  <phrase title="thuserimprovements_reactivate_account_within_x_days" version_id="1020570" version_string="1.2.5"><![CDATA[You may reactivate your account within the next {days} days after deactivation.]]></phrase>
+  <phrase title="thuserimprovements_reddit_app_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://ssl.reddit.com/prefs/apps" target="_blank">Reddit application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_reddit_app_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Reddit application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_requested_trophy_category_not_found" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[The requested trophy category could not be found.]]></phrase>
+  <phrase title="thuserimprovements_requested_trophy_not_found" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[The requested trophy could not be found.]]></phrase>
+  <phrase title="thuserimprovements_reset_profile_views" version_id="1020570" version_string="1.2.5"><![CDATA[Reset profile view counter]]></phrase>
+  <phrase title="thuserimprovements_reward_trophies" version_id="1020570" version_string="1.2.5"><![CDATA[Reward trophies]]></phrase>
+  <phrase title="thuserimprovements_secret_key" version_id="1020570" version_string="1.2.5"><![CDATA[Secret key]]></phrase>
+  <phrase title="thuserimprovements_there_no_trophies_in_this_category" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[There are no trophies in this category.]]></phrase>
+  <phrase title="thuserimprovements_trophies_rewarded" version_id="1020570" version_string="1.2.5"><![CDATA[Trophies rewarded]]></phrase>
+  <phrase title="thuserimprovements_trophies_selected" version_id="1020570" version_string="1.2.5"><![CDATA[Trophies selected]]></phrase>
+  <phrase title="thuserimprovements_trophy_category" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy category]]></phrase>
+  <phrase title="thuserimprovements_trophy_category_id" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy category ID]]></phrase>
+  <phrase title="thuserimprovements_trophy_icon" version_id="1020570" version_string="1.2.5"><![CDATA[Trophy icon]]></phrase>
+  <phrase title="thuserimprovements_trophy_showcase_select" version_id="1020570" version_string="1.2.5"><![CDATA[Showcase trophy select]]></phrase>
+  <phrase title="thuserimprovements_tumblr_api_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your Tumblr application for this domain.]]></phrase>
+  <phrase title="thuserimprovements_tumblr_api_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Tumblr application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_twitch_client_id_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The ID that is associated with your <a href="https://dev.twitch.tv/dashboard/apps" target="_blank">Twitch application</a> for this domain.]]></phrase>
+  <phrase title="thuserimprovements_twitch_client_secret_explain" version_id="1020570" version_string="1.2.5"><![CDATA[The secret for the Twitch application you created for this domain.]]></phrase>
+  <phrase title="thuserimprovements_uncategorized" version_id="1020570" version_string="1.2.5"><![CDATA[Uncategorized]]></phrase>
+  <phrase title="thuserimprovements_uncategorized_trophies" version_id="1020570" version_string="1.2.5"><![CDATA[Uncategorized trophies]]></phrase>
+  <phrase title="thuserimprovements_until" version_id="1020570" version_string="1.2.5"><![CDATA[until]]></phrase>
+  <phrase title="thuserimprovements_user_has_at_least_x_profile_views" version_id="1020570" version_string="1.2.5"><![CDATA[User has at least X profile views]]></phrase>
+  <phrase title="thuserimprovements_user_has_changed_his_name_at_least_x_times" version_id="1020570" version_string="1.2.5"><![CDATA[User has changed his name at least X times]]></phrase>
+  <phrase title="thuserimprovements_user_has_changed_his_name_no_more_than_x_times" version_id="1020570" version_string="1.2.5"><![CDATA[User has changed his name no more than X times]]></phrase>
+  <phrase title="thuserimprovements_user_has_no_more_than_x_profile_views" version_id="1020570" version_string="1.2.5"><![CDATA[User has no more than X profile views]]></phrase>
+  <phrase title="thuserimprovements_user_has_no_username_color" version_id="1020570" version_string="1.2.5"><![CDATA[User has no user name color]]></phrase>
+  <phrase title="thuserimprovements_user_has_username_color" version_id="1020570" version_string="1.2.5"><![CDATA[User has a user name color]]></phrase>
+  <phrase title="thuserimprovements_user_name_color" version_id="1020570" version_string="1.2.5"><![CDATA[User name color]]></phrase>
+  <phrase title="thuserimprovements_username_changes" version_id="1020570" version_string="1.2.5"><![CDATA[Username changes]]></phrase>
+  <phrase title="thuserimprovements_users_choice" version_id="1020570" version_string="1.2.5"><![CDATA[User's choice]]></phrase>
+  <phrase title="thuserimprovements_view_profile_stats" version_id="1020570" version_string="1.2.5"><![CDATA[View your profile stats bar]]></phrase>
+  <phrase title="thuserimprovements_view_profile_views" version_id="1020570" version_string="1.2.5"><![CDATA[View your profile view counter]]></phrase>
+  <phrase title="thuserimprovements_view_username_changes" version_id="1020570" version_string="1.2.5"><![CDATA[View your username change history]]></phrase>
+  <phrase title="thuserimprovements_x_trophy_points" version_id="1020591" version_string="1.2.5 Patch Level 1"><![CDATA[({points} points)]]></phrase>
+  <phrase title="thuserimprovements_you_must_delete_all_trophies_within_trophy_category_before_deleted" version_id="1030015" version_string="1.3.0 Alpha 5"><![CDATA[You must delete all trophies with a trophy category before it can be deleted.]]></phrase>
+  <phrase title="widget_def.thui_progress_bar" version_id="1020570" version_string="1.2.5"><![CDATA[[TH] User Improvements: Progress to next level]]></phrase>
+  <phrase title="widget_def_desc.thui_progress_bar" version_id="1020570" version_string="1.2.5"><![CDATA[Displays visitors progress to the next user title.]]></phrase>
+  <phrase title="widget_pos.thuserimprovements_trophy_category_view_sidebar" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[[TH] User Improvements: Trophy category view: Sidebar]]></phrase>
+  <phrase title="widget_pos.thuserimprovements_trophy_view_sidebar" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[[TH] User Improvements: Trophy view: Sidebar]]></phrase>
+  <phrase title="widget_pos_desc.thuserimprovements_trophy_category_view_sidebar" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[Position inside the trophy view sidebar for various stats and new content widgets.]]></phrase>
+  <phrase title="widget_pos_desc.thuserimprovements_trophy_view_sidebar" version_id="1030011" version_string="1.3.0 Alpha 1"><![CDATA[Position inside the trophy view sidebar for various stats and new content widgets.]]></phrase>
+</phrases>

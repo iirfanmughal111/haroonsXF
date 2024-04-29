@@ -1,0 +1,116 @@
+<xf:title>{{ phrase('Create') }}</xf:title>
+
+<xf:form action="{{ link('tourn/save', $record) }}" class="block" data-force-flash-message="true" enctype="multipart/form-data">
+	<div class="block-container">
+		<div class="block-body">
+			
+				<xf:textboxrow name="tourn_title" autofocus="autofocus" maxlength="{{ max_length($xf.visitor, 'title') }}"
+					value="{{$record.tourn_title}}"
+					label="{{ phrase('title') }}" required="required" hint="{{ phrase('required') }}" />
+					
+				<xf:formrow rowtype="input"
+							label="{{ phrase('start_date') }}">
+						<div class="inputGroup">
+			
+					<xf:dateinput name="tourn_startdate" class="date start" value="{{($record)?$record.getStartDate():''}}" required="true"
+						hint="{{ phrase('required') }}"/>
+							
+								<span class="inputGroup-splitter"></span>
+							
+					<xf:textbox name="tourn_starttime" class="input--date time start" required="true" type="time"
+						value="{{($record)?$record.getStartTime():''}}"
+						data-xf-init="time-picker" data-moment="{$timeFormat}" data-format="{{ $xf.language.time_format }}" />
+					
+						</div>
+				</xf:formrow>
+			
+				<xf:formrow rowtype="input"
+						label="{{ phrase('end_date') }}">
+					<div class="inputGroup">
+			
+					<xf:dateinput name="tourn_enddate" class="date end" value="{{($record)?$record.getEndDate():''}}" required="true"
+						hint="{{ phrase('required') }}"/>
+							
+							<span class="inputGroup-splitter"></span>
+					<xf:textbox name="tourn_endtime" class="input--date time start" required="true" type="time"
+						value="{{($record)?$record.getEndTime():''}}"
+						data-xf-init="time-picker" data-moment="{$timeFormat}" data-format="{{ $xf.language.time_format }}" />
+					
+					</div>
+				</xf:formrow>
+			
+				<xf:uploadrow name="icon" accept=".gif,.jpeg,.jpg,.jpe,.png"
+					label="{{ phrase('icon') }}" hint="{{ phrase('required') }}"
+					explain="{{ phrase('upload_icon_image') }}"></xf:uploadrow>
+			
+					<xf:if is="$record is not empty">
+						<xf:inforow rowtype="confirm">
+							<img src="{$record.getImgUrl(true,'icon')}" style="width:80px;height:60px" >
+						</xf:inforow>
+					</xf:if>
+			
+				<xf:uploadrow name="header" accept=".gif,.jpeg,.jpg,.jpe,.png"
+					label="{{ phrase('header') }}" hint="{{ phrase('required') }}"
+					explain="{{ phrase('upload_header_image') }}"/>
+			
+					<xf:if is="$record is not empty">
+						<xf:inforow rowtype="confirm">
+							<img src="{$record.getImgUrl(true,'header')}" style="width:80px;height:60px" >
+						</xf:inforow>
+					</xf:if>
+			
+				<xf:textboxrow name="tourn_main_price" maxlength="{{ max_length($xf.visitor, 'tourn_main_price') }}" value="{{$record.tourn_main_price}}"
+					label="{{ phrase('main_price') }}" required="required" explain="{{ phrase('kindly_add_main_price') }}" hint="{{ phrase('required') }}" />
+			
+				<hr class="formRowSep" />
+			
+				<xf:textarearow name="tourn_desc" rows="3" autosize="true"
+					label="{{ phrase('description') }}"
+					required="true"
+					hint="{{ phrase('required') }}"
+					explain="{{ phrase('kindly_describe_in_details') }}"
+					value="{{$record.tourn_desc}}"/>			
+		</div>
+		
+		<xf:formrow rowtype="input"
+					label="{{ phrase('prizes') }}">
+				 
+				 <div class="inputGroup-container" data-xf-init="list-sorter" data-drag-handle=".dragHandle">
+					 
+						<xf:foreach loop="$record.tourn_prizes" key="$key" value="$value">
+							
+							<div class="inputGroup">
+								
+								<xf:textbox name="tourn_parto[]" value="{$key}"
+									placeholder="{{ phrase('First One') }}"
+									size="24" maxlength="25"
+									dir="ltr" />
+								
+								<span class="inputGroup-splitter"></span>
+								
+								<xf:textbox name="tourn_partt[]" value="{$value}"
+									placeholder="{{ phrase('Last One') }}" size="24" />
+							</div>
+						</xf:foreach>
+					 
+					 <div class="inputGroup is-undraggable js-blockDragafter" data-xf-init="field-adder"
+							data-remove-class="is-undraggable js-blockDragafter">
+						 
+							<xf:textbox name="tourn_parto[]"
+								placeholder="{{ phrase('First One') }}"
+								size="24" maxlength="25" data-i="0"
+								dir="ltr"/>
+						 
+							<span class="inputGroup-splitter"></span>
+						 
+							<xf:textbox name="tourn_partt[]"
+								placeholder="{{ phrase('Last One') }}"
+								size="24" data-i="0"/>
+					</div>
+					 
+			 	</div>	
+				</xf:formrow>
+		
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

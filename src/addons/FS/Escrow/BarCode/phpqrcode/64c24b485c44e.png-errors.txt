@@ -1,0 +1,1 @@
+2023-07-27 10:47:36: [E_WARNING] imagepng(/../../BarCode/images/64c24b485c44e.png): failed to open stream: No such file or directory

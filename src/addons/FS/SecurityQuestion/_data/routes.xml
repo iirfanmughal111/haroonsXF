@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="securityQuestion" format=":int&lt;question_id&gt;/:page" controller="FS\SecurityQuestion:SecurityQuestion" context="allSecurityQuestion"/>
+  <route route_type="public" route_prefix="sec-qu" format=":int&lt;id&gt;/:page" controller="FS\SecurityQuestion:SecurityQuestion" context="addQuestionAnswers"/>
+</routes>

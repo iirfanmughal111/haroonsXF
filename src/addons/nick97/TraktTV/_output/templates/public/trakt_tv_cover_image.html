@@ -1,0 +1,22 @@
+<xf:title>{{ phrase('thcovers_modify_cover_image') }}</xf:title>
+
+<xf:css src="th_covers.less" />
+
+<xf:form action="{{ link('covers/tv-update', {'content_type': $contentType, 'content_id': $contentId}) }}"
+		 ajax="true" upload="true" class="block" data-xf-init="cover-upload">
+	<div class="block-container">
+		<xf:inforow rowtype="confirm">
+			<xf:if is="{$hasNewBackdrop}">
+				{{ phrase('trakt_tv_backdrop_available') }}<br /><br />
+				<span style="text-align:center;"><img src="https://image.tmdb.org/t/p/{$xf.options.traktTvThreads_backdropCoverSize}{$backdropPath}" alt="" /></span>
+			<xf:else />
+				{{ phrase('trakt_tv_new_backdrop_not_available') }}
+				<xf:if is="{$backdropPath}">
+					<strong>{{ phrase('trakt_tv_reupload_old_backdrop') }}</strong>
+				</xf:if>
+			</xf:if>
+		</xf:inforow>
+
+		<xf:submitrow submit="{{ phrase('okay') }}" rowtype="simple" class="js-overlayClose" />
+	</div>
+</xf:form>

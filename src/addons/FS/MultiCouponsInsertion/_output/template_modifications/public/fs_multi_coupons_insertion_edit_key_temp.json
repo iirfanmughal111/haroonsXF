@@ -1,0 +1,9 @@
+{
+    "template": "dbtech_ecommerce_product_edit_key",
+    "description": "Used for add field another.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:hiddenval name=\"length_type[{$cost.product_cost_id}]\" value=\"permanent\" />",
+    "replace": "<xf:radiorow name=\"length_type[{$cost.product_cost_id}]\" label=\"{{ phrase('dbtech_ecommerce_license_duration') }}\" explain=\"{{ phrase('dbtech_ecommerce_license_length_explain') }}\">\n    <xf:option value=\"permanent\" selected=\"$cost.length_unit == ''\">{{ phrase('permanent') }}</xf:option>\n    <xf:option value=\"timed\" selected=\"$cost.length_unit != ''\" label=\"{{ phrase('for_length:') }}\">\n        <xf:dependent>\n            <div class=\"inputGroup\">\n                <xf:numberbox name=\"length_amount[{$cost.product_cost_id}]\" value=\"{{ $cost.length_amount ?: 1 }}\" min=\"1\" max=\"365\" class=\"input--numberNarrow\" />\n                <span class=\"inputGroup-splitter\"></span>\n                <xf:select name=\"length_unit[{$cost.product_cost_id}]\" value=\"{{ ($cost.length_unit == 'permanent' OR !$cost.length_amount) ? 'month' : $cost.length_unit }}\" class=\"input--autoSize\">\n                    <xf:option value=\"day\">{{ phrase('days') }}</xf:option>\n                    <xf:option value=\"month\">{{ phrase('months') }}</xf:option>\n                    <xf:option value=\"year\">{{ phrase('years') }}</xf:option>\n                </xf:select>\n            </div>\n        </xf:dependent>\n    </xf:option>\n</xf:radiorow>"
+}

@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "[FS] Media-Tag-Setting",
+    "description": "This addon will Hide the content of selected MediaSites (Media tags) based on usergroups",
+    "version_id": 1000200,
+    "version_string": "1.0.2",
+    "dev": "FS",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": "FS.png"
+}

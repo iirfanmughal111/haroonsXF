@@ -1,0 +1,13 @@
+{
+    "edit_format": "spinbox",
+    "edit_format_params": "units={{ phrase('units_pixels') }}\nmin=1",
+    "data_type": "positive_integer",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "92",
+    "relations": {
+        "traktTvThreads": 3130
+    }
+}

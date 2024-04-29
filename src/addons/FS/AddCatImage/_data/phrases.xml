@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_add_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image]]></phrase>
+  <phrase title="fs_cate_upload_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload Image]]></phrase>
+  <phrase title="option.fs_enable_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Display Image]]></phrase>
+  <phrase title="option_explain.fs_enable_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.addCategoryImage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Add Category Image]]></phrase>
+  <phrase title="option_group_description.addCategoryImage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

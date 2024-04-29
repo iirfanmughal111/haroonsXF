@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="bh_item" field_name="alert_handler_class">XenBulletins\BrandHub\Alert\Item</field>
+  <field content_type="bh_item" field_name="attachment_handler_class">XenBulletins\BrandHub\Attachment\Item</field>
+  <field content_type="bh_item" field_name="bookmark_handler_class">XenBulletins\BrandHub\Bookmark\Item</field>
+  <field content_type="bh_item" field_name="entity">XenBulletins\BrandHub:Item</field>
+  <field content_type="bh_item" field_name="reaction_handler_class">XenBulletins\BrandHub\Reaction\Item</field>
+  <field content_type="bh_ownerpage" field_name="alert_handler_class">XenBulletins\BrandHub\Alert\Page</field>
+  <field content_type="bh_ownerpage" field_name="attachment_handler_class">XenBulletins\BrandHub\Attachment\OwnerPage</field>
+  <field content_type="bh_ownerpage" field_name="entity">XenBulletins\BrandHub:OwnerPage</field>
+  <field content_type="bh_ownerpage" field_name="reaction_handler_class">XenBulletins\BrandHub\Reaction\Page</field>
+</content_type_fields>

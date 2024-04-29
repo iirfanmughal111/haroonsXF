@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_canSetItemMainPhoto" permission_type="flag" interface_group_id="bh_brand_hub" display_order="15"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_canUploadPhotos" permission_type="flag" interface_group_id="bh_brand_hub" display_order="14"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_canViewOwnerPageTab" permission_type="flag" interface_group_id="bh_brand_hub" display_order="15"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_can_assignThreadsToHub" permission_type="flag" interface_group_id="bh_brand_hub" display_order="13"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_can_edit_brandDescript" permission_type="flag" interface_group_id="bh_brand_hub" display_order="11"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_can_edit_itemDescript" permission_type="flag" interface_group_id="bh_brand_hub" display_order="12"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_can_edit_ownerpage" permission_type="flag" interface_group_id="bh_brand_hub" display_order="10"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_rate_item" permission_type="flag" interface_group_id="bh_brand_hub" display_order="1"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="can_view_subscribe_items" permission_type="flag" interface_group_id="bh_brand_hub" display_order="16"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="create_bookmark" permission_type="flag" interface_group_id="bh_brand_hub" display_order="16"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="deleteAnyReview" permission_type="flag" interface_group_id="bh_brand_hub" display_order="6"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="hardDelete" permission_type="flag" interface_group_id="bh_brand_hub" display_order="7"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="react" permission_type="flag" interface_group_id="bh_brand_hub" display_order="15"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="react_page" permission_type="flag" interface_group_id="bh_brand_hub" display_order="16"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="undelete" permission_type="flag" interface_group_id="bh_brand_hub" display_order="8"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="viewDeleted" permission_type="flag" interface_group_id="bh_brand_hub" display_order="9"/>
+</permissions>

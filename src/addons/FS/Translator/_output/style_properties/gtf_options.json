@@ -1,0 +1,13 @@
+{
+    "group_name": "cxfGoogleTranslateForum",
+    "title": "Set style for FS Translator",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "radio",
+    "value_parameters": "HORIZONTAL=horizontal translate button\nVERTICAL=vertical translate button\nSIMPLE=simple translate button, with no text",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "HORIZONTAL",
+    "display_order": 10
+}

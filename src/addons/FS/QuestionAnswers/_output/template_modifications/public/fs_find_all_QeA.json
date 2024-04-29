@@ -1,0 +1,9 @@
+{
+    "template": "member_macros",
+    "description": "Add two new options (find all questions and find all answers by x user) in find on user profile",
+    "execution_order": 5,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "\t<!--[XF:find_menu:bottom]-->",
+    "replace": "<xf:set var=\"$questionForumIds\" value=\"{{$xf.options.fs_questionAnswerForum}}\" />\n<a href=\"{{ link('search/member', null, {'user_id': $user.user_id, 'content': 'thread','thread_type': 'question', 'qa_nodes': [{$questionForumIds}]}) }}\" rel=\"nofollow\" class=\"menu-linkRow\">{{ phrase('find_all_questions_by_x', {'name': $user.username}) }}</a>\n<a href=\"{{ link('search/member', null, {'user_id': $user.user_id, 'content': 'fs_answer'}) }}\" rel=\"nofollow\" class=\"menu-linkRow\">{{ phrase('find_all_answers_by_x', {'name': $user.username}) }}</a>\n<a href=\"{{ link('search/member', null, {'user_id': $user.user_id, 'content': 'thread','thread_type': 'article'}) }}\" rel=\"nofollow\" class=\"menu-linkRow\">{{ phrase('find_all_article_by_x', {'name': $user.username}) }}</a>\n$0"
+}

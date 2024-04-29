@@ -1,0 +1,2 @@
+Enable if you want to keep track of the list of changed TVs to automatically apply rebuilding data.
+<b>Note:</b> This will overwrite all your manual edits if the TV has been updated.

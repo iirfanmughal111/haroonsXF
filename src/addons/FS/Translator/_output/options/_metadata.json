@@ -1,0 +1,32 @@
+{
+    "fsAlternativeFlags.json": {
+        "hash": "31145d8b88c5cc25c88914d3f78a9115"
+    },
+    "fsAutoSwitch.json": {
+        "hash": "70aead4946d0d353c498d8bb6db0489f"
+    },
+    "fsDefaultLanguage.json": {
+        "hash": "42e1aef04148e3911344c9ec58a73930"
+    },
+    "fsFlagStyle.json": {
+        "hash": "80024cc5154e5215e967b099b82c8293"
+    },
+    "fsFloat.json": {
+        "hash": "cbe6938582f81f8555b0c375d2b333ab"
+    },
+    "fsNativeLanguage.json": {
+        "hash": "e7fc4c81b1d7005d2f6f0c34f79b2f1d"
+    },
+    "fsOpenDirection.json": {
+        "hash": "5a97b6a0e3144348848c6f65dff5e9ac"
+    },
+    "fsPositions.json": {
+        "hash": "29b23bc4ac344f729c3cb82005fa94ab"
+    },
+    "fsShowLanguage.json": {
+        "hash": "f09392b36c6f7be7218aadfc6e862d0d"
+    },
+    "fsWidgetLook.json": {
+        "hash": "9dca673510769dc6e81bc6bd20b2efc2"
+    }
+}

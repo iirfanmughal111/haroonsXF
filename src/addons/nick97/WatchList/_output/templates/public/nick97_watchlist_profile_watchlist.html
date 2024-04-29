@@ -1,0 +1,19 @@
+<xf:if is="$stats">
+	<xf:macro template="nick97_watch_list_movies_macro" name="stats" arg-stats="{$stats}" />
+	<xf:else/>
+
+	<xf:if is="$statsLimit">
+		<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_stats') }}</div>
+		<xf:else/>
+		<div class="blockMessage">{{ phrase('nick97_member_empty_viewing_stats') }}</div>
+	</xf:if>
+</xf:if>
+
+<xf:if is="$limit">
+	<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_watchlist') }}</div>
+
+	<xf:else/>
+	<xf:macro template="nick97_watch_list_movies_macro" name="movies" arg-movies="{$movies}" />
+
+	<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />
+</xf:if>

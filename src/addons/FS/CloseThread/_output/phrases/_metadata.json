@@ -1,0 +1,38 @@
+{
+    "fs_close_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3444fcb5b9ea854c3daa6ce2fffd06b1"
+    },
+    "fs_unclose_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6dbea588dd4c5689fbc7d1ddbfa0f914"
+    },
+    "option.close_thread_prefix_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1a8b50b934ff35ec20f9dd399e6a8749"
+    },
+    "option_explain.close_thread_prefix_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.closeThread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "639f48170b5063f9edee721ce04792c0"
+    },
+    "option_group_description.closeThread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "34241e59a1e4ebabf8f30ed9f9967c30"
+    }
+}

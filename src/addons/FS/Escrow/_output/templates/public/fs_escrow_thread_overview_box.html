@@ -1,0 +1,40 @@
+<div class="block-body block-row">
+		
+		<dl  class="pairs pairs--justified ">
+				<dt>
+				{{ phrase('fs_escrow_form_status') }}
+					</dt>
+				<dd>
+					<xf:macro template="fs_escrow_list_macro" name="status"
+			arg-status="{$thread.Escrow.escrow_status}"/>
+				</dd>
+			</dl>
+		
+		<dl  class="pairs pairs--justified ">
+				<dt>
+				{{phrase('fs_escrow_amount')}}
+					</dt>
+				<dd>
+					{{phrase('fs_escrow_amount_symbol')}}{$thread.Escrow.escrow_amount}
+				</dd>
+			</dl>
+		
+		<dl  class="pairs pairs--justified ">
+				<dt>
+				{{phrase('fs_escrow_admin_from')}}
+					</dt>
+				<dd>
+					{$thread.User.username}
+				</dd>
+			</dl>
+		
+		<dl  class="pairs pairs--justified ">
+				<dt>
+				{{phrase('fs_escrow_admin_to')}}
+					</dt>
+				<dd>
+					{$thread.Escrow.User.username}
+				</dd>
+			</dl>
+		
+	</div>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="form" field_name="entity">Snog\Forms:Form</field>
+</content_type_fields>

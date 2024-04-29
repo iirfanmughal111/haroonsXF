@@ -1,0 +1,1 @@
+Can use inline moderation on ownerPage posts

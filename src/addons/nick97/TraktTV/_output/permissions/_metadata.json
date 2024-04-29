@@ -1,0 +1,26 @@
+{
+    "forum-trakt_edit_episodes.json": {
+        "hash": "66fc21adc7e877e8b89f834ea63b7d8c"
+    },
+    "forum-trakt_edit_shows.json": {
+        "hash": "b5a4d6a0917b6eae9a9dcf9b0a9f2c30"
+    },
+    "trakt_tvthreads_interface-add_info.json": {
+        "hash": "bf06963982b336e4221bc76530cbf554"
+    },
+    "trakt_tvthreads_interface-new_episode.json": {
+        "hash": "d9a6313009b5503a2e2e36c8bae3775a"
+    },
+    "trakt_tvthreads_interface-new_season.json": {
+        "hash": "6672a0481eda69da3118c1dc06d9bfa6"
+    },
+    "trakt_tvthreads_interface-new_show.json": {
+        "hash": "4948e90e1b2600f43c9de7ff99d6abb4"
+    },
+    "trakt_tvthreads_interface-updatePersons.json": {
+        "hash": "58e00f99965bdaedf5f26fdd3e752965"
+    },
+    "trakt_tvthreads_interface-use_trakt_tv.json": {
+        "hash": "d7788959c4a7309965dde2c924097f7e"
+    }
+}

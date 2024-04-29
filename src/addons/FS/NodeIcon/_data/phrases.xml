@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_node_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Custom node icon]]></phrase>
+  <phrase title="custom_node_unread_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Custom node unread icon]]></phrase>
+  <phrase title="icon_unread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Icon Unread]]></phrase>
+  <phrase title="no_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No icon]]></phrase>
+  <phrase title="no_icon_to_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This node does not have any icon.]]></phrase>
+  <phrase title="no_unread_icon_to_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This node does not have any unread icon.]]></phrase>
+  <phrase title="option.Fs_NodeIcon_nodeDimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Node icon dimensions]]></phrase>
+  <phrase title="option_explain.Fs_NodeIcon_nodeDimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.Fs_NodeIcon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Node Icon]]></phrase>
+  <phrase title="option_group_description.Fs_NodeIcon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.forum_canEditIcon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can Edit Icon]]></phrase>
+  <phrase title="please_confirm_delete_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm delete icon]]></phrase>
+</phrases>

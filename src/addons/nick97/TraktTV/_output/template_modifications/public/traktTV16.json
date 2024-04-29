@@ -1,0 +1,9 @@
+{
+    "template": "category_view",
+    "description": "Adds add tv show button to category display (template: snog_tv_add_show)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:breadcrumb source=\"$category.getBreadcrumbs(false)\" />",
+    "replace": "$0\n<xf:if is=\"in_array($category.node_id, $xf.options.traktTvThreads_category)\">\n\t<xf:include template=\"trakt_tv_add_show\" />\n</xf:if>"
+}

@@ -1,0 +1,119 @@
+<!-- women -->
+
+<xf:macro name="women" arg-premiumUpgrade="!" arg-providerCityUpgrade="!" arg-vipUpgrade="!" arg-providerVipUpgrade="!">
+	
+	<!-- Box # 1 -->
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box3-top">
+			{{phrase('fs_bitcoin_integ_vip_top',{'title':$vipUpgrade.title,'cost_amount':$vipUpgrade.cost_amount,'length_unit':$vipUpgrade.length_unit})}}
+
+		</div>
+		{{phrase('fs_bitcoin_integ_vip_body')}}
+		<xf:if is="$vipUpgrade && !$vipUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_vip_companion" class=" button box3-btn"  >
+				{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}"></a>
+			<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+
+	</div>
+	
+	<!-- Box # 2 -->
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box1-top">
+			{{phrase('fs_bitcoin_integ_premium_top',{'title':$premiumUpgrade.title,'cost_amount':$premiumUpgrade.cost_amount,'length_unit':$premiumUpgrade.length_unit})}}
+		</div>
+		{{phrase('fs_bitcoin_integ_premium_body')}}
+
+		<xf:if is="$premiumUpgrade && !$premiumUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_premium_companion" class=" button box1-btn"  >
+				{{phrase('upgrade')}}
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+			<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+
+	</div>
+	
+	<!-- Box # 3 -->
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box4-top">
+			{{phrase('fs_bitcoin_integ_provider_top',{'title':$providerVipUpgrade.title,'cost_amount':$providerVipUpgrade.cost_amount,'length_unit':$providerVipUpgrade.length_unit})}}
+
+
+		</div>
+		{{phrase('fs_bitcoin_integ_provider_body')}} 
+		<xf:if is="$providerVipUpgrade && !$providerVipUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_vip" class=" button box4-btn"  >
+				{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+			<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+	</div>
+	
+	<!-- Box # 4 -->
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box2-top">
+			{{phrase('fs_bitcoin_integ_top_ten_top',{'title':$providerCityUpgrade.title,'cost_amount':$providerCityUpgrade.cost_amount,'length_unit':$providerCityUpgrade.length_unit})}}
+
+
+		</div>
+		{{phrase('fs_bitcoin_integ_top_ten_body')}}
+		<xf:if is="$providerCityUpgrade && !$providerCityUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_city" class=" button box2-btn"  >
+				{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+			<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+	</div>	
+
+</xf:macro>
+
+
+<!-- men -->
+
+<xf:macro name="men" arg-sixMonthUpgrade="!" arg-oneYearUpgrade="!">
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box1-top">
+			{{phrase('fs_bitcoin_integ_six_months',{'title':$sixMonthUpgrade.title,'cost_amount':$sixMonthUpgrade.cost_amount,'length_unit':$sixMonthUpgrade.length_unit, 'length' : $sixMonthUpgrade.length_amount})}}
+		</div>
+		{{phrase('fs_bitcoin_integ_six_months_body')}}
+
+		<xf:if is="$sixMonthUpgrade && !$sixMonthUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_six_month" class=" button box1-btn"  >
+				{{phrase('upgrade')}}
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+			<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+
+	</div>
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box2-top">
+			{{phrase('fs_bitcoin_integ_one_year',{'title':$oneYearUpgrade.title,'cost_amount':$oneYearUpgrade.cost_amount,'length_unit':$oneYearUpgrade.length_unit, 'length' : $oneYearUpgrade.length_amount})}}
+		</div>
+		{{phrase('fs_bitcoin_integ_one_year_body')}}
+		<xf:if is="$oneYearUpgrade && !$oneYearUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_one_year" class=" button box2-btn"  >
+				{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+			<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+	</div>
+
+</xf:macro>

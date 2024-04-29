@@ -1,0 +1,9 @@
+{
+    "template": "dbtech_ecommerce_product_edit_key",
+    "description": "Used for remove hidden field.",
+    "execution_order": 1,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:hiddenval name=\"length_type[{{ mustache('product_cost_id') }}]\" value=\"permanent\" />",
+    "replace": "\t\t<xf:radiorow name=\"length_type[{{ mustache('product_cost_id') }}]\"\n\t\t\t\t\t\t   label=\"{{ phrase('dbtech_ecommerce_license_duration') }}\"\n\t\t\t\t\t\t   explain=\"{{ phrase('dbtech_ecommerce_license_length_explain') }}\">\n  \n\t\t\t\t  <xf:option value=\"permanent\" selected=\"true\">{{ phrase('permanent') }}</xf:option>\n\t\t\t\t  <xf:option value=\"timed\" label=\"{{ phrase('for_length:') }}\">\n\t\t\t\t\t  <xf:dependent>\n\t\t\t\t\t\t  <div class=\"inputGroup\">\n\t\t\t\t\t\t\t  <xf:numberbox name=\"length_amount[{{ mustache('product_cost_id') }}]\" value=\"1\" min=\"1\" max=\"365\" class=\"input--numberNarrow\" />\n\t\t\t\t\t\t\t  <span class=\"inputGroup-splitter\"></span>\n\t\t\t\t\t\t\t  <xf:select name=\"length_unit[{{ mustache('product_cost_id') }}]\" value=\"month\" class=\"input--autoSize\">\n\t\t\t\t\t\t\t\t  <xf:option value=\"day\">{{ phrase('days') }}</xf:option>\n\t\t\t\t\t\t\t\t  <xf:option value=\"month\">{{ phrase('months') }}</xf:option>\n\t\t\t\t\t\t\t\t  <xf:option value=\"year\">{{ phrase('years') }}</xf:option>\n\t\t\t\t\t\t\t  </xf:select>\n\t\t\t\t\t\t  </div>\n  \n\t\t\t\t\t  </xf:dependent>\n\t\t\t\t  </xf:option>\n\t\t\t  </xf:radiorow>"
+}

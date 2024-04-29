@@ -1,0 +1,13 @@
+{
+    "edit_format": "callback",
+    "edit_format_params": "nick97\\TraktMovies\\Option\\Country::renderSelect",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "",
+    "relations": {
+        "traktMovies": 801
+    }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="apaMaxForums" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>0</default_value>
+    <relation group_id="awedo_post_areas" display_order="10"/>
+  </option>
+  <option option_id="apaUseCache" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="awedo_post_areas" display_order="5"/>
+  </option>
+</options>

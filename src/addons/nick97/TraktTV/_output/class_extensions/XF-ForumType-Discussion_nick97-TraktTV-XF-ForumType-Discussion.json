@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\ForumType\\Discussion",
+    "to_class": "nick97\\TraktTV\\XF\\ForumType\\Discussion",
+    "execute_order": 10,
+    "active": true
+}

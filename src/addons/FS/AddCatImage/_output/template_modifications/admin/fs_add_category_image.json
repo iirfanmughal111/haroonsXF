@@ -1,0 +1,9 @@
+{
+    "template": "xfrm_category_edit",
+    "description": "Add \"Image uploading\u201c field....!",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:textarearow name=\"description\" value=\"{$category.description}\" autosize=\"true\"\n\t\t\t\tlabel=\"{{ phrase('description') }}\"\n\t\t\t\texplain=\"{{ phrase('you_may_use_html') }}\" />",
+    "replace": "$0\n\n<xf:uploadrow name=\"image\" accept=\".gif,.jpeg,.jpg,.jpe,.png\"\n\t\t\t\t\tlabel=\"{{ phrase('fs_add_image') }}\"\n\t\t\t\t\texplain=\"{{ phrase('fs_cate_upload_image') }}\"></xf:uploadrow>\n\t\t\t\t\t<xf:if is=\"$category.isImage()\">\n\t\t\t\t\t\t<xf:formrow>\n\t\t\t\t\t\t<xf:inforow rowtype=\"confirm\">\n\t\t\t\t\t\t\t<img src=\"{$category.getImgUrl(true)}\" style=\"width:80px;height:60px\" >\n\t\t\t\t\t\t</xf:inforow>\n\t\t\t\t\t\t\t</xf:formrow>\n\t\t\t\t\t</xf:if>"
+}

@@ -1,0 +1,26 @@
+{
+    "custom_bb_code_desc.fs_word_highlight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fe11e202923a07cf7e84113250d2e447"
+    },
+    "custom_bb_code_example.fs_word_highlight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "custom_bb_code_output.fs_word_highlight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "custom_bb_code_title.fs_word_highlight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1687c091c4e7a00e36c56d2b6d1f033a"
+    }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="ThemeHouse\Covers\Pub\Controller\Cover" to_class="nick97\TraktMovies\ThemeHouse\Covers\Pub\Controller\Cover" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\User" to_class="nick97\TraktMovies\XF\Admin\Controller\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Forum" to_class="nick97\TraktMovies\XF\Entity\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Thread" to_class="nick97\TraktMovies\XF\Entity\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="nick97\TraktMovies\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\UserOption" to_class="nick97\TraktMovies\XF\Entity\UserOption" execute_order="10" active="1"/>
+  <extension from_class="XF\ForumType\Discussion" to_class="nick97\TraktMovies\XF\ForumType\Discussion" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Account" to_class="nick97\TraktMovies\XF\Pub\Controller\Account" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Forum" to_class="nick97\TraktMovies\XF\Pub\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Post" to_class="nick97\TraktMovies\XF\Pub\Controller\Post" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Thread" to_class="nick97\TraktMovies\XF\Pub\Controller\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\Search\Data\Thread" to_class="nick97\TraktMovies\XF\Search\Data\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\Service\Thread\Creator" to_class="nick97\TraktMovies\XF\Service\Thread\Creator" execute_order="10" active="1"/>
+  <extension from_class="XF\Tag\Thread" to_class="nick97\TraktMovies\XF\Tag\Thread" execute_order="10" active="1"/>
+</class_extensions>

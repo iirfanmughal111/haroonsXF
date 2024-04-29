@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="class_contains" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Class Contains]]></phrase>
+  <phrase title="name_contains" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name Contains]]></phrase>
+  <phrase title="nav.addRecord" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="nav.createCrud" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CRUD]]></phrase>
+  <phrase title="please_complete_required_field" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please input atleast one field]]></phrase>
+  <phrase title="rollNo_contains" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Roll No Contains]]></phrase>
+</phrases>

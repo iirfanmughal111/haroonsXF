@@ -1,0 +1,1089 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="_page_node.40" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[<xf:include template="shome_servey_Main"/><br class="br_div">
+<xf:include template="shome_servey_earn_money"/><br class="br_div">
+<xf:include template="shome_servey_about"/><br class="br_div">
+<xf:include template="shome_servey_earn_with"/><br class="br_div">]]></template>
+  <template type="public" title="shome_servey_Main" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[<xf:css src="shome_servey_Main.less" />
+<div class="box-block">
+			<h1 class = "rewards">{{ phrase('rewards_program') }}</h1>
+                <div class="container home-content2">
+					  <div class="row joinwork">						  
+						 <div class="col-md-5 col-sm-12"> 
+							 
+							 <div class="banner-left">
+													
+								<p class = "join">{{ phrase('join_members')}}<span>{{ phrase('online')}}</span></p>
+								<a href="{{ link('register') }}" class="joinbutton">{{ phrase('join_now')}}</a>
+							</div>
+						</div>		
+						
+						 <div class="inline-md-7 inline-sm-12"> 
+                        <div class="video-box">
+                            <h2>{{ phrase('how_it')}}<span>{{ phrase('works')}}</span>?</h2>
+                                
+                           <div class="video-box-script">
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/806117119?h=798ade4d90&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="start a freelance business module 8"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+							</div>
+
+                                
+                        
+                        </div>
+                            
+                    </div>
+                    
+					</div>	 
+                </div>
+                <!-- end container -->
+            </div>]]></template>
+  <template type="public" title="shome_servey_Main.less" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[.overlay .overlay-title{
+	
+	display:none !important;
+}
+.br_div{
+	
+	  display: none;
+}
+.earn-with{
+	
+	padding-bottom: 0px!important;
+}
+.xentr-top-section {
+    display: none;
+}
+.p-pageWrapper .p-body-inner {
+    max-width: 100%;
+}
+.block-row {
+    padding: 0px 0px 0px 0px;
+}
+.home-content2{
+	
+	margin-top: 2%;
+	
+}
+.video-box h2{
+	
+	    margin-bottom: 10px;
+       margin-top: 0px;
+}
+.box-block
+{
+	background: @xf-paletteColor3;
+	    width: 100%;
+	 height: 730px;
+}
+.joinwork{
+	display:flex;
+	justify-content: center;
+}
+.row
+{
+	display: flex;
+}
+
+.banner-left {
+   margin-top: 8%;
+    width: 100%;
+    margin-left: 7%;
+    text-align: center;
+}
+.join {
+    font-size: 57px;
+    color: @xf-contentBg;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+
+ .rewards {
+    font-family: 'Oswald';
+    color: @xf-contentBg;
+    text-transform: uppercase;
+    font-size: 65px;
+    font-weight: 300;
+	 text-align: center;
+	  margin-top: 0px;
+	 padding-top: 35px;
+}
+.works
+{
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: @xf-contentBg;
+    text-transform: uppercase;
+    text-align: center;
+}
+	span{
+		color:rgb(220, 218, 84);
+	}
+.joinbutton {
+    text-transform: uppercase;
+    font-weight: 300;
+    display: inline-block;
+    align-items: stretch;
+    justify-content: space-between;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    -webkit-transition: background-color 0.125s ease, border-color 0.125s ease, color 0.125s ease;
+    transition: background-color 0.125s ease, border-color 0.125s ease, color 0.125s ease;
+    font-size: 30px;
+    border-radius: 4px;
+    padding-top: 8px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    text-align: center;
+    color: #f5f6f9;
+    background: #63b2f5;
+    border-color: #4ba6f3 #7bbef7 #7bbef7 #4ba6f3;
+    align-content: space-around;
+    flex-direction: row;
+}
+.inline-md-5, .inline-sm-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 50%;
+}
+.video-box {
+   
+    padding: 0px 30px 10px;
+    padding-left: 3%;
+    padding-right: 4%;
+   
+    width: 82%;
+    margin-left: 19%;
+    
+}
+
+.video-box h2 {
+ font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: @xf-contentBg;
+    text-transform: uppercase;
+	text-align:center;
+   
+}
+
+.video-box h2 span {
+ color:rgb(220, 218, 84);
+}
+
+.video-box-script {
+ 
+  margin-bottom: 15px;
+	width: 100%;
+}
+.video-box img {
+  max-width: 100%;
+}
+.block-container {
+   
+    background: @xf-contentHighlightBg;
+   
+}
+.blockMessage.blockMessage--error {
+    
+    display: none;
+}
+.p-body-header {
+    padding-top: 0px!important;
+    display: none;
+}
+.p-body-inner {
+    padding-top: 0px!important;
+	padding-bottom: 0px!important;
+    
+}
+.blockMessage.blockMessage--none {
+     display: none;
+}
+.breadcrumb-content .p-breadcrumbs {
+    display: none;
+}
+/* Mobile devices */
+@media only screen and (max-width: 768px) {
+.row {
+flex-wrap: wrap;
+}
+	.box-block {
+    height: 1027px;
+    background-repeat: inherit;
+}
+	.icons {
+    max-width: 12%;
+}
+
+.inline-md-5,
+.inline-sm-12 {
+width: 100%;
+}
+
+.banner-left {
+      margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.video-box {
+width: 100%;
+margin: 0 auto;
+margin-bottom: 5%;
+padding: 30px 5%;
+}
+
+.video-box h2 {
+font-size: 36px;
+}
+
+.join {
+font-size: 24px;
+text-align: justify;
+}
+
+.joinbutton {
+    font-size: 20px;
+    padding: 10px 18px;
+    position: relative;
+    left: 2%;
+    
+}
+}]]></template>
+  <template type="public" title="shome_servey_about" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[<xf:css src="shome_servey_about.less"/>
+<div id="aboutSection" class="main-content" data-scrollview="true">
+        <!-- begin container -->
+        <div class="about-container" data-animation="true" >
+            <h2 class="about-title"><img src="https://i.imgur.com/Wh7quZI.png" class="display-none">{{ phrase('about_beermoneyforum')}}<img src="https://i.imgur.com/Wh7quZI.png" class="display-none"></h2>
+            <p class="about-desc">
+				{{ phrase('make_money_online')}}
+                       
+            </p>
+            <!-- begin row -->
+            <div class="block">
+                <!-- begin col-6 -->
+                <div class="block-md-6 block-sm-12">
+                    <!-- begin about -->
+                    <div>
+                        <h3>{{ phrase('our_story')}}</h3>
+                        <p>{{ phrase('our_story_text1')}}</p>
+                        <p>{{ phrase('our_story_text2')}}</p>
+                    </div>
+                    <!-- end about -->
+                </div>
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
+                <div class="block-md-6 block-sm-12">
+
+                    <!-- begin about-author -->
+                    <div class="section-author">
+                        <div class="advice bg-advice">
+                            <img src="https://beersurveys.com/Images/custom/comments.png" class="">
+                           
+                            <h3>{{ phrase('help_each_other')}}<br>
+                                {{ phrase('to_make_money')}}</h3>
+                            
+                        </div>
+                        <div class="author">
+                            <div class="author-image">
+                                <img src="https://beersurveys.com/Images/Home/user-1.jpg" alt="Sean Ngu">
+                            </div>
+                            <div class="name">{{ phrase('name_daniel')}}       
+                            <small>{{ phrase('founder')}}<a href="https://www.beermoneyforum.com" target="_blank">{{ phrase('beer_forum_com')}}</a></small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end about-author -->
+                </div>
+                <!-- end col-4 -->
+               
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>]]></template>
+  <template type="public" title="shome_servey_about.less" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[#aboutSection {
+  background: @xf-paletteColor3;
+  background-size: cover;
+  color: white;
+  padding-top: 60px;
+}
+.makemoney{
+	color:white;
+}
+.about-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.block:after,
+.block:before,
+.about-container:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: table;
+  content: " ";
+}
+
+body {
+  background: #fff;
+
+  color: #707478;
+  font-size: 12px;
+
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+  background: #fafafa url(https://beersurveys.com/Scripts/default/assets/css/images/main_back.jpg) no-repeat left top;
+}
+h3 {
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 15px;
+  line-height: 1.25;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+#aboutSection .about-title:after {
+  background: #fdfdfd;
+}
+
+
+
+.main-content{
+  padding: 100px 15px 65px;
+}
+
+#aboutSection .about-title {
+  font-size: 44px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+.main-content .about-title {
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-size: 48px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color: #3d3121;
+  font-weight: 300;
+}
+
+.main-content .about-title {
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  margin-top: 0;
+}
+.main-content .about-title:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 40px;
+  background: #242a30;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+}
+
+#aboutSection p.about-desc {
+  color: white;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+}
+
+#aboutSection p {
+  color: white;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: justify;
+}
+
+.main-content .about-desc {
+  text-align: center;
+  margin-bottom: 60px;
+  color: #242a30;
+}
+
+.block {
+  margin: 0 -10px;
+  
+}
+
+.block:before,
+.block:after {
+  display: table;
+  content: " ";
+}
+
+.block:after {
+  clear: both;
+}
+
+.block > [class*="col-"] {
+  padding: 0 10px;
+}
+.block-md-6,
+.block-sm-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.section-author {
+  position: relative;
+  padding-top: 50px;
+  margin: 0px 10px;
+}
+
+.section-author .advice {
+  position: relative;
+  padding: 30px 60px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.bg-advice {
+  background: @xf-paletteColor4;
+}
+
+.advice {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 300;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#aboutSection .section-author .advice h3 {
+  color: white;
+}
+#aboutSection h3 {
+  font-size: 30px;
+  color: #ffc13c;
+}
+.section-author .advice h3 {
+  margin: 0;
+  font-weight: 300;
+  color: #707478;
+  font-style: italic;
+  line-height: 42px;
+}
+
+.section-author .advice h3 {
+  margin: 0;
+  font-weight: 300;
+  color: #707478;
+  font-style: italic;
+  line-height: 30px;
+}
+
+.section-author .author {
+  position: relative;
+  text-align: right;
+  padding-left: 0px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.section-author .author {
+  position: relative;
+  text-align: right;
+  padding-left: 100px;
+  margin-bottom: 15px;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.section-author .author .author-image {
+  position: absolute;
+  right: 0px;
+  top: -40px;
+  background: #fff;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  left: auto;
+}
+
+.section-author .author .author-image {
+  position: absolute;
+  left: -10px;
+  top: -40px;
+  background: #fff;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  width: 100px;
+  overflow: hidden;
+}
+
+.section-author .author {
+  position: relative;
+  text-align: right;
+  padding-left: 0px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+section-author .author .author-image img {
+  max-width: 100%;
+}
+.section-author .author .author-image {
+  position: absolute;
+  right: 0px;
+  top: -40px;
+  background: #fff;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  width: 120px;
+  overflow: hidden;
+  left: auto;
+}
+
+.section-author .author .name {
+  color: #ffb92f;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+}
+/* .section-author .author .name {
+    color: #242a30;
+    font-weight: 600;
+    font-size: 14px;
+} */
+
+.section-author .author .name small {
+  display: block;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.section-author .author .name small {
+  display: block;
+  /* color: #999; */
+  font-size: 12px;
+  font-weight: 400;
+}
+.small,
+small {
+  font-size: 85%;
+}
+small {
+  font-size: 80%;
+}
+
+.section-author .author .name small a {
+  color: #ffc13c;
+  text-decoration: none;
+}
+.section-author .advice:before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  right: 175px;
+  border: 10px solid transparent;
+  border-top-color: #130803;
+  border-left-color: #130803;
+  left: auto;
+}
+
+.section-author .fa.fa-advice-left,
+.section-author .fa.fa-advice-right {
+  color: white;
+}
+
+.section-author .fa.fa-advice-left,
+.section-author .fa.fa-advice-right {
+  font-size: 14px;
+  position: absolute;
+  left: 30px;
+  margin-top: -14px;
+  line-height: 28px;
+  top: 30px;
+  color: #d5d9da;
+}
+.advice .fa-advice-left,
+.advice .fa-advice-right {
+  color: #fff;
+  font-size: 14px;
+  position: relative;
+  top: -14px;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-advice-left:before {
+  content: "\f10d";
+}
+.fa-advice-right:before {
+  content: "\f10e";
+}
+div {
+  display: block;
+}
+
+
+@media (min-width: 1200px) {
+    .about-container{
+    width: 1170px;
+  }
+}
+@media (min-width: 992px) {
+    .about-container {
+    width: 970px;
+  }
+  .block-md-6 {
+    width: 50%;
+    float: left;
+  }
+}
+
+.section-author .advice h3 {
+  margin: 0;
+  font-weight: 300;
+  color: #707478;
+  font-style: italic;
+  line-height: 42px;
+}
+
+@media (min-width: 768px) {
+  /* .about-container {
+    
+    width: 750px;
+    /* width: 910px; 
+
+} */
+
+  /* .block-sm-12 {
+    width: 100%;
+   
+} */
+}
+
+@media (max-width: 768px) {
+  #aboutSection .about-title {
+    font-size: 24px;
+  }
+  .display-none {
+    display: none;
+  }
+}]]></template>
+  <template type="public" title="shome_servey_earn_money" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[<xf:css src="shome_servey_earn_money.less" />
+<div id="waySection" class="way-content" data-scrollview="true">
+        <!-- begin container -->
+        <div class="way-container" data-animation="true" >
+            <h2 class="way-title"><img src="https://i.imgur.com/Wh7quZI.png" class="display-none">{{ phrase('ways_to_earn')}}<img src="https://i.imgur.com/Wh7quZI.png" class="display-none"></h2>
+           <!-- begin row -->
+                    <div class="wayrow">
+                        <!-- begin col-3 -->
+                        <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://img.freepik.com/premium-vector/chatbot-concept-hand-holding-phone-with-illustration-woman-chatting-with-chat-bot-smartphone-user-chatting-with-chat-bot-smartphone-customer-service-help-vector-illustration_735449-167.jpg" class="" title="AI BOT to answer any questions">
+									<h2>{{ phrase('ask_bmfbot')}}</h2>
+																	
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+                        <!-- begin col-3 -->
+                        <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2014/10/14144316/know-if-you-would-be-a-good-freelancer-1-1024x512.jpg" class="" title="Freelancers post or find jobs and deals">
+									<h2>{{ phrase('marketplace')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+                        <!-- begin col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://i2.wp.com/miuv.blog/wp-content/uploads/2019/01/cpu_context.png?fit=1024%2C525&ssl=1" class="" title="Earn Up to 100 Points per thread">
+									<h2>{{ phrase('post_threads')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+                        
+                        <!-- begin col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDeADrxFpqk6HLUe1wnKh_erMyRxN_R4MmR6tEM25ULm5TJS2jcI02dfP0C25_e6sV2Q0&usqp=CAU" class="" title="Earn Up to 20 Points per comment">
+									<h2>{{ phrase('post_replies')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+						
+						<!-- begin col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://miro.medium.com/v2/resize:fit:1200/1*Y6YYEk9pazFoWnhqA9gsYQ.png" class="" title="Earn 1000 Points per friend you invite">
+									<h2>{{ phrase('invite_friends')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+						
+						<!-- begin col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://www.themecanal.com/tc-uploads/myCred-Daily-Login-Rewards-350x362.png" class="" title="Earn Up to 10 Points to Login your account once a day">
+									<h2>{{ phrase('daily_login')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+						
+						<!-- begin col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://www.travelpayouts.com/blog/wp-content/uploads/2018/02/promo-codes-travelpayouts.png" class="" title="Redeem promo codes to get FREE Points">
+									<h2>{{ phrase('promo_codes')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+						
+						<!-- begin col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://learn.g2.com/hubfs/create-referral-program.jpg" class="" title="Earn 10% referral commission per each sale">
+									<h2>{{ phrase('referral_program')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+						
+						<!-- begin col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://www.searchenginejournal.com/wp-content/uploads/2022/04/google-webspam-report-6263042068b1a-sej.png" class="" title="Earn Up to 500 Points for reporting spam">
+									<h2>{{ phrase('report_spam')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        <!-- end col-3 -->
+                         <div class="waycol-md-3 waycol-sm-12">
+                           <div class="wayrow">
+								<div class="ways-block">
+									<img src="https://i.imgur.com/T8mKens.png" class="" title="Get a free Promo">
+									<h2>{{ phrase('free_promo')}}</h2>
+									
+								</div>
+                           </div>
+                        </div>
+                        
+                    </div>
+                    <!-- end row -->
+
+           
+        </div>
+        <!-- end container -->
+    </div>]]></template>
+  <template type="public" title="shome_servey_earn_money.less" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[#waySection {
+  background: #2d2118 url(https://beersurveys.com/Scripts/default/assets/css/images/main_back.jpg) no-repeat left top;
+  background-size: cover;
+  padding-top: 60px;
+}
+
+#waySection .way-title {
+  font-size: 48px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+#waySection .section-author .advice h3 {
+  color: white;
+}
+#waySection h3 {
+  font-size: 30px;
+  color: #ffc13c;
+}
+
+.way-content{
+  padding: 100px 15px 65px;
+}
+
+.way-content .way-title {
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  font-size: 48px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color: mix(@xf-textColor, @xf-textColorMuted);
+  font-weight: 300;
+}
+
+.way-content .way-title {
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  margin-top: 0;
+}
+
+.way-content .way-title:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 40px;
+  background: #242a30;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+}
+
+.way-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.block:after,
+.block:before,
+.way-container:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: table;
+  content: " ";
+}
+
+h2 {
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 15px;
+  line-height: 1.25;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.wayrow {
+  margin: 0 -10px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.wayrow:before,
+.wayrow:after {
+  display: table;
+  content: " ";
+}
+
+.wayrow:after {
+  clear: both;
+}
+
+.col > [class*="col-"] {
+  padding: 0 10px;
+}
+
+.waycol-md-3,
+.waycol-sm-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+	 width: 20%;
+}
+
+div {
+  display: block;
+}
+
+.ways-block {
+    border-radius: 4px;
+    box-shadow: 0 0px 8px 0 rgba(0,0,0,.4);
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+.ways-block h2 {
+    color: mix(@xf-textColor, @xf-textColorMuted);
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+
+.ways-block img {
+    width: auto;
+	height: 100px;
+}
+
+@media (min-width: 1200px) {
+    .way-container{
+    width: 1170px;
+  }
+}
+@media (min-width: 992px) {
+    .way-container {
+    width: 970px;
+  }
+  .waycol-md-3 {
+    width: 20%;
+    float: left;
+  }
+	.wayrow{
+		width: 106%;
+	}
+}
+@media only screen and (max-width: 480px) {
+  .waycol-md-3 {
+    width: 100%;
+    
+  }
+}
+@media (max-width: 768px) {
+  #waySection .way-title {
+    font-size: 22px;
+  }
+	.wayrow {
+    width: 90%;
+    margin-left: 17px;
+}
+	.waycol-md-3 {
+    width: 100%;
+    display: -webkit-inline-box;
+    
+}
+  .display-none {
+    display: none;
+  }
+}]]></template>
+  <template type="public" title="shome_servey_earn_with" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[<xf:css src="shome_servey_earn_with.less" />
+<div id = "earnmoney" class="earn_money" data-scrollview="true">
+        <!-- begin container -->
+        <div class="earn-container" data-animation="true" >
+           <h2 class="earn-with"><img src="https://i.imgur.com/Wh7quZI.png" class="display-none">{{ phrase('ways_to_cashout')}}<img src="https://i.imgur.com/Wh7quZI.png" class="display-none">
+			<p id= "para" class="earnmoney-desc">
+                 {{ phrase('withdraw_your_points')}}</p>
+			   
+			   <div>
+				   
+			   
+			   <img class = "icons" src="https://i.imgur.com/EfyaTgT.png" title="Pay Pal" >
+			   <img class = "icons" src="https://i.imgur.com/93u5XkE.png" title="AdvCash">
+			   <img class = "icons" src="https://i.imgur.com/7AKzR9b.png" title="Payeer">
+			   <img class = "icons" src="https://i.imgur.com/T5Jk7HQ.png" title="Perfect Money">
+			   <img class = "icons" src="https://i.imgur.com/6zIDCJo.png" title="Skrill">
+			   <img class = "icons" src="https://i.imgur.com/m4hJXbb.png" title="Bitcoin">
+				</div>
+			 
+				   
+			  
+			</h2>
+  			
+		</div>
+</div>]]></template>
+  <template type="public" title="shome_servey_earn_with.less" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[.earn-with {
+  background: #2d2118 url(https://beersurveys.com/Scripts/default/assets/css/images/main_back.jpg) no-repeat left top;
+  background-size: cover;
+  padding-top: 30px;
+
+}
+.icons{
+	max-width:4%;
+	padding-bottom: 20px;
+}
+
+#earnmoney .earn_money:after {
+  background: #fdfdfd;
+}
+#earnmoney .earn_money {
+font-size: 48px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+#earnmoney h3 {
+  font-size: 30px;
+  color: #ffc13c;
+}
+
+.earn_money .earn-with {
+  text-align: center;
+  position: relative;
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 0;
+  font-size: 48px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  color:black ;
+  font-weight: 300;
+}
+.earnmoney-desc{
+  color: black;
+  font-size: 24px !important;
+  line-height: 30px;
+  text-align: center;
+}
+.fab {
+	color:mix(@xf-paletteColor3, @xf-contentBg, 75%);
+}]]></template>
+</templates>

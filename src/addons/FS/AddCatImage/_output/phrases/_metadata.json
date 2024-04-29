@@ -1,0 +1,38 @@
+{
+    "fs_add_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "be53a0541a6d36f6ecb879fa2c584b08"
+    },
+    "fs_cate_upload_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1f98842c354dc496970446bce14f4c50"
+    },
+    "option.fs_enable_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "32e5d2b538ad2dec56341af47e369edc"
+    },
+    "option_explain.fs_enable_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.addCategoryImage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8364332642d5bed6c54f1c50546d5647"
+    },
+    "option_group_description.addCategoryImage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

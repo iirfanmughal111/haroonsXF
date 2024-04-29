@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="schedule" format=":int&lt;sch_id&gt;/" controller="FS\ScheduledPosting:ScheduledPosting" context="addScheduled"/>
+</routes>

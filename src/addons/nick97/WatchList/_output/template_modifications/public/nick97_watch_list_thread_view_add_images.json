@@ -1,0 +1,9 @@
+{
+    "template": "thread_list_macros",
+    "description": "nick97_watch_list_thread_view_add_images",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:avatar user=\"$thread.User\" size=\"s\" defaultname=\"{$thread.username}\" />\n\t\t\t\t<xf:if is=\"$thread.getUserPostCount()\">\n\t\t\t\t\t<xf:avatar user=\"$xf.visitor\" size=\"s\"\n\t\t\t\t\t\thref=\"\"\n\t\t\t\t\t\tclass=\"avatar--separated structItem-secondaryIcon\"\n\t\t\t\t\t\ttabindex=\"0\"\n\t\t\t\t\t\tdata-xf-init=\"tooltip\"\n\t\t\t\t\t\tdata-trigger=\"auto\"\n\t\t\t\t\t\ttitle=\"{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}\" />\n\t\t\t\t</xf:if>",
+    "replace": "<xf:if is=\"$thread.Movie AND ($thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'nick97_trakt_movies')\">\n\t<a class=\"carousel-item-image\" href=\"{{ link('threads', $thread) }}\">\n\t\t<img class=\"tvPoster\" src=\"{$thread.Movie.getImageUrl()}\">\n\t</a>\n\t<xf:elseif is=\"$thread.TV AND ($thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'nick97_trakt_tv')\" />\n\t<a class=\"carousel-item-image\" href=\"{{ link('threads', $thread) }}\">\n\t\t<img class=\"tvPoster\" src=\"{$thread.TV.getImageUrl()}\">\n\t</a>\n\t<xf:else />\n\t<xf:avatar user=\"$thread.User\" size=\"s\" defaultname=\"{$thread.username}\" />\n\t<xf:if is=\"$thread.getUserPostCount()\">\n\t\t<xf:avatar user=\"$xf.visitor\" size=\"s\"\n\t\t\t\t   href=\"\"\n\t\t\t\t   class=\"avatar--separated structItem-secondaryIcon\"\n\t\t\t\t   tabindex=\"0\"\n\t\t\t\t   data-xf-init=\"tooltip\"\n\t\t\t\t   data-trigger=\"auto\"\n\t\t\t\t   title=\"{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}\" />\n\t</xf:if>\n</xf:if>"
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="thread_view" modification_key="fs_close_thread" description="fs close thread replies." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$canInlineMod">
+							<xf:macro template="inline_mod_macros" name="button" />
+						</xf:if>]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.user_id == $thread.user_id || $xf.visitor.is_moderator || $xf.visitor.is_admin">
+<xf:button href="{{ link('threads/close-thread', $thread) }}" class="button--link"
+								data-xf-click="switch"
+								>
+								<xf:if is="$thread.discussion_open">
+									{{ phrase('fs_close_thread') }}
+								<xf:else />
+									{{ phrase('fs_unclose_thread') }}
+								</xf:if>
+							</xf:button>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+</template_modifications>

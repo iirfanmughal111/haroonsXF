@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "original=original\nh50=h50\nh100=h100",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "original",
+    "relations": {
+        "traktMovies": 3140
+    }
+}

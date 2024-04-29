@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread_chooser",
+    "description": "fs_question_answers_hide_selected_list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro name=\"node_list_entry\"\n\t\t\targ-node=\"{$child.record}\" arg-extras=\"{$extras.{$id}}\"\n\t\t\targ-children=\"{$child.children}\" arg-childExtras=\"{$extras}\"\n\t\t\targ-depth=\"{$depth}\" />",
+    "replace": "<xf:if is=\"$child.id != $xf.options.fs_questionAnswerForum\">\n$0\n</xf:if>"
+}

@@ -1,0 +1,1 @@
+Release date must be formatted YYYY-MM-DD

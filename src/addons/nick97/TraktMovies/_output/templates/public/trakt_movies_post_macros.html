@@ -1,0 +1,396 @@
+<xf:macro name="movie"
+	arg-post="!"
+	arg-thread="!"
+	arg-forum="{{ null }}"
+	arg-crews="{{ [] }}"
+	arg-crewsTotal="0"
+	arg-crewsHasMore="{{ false }}"
+	arg-casts="{{ [] }}"
+	arg-castsTotal="0"
+	arg-castsHasMore="{{ false }}"
+	arg-videos="{{ [] }}"
+	arg-videosTotal="0"
+	arg-videosHasMore="{{ false }}"
+	arg-companies="{{ [] }}">
+
+	<xf:css src="message.less" />
+	<xf:css src="trakt_movies.less" />
+	
+	<xf:extension name="before"></xf:extension>
+	
+	<article class="message message--movie js-post js-inlineModContainer
+		{{ $thread.discussion_state == 'moderated' ? 'is-moderated' : '' }}
+		{{ $thread.discussion_state == 'deleted' ? 'is-deleted' : '' }}"
+		data-author="{{ $post.User.username ?: $post.username }}"
+		data-content="post-{$post.post_id}"
+		id="js-post-{$post.post_id}">
+
+		<span class="u-anchorTarget" id="post-{$post.post_id}"></span>
+		<div class="message-inner">
+			<div class="message-cell message-cell--main">
+				<div class="message-expandWrapper js-expandWatch is-expanded">
+					<div class="message-expandContent js-expandContent">
+						<div class="message-main js-quickEditTarget">
+
+							<xf:macro name="post_macros::post_attribution"
+									  arg-post="{$post}"
+									  arg-thread="{$thread}"
+									  arg-mainClass="listInline--bullet"
+									  arg-showPosition="{{ false }}" />
+
+							<xf:macro name="post_macros::post_notices" arg-post="{$post}" arg-thread="{$thread}" />
+
+							<div class="message-content js-messageContent">
+								<!--[XF:trakt_movies_movie_block_top]-->
+								<div class="message-movie{{ property('trakt_movies_messagePosterPosition') == 'right' ? ' message-movie--reverse' : '' }}">
+									
+									<div class="message-movie-sidebar">
+										<div class="movie-poster">
+											<xf:if is="$thread.traktMovie.trakt_image">
+												<xf:if is="$xf.options.traktthreads_forum_local">
+													<img src="{$thread.traktMovie.getImageUrl('l')}" />
+												<xf:elseif is="$xf.options.traktthreads_usecdn" />
+													<img src="{$xf.options.traktthreads_cdn_path}/traktMovies/LargePosters{$thread.traktMovie.trakt_image}" />
+												<xf:else />
+													<img src="https://image.tmdb.org/t/p/w185{$thread.traktMovie.trakt_image}" />
+												</xf:if>
+											<xf:else />
+												<img src="{$thread.traktMovie.getImageUrl('l', 1)}" />
+											</xf:if>
+
+											<xf:if is="$xf.options.traktthreads_use_rating">
+												<xf:set var="$rating" value="{$thread.traktMovie.trakt_rating}" />
+												<div style="padding-top: 10px;">
+													<xf:macro template="rating_macros" name="stars_text"
+														arg-rating="{$rating}" arg-text=" " />
+												</div>
+												
+												<div>{$thread.traktMovie.trakt_rating}/5 {$thread.traktMovie.trakt_votes} {{ phrase('votes') }}</div>
+												
+												<xf:if is="$xf.visitor.user_id">
+													<div>
+														<xf:button class="button--link button--wrap" href="{{ link('traktMovies/rate', $thread.traktMovie) }}" overlay="true">
+															{{ phrase('trakt_movies_change_rating') }}
+														</xf:button>
+													</div>
+												</xf:if>
+												
+											</xf:if>
+											
+											<xf:if is="property('trakt_movies_messageCompaniesPosition') == 'left'">
+												<xf:if is="$companies is not empty">
+													<div class="message message--movie movie-companies">
+														<xf:if is="property('trakt_movies_messageCompaniesTitle')">
+															<h4 class="block-textHeader">{{ phrase('trakt_movies_production_companies:') }}</h4>
+														</xf:if>
+														<xf:macro name="production_company_list" arg-companies="{$companies}" />
+													</div>
+												</xf:if>
+											</xf:if>
+
+										</div>
+									</div>
+									
+									<div class="message-movie-main">
+										<!--[XF:trakt_movies_movie_message_top]-->
+										<div class="message message--movie">
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.title"><b>{{ phrase('title') }}:</b> {$thread.traktMovie.trakt_title}<br /></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.tagline && $thread.traktMovie.trakt_tagline"><p><b>{{ phrase('trakt_movies_tagline') }}:</b> {$thread.traktMovie.trakt_tagline}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.genres && $thread.traktMovie.trakt_genres"><p><b>{{ phrase('trakt_movies_genre') }}:</b> {$thread.traktMovie.trakt_genres}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.director && $thread.traktMovie.trakt_director"><p><b>{{ phrase('trakt_movies_director') }}:</b> {$thread.traktMovie.trakt_director}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.cast && $thread.traktMovie.trakt_cast"><p><b>{{ phrase('trakt_movies_cast') }}:</b> {$thread.traktMovie.trakt_cast}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.status && $thread.traktMovie.trakt_status"><p><b>{{ phrase('trakt_movies_status') }}:</b> {$thread.traktMovie.trakt_status}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.release_date && $thread.traktMovie.trakt_release"><p><b>{{ phrase('trakt_movies_release') }}:</b> {$thread.traktMovie.trakt_release}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.runtime && $thread.traktMovie.trakt_runtime"><p><b>{{ phrase('trakt_movies_runtime') }}:</b> {$thread.traktMovie.trakt_runtime}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.plot && $thread.traktMovie.trakt_plot"><b>{{ phrase('trakt_movies_plot') }}:</b> {$thread.traktMovie.trakt_plot}</xf:if>
+										</div>
+										<!--[XF:trakt_movies_movie_message_bottom]-->
+
+										<xf:if is="property('trakt_movies_messageCompaniesPosition') == 'right'">
+											<xf:if is="$companies is not empty">
+												<div class="message message--movie movie-companies">
+													<xf:if is="property('trakt_movies_messageCompaniesTitle')">
+														<h4 class="block-textHeader">{{ phrase('trakt_movies_production_companies') }}</h4>
+													</xf:if>
+													<xf:macro name="production_company_list" arg-companies="{$companies}" />
+												</div>
+											</xf:if>
+										</xf:if>
+
+										<xf:extension name="watch_providers">
+											<xf:set var="$watchProviders" value="{$thread.traktMovie.getWatchProviders()}" />
+											<xf:if is="$watchProviders">
+												<div class="message message--movie messageMovie--watch">
+													<h4 class="block-textHeader">
+														{{ phrase('trakt_movies_where_to_watch') }}
+														<div class="u-pullRight">
+															<xf:select value="{{ $xf.visitor.Option.nick97_movies_trakt_watch_region ?: $xf.options.traktthreads_watchProviderRegion }}">
+																<xf:foreach loop="{{ $thread.traktMovie.getWatchProviderCountries() }}" key="$region" value="$phrase">
+																	<xf:option value="{$region}" data-xf-init="disabler" data-container=".js-movieWatchData-{$region}" data-hide="on">
+																		{$phrase}
+																	</xf:option>
+																</xf:foreach>
+															</xf:select>
+														</div>
+													</h4>
+
+													<xf:foreach loop="$watchProviders" key="$region" value="$watchProvider" if="$watchProvider.link">
+
+														<div class="js-movieWatchData-{$region}">
+															<xf:if is="$watchProvider.flatrate">
+																{{ phrase('trakt_movies_streaming:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.flatrate}" />
+															</xf:if>
+
+															<xf:if is="$watchProvider.buy">
+																{{ phrase('trakt_movies_buy:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.buy}" />
+															</xf:if>
+
+															<xf:if is="$watchProvider.rent">
+																{{ phrase('trakt_movies_rent:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.rent}" />
+															</xf:if>
+
+															<br />
+	
+															<xf:button href="https://trakt.tv/movies/{{$thread.getTraktMovLink($thread.traktMovie.trakt_id)}}"  target="_blank">{{ phrase('trakt_movies_more_details_on_trakt') }}</xf:button>
+														</div>
+													</xf:foreach>
+
+												</div>
+											</xf:if>
+										</xf:extension>
+
+										<xf:if is="!$xf.options.traktthreads_force_comments && $thread.traktMovie.comment is not empty">
+											<div class="message">
+												<div class="message-userContent">
+													<article class="message-body">
+														{{ bb_code($thread.traktMovie.comment, 'post', $post.User, {
+															'attachments': $post.attach_count ? $post.Attachments : [],
+															'viewAttachments': $thread.canViewAttachments()
+														}) }}
+													</article>
+												</div>
+											</div>
+										</xf:if>
+
+									</div>
+								</div>
+
+								<!--[XF:trakt_movies_movie_block_bottom]-->
+								
+								<div class="movieTabsBlock">
+
+									<xf:if contentcheck="true">
+										<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" role="tablist">
+											<span class="hScroller-scroll">
+												<xf:contentcheck>
+													<!--[XF:trakt_movies_tabs_start]-->
+													<xf:if is="$xf.options.traktthreads_showThreadInfo.trailer && $thread.traktMovie.trakt_trailer">
+														<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="movie-trailer">
+															{{ phrase('trakt_movies_trailer') }}
+														</a>
+													</xf:if>
+													<!--[XF:trakt_movies_tabs_before_cast]-->
+													<xf:if is="$xf.options.traktthreads_showThreadInfo.cast_tab && $casts is not empty">
+														<a class="tabs-tab" role="tab" tabindex="0" aria-controls="movie-cast">
+															{{ phrase('trakt_movies_cast') }}
+														</a>
+													</xf:if>
+													<!--[XF:trakt_movies_tabs_before_crew]-->
+													<xf:if is="$xf.options.traktthreads_showThreadInfo.crew_tab && $crews is not empty">
+														<a class="tabs-tab" role="tab" tabindex="0" aria-controls="movie-crew">
+															{{ phrase('trakt_movies_crew') }}
+														</a>
+													</xf:if>
+													<!--[XF:trakt_movies_tabs_before_videos]-->
+													<xf:if is="$xf.options.traktthreads_showThreadInfo.videos_tab && $videos is not empty">
+														<a class="tabs-tab" role="tab" tabindex="0" aria-controls="movie-videos">
+															{{ phrase('trakt_movies_videos') }}
+														</a>
+													</xf:if>
+													<!--[XF:trakt_movies_tabs_end]-->
+												</xf:contentcheck>
+											</span>
+										</h2>
+									</xf:if>
+
+									<xf:if contentcheck="true">
+										<ul class="tabPanes">
+											<xf:contentcheck>
+												<!--[XF:trakt_movies_tabPanes_start]-->
+												<xf:if is="$xf.options.traktthreads_showThreadInfo.trailer && $thread.traktMovie.trakt_trailer">
+													<li class="block-body is-active" role="tabpanel" id="movie-trailer">
+														<div class="block-row">
+															<div class="bbMediaWrapper">
+																<div class="bbMediaWrapper-inner">
+																	<iframe width="500"
+																		height="300"
+																		allowfullscreen
+																		src="https://www.youtube.com/embed/{$thread.traktMovie.trakt_trailer}?wmode=opaque&start=0"
+																		style="border:none;"></iframe>
+																</div>
+															</div>
+														</div>
+													</li>
+												</xf:if>
+												<!--[XF:trakt_movies_tabPanes_before_casts]-->
+												<xf:if is="$xf.options.traktthreads_showThreadInfo.cast_tab && $casts is not empty">
+													<li class="block-body" role="tabpanel" id="movie-casts">
+														<div class="block-row">
+															<xf:macro template="trakt_movies_casts_macros" name="cast_list"
+																  arg-movie="{$thread.traktMovie}" arg-casts="{$casts}" arg-page="1"
+																  arg-hasMore="{$castsHasMore}" />
+														</div>
+													</li>
+												</xf:if>
+
+												<!--[XF:trakt_movies_tabPanes_before_crew]-->
+												<xf:if is="$xf.options.traktthreads_showThreadInfo.crew_tab && $crews is not empty">
+													<li class="block-body" role="tabpanel" id="movie-crew">
+														<div class="block-row">
+															<xf:macro template="trakt_movies_crews_macros" name="crew_list"
+																  arg-movie="{$thread.traktMovie}" arg-crews="{$crews}" arg-page="1"
+																  arg-hasMore="{$crewsHasMore}" />
+														</div>
+													</li>
+												</xf:if>
+
+												<!--[XF:trakt_movies_tabPanes_before_videos]-->
+												<xf:if is="$xf.options.traktthreads_showThreadInfo.videos_tab && $videos is not empty">
+													<li class="block-body" role="tabpanel" id="movies-videos">
+														<div class="block-row">
+															<xf:macro template="trakt_movies_videos_macros" name="video_list"
+																  arg-movie="{$thread.traktMovie}" arg-videos="{$videos}" arg-page="1"
+																  arg-hasMore="{$videosHasMore}" />
+														</div>
+													</li>
+												</xf:if>
+
+												<!--[XF:trakt_movies_tabPanes_end]-->
+											</xf:contentcheck>
+										</ul>
+									</xf:if>
+								</div>
+
+								<xf:macro name="post_macros::post_last_edit" arg-post="{$post}" />
+							</div>
+
+							<xf:macro name="post_macros::post_footer" arg-post="{$post}" arg-thread="{$thread}" />
+						</div>
+					</div>
+					<div class="message-expandLink js-expandLink"><a role="button" tabindex="0">{{ phrase('click_to_expand') }}</a></div>
+				</div>
+			</div>
+		</div>
+
+	
+		<aside class="message-movieUserInfo">
+			<div class="message-cell">
+				<xf:macro name="author_info" arg-user="{$post.User}" arg-fallbackName="{$post.username}" />
+			</div>
+		</aside>
+
+	</article>
+
+	<xf:ad position="post_below_container" arg-post="{$post}" />
+
+</xf:macro>
+
+<xf:macro name="production_company_list" arg-companies="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$companies}" value="$company">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a href="{$company.homepage}" target="_blank" class="movie-company" data-xf-init="tooltip" title="{$company.name}">
+						<xf:if is="$company.image_url is not empty">
+							<img src="{$company.image_url}" alt="{$company.name}"> 
+						<xf:else />
+							{$company.name}
+						</xf:if>
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="watch_provider_list" arg-providerType="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$providerType}" value="$watchProvider">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a class="messageMovie--provider" data-xf-init="tooltip" title="{$watchProvider.provider_name}">
+						<img src="https://www.themoviedb.org/t/p/original/{$watchProvider.logo_path}" width="{{ property('trakt_movies_watchProviderImgSize') }}" height="{{ property('trakt_movies_watchProviderImgSize') }}"> 
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="author_info" arg-user="!" arg-fallbackName="">
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="$user" size="m" defaultname="{$fallbackName}" />
+		</div>
+		<div class="contentRow-main">
+
+			<div class="message-articleUserFirstLine">
+				<div class="message-articleWrittenBy u-srOnly">{{ phrase('article_written_by') }}</div>
+				<h3 class="message-articleUserName">
+					<xf:username user="$user" rich="true" defaultname="{$fallbackName}" />
+				</h3>
+
+				<xf:if contentcheck="true">
+					<div class="message-articleUserBlurb">
+						<xf:contentcheck>
+							<xf:userblurb user="$user" tag="div" />
+						</xf:contentcheck>
+					</div>
+				</xf:if>
+			</div>
+
+			<xf:if contentcheck="true">
+				<div class="message-articleUserAbout">
+					<xf:contentcheck>
+						<xf:if is="$user.Profile.about != ''">
+							{{ bb_code($user.Profile.about, 'user:about', $user) }}
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<xf:if contentcheck="true">
+				<div class="message-articleUserBanners">
+					<xf:contentcheck><xf:userbanners user="$user" /></xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<div class="message-articleUserStats">
+				<ul class="listInline listInline--bullet">
+					<!--[XF:stats:start]-->
+					<li><dl class="pairs pairs--inline">
+						<dt>{{ phrase('messages') }}</dt>
+						<dd>{$user.message_count|number}</dd>
+					</dl></li>
+					<!--[XF:stats:after_messages]-->
+					<li><dl class="pairs pairs--inline">
+						<dt>{{ phrase('reaction_score') }}</dt>
+						<dd>{$user.reaction_score|number}</dd>
+					</dl></li>
+					<!--[XF:stats:after_likes]-->
+					<!--[XF:stats:after_reactions]-->
+					<xf:if is="$xf.options.enableTrophies">
+						<li><dl class="pairs pairs--inline">
+							<dt>{{ phrase('points') }}</dt>
+							<dd>{$user.trophy_points|number}</dd>
+						</dl></li>
+					</xf:if>
+					<!--[XF:stats:end]-->
+				</ul>
+			</div>
+		</div>
+	</div>
+</xf:macro>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsDownGrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Downgrade]]></phrase>
+  <phrase title="admin_navigation.fsUpgradeGroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upgrade]]></phrase>
+  <phrase title="admin_navigation.fsUpgradeUserGroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upgrade User Group]]></phrase>
+  <phrase title="cron_entry.fs_upgradeUsergroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Upgrade Usergroup by Messages]]></phrase>
+  <phrase title="cron_entry.fs_upgradeUsergroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Upgrade Usergroup by Login]]></phrase>
+  <phrase title="fs_cell_Messages" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Messages]]></phrase>
+  <phrase title="fs_cell_change_usergroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change usergroup]]></phrase>
+  <phrase title="fs_cell_login" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Last login]]></phrase>
+  <phrase title="fs_cell_upgrade_usergroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upgrade Usergroup]]></phrase>
+  <phrase title="fs_cell_usergroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Current Usergroup]]></phrase>
+  <phrase title="fs_cell_username" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Username]]></phrase>
+  <phrase title="fs_change_user_groups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change to]]></phrase>
+  <phrase title="fs_change_usergroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change usergroup]]></phrase>
+  <phrase title="fs_change_usergroup_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change Usergroup]]></phrase>
+  <phrase title="fs_edit_userGroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit UserGroup]]></phrase>
+  <phrase title="fs_enter_last_login" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[days...!]]></phrase>
+  <phrase title="fs_enter_last_logins" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Last login days]]></phrase>
+  <phrase title="fs_enter_message" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[123...!]]></phrase>
+  <phrase title="fs_enter_total_messages" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter Total Messages]]></phrase>
+  <phrase title="fs_enter_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter User]]></phrase>
+  <phrase title="fs_filled_reqired_fields" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fill Require Fields...!]]></phrase>
+  <phrase title="fs_select_change_usergroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select usergroup]]></phrase>
+  <phrase title="fs_select_different_usergroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select different Usergroups...!]]></phrase>
+  <phrase title="fs_select_user_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Usergroup]]></phrase>
+  <phrase title="fs_upgrade_user_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upgrade Usergroup]]></phrase>
+  <phrase title="fs_upgrade_usergroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Usergroup]]></phrase>
+  <phrase title="fs_upgrade_usergroup_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upgrade UserGroup]]></phrase>
+</phrases>

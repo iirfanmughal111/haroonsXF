@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="trakt_tv_castPersonLargeImageUrl" group_name="trakt_tv" title="Default cast person avatar (large)" description="Recommended size 300x450" property_type="value" value_type="string" value_group="trakt_tv_thumbnail" display_order="10010">
+    <value_parameters>asset=trakt_tv_cast</value_parameters>
+    <value>"data/assets/trakt_tv_cast/no-photo-large.jpg"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_castPersonSmallImageUrl" group_name="trakt_tv" title="Default cast person avatar (small)" description="Recommended size 138x175" property_type="value" value_type="string" value_group="trakt_tv_thumbnail" display_order="10011">
+    <value_parameters>asset=trakt_tv_cast</value_parameters>
+    <value>"data/assets/trakt_tv_cast/no-photo-small.jpg"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_crewPersonLargeImageUrl" group_name="trakt_tv" title="Default crew person avatar (large)" description="Recommended size 300x450" property_type="value" value_type="string" value_group="trakt_tv_thumbnail" display_order="10000">
+    <value_parameters>asset=trakt_tv_crew</value_parameters>
+    <value>"data/assets/trakt_tv_crew/no-photo-large.jpg"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_crewPersonSmallImageUrl" group_name="trakt_tv" title="Default crew person avatar (small)" description="Recommended size 138x175" property_type="value" value_type="string" value_group="trakt_tv_thumbnail" display_order="10001">
+    <value_parameters>asset=trakt_tv_crew</value_parameters>
+    <value>"data/assets/trakt_tv_crew/no-photo-small.jpg"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_episodeImageHeight" group_name="trakt_tv" title="Episode image height" property_type="value" value_type="unit" display_order="111">
+    <value>"auto"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_episodeImageWidth" group_name="trakt_tv" title="Episode image width" property_type="value" value_type="unit" display_order="110">
+    <value>"300px"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_episodeSearchImageHeight" group_name="trakt_tv" title="Episode image height (search results)" property_type="value" value_type="unit" display_order="121">
+    <value>"auto"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_episodeSearchImageWidth" group_name="trakt_tv" title="Episode image width (search results)" property_type="value" value_type="unit" display_order="120">
+    <value>"150px"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_messageCompaniesPosition" group_name="trakt_tv" title="TV show production company list position" property_type="value" value_type="radio" display_order="20">
+    <value_parameters>left={{ phrase('left') }}
+right={{ phrase('right') }}</value_parameters>
+    <value>"right"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_messageCompaniesTitle" group_name="trakt_tv" title="Show TV show production company list block title" property_type="value" value_type="boolean" display_order="21">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="trakt_tv_messageNetworksPosition" group_name="trakt_tv" title="TV show network list position" property_type="value" value_type="radio" display_order="30">
+    <value_parameters>left={{ phrase('left') }}
+right={{ phrase('right') }}</value_parameters>
+    <value>"right"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_messageNetworksTitle" group_name="trakt_tv" title="Show TV show networks list block title" property_type="value" value_type="boolean" display_order="31">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="trakt_tv_messagePosterPosition" group_name="trakt_tv" title="TV show poster position" description="Select the position for the TV show poster in threads. Note that this will invert the settings below." property_type="value" value_type="radio" display_order="10">
+    <value_parameters>left={{ phrase('left') }}
+right={{ phrase('right') }}</value_parameters>
+    <value>"left"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_networkImgHeight" group_name="trakt_tv" title="Network image height" property_type="value" value_type="unit" value_group="trakt_tv_message" display_order="1030">
+    <value>"30px"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_networkImgWidth" group_name="trakt_tv" title="Network image width" property_type="value" value_type="unit" value_group="trakt_tv_message" display_order="1031">
+    <value>"auto"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_posterImageHeight" group_name="trakt_tv" title="Thread list poster image height" property_type="value" value_type="unit" display_order="101">
+    <value>"auto"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_posterImageWidth" group_name="trakt_tv" title="Thread list poster image width" property_type="value" value_type="unit" display_order="100">
+    <value>"75px"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_posterUpdateButtonPosition" group_name="trakt_tv" title="Check poster updates button position" property_type="value" value_type="radio" display_order="11">
+    <value_parameters>default={{ phrase('default') }}
+thread_tools_menu={{ phrase('trakt_tv_thread_tools_menu') }}</value_parameters>
+    <value>"default"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_productionCompanyImgHeight" group_name="trakt_tv" title="Production company image height" property_type="value" value_type="unit" value_group="trakt_tv_message" display_order="1020">
+    <value>"30px"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_productionCompanyImgWidth" group_name="trakt_tv" title="Production company image width" property_type="value" value_type="unit" value_group="trakt_tv_message" display_order="1020">
+    <value>"auto"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_watchProviderImgHeight" group_name="trakt_tv" title="Watch provider image height" property_type="value" value_type="unit" value_group="trakt_tv_message" display_order="1010">
+    <value>"48px"</value>
+  </style_property>
+  <style_property property_name="trakt_tv_watchProviderImgWidth" group_name="trakt_tv" title="Watch provider image width" property_type="value" value_type="unit" value_group="trakt_tv_message" display_order="1011">
+    <value>"auto"</value>
+  </style_property>
+</style_properties>

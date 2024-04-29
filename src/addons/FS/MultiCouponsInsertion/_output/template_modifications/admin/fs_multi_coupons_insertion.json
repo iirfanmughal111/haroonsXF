@@ -1,0 +1,9 @@
+{
+    "template": "dbtech_ecommerce_coupon_edit",
+    "description": "Used for multiple insertion of coupons at the same time using a single field.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:textboxrow name=\"coupon_code\" value=\"{$coupon.coupon_code}\"  maxlength=\"{{ max_length('DBTech\\eCommerce:Coupon', 'coupon_code') }}\"\n\t\t\t\tlabel=\"{{ phrase('dbtech_ecommerce_coupon_code') }}\" />",
+    "replace": "<xf:if is=\"$coupon.coupon_code\">\n\t<xf:textboxrow name=\"coupon_code\" value=\"{$coupon.coupon_code}\"  maxlength=\"{{ max_length('DBTech\\eCommerce:Coupon', 'coupon_code') }}\"\n\t\t\t\tlabel=\"{{ phrase('dbtech_ecommerce_coupon_code') }}\" />\n<xf:else />\n\t<xf:textarearow name=\"multi_coupons_code\" autosize=\"true\"\n\t\t\t\tlabel=\"{{ phrase('fs_multi_coupon') }}\"/>\n</xf:if>"
+}

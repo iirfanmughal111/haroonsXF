@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_option_bot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add option]]></phrase>
+  <phrase title="add_option_bot_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit]]></phrase>
+  <phrase title="admin_navigation.options_list_bot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Options Bot]]></phrase>
+  <phrase title="admin_navigation.thread_bot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Bot Options]]></phrase>
+  <phrase title="bot_add_option" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Bot Option]]></phrase>
+  <phrase title="bot_article" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Article]]></phrase>
+  <phrase title="bot_chat_endpoint" version_id="1050000" version_string="1.5.0 Alpha"><![CDATA[/v1/chat/completion endpoints]]></phrase>
+  <phrase title="bot_field_requied" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fields Required......!]]></phrase>
+  <phrase title="bot_gptdev_endpoint" version_id="1050000" version_string="1.5.0 Alpha"><![CDATA[/v1/completion endpoints]]></phrase>
+  <phrase title="bot_instruction" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Bot Instruction]]></phrase>
+  <phrase title="bot_model_chat" version_id="1050000" version_string="1.5.0 Alpha"><![CDATA[Chat]]></phrase>
+  <phrase title="bot_model_gpt_dev" version_id="1050000" version_string="1.5.0 Alpha"><![CDATA[GPT-DAV]]></phrase>
+  <phrase title="bot_option" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Bot instructions]]></phrase>
+  <phrase title="bot_option_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="gpt_article_button" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[GPT Article]]></phrase>
+  <phrase title="gpt_mode_name" version_id="1050000" version_string="1.5.0 Alpha"><![CDATA[Model name......]]></phrase>
+  <phrase title="option.bot_gpt_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Set GPT BOT key]]></phrase>
+  <phrase title="option.bot_gpt_frequency" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[GPT Chat Frequency]]></phrase>
+  <phrase title="option.bot_gpt_model" version_id="1040000" version_string="1.4.0 Alpha"><![CDATA[Bot GPT Model]]></phrase>
+  <phrase title="option.bot_gpt_penalty" version_id="1020000" version_string="1.2.0 Alpha"><![CDATA[GPT Chat Penalty]]></phrase>
+  <phrase title="option.bot_gpt_temperature" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Chat GPT Temperature]]></phrase>
+  <phrase title="option_explain.bot_gpt_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.bot_gpt_frequency" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.bot_gpt_model" version_id="1040000" version_string="1.4.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.bot_gpt_penalty" version_id="1020000" version_string="1.2.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.bot_gpt_temperature" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.bot_option" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[XC] Thread GPT Bot]]></phrase>
+  <phrase title="option_group_description.bot_option" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_lists" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Option List]]></phrase>
+  <phrase title="permission.bot_gpt_thread_bot_gpt_article" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Allow to use Thread GPT Article ?]]></phrase>
+  <phrase title="permission_interface.bot_option" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread GPT Bot]]></phrase>
+  <phrase title="title_write" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Article]]></phrase>
+</phrases>

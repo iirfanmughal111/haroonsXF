@@ -1,0 +1,11 @@
+<br>
+
+<xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'view_own_stats') && $stats">
+
+<xf:macro template="nick97_watch_list_movies_macro" name="stats" arg-stats="{$stats}" />
+	
+</xf:if>
+
+<xf:macro template="nick97_watch_list_movies_macro" name="movies" arg-movies="{$movies}" />
+
+<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />

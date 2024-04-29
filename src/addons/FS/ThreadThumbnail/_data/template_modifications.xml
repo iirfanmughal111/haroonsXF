@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="extra.less" modification_key="fs_thread_thumbnail_add_extra_less_style" description="fs_thread_thumbnail_add_extra-less_style" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[ /$/]]></find>
+    <replace><![CDATA[$0
+@font-face {
+	font-family: 'nebularegular';
+	src: url('/styles/new-theme/fonts/nebula-regular-webfont.woff2') format('woff2'),
+		url('/styles/new-theme/fonts/nebula-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Liberation Sans';
+	src: url('/styles/new-theme/fonts/LiberationSans-Bold.woff2') format('woff2'),
+		url('/styles/new-theme/fonts/LiberationSans-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+.structItem-title .label{
+	display:none;
+	
+}
+.date-thread {
+    display: flex;
+    color: rgba(175, 175, 175, 1);
+	font-size:13px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:400;
+	margin-top:10px;
+}
+.date-thread .dot{
+
+padding:0px 5px;	
+}
+.thread-comments span {
+	padding-left:5px;
+}
+.thread-grid{
+	 display: grid;
+ grid-template-columns: repeat(3, 1fr);
+gap: 40px 20px;	
+}
+.thread-grid .structItem {
+	display:block;
+	    border-top: 0px solid rgba(168, 168, 168, 0.15);
+}
+.thread-grid .structItem-title{
+	font-weight:700;
+	font-size:16px;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+}
+.thread-grid .structItem-title a {
+	color:#fff;
+}
+.thread-grid .structItem-cell.structItem-cell--main {
+display:block;
+	padding:0px;
+	padding-top:10px !important;
+}
+.thread-grid .structItem-cell.structItem-cell--icon,.thread-grid .structItem-parts, .thread-grid .structItem-cell.structItem-cell--meta,.thread-grid .structItem-cell.structItem-cell--latest {
+	
+	display:none;
+}
+.block-container{
+	background:transparent;
+	border:none;
+	
+}
+.num-top{
+	font-family: 'nebularegular';
+	font-size:12px;
+	color:rgba(118, 118, 118, 1);
+	border-bottom: 1px solid rgba(168, 168, 168, 0.15);
+	margin-bottom:12px;
+}
+.structItem-title-cover-perifix .label {
+    background: #009dd4;
+    border-radius: 0px;
+    font-family: 'nebularegular';
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    height: 16px;
+    padding: 1px 5px;
+    border: none;
+    display: block;
+    max-width: fit-content;
+}
+.thread-cover{
+	position:relative; 
+}
+.structItem-title-cover-perifix {
+    position: absolute;
+    bottom: 11px;
+    left: 12px;
+}
+.inter-view-des {
+    color: rgba(255, 255, 255, 1);
+    opacity: 0.75;
+	font-family: 'Open Sans', sans-serif;
+	font-size:14px;
+	font-weight:400;
+	margin-top:8px;
+}
+.inter-view-des p {
+	margin:0px;
+	line-height:20px;
+}
+
+.thread-cover img {
+	max-height:240px;
+}
+
+.sorting-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+	margin-bottom:66px;
+	margin-top:20px;
+}
+.sorting {
+    display: flex;
+	align-items: center;
+}
+.sorting span {
+	color:rgba(118, 118, 118, 1);
+	font-size:10px;
+	font-weight:600;
+	font-family: 'Open Sans', sans-serif;
+}
+a.sorting-button.active {
+    padding: 8px 12px 8px 12px;
+    color: #009dd4;
+    border-radius: 20px;
+    border: 1px solid #009dd4;
+    /* height: 25px; */
+    display: block;
+    line-height: 9px;
+}
+.sorting-button{
+    padding: 8px 12px 8px 12px;
+    color:rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    border:1px solid rgba(64, 64, 64, 1);
+    display: block;
+    line-height: 9px;
+	font-size:12px;
+	font-weight:400;
+	
+}
+.sorting-heading-title h1 {
+	color:rgba(255, 255, 255, 1);
+	font-size:32px;
+	line-height:25px;
+	 font-family: 'nebularegular';
+    text-transform: uppercase;
+	font-weight:400;
+	margin:0px;
+}
+.sorting ul {
+    margin: 0px;
+    display: inline-block;
+	    padding-left: 12px;
+}
+.sorting ul li {
+  display: inline-block;
+  margin-inline: 4px;	
+}
+@media (max-width:992px) {
+	.thread-grid {
+	 grid-template-columns: repeat(2, 1fr);	
+	}
+	
+}
+@media (max-width:650px) {
+	.thread-grid {
+	 grid-template-columns: repeat(1, 1fr);	
+	}
+	
+}]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="fs_thread_thumbnail_article_change_view" description="fs_thread_thumbnail_article_change_view" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA["<div class=\"structItemContainer-group js-threadList\">
+							<xf:if is=\"\$threads is not empty\">.*?</div>"si]]></find>
+    <replace><![CDATA[<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
+	<div class="structItemContainer-group js-threadList thread-grid">
+		<xf:if is="$threads is not empty">
+			<xf:foreach loop="$threads" value="$thread">
+				<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}"
+						  arg-thread="{$thread}"
+						  arg-forum="{$forum}"
+						  args="{$templateOverrides.thread_list_macro_args}"  />
+			</xf:foreach>
+			<xf:if is="$showDateLimitDisabler">
+				<xf:macro name="date_limit_disabler" arg-forum="{$forum}" arg-page="{$page}" arg-filters="{$filters}" />
+			</xf:if>
+		</xf:if>
+	</div>
+	<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="fs_thread_thumbnail_sorting" description="fs_thread_thumbnail_sorting" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA["<xf:if is=\"\$stickyThreads is not empty\">.*?</xf:if>"si]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
+
+	<div class="sorting-heading">
+		<div class="sorting-heading-title">
+			<h1>
+				{$forum.Node.title}
+			</h1>
+		</div>
+		<xf:if is="count($forum.prefixes)">
+			<div class="sorting">
+				<span>Sort By:</span>
+
+				<ul>
+					<xf:set var="$prefixesGroups" value="{{$forum.getPrefixesGroups()}}"/>
+					<xf:foreach
+								loop="$prefixesGroups.prefixGroups"
+								key="$prefixGroupId"
+								value="$prefixGroup"
+								>
+						<xf:foreach
+									loop="{$prefixesGroups.prefixesGrouped.{$prefixGroupId}}"
+									key="$prefix_id"
+									value="$prefix"
+									>
+							<xf:if is="in_array($prefix_id,$forum.prefix_cache)">
+
+								<li>
+									<a href="{{ link('forums', $forum, {'prefix_id': $prefix_id}) }}" class="sorting-button active">{$prefix.title}</a>
+								</li>
+
+							</xf:if>
+
+						</xf:foreach>
+					</xf:foreach>
+
+				</ul>
+			</div>
+		</xf:if>
+	</div>
+
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="fs_thread_thumbnail_firstPost_message" description="fs_thread_thumbnail_firstPost_message" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA["<div class=\"structItem-title\">.*?</div>"si]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
+
+	<div class="inter-view-des">
+		<p>
+			{{ strlen($thread.FirstPost.message) > 113 ? snippet($thread.FirstPost.message, 113, {'stripBbCode': true})."...." : $thread.FirstPost.message}}
+		</p>
+	</div>
+
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="fs_thread_thumbnail_image_display" description="fs_thread_thumbnail_image_display" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="structItem structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}{{ $thread.isIgnored() ? ' is-ignored' : '' }}{{ ($thread.isUnread() AND !$forceRead) ? ' is-unread' : '' }}{{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }}{{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}" data-author="{{ $thread.User.username ?: $thread.username }}">]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
+
+	<div class="num-top">{{$thread.thumb_unique_id != 0 ? $thread.thumb_unique_id : $thread.thread_id}}</div>
+	<div class="thread-cover">
+		<img src="{{ $thread.getThumbnailExit() ? $thread.getThumbnailPath() : base_url('styles/FS/ThreadThumbnail/no_image.png',true) }}" style="width:100%;" />
+
+
+		<div class="structItem-title-cover-perifix">
+			<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+			<xf:if is="$thread.prefix_id">
+				<xf:if is="$forum">
+					<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+					<xf:else />
+					{{ prefix('thread', $thread, 'html', '') }}
+				</xf:if>
+			</xf:if>
+
+		</div>
+	</div>
+	<div class="date-thread">
+		<div class="time-thread">
+			<xf:date time="{$thread.post_date}" />	
+		</div>
+		<div class="dot">
+			•
+		</div>
+		<div class="thread-comments">
+			{$thread.reply_count|number_short}<span>comments </span>	
+		</div>
+
+	</div>
+
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="fs_thread_thumbnail_replace_title" description="fs_thread_thumbnail_replace_title_with_thumbnail_title" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<a href="{{ link\('threads' \. \(\(\$thread\.isUnread\(\) AND !\$forceRead\) \? '\/unread' : ''\), \$thread\) }}" class="" data-tp-primary="on" data-xf-init="{{ \$canPreview \? 'preview-tooltip' : '' }}" data-preview-url="{{ \$canPreview \? link\('threads\/preview', \$thread\) : '' }}">.*?<\/a>/is]]></find>
+    <replace><![CDATA[<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
+	<xf:if is="$thread.thumbnail_title">
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.thumbnail_title) > 45 ? snippet($thread.thumbnail_title, 45, {'stripBbCode': true}) : $thread.thumbnail_title}}</a>
+		<xf:else />
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.title) > 45 ? snippet($thread.title, 45, {'stripBbCode': true}) : $thread.title}}</a>
+	</xf:if>
+	<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_thread_add_thumbnail_btn" description="fs_thread_add_thumbnail_btn" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$thread.canLockUnlock()">]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.canChangeThreadThumbnail()">
+	<a href="{{ link('threads/thumbnail', $thread) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('fs_add_thumbnail') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+</template_modifications>

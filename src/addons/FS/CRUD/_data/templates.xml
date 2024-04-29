@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_crud_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_crud_edit_record') }} : {$data.name} <xf:breadcrumb href="#">{{
+		phrase('fs_crud_edit_record') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_crud_new_record') }}
+		<xf:breadcrumb href="#">{{ phrase('Add Record') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('crud/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="name"
+						   value="{$data.name}"
+						   label="Name"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:textboxrow
+						   name="class"
+						   value="{$data.class}"
+						   label="Class"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:numberboxrow
+							 name="rollNo"
+							 value="{$data.rollNo}"
+							 label="Roll No"
+							 autosize="true"
+							 row="5"
+							 />
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_crud_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_crud') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('crud/add') }}" icon="add">{{ phrase('fs_crud_add_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="crud"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="crud"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_crud_name') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_crud_class') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_crud_rollNo') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.name} </xf:cell>
+			<xf:cell> {$value.class} </xf:cell>
+			<xf:cell> {$value.rollNo} </xf:cell>
+
+			<xf:action href="{{ link('crud/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('crud/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+</templates>

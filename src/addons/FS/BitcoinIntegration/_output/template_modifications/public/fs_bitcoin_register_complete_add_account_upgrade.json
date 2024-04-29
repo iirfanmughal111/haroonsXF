@@ -1,0 +1,9 @@
+{
+    "template": "register_complete",
+    "description": "fs_bitcoin_register_complete_add_account_upgrade",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<li><a href=\"{{ link('index') }}\">{{ phrase('return_to_forum_home_page') }}</a></li>",
+    "replace": "<li><a href=\"{{ link('account-upgrade') }}\">{{ phrase('fs_bitcoin_upgrade_account_posting') }}</a></li>\n\n$0"
+}

@@ -1,0 +1,1 @@
+2023-07-27 10:58:33: [E_WARNING] imagepng(http://localhost/data/data://Barcode/64c24dd95b0c5.png): failed to open stream: HTTP wrapper does not support writeable connections

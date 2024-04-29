@@ -1,0 +1,95 @@
+<xf:title>
+  <xf:if is="$scheduled.id"> {{ phrase('fs_edit_scheduled') }} <xf:breadcrumb
+  href="#">{{ phrase('fs_edit_scheduled') }}</xf:breadcrumb> <xf:else /> {{
+  phrase('fs_add_scheduled') }} <xf:breadcrumb href="#">{{
+  phrase('fs_add_scheduled') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form
+  action="{{ link('schedule/save', $shedule) }}"
+  class="block"
+  ajax="1"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <xf:textboxrow
+        name="title"
+        value="{$shedule.title}"
+        label="{{ phrase('fs_scheduled_title') }}"
+        autosize="true"
+        row="5"
+		  required="true"
+      />
+
+
+      <xf:uploadrow
+        name="message_file"
+        accept=".xls,.xlsx"
+        required="{{$shedule.isInsert() ? true : false }}"
+        label="{{ phrase('fs_message_file') }}"
+      />
+
+      <xf:uploadrow
+        name="location_file"
+        accept=".xls,.xlsx"
+       required="{{$shedule.isInsert() ? true : false }}"
+        label="{{ phrase('fs_location_file') }}"
+      />
+
+  
+
+      <xf:formrow
+        ><span class="inputGroup-text">
+          {{ phrase('fs_scheduled_window') }}
+        </span></xf:formrow>
+
+   
+    <xf:formrow label="{{phrase('fs_server_time')}}"
+       ><span class="inputGroup-text">
+         {{ date_time($xf.time) }}
+       </span>
+ 
+   </xf:formrow>
+
+      <xf:formrow label="{{ phrase('fs_scheduled_start') }}">
+        <div class="inputGroup">
+          <xf:dateinput name="schedule_start" value="{$shedule.schedule_start}" />
+          <span class="inputGroup-text"> {{ phrase('criteria_time:') }} </span>
+          <span class="inputGroup" dir="ltr">
+          		<xf:textbox name="sch_starttime" class="input--date time start" required="true" type="time"
+						value="{{$shedule.getScheduleStart() ? $shedule.getScheduleStart() : ''}}"
+						data-xf-init="time-picker" data-moment="{$timeFormat}" data-format="{{ $xf.language.time_format }}" />
+          </span>
+        </div>
+      </xf:formrow>
+
+      <xf:formrow label="{{ phrase('fs_scheduled_end') }}">
+        <div class="inputGroup">
+          <xf:dateinput name="schedule_end" value="{$shedule.schedule_end}" />
+          <span class="inputGroup-text"> {{ phrase('criteria_time:') }} </span>
+          <span class="inputGroup" dir="ltr">
+           <xf:textbox name="sch_endtime" class="input--date time start" required="true" type="time"
+							value="{{$shedule.getScheduleEnd() ? $shedule.getScheduleEnd() : ''}}"
+						data-xf-init="time-picker" data-moment="{$timeFormat}" data-format="{{ $xf.language.time_format }}" />
+          </span>
+        </div>
+      </xf:formrow>
+
+      <xf:formrow />
+
+      <xf:formrow label="{{ phrase('fs_post_start_date') }}">
+        <div class="inputGroup">
+          <xf:dateinput name="posting_start"  value="{$shedule.posting_start}"/>
+          <span class="inputGroup-text"> {{ phrase('criteria_time:') }} </span>
+          <span class="inputGroup" dir="ltr">
+            <xf:textbox name="sch_str_time" class="input--date time start" required="true" type="time"
+						value="{{$shedule.getPostStarting() ? $shedule.getPostStarting() : ''}}"
+						data-xf-init="time-picker" data-moment="{$timeFormat}" data-format="{{ $xf.language.time_format }}" />
+          </span>
+        </div>
+      </xf:formrow>
+    </div>
+
+    <xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+  </div>
+</xf:form>

@@ -1,0 +1,1 @@
+<span style="color: red; float: right; margin-right: 10px;">{forumTitle}</span>

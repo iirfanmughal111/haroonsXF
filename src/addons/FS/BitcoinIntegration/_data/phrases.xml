@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_bitcoin_account_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Account Upgrade]]></phrase>
+  <phrase title="fs_bitcoin_integ_premium_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="card_descriptions" style="">
+	<div class="user-upgrades__block box1-upgrades__block">
+		<ul>
+			<li>Post up to 2 times daily.</li>
+			<li>Great for those who plan to use the site multiple times.</li>
+		</ul>
+	</div>
+</div>
+<br/>
+<br/>
+<br/><br/><br/>]]></phrase>
+  <phrase title="fs_bitcoin_integ_premium_top" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p>{title}</p>
+<h2>{cost_amount}</h2>
+<p>/ {length_unit}</p>]]></phrase>
+  <phrase title="fs_bitcoin_integ_provider_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="card_descriptions" style="">
+	<div class="user-upgrades__block  box4-upgrades__block">
+		<ul>
+			<li>Limited to 20 spots.</li>
+			<li>30-day highlight period.</li>
+			<li>Featured at the top of the board.</li>
+		</ul>
+	</div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/><br/>]]></phrase>
+  <phrase title="fs_bitcoin_integ_provider_top" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p>{title}</p>
+<h2>{cost_amount}</h2>
+<p>/ {length_unit}</p>]]></phrase>
+  <phrase title="fs_bitcoin_integ_top_ten_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="card_descriptions" style="">
+	<div class="user-upgrades__block  box2-upgrades__block">
+		<ul>
+			<li>Limited to 10 spots.</li>
+			<li>30-day highlighted period.</li>
+			<li>Featured at the top of each city listing.</li>
+		</ul>
+	</div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/><br/>]]></phrase>
+  <phrase title="fs_bitcoin_integ_top_ten_top" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p>{title}</p>
+<h2>{cost_amount}</h2>
+<p>/ {length_unit}</p>]]></phrase>
+  <phrase title="fs_bitcoin_integ_vip_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="card_descriptions" style="">
+	<div class="user-upgrades__block  box3-upgrades__block">
+		<ul>
+			<li>Option to repost.</li>
+			<li>Post up to 4 times daily.</li>
+			<li>Enhanced photo storage capacity.</li>
+			<li>Ideal for highly active board members.</li>
+			<li>1-month subscription with each purchase.</li>
+		</ul>
+	</div>
+</div>]]></phrase>
+  <phrase title="fs_bitcoin_integ_vip_top" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p>{title}</p>
+<h2>{cost_amount}</h2>
+<p>/ {length_unit}</p>]]></phrase>
+  <phrase title="fs_bitcoin_integration_api_key_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Blockonomics API key not found...!]]></phrase>
+  <phrase title="fs_bitcoin_integration_user_upgrade_id_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Upgrade id not found...!]]></phrase>
+  <phrase title="fs_group_is_activated" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Activated]]></phrase>
+  <phrase title="nav.fs_bitcoin_integration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Account Upgrade]]></phrase>
+  <phrase title="option.fs_bitcoin_blockonomics_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Blockonomics API Key]]></phrase>
+  <phrase title="option.fs_bitcoin_premium_companion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Premium Companion group id]]></phrase>
+  <phrase title="option.fs_bitcoin_premium_companion_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Premium Companion widget uid]]></phrase>
+  <phrase title="option.fs_bitcoin_provider_city" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Provider City group id]]></phrase>
+  <phrase title="option.fs_bitcoin_provider_city_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Provider City widget uid]]></phrase>
+  <phrase title="option.fs_bitcoin_provider_vip" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Provider VIP group id]]></phrase>
+  <phrase title="option.fs_bitcoin_provider_vip_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Provider VIP widget uid]]></phrase>
+  <phrase title="option.fs_bitcoin_vip_companion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[VIP Companion group id]]></phrase>
+  <phrase title="option.fs_bitcoin_vip_companion_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[VIP Companion widget uid]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_blockonomics_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_premium_companion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_premium_companion_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_provider_city" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_provider_city_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_provider_vip" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_provider_vip_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_vip_companion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_bitcoin_vip_companion_widget_uid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_bitcoin_integ" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Bitcoin Integration]]></phrase>
+  <phrase title="option_group_description.fs_bitcoin_integ" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Bitcoin Integration]]></phrase>
+</phrases>

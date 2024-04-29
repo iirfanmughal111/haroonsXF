@@ -1,0 +1,15 @@
+{
+    "edit_format": "checkbox",
+    "edit_format_params": "title={{ phrase('snog_movies_title') }}\ntagline={{ phrase('snog_movies_tagline') }}\ngenres={{ phrase('snog_movies_genres') }}\ndirector={{ phrase('snog_movies_director') }}\ncast={{ phrase('snog_movies_cast') }}\nstatus={{ phrase('snog_movies_status') }}\nrelease_date={{ phrase('snog_movies_release_date') }}\nruntime={{ phrase('snog_movies_runtime') }}\nplot={{ phrase('snog_movies_plot') }}\nproduction_companies={{ phrase('snog_movies_production_companies') }}\ntrailer={{ phrase('snog_movies_trailer') }}\ncast_tab={{ phrase('snog_movies_cast_tab') }}\ncrew_tab={{ phrase('snog_movies_crew_tab') }}\nvideos_tab={{ phrase('snog_movies_videos') }}",
+    "data_type": "array",
+    "sub_options": [
+        "*"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "{\"title\":1,\"tagline\":1,\"genres\":1,\"director\":1,\"cast\":1,\"release_date\":1,\"status\":1,\"runtime\":1,\"plot\":1,\"production_companies\":1,\"trailer\":1,\"cast_tab\":1,\"crew_tab\":1,\"videos_tab\":1}",
+    "relations": {
+        "traktMovies": 1010
+    }
+}

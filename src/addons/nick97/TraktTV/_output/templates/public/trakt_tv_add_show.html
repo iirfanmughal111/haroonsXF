@@ -1,0 +1,7 @@
+<xf:if is="$xf.visitor.hasPermission('tvthreads_interface', 'new_show')">
+	<xf:pageaction>
+		<xf:button href="{{ link('forums/addtvforum', $category) }}" class="button--cta" icon="write" overlay="true">
+			{{ phrase('trakt_tv_add_show') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>

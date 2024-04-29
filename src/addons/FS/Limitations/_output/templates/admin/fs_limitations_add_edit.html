@@ -1,0 +1,75 @@
+<xf:title>
+	<xf:if is="$data.id">
+		{{phrase('fs_limitations_edit') }} : {$data.UserGroup.title} 
+		<xf:else />
+		{{phrase('fs_limitations_add') }}
+	</xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('limitations/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+
+			<!-- User Group List -->
+			
+			<xf:if is="!$data.user_group_id">
+			
+			<xf:selectrow
+						  name="user_group_id"
+						  value="{$nodeIds}"
+						  label="{{ phrase('user_group') }}"
+						  hint="{{ phrase('required') }}"
+						  required="required"
+						  >
+				<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$userGroups" value="$userGroup">
+					<xf:option
+							   value="{$userGroup.user_group_id}"
+							   selected="{{$data.user_group_id == $userGroup.user_group_id }}"
+							   >{$userGroup.title}</xf:option
+						>
+				</xf:foreach>
+			</xf:selectrow>
+				
+				<xf:else />
+				
+				<xf:hiddenval name="user_group_id">{$data.user_group_id}</xf:hiddenval>
+				
+			</xf:if>
+				
+
+			<xf:textboxrow
+						   name="node_ids"
+						   value="{$data.node_ids}"
+						   label="{{ phrase('fs_limitaions_node_ids') }}"
+						   hint="{{ phrase('required') }}"
+						   explain="{{ phrase('fs_limitaions_node_ids_explain') }}"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:numberboxrow
+							 name="daily_ads"
+							 value="{$data.daily_ads}"
+							 label="{{ phrase('fs_limitaions_daily_ads') }}"
+							 hint="{{ phrase('required') }}"
+							 autosize="true"
+							 row="5"
+							 />
+
+			<xf:numberboxrow
+							 name="daily_repost"
+							 value="{$data.daily_repost}"
+							 label="{{ phrase('fs_limitaions_daily_repost') }}"
+							 autosize="true"
+							 row="5"
+							 />
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

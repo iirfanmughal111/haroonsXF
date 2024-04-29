@@ -1,0 +1,47 @@
+{
+    "trakt_moviesMessagePosterMaxWidth.json": {
+        "hash": "b2265139335ad9bd74a1e0515fdecb61"
+    },
+    "trakt_moviesMessageSidebarWidth.json": {
+        "hash": "95dbc230d61b27888465e54ef019a32a"
+    },
+    "trakt_movies_castPersonLargeImageUrl.json": {
+        "hash": "7191d216c67e3d43f9af7d751cb2859f"
+    },
+    "trakt_movies_castPersonSmallImageUrl.json": {
+        "hash": "035ef7b016b55a4e2614df0e1de6efce"
+    },
+    "trakt_movies_crewPersonLargeImageUrl.json": {
+        "hash": "1e4708224f9ad56c644cae2c511795c2"
+    },
+    "trakt_movies_crewPersonSmallImageUrl.json": {
+        "hash": "d65f07577167d165ade875634cff72c0"
+    },
+    "trakt_movies_messageCompaniesPosition.json": {
+        "hash": "bfc3debf107f53db33574a67f6310c0b"
+    },
+    "trakt_movies_messageCompaniesTitle.json": {
+        "hash": "dd66aefc430f45048beaa9876d193832"
+    },
+    "trakt_movies_messagePosterPosition.json": {
+        "hash": "6259d478a5941b3b9178429c4c1d5916"
+    },
+    "trakt_movies_posterImageHeight.json": {
+        "hash": "d7169bac0737fa467e6a83fd95c18cb5"
+    },
+    "trakt_movies_posterImageWidth.json": {
+        "hash": "b40b8341a214de6035724fe3aed82767"
+    },
+    "trakt_movies_posterUpdateButtonPosition.json": {
+        "hash": "fc304313b787ee72b67dd868b651a705"
+    },
+    "trakt_movies_productionCompanyImgHeight.json": {
+        "hash": "667f23991a67fd2dbb886b6f840301aa"
+    },
+    "trakt_movies_productionCompanyImgWidth.json": {
+        "hash": "28c7231f47ea43826f84814cd54e03dd"
+    },
+    "trakt_movies_watchProviderImgSize.json": {
+        "hash": "7fd144de507a0a79491faf23b6b1e699"
+    }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="CMTV_Math_block" version_id="1000070" version_string="1.0.0"><![CDATA[Block]]></phrase>
+  <phrase title="CMTV_Math_incorrect_latex_input" version_id="1000070" version_string="1.0.0"><![CDATA[Incorrect latex input!]]></phrase>
+  <phrase title="CMTV_Math_inline" version_id="1000070" version_string="1.0.0"><![CDATA[Inline]]></phrase>
+  <phrase title="CMTV_Math_insert_math" version_id="1000070" version_string="1.0.0"><![CDATA[Insert math]]></phrase>
+  <phrase title="CMTV_Math_latex_input" version_id="1000070" version_string="1.0.0"><![CDATA[LaTeX input]]></phrase>
+  <phrase title="CMTV_Math_latex_input_explain" version_id="1000070" version_string="1.0.0"><![CDATA[<a href="https://www.latex-tutorial.com/tutorials/amsmath/" target="_blank">How to write math using LaTeX?</a> • <a href="https://katex.org/docs/supported.html" target="_blank">List of supported functions</a>]]></phrase>
+  <phrase title="CMTV_Math_preview" version_id="1000070" version_string="1.0.0"><![CDATA[Preview]]></phrase>
+  <phrase title="CMTV_Math_start_typing_math" version_id="1000070" version_string="1.0.0"><![CDATA[Start typing math in "LaTeX input"...]]></phrase>
+  <phrase title="CMTV_Math_type" version_id="1000070" version_string="1.0.0"><![CDATA[Type]]></phrase>
+  <phrase title="CMTV_Math_type_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Inline math is smaller and should be used inside the plain text. Block math is bigger and should be used for big equations and formulas. It also creates line breaks before and after.]]></phrase>
+  <phrase title="custom_bb_code_desc.imath" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_desc.math" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.imath" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.math" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.imath" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.math" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.imath" version_id="3000170" version_string="3.0.1"><![CDATA[Inline math]]></phrase>
+  <phrase title="custom_bb_code_title.math" version_id="3000170" version_string="3.0.1"><![CDATA[Block math]]></phrase>
+  <phrase title="option.CMTV_Math_customMathDelimiters" version_id="3000170" version_string="3.0.1"><![CDATA[Custom math delimiters]]></phrase>
+  <phrase title="option.CMTV_Math_ignoredClasses" version_id="3000170" version_string="3.0.1"><![CDATA[Igonre math in elements with classes]]></phrase>
+  <phrase title="option.CMTV_Math_macros" version_id="3000170" version_string="3.0.1"><![CDATA[Math macros]]></phrase>
+  <phrase title="option_explain.CMTV_Math_customMathDelimiters" version_id="3000170" version_string="3.0.1"><![CDATA[The value in this field is parsed inside PHP so write only strict JSON data!]]></phrase>
+  <phrase title="option_explain.CMTV_Math_ignoredClasses" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.CMTV_Math_macros" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="option_group.CMTV_Math" version_id="3000170" version_string="3.0.1"><![CDATA[Math options]]></phrase>
+  <phrase title="option_group_description.CMTV_Math" version_id="3000170" version_string="3.0.1"><![CDATA[How and where to render math on your forum.]]></phrase>
+</phrases>

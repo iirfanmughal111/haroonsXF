@@ -1,0 +1,2 @@
+To include the year a TV show was released in the thread title, check this box.<br />
+Example: Flash (2014)

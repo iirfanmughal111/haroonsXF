@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_tv",
+    "title": "Watch provider image height",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "unit",
+    "value_parameters": "",
+    "depends_on": "",
+    "value_group": "trakt_tv_message",
+    "property_value": "48px",
+    "display_order": 1010
+}

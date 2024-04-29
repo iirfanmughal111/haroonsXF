@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.snogTV1" version_id="2010071" version_string="2.1.0.1"><![CDATA[Update TV episode posts that are missing images or plots]]></phrase>
+  <phrase title="cron_entry.snogTvWatchProvider" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[[OzzModz] TMDb TV Thread Starter: Update watch provider data]]></phrase>
+  <phrase title="cron_entry.snog_tv_changes" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[[OzzModz] TMDb TV Thread Starter: Check for TV changes]]></phrase>
+  <phrase title="forum_sort.snog_tv_creator" version_id="2020000" version_string="2.2.0"><![CDATA[TV Creator]]></phrase>
+  <phrase title="forum_sort.snog_tv_episode" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[TV episode]]></phrase>
+  <phrase title="forum_sort.snog_tv_first_aired" version_id="2020000" version_string="2.2.0"><![CDATA[TV first aired]]></phrase>
+  <phrase title="forum_sort.snog_tv_genres" version_id="2020000" version_string="2.2.0"><![CDATA[TV Genres]]></phrase>
+  <phrase title="forum_sort.snog_tv_rating" version_id="2020000" version_string="2.2.0"><![CDATA[TV Rating]]></phrase>
+  <phrase title="forum_sort.snog_tv_season" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[TV season]]></phrase>
+  <phrase title="forum_type.snog_tv" version_id="2020000" version_string="2.2.0"><![CDATA[TMDb TV Forum]]></phrase>
+  <phrase title="forum_type_desc.snog_tv" version_id="2020000" version_string="2.2.0"><![CDATA[TMDb TV thread starter]]></phrase>
+  <phrase title="option.TvThreads_aggregateCredits" version_id="2020004" version_string="2.2.0 4"><![CDATA[Fetch aggregated credits]]></phrase>
+  <phrase title="option.TvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API key]]></phrase>
+  <phrase title="option.TvThreads_backdropCoverSize" version_id="2020061" version_string="2.2.0 Release Candidate 11"><![CDATA[Backdrop cover size]]></phrase>
+  <phrase title="option.TvThreads_castsLimit" version_id="2020004" version_string="2.2.0 4"><![CDATA[Casts results on thread tab]]></phrase>
+  <phrase title="option.TvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories for TV shows]]></phrase>
+  <phrase title="option.TvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CDN path]]></phrase>
+  <phrase title="option.TvThreads_changesLanguage" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[TV show changes tracking language]]></phrase>
+  <phrase title="option.TvThreads_companiesLimit" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Production results limit on thread view]]></phrase>
+  <phrase title="option.TvThreads_creditsLimit" version_id="2020004" version_string="2.2.0 4"><![CDATA[Credits results on thread tab]]></phrase>
+  <phrase title="option.TvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crosslink into all genre forums]]></phrase>
+  <phrase title="option.TvThreads_episode_exclude" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Exclude TV show title in season episode threads]]></phrase>
+  <phrase title="option.TvThreads_fetchCompanies" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Fetch TV companies]]></phrase>
+  <phrase title="option.TvThreads_fetchCredits" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Fetch TV credits]]></phrase>
+  <phrase title="option.TvThreads_fetchNetworks" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Fetch TV companies]]></phrase>
+  <phrase title="option.TvThreads_fetchVideos" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Fetch TV videos]]></phrase>
+  <phrase title="option.TvThreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Force comments to second post]]></phrase>
+  <phrase title="option.TvThreads_forum" version_id="2020000" version_string="2.2.0"><![CDATA[[DEPRECATED] Forums for TV threads]]></phrase>
+  <phrase title="option.TvThreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show information language]]></phrase>
+  <phrase title="option.TvThreads_largeCompanyLogoSize" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Large company logo size]]></phrase>
+  <phrase title="option.TvThreads_largeNetworkLogoSize" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Large network logo size]]></phrase>
+  <phrase title="option.TvThreads_largePosterSize" version_id="2020036" version_string="2.2.0 Beta 6"><![CDATA[Large poster size]]></phrase>
+  <phrase title="option.TvThreads_multiple" version_id="2000870" version_string="2.0.8"><![CDATA[Allow TV shows to be posted multiple times]]></phrase>
+  <phrase title="option.TvThreads_networksLimit" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Networks results limit on thread view]]></phrase>
+  <phrase title="option.TvThreads_replaceSearchTemplate" version_id="2020000" version_string="2.2.0"><![CDATA[Replace search results template]]></phrase>
+  <phrase title="option.TvThreads_showThread" version_id="2020000" version_string="2.2.0"><![CDATA[Items to show in threads]]></phrase>
+  <phrase title="option.TvThreads_smallCompanyLogoWidth" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Small company logo size width]]></phrase>
+  <phrase title="option.TvThreads_smallNetworkLogoWidth" version_id="2020052" version_string="2.2.0 Release Candidate 2"><![CDATA[Small network logo image width]]></phrase>
+  <phrase title="option.TvThreads_smallPosterWidth" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Small poster width]]></phrase>
+  <phrase title="option.TvThreads_sort" version_id="2011600" version_string="2.1.16"><![CDATA[Sort Seasons]]></phrase>
+  <phrase title="option.TvThreads_syncTitle" version_id="2020000" version_string="2.2.0"><![CDATA[Sync thread title with TMDb show title]]></phrase>
+  <phrase title="option.TvThreads_threadListInfo" version_id="2020008" version_string="2.2.0 8"><![CDATA[Items to show in forum thread list]]></phrase>
+  <phrase title="option.TvThreads_titleYear" version_id="2020008" version_string="2.2.0 8"><![CDATA[Include release year in thread title]]></phrase>
+  <phrase title="option.TvThreads_trackChanges" version_id="2020056" version_string="2.2.0 Release Candidate 6"><![CDATA[Track TV change list]]></phrase>
+  <phrase title="option.TvThreads_trackChangesAiringToday" version_id="2020058" version_string="2.2.0 Release Candidate 8"><![CDATA[Track TV change list based on "Airing today" results]]></phrase>
+  <phrase title="option.TvThreads_trackChangesPeriod" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[TV show changes tracking period]]></phrase>
+  <phrase title="option.TvThreads_trackCommunityChanges" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Track change logs for TV shows]]></phrase>
+  <phrase title="option.TvThreads_update" version_id="2020000" version_string="2.2.0"><![CDATA[[DEPRECATED] Enable manual updates]]></phrase>
+  <phrase title="option.TvThreads_useLocalImages" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Store image files locally]]></phrase>
+  <phrase title="option.TvThreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use forum genre limiting]]></phrase>
+  <phrase title="option.TvThreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use rating system]]></phrase>
+  <phrase title="option.TvThreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use CDN]]></phrase>
+  <phrase title="option.TvThreads_videosLimit" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[Video results on thread tab]]></phrase>
+  <phrase title="option.TvThreads_watchProviderRegion" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Default watch provider region]]></phrase>
+  <phrase title="option.TvThreads_watchProviderRegions" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Watch provider region code]]></phrase>
+  <phrase title="option_explain.TvThreads_aggregateCredits" version_id="2020004" version_string="2.2.0 4"><![CDATA[If checked, cast & crew data for TV shows will be fetched all the entire cast & crew for all episodes belonging to a TV show.</br>
+This can be a large amount of data and will affect performance.]]></phrase>
+  <phrase title="option_explain.TvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your API key for The Movie Database]]></phrase>
+  <phrase title="option_explain.TvThreads_backdropCoverSize" version_id="2020061" version_string="2.2.0 Release Candidate 11"><![CDATA[Requires <a href="https://xenforo.com/community/resources/ozzmodz-covers.8589/" target="_blank">[OzzModz] Covers</a> add-on installed. Select "none" to disable. The file size of the selected option must not exceed the max. file cover size.]]></phrase>
+  <phrase title="option_explain.TvThreads_castsLimit" version_id="2020004" version_string="2.2.0 4"><![CDATA[]]></phrase>
+  <phrase title="option_explain.TvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories selected in this list can only be used to create forums dedicated to individual TV shows.<br />Do not select any categories if you do not wish to use this option.]]></phrase>
+  <phrase title="option_explain.TvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you are using your own CDN, enter the CDN path here.<br />Example: http://cdn.yourpath.com/data<br />DO NOT end the path with a /]]></phrase>
+  <phrase title="option_explain.TvThreads_changesLanguage" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Enter the ISO 639-1 Language Code that will be used for TV information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a TV show at The Movie Database.]]></phrase>
+  <phrase title="option_explain.TvThreads_companiesLimit" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[]]></phrase>
+  <phrase title="option_explain.TvThreads_creditsLimit" version_id="2020004" version_string="2.2.0 4"><![CDATA[]]></phrase>
+  <phrase title="option_explain.TvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To place a redirect link to the main TV thread in all genre limited forums that a TV show can belong to, check this box. <font style="color:blue;">Genre limiting must be enabled for this to work</font><br />EXAMPLE: A TV show is in these genres: Drama, Science Fiction, Thriller<br />A member posts the show in the Science Fiction forum.<br />Redirect links will be placed in the Drama and Thriller forums.]]></phrase>
+  <phrase title="option_explain.TvThreads_episode_exclude" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to exclude the TV show title in the title for episode threads.<br />This may be needed if tv show names and episode titles exceed the XenForo thread title limit.]]></phrase>
+  <phrase title="option_explain.TvThreads_fetchCompanies" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Enable this option if you want to receive a list of TV companies. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.TvThreads_fetchCredits" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Enable this option if you want to receive a list of TV credits. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.TvThreads_fetchNetworks" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Enable this option if you want to receive a list of TV networks. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.TvThreads_fetchVideos" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Enable this option if you want to receive a list of TV videos. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.TvThreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you want to force any comments entered with a new TV thread to be posted as the second post in the new TV thread.<br /><b>NOTE:</b> This does not change existing threads. This only affects the first post in a new TV thread.]]></phrase>
+  <phrase title="option_explain.TvThreads_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the forums that will be used for TV threads.<br />SHIFT or CTRL click to select multiple forums.<br /><b>NOTE: </b>The forums selected here MUST be used exclusively for TV threads. They should not be used for any other type of thread. They MUST NOT be the same forums used for movie threads if you have the TMDb Movie Thread Starter installed.]]></phrase>
+  <phrase title="option_explain.TvThreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for TV information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a TV show at The Movie Database. Those are both handled by The Movie Database and not translated by this add-on.<br /><br />Changing language will NOT change threads already posted. Only new threads will post in the new language.]]></phrase>
+  <phrase title="option_explain.TvThreads_largeCompanyLogoSize" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.TvThreads_largeNetworkLogoSize" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.TvThreads_largePosterSize" version_id="2020036" version_string="2.2.0 Beta 6"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to download.]]></phrase>
+  <phrase title="option_explain.TvThreads_multiple" version_id="2000870" version_string="2.0.8"><![CDATA[Check this box to allow a TV show to be posted more than once.]]></phrase>
+  <phrase title="option_explain.TvThreads_networksLimit" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[]]></phrase>
+  <phrase title="option_explain.TvThreads_replaceSearchTemplate" version_id="2020000" version_string="2.2.0"><![CDATA[Check this option if you want to display TV data in XF search/tag results.]]></phrase>
+  <phrase title="option_explain.TvThreads_showThread" version_id="2020000" version_string="2.2.0"><![CDATA[Select the items to be shown in the first post of a TV thread]]></phrase>
+  <phrase title="option_explain.TvThreads_smallCompanyLogoWidth" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.TvThreads_smallNetworkLogoWidth" version_id="2020053" version_string="2.2.0 Release Candidate 3"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.TvThreads_smallPosterWidth" version_id="2020054" version_string="2.2.0 Release Candidate 4"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space.]]></phrase>
+  <phrase title="option_explain.TvThreads_sort" version_id="2011600" version_string="2.1.16"><![CDATA[The default sort order when a new season forum is created is descending. To sort them in ascending order, check this box.]]></phrase>
+  <phrase title="option_explain.TvThreads_syncTitle" version_id="2020000" version_string="2.2.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.TvThreads_threadListInfo" version_id="2020008" version_string="2.2.0 8"><![CDATA[Select the items to show in the forum thread list]]></phrase>
+  <phrase title="option_explain.TvThreads_titleYear" version_id="2020008" version_string="2.2.0 8"><![CDATA[To include the year a TV show was released in the thread title, check this box.<br />
+Example: Flash (2014)]]></phrase>
+  <phrase title="option_explain.TvThreads_trackChanges" version_id="2020056" version_string="2.2.0 Release Candidate 6"><![CDATA[Enable if you want to keep track of the list of changed TVs to automatically apply rebuilding data.</br>
+<b>Note: </b> This will overwrite all your manual edits if the TV has been updated.]]></phrase>
+  <phrase title="option_explain.TvThreads_trackChangesAiringToday" version_id="2020058" version_string="2.2.0 Release Candidate 8"><![CDATA[This will help to keep track of last-aired data changes since the <a href="https://developers.themoviedb.org/3/changes/get-movie-change-list">/movie/changes</a> endpoint doesn't report added episodes.<br/>
+<b>Note:</b> This will overwrite all your manual edits if the TV has been updated.]]></phrase>
+  <phrase title="option_explain.TvThreads_trackChangesPeriod" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[You can query up to 14 days]]></phrase>
+  <phrase title="option_explain.TvThreads_trackCommunityChanges" version_id="2020055" version_string="2.2.0 Release Candidate 5"><![CDATA[Please note that TMDb changes are made by users and may not always correct. It is not recommended to use with the option above to avoid conflicting changes.]]></phrase>
+  <phrase title="option_explain.TvThreads_update" version_id="2000070" version_string="2.0.0"><![CDATA[Checking this box will enable manual updates for existing threads that DO NOT contain TV show information. Users must have 'Can add missing TV information' permission set to 'Yes'.]]></phrase>
+  <phrase title="option_explain.TvThreads_useLocalImages" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Store the poster images stored directly on your server. If not, TMDb image links will be used to display.]]></phrase>
+  <phrase title="option_explain.TvThreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the type of TV shows posted in each forum to a specific genre. Check this box to enable this option. The genre for each forum is specified in Forums->Nodes. Click on the forum you wish to limit and select the genres you wish to allow in the forum.]]></phrase>
+  <phrase title="option_explain.TvThreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to turn on the TV show rating system.]]></phrase>
+  <phrase title="option_explain.TvThreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to use your own CDN for all poster images.]]></phrase>
+  <phrase title="option_explain.TvThreads_videosLimit" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[]]></phrase>
+  <phrase title="option_explain.TvThreads_watchProviderRegion" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[]]></phrase>
+  <phrase title="option_explain.TvThreads_watchProviderRegions" version_id="2020060" version_string="2.2.0 Release Candidate 10"><![CDATA[Leave it empty to disable.<br />
+Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
+  <phrase title="option_group.TvThreads" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[[OzzModz] TMDb TV Thread Starter]]></phrase>
+  <phrase title="option_group_description.TvThreads" version_id="2000070" version_string="2.0.0"><![CDATA[Options for the TMDb TV thread starter add-on]]></phrase>
+  <phrase title="permission.forum_snog_edit_episodes" version_id="2000070" version_string="2.0.0"><![CDATA[Can edit TV episodes]]></phrase>
+  <phrase title="permission.forum_snog_edit_shows" version_id="2000070" version_string="2.0.0"><![CDATA[Can edit TV shows]]></phrase>
+  <phrase title="permission.tvthreads_interface_add_info" version_id="2000070" version_string="2.0.0"><![CDATA[Can add missing TV information]]></phrase>
+  <phrase title="permission.tvthreads_interface_new_episode" version_id="2000070" version_string="2.0.0"><![CDATA[Can add new episode to TV season]]></phrase>
+  <phrase title="permission.tvthreads_interface_new_season" version_id="2000070" version_string="2.0.0"><![CDATA[Can add new season to TV show]]></phrase>
+  <phrase title="permission.tvthreads_interface_new_show" version_id="2000070" version_string="2.0.0"><![CDATA[Can add TV show to category]]></phrase>
+  <phrase title="permission.tvthreads_interface_updatePersons" version_id="2020008" version_string="2.2.0 8"><![CDATA[Can update persons data]]></phrase>
+  <phrase title="permission_interface.tvthreads_interface" version_id="2020008" version_string="2.2.0 8"><![CDATA[[OzzModz] TMDb TV Thread Starter]]></phrase>
+  <phrase title="snog_movies_and_x_more" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[And {count} more...]]></phrase>
+  <phrase title="snog_tv_add_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add episode]]></phrase>
+  <phrase title="snog_tv_add_first" version_id="2010071" version_string="2.1.0.1"><![CDATA[Add TV info to first post]]></phrase>
+  <phrase title="snog_tv_add_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add TV show info]]></phrase>
+  <phrase title="snog_tv_add_season" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add season]]></phrase>
+  <phrase title="snog_tv_add_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add TV show]]></phrase>
+  <phrase title="snog_tv_air_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Air date]]></phrase>
+  <phrase title="snog_tv_already_rated" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you have already rated this show, your current rating is shown]]></phrase>
+  <phrase title="snog_tv_and_x_more" version_id="2020004" version_string="2.2.0 4"><![CDATA[And {count} more...]]></phrase>
+  <phrase title="snog_tv_apply_changes" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[Apply changes]]></phrase>
+  <phrase title="snog_tv_available_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Available TV genres]]></phrase>
+  <phrase title="snog_tv_available_genre_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the TV show type by genre in this forum.<br />If you select ALL then any TV genre will be allowed.<br />If you select any other genres then new threads for this forum will be limited to TV shows in those genres.<br />NOTE: If someone tries to post a TV show in a genre that does not have a node assigned to it, then they will receive an error message stating that the genre is not allowed to be posted. So, if you decide to keep TV genres in separate forums, be sure to either create a forum for every genre listed or create one forum set to accept ALL genres. The ALL genre is the last to be considered for a new thread. That way, if someone tries to post a TV show with a different genre for the node they are posting in, it will be automatically posted in the correct node without an error.]]></phrase>
+  <phrase title="snog_tv_backdrop_available" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Backdrop available]]></phrase>
+  <phrase title="snog_tv_breakpoint" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Breakpoint]]></phrase>
+  <phrase title="snog_tv_buy" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Buy]]></phrase>
+  <phrase title="snog_tv_cast" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cast]]></phrase>
+  <phrase title="snog_tv_cast_tab" version_id="2020000" version_string="2.2.0"><![CDATA[Cast (tab)]]></phrase>
+  <phrase title="snog_tv_change_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add/Change rating]]></phrase>
+  <phrase title="snog_tv_change_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change thread title to TV show title]]></phrase>
+  <phrase title="snog_tv_check_for_new_backdrop_image" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Check for new TMDb backdrop image]]></phrase>
+  <phrase title="snog_tv_check_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check for new poster]]></phrase>
+  <phrase title="snog_tv_country.ad" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Andorra]]></phrase>
+  <phrase title="snog_tv_country.ae" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[United Arab Emirates]]></phrase>
+  <phrase title="snog_tv_country.af" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Afghanistan]]></phrase>
+  <phrase title="snog_tv_country.ag" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Antigua and Barbuda]]></phrase>
+  <phrase title="snog_tv_country.ai" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Anguilla]]></phrase>
+  <phrase title="snog_tv_country.al" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Albania]]></phrase>
+  <phrase title="snog_tv_country.am" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Armenia]]></phrase>
+  <phrase title="snog_tv_country.an" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Netherlands Antilles]]></phrase>
+  <phrase title="snog_tv_country.ao" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Angola]]></phrase>
+  <phrase title="snog_tv_country.aq" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Antarctica]]></phrase>
+  <phrase title="snog_tv_country.ar" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Argentina]]></phrase>
+  <phrase title="snog_tv_country.as" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[American Samoa]]></phrase>
+  <phrase title="snog_tv_country.at" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Austria]]></phrase>
+  <phrase title="snog_tv_country.au" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Australia]]></phrase>
+  <phrase title="snog_tv_country.aw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Aruba]]></phrase>
+  <phrase title="snog_tv_country.az" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Azerbaijan]]></phrase>
+  <phrase title="snog_tv_country.ba" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bosnia and Herzegovina]]></phrase>
+  <phrase title="snog_tv_country.bb" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Barbados]]></phrase>
+  <phrase title="snog_tv_country.bd" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bangladesh]]></phrase>
+  <phrase title="snog_tv_country.be" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Belgium]]></phrase>
+  <phrase title="snog_tv_country.bf" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Burkina Faso]]></phrase>
+  <phrase title="snog_tv_country.bg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bulgaria]]></phrase>
+  <phrase title="snog_tv_country.bh" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bahrain]]></phrase>
+  <phrase title="snog_tv_country.bi" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Burundi]]></phrase>
+  <phrase title="snog_tv_country.bj" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Benin]]></phrase>
+  <phrase title="snog_tv_country.bm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bermuda]]></phrase>
+  <phrase title="snog_tv_country.bn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Brunei Darussalam]]></phrase>
+  <phrase title="snog_tv_country.bo" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bolivia]]></phrase>
+  <phrase title="snog_tv_country.br" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Brazil]]></phrase>
+  <phrase title="snog_tv_country.bs" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bahamas]]></phrase>
+  <phrase title="snog_tv_country.bt" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bhutan]]></phrase>
+  <phrase title="snog_tv_country.bv" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Bouvet Island]]></phrase>
+  <phrase title="snog_tv_country.bw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Botswana]]></phrase>
+  <phrase title="snog_tv_country.by" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Belarus]]></phrase>
+  <phrase title="snog_tv_country.bz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Belize]]></phrase>
+  <phrase title="snog_tv_country.ca" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Canada]]></phrase>
+  <phrase title="snog_tv_country.cc" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cocos (Keeling) Islands]]></phrase>
+  <phrase title="snog_tv_country.cd" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Congo, the Democratic Republic of the]]></phrase>
+  <phrase title="snog_tv_country.cf" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Central African Republic]]></phrase>
+  <phrase title="snog_tv_country.cg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Congo]]></phrase>
+  <phrase title="snog_tv_country.ch" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Switzerland]]></phrase>
+  <phrase title="snog_tv_country.ci" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cote D'Ivoire]]></phrase>
+  <phrase title="snog_tv_country.ck" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cook Islands]]></phrase>
+  <phrase title="snog_tv_country.cl" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Chile]]></phrase>
+  <phrase title="snog_tv_country.cm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cameroon]]></phrase>
+  <phrase title="snog_tv_country.cn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[China]]></phrase>
+  <phrase title="snog_tv_country.co" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Colombia]]></phrase>
+  <phrase title="snog_tv_country.cr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Costa Rica]]></phrase>
+  <phrase title="snog_tv_country.cs" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Serbia and Montenegro]]></phrase>
+  <phrase title="snog_tv_country.cu" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cuba]]></phrase>
+  <phrase title="snog_tv_country.cv" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cape Verde]]></phrase>
+  <phrase title="snog_tv_country.cx" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Christmas Island]]></phrase>
+  <phrase title="snog_tv_country.cy" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cyprus]]></phrase>
+  <phrase title="snog_tv_country.cz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Czech Republic]]></phrase>
+  <phrase title="snog_tv_country.de" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Germany]]></phrase>
+  <phrase title="snog_tv_country.dj" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Djibouti]]></phrase>
+  <phrase title="snog_tv_country.dk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Denmark]]></phrase>
+  <phrase title="snog_tv_country.dm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Dominica]]></phrase>
+  <phrase title="snog_tv_country.do" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Dominican Republic]]></phrase>
+  <phrase title="snog_tv_country.dz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Algeria]]></phrase>
+  <phrase title="snog_tv_country.ec" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Ecuador]]></phrase>
+  <phrase title="snog_tv_country.ee" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Estonia]]></phrase>
+  <phrase title="snog_tv_country.eg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Egypt]]></phrase>
+  <phrase title="snog_tv_country.eh" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Western Sahara]]></phrase>
+  <phrase title="snog_tv_country.er" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Eritrea]]></phrase>
+  <phrase title="snog_tv_country.es" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Spain]]></phrase>
+  <phrase title="snog_tv_country.et" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Ethiopia]]></phrase>
+  <phrase title="snog_tv_country.fi" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Finland]]></phrase>
+  <phrase title="snog_tv_country.fj" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Fiji]]></phrase>
+  <phrase title="snog_tv_country.fk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Falkland Islands (Malvinas)]]></phrase>
+  <phrase title="snog_tv_country.fm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Micronesia, Federated States of]]></phrase>
+  <phrase title="snog_tv_country.fo" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Faroe Islands]]></phrase>
+  <phrase title="snog_tv_country.fr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[France]]></phrase>
+  <phrase title="snog_tv_country.ga" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Gabon]]></phrase>
+  <phrase title="snog_tv_country.gb" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[United Kingdom]]></phrase>
+  <phrase title="snog_tv_country.gd" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Grenada]]></phrase>
+  <phrase title="snog_tv_country.ge" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Georgia]]></phrase>
+  <phrase title="snog_tv_country.gf" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[French Guiana]]></phrase>
+  <phrase title="snog_tv_country.gh" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Ghana]]></phrase>
+  <phrase title="snog_tv_country.gi" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Gibraltar]]></phrase>
+  <phrase title="snog_tv_country.gl" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Greenland]]></phrase>
+  <phrase title="snog_tv_country.gm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Gambia]]></phrase>
+  <phrase title="snog_tv_country.gn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Guinea]]></phrase>
+  <phrase title="snog_tv_country.gp" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Guadeloupe]]></phrase>
+  <phrase title="snog_tv_country.gq" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Equatorial Guinea]]></phrase>
+  <phrase title="snog_tv_country.gr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Greece]]></phrase>
+  <phrase title="snog_tv_country.gs" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[South Georgia and the South Sandwich Islands]]></phrase>
+  <phrase title="snog_tv_country.gt" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Guatemala]]></phrase>
+  <phrase title="snog_tv_country.gu" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Guam]]></phrase>
+  <phrase title="snog_tv_country.gw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Guinea-Bissau]]></phrase>
+  <phrase title="snog_tv_country.gy" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Guyana]]></phrase>
+  <phrase title="snog_tv_country.hk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Hong Kong]]></phrase>
+  <phrase title="snog_tv_country.hm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Heard Island and Mcdonald Islands]]></phrase>
+  <phrase title="snog_tv_country.hn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Honduras]]></phrase>
+  <phrase title="snog_tv_country.hr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Croatia]]></phrase>
+  <phrase title="snog_tv_country.ht" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Haiti]]></phrase>
+  <phrase title="snog_tv_country.hu" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Hungary]]></phrase>
+  <phrase title="snog_tv_country.id" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Indonesia]]></phrase>
+  <phrase title="snog_tv_country.ie" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Ireland]]></phrase>
+  <phrase title="snog_tv_country.il" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Israel]]></phrase>
+  <phrase title="snog_tv_country.in" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[India]]></phrase>
+  <phrase title="snog_tv_country.io" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[British Indian Ocean Territory]]></phrase>
+  <phrase title="snog_tv_country.iq" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Iraq]]></phrase>
+  <phrase title="snog_tv_country.ir" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Iran, Islamic Republic of]]></phrase>
+  <phrase title="snog_tv_country.is" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Iceland]]></phrase>
+  <phrase title="snog_tv_country.it" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Italy]]></phrase>
+  <phrase title="snog_tv_country.jm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Jamaica]]></phrase>
+  <phrase title="snog_tv_country.jo" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Jordan]]></phrase>
+  <phrase title="snog_tv_country.jp" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Japan]]></phrase>
+  <phrase title="snog_tv_country.ke" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Kenya]]></phrase>
+  <phrase title="snog_tv_country.kg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Kyrgyzstan]]></phrase>
+  <phrase title="snog_tv_country.kh" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cambodia]]></phrase>
+  <phrase title="snog_tv_country.ki" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Kiribati]]></phrase>
+  <phrase title="snog_tv_country.km" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Comoros]]></phrase>
+  <phrase title="snog_tv_country.kn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Saint Kitts and Nevis]]></phrase>
+  <phrase title="snog_tv_country.kp" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Korea, Democratic People's Republic of]]></phrase>
+  <phrase title="snog_tv_country.kr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Korea, Republic of]]></phrase>
+  <phrase title="snog_tv_country.kw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Kuwait]]></phrase>
+  <phrase title="snog_tv_country.ky" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Cayman Islands]]></phrase>
+  <phrase title="snog_tv_country.kz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Kazakhstan]]></phrase>
+  <phrase title="snog_tv_country.la" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Lao People's Democratic Republic]]></phrase>
+  <phrase title="snog_tv_country.lb" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Lebanon]]></phrase>
+  <phrase title="snog_tv_country.lc" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Saint Lucia]]></phrase>
+  <phrase title="snog_tv_country.li" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Liechtenstein]]></phrase>
+  <phrase title="snog_tv_country.lk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Sri Lanka]]></phrase>
+  <phrase title="snog_tv_country.lr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Liberia]]></phrase>
+  <phrase title="snog_tv_country.ls" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Lesotho]]></phrase>
+  <phrase title="snog_tv_country.lt" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Lithuania]]></phrase>
+  <phrase title="snog_tv_country.lu" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Luxembourg]]></phrase>
+  <phrase title="snog_tv_country.lv" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Latvia]]></phrase>
+  <phrase title="snog_tv_country.ly" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Libyan Arab Jamahiriya]]></phrase>
+  <phrase title="snog_tv_country.ma" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Morocco]]></phrase>
+  <phrase title="snog_tv_country.mc" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Monaco]]></phrase>
+  <phrase title="snog_tv_country.md" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Moldova, Republic of]]></phrase>
+  <phrase title="snog_tv_country.mg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Madagascar]]></phrase>
+  <phrase title="snog_tv_country.mh" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Marshall Islands]]></phrase>
+  <phrase title="snog_tv_country.mk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Macedonia, the Former Yugoslav Republic of]]></phrase>
+  <phrase title="snog_tv_country.ml" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Mali]]></phrase>
+  <phrase title="snog_tv_country.mm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Myanmar]]></phrase>
+  <phrase title="snog_tv_country.mn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Mongolia]]></phrase>
+  <phrase title="snog_tv_country.mo" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Macao]]></phrase>
+  <phrase title="snog_tv_country.mp" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Northern Mariana Islands]]></phrase>
+  <phrase title="snog_tv_country.mq" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Martinique]]></phrase>
+  <phrase title="snog_tv_country.mr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Mauritania]]></phrase>
+  <phrase title="snog_tv_country.ms" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Montserrat]]></phrase>
+  <phrase title="snog_tv_country.mt" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Malta]]></phrase>
+  <phrase title="snog_tv_country.mu" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Mauritius]]></phrase>
+  <phrase title="snog_tv_country.mv" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Maldives]]></phrase>
+  <phrase title="snog_tv_country.mw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Malawi]]></phrase>
+  <phrase title="snog_tv_country.mx" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Mexico]]></phrase>
+  <phrase title="snog_tv_country.my" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Malaysia]]></phrase>
+  <phrase title="snog_tv_country.mz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Mozambique]]></phrase>
+  <phrase title="snog_tv_country.na" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Namibia]]></phrase>
+  <phrase title="snog_tv_country.nc" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[New Caledonia]]></phrase>
+  <phrase title="snog_tv_country.ne" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Niger]]></phrase>
+  <phrase title="snog_tv_country.nf" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Norfolk Island]]></phrase>
+  <phrase title="snog_tv_country.ng" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Nigeria]]></phrase>
+  <phrase title="snog_tv_country.ni" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Nicaragua]]></phrase>
+  <phrase title="snog_tv_country.nl" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Netherlands]]></phrase>
+  <phrase title="snog_tv_country.no" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Norway]]></phrase>
+  <phrase title="snog_tv_country.np" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Nepal]]></phrase>
+  <phrase title="snog_tv_country.nr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Nauru]]></phrase>
+  <phrase title="snog_tv_country.nu" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Niue]]></phrase>
+  <phrase title="snog_tv_country.nz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[New Zealand]]></phrase>
+  <phrase title="snog_tv_country.om" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Oman]]></phrase>
+  <phrase title="snog_tv_country.pa" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Panama]]></phrase>
+  <phrase title="snog_tv_country.pe" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Peru]]></phrase>
+  <phrase title="snog_tv_country.pf" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[French Polynesia]]></phrase>
+  <phrase title="snog_tv_country.pg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Papua New Guinea]]></phrase>
+  <phrase title="snog_tv_country.ph" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Philippines]]></phrase>
+  <phrase title="snog_tv_country.pk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Pakistan]]></phrase>
+  <phrase title="snog_tv_country.pl" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Poland]]></phrase>
+  <phrase title="snog_tv_country.pm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Saint Pierre and Miquelon]]></phrase>
+  <phrase title="snog_tv_country.pn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Pitcairn]]></phrase>
+  <phrase title="snog_tv_country.pr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Puerto Rico]]></phrase>
+  <phrase title="snog_tv_country.ps" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Palestinian Territory, Occupied]]></phrase>
+  <phrase title="snog_tv_country.pt" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Portugal]]></phrase>
+  <phrase title="snog_tv_country.pw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Palau]]></phrase>
+  <phrase title="snog_tv_country.py" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Paraguay]]></phrase>
+  <phrase title="snog_tv_country.qa" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Qatar]]></phrase>
+  <phrase title="snog_tv_country.re" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Reunion]]></phrase>
+  <phrase title="snog_tv_country.ro" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Romania]]></phrase>
+  <phrase title="snog_tv_country.ru" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Russian Federation]]></phrase>
+  <phrase title="snog_tv_country.rw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Rwanda]]></phrase>
+  <phrase title="snog_tv_country.sa" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Saudi Arabia]]></phrase>
+  <phrase title="snog_tv_country.sb" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Solomon Islands]]></phrase>
+  <phrase title="snog_tv_country.sc" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Seychelles]]></phrase>
+  <phrase title="snog_tv_country.sd" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Sudan]]></phrase>
+  <phrase title="snog_tv_country.se" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Sweden]]></phrase>
+  <phrase title="snog_tv_country.sg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Singapore]]></phrase>
+  <phrase title="snog_tv_country.sh" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Saint Helena]]></phrase>
+  <phrase title="snog_tv_country.si" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Slovenia]]></phrase>
+  <phrase title="snog_tv_country.sj" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Svalbard and Jan Mayen]]></phrase>
+  <phrase title="snog_tv_country.sk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Slovakia]]></phrase>
+  <phrase title="snog_tv_country.sl" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Sierra Leone]]></phrase>
+  <phrase title="snog_tv_country.sm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[San Marino]]></phrase>
+  <phrase title="snog_tv_country.sn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Senegal]]></phrase>
+  <phrase title="snog_tv_country.so" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Somalia]]></phrase>
+  <phrase title="snog_tv_country.sr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Suriname]]></phrase>
+  <phrase title="snog_tv_country.st" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Sao Tome and Principe]]></phrase>
+  <phrase title="snog_tv_country.sv" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[El Salvador]]></phrase>
+  <phrase title="snog_tv_country.sy" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Syrian Arab Republic]]></phrase>
+  <phrase title="snog_tv_country.sz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Swaziland]]></phrase>
+  <phrase title="snog_tv_country.tc" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Turks and Caicos Islands]]></phrase>
+  <phrase title="snog_tv_country.td" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Chad]]></phrase>
+  <phrase title="snog_tv_country.tf" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[French Southern Territories]]></phrase>
+  <phrase title="snog_tv_country.tg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Togo]]></phrase>
+  <phrase title="snog_tv_country.th" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Thailand]]></phrase>
+  <phrase title="snog_tv_country.tj" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Tajikistan]]></phrase>
+  <phrase title="snog_tv_country.tk" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Tokelau]]></phrase>
+  <phrase title="snog_tv_country.tl" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Timor-Leste]]></phrase>
+  <phrase title="snog_tv_country.tm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Turkmenistan]]></phrase>
+  <phrase title="snog_tv_country.tn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Tunisia]]></phrase>
+  <phrase title="snog_tv_country.to" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Tonga]]></phrase>
+  <phrase title="snog_tv_country.tr" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Turkey]]></phrase>
+  <phrase title="snog_tv_country.tt" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Trinidad and Tobago]]></phrase>
+  <phrase title="snog_tv_country.tv" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Tuvalu]]></phrase>
+  <phrase title="snog_tv_country.tw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Taiwan, Province of China]]></phrase>
+  <phrase title="snog_tv_country.tz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Tanzania, United Republic of]]></phrase>
+  <phrase title="snog_tv_country.ua" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Ukraine]]></phrase>
+  <phrase title="snog_tv_country.ug" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Uganda]]></phrase>
+  <phrase title="snog_tv_country.um" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[United States Minor Outlying Islands]]></phrase>
+  <phrase title="snog_tv_country.us" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[United States]]></phrase>
+  <phrase title="snog_tv_country.uy" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Uruguay]]></phrase>
+  <phrase title="snog_tv_country.uz" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Uzbekistan]]></phrase>
+  <phrase title="snog_tv_country.va" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Holy See (Vatican City State)]]></phrase>
+  <phrase title="snog_tv_country.vc" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Saint Vincent and the Grenadines]]></phrase>
+  <phrase title="snog_tv_country.ve" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Venezuela]]></phrase>
+  <phrase title="snog_tv_country.vg" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Virgin Islands, British]]></phrase>
+  <phrase title="snog_tv_country.vi" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Virgin Islands, U.s.]]></phrase>
+  <phrase title="snog_tv_country.vn" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Viet Nam]]></phrase>
+  <phrase title="snog_tv_country.vu" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Vanuatu]]></phrase>
+  <phrase title="snog_tv_country.wf" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Wallis and Futuna]]></phrase>
+  <phrase title="snog_tv_country.ws" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Samoa]]></phrase>
+  <phrase title="snog_tv_country.ye" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Yemen]]></phrase>
+  <phrase title="snog_tv_country.yt" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Mayotte]]></phrase>
+  <phrase title="snog_tv_country.za" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[South Africa]]></phrase>
+  <phrase title="snog_tv_country.zm" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Zambia]]></phrase>
+  <phrase title="snog_tv_country.zw" version_id="2020060" version_string="2.2.0 Release Candidate 10" global_cache="1"><![CDATA[Zimbabwe]]></phrase>
+  <phrase title="snog_tv_creator" version_id="2020000" version_string="2.2.0"><![CDATA[Creator]]></phrase>
+  <phrase title="snog_tv_credits" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Credits]]></phrase>
+  <phrase title="snog_tv_crew" version_id="2020003" version_string="2.2.0 3"><![CDATA[Crew]]></phrase>
+  <phrase title="snog_tv_crew_tab" version_id="2020000" version_string="2.2.0"><![CDATA[Crew (tab)]]></phrase>
+  <phrase title="snog_tv_director" version_id="2020000" version_string="2.2.0"><![CDATA[Director]]></phrase>
+  <phrase title="snog_tv_download_company_images" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Download company images]]></phrase>
+  <phrase title="snog_tv_download_episode_images" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Download episode images]]></phrase>
+  <phrase title="snog_tv_download_forum_poster_images" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Download forum poster images]]></phrase>
+  <phrase title="snog_tv_download_images_explain" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Download images of episodes locally (ignoring the disabled option). Can be useful if you previously disabled local images but now want to load them. Does not check API for new posters, only downloads from a saved link.]]></phrase>
+  <phrase title="snog_tv_download_network_images" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Download network images]]></phrase>
+  <phrase title="snog_tv_download_person_images" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Download person images]]></phrase>
+  <phrase title="snog_tv_download_thread_poster_images" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Download thread poster images]]></phrase>
+  <phrase title="snog_tv_edit_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit TV episode]]></phrase>
+  <phrase title="snog_tv_edit_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit TV show]]></phrase>
+  <phrase title="snog_tv_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode]]></phrase>
+  <phrase title="snog_tv_episode_enter_episode_number" version_id="2010270" version_string="2.1.2"><![CDATA[All you need to enter is the episode number for this season. (EXAMPLE: 5)]]></phrase>
+  <phrase title="snog_tv_episode_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb episode link]]></phrase>
+  <phrase title="snog_tv_episode_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode number]]></phrase>
+  <phrase title="snog_tv_error_aired_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Aired date must be formatted YYYY-MM-DD]]></phrase>
+  <phrase title="snog_tv_error_badapi" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API Key is not valid]]></phrase>
+  <phrase title="snog_tv_error_episode_link" version_id="2000770" version_string="2.0.7"><![CDATA[When posting a TV episode you must enter both the Season number and Episode number]]></phrase>
+  <phrase title="snog_tv_error_episode_not_found" version_id="2000770" version_string="2.0.7"><![CDATA[That episode was not found]]></phrase>
+  <phrase title="snog_tv_error_episode_number" version_id="2000870" version_string="2.0.8"><![CDATA[You did not enter a valid episode number]]></phrase>
+  <phrase title="snog_tv_error_forum_exists" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show forum already exists]]></phrase>
+  <phrase title="snog_tv_error_genre_not_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show genre not allowed]]></phrase>
+  <phrase title="snog_tv_error_id_not_valid" version_id="2000170" version_string="2.0.1"><![CDATA[TMDb TV ID not valid]]></phrase>
+  <phrase title="snog_tv_error_invalid_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The episode number is not valid for this TV show]]></phrase>
+  <phrase title="snog_tv_error_movie_id" version_id="2000170" version_string="2.0.1"><![CDATA[You are trying to post a movie in a TV forum]]></phrase>
+  <phrase title="snog_tv_error_no_genre" version_id="2000170" version_string="2.0.1"><![CDATA[Genre limiting is enabled and no genre is selected for this forum]]></phrase>
+  <phrase title="snog_tv_error_no_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No TV show entered]]></phrase>
+  <phrase title="snog_tv_error_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The TV show was not found at The Movie Database]]></phrase>
+  <phrase title="snog_tv_error_not_returned" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV Information Not Returned from TMDB]]></phrase>
+  <phrase title="snog_tv_error_show_posted" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[That TV show has already been posted]]></phrase>
+  <phrase title="snog_tv_error_valid_3166" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 3166-1 Country Code]]></phrase>
+  <phrase title="snog_tv_error_valid_639" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 639-1 Language Code]]></phrase>
+  <phrase title="snog_tv_fetch_changes" version_id="2020055" version_string="2.2.0 Release Candidate 5"><![CDATA[Fetch changes]]></phrase>
+  <phrase title="snog_tv_first_aired" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[First aired]]></phrase>
+  <phrase title="snog_tv_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Genre]]></phrase>
+  <phrase title="snog_tv_guest_stars" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Guest stars]]></phrase>
+  <phrase title="snog_tv_image_height" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Image height]]></phrase>
+  <phrase title="snog_tv_image_width" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Image width]]></phrase>
+  <phrase title="snog_tv_information" version_id="2000070" version_string="2.0.0"><![CDATA[TV show information provided by <a href="https://themoviedb.org" target="_blank" >The Movie Database</a>]]></phrase>
+  <phrase title="snog_tv_information_thread" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[Show information in first post provided by <a href="https://themoviedb.org" target="_blank" >The Movie Database</a>]]></phrase>
+  <phrase title="snog_tv_last_air_date" version_id="2020008" version_string="2.2.0 8"><![CDATA[Last air date]]></phrase>
+  <phrase title="snog_tv_latest_shows" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Latest TV shows]]></phrase>
+  <phrase title="snog_tv_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb TV show link]]></phrase>
+  <phrase title="snog_tv_more_details_on_tmdb" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[More details on TMDb]]></phrase>
+  <phrase title="snog_tv_most_rated_shows" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Most rated TV shows]]></phrase>
+  <phrase title="snog_tv_networks" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Networks]]></phrase>
+  <phrase title="snog_tv_new_backdrop_not_available" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[New backdrop is not available]]></phrase>
+  <phrase title="snog_tv_overview" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Overview]]></phrase>
+  <phrase title="snog_tv_post_episode" version_id="2000770" version_string="2.0.7"><![CDATA[If you wish to post an episode for this TV show, enter the Season and Episode numbers]]></phrase>
+  <phrase title="snog_tv_post_new_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post new episode]]></phrase>
+  <phrase title="snog_tv_post_new_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new TV show]]></phrase>
+  <phrase title="snog_tv_post_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb TV show link or TV show ID]]></phrase>
+  <phrase title="snog_tv_post_show_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new thread or TV show]]></phrase>
+  <phrase title="snog_tv_post_show_title" version_id="2020043" version_string="2.2.0 Beta 13"><![CDATA[TMDb TV show link or TV show ID]]></phrase>
+  <phrase title="snog_tv_poster_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is available]]></phrase>
+  <phrase title="snog_tv_poster_not_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is not available]]></phrase>
+  <phrase title="snog_tv_production_companies" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Production companies]]></phrase>
+  <phrase title="snog_tv_random_shows" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Random TV shows]]></phrase>
+  <phrase title="snog_tv_rebuild_credits" version_id="2020000" version_string="2.2.0"><![CDATA[Rebuild credits]]></phrase>
+  <phrase title="snog_tv_rebuild_episode_posts" version_id="2020056" version_string="2.2.0 Release Candidate 6"><![CDATA[Rebuild episode posts]]></phrase>
+  <phrase title="snog_tv_rebuild_episodes" version_id="2020052" version_string="2.2.0 Release Candidate 2"><![CDATA[Rebuild episodes]]></phrase>
+  <phrase title="snog_tv_rebuild_general_info" version_id="2020052" version_string="2.2.0 Release Candidate 2"><![CDATA[Rebuild general TV info]]></phrase>
+  <phrase title="snog_tv_rebuild_persons" version_id="2020006" version_string="2.2.0 6"><![CDATA[Rebuild person data]]></phrase>
+  <phrase title="snog_tv_rebuild_thread_covers" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Rebuild thread covers]]></phrase>
+  <phrase title="snog_tv_rebuild_tv_networks" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Rebuild TV networks]]></phrase>
+  <phrase title="snog_tv_rebuild_tv_production_companies" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Rebuild TV production companies]]></phrase>
+  <phrase title="snog_tv_rebuild_tv_threads" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Rebuild TV threads]]></phrase>
+  <phrase title="snog_tv_rebuild_tv_threads_explain" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Rebuilds general show data, posters, credits and videos]]></phrase>
+  <phrase title="snog_tv_rebuild_videos" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[Rebuild videos]]></phrase>
+  <phrase title="snog_tv_rebuild_watch_providers" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Rebuild watch providers]]></phrase>
+  <phrase title="snog_tv_recalculate_forum_ratings" version_id="2020000" version_string="2.2.0"><![CDATA[Recalculate TV forum ratings]]></phrase>
+  <phrase title="snog_tv_recalculate_ratings" version_id="2020000" version_string="2.2.0"><![CDATA[Recalculate TV ratings]]></phrase>
+  <phrase title="snog_tv_regular_cast" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[Regular cast]]></phrase>
+  <phrase title="snog_tv_release_date" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[Release date]]></phrase>
+  <phrase title="snog_tv_release_dates" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[Release dates]]></phrase>
+  <phrase title="snog_tv_rent" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Rent]]></phrase>
+  <phrase title="snog_tv_reupload_old_backdrop" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Re-upload old one?]]></phrase>
+  <phrase title="snog_tv_reupload_old_poster" version_id="2020057" version_string="2.2.0 Release Candidate 7"><![CDATA[Reupload old poster?]]></phrase>
+  <phrase title="snog_tv_save_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Save poster]]></phrase>
+  <phrase title="snog_tv_season" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Season]]></phrase>
+  <phrase title="snog_tv_season_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Season number]]></phrase>
+  <phrase title="snog_tv_show_lookup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the TMDb Link or ID for your TV show? Go to <a href="https://themoviedb.org" target="_blank" >The Movie Database</a> and look it up.]]></phrase>
+  <phrase title="snog_tv_show_rating" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Show rating]]></phrase>
+  <phrase title="snog_tv_slider_auto_play" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Automatically start to play]]></phrase>
+  <phrase title="snog_tv_slider_controls" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Show prev/next buttons]]></phrase>
+  <phrase title="snog_tv_slider_items" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Number of slides to show at a time]]></phrase>
+  <phrase title="snog_tv_slider_items_items_medium" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Medium items]]></phrase>
+  <phrase title="snog_tv_slider_items_items_wide" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Wide items
+]]></phrase>
+  <phrase title="snog_tv_slider_loop_slides" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Loop slides]]></phrase>
+  <phrase title="snog_tv_slider_options" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Slider options]]></phrase>
+  <phrase title="snog_tv_slider_pager" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Display pager]]></phrase>
+  <phrase title="snog_tv_slider_pause" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[The time (in ms) between each auto transition]]></phrase>
+  <phrase title="snog_tv_slider_pause_on_hover" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Pause on hover]]></phrase>
+  <phrase title="snog_tv_slider_widget_shown_elements" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Elements to show]]></phrase>
+  <phrase title="snog_tv_started_x_threads" version_id="2000570" version_string="2.0.5"><![CDATA[User has started at least X TV threads]]></phrase>
+  <phrase title="snog_tv_status" version_id="2020008" version_string="2.2.0 8"><![CDATA[Show status]]></phrase>
+  <phrase title="snog_tv_status_cancelled" version_id="2020057" version_string="2.2.0 Release Candidate 7"><![CDATA[Cancelled]]></phrase>
+  <phrase title="snog_tv_status_ended" version_id="2020057" version_string="2.2.0 Release Candidate 7"><![CDATA[Ended]]></phrase>
+  <phrase title="snog_tv_status_returning_series" version_id="2020057" version_string="2.2.0 Release Candidate 7"><![CDATA[Returning series]]></phrase>
+  <phrase title="snog_tv_streaming" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Streaming]]></phrase>
+  <phrase title="snog_tv_thread_tools_menu" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Thread tools menu]]></phrase>
+  <phrase title="snog_tv_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show title]]></phrase>
+  <phrase title="snog_tv_tmdb_watch_region" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[TV watch providers default region]]></phrase>
+  <phrase title="snog_tv_tools_local_images" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[Local images]]></phrase>
+  <phrase title="snog_tv_total_x_episodes" version_id="2020004" version_string="2.2.0 4"><![CDATA[Total episodes: {count}]]></phrase>
+  <phrase title="snog_tv_trailer" version_id="2000970" version_string="2.0.9"><![CDATA[Trailer]]></phrase>
+  <phrase title="snog_tv_trailer_explain" version_id="2000970" version_string="2.0.9"><![CDATA[Enter either a youtube video ID or a youtube link]]></phrase>
+  <phrase title="snog_tv_update_episode" version_id="2020058" version_string="2.2.0 Release Candidate 8"><![CDATA[Update episode]]></phrase>
+  <phrase title="snog_tv_update_person_info" version_id="2020008" version_string="2.2.0 8"><![CDATA[Update person image & data]]></phrase>
+  <phrase title="snog_tv_update_thread_covers" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Update thread covers]]></phrase>
+  <phrase title="snog_tv_videos" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[Videos]]></phrase>
+  <phrase title="snog_tv_videos_tab" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[Videos]]></phrase>
+  <phrase title="snog_tv_vote" version_id="2000270" version_string="2.0.2"><![CDATA[Vote]]></phrase>
+  <phrase title="snog_tv_where_to_watch" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Where to watch]]></phrase>
+  <phrase title="snog_tv_x_casts" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[{name} TV show casts]]></phrase>
+  <phrase title="snog_tv_x_episodes" version_id="2020004" version_string="2.2.0 4"><![CDATA[{count} episodes]]></phrase>
+  <phrase title="style_prop.snog_tv_castPersonLargeImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Default cast person avatar (large)]]></phrase>
+  <phrase title="style_prop.snog_tv_castPersonSmallImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Default cast person avatar (small)]]></phrase>
+  <phrase title="style_prop.snog_tv_crewPersonLargeImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Default crew person avatar (large)]]></phrase>
+  <phrase title="style_prop.snog_tv_crewPersonSmallImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Default crew person avatar (small)]]></phrase>
+  <phrase title="style_prop.snog_tv_episodeImageHeight" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Episode image height]]></phrase>
+  <phrase title="style_prop.snog_tv_episodeImageWidth" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Episode image width]]></phrase>
+  <phrase title="style_prop.snog_tv_episodeSearchImageHeight" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Episode image height (search results)]]></phrase>
+  <phrase title="style_prop.snog_tv_episodeSearchImageWidth" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Episode image width (search results)]]></phrase>
+  <phrase title="style_prop.snog_tv_messageCompaniesPosition" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[TV show production company list position]]></phrase>
+  <phrase title="style_prop.snog_tv_messageCompaniesTitle" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[Show TV show production company list block title]]></phrase>
+  <phrase title="style_prop.snog_tv_messageNetworksPosition" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[TV show network list position]]></phrase>
+  <phrase title="style_prop.snog_tv_messageNetworksTitle" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[Show TV show networks list block title]]></phrase>
+  <phrase title="style_prop.snog_tv_messagePosterPosition" version_id="2020048" version_string="2.2.0 Beta 18"><![CDATA[TV show poster position]]></phrase>
+  <phrase title="style_prop.snog_tv_networkImgHeight" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Network image height]]></phrase>
+  <phrase title="style_prop.snog_tv_networkImgWidth" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Network image width]]></phrase>
+  <phrase title="style_prop.snog_tv_posterImageHeight" version_id="2020034" version_string="2.2.0 Beta 4"><![CDATA[Thread list poster image height]]></phrase>
+  <phrase title="style_prop.snog_tv_posterImageWidth" version_id="2020034" version_string="2.2.0 Beta 4"><![CDATA[Thread list poster image width]]></phrase>
+  <phrase title="style_prop.snog_tv_posterUpdateButtonPosition" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[Check poster updates button position]]></phrase>
+  <phrase title="style_prop.snog_tv_productionCompanyImgHeight" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Production company image height]]></phrase>
+  <phrase title="style_prop.snog_tv_productionCompanyImgWidth" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[Production company image width]]></phrase>
+  <phrase title="style_prop.snog_tv_watchProviderImgHeight" version_id="2020048" version_string="2.2.0 Beta 18"><![CDATA[Watch provider image height]]></phrase>
+  <phrase title="style_prop.snog_tv_watchProviderImgWidth" version_id="2020048" version_string="2.2.0 Beta 18"><![CDATA[Watch provider image width]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_castPersonLargeImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_castPersonSmallImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_crewPersonLargeImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_crewPersonSmallImageUrl" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_episodeImageHeight" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_episodeImageWidth" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_episodeSearchImageHeight" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_episodeSearchImageWidth" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_messageCompaniesPosition" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_messageCompaniesTitle" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_messageNetworksPosition" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_messageNetworksTitle" version_id="2020051" version_string="2.2.0 Release Candidate 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_messagePosterPosition" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Select the position for the TV show poster in threads. Note that this will invert the settings below.]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_networkImgHeight" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_networkImgWidth" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_posterImageHeight" version_id="2020034" version_string="2.2.0 Beta 4"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_posterImageWidth" version_id="2020034" version_string="2.2.0 Beta 4"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_posterUpdateButtonPosition" version_id="2020062" version_string="2.2.0 Release Candidate 12"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_productionCompanyImgHeight" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_productionCompanyImgWidth" version_id="2020049" version_string="2.2.0 Beta 19"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_watchProviderImgHeight" version_id="2020048" version_string="2.2.0 Beta 18"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_tv_watchProviderImgWidth" version_id="2020048" version_string="2.2.0 Beta 18"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.snog_tv" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[[OzzModz] TMDb TV Thread Starter]]></phrase>
+  <phrase title="style_prop_group_desc.snog_tv" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_vgroup.message" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Post message]]></phrase>
+  <phrase title="style_prop_vgroup.snog_tv_message" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Post message]]></phrase>
+  <phrase title="style_prop_vgroup.snog_tv_thumbnail" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Thumbnail]]></phrase>
+  <phrase title="style_prop_vgroup.thumbnail" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Thumbnails]]></phrase>
+  <phrase title="thread_type.snog_tv" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[TMDb TV]]></phrase>
+  <phrase title="thread_type_plural.snog_tv" version_id="2020059" version_string="2.2.0 Release Candidate 9"><![CDATA[TMDb TV]]></phrase>
+  <phrase title="widget_def.snog_tv_poster_slider" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[[OzzModz] TMDb TV Thread Starter: Poster Slider]]></phrase>
+  <phrase title="widget_def.snog_tv_slider" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[[OzzModz] TMDb TV Thread Starter: Detailed carousel]]></phrase>
+  <phrase title="widget_def_desc.snog_tv_poster_slider" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[]]></phrase>
+  <phrase title="widget_def_desc.snog_tv_slider" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[]]></phrase>
+</phrases>

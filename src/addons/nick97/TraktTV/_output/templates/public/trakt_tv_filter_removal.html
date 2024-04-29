@@ -1,0 +1,24 @@
+<xf:if is="$filters.tvgenre">
+	<li><a href="{{ link('forums', $forum, $filters|replace('tvgenre', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('trakt_tv_genre') }}:</span>
+		{$filters.tvgenre}</a></li>
+</xf:if>
+<xf:if is="$filters.tvcast">
+	<li><a href="{{ link('forums', $forum, $filters|replace('tvcast', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('trakt_tv_cast') }}:</span>
+		{$filters.tvcast}</a></li>
+</xf:if>
+<xf:if is="$filters.creator">
+	<li><a href="{{ link('forums', $forum, $filters|replace('creator', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('trakt_tv_creator') }}:</span>
+		{$filters.creator}</a></li>
+</xf:if>
+<xf:if is="$filters.tv_title">
+	<li><a href="{{ link('forums', $forum, $filters|replace('tv_title', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('trakt_tv_title') }}:</span>
+		{$filters.tv_title}</a></li>
+</xf:if>

@@ -1,0 +1,47 @@
+<xf:macro name="option_form_block" arg-group="" arg-options="!" arg-containerBeforeHtml="" arg-tabs="!">
+	<xf:if is="$options is not empty">
+		<div class="block">
+			<xf:form action="{{ link('options/update') }}" ajax="true" class="block-container">
+				{$containerBeforeHtml|raw}
+				<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" data-state="replace" role="tablist">
+					<span class="hScroller-scroll">
+						<!--[XF:tabs:start]-->
+						<xf:foreach loop="$tabs" key="$tabId" i="$i" value="$tab">
+							<a class="tabs-tab {{ $tab.active ? 'is-active' : '' }}" role="tab" tabindex="{$i}"
+							   id="{$tabId}"
+							   aria-controls="{$tabId}"
+							   href="{{ link('options/groups', $group) }}#{$tabId}">
+								{$tab.label}
+							</a>
+						</xf:foreach>
+						<!--[XF:tabs:end]-->
+					</span>
+				</h2>
+
+				<ul class="tabPanes">
+					<xf:foreach loop="$tabs" key="$tabId" i="$i" value="$tab">
+						<li class="{{ $tab.active ? 'is-active' : '' }}" role="tabpanel" aria-labelledby="general-options">
+							<div class="block-body">
+								<xf:foreach loop="$options" value="$option" if="{{ $option.Relations.{$group.group_id}.display_order >= $tab.start && $option.Relations.{$group.group_id}.display_order < $tab.end }}">
+
+									<xf:if is="$group">
+										<xf:set var="$curHundred"
+											value="{{ floor($option.Relations.{$group.group_id}.display_order / 100) }}"/>
+										<xf:if is="{{ $curHundred > $hundred }}">
+											<xf:set var="$hundred" value="{$curHundred}"/>
+											<hr class="formRowSep"/>
+										</xf:if>
+									</xf:if>
+
+									<xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}"/>
+								</xf:foreach>
+							</div>
+						</li>
+					</xf:foreach>
+				</ul>
+
+				<xf:submitrow sticky="true" icon="save"/>
+			</xf:form>
+		</div>
+	</xf:if>
+</xf:macro>

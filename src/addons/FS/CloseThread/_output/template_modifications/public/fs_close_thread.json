@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs close thread replies.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$canInlineMod\">\n\t\t\t\t\t\t\t<xf:macro template=\"inline_mod_macros\" name=\"button\" />\n\t\t\t\t\t\t</xf:if>",
+    "replace": "<xf:if is=\"$xf.visitor.user_id == $thread.user_id || $xf.visitor.is_moderator || $xf.visitor.is_admin\">\n<xf:button href=\"{{ link('threads/close-thread', $thread) }}\" class=\"button--link\"\n\t\t\t\t\t\t\t\tdata-xf-click=\"switch\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<xf:if is=\"$thread.discussion_open\">\n\t\t\t\t\t\t\t\t\t{{ phrase('fs_close_thread') }}\n\t\t\t\t\t\t\t\t<xf:else />\n\t\t\t\t\t\t\t\t\t{{ phrase('fs_unclose_thread') }}\n\t\t\t\t\t\t\t\t</xf:if>\n\t\t\t\t\t\t\t</xf:button>\n</xf:if>\n\n$0"
+}

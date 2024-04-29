@@ -1,0 +1,128 @@
+{
+    "traktTvThreads_aggregateCredits.json": {
+        "hash": "bf02794baed96888462ae1af04205daf"
+    },
+    "traktTvThreads_apikey.json": {
+        "hash": "c17b479874d9d619a4ab53ec329041ae"
+    },
+    "traktTvThreads_backdropCoverSize.json": {
+        "hash": "0abbacd387121cbe0c56d62ea60764c4"
+    },
+    "traktTvThreads_castsLimit.json": {
+        "hash": "d5e5c1862cd0115e81a7bd8a99c5429a"
+    },
+    "traktTvThreads_category.json": {
+        "hash": "9d2ef31117b7b8718ff4a25797141730"
+    },
+    "traktTvThreads_cdn_path.json": {
+        "hash": "58dce3f5308de52a43b165b9fba640e5"
+    },
+    "traktTvThreads_changesLanguage.json": {
+        "hash": "3bb7fcfec01d4d1cd20a0f33a5f9792d"
+    },
+    "traktTvThreads_clientkey.json": {
+        "hash": "c17b479874d9d619a4ab53ec329041ae"
+    },
+    "traktTvThreads_companiesLimit.json": {
+        "hash": "672b659e7c9315e52f1667a3dcc05b57"
+    },
+    "traktTvThreads_creditsLimit.json": {
+        "hash": "5a5683202644835f9731bf8a8a1063b1"
+    },
+    "traktTvThreads_crosslink.json": {
+        "hash": "96d9651c80bb992db04989ca1cb45a2b"
+    },
+    "traktTvThreads_episode_exclude.json": {
+        "hash": "59c6014ca08eb5b16e8d9e908622978e"
+    },
+    "traktTvThreads_fetchCompanies.json": {
+        "hash": "1e5096ee528fb7e9e9afc624eda5fb11"
+    },
+    "traktTvThreads_fetchCredits.json": {
+        "hash": "f233851880cd74fb62ffc42ed261c237"
+    },
+    "traktTvThreads_fetchNetworks.json": {
+        "hash": "be87aa4405873ac1b0afc5a67d268dd5"
+    },
+    "traktTvThreads_fetchVideos.json": {
+        "hash": "cbf6256569a936ce4aa36b06a45a33a8"
+    },
+    "traktTvThreads_force_comments.json": {
+        "hash": "4a71553d0997e636c04c819e5623fe02"
+    },
+    "traktTvThreads_language.json": {
+        "hash": "0570f265160a843998f18e1263586a78"
+    },
+    "traktTvThreads_largeCompanyLogoSize.json": {
+        "hash": "7410cf8017a560426038b5fba1adfd36"
+    },
+    "traktTvThreads_largeNetworkLogoSize.json": {
+        "hash": "2a78eaae70fc75e24120905df05c0a6f"
+    },
+    "traktTvThreads_largePosterSize.json": {
+        "hash": "4bbb1d22387d3bd78956d86e6d688ade"
+    },
+    "traktTvThreads_multiple.json": {
+        "hash": "0ad81e9456de6bbb54fd0878e347988b"
+    },
+    "traktTvThreads_networksLimit.json": {
+        "hash": "05794961bcb3ddee3f5b308cef4ada3d"
+    },
+    "traktTvThreads_replaceSearchTemplate.json": {
+        "hash": "508e6e91ad3cb473754c43e644ce7628"
+    },
+    "traktTvThreads_showThread.json": {
+        "hash": "8c2f3cbc62c85ace0c7dd960d9470ae2"
+    },
+    "traktTvThreads_smallCompanyLogoWidth.json": {
+        "hash": "9d23d308f5c0232b0155c351626f619e"
+    },
+    "traktTvThreads_smallNetworkLogoWidth.json": {
+        "hash": "b061e1e4a285e6e15ba4bfb25508bb84"
+    },
+    "traktTvThreads_smallPosterWidth.json": {
+        "hash": "67865966e3a777a2270b6e7826b56cc1"
+    },
+    "traktTvThreads_sort.json": {
+        "hash": "59793fdd62420c915054908ffbe909c0"
+    },
+    "traktTvThreads_syncTitle.json": {
+        "hash": "455c6a1cad05ab9cfd5dfba94e8a5806"
+    },
+    "traktTvThreads_threadListInfo.json": {
+        "hash": "2ad69bcd9986ab24c1a76e5018150a85"
+    },
+    "traktTvThreads_titleYear.json": {
+        "hash": "06ef067fcb9a36853c8caae840d77a99"
+    },
+    "traktTvThreads_trackChanges.json": {
+        "hash": "8fd0cdc3bcbf2abaa25f5265b663f7d0"
+    },
+    "traktTvThreads_trackChangesAiringToday.json": {
+        "hash": "d997f52310fa6a854c481012654ea408"
+    },
+    "traktTvThreads_trackChangesPeriod.json": {
+        "hash": "ec1b28ec6531bcaa3136e9384b2e7fd1"
+    },
+    "traktTvThreads_useLocalImages.json": {
+        "hash": "038cb07db1e2c1ef046e552fa10530e3"
+    },
+    "traktTvThreads_use_genres.json": {
+        "hash": "02194bdd8cfa03804aa4d9e1798c492b"
+    },
+    "traktTvThreads_use_rating.json": {
+        "hash": "8c4e243dadcb6b88c0638ed661f4d9ac"
+    },
+    "traktTvThreads_usecdn.json": {
+        "hash": "dd2019ae3972d632c3e4b1051c365f81"
+    },
+    "traktTvThreads_videosLimit.json": {
+        "hash": "5edd51ded3add72de0c31cb630a42ecd"
+    },
+    "traktTvThreads_watchProviderRegion.json": {
+        "hash": "2e45aa1f478e053d99a9f8317d711b9b"
+    },
+    "traktTvThreads_watchProviderRegions.json": {
+        "hash": "4953208429fc4ed37babab772cdc23b6"
+    }
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="forumMng" format=":int&lt;forum_manage_id&gt;/:page" controller="FS\AutoForumManager:AutoForumManager" context="fsAutoForumManagerAdd"/>
+</routes>

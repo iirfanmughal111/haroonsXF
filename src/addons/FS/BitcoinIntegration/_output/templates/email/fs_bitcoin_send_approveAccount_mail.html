@@ -1,0 +1,8 @@
+<mail:subject>
+	{{ phrase('fs_bitcoin_mail_subject') }}
+</mail:subject>
+
+{{ phrase('fs_bitcoin_mail_body',{
+'username': $user.username
+}
+) }}

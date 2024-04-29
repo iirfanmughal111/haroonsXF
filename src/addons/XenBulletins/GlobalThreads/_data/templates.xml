@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="xb_global_threads" version_id="1" version_string="1"><![CDATA[<xf:if is="$global_threads">	
+<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+		
+				<h2 class="block-header">
+				{{phrase('xb_global_threads')}}
+				
+			</h2>
+				
+				
+				<div class="structItemContainer-group structItemContainer-group--sticky">
+							<xf:foreach loop="$global_threads" value="$thread">
+								<xf:macro template="thread_list_macros" name="item" arg-thread="{$thread}" arg-forum="{$forum}" />
+							</xf:foreach>
+						</div>
+				
+			</div>
+	</div>
+	</div>
+	
+</xf:if>]]></template>
+</templates>

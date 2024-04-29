@@ -1,0 +1,9 @@
+{
+    "template": "account_wrapper",
+    "description": "nick97_watch_list_add_tab_in_account_wrapper",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:settings_links:bottom]-->",
+    "replace": "<a class=\"blockLink {{ $pageSelected == 'my' ? 'is-selected' : '' }}\" href=\"{{ link('account/watchlist') }}\">\n\t{{ phrase('my_watch_list') }}\n</a>\n\n$0"
+}

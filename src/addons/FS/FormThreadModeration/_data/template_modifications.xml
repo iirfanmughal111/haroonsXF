@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="post_macros" modification_key="FormThreadModeration" description="modification" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$hasActionBarMenu">]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.hasPermission('formThreadModeration', 'canViewParentThread') && $thread.parent_thread_id && $post.post_id == $thread.first_post_id">
+				<span>
+					{{ phrase('parent_thread') }}:
+				</span>	
+	<xf:set var="$parentThread" value="{$thread.getParentThread()}" />
+
+				<a href="{{ link('threads', $parentThread) }}">{{$parentThread.title}}</a>
+
+				<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+			</xf:if>
+			$0]]></replace>
+  </modification>
+  <modification type="public" template="snog_forms_macro" modification_key="add_thread_id_in_form" description="Include hidden thread-id in widget form" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:form action="{{ link\('form\/submit', \$form\) }}" ajax="true" class="block" data-xf-init="attachment-manager" data-force-flash-message="true" data-ajax-redirect="true">/si]]></find>
+    <replace><![CDATA[$0
+ <xf:textbox name="thread_id" value="{{$thread? $thread.thread_id: 0}}" type="hidden" />]]></replace>
+  </modification>
+  <modification type="public" template="snog_forms_macro" modification_key="receive_thread_arg_in_form_macro" description="Receive thread arg in form macro" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="form"]]></find>
+    <replace><![CDATA[$0
+		  arg-thread=""]]></replace>
+  </modification>
+  <modification type="public" template="snog_forms_widget_form" modification_key="pass_thread_arg_to_form_macro" description="Pass thread arg to 'form macro' on 'snog_forms_macro' template" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[ arg-nodeTree="{$nodeTree}"]]></find>
+    <replace><![CDATA[$0
+ arg-thread="{$context.thread}"]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="remove_quick_reply_box" description="Remove quick reply box" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:form action="{{ link\('threads\/add-reply', \$thread\).*<\/xf:form>#s]]></find>
+    <replace><![CDATA[<xf:if is="$thread.isApplicableFormThread()">
+	
+<xf:else />
+	$0
+</xf:if>
+			 ]]></replace>
+  </modification>
+</template_modifications>

@@ -1,0 +1,42 @@
+{
+    "email/fs_bitcoin_send_approveAccount_mail.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "b075b2f2819b59885656ddbce520349c"
+    },
+    "public/alert_fs_bitcoin_send_alert.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "f22b6c23763c3651b0b2bee5128ff3a7"
+    },
+    "public/fs_bitcoin_upgrade_card_macros.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "37c9f14086d02089bf978fc5f69afcc6"
+    },
+    "public/fs_bitcoin_upgrade_cards_index.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "c733d09b1d4f7a1ec629aca92f0b80f8"
+    },
+    "public/fs_bitcoin_upgrade_cards_nav.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "ebc732f8fc97beeb05a3509ca8796c2b"
+    },
+    "public/fs_encrpt_bitcoin_purchase.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fda22d8dd26fea15881c5193531534eb"
+    },
+    "public/fs_purchase_by_bitcoin.js": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d74524b036e5f45fb2f898477253885c"
+    },
+    "public/user_upgrad_card.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f25d56e1c2127ae678c6417d93c17a63"
+    }
+}

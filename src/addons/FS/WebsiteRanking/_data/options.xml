@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_web_ranking_parent_web_id" edit_format="textbox" data_type="integer" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="fs_web_ranking" display_order="1"/>
+  </option>
+  <option option_id="fs_wr_numOfSites" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>3</default_value>
+    <relation group_id="fs_web_ranking" display_order="1"/>
+  </option>
+</options>

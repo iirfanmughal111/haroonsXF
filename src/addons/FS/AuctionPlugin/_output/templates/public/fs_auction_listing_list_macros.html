@@ -1,0 +1,238 @@
+<xf:macro name="listing"
+	arg-listing="!"
+	arg-category="{{ null }}"
+	arg-showWatched="{{ true }}"
+	arg-allowInlineMod="{{ true }}"
+	arg-chooseName=""
+	arg-extraInfo="">
+	<xf:css src="structured_list.less" />
+	<xf:css src="fs_auction_list_view.less" />
+	
+	<div class="structItem structItem--listing js-inlineModContainer " id="auction-{{$listing.auction_id}}" data-author="{{ $listing.Thread.username ?: '' }}">
+		<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded structItem-cell--iconListingCoverImage">
+			<div class="structItem-iconContainer">
+				<xf:if is="$listing.Thread.auction_end_date > $xf.time">
+						<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on">
+							<img src ="{{ count($listing.Thread.FirstPost.Attachments) ? link('full:attachments', $listing.Thread.FirstPost.Attachments.first()) : base_url('styles/FS/AuctionPlugin/no_image.png',true) }}" onload="timmerCounter({{$listing.auction_id}},{{$listing.Thread.auction_end_date}})" style="min-height: 92px; max-height: 92px;"></a>
+				<xf:else />
+						<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on">
+							<img src ="{{ count($listing.Thread.FirstPost.Attachments) ? link('full:attachments', $listing.Thread.FirstPost.Attachments.first()) : base_url('styles/FS/AuctionPlugin/no_image.png',true) }}" style="min-height: 92px; max-height: 92px;"></a>
+				</xf:if>
+						
+			</div>
+		</div>
+			
+				
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+		
+			<div class="structItem-title">
+				<xf:if is="$listing.Thread.prefix_id">
+			   		 <a class="labelLink" rel="nofollow">{{ prefix('thread', $listing.Thread, 'html', '') }}</a>
+				</xf:if>
+				<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on">{$listing.Thread.title}</a>
+					
+			<xf:comment><span class="structItem-listingDescription">  {{ phrase('AuctionStarting_bid') }}: {{ phrase('dollorSymbol') }}{{ $listing.Thread.custom_fields.starting_bid}}</span>
+			</xf:comment>
+		</div>
+			<div class="structItem-minor">
+
+					<ul class="structItem-parts">
+						<li><xf:username user="$listing.Thread.User" defaultname="{$listing.Thread.User}" /></li>
+						<li class="structItem-startDate">
+							<xf:date time="{$listing.Thread.post_date}" /> 
+							
+						</li>
+						
+							<li>{{ snippet($listing.Category.title, 50, {'stripBbCode': true}) }}</li>
+				
+				</ul>
+			</div>
+			
+		
+			
+				<div class="auction-category">{{ snippet($listing.Thread.FirstPost.message, 100, {'stripBbCode': true}) }}</div>
+			
+		
+		</div>
+		<div class="structItem-cell structItem-cell--listingMeta">
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--type">
+				<dt >{{ phrase('auctionEndsOn') }}</dt>
+				<dd>
+					{{$listing.Thread.getFormatedTime12()}}
+
+				</dd>
+			</dl>
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--type">
+				<dt id="counter-before">
+				
+				</dt>
+				<dd>	<xf:if is="$listing.Thread.auction_end_date < $xf.time">
+						<li>
+							<span class="label label--orange label--smallest">{{ phrase('auctionBidClosed') }} 
+								<i class="structItem-status structItem-status--locked" 
+								   aria-hidden="true" title="{{ phrase('locked')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('auctionLocked') }}</span>
+							</span>
+						</li>
+					<xf:else />
+						<li>
+							<div id="auction-counter-{{$listing.auction_id}}">
+								
+						<span class="label  label--blue label--counter" id="days-auction-{{$listing.auction_id}}">
+							 {{phrase('fs_auction_DD')}}
+						</span>
+						<span class="label  label--blue label--counter" id="hours-auction-{{$listing.auction_id}}">
+							 {{phrase('fs_auction_HH')}}
+						</span>
+							<span class="label  label--blue label--counter" id="minutes-auction-{{$listing.auction_id}}">
+							{{phrase('fs_auction_MM')}}
+						</span>
+							<span class="label  label--blue label--counter" id="seconds-auction-{{$listing.auction_id}}">
+							 {{phrase('fs_auction_SS')}}
+						</span>
+							</div>
+						
+					</li>
+					</xf:if> </dd>
+			</dl>
+				<xf:if is="$listing.Thread.getMaxBidOfAuction($listing.auction_id)">
+					
+							<dl style="margin-top:5px;" class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+					<dt ><b>{{phrase('fs_auction_maxBid')}}</b></dt>
+					<dd >
+							<b>{{ phrase('dollorSymbol') }}{{$listing.Thread.getMaxBidOfAuction($listing.auction_id)}}
+					</b>
+								</dd>
+				</dl>
+							
+						</xf:if>
+			
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+					<dt>{{ phrase('AuctionStarting_bid') }}</dt>
+					<dd>
+						{{phrase('dollorSymbol')}}{$listing.Thread.custom_fields.starting_bid}
+					</dd>
+				</dl>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="listing_grid"
+		  arg-listing="!"
+		  arg-category="{{ null }}"
+		  arg-showWatched="{{ true }}"
+		  arg-allowInlineMod="{{ true }}"
+		  arg-chooseName=""
+		  arg-extraInfo="">
+
+	<xf:css src="structured_list.less" />
+	
+	<xf:css src="fs_auctions.less" />
+	
+	<xf:css src="fs_auction_listing_grid_view.less" />
+
+	
+	<div id="auction-{{$listing.auction_id}}" class="structItem structItem--listing js-inlineModContainer js-listingListItem-{$listing.auction_id}" style="display: grid;
+    justify-content: center;
+}">
+		<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded structItem-cell--iconListingCoverImage">
+			<div class="structItem-iconContainer" >
+				<xf:if is="$listing.Thread.auction_end_date > $xf.time">
+					<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on"><img src ="{{ count($listing.Thread.FirstPost.Attachments) ? link('full:attachments', $listing.Thread.FirstPost.Attachments.first()) : base_url('styles/FS/AuctionPlugin/no_image.png',true) }}" loading="lazy" class="auction-itemGrid-img" onload="timmerCounter({{$listing.auction_id}},{{$listing.Thread.auction_end_date}})"></a>
+				<xf:else />
+							<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on"><img src ="{{ count($listing.Thread.FirstPost.Attachments) ? link('full:attachments', $listing.Thread.FirstPost.Attachments.first()) : base_url('styles/FS/AuctionPlugin/no_image.png',true) }}" class="auction-itemGrid-img" loading="lazy"></a>
+				</xf:if>
+				
+			</div>
+		</div>
+		
+		<div class="structItem-cell structItem-cell--listingMeta">
+			<div class="structItem-cell structItem-cell--main" >
+
+			
+				<div >
+					<span class="auction-category">{{ snippet($listing.Category.title, 50, {'stripBbCode': true}) }}</span>
+				</div>
+				
+				<div >
+	
+					<xf:if is="$listing.Thread.auction_end_date < $xf.time">
+						
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+					<dt>{{ phrase('auctionEndsOn') }}</dt>
+					<dd>		
+						<span class="label label--orange label--smallest">{{ phrase('auctionBidClosed') }} 
+								<i class="structItem-status structItem-status--locked" 
+								   aria-hidden="true" title="{{ phrase('locked')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('auctionLocked') }}</span>
+						</span>
+						</dd>
+				</dl>						
+					<xf:else />
+						
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+						<dt>{{ phrase('auctionEndsOn') }}</dt>
+						<dd id="auction-counter-{{$listing.auction_id}}">	
+							
+							<span class="label  label--blue label--counter" id="days-auction-{{$listing.auction_id}}">
+								 {{phrase('fs_auction_DD')}}
+							</span>
+							<span class="label  label--blue label--counter" id="hours-auction-{{$listing.auction_id}}">
+								{{phrase('fs_auction_HH')}}
+							</span>
+							<span class="label  label--blue label--counter" id="minutes-auction-{{$listing.auction_id}}">
+						 		{{phrase('fs_auction_MM')}}
+							</span>
+							<span class="label  label--blue label--counter" id="seconds-auction-{{$listing.auction_id}}">
+								{{phrase('fs_auction_SS')}}
+							</span>
+							
+						</dd>
+				</dl>
+	
+			</xf:if>
+				</div>
+
+			<div class="structItem-title">
+						<xf:if is="$listing.Thread.prefix_id">
+			   		 		<a class="labelLink" rel="nofollow">{{ prefix('thread', $listing.Thread, 'html', '') }}</a>
+						</xf:if>
+			<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on">{{ snippet($listing.Thread.title, 33, {'stripBbCode': true}) }}</a>
+			</div>
+			<div class="structItem-minor">
+					<ul class="structItem-parts">
+						<li><xf:username user="$listing.Thread.User" defaultname="{$listing.Thread.User}" /></li>
+						<li class="structItem-startDate"><xf:date time="{$listing.Thread.post_date}" /></li>
+						<xf:if is="!$category OR $category.hasChildren()">
+							<li>{{phrase('auctionEndsOn')}} . {{$listing.Thread.getFormatedTime12()}}
+</li>
+						</xf:if>
+				<div class="auction-category">{{ snippet($listing.Thread.FirstPost.message, 50, {'stripBbCode': true}) }}</div>
+						<xf:if is="$listing.Thread.getMaxBidOfAuction($listing.auction_id)">
+					
+							<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+								<dt ><b>{{phrase('fs_auction_maxBid')}}</b></dt>
+					<dd >
+							<b>{{ phrase('dollorSymbol') }}{{$listing.Thread.getMaxBidOfAuction($listing.auction_id)}}</b>
+					</dd>
+				</dl>
+							
+						</xf:if>
+							
+					</ul>
+
+			</div>
+
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+					<dt>{{ phrase('AuctionStarting_bid') }}</dt>
+					<dd>
+						{{phrase('dollorSymbol')}}{$listing.Thread.custom_fields.starting_bid}
+					</dd>
+				</dl>
+		
+		</div>
+
+		</div>
+	</div>
+</xf:macro>

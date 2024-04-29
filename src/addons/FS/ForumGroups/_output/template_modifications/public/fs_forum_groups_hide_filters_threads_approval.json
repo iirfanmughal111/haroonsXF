@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_forum_groups_hide_filters_threads_approval",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "class=\"block {{ extension_value('thread_list_block_classes') }}\"",
+    "replace": "class=\"block {{ extension_value('thread_list_block_classes') }}\" style=\"{{ (($forum.Node.parent_node_id == $xf.options.fs_forum_groups_applicable_forum) && ($forum.Node.node_state != 'visible'))? 'display: none;' : ''  }}\""
+}

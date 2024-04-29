@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fsAlternativeFlags" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Alternative flags]]></phrase>
+  <phrase title="option.fsAutoSwitch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Auto switch to browser language]]></phrase>
+  <phrase title="option.fsEnableCdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable CDN]]></phrase>
+  <phrase title="option.fsFlagStyle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Flag style]]></phrase>
+  <phrase title="option.fsOpenDirection" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Open direction]]></phrase>
+  <phrase title="option.fsShowLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show floating language selector]]></phrase>
+  <phrase title="option.fsWidgetLook" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Widget look]]></phrase>
+  <phrase title="option_explain.fsAlternativeFlags" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fsAutoSwitch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fsEnableCdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fsFlagStyle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fsOpenDirection" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fsShowLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fsWidgetLook" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_translator" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Translator]]></phrase>
+  <phrase title="option_group_description.fs_translator" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Translator]]></phrase>
+  <phrase title="style_prop.gtf_float" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Float]]></phrase>
+  <phrase title="style_prop.gtf_options" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Set style for FS Translator]]></phrase>
+  <phrase title="style_prop.gtf_positions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Predefined positions for FS Translator]]></phrase>
+  <phrase title="style_prop.gtf_style" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Styling]]></phrase>
+  <phrase title="style_prop_desc.gtf_float" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.gtf_options" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.gtf_positions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[*use Custom position to add the template for instance in a widget, advertising positons or any other location. Just include <code>cxf_google_translate_forum</code> template anywhere you want to show the Google Translate.]]></phrase>
+  <phrase title="style_prop_desc.gtf_style" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.cxfGoogleTranslateForum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Translator]]></phrase>
+  <phrase title="style_prop_group_desc.cxfGoogleTranslateForum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

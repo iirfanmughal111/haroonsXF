@@ -1,0 +1,44 @@
+<xf:macro name="banInfo" arg-user="!">
+	<div class="blockMessage blockMessage--error">
+		<p class="formRow-explain">
+			<strong><xf:fa icon="fa-user-times fa-fw" title="{{ phrase('fs_sch_baninfo_header', {'user': $user.username})|for_attr }}"/> {{ phrase('fs_sch_baninfo_header', {'user': $user.username}) }}</strong>
+		</p>	
+		<p class="block-rowMessage block-rowMessage--warning block-rowMessage--iconic">
+			{{ phrase('fs_baninfo_explain') }} 
+		</p>
+		<p class="formRow-explain">
+			<strong><xf:fa icon="fa-user-circle fa-fw" title="{{ phrase('banned_by')|for_attr }}" /> {{ phrase('banned_by:') }}</strong> <xf:username user="{$user.Ban.BanUser}" rich="true" notooltip="true" /> <br />
+			<strong><xf:fa icon="fa-calendar fa-fw" title="{{ phrase('ban_started')|for_attr }}" /> {{ phrase('ban_started:') }}</strong> <xf:date time="{{$user.Ban.ban_date}}" itemprop="datePublished" /><br />
+			<strong><xf:fa icon="fa-flag fa-fw" title="{{ phrase('ban_ends')|for_attr }}"/> {{ phrase('ban_ends:') }}</strong> {{ $user.Ban.end_date ? date($user.Ban.end_date) : phrase('never') }} <br>
+			<strong><xf:fa icon="fa-comment fa-fw" title="{{ phrase('reason_for_ban')|for_attr }}"/> {{ phrase('reason_for_ban:') }}</strong> {{ structured_text($user.Ban.user_reason) ?: phrase('n_a') }} <br />
+			<strong><xf:fa icon="fa-fire fa-fw" title="{{ phrase('fs_automatically_triggered')|for_attr }}" /> {{ phrase('fs_automatically_triggered:') }}</strong> {{ $user.Ban.triggered ? phrase('yes') : phrase('no') }}
+		</p>
+	</div>
+	<hr class="memberHeader-separator" />
+</xf:macro>
+
+<xf:macro name="banInfoBeforeBanProfile" arg-user="!">
+	<div class="blockMessage blockMessage--error">
+		<p class="formRow-explain">
+			<strong><xf:fa icon="fa-user-times fa-fw" title="{{ phrase('fs_sch_baninfo_header', {'user': $user.username})|for_attr }}"/> {{ phrase('fs_sch_baninfo_header', {'user': $user.username}) }}</strong>
+		</p>	
+		<p class="formRow-explain">
+			<strong><xf:fa icon="fa-user-circle fa-fw" title="{{ phrase('banned_by')|for_attr }}" /> {{ phrase('banned_by:') }}</strong> <xf:username user="{{$user.ScheduleBan.BanByUser}}" rich="true" notooltip="true" /> <br />
+			<strong><xf:fa icon="fa-calendar fa-fw" title="{{ phrase('ban_started')|for_attr }}" /> {{ phrase('fs_sch_ban_on:') }}</strong> {{ date($user.ScheduleBan.ban_date, 'Y-m-d') }}, {{$user.ScheduleBan.getbanTime()}} <br />
+			<strong><xf:fa icon="fa-comment fa-fw" title="{{ phrase('reason_for_ban')|for_attr }}"/> {{ phrase('reason_for_ban:') }}</strong> {{ structured_text($user.ScheduleBan.ban_reason) }} <br />
+		</p>
+	</div>
+	<hr class="memberHeader-separator" />
+</xf:macro>
+
+<xf:macro name="messageInfo">
+	<div class="blockMessage blockMessage--error blockMessage--iconic">
+		{{ phrase('fs_ban_info_message') }}
+	</div>
+</xf:macro>
+
+<xf:macro name="banInfoBeforeBan" arg-banDate="">
+	<div class="blockMessage blockMessage--error">
+		{{ phrase('fs_ban_info_post') }} {{ date($banDate.ban_date, 'Y-m-d') }}, {{$banDate.getbanTime()}}
+	</div>
+</xf:macro>

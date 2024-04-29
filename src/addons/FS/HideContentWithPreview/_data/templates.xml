@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_hideContent_with_preview" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="fs_hideContent_with_preview.less" />
+<div class="widget-block">
+	<img src="{{ $thumbnailUrl ?: base_url('styles/fs/hcwp/preview.jpg') }}" alt="Preview image" loading="lazy">
+	
+	<div class="widget-content">
+		<div class="widget-title">{{ phrase('fs_hcwp_title')}}</div>
+		<div class="widget-description">{{ phrase('fs_hcwp_desc')}}</div>
+		<xf:button href="{$xf.options.fs_hcwp_btnUrl}" class="widget-button" overlay="true"><i class="fas fa-lock"></i> {{ phrase('fs_hcwp_btn_text')}} </xf:button>
+	</div>
+</div>]]></template>
+  <template type="public" title="fs_hideContent_with_preview.less" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[.widget-block 
+{
+	max-width: 330px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	overflow: hidden;
+	text-align:center;
+}
+
+.widget-block img 
+{
+	width: 100%;
+	height: 160px;
+	display: block;
+	object-fit: cover;
+}
+
+.widget-content 
+{
+	padding: 15px;
+	margin-bottom: 10px;
+}
+
+.widget-title 
+{
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 4px;
+}
+
+.widget-description 
+{
+	font-size: 14px;
+	margin-bottom: 10px;
+}]]></template>
+</templates>

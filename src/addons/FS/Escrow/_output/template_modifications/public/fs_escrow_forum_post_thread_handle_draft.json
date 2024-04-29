@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread",
+    "description": "fs_escrow_forum_post_thread_handle_draft",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ link('forums/draft', $forum) }}",
+    "replace": "{{ $forum.node_id==$xf.options.fs_escrow_applicable_forum ? '' : link('forums/draft', $forum) }}"
+}

@@ -1,0 +1,78 @@
+<xf:macro name="simple_category_list"
+	arg-selected="0"
+	arg-pathToSelected="{{ [] }}"
+	arg-children="!"
+	arg-isActive="{{ false }}"
+>
+	<ol class="categoryList toggleTarget{{ $isActive ? ' is-active' : '' }}">
+
+		<xf:foreach loop="$children" key="$id" value="$child">
+			<xf:macro name="simple_category_list_item"
+				arg-selected="{$selected}"
+				arg-pathToSelected="{$pathToSelected}"
+				arg-category="{$child.record}"
+				arg-children="{$child}"
+			/>
+		
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="simple_category_list_item"
+	arg-selected="!"
+	arg-pathToSelected="{{ [] }}"
+	arg-category="!"
+	arg-children="!"
+>
+	<xf:set var="$isSelected" value="{{ $category.category_id == $selected }}" />
+	<xf:set var="$hasPathToSelected" value="{$pathToSelected.{$category.category_id}}" />
+	<xf:set var="$isActive" value="{{ $isSelected OR $hasPathToSelected AND $children is not empty }}" />
+
+	<li class="categoryList-item">
+		<div class="categoryList-itemRow">
+			<xf:if is="$children is not empty">
+				<a class="categoryList-toggler{{ $isActive ? ' is-active' : '' }}"
+					data-xf-click="toggle" data-target="< :up :next"
+					role="button" tabindex="0" aria-label="{{ phrase('toggle_expanded') }}"
+				></a>
+			<xf:else />
+				<span class="categoryList-togglerSpacer"></span>
+			</xf:if>
+			<a href="{{ link('auction', $category) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
+				{$category.title}
+			</a>
+			<span class="categoryList-label">
+				<span class="label label--subtle label--smallest">{$category.auctions_count}</span>
+			</span>
+		</div>
+		<xf:if is="$children">
+		
+			<xf:macro name="simple_category_list"
+				arg-selected="{$selected}"
+				arg-pathToSelected="{$pathToSelected}"
+				arg-children="{$children}"
+				arg-isActive="{$isActive}"
+			/>
+		</xf:if>
+	</li>
+</xf:macro>
+
+<xf:macro name="simple_list_block" arg-categoryTree="!" arg-selected="{{ 0 }}">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('categories') }}</h3>
+			<div class="block-body">
+				<xf:if is="$categoryTree.count()">
+					<xf:macro name="simple_category_list"
+						arg-children="{$categoryTree}"
+						arg-isActive="{{ true }}"
+						arg-selected="{$selected}"
+						arg-pathToSelected="{{ $selected ? $categoryTree.getPathTo($selected) : [] }}" />
+				<xf:else />
+					<div class="block-row">{{ phrase('n_a') }}</div>
+				</xf:if>
+				
+			</div>
+		</div>
+	</div>
+</xf:macro>

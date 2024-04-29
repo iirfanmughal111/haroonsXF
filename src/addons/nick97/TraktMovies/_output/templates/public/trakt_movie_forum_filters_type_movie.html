@@ -1,0 +1,36 @@
+<xf:extends template="forum_filters" />
+
+<xf:extension name="before_date_limit">
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_movies_genre:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="genre" value="{{ $filters.genre ? $filters.genre : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_movies_director:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="director" value="{{ $filters.director ? $filters.director : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_movies_cast:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="cast" value="{{ $filters.cast ? $filters.cast : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('trakt_movies_title:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="movie_title" value="{{ $filters.movie_title ? $filters.movie_title : '' }}"
+				maxlength="50" />
+		</div>
+	</div>
+
+</xf:extension>

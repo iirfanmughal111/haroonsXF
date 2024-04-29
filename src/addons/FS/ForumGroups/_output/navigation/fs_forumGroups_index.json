@@ -1,0 +1,11 @@
+{
+    "parent_navigation_id": "",
+    "display_order": 400,
+    "navigation_type_id": "basic",
+    "type_config": {
+        "link": "{{ link('forumGroups') }}",
+        "display_condition": "$xf.visitor.haspermission('fs_forum_group_permission','add')",
+        "extra_attributes": []
+    },
+    "enabled": true
+}

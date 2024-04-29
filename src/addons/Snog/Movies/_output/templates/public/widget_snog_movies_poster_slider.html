@@ -1,0 +1,54 @@
+<xf:set var="$template">
+	<xf:if is="$movies is not empty">
+		<xf:css src="carousel.less" />
+		<xf:css src="lightslider.less" />
+		<xf:css src="snog_movies_slider.less" />
+
+		<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js" />
+		<xf:js dev="Snog/Movies/slider.js" prod="Snog/Movies/slider.min.js" addon="Snog/Movies" />
+
+		<div class="carousel carousel-moviePosterSlider carousel--withFooter" {{ widget_data($widget) }}>
+			<ul class="carousel-body" data-xf-init="snog-movies-slider"
+				data-xf-snog-movies-slider="{$options.slider|json}">
+
+				<xf:foreach loop="$movies" value="$movie">
+					<li>
+						<div class="carousel-item-simple">
+							<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
+								<img src="{$movie.getImageUrl()}" style="width: {$options.image_width}; height: {$options.image_height}" />
+
+								<xf:if is="{$options.show_rating}">
+									<span class="carousel-item-label">
+										<xf:fa icon="star" /> {$movie.tmdb_rating}
+									</span>
+								</xf:if>
+								
+								<span class="carousel-item-caption" title="{$movie.Thread.title}">
+									{$movie.Thread.title}
+								</span>
+							</a>
+						</div>
+					</li>
+				</xf:foreach>
+			</ul>
+
+		</div>
+	</xf:if>
+</xf:set>
+
+<xf:if is="!$options.advanced_mode">
+	<xf:if contentcheck="true">
+	<div class="block">
+		<div class="block-container" {{ widget_data($widget) }}>
+			<xf:if is="$title">
+				<h3 class="block-minorHeader">{$title}</h3>
+			</xf:if>
+			<div class="block-body block-row">
+				<xf:contentcheck>{$template|raw}</xf:contentcheck>
+			</div>
+		</div>
+	</div>
+	</xf:if>
+<xf:else />
+	{$template|raw}
+</xf:if>

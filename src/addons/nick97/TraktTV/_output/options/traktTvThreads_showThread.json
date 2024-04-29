@@ -1,0 +1,15 @@
+{
+    "edit_format": "checkbox",
+    "edit_format_params": "genres={{ phrase('snog_tv_genre') }}\nrelease={{ phrase('snog_tv_first_aired') }}\nlast_air_date={{ phrase('snog_tv_last_air_date') }}\nstatus={{ phrase('snog_tv_status') }}\ndirector={{ phrase('snog_tv_creator') }}\ncast={{ phrase('snog_tv_cast') }}\nplot={{ phrase('snog_tv_overview') }}\nnetworks={{ phrase('snog_tv_networks') }}\nproduction_companies={{ phrase('snog_tv_production_companies') }}\ntrailer_tab={{ phrase('snog_tv_trailer') }}\ncast_tab={{ phrase('snog_tv_cast_tab') }}\ncrew_tab={{ phrase('snog_tv_crew_tab') }}\nvideos_tab={{ phrase('snog_tv_videos_tab') }}",
+    "data_type": "array",
+    "sub_options": [
+        "*"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "{\"genres\":1,\"release\":1,\"last_air_date\":1,\"status\":1,\"director\":1,\"cast\":1,\"plot\":1,\"production_companies\":1,\"trailer_tab\":1,\"cast_tab\":1,\"crew_tab\":1,\"videos_tab\":1}",
+    "relations": {
+        "traktTvThreads": 1050
+    }
+}

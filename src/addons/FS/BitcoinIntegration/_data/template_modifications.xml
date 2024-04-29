@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_upgrades" modification_key="fs_bitcoin_account_upgrades_remove" description="fs_bitcoin_account_upgrades_remove" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:foreach loop="\$available" value="\$upgrade">.*?<\/xf:foreach>.*?<\/xf:foreach>/is]]></find>
+    <replace><![CDATA[<xf:foreach loop="$available" value="$upgrade">
+	<xf:if is="!in_array($upgrade.user_upgrade_id, [{{$xf.options.fs_bitcoin_premium_companion}},{{$xf.options.fs_bitcoin_provider_city}},{{$xf.options.fs_bitcoin_vip_companion}},{{$xf.options.fs_bitcoin_provider_vip}}])">
+		<xf:formrow rowtype="button"
+					label="{$upgrade.title}"
+					hint="{$upgrade.cost_phrase}"
+					explain="{$upgrade.description|raw}">
+
+			<xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" ajax="true" data-xf-init="payment-provider-container">
+				<div class="inputGroup">
+					<xf:if is="{{ count($upgrade.payment_profile_ids) > 1 }}">
+						<xf:select name="payment_profile_id">
+							<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+							<xf:foreach loop="$upgrade.payment_profile_ids" value="$profileId">
+								<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+							</xf:foreach>
+						</xf:select>
+
+						<span class="inputGroup-splitter"></span>
+
+						<xf:button type="submit" icon="purchase" />
+						<xf:else />
+						<xf:button type="submit" icon="purchase" />
+
+						<xf:hiddenval name="payment_profile_id">{$upgrade.payment_profile_ids|first}</xf:hiddenval>
+					</xf:if>
+				</div>
+				<div class="js-paymentProviderReply-user_upgrade{$upgrade.user_upgrade_id}"></div>
+			</xf:form>
+
+		</xf:formrow>
+	</xf:if>
+</xf:foreach>]]></replace>
+  </modification>
+</template_modifications>

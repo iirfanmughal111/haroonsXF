@@ -1,0 +1,9 @@
+{
+    "template": "member_macros",
+    "description": "add_scheduleBanBtn",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "\t<xf:if is=\"$user.canBan()\">\n\t\t<a href=\"{{ link('members/ban', $user) }}\" class=\"menu-linkRow\" data-xf-click=\"overlay\">\n\t\t\t<xf:if is=\"$user.is_banned\">\n\t\t\t\t{{ phrase('edit_ban') }}\n\t\t\t<xf:else />\n\t\t\t\t{{ phrase('ban_member') }}\n\t\t\t</xf:if>\n\t\t</a>\n\t</xf:if>",
+    "replace": "\t\t$0\n\t\t\t<xf:if is=\"!$user.is_banned && !$user.is_moderator && !$user.is_admin\">\n<xf:if is=\"$xf.visitor.is_moderator || $xf.visitor.is_admin\">\n\t\t<a href=\"{{ link('scheduleBanUser/add', $user) }}\" class=\"menu-linkRow\" data-xf-click=\"overlay\">\n\t\t\t\t{{ phrase('secheduleBan') }}\n\t\t</a>\n\t</xf:if>\n</xf:if>"
+}

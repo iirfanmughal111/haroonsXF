@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Entity\\UserUpgrade",
+    "to_class": "FS\\BitcoinIntegration\\XF\\Entity\\UserUpgrade",
+    "execute_order": 10,
+    "active": true
+}

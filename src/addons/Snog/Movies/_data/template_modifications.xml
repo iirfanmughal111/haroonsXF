@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_preferences" modification_key="snog_movies_account_preferences_region" description="Add input (region code)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="helper_account" name="email_options_row" ]]></find>
+    <replace><![CDATA[			<xf:if is="!in_array('', $xf.options.tmdbthreads_watchProviderRegions)">
+				<xf:selectrow name="option[snog_movies_tmdb_watch_region]" value="{$xf.visitor.Option.snog_movies_tmdb_watch_region}"
+					label="{{ phrase('snog_movies_tmdb_watch_region') }}">
+
+					<xf:options source="$snogMoviesWatchRegions" />
+				</xf:selectrow>
+			</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="snogMovies22" description="Changes page title to post movie" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:title>{{ phrase('post_thread') }}</xf:title>]]></find>
+    <replace><![CDATA[<xf:if is="$forum.forum_type_id == 'snog_movies_movie' && !$xf.options.tmdbthreads_mix">
+	<xf:title>{{ phrase('snog_movies_post_button') }}</xf:title>
+<xf:else />
+$0	
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="ozzmodz_movies_forum_view_ldData" description="Add LD data" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="metadata_macros" name="canonical_url"]]></find>
+    <replace><![CDATA[<xf:page option="ldJsonHtml">
+	<xf:extension name="structured_data_extra_params" value="{{ [] }}" />
+	<xf:extension name="structured_data">
+		<xf:set var="$ldJson"
+			value="{{ $forum.getLdStructuredData($threads, $page, extension_value('structured_data_extra_params')) }}"
+		/>
+		<xf:if is="$ldJson">
+			<script type="application/ld+json">
+				{$ldJson|json(true)|raw}
+			</script>
+		</xf:if>
+	</xf:extension>
+</xf:page>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogMovies15" description="Adds filter removal links" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$filters.last_days AND {$dateLimits.{$filters.last_days}}">]]></find>
+    <replace><![CDATA[<xf:if is="$filters.genre">
+	<li><a href="{{ link('forums', $forum, $filters|replace('genre', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_movies_genre') }}:</span>
+		{$filters.genre}</a></li>
+</xf:if>
+<xf:if is="$filters.director">
+	<li><a href="{{ link('forums', $forum, $filters|replace('director', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_movies_director') }}:</span>
+		{$filters.director}</a></li>
+</xf:if>
+<xf:if is="$filters.cast">
+	<li><a href="{{ link('forums', $forum, $filters|replace('cast', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_movies_cast') }}:</span>
+		{$filters.cast}</a></li>
+</xf:if>
+<xf:if is="$filters.movie_title">
+	<li><a href="{{ link('forums', $forum, $filters|replace('movie_title', null)) }}"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter') }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('snog_movies_title') }}:</span>
+		{$filters.movie_title}</a></li>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogMovies21" description="Changes post thread button to post movie" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('post_thread') }}]]></find>
+    <replace><![CDATA[<xf:if is="$forum.forum_type_id == 'snog_movies_movie'">
+	{{ phrase('snog_movies_post_button') }}
+<xf:else />
+	$0	
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="snogMoviesAdmin3" description="Adds movie threads started to criteria" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:user:content_after_messages]-->]]></find>
+    <replace><![CDATA[<xf:option name="user_criteria[movies_posted][rule]" value="movies_posted" selected="{$criteria.movies_posted}"
+	label="{{ phrase('snog_movies_started_x_threads') }}">
+	<xf:numberbox name="user_criteria[movies_posted][data][movies]" value="{$criteria.movies_posted.movies}"
+		size="5" min="0" step="1" />
+</xf:option>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogMovies5" description="Removes reply link from first post to prevent quoting of movie information" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$thread.canReply().+xf:if>.+xf:if>/isU]]></find>
+    <replace><![CDATA[<xf:if is="$thread.Movie is empty || !$post.isFirstPost()">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="snog_movies_search_result_thread" description="Add poster to search results (NOTE: Replaced with own template if &quot;Replace search results template&quot; option enabled)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:avatar user="{$thread.User}" size="s" defaultname="{$thread.username}" />]]></find>
+    <replace><![CDATA[<xf:if is="$thread.Movie is not empty">
+				<xf:include template="snog_movie_search_result_thread_poster" />
+			<xf:else />
+			$0
+			</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="thcovers_cover_macros" modification_key="snog_movies_thcovers_cover_macros" description="Add button" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:find_menu:bottom]-->]]></find>
+    <replace><![CDATA[$0
+						<xf:if is="{{ $cover.canSetImage() && $entity.getEntityContentType() == 'thread' && $entity.Movie }}">
+							<a href="{{ link('covers/movie-update', {'content_type': $entity.getEntityContentType(), 'content_id': $entity.getEntityId()}) }}"
+							   rel="nofollow"
+							   class="blockLink"
+							   data-xf-click="overlay">
+								{{ phrase('snog_movies_check_for_new_backdrop_image') }}
+							</a>
+						</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snog_movies_thread_view_thread_tools_menu" description="Add button" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
+    <replace><![CDATA[<xf:if is="{{ property('snog_movies_posterUpdateButtonPosition') == 'thread_tools_menu' && $thread.Movie && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+												<a href="{{ link('movies/poster', $thread.Movie) }}" data-xf-click="overlay" class="menu-linkRow">
+													{{ phrase('snog_movies_check_poster') }}
+												</a>
+											</xf:if>
+
+											$0]]></replace>
+  </modification>
+  <modification type="admin" template="tools_rebuild" modification_key="snog_movies_tools_rebuild_ratings" description="Rebuilding job" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:rebuild_bottom]-->]]></find>
+    <replace><![CDATA[$0
+<xf:include template="snog_movies_tools_rebuild" />]]></replace>
+  </modification>
+  <modification type="admin" template="user_edit" modification_key="snog_movies_user_edit_region" description="Add input (region code)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:selectrow name="user[timezone]" value="{$user.timezone}"]]></find>
+    <replace><![CDATA[			<xf:if is="!in_array('', $xf.options.tmdbthreads_watchProviderRegions)">
+				<xf:selectrow name="option[snog_movies_tmdb_watch_region]" value="{$user.Option.snog_movies_tmdb_watch_region}"
+					label="{{ phrase('snog_movies_tmdb_watch_region') }}">
+
+					<xf:options source="$snogMoviesWatchRegions" />
+				</xf:selectrow>
+			</xf:if>
+
+$0]]></replace>
+  </modification>
+</template_modifications>

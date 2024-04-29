@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_node_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Node Url]]></phrase>
+  <phrase title="admin_navigation.allNodes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Node Url]]></phrase>
+  <phrase title="admin_navigation.fsNodeUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Node Url]]></phrase>
+  <phrase title="edit_node_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Node Url]]></phrase>
+  <phrase title="fs_add_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Url]]></phrase>
+  <phrase title="node_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fourm]]></phrase>
+  <phrase title="node_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Url]]></phrase>
+  <phrase title="node_url_all_records" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Node Url All Records]]></phrase>
+</phrases>

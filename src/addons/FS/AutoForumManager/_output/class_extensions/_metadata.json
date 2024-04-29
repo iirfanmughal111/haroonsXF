@@ -1,0 +1,11 @@
+{
+    "XF-Admin-Controller-Login_FS-AutoForumManager-Admin-Controller-Login.json": {
+        "hash": "99c8e9bba2d8a1820555cdba7d42f9ad"
+    },
+    "XF-Pub-Controller-Forum_FS-AutoForumManager-Pub-Controller-Forum.json": {
+        "hash": "0e93b4e37bd93097258168d7c6ce299c"
+    },
+    "XF-Pub-Controller-Login_FS-AutoForumManager-Pub-Controller-Login.json": {
+        "hash": "fef6506e0405592513806239cfbada39"
+    }
+}

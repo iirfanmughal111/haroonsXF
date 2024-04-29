@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_post_quick_thread" modification_key="fs_saleitemfields" description="on quickly thread create saleitem field" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:editorrow name="message" value="{$post.message}" rows="3" rowtype="fullWidth noGutter noLabel mergeNext"
+			data-min-height="100"
+			data-max-height="300"
+			placeholder="{{ phrase('message...') }}"
+			label="{{ phrase('message') }}"
+			data-preview-url="{{ link('forums/thread-preview', $forum) }}" />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$sale_item">
+ <xf:include template="fs_saleitem_fields"/>
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="fs_saleitem" description="Sale Item Field" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$canEditTags">]]></find>
+    <replace><![CDATA[<xf:if is="$sale_item">
+
+ <xf:include template="fs_saleitem_fields"/>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_edit" modification_key="fs_posteditsalieitem" description="For Edit saleItem" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$post.canEditSilently()">]]></find>
+    <replace><![CDATA[<xf:if is="$sale_item">
+ 	<xf:include template="fs_saleitem_post_edit"/>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="fs_buynow_saleitem" description="Show buy Now button" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$hasActionBarMenu">.*?<\/xf:if>/s]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.visitor.hasPermission('fs_threadsaleitem', 'fs_saleitem') AND $post.Thread.sale_item AND $post.isFirstPost()">
+	<a href="{{ link('members/trophy-point-donations', $xf.visitor) }}" class="actionBar-action actionBar-action--warn actionBar-action--menuItem" data-xf-click="overlay">{{ phrase('fs_buy_now') }}</a>
+</xf:if>
+]]></replace>
+  </modification>
+</template_modifications>

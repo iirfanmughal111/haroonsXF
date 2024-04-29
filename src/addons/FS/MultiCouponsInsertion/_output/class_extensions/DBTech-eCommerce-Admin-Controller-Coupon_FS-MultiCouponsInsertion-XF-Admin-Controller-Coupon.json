@@ -1,0 +1,6 @@
+{
+    "from_class": "DBTech\\eCommerce\\Admin\\Controller\\Coupon",
+    "to_class": "FS\\MultiCouponsInsertion\\XF\\Admin\\Controller\\Coupon",
+    "execute_order": 10,
+    "active": true
+}

@@ -1,0 +1,1 @@
+Check this box if you want to force any comments entered with a new TV thread to be posted as the second post in the new TV thread.<br /><b>NOTE:</b> This does not change existing threads. This only affects the first post in a new TV thread.

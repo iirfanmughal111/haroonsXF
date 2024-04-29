@@ -1,0 +1,13 @@
+{
+    "edit_format": "callback",
+    "edit_format_params": "FS\\QuestionAnswers\\Option\\Forum::renderQuestionAnswersSelect",
+    "data_type": "integer",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "0",
+    "relations": {
+        "fs_question_answers": 1
+    }
+}

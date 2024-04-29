@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="awedo_pa_no_posts" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[This user hasn't posted anything yet.]]></phrase>
+  <phrase title="awedo_pa_post_areas" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Post Areas]]></phrase>
+  <phrase title="awedo_pa_xs_post_areas" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[{name}'s post areas]]></phrase>
+  <phrase title="cron_entry.awedoPostAreasCacheUpdate" version_id="20100070" version_string="2.1.0"><![CDATA[Post Areas (Update Cache)]]></phrase>
+  <phrase title="option.apaMaxForums" version_id="2000070" version_string="2.0.0"><![CDATA[Max number of forums shown]]></phrase>
+  <phrase title="option.apaUseCache" version_id="20100070" version_string="2.1.0"><![CDATA[Get the post and thread counts from cache]]></phrase>
+  <phrase title="option_explain.apaMaxForums" version_id="2000070" version_string="2.0.0"><![CDATA[The maximum number of forums that are shown for each member. Enter 0 for no limitation.]]></phrase>
+  <phrase title="option_explain.apaUseCache" version_id="20100070" version_string="2.1.0"><![CDATA[Enable cache for better performance. If disabled, the post and thread counts of a user are calculated in real-time each time when their „Post Areas“ tab is selected.]]></phrase>
+  <phrase title="option_group.awedo_post_areas" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Post Areas]]></phrase>
+  <phrase title="option_group_description.awedo_post_areas" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[]]></phrase>
+</phrases>

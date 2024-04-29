@@ -1,0 +1,9 @@
+{
+    "template": "search_result_thread",
+    "description": "Add poster to search results (NOTE: Replaced with own template if \"Replace search results template\" option enabled)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:avatar user=\"{$thread.User}\" size=\"s\" defaultname=\"{$thread.username}\" />",
+    "replace": "<xf:if is=\"$thread.traktTV is not empty\">\n\t\t\t\t<xf:include template=\"trakt_tv_search_result_thread_poster\" />\n\t\t\t<xf:else />\n\t\t\t$0\n\t\t\t</xf:if>\n"
+}

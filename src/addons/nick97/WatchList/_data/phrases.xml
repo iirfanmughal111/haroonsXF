@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_watch_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Watch List]]></phrase>
+  <phrase title="add_watch_list_submit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="choose_who_see_my_stats" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Who see my stats]]></phrase>
+  <phrase title="choose_who_see_my_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Who see my watchlist]]></phrase>
+  <phrase title="con_acc.nick_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt]]></phrase>
+  <phrase title="con_acc_desc.nick_trakt" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[]]></phrase>
+  <phrase title="forum_type.nick97_trakt_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie Forum]]></phrase>
+  <phrase title="forum_type.nick97_trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV Forum]]></phrase>
+  <phrase title="forum_type_desc.nick97_trakt_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt movie thread starter]]></phrase>
+  <phrase title="forum_type_desc.nick97_trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV thread starter]]></phrase>
+  <phrase title="my_watch_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Watch List]]></phrase>
+  <phrase title="nav.nick97WatchList" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Watch List]]></phrase>
+  <phrase title="nick97_member_empty_viewing_stats" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[This member have no any stats.]]></phrase>
+  <phrase title="nick97_member_limits_viewing_stats" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This member limits who may view their stats.]]></phrase>
+  <phrase title="nick97_member_limits_viewing_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This member limits who may view their watch list.]]></phrase>
+  <phrase title="nick97_stats_days" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[DAYS]]></phrase>
+  <phrase title="nick97_stats_episode_watched" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Episode watched]]></phrase>
+  <phrase title="nick97_stats_hours" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[HOURS]]></phrase>
+  <phrase title="nick97_stats_month" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[MONTH]]></phrase>
+  <phrase title="nick97_stats_movie_time" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Movie time]]></phrase>
+  <phrase title="nick97_stats_movie_watched" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Movie watched]]></phrase>
+  <phrase title="nick97_trakt_client_id_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The client ID that is associated with your <a href="https://trakt.tv/oauth/applications" target="_blank">Trakt application</a> for this domain.]]></phrase>
+  <phrase title="nick97_trakt_client_secret_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The client secret for the Trakt application you created for this domain.]]></phrase>
+  <phrase title="nick97_trakt_movies_explain_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the Trakt Link or ID for your movie? Go to <a href="https://trakt.tv/movies/trending" target="_blank" >Trakt Movies</a> and look it up.]]></phrase>
+  <phrase title="nick97_trakt_movies_key_missing_api" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Trakt Api key missing...!]]></phrase>
+  <phrase title="nick97_trakt_movies_link_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt link or Movie ID]]></phrase>
+  <phrase title="nick97_trakt_tv_episode_enter_episode_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[All you need to enter is the episode number for this season. (EXAMPLE: 5)]]></phrase>
+  <phrase title="nick97_trakt_tv_episode_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode number]]></phrase>
+  <phrase title="nick97_trakt_tv_post_show_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV show link or TV show ID]]></phrase>
+  <phrase title="nick97_trakt_tv_show_lookup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the Trakt Link or ID for your TV show? Go to <a href="https://trakt.tv/shows/trending" target="_blank" >Trakt TV Show</a> and look it up.]]></phrase>
+  <phrase title="nick97_watch_list_movies" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Movies]]></phrase>
+  <phrase title="nick97_watch_list_movies_empty" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[There are no movies in this Watch List.]]></phrase>
+  <phrase title="nick97_watch_list_my_tv_and_movies_empty" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[There are no movies & TV Shows in this Watch List.]]></phrase>
+  <phrase title="nick97_watch_list_release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Release]]></phrase>
+  <phrase title="nick97_watch_list_stats" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Stats]]></phrase>
+  <phrase title="nick97_watch_list_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Status]]></phrase>
+  <phrase title="nick97_watch_list_trakt_api_key_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
+  <phrase title="nick97_watch_list_tv_show_empty" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[There are no Tv Shows in this Watch List.]]></phrase>
+  <phrase title="nick97_watch_list_tv_shows" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[TV & Shows]]></phrase>
+  <phrase title="nick97_watch_list_tv_time" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[TV time]]></phrase>
+  <phrase title="nick97_watchlist" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Watch List]]></phrase>
+  <phrase title="nick97_watchlist_stats" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Stats]]></phrase>
+  <phrase title="nick9t_watchlist_request_empty_body" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[A non-empty request body is required...!]]></phrase>
+  <phrase title="nick9t_watchlist_request_method_not_allowed" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Method Not Allowed...!]]></phrase>
+  <phrase title="nick9t_watchlist_request_not_found" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Requested data not found...!]]></phrase>
+  <phrase title="nick9t_watchlist_request_not_success" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Server not responding please try again...!]]></phrase>
+  <phrase title="nick9t_watchlist_request_server_error" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Server Error...!]]></phrase>
+  <phrase title="nick9t_watchlist_request_unauthorized" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unauthorized, Authentication has been denied for this request.]]></phrase>
+  <phrase title="nick9t_watchlist_request_unsported_media" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unsupported Media Type..!]]></phrase>
+  <phrase title="option.nick97_watch_list_trakt_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key]]></phrase>
+  <phrase title="option_explain.nick97_watch_list_trakt_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your Trakt API key]]></phrase>
+  <phrase title="option_group.traktWatchLists" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[[nick97] Watch List]]></phrase>
+  <phrase title="option_group_description.traktWatchLists" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Watch List Options]]></phrase>
+  <phrase title="permission.nick97_watch_list_manage_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can manage watchlist]]></phrase>
+  <phrase title="permission.nick97_watch_list_view_anyone_stats" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view anyone stats]]></phrase>
+  <phrase title="permission.nick97_watch_list_view_everyone_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view everyone watchlist]]></phrase>
+  <phrase title="permission.nick97_watch_list_view_own_stats" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view own stats]]></phrase>
+  <phrase title="permission.nick97_watch_list_view_own_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view own watchlist]]></phrase>
+  <phrase title="permission_interface.nick97_watch_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Watch List]]></phrase>
+  <phrase title="remove_watch_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Remove Watch List]]></phrase>
+  <phrase title="remove_watch_list_submit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Remove]]></phrase>
+  <phrase title="thread_type.nick97_trakt_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie]]></phrase>
+  <phrase title="thread_type.nick97_trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV]]></phrase>
+  <phrase title="thread_type_plural.nick97_trakt_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie]]></phrase>
+  <phrase title="thread_type_plural.nick97_trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV]]></phrase>
+  <phrase title="you_sure_you_want_to_add_watch_from_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure you want to add in watch list?]]></phrase>
+  <phrase title="you_sure_you_want_to_remove_watch_from_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure you want to remove from watch list?]]></phrase>
+  <phrase title="you_sure_you_want_to_sync" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm if you want to sync?]]></phrase>
+</phrases>

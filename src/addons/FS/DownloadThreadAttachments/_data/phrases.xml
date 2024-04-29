@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_download_all_attachments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Download all attachments]]></phrase>
+  <phrase title="fs_export_post_attachments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Export post attachments (Confirm)]]></phrase>
+  <phrase title="fs_export_thread_attachments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Export thread attachments (Confirm)]]></phrase>
+  <phrase title="fs_no_attachments_exist_in_this_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No attachments exist in this post.]]></phrase>
+  <phrase title="fs_no_attachments_exist_in_this_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No attachments exist in this thread.]]></phrase>
+  <phrase title="please_confirm_that_you_want_to_export_all_attachments_of_the_following_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm that you want to <b>export all attachments</b> of the following post]]></phrase>
+  <phrase title="please_confirm_that_you_want_to_export_all_attachments_of_the_following_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm that you want to <b>export all attachments</b> of the following thread]]></phrase>
+</phrases>

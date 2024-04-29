@@ -1,0 +1,9 @@
+{
+    "template": "custom_fields_macros",
+    "description": "",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<dl class=\"{\\$valueClass}\" data-field=\"{\\$fieldId}\">.*?<\\/dl>/is",
+    "replace": "<xf:if is=\"$fieldDefinition.field_id!='bumping_rules'\">\n<xf:if is=\"$fieldDefinition.field_id =='auction_guidelines'\">\n\t<dl class=\"{$valueClass}\" data-field=\"{$fieldId}\">\n\t\t<dt>{$fieldDefinition.title}</dt>\n\t\t<dd>{{ phrase('auction_guidlines_explain') }}</dd>\n\t</dl>\n<xf:else />\n$0\n</xf:if>\n</xf:if>"
+}

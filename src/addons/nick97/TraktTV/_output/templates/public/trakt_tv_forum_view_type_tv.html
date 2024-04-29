@@ -1,0 +1,50 @@
+<xf:extends template="forum_view" />
+
+<xf:extension name="above_node_list">
+	<xf:css src="trakt_tv.less" />
+	
+	<xf:if is="$forum.TVForum is not empty">
+		<xf:css src="trakt_tv.less" />
+		<xf:if is="$xf.options.traktTvThreads_use_rating && !$forum.TVForum.tv_parent_id">
+			<div class="block-outer">
+				<div class="block-outer-opposite">
+					<xf:set var="$rating" value="{$forum.TVForum.tv_rating}" />
+					<xf:set var="$voteString" value="{{ ($forum.TVForum.tv_votes == 1 ? phrase('trakt_tv_vote') : phrase('votes')) }}" />
+					<div style="margin-bottom:10px;">
+
+						<xf:macro template="rating_macros" name="stars_text"
+								  arg-rating="{$rating}"
+								  arg-text="{{ phrase('rating') }}: {$forum.TVForum.tv_rating}/5 {$forum.TVForum.tv_votes} {$voteString}" />
+
+						<xf:if is="$xf.visitor.user_id">
+							<xf:button class="button--link" href="{{ link('tvshow/rate-show', $forum) }}" overlay="true">
+								{{ phrase('trakt_tv_change_rating') }}
+							</xf:button>
+						</xf:if>
+					</div>
+				</div>
+			</div>
+		</xf:if>
+
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body block-body--contained">
+					<div class="tvblock-poster">
+						<xf:if is="$forum.TVForum.tv_parent_id">
+							<img src="{$forum.TVForum.getSeasonPosterUrl()}" />
+						<xf:else />
+							<img src="{$forum.TVForum.getForumPosterUrl()}" />
+						</xf:if>
+					</div>
+					<div class="tvblockinfo">
+						{$forum.TVForum.tv_plot}<br /><br />
+						<xf:if is="$forum.TVForum.tv_genres">{{ phrase('trakt_tv_genre') }}: {$forum.TVForum.tv_genres|raw}<br /></xf:if>
+						{{ phrase('trakt_tv_first_aired') }}: {$forum.TVForum.tv_release}<br />
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:extension>
+
+<xf:extension name="below_thread_list"><span class="tvhint">{{ phrase('trakt_tv_information')}}</span></xf:extension>

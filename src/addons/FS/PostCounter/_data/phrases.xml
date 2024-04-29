@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.updatePostCounter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[FS Post Counter (Update)]]></phrase>
+  <phrase title="fs_pc_no_posts" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This user hasn't posted anything yet.]]></phrase>
+  <phrase title="fs_pc_xs_post_counts" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[{name}'s post counts]]></phrase>
+  <phrase title="fs_post_counter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post Counters]]></phrase>
+  <phrase title="option.ca_applicable_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Forums]]></phrase>
+  <phrase title="option_explain.ca_applicable_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select forums for displaying in profiles.]]></phrase>
+  <phrase title="option_group.postCounter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Post Counter]]></phrase>
+  <phrase title="option_group_description.postCounter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For Display limited Forums.]]></phrase>
+</phrases>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="forumAutoReply" format=":int&lt;message_id&gt;/" controller="FS\ForumAutoReply:ForumAutoController" context="allForums"/>
+</routes>

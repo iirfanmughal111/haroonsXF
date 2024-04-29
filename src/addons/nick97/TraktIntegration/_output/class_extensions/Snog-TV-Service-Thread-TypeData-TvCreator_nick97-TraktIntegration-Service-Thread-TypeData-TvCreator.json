@@ -1,0 +1,6 @@
+{
+    "from_class": "Snog\\TV\\Service\\Thread\\TypeData\\TvCreator",
+    "to_class": "nick97\\TraktIntegration\\Service\\Thread\\TypeData\\TvCreator",
+    "execute_order": 10,
+    "active": true
+}

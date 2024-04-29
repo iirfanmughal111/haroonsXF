@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="public" route_prefix="notes" format=":int&lt;note_id,title&gt;/:page" controller="Demo\Pad:Note" context="demoPadNotes"/>
+  <route route_type="public" route_prefix="testing" sub_name="another" format="another/" controller="XF:Member" action_prefix="Hello"/>
+</routes>

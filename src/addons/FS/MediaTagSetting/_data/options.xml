@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_mts_customMsgColor" edit_format="textbox" data_type="string">
+    <default_value>black</default_value>
+    <relation group_id="fs_MediaTagSetting" display_order="1"/>
+  </option>
+  <option option_id="fs_mts_customMsgbackGroundColor" edit_format="textbox" data_type="string">
+    <default_value>#e6a682</default_value>
+    <relation group_id="fs_MediaTagSetting" display_order="1"/>
+  </option>
+</options>

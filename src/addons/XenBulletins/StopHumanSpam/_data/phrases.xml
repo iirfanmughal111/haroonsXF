@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_bb_code_desc.xen_word_highlight" version_id="10800000" version_string="1.8"><![CDATA[Highlight banned words in red using bbcode.]]></phrase>
+  <phrase title="custom_bb_code_example.xen_word_highlight" version_id="10800000" version_string="1.8"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.xen_word_highlight" version_id="10800000" version_string="1.8"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.xen_word_highlight" version_id="10800000" version_string="1.8"><![CDATA[Highlight in red]]></phrase>
+  <phrase title="option.AwedoTceSpecialChars" version_id="1" version_string="1"><![CDATA[Special Characters to Exclude]]></phrase>
+  <phrase title="option.shsBannedCharsArabic" version_id="1" version_string="1"><![CDATA[Stop Posts With X No. of Arabic Chars]]></phrase>
+  <phrase title="option.shsBannedCharsChinese" version_id="1" version_string="1"><![CDATA[Stop Posts With X No. of Chinese Chars]]></phrase>
+  <phrase title="option.shsBannedCharsHebrew" version_id="1" version_string="1"><![CDATA[Stop Posts With X No. of Hebrew Chars]]></phrase>
+  <phrase title="option.shsBannedCharsRussian" version_id="1" version_string="1"><![CDATA[Stop Posts With X No. of Russian Chars]]></phrase>
+  <phrase title="option.shsBannedPostContent" version_id="1" version_string="1"><![CDATA[Turn On Stop Banned Words For Post Content]]></phrase>
+  <phrase title="option.shsBannedPostContentWords" version_id="1" version_string="1"><![CDATA[Banned Post Content Words]]></phrase>
+  <phrase title="option.shsBannedThreadTitle" version_id="1" version_string="1"><![CDATA[Turn On Stop Banned Words For Thread Titles]]></phrase>
+  <phrase title="option.shsBannedThreadTitleWords" version_id="1" version_string="1"><![CDATA[Banned Thread Title Words]]></phrase>
+  <phrase title="option_explain.AwedoTceSpecialChars" version_id="1" version_string="1"><![CDATA[Each of the characters will be removed from the content before it is checked for banned words. Note: Blanks will be ignored.]]></phrase>
+  <phrase title="option_explain.shsBannedCharsArabic" version_id="1" version_string="1"><![CDATA[[max_number_of_chars]]]></phrase>
+  <phrase title="option_explain.shsBannedCharsChinese" version_id="1" version_string="1"><![CDATA[[max_number_of_chars]]]></phrase>
+  <phrase title="option_explain.shsBannedCharsHebrew" version_id="1" version_string="1"><![CDATA[[max_number_of_chars]]]></phrase>
+  <phrase title="option_explain.shsBannedCharsRussian" version_id="1" version_string="1"><![CDATA[[max_number_of_chars]]]></phrase>
+  <phrase title="option_explain.shsBannedPostContent" version_id="1" version_string="1"><![CDATA[This will stop any posts being created containing the words below]]></phrase>
+  <phrase title="option_explain.shsBannedPostContentWords" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.shsBannedThreadTitle" version_id="1" version_string="1"><![CDATA[This will stop any threads from being created with the below thread titles]]></phrase>
+  <phrase title="option_explain.shsBannedThreadTitleWords" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="option_group.xb_stop_human_span" version_id="1" version_string="1"><![CDATA[[XB] Stop Human Spam]]></phrase>
+  <phrase title="option_group_description.xb_stop_human_span" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="permission.general_canBypassStopBannedWords" version_id="1" version_string="1"><![CDATA[Can Bypass Stop-Banned-Words]]></phrase>
+  <phrase title="permission_interface.shsUserPermsions" version_id="1" version_string="1"><![CDATA[Stop Human Spam - User Permissions]]></phrase>
+  <phrase title="shs_thread_title_contains_banned_words" version_id="1" version_string="1"><![CDATA[Thread title contains banned words: {bWord}]]></phrase>
+</phrases>

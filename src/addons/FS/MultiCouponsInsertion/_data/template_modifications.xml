@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="dbtech_ecommerce_coupon_edit" modification_key="fs_multi_coupons_insertion" description="Used for multiple insertion of coupons at the same time using a single field." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textboxrow name="coupon_code" value="{$coupon.coupon_code}"  maxlength="{{ max_length('DBTech\eCommerce:Coupon', 'coupon_code') }}"
+				label="{{ phrase('dbtech_ecommerce_coupon_code') }}" />]]></find>
+    <replace><![CDATA[<xf:if is="$coupon.coupon_code">
+	<xf:textboxrow name="coupon_code" value="{$coupon.coupon_code}"  maxlength="{{ max_length('DBTech\eCommerce:Coupon', 'coupon_code') }}"
+				label="{{ phrase('dbtech_ecommerce_coupon_code') }}" />
+<xf:else />
+	<xf:textarearow name="multi_coupons_code" autosize="true"
+				label="{{ phrase('fs_multi_coupon') }}"/>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_edit_key" modification_key="fs_multi_coupons_insertion_edit_key_temp" description="Used for add field another." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:hiddenval
+        name="length_type[{$cost.product_cost_id}]"
+        value="permanent"
+      />]]></find>
+    <replace><![CDATA[<xf:radiorow name="length_type[{$cost.product_cost_id}]" label="{{ phrase('dbtech_ecommerce_license_duration') }}" explain="{{ phrase('dbtech_ecommerce_license_length_explain') }}">
+    <xf:option value="permanent" selected="$cost.length_unit == ''">{{ phrase('permanent') }}</xf:option>
+    <xf:option value="timed" selected="$cost.length_unit != ''" label="{{ phrase('for_length:') }}">
+        <xf:dependent>
+            <div class="inputGroup">
+                <xf:numberbox name="length_amount[{$cost.product_cost_id}]" value="{{ $cost.length_amount ?: 1 }}" min="1" max="365" class="input--numberNarrow" />
+                <span class="inputGroup-splitter"></span>
+                <xf:select name="length_unit[{$cost.product_cost_id}]" value="{{ ($cost.length_unit == 'permanent' OR !$cost.length_amount) ? 'month' : $cost.length_unit }}" class="input--autoSize">
+                    <xf:option value="day">{{ phrase('days') }}</xf:option>
+                    <xf:option value="month">{{ phrase('months') }}</xf:option>
+                    <xf:option value="year">{{ phrase('years') }}</xf:option>
+                </xf:select>
+            </div>
+        </xf:dependent>
+    </xf:option>
+</xf:radiorow>]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_edit_key" modification_key="fs_multi_coupons_insertion_edit_key_temp2" description="Used for remove hidden field." execution_order="1" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:hiddenval name="length_type[{{ mustache('product_cost_id') }}]" value="permanent" />]]></find>
+    <replace><![CDATA[		<xf:radiorow name="length_type[{{ mustache('product_cost_id') }}]"
+						   label="{{ phrase('dbtech_ecommerce_license_duration') }}"
+						   explain="{{ phrase('dbtech_ecommerce_license_length_explain') }}">
+  
+				  <xf:option value="permanent" selected="true">{{ phrase('permanent') }}</xf:option>
+				  <xf:option value="timed" label="{{ phrase('for_length:') }}">
+					  <xf:dependent>
+						  <div class="inputGroup">
+							  <xf:numberbox name="length_amount[{{ mustache('product_cost_id') }}]" value="1" min="1" max="365" class="input--numberNarrow" />
+							  <span class="inputGroup-splitter"></span>
+							  <xf:select name="length_unit[{{ mustache('product_cost_id') }}]" value="month" class="input--autoSize">
+								  <xf:option value="day">{{ phrase('days') }}</xf:option>
+								  <xf:option value="month">{{ phrase('months') }}</xf:option>
+								  <xf:option value="year">{{ phrase('years') }}</xf:option>
+							  </xf:select>
+						  </div>
+  
+					  </xf:dependent>
+				  </xf:option>
+			  </xf:radiorow>]]></replace>
+  </modification>
+</template_modifications>

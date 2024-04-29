@@ -1,0 +1,47 @@
+<span class="u-anchorTarget" id="job-traktTv"></span>
+
+<xf:form action="{{ link('tools/rebuild') }}" class="block">
+	<div class="block-container">
+		<h2 class="block-header">[nick97] Trakt TV Thread Starter</h2>
+		<div class="block-body">
+			<xf:radiorow name="job">
+			
+				<xf:option value="nick97\TraktTV:TvRatingRebuild">{{ phrase('trakt_tv_recalculate_ratings') }}</xf:option>
+				<xf:option value="nick97\TraktTV:TvForumRatingRebuild">{{ phrase('trakt_tv_recalculate_forum_ratings') }}</xf:option>
+				
+				<xf:option value="nick97\TraktTV:TvThreadRebuild" label="{{ phrase('trakt_tv_rebuild_tv_threads') }}" hint="{{ phrase('trakt_tv_rebuild_tv_threads_explain') }}" data-hide="true">
+					<xf:checkbox name="options[rebuildTypes]">
+						<xf:option value="credits">{{ phrase('trakt_tv_credits') }}</xf:option>
+						<xf:option value="videos">{{ phrase('trakt_tv_videos') }}</xf:option>
+					</xf:checkbox>
+				</xf:option>
+
+				<xf:option value="nick97\TraktTV:TvPostRebuild">{{ phrase('trakt_tv_rebuild_episode_posts') }}</xf:option>
+				<xf:option value="nick97\TraktTV:TvCreditsRebuild">{{ phrase('trakt_tv_rebuild_credits') }}</xf:option>
+				<xf:option value="nick97\TraktTV:TvPersonsRebuild">{{ phrase('trakt_tv_rebuild_persons') }}</xf:option>
+
+				<xf:option value="nick97\TraktTV:TvVideoRebuild">{{ phrase('trakt_tv_rebuild_videos') }}</xf:option>
+				<xf:option value="nick97\TraktTV:TvWatchProviderRebuild">{{ phrase('trakt_tv_rebuild_watch_providers') }}</xf:option>
+				<xf:option value="nick97\TraktTV:TvProductionCompaniesRebuild">{{ phrase('trakt_tv_rebuild_tv_production_companies') }}</xf:option>
+				<xf:option value="nick97\TraktTV:TvNetworksRebuild">{{ phrase('trakt_tv_rebuild_tv_networks') }}</xf:option>
+				
+				<xf:if is="is_addon_active('ThemeHouse/Covers')">
+					<xf:option value="nick97\TraktTV:TvThreadCoverUpdate">{{ phrase('trakt_tv_rebuild_thread_covers') }}</xf:option>
+				</xf:if>
+			</xf:radiorow>
+			
+			<xf:formrow label="{{ phrase('trakt_tv_tools_local_images') }}" explain="{{ phrase('trakt_tv_download_images_explain') }}">
+				<xf:radio name="job">
+					<xf:option value="nick97\TraktTV:TvThreadImageDownload" label="{{ phrase('trakt_tv_download_thread_poster_images') }}" />
+					<xf:option value="nick97\TraktTV:TvForumImageDownload" label="{{ phrase('trakt_tv_download_forum_poster_images') }}" />
+					<xf:option value="nick97\TraktTV:TvPostImageDownload" label="{{ phrase('trakt_tv_download_episode_images') }}" />
+					<xf:option value="nick97\TraktTV:TvPersonsImageDownload" label="{{ phrase('trakt_tv_download_person_images') }}" />
+					<xf:option value="nick97\TraktTV:TvNetworkImageDownload" label="{{ phrase('trakt_tv_download_network_images') }}" />
+					<xf:option value="nick97\TraktTV:TvCompanyImageDownload" label="{{ phrase('trakt_tv_download_company_images') }}" />
+				</xf:radio>
+			</xf:formrow>
+		</div>
+		
+		<xf:submitrow submit="{{ phrase('rebuild_now') }}" />
+	</div>
+</xf:form>

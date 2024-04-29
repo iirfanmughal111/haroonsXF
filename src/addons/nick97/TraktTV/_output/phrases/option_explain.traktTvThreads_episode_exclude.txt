@@ -1,0 +1,1 @@
+Check this box to exclude the TV show title in the title for episode threads.<br />This may be needed if tv show names and episode titles exceed the XenForo thread title limit.

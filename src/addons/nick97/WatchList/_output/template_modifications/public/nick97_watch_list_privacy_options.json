@@ -1,0 +1,9 @@
+{
+    "template": "account_privacy",
+    "description": "nick97_watch_list_privacy_options",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "</xf:formrow>",
+    "replace": "<xf:macro name=\"privacy_option\"\n\t\t  arg-user=\"{$xf.visitor}\"\n\t\t  arg-name=\"allow_view_watchlist\"\n\t\t  arg-label=\"{{ phrase('choose_who_see_my_watchlist:') }}\" />\n\n<xf:macro name=\"privacy_option\"\n\t\t  arg-user=\"{$xf.visitor}\"\n\t\t  arg-name=\"allow_view_stats\"\n\t\t  arg-label=\"{{ phrase('choose_who_see_my_stats:') }}\" />\n\n$0"
+}

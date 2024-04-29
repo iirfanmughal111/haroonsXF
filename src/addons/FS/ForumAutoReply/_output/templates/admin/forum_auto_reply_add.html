@@ -1,0 +1,250 @@
+<xf:title>
+  <xf:if is="$message.message_id"> {{ phrase('edit_message') }} <xf:else /> {{
+  phrase('add_message') }} </xf:if>
+</xf:title>
+
+<xf:form
+  action="{{ link('forumAutoReply/save', $message) }}" ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <!-- Nodes list -->
+
+      <xf:selectrow
+        name="node_id"
+        label="{{ phrase('forum') }}"
+        hint="{{ phrase('required') }}"
+        required="required"
+      >
+        <xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+        <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+          <xf:option
+            value="{$treeEntry.record.node_id}"
+            disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}"
+            selected="{{$nodeId== $treeEntry.record.node_id }}"
+            >{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }}
+            {$treeEntry.record.title}</xf:option
+          >
+        </xf:foreach>
+      </xf:selectrow>
+
+      <!-- User Group List -->
+
+      <xf:selectrow
+        name="user_group_id"
+        value="{$nodeIds}"
+        label="{{ phrase('user_group') }}"
+        hint="{{ phrase('required') }}"
+        required="required"
+      >
+        <xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+        <xf:foreach loop="$userGroups" value="$userGroup">
+          <xf:option
+            value="{$userGroup.user_group_id}"
+            selected="{{$userGroupId == $userGroup.user_group_id }}"
+            >{$userGroup.title}</xf:option
+          >
+        </xf:foreach>
+      </xf:selectrow>
+
+      <!-- Prefixes List -->
+
+      <xf:if is="$prefixesGrouped is not empty">
+        <xf:selectrow
+          name="prefix_id"
+          value="{$nodeIds}"
+          label="{{ phrase('thread_prefix') }}"
+          hint="{{ phrase('required') }}"
+          required="required"
+        >
+          <xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+          <xf:foreach
+            loop="$prefixGroups"
+            key="$prefixGroupId"
+            value="$prefixGroup"
+          >
+            <xf:foreach
+              loop="{$prefixesGrouped.{$prefixGroupId}}"
+              key="$prefix_id"
+              value="$prefix"
+            >
+              <xf:option
+                value="{$prefix_id}"
+                selected="{{$prefixId == $prefix_id }}"
+                >{$prefix.title}</xf:option
+              >
+            </xf:foreach>
+          </xf:foreach>
+        </xf:selectrow>
+      </xf:if>
+
+      <!-- Words,Message,User inputs -->
+
+      <xf:formrow
+        rowtype="input"
+        label="{{ phrase('word_message') }}"
+        hint="{{ phrase('required') }}"
+      >
+        <div
+          class="inputGroup-container"
+          data-xf-init="list-sorter"
+          data-drag-handle=".dragHandle"
+        >
+          <xf:set var="$arr" value="{{0}}" />
+
+          <xf:foreach loop="$data" key="$key" value="$value" i="$i">
+            <div class="inputGroup">
+              <xf:textbox
+                name="words[]"
+                value="{$value.word}"
+                placeholder="{{ phrase('enter_word') }}"
+                size="24"
+                maxlength="25"
+                data-i="0"
+                dir="ltr"
+              />
+
+              <span class="inputGroup-splitter"></span>
+
+              <xf:textbox
+                name="messages[]"
+                value="{$value.message}"
+                placeholder="{{ phrase('enter_message') }}"
+                size="24"
+                data-i="0"
+              />
+
+              <xf:textbox
+                name="from_users[]"
+                value="{$value.getMatchUserids()}"
+                ac="multiple"
+                placeholder="{{ phrase('enter_user') }}"
+                size="24"
+                data-i="0"
+              />
+              <xf:button
+                href="{{ link('forumAutoReply/edit-single', $value) }}"
+                overlay="true"
+                style="
+                  background-color: #fff;
+                  border: none;
+                  padding: 0px;
+                  color: #47a7eb;
+                "
+                fa="fa-edit"
+              />
+              <xf:button
+                href="{{ link('forumAutoReply/delete', $value) }}"
+                overlay="true"
+                style="
+                  background-color: #fff;
+                  border: none;
+                  padding: 0px;
+                  color: #47a7eb;
+                "
+                fa="fa-trash"
+              />
+            </div>
+            <xf:set var="$arr" value="{{$i}}" />
+          </xf:foreach>
+          <div
+            class="inputGroup is-undraggable js-blockDragafter"
+            data-xf-init="field-adder"
+            data-remove-class="is-undraggable js-blockDragafter"
+          >
+            <xf:textboxrow
+              name="words[]"
+              placeholder="{{ phrase('enter_word') }}"
+              data-i="0"
+              dir="ltr"
+              rowtype="fullWidth"
+            />
+
+            <xf:textboxrow
+              name="messages[]"
+              placeholder="{{ phrase('enter_message') }}"
+              data-i="0"
+              rowtype="fullWidth"
+            />
+
+            <xf:textbox
+              name="from_users[]"
+              ac="multiple"
+              placeholder="{{ phrase('enter_user') }}"
+              size="24"
+              data-i="0"
+              style="width: 530px; height: 36px; margin-top: 16px"
+            />
+          </div>
+        </div>
+      </xf:formrow>
+
+      <!-- No Match Prefixes List -->
+
+      <xf:if is="$prefixesGrouped is not empty">
+        <xf:selectrow
+          name="no_match_prefix_id"
+          value="{$nodeIds}"
+          label="{{ phrase('no_match_prefix') }}"
+          hint="{{ phrase('required') }}"
+          required="required"
+        >
+          <xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+          <xf:foreach
+            loop="$prefixGroups"
+            key="$prefixGroupId"
+            value="$prefixGroup"
+          >
+            <xf:foreach
+              loop="{$prefixesGrouped.{$prefixGroupId}}"
+              key="$prefix_id"
+              value="$prefix"
+            >
+              <xf:option
+                value="{$prefix_id}"
+                selected="{{$noDataMatch.no_match_prefix_id == $prefix_id }}"
+                >{$prefix.title}</xf:option
+              >
+            </xf:foreach>
+          </xf:foreach>
+        </xf:selectrow>
+      </xf:if>
+
+      <!-- No Match Message,User inputs -->
+
+      <xf:formrow
+        rowtype="input"
+        label="{{ phrase('no_match_message') }}"
+        hint="{{ phrase('required') }}"
+      >
+        
+          <div class="inputGroup">
+            <xf:textboxrow
+              name="no_match_messages"
+              value="{$noDataMatch.no_match_message}"
+              placeholder="{{ phrase('no_match_enter_message') }}"
+              data-i="0"
+              rowtype="fullWidth"
+            />
+
+            <xf:textbox
+              name="no_match_users"
+              ac="multiple"
+              value="{{$noDataMatch ? $noDataMatch.getNoMatchUserIds() : ''}}"
+              placeholder="{{ phrase('enter_user') }}"
+              data-i="0"
+              style="width: 530px; height: 36px; margin-top: 15px"
+            />
+          </div>
+     
+      </xf:formrow>
+    </div>
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>

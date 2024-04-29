@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="post_macros" modification_key="post_macros_add_download_link_for_post" description="post_macros_add_download_link_for_post" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="actionBar-set actionBar-set--external">]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$thread.canViewAttachments() && count($post.Attachments) > 0">
+	<a href="{{ link('posts/export-attachments', $post) }}"
+	   class="actionBar-action actionBar-action--download"
+	   data-xf-click="overlay"><i class="far fa-download"></i> {{ phrase('download') }}</a>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_download_attachment_btn" description="Add Download all Attachment Button on thread-view" execution_order="10" enabled="0" action="str_replace">
+    <find><![CDATA[<xf:if is="$canInlineMod">]]></find>
+    <replace><![CDATA[<xf:comment>
+	<xf:if is="$thread.canViewAttachments() && $thread.getAttachmentPostIds()">
+		<xf:button href="{{ link('threads/exportAttachments', $thread) }}" class="button--link" overlay="true" icon="export">
+			{{ phrase('fs_download_all_attachments') }}
+		</xf:button>
+	</xf:if>
+</xf:comment>
+$0]]></replace>
+  </modification>
+</template_modifications>

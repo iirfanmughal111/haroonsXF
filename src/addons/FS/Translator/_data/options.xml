@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fsAlternativeFlags" edit_format="checkbox" data_type="array">
+    <default_value>{"us":0,"ca":0,"br":0,"mx":0,"ar":0,"co":0,"qc":0}</default_value>
+    <edit_format_params>us=USA flag (English)
+ca=Canada flag (English)
+br=Brazil flag (Portuguese)
+mx=Mexico flag (Spanish)
+ar=Argentina flag (Spanish)
+co=Colombia flag (Spanish)
+qc=Quebec flag (French)</edit_format_params>
+    <sub_options>us
+ca
+br
+mx
+ar
+co
+qc</sub_options>
+    <relation group_id="fs_translator" display_order="20"/>
+  </option>
+  <option option_id="fsAutoSwitch" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="fs_translator" display_order="10"/>
+  </option>
+  <option option_id="fsEnableCdn" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="fs_translator" display_order="15"/>
+  </option>
+  <option option_id="fsFlagStyle" edit_format="select" data_type="string">
+    <default_value>2d</default_value>
+    <edit_format_params>2d=2D (.svg)
+3d=3D (.png)</edit_format_params>
+    <relation group_id="fs_translator" display_order="9"/>
+  </option>
+  <option option_id="fsOpenDirection" edit_format="select" data_type="string">
+    <default_value>left</default_value>
+    <edit_format_params>left=Left
+right=Right
+top=Top
+bottom=Bottom</edit_format_params>
+    <relation group_id="fs_translator" display_order="8"/>
+  </option>
+  <option option_id="fsShowLanguage" edit_format="select" data_type="string">
+    <default_value>no</default_value>
+    <edit_format_params>no=No
+bottom_left=Bottom left
+bottom_right=Bottom right
+top_left=Top left
+top_right=Top right</edit_format_params>
+    <relation group_id="fs_translator" display_order="7"/>
+  </option>
+  <option option_id="fsWidgetLook" edit_format="select" data_type="string">
+    <default_value>flags</default_value>
+    <edit_format_params>float=Float
+dropdown_with_flags=Nice dropdown with flags
+popup=Popup
+dropdown=Dropdown
+flags=Flags
+flags_dropdown=Flags and dropdown
+flags_name=Flags with language name
+flags_code=Flags with language code
+lang_names=Language names
+lang_codes=Language codes
+globe=Globe</edit_format_params>
+    <relation group_id="fs_translator" display_order="5"/>
+  </option>
+</options>

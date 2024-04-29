@@ -1,0 +1,43 @@
+<xf:if is="$Page.isInsert()">
+	<xf:title>{{ phrase('bh_add_owner_page') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bh_edit_owner_page:') }}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$Page.isUpdate()">
+	<xf:button href="{{ link('bh_item/ownerpage/delete', $Page) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+
+<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+<xf:form action="{{ link('bh_item/ownerpage/save', $Page) }}"  ajax="true" data-xf-init="attachment-manager" >
+ 
+	<xf:hiddenval name="attachment_time">{$attachment_time}</xf:hiddenval>
+	
+	<xf:hiddenval name="item_id">{$item.item_id}</xf:hiddenval>
+	<div class="block-container">
+		<div class="block-body">
+			
+		
+		<div class="js-inlineNewPostFields">
+			
+		<xf:editorrow name="about" value="{$Page.Detail.about}" 
+				label="{{ phrase('bh_page_about') }}" />
+			
+		<xf:editorrow name="attachment" value="{$Page.Detail.attachment}" 
+				label="{{ phrase('bh_page_attachment') }}" />
+		
+		<xf:editorrow name="customizations" value="{$Page.Detail.customizations}" 
+				label="{{ phrase('bh_page_customizations') }}" />
+		
+			
+	
+			
+		</div>
+	</div>
+		<xf:submitrow sticky="true" icon="save" />
+			
+	</div>
+
+</xf:form>

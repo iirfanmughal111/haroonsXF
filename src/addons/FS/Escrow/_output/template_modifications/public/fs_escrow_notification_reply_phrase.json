@@ -1,0 +1,9 @@
+{
+    "template": "alert_post_insert",
+    "description": "fs_escrow_notification_reply_phrase",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/{{ phrase\\('x_replied_to_thread_y_may_be_more', {.*?}\\) }}/is",
+    "replace": "<xf:if is=\"$content.Thread.node_id == $xf.options.fs_escrow_applicable_forum AND $content.Thread.escrow_id!=0\">\n\t{{ phrase('x_replied_to_escrow_y', {\n\t\t'name': username_link($user, false, {'defaultname': $alert.username}),\n\t\t'title': '<a href=\"' . link('threads', $content.Thread) . '\" class=\"fauxBlockLink-blockLink\">' . $content.Thread.title . '</a>'\n\t}) }}\n\t<xf:else />\n\t$0\n</xf:if>\t"
+}

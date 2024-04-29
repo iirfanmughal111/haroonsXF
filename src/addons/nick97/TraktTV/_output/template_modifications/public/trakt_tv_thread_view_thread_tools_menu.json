@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Add button",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:thread_tools_menu:before_footer]-->",
+    "replace": "<xf:if is=\"{{ property('trakt_tv_posterUpdateButtonPosition') == 'thread_tools_menu' && $thread.traktTV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}\">\n\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ link('tvTrakt/poster', $thread.traktTV) }}\" data-xf-click=\"overlay\" class=\"menu-linkRow\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t{{ phrase('trakt_tv_check_poster') }}\n\t\t\t\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t\t\t\t</xf:if>\n\t\t\t\t\t\t\t\t\t\t\t$0"
+}

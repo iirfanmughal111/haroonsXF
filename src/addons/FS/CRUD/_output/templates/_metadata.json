@@ -1,0 +1,12 @@
+{
+    "admin/fs_crud_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "093de94440c0bd20468827a643f1351a"
+    },
+    "admin/fs_crud_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec7207ea58936390993a90778258b67d"
+    }
+}

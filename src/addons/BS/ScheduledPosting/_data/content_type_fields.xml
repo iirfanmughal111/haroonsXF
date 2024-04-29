@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="post" field_name="schedule_handler_class">BS\ScheduledPosting\Schedule\Post</field>
+  <field content_type="profile_post" field_name="schedule_handler_class">BS\ScheduledPosting\Schedule\ProfilePost</field>
+  <field content_type="thread" field_name="schedule_handler_class">BS\ScheduledPosting\Schedule\Thread</field>
+</content_type_fields>

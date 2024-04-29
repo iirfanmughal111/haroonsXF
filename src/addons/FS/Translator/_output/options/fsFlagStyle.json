@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "2d=2D (.svg)\n3d=3D (.png)",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "2d",
+    "relations": {
+        "fs_translator": 9
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "permission_type": "flag",
+    "interface_group_id": "nick97_watch_list",
+    "display_order": 1,
+    "depend_permission_id": ""
+}

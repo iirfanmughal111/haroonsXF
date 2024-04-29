@@ -1,0 +1,37 @@
+{
+    "admin/fs_limitations_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e52f6613d52ca0bd9c5d3eb3a8087d96"
+    },
+    "admin/fs_limitations_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f15b4131a1c41c918b69be352b1093af"
+    },
+    "email/fs_bitcoin_integ_thanks_redirect_mail.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7c118828d6b7b2e5491648280e5592a0"
+    },
+    "email/fs_limitations_admirer_mail.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1872f53f49e49597734b7e883ffe12f0"
+    },
+    "email/fs_limitations_companion_mail.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f99727c400a8023ea114028d91119f08"
+    },
+    "email/fs_limitations_send_payment_confirm_male.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5df479769ee5e07f01fe8c2cb412c873"
+    },
+    "public/fs_discussion_post_limits_info.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2f033e699c8dd61bdd4b14f8acc5371a"
+    }
+}

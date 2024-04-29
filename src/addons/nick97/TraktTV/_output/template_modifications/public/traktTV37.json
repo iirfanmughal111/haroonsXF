@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Adds add tv info to menu",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:thread_tools_menu:before_footer]-->",
+    "replace": "<xf:if is=\"$forum.forum_type_id == 'trakt_tv' && $xf.visitor.hasPermission('tvthreads_interface', 'add_info')\">\n\t<xf:if is=\"!$thread.traktTV\">\n\t\t<a href=\"{{ link('tvTrakt/addinfo', $thread) }}\" data-xf-click=\"overlay\" class=\"menu-linkRow\">{{ phrase('trakt_tv_add_info') }}</a>\n\t</xf:if>\n</xf:if>\n$0"
+}

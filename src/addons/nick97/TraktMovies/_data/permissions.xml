@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="trakt_movies" permission_id="updatePersons" permission_type="flag" interface_group_id="trakt_movies" display_order="1"/>
+  <permission permission_group_id="trakt_movies" permission_id="use_trakt_movies" permission_type="flag" interface_group_id="trakt_movies" display_order="1"/>
+</permissions>

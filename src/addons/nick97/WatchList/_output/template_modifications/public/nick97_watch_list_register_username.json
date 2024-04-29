@@ -1,0 +1,9 @@
+{
+    "template": "register_connected_account",
+    "description": "nick97_watch_list_register_username",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"register_macros\" name=\"username_row\" />",
+    "replace": "<xf:if is=\"$providerData.username\">\n\t<xf:macro template=\"register_macros\" name=\"username_row\" arg-value=\"{$providerData.username}\"/>\n\t<xf:else/>\n\t$0\n</xf:if>"
+}

@@ -1,0 +1,92 @@
+{
+    "admin_navigation.fsAutoForumManager.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "efb2821d4f7a2555c6ba512bdff0d134"
+    },
+    "admin_navigation.fsAutoForumManagerAdd.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec211f7c20af43e742bf2570c3cb84f9"
+    },
+    "cron_entry.fsAutoForumManager.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fb1f65d583ee8a05d9d4e214ada5fe9c"
+    },
+    "fs_auto_filled_required_fields.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8b398d5aa7a46241899ac24ca6e2d234"
+    },
+    "fs_auto_forum_manage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7f86965b8c43806bbcd6bf58369a6aa1"
+    },
+    "fs_auto_forum_manage_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9c5ce44d85c95a4790472dd3e9b27445"
+    },
+    "fs_auto_forum_manage_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "efb2821d4f7a2555c6ba512bdff0d134"
+    },
+    "fs_auto_forum_manager_days.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e807d3ccf8d24c8c1a3d86db5da78da8"
+    },
+    "fs_auto_forum_manager_days_place.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2e59a14b7e2d721861fce5b174312825"
+    },
+    "fs_auto_forum_manager_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e14feb572141c2f760d594d0592efe99"
+    },
+    "fs_auto_forum_manager_select_admin.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "32dc7f557366cf7925570d64130e0aec"
+    },
+    "fs_cell_auto_forum_admin.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e3afed0047b08059d0fada10f400c1e5"
+    },
+    "fs_cell_auto_forum_days.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e807d3ccf8d24c8c1a3d86db5da78da8"
+    },
+    "fs_cell_auto_forum_name.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e6a7f8a2f42cc35979973da8dfb10720"
+    },
+    "fs_edit_auto_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5b65baa61db6530dbd9db012ad3e59ab"
+    }
+}

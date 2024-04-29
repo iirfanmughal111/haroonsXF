@@ -1,0 +1,9 @@
+{
+    "template": "quick_reply_macros",
+    "description": "Add editor macro thread arg",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "arg-message=\"{$message}\"",
+    "replace": "$0\n\t\t\t\t\t\t\targ-thread=\"{$thread}\""
+}

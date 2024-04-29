@@ -1,0 +1,5705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="attachment_upload" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('attachment_upload') }}</xf:title>
+
+<xf:form action="{{ link('attachments/upload', null, {'type': $type, 'hash': $hash, 'context': $context}) }}" class="block" upload="true" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$existing is not empty OR $new is not empty">
+				<xf:formrow label="{{ phrase('existing_attachments') }}">
+					<xf:css src="attachments.less" />
+					<ul class="attachUploadList">
+						<xf:foreach loop="$existing" value="$attachment">
+							<xf:macro template="helper_attach_upload" name="uploaded_file"
+								arg-attachment="{$attachment}"
+								arg-noJsFallback="{{ true }}" />
+						</xf:foreach>
+						<xf:foreach loop="$new" value="$attachment">
+							<xf:macro template="helper_attach_upload" name="uploaded_file"
+								arg-attachment="{$attachment}"
+								arg-noJsFallback="{{ true }}" />
+						</xf:foreach>
+					</ul>
+				</xf:formrow>
+			</xf:if>
+			<xf:if is="$canUpload">
+				<xf:uploadrow name="upload" accept=".{$constraints.extensions|join(',.')}"
+					label="{{ phrase('attach_file') }}"
+					explain="{{ phrase('you_may_close_this_window_tab_once_you_have_uploaded_your_files_to_return') }}" />
+			<xf:elseif is="!$canUpload AND $uploadError" />
+				<xf:formrow label="{{ phrase('attach_file') }}">{$uploadError}</xf:formrow>
+			</xf:if>
+		</div>
+		<xf:if is="$canUpload">
+			<xf:submitrow submit="{{ phrase('upload') }}" icon="upload" />
+		</xf:if>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="attachments.less" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[@_fileMinSize: 165px;
+@_fileBorderRadius: @xf-borderRadiusSmall;
+
+.attachmentUploads
+{
+	display: none;
+	margin-bottom: @xf-paddingLarge;
+
+	&.is-active
+	{
+		display: block;
+	}
+
+	&.attachmentUploads--spaced
+	{
+		margin-top: @xf-paddingLarge;
+	}
+
+	.hScroller-action
+	{
+		color: @xf-linkColor;
+
+		&:hover
+		{
+			color: @xf-linkHoverColor;
+		}
+
+		&.hScroller-action--start
+		{
+			&:before
+			{
+				content: '';
+				position: absolute;
+				left: 0;
+				height: 50px;
+				width: 35px;
+				background: @xf-contentBg;
+				.m-borderRightRadius(@xf-borderRadiusMedium);
+				.m-dropShadow(1px, 0, 4px, 1px, .3);
+			}
+
+			&:after
+			{
+				position: absolute;
+				left: 10px;
+			}
+		}
+
+		&.hScroller-action--end
+		{
+			&:before
+			{
+				content: '';
+				position: absolute;
+				right: 0;
+				height: 50px;
+				width: 35px;
+				background: @xf-contentBg;
+				.m-borderLeftRadius(@xf-borderRadiusMedium);
+				.m-dropShadow(-1px, 0, 4px, 1px, .3);
+			}
+
+			&:after
+			{
+				position: absolute;
+				right: 10px;
+			}
+		}
+	}
+}
+
+.attachmentUploads-banner
+{
+	.xf-contentAltBase();
+	border: @xf-borderSize solid @xf-borderColor;
+	border-radius: @xf-borderRadiusSmall;
+	margin-top: @xf-paddingLarge;
+	padding: @xf-paddingSmall @xf-paddingMedium;
+}
+
+.attachmentUploads-selectActions
+{
+	.m-listPlain();
+	display: none;
+	font-size: @xf-fontSizeSmall;
+
+	.attachmentUploads.is-selecting &
+	{
+		display: flex;
+	}
+
+	> li
+	{
+		margin-right: .35em;
+
+		.buttonGroup
+		{
+			vertical-align: middle;
+		}
+
+		&:last-of-type
+		{
+			flex: 1 1 auto;
+			text-align: right;
+		}
+	}
+
+	.selectAll .iconic
+	{
+		cursor: pointer;
+
+		input + i
+		{
+			color: @xf-linkColor;
+		}
+	}
+}
+
+.is-selecting button.js-attachmentSelect
+{
+	float: right;
+}
+
+.file
+{
+	position: relative;
+	width: @_fileMinSize;
+	height: @_fileMinSize;
+	margin-right: @xf-paddingMedium;
+	background: @xf-contentAltBg;
+	border-radius: @_fileBorderRadius;
+
+	&:last-child
+	{
+		margin-right: 0;
+	}
+}
+
+.attachUploadList
+{
+	.m-listPlain();
+	display: block;
+	white-space: nowrap;
+	font-size: 0;
+
+	.file
+	{
+		display: inline-block;
+		font-size: @xf-fontSizeNormal;
+	}
+}
+
+.attachmentList
+{
+	.m-listPlain();
+
+	display: flex;
+	flex-wrap: wrap;
+
+	.file
+	{
+		margin-bottom: @xf-paddingMedium;
+	}
+}
+
+@supports (display: grid)
+{
+	.attachmentList
+	{
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(@_fileMinSize, 1fr));
+		grid-gap: @xf-paddingMedium;
+		gap: @xf-paddingMedium;
+
+		.file
+		{
+			width: 100%;
+			height: auto;
+			margin-right: 0;
+			margin-bottom: 0;
+
+			&:after
+			{
+				content: '';
+				display: block;
+				padding-bottom: 100%;
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+.file-preview
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: @_fileBorderRadius;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	img, video
+	{
+		position: absolute;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+
+	.file--linked &:after
+	{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: @zIndex-1;
+	}
+}
+
+.file-typeIcon
+{
+	font-size: 80px;
+	vertical-align: middle;
+	color: @xf-textColorFeature;
+}
+
+.file-error
+{
+	color: @xf-textColorAttention;
+	font-size: @xf-fontSizeSmaller;
+	white-space: normal;
+	padding: @xf-paddingMedium;
+}
+
+.file-progress
+{
+	position: relative;
+	width: 100%;
+	width: calc(~'100% - 8px');
+	font-size: @xf-fontSizeSmallest;
+	line-height: 1.3;
+
+	i
+	{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		background: @xf-progressBarColor;
+		color: contrast(@xf-progressBarColor);
+		border-radius: @xf-borderRadiusSmall;
+		padding-right: .2em;
+		text-align: right;
+		font-style: normal;
+		white-space: nowrap;
+		min-width: 2em;
+
+		.m-transition(width);
+	}
+}
+
+.file-content
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.file-info
+{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 0 @xf-paddingLarge;
+	height: 2.5em;
+	line-height: 2.5;
+	overflow: hidden;
+	.m-transition(height);
+	.m-borderBottomRadius(@_fileBorderRadius);
+
+	font-size: @xf-fontSizeSmaller;
+	color: rgb(255, 255, 255);
+	background: rgba(0, 0, 0, 0.5);
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+
+	@supports (backdrop-filter: blur(3px)) or (-webkit-backdrop-filter: blur(3px))
+	{
+		.m-backdropFilter(blur(3px));
+	}
+
+	a&
+	{
+		color: rgb(255, 255, 255);
+
+		&:hover
+		{
+			color: rgb(255, 255, 255);
+			text-decoration: none;
+
+			.file-name
+			{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&:hover,
+	.file--linked:hover &,
+	.has-touchevents &
+	{
+		height: 5em;
+	}
+}
+
+.file-name,
+.file-meta
+{
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.file-delete,
+.file-insert
+{
+	position: absolute;
+	color: rgb(255, 255, 255);
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
+}
+
+.file-checkbox
+{
+	display: none;
+
+	.attachmentUploads.is-selecting &
+	{
+		display: block;
+	}
+
+	.iconic
+	{
+		position: static;
+
+		&:after
+		{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: @zIndex-1;
+		}
+
+		> i
+		{
+			position: absolute;
+			top: 4px;
+			left: 4px;
+			box-sizing: content-box;
+			width: 1em;
+			height: 1em;
+			color: rgb(220, 220, 220);
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
+			background: rgba(0, 0, 0, .2);
+			border-radius: @xf-borderRadiusMedium;
+			padding: @xf-paddingMedium;
+			line-height: 1;
+		}
+
+		&:hover > i
+		{
+			color: rgb(255, 255, 255);
+
+			&:before
+			{
+				content: @fa-var-check-square;
+			}
+		}
+
+		> input + i
+		{
+			&:before,
+			&:after
+			{
+				top: @xf-paddingMedium;
+				left: @xf-paddingMedium;
+			}
+		}
+
+		> input:checked + i:after
+		{
+			font-weight: bold;
+		}
+	}
+}
+
+.file-insert
+{
+	top: 4px;
+	left: 4px;
+	font-size: @xf-fontSizeSmaller;
+	max-width: (@_fileMinSize - 40px);
+	white-space: normal;
+	word-wrap: break-word;
+
+	&.is-active
+	{
+		.file-insertLink
+		{
+			display: none;
+		}
+
+		.file-menuOptions
+		{
+			display: block;
+		}
+	}
+}
+
+.file-delete
+{
+	top: 4px;
+	right: 4px;
+	font-size: @xf-fontSizeNormal;
+}
+
+.file-insert,
+.file-delete
+{
+	.attachmentUploads.is-selecting &
+	{
+		display: none;
+	}
+}
+
+.file-insertLink,
+.file-deleteLink
+{
+	display: inline-block;
+}
+
+a.file-deleteLink
+{
+	color: inherit;
+	background: rgba(0, 0, 0, .2);
+	border-radius: @xf-borderRadiusMedium;
+	padding: @xf-paddingMedium;
+	.m-transition(background);
+
+	&:hover
+	{
+		text-decoration: none;
+		background: rgba(0, 0, 0, .5);
+	}
+}
+
+a.file-insertLink,
+.file-menuOptions > a
+{
+	color: inherit;
+	background: rgba(0, 0, 0, 0.4);
+	border-radius: @xf-borderRadiusMedium;
+	padding: @xf-paddingMedium;
+	.m-transition(background);
+
+	&:hover
+	{
+		text-decoration: none;
+		background: rgba(0, 0, 0, .5);
+	}
+}
+
+.file-menuOptions
+{
+	.m-listPlain();
+	display: none;
+
+	> a
+	{
+		display: block;
+		margin-top: @xf-paddingSmall;
+		max-width: max-content;
+
+		&:first-child
+		{
+			margin-top: 0;
+		}
+	}
+}
+
+@media (max-width: @xf-responsiveNarrow)
+{
+	.attachmentUploads
+	{
+		.iconic-label,
+		.insert-label
+		{
+			display: none;
+		}
+	}
+}]]></template>
+  <template type="admin" title="bh_Item_field_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:include template="bh_base_custom_field_delete" />]]></template>
+  <template type="admin" title="bh_Item_field_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:include template="bh_base_customFields_macro">
+	<xf:set var="$extraOptions">
+		<xf:macro template="base_custom_field_macros" name="common_options"
+			arg-field="{$field}" />
+	</xf:set>
+
+</xf:include>]]></template>
+  <template type="admin" title="bh_Item_field_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('bh_item_fields') }}</xf:title>
+
+<xf:include template="bh_base_custom_field_list" />]]></template>
+  <template type="admin" title="bh_base_customFields_macro" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:if is="$field.isInsert()">
+	<xf:title>{{ phrase('add_field') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('edit_field:') }} {$field.title|htmlspecialchars}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$field.isUpdate()">
+	<xf:button href="{{ link($prefix . '/delete', $field) }}" overlay="true" icon="delete" />
+</xf:pageaction>
+
+<xf:js src="xf/sort.js, vendor/dragula/dragula.js"/>
+<xf:css src="public:dragula.less"/>
+
+<xf:form action="{{ link($prefix . '/save', $field) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="{{ $field.exists() }}">
+				<xf:formrow label="{{ phrase('field_id') }}"
+					explain="{{ phrase('this_is_unique_identifier_for_field_cannot_be_changed') }}">
+					<span class="u-ltr">{$field.field_id}</span>
+				</xf:formrow>
+			<xf:else />
+				<xf:textboxrow name="field_id" id="ctrl_field_id" maxlength="{{ max_length($field, 'field_id') }}"
+					label="{{ phrase('field_id') }}"
+					explain="{{ phrase('this_is_unique_identifier_for_field_cannot_be_changed') }}"
+					dir="ltr" />
+			</xf:if>
+
+			<hr class="formRowSep" />
+
+			<xf:textboxrow name="title" value="{{ $field.exists() ? $field.MasterTitle.phrase_text : '' }}"
+				label="{{ phrase('title') }}" />
+                  <xf:comment>
+			<xf:textarearow name="description" value="{{ $field.exists() ? $field.MasterDescription.phrase_text : '' }}"
+				autosize="true"
+				label="{{ phrase('description') }}"
+				hint="{{ phrase('you_may_use_html') }}" />
+           </xf:comment>
+			<hr class="formRowSep" />
+
+			<xf:radiorow name="display_group" value="{$field.display_group}"
+				label="{{ phrase('display_location') }}">
+				<xf:options source="$displayGroups" />
+			</xf:radiorow>
+
+			<xf:macro template="display_order_macros" name="row"
+				arg-value="{$field.display_order}" />
+
+			{$displayOptions|raw}
+
+			<hr class="formRowSep" />
+
+			<xf:radiorow name="field_type" value="{$field.field_type}" listclass="listColumns"
+				label="{{ phrase('field_type') }}">
+
+				<xf:foreach loop="$fieldTypes"
+					key="$fieldType"
+					value="$fieldDef"
+					if="!$existingType || $fieldDef.compatible == $existingType.compatible">
+
+					<xf:option class="{$fieldDef.type}" value="{$fieldType}">{$fieldDef.label}</xf:option>
+				</xf:foreach>
+			</xf:radiorow>
+		</div>
+
+		<xf:if is="!$existingType || $existingType.options == 'text'">
+			<h3 class="block-formSectionHeader">
+				<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+					<span class="block-formSectionHeader-aligner">{{ phrase('options_for_text_fields') }}</span>
+				</span>
+			</h3>
+			<div class="block-body block-body--collapsible">
+				<xf:radiorow name="match_type" value="{$field.match_type}" listclass="_listColumns"
+					label="{{ phrase('value_match_requirements') }}"
+					hint="{{ phrase('empty_values_always_allowed') }}">
+
+					<xf:option value="none">{$matchTypes.none}</xf:option>
+					<xf:option value="number" data-hide="true"
+						label="{$matchTypes.number}">
+						<xf:dependent><xf:macro name="number_dependent" arg-field="{$field}" /></xf:dependent>
+					</xf:option>
+					<xf:option value="alphanumeric">{$matchTypes.alphanumeric}</xf:option>
+					<xf:option value="email">{$matchTypes.email}</xf:option>
+					<xf:option value="url">{$matchTypes.url}</xf:option>
+					<xf:option value="color">{$matchTypes.color}</xf:option>
+					<xf:option value="date" data-hide="true"
+						label="{$matchTypes.date}">
+						<xf:dependent><xf:macro name="date_dependent" arg-field="{$field}" /></xf:dependent>
+					</xf:option>
+					<xf:option value="regex" data-hide="true"
+						label="{$matchTypes.regex}">
+						<xf:dependent><xf:macro name="regex_dependent" arg-field="{$field}" /></xf:dependent>
+					</xf:option>
+					<xf:option value="callback"  data-hide="true"
+						label="{$matchTypes.callback}">
+						<xf:dependent>
+							<xf:macro template="helper_callback_fields" name="callback_fields"
+								arg-className="match_params[callback_class]"
+								arg-methodName="match_params[callback_method]"
+								arg-classValue="{$field.match_params.callback_class}"
+								arg-methodValue="{$field.match_params.callback_method}"
+								arg-size="23" />
+							<p class="formRow-explain">
+								<code>
+									<em>\XF\CustomField\Definition</em> $definition,
+									&amp;$value,
+									&amp;$error
+								</code>
+							</p>
+						</xf:dependent>
+					</xf:option>
+					<xf:option value="validator" data-hide="true"
+						label="{$matchTypes.validator}">
+						<xf:dependent><xf:macro name="validator_dependent" arg-field="{$field}" /></xf:dependent>
+					</xf:option>
+				</xf:radiorow>
+
+				<hr class="formRowSep" />
+
+				<xf:numberboxrow name="max_length" value="{$field.max_length}" min="0"
+					label="{{ phrase('maximum_length') }}" />
+			</div>
+		</xf:if>
+
+		<xf:if is="!$existingType || $existingType.options == 'choice'">
+			<h3 class="block-formSectionHeader">
+				<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+					<span class="block-formSectionHeader-aligner">{{ phrase('options_for_choice_fields') }}</span>
+				</span>
+			</h3>
+			<div class="block-body block-body--collapsible">
+				<xf:formrow rowtype="input"
+					label="{{ phrase('possible_choices') }}"
+					explain="{{ phrase('value_represents_internal_value_for_choice_text_is_displayed') }}">
+
+					<div class="inputGroup-container" data-xf-init="list-sorter" data-drag-handle=".dragHandle">
+						<xf:foreach loop="$field.field_choices" key="$choice" value="$text">
+							<div class="inputGroup">
+								<span class="inputGroup-text dragHandle"
+									aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+								<xf:textbox name="field_choice[]" value="{$choice}"
+									placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+									size="24" maxlength="25"
+									dir="ltr" />
+								<span class="inputGroup-splitter"></span>
+								<xf:textbox name="field_choice_text[]" value="{$text}"
+									placeholder="{{ phrase('text') }}" size="24" />
+							</div>
+						</xf:foreach>
+						<div class="inputGroup is-undraggable js-blockDragafter" data-xf-init="field-adder"
+							data-remove-class="is-undraggable js-blockDragafter">
+							<span class="inputGroup-text dragHandle"
+								aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+							<xf:textbox name="field_choice[]"
+								placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+								size="24" maxlength="25" data-i="0"
+								dir="ltr" />
+							<span class="inputGroup-splitter"></span>
+							<xf:textbox name="field_choice_text[]"
+								placeholder="{{ phrase('text') }}"
+								size="24" data-i="0" />
+						</div>
+					</div>
+				</xf:formrow>
+			</div>
+		</xf:if>
+
+		<h3 class="block-formSectionHeader">
+			<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+				<span class="block-formSectionHeader-aligner">{{ phrase('general_options') }}</span>
+			</span>
+		</h3>
+		<div class="block-body block-body--collapsible">
+			<xf:if is="$extraOptions is not empty">
+				{$extraOptions|raw}
+
+				<hr class="formRowSep" />
+			</xf:if>
+
+			<xf:codeeditorrow name="display_template" value="{$field.display_template}"
+				mode="html" data-line-wrapping="true"
+				class="codeEditor--autoSize"
+				label="{{ phrase('value_display_html') }}"
+				explain="{{ phrase('field_display_html_description', {'fieldId': $field.field_id}) }}" />
+
+			<xf:if is="$hasWrapperTemplate">
+				<xf:codeeditorrow name="wrapper_template" value="{$field.wrapper_template}"
+					mode="html" data-line-wrapping="true"
+					class="codeEditor--autoSize"
+					label="{{ phrase('wrapper_display_html') }}"
+					explain="{{ phrase('wrapper_template_html_description', {'fieldId': $field.field_id}) }}" />
+			</xf:if>
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>
+
+<xf:macro name="number_dependent" arg-field="!">
+	<div class="inputGroup inputGroup--numbers">
+		<xf:numberbox name="match_params[number_min]" value="{$field.match_params.number_min}" size="5"
+			class="input--numberNarrow"
+			placeholder="{{ phrase('minimum') }}" />
+		&nbsp;
+		<xf:numberbox name="match_params[number_max]" value="{$field.match_params.number_max}" size="5"
+			class="input--numberNarrow"
+			placeholder="{{ phrase('maximum') }}" />
+	</div>
+	<xf:checkbox>
+		<xf:option name="match_params[number_integer]" selected="{$field.match_params.number_integer}">{{ phrase('field_definition_require_whole_number') }}</xf:option>
+	</xf:checkbox>
+</xf:macro>
+
+<xf:macro name="regex_dependent" arg-field="!">
+	<xf:textbox name="match_params[regex]" value="{$field.match_params.regex}"
+		placeholder="{{ phrase('regular_expression') }}"
+		code="true" />
+</xf:macro>
+
+<xf:macro name="validator_dependent" arg-field="!">
+	<xf:textbox name="match_params[validator]" value="{$field.match_params.validator}"
+		placeholder="{{ phrase('validator') }}"
+		dir="ltr" />
+</xf:macro>
+
+<xf:macro name="date_dependent" arg-field="!">
+	<xf:radio name="match_params[date_constraint]" value="{{ $field.match_params.date_constraint ?: '' }}">
+		<xf:option value="past">{{ phrase('field_definition_require_past_date') }}</xf:option>
+		<xf:option value="future">{{ phrase('field_definition_require_future_date') }}</xf:option>
+		<xf:option value="">{{ phrase('any') }}</xf:option>
+	</xf:radio>
+</xf:macro>]]></template>
+  <template type="admin" title="bh_base_custom_field_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link($prefix . '/delete', $field) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link($prefix . '/edit', $field) }}">{$field.title|htmlspecialchars}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow icon="delete" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="bh_base_custom_field_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:pageaction>
+	<xf:button href="{{ link($prefix . '/add') }}" icon="add">{{ phrase('add_field') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$fieldsGrouped is not empty">
+	<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="user-fields" arg-class="block-outer-opposite" />
+		</div>
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$displayGroups" key="$displayGroupId" value="$displayGroup">
+						<xf:if is="{$fieldsGrouped.{$displayGroupId}} is not empty">
+							<tbody class="dataList-rowGroup">
+								<xf:datarow rowtype="subsection" rowclass="dataList-row--noHover">
+									<xf:cell colspan="2">{$displayGroup}</xf:cell>
+								</xf:datarow>
+								<xf:foreach loop="{$fieldsGrouped.{$displayGroupId}}" value="$field">
+									<xf:datarow
+										label="{$field.title|htmlspecialchars}"
+										href="{{ link($prefix . '/edit', $field) }}"
+										delete="{{ link($prefix . '/delete', $field) }}"
+										hash="{$field.field_id}">
+										<xf:hint>
+											{$fieldTypes.{$field.field_type}.label}
+										</xf:hint>
+									</xf:datarow>
+								</xf:foreach>
+							</tbody>
+						</xf:if>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($displayGroups) }}</span>
+			</div>
+		</div>
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="bh_brand_add_edit" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[<xf:if is="$brand.isInsert()">
+	<xf:title>{{ phrase('bh_add_brand') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bh_edit_brand:') }} {$brand.brand_title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$brand.isUpdate()">
+	<xf:button href="{{ link('bh_brand/delete', $brand) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:set var="$forumSelection">
+	<xf:macro template="bh_edit_macros" name="select_forums"
+			  arg-nodeIds="{$brand.node_ids}"
+			  arg-nodeTree="{$nodeTree}" />
+</xf:set>
+
+<xf:form action="{{ link('bh_brand/save', $brand) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:textboxrow name="brand_title" value="{$brand.brand_title}" maxlength="{{ max_length($brand, 'brand_title') }}" required="true" autofocus="true"
+				label="{{ phrase('bh_brand_title') }}" />
+			
+			<xf:editorrow name="description" value="{$brand.Description.description}" data-min-height="200"
+				label="{{ phrase('bh_description') }}" />
+
+			<xf:if is="$brand.Description">
+				<xf:hiddenval name="descriptionId">{$brand.Description.desc_id}</xf:hiddenval>
+			</xf:if>
+			
+			
+			{$forumSelection|raw}
+			
+			<xf:textboxrow name="forums_link" value="{$brand.forums_link}" maxlength="{{ max_length($brand, 'forums_link') }}"
+				label="{{ phrase('bh_brand_forums_link') }}" placeholder="Enter URL"/>
+			
+			<xf:textboxrow name="website_link" value="{$brand.website_link}" maxlength="{{ max_length($brand, 'website_link') }}" 
+				label="{{ phrase('bh_brand_website_link') }}"  placeholder="Enter URL" />
+			
+			<xf:textboxrow name="for_sale_link" value="{$brand.for_sale_link}" maxlength="{{ max_length($brand, 'for_sale_link') }}" 
+				label="{{ phrase('bh_brand_for_sale_link') }}"  placeholder="Enter URL" />
+			
+			<xf:textboxrow name="intro_link" value="{$brand.intro_link}" maxlength="{{ max_length($brand, 'intro_link') }}" 
+				label="{{ phrase('bh_brand_intro_link') }}"  placeholder="Enter URL" />
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="bh_brands" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('bh_brands') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('bh_brand/add') }}" icon="add">{{ phrase('bh_add_brand') }}</xf:button>
+</xf:pageaction>
+	
+	<div class="block-container">
+		<xf:if is="$brands is not empty">
+			<div class="block-body">
+				
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bh_brand_title') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_discussions') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_views') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_ratings') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_rating_avg') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_reviews') }}</xf:cell>
+					
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$brands" value="$brand">
+						<xf:datarow>
+							<xf:cell>{$brand.brand_title}</xf:cell>
+							<xf:cell>{$brand.discussion_count}</xf:cell>
+							<xf:cell>{$brand.view_count}</xf:cell>
+							<xf:cell>{$brand.rating_count}</xf:cell>
+							<xf:cell>{$brand.rating_avg}</xf:cell>
+							<xf:cell>{$brand.review_count}</xf:cell>
+							
+							<xf:action href="{{ link('bh_brand/edit', $brand) }}" >{{ phrase('edit') }}</xf:action>
+							<xf:delete href="{{ link('bh_brand/delete', $brand) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($brands, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="bh_brand" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />]]></template>
+  <template type="admin" title="bh_categories" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('bh_brand_categories') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('bh_category/add') }}" icon="add">{{ phrase('bh_add_category') }}</xf:button>
+</xf:pageaction>
+	
+	<div class="block-container">
+		<xf:if is="$brandCategories is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bh_category_title') }}</xf:cell>
+					
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$brandCategories" value="$brandCategory">
+						<xf:datarow>
+							<xf:cell>{$brandCategory.category_title}</xf:cell>
+							<xf:action href="{{ link('bh_category/edit', $brandCategory) }}" >{{ phrase('edit') }}</xf:action>
+							<xf:delete href="{{ link('bh_category/delete', $brandCategory) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($brandCategories, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="bh_category" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />]]></template>
+  <template type="admin" title="bh_category_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$brandCategory.isInsert()">
+	<xf:title>{{ phrase('bh_add_category') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bh_edit_category:') }} {$brandCategory.category_title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$brandCategory.isUpdate()">
+	<xf:button href="{{ link('bh_category/delete', $brandCategory) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('bh_category/save', $brandCategory) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:textboxrow name="category_title" value="{$brandCategory.category_title}" maxlength="{{ max_length($brandCategory, 'category_title') }}" required="true" autofocus="true"
+				label="{{ phrase('bh_category_title') }}" />
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="bh_edit_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="select_forums"
+	arg-nodeIds="!"
+	arg-nodeTree="!"
+	arg-withRow="1"
+	arg-selectName="node_ids">
+
+	<xf:set var="$inner">
+		<ul class="inputList">
+			<li><xf:select name="{$selectName}[]" value="{$nodeIds}" size="7" multiple="multiple" id="js-applicableForums">
+
+				<xf:option value="" selected="!{$nodeIds}">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+					<xf:option value="{$treeEntry.record.node_id}"
+						disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}"
+						label="{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}" />
+				</xf:foreach>
+
+			</xf:select></li>
+
+			<xf:checkbox>
+				<xf:option label="{{ phrase('select_all') }}" id="js-selectAllForums" />
+			</xf:checkbox>
+		</ul>
+	</xf:set>
+
+	<xf:if is="$withRow">
+		<xf:formrow rowtype="input" label="{{ phrase('applicable_forums') }}">
+			{$inner|raw}
+		</xf:formrow>
+	<xf:else />
+		{$inner|raw}
+	</xf:if>
+
+	<xf:js>
+		$(function()
+		{
+			$('#js-selectAllForums').click(function(e)
+			{
+				$('#js-applicableForums').find('option:enabled:not([value=""])').prop('selected', this.checked);
+			});
+		});
+	</xf:js>
+</xf:macro>]]></template>
+  <template type="admin" title="bh_item_add_edit" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[<xf:if is="$item.isInsert()">
+	<xf:title>{{ phrase('bh_add_item') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bh_edit_item:') }} {$item.item_title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$item.isUpdate()">
+	<xf:button href="{{ link('bh_item/delete', $item) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+
+<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+<xf:form action="{{ link('bh_item/save', $item) }}"  ajax="true" data-xf-init="attachment-manager" >
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:hiddenval name="attachment_time">{$attachment_time}</xf:hiddenval>
+		<xf:textboxrow name="item_title" value="{$item.item_title}" maxlength="{{ max_length($item, 'brand_title') }}" required="true" autofocus="true"
+				label="{{ phrase('bh_item_title') }}" />	
+
+			<xf:selectrow name="brand_id" value="{$item.brand_id}" label="{{ phrase('bh_item_make') }}" required="true">
+				<xf:option value="" selected="!{$nodeIds}">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$brands" value="$brand">
+					<xf:option value="{$brand.brand_id}" label="{$brand.brand_title}" />
+				</xf:foreach>
+			</xf:selectrow>
+			
+			<xf:selectrow name="category_id" value="{$item.category_id}" label="{{ phrase('bh_category') }}" required="true">
+				<xf:option value="" selected="!{$nodeIds}">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$brandCategories" value="$brandCategory">
+					<xf:option value="{$brandCategory.category_id}" label="{$brandCategory.category_title}" />
+				</xf:foreach>
+			</xf:selectrow>
+			
+		<div class="js-inlineNewPostFields">
+			
+		<xf:editorrow name="description" value="{$item.Description.description}" 
+				label="{{ phrase('bh_description') }}" />
+		
+			
+	<xf:formrow>
+		<xf:macro template="helper_attachment_item" name="upload_block"
+	    arg-attachmentData="{$attachmentData}" />
+			</xf:formrow>
+			
+		
+			<xf:macro template="item_custom_fields_macros" name="custom_fields_edit"
+			arg-type="bhItemfield"
+			arg-set="{$item.custom_fields}"
+			arg-namePrefix="item[custom_fields]"
+			arg-rowType="noGutter"
+			arg-rowClass="mediaItem-input"
+			
+			arg-onlyInclude="{$category.field_cache}" />
+			
+		
+		</div>
+	</div>
+		<xf:submitrow sticky="true" icon="save" />
+			
+	</div>
+
+</xf:form>]]></template>
+  <template type="admin" title="bh_item_add_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="add_item"  arg-attachmentData="!" arg-item="!">
+
+	<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+<xf:pageaction if="{$item}">
+	<xf:button href="{{ link('item-list/delete', $item) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+	
+<xf:if is="{{$item}}">
+		<xf:title>{{$item.item_title}}</xf:title>
+<xf:else />
+  		<xf:title>{{phrase('bh_add_item')}}</xf:title>
+</xf:if>
+	
+<xf:form action="{{ link('item-list/create', $item) }}"  ajax="true" data-xf-init="attachment-manager" >
+
+	<div class="block-container">
+		<div class="block-body">
+			
+		<xf:textboxrow name="item_title" value="{$item.item_title}" maxlength="{{ max_length($item, 'brand_title') }}" required="true" autofocus="true"
+				label="{{ phrase('bh_item_title') }}" />
+			
+	  <xf:textboxrow name="make" value="{$item.make}" maxlength="{{ max_length($item, 'make') }}" required="true" autofocus="true"
+				label="{{ phrase('bh_item_make') }}" />
+			
+	<xf:textboxrow name="model" value="{$item.model}" maxlength="{{ max_length($item, 'model') }}" required="true" autofocus="true"
+				label="{{ phrase('bh_item_model') }}" />
+			
+
+	<xf:selectrow name="category_id" value="{$brand.category_id}" label="{{ phrase('bh_category') }}">
+				<xf:option value="" selected="!{$nodeIds}">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$brandCategories" value="$brandCategory">
+					<xf:option value="{$brandCategory.category_id}" label="{$brandCategory.category_title}" />
+				</xf:foreach>
+			</xf:selectrow>
+			
+		<div class="js-inlineNewPostFields">
+			
+		<xf:editorrow name="description" value="{$description}" 
+				label="{{ phrase('bh_description') }}" />
+		
+			
+	<xf:formrow>
+		<xf:macro template="helper_attachment_item" name="upload_block"
+	    arg-attachmentData="{$attachmentData}" />
+			</xf:formrow>
+			
+		
+			
+			<xf:macro template="item_custom_fields_macros" name="custom_fields_edit"
+			arg-type="bhItemfield"
+			arg-set="{$item.custom_fields}"
+			arg-namePrefix="item[custom_fields]"
+			arg-rowType="noGutter"
+			arg-rowClass="mediaItem-input"
+			
+			arg-onlyInclude="{$category.field_cache}" />
+			
+		
+			</div>
+				<xf:submitrow sticky="true" icon="save" />
+			</div>
+		</div>
+
+</xf:form>
+	</xf:macro>]]></template>
+  <template type="admin" title="bh_items" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('bh_items') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('bh_item/add') }}" icon="add">{{ phrase('bh_add_items') }}</xf:button>
+</xf:pageaction>
+	
+	<div class="block-container">
+		<xf:if is="$items is not empty">
+			<div class="block-body">
+				
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bh_item_title') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_category') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_discussions') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_views') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_ratings') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_rating_avg') }}</xf:cell>
+						<xf:cell>{{ phrase('bh_reviews') }}</xf:cell>
+					
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$items" value="$item">
+						<xf:datarow>
+							<xf:cell>{$item.item_title}</xf:cell>
+							<xf:cell>{$item.Category.category_title}</xf:cell>
+							<xf:cell>{$item.discussion_count}</xf:cell>
+							<xf:cell>{$item.view_count}</xf:cell>
+							<xf:cell>{$item.rating_count}</xf:cell>
+							<xf:cell>{$item.rating_avg}</xf:cell>
+							<xf:cell>{$item.review_count}</xf:cell>
+							
+							<xf:action href="{{ link('bh_item/edit', $item) }}" >{{ phrase('edit') }}</xf:action>
+							<xf:delete href="{{ link('bh_item/delete', $item) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($items, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="bh_item" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />]]></template>
+  <template type="admin" title="helper_attachment_item" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="upload_link" arg-attachmentData="!">
+
+<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+<xf:button  href="{{ link('attachments/upload', null, {'type': 'bh_item', 'context': $attachmentData.context, 'hash': $attachmentData.hash}) }}"
+	 class="button--link js-attachmentUpload" icon="attach"
+	data-accept=".{$attachmentData.constraints.extensions|join(',.')}" />
+						
+	<xf:hiddenval name="attachment_hash">{$attachmentData.hash}</xf:hiddenval>
+								<xf:hiddenval name="attachment_hash_combined">{{ {
+									'type': 'bh_item',
+									'context': $attachmentData.context,
+									'hash': $attachmentData.hash
+								}|json }}</xf:hiddenval>
+</xf:macro>
+
+<xf:macro name="upload_link_from_data" arg-attachmentData="!">
+	<xf:macro name="upload_link"  arg-attachmentData="{$attachmentData}" />
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_files_list" arg-attachments="{{ [] }}" arg-class="">
+	<xf:css src="attachments.less" />
+	<div class="attachmentUploads js-attachmentUploads {$class} {{ $attachments is not empty ? 'is-active' : '' }}">
+		<div class="hScroller" data-xf-init="h-scroller">
+			<div class="hScroller-scroll">
+				<ul class="attachUploadList js-attachmentFiles">
+				<xf:foreach loop="$attachments" value="$attachment">
+					<xf:macro name="uploaded_file" arg-attachment="{$attachment}" />
+				</xf:foreach>
+				</ul>
+			</div>
+		</div>
+
+		<div class="attachmentUploads-banner js-attachmentInsertMultiRow u-hidden">
+			<xf:button class="button--link js-attachmentSelect" data-toggle="{{ phrase('button.cancel') }}">
+				{{ phrase('insert_multiple...') }}
+			</xf:button>
+			<ul class="attachmentUploads-selectActions js-attachmentSelectActions">
+				<li>
+					<span class="button button--link selectAll">
+						<span class="button-text">
+							<xf:checkbox standalone="true">
+								<xf:option check-all="< .attachmentUploads" label="{{ phrase('select_all') }}" />
+							</xf:checkbox>
+						</span>
+					</span>
+				</li>
+				<li class="js-attachmentSelectInsertActions">
+					<span class="insert-label">{{ phrase('insert:') }}</span>
+					<span class="buttonGroup">
+						<xf:button class="button--link js-attachmentSelectAction" data-action="thumbnail">
+							{{ phrase('thumbnail') }}
+						</xf:button>
+						<xf:button class="button--link js-attachmentSelectAction" data-action="full">
+							{{ phrase('full_image') }}
+						</xf:button>
+					</span>
+				</li>
+				<li>
+					<xf:button class="button--link button--iconOnly js-attachmentSelectAction" fa="fa-trash-alt" data-action="delete">
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</xf:button>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<xf:macro name="uploaded_file_template" />
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_file" arg-attachment="!" arg-noJsFallback="{{ false }}">
+	<li class="js-attachmentFile file" data-attachment-id="{$attachment.attachment_id}">
+		<xf:if is="$attachment.has_thumbnail">
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<img src="{{ base_url($attachment.thumbnail_url) }}" class="js-attachmentThumb" alt="{$attachment.filename}"
+					width="{$attachment.thumbnail_width}" height="{$attachment.thumbnail_height}" loading="lazy" />
+			</a>
+		<xf:elseif is="$attachment.is_video" />
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<video data-xf-init="video-init">
+					<source src="{$attachment.direct_url}" />
+				</video>
+			</a>
+		<xf:else />
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<span class="file-typeIcon">
+					<xf:fa icon="{$attachment.icon}" />
+				</span>
+			</a>
+		</xf:if>
+
+	
+		<div class="file-content">
+
+			<xf:if is="!$noJsFallback">
+				<xf:if is="$attachment.has_thumbnail">
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink"
+							data-xf-click="toggle"
+							data-target="< .js-attachmentInsert"
+							role="button"
+							tabindex="0">
+							{{ phrase('insert...') }}
+						</a>
+						<div class="file-menuOptions">
+							<a class="js-attachmentAction" data-action="thumbnail" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('thumbnail') }}</a>
+							<a class="js-attachmentAction" data-action="full" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('full_image') }}</a>
+						</div>
+					</div>
+				<xf:elseif is="$attachment.is_video" />
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink js-attachmentAction" data-action="full" data-type="video" role="button" tabindex="0">
+							{{ phrase('insert') }}
+						</a>
+					</div>
+				<xf:elseif is="$attachment.is_audio" />
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink js-attachmentAction" data-action="full" data-type="audio" role="button" tabindex="0">
+							{{ phrase('insert') }}
+						</a>
+					</div>
+				</xf:if>
+
+				<div class="file-checkbox">
+					<xf:checkbox standalone="true">
+						<xf:option value="" />
+					</xf:checkbox>
+				</div>
+			</xf:if>
+
+			<span class="file-delete">
+				<xf:if is="$noJsFallback">
+					<xf:button type="submit" class="button--small button--link" name="delete" value="{$attachment.attachment_id}">
+						<xf:fa icon="fa-trash-alt" />
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</xf:button>
+				<xf:else />
+					<a class="file-deleteLink js-attachmentAction"
+						data-action="delete"
+						data-type="{$attachment.type_grouping}"
+						role="button"
+						tabindex="0">
+						<xf:fa icon="fa-trash-alt" />
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</a>
+				</xf:if>
+			</span>
+
+			<a class="file-info"
+				href="{$attachment.direct_url}"
+				target="_blank">
+
+				<span class="file-name">{$attachment.filename}</span>
+
+				<div class="file-meta">
+					<xf:if is="$attachment.Data.width">{$attachment.Data.width} x {$attachment.Data.height} &middot; </xf:if>
+					{$attachment.file_size|file_size}
+				</div>
+			</a>
+		</div>
+	</li>
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_file_template">
+	<script type="text/template" class="js-attachmentUploadTemplate">
+		<li class="file js-attachmentFile" {{ mustache('#attachment_id', 'data-attachment-id="{{attachment_id}}"') }}>
+			<xf:mustache name="#uploading">
+				<div class="file-preview">
+					<div class="file-progress js-attachmentProgress"></div>
+					<span class="file-error js-attachmentError"></span>
+				</div>
+			</xf:mustache>
+			<xf:mustache name="^uploading">
+				<xf:mustache name="#thumbnail_url">
+					<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+						<img src="{{ mustache('thumbnail_url') }}" class="js-attachmentThumb" alt="{{ mustache('filename') }}" />
+					</a>
+				</xf:mustache>
+				<xf:mustache name="^thumbnail_url">
+					<xf:mustache name="#is_video">
+						<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+							<video data-xf-init="video-init">
+								<source src="{{ mustache('link') }}" />
+							</video>
+						</a>
+					</xf:mustache>
+					<xf:mustache name="^is_video">
+						<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+							<span class="file-typeIcon">
+								<i class="fa--xf fa{{ fa_weight() }} {{ mustache('icon') }}" aria-hidden="true"></i>
+							</span>
+						</a>
+					</xf:mustache>
+				</xf:mustache>
+			</xf:mustache>
+
+			<div class="file-content">
+
+				<xf:mustache name="#thumbnail_url">
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink"
+							data-xf-click="toggle"
+							data-target="< .js-attachmentInsert"
+							role="button"
+							tabindex="0">
+							{{ phrase('insert...') }}
+						</a>
+						<div class="file-menuOptions">
+							<a class="js-attachmentAction" data-action="thumbnail" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('thumbnail') }}</a>
+							<a class="js-attachmentAction" data-action="full" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('full_image') }}</a>
+						</div>
+					</div>
+				</xf:mustache>
+				<xf:mustache name="^thumbnail_url">
+					<xf:mustache name="#is_video">
+						<div class="file-insert js-attachmentInsert">
+							<a class="file-insertLink js-attachmentAction" data-action="full" data-type="video" role="button" tabindex="0">
+								{{ phrase('insert') }}
+							</a>
+						</div>
+					</xf:mustache>
+					<xf:mustache name="#is_audio">
+						<div class="file-insert js-attachmentInsert">
+							<a class="file-insertLink js-attachmentAction" data-action="full" data-type="audio" role="button" tabindex="0">
+								{{ phrase('insert') }}
+							</a>
+						</div>
+					</xf:mustache>
+				</xf:mustache>
+
+				<div class="file-checkbox">
+					<xf:checkbox standalone="true">
+						<xf:option value="" />
+					</xf:checkbox>
+				</div>
+
+				<span class="file-delete">
+					<xf:mustache name="#uploading">
+						<a class="file-deleteLink js-attachmentAction"
+							data-action="cancel"
+							role="button"
+							tabindex="0">
+							<xf:fa icon="fa-trash-alt" />
+							<span class="u-srOnly">{{ phrase('button.cancel') }}</span>
+						</a>
+					</xf:mustache>
+					<xf:mustache name="^uploading">
+						<a class="file-deleteLink js-attachmentAction"
+							data-action="delete"
+							data-type="{{ mustache('type_grouping') }}"
+							role="button"
+							tabindex="0">
+							<xf:fa icon="fa-trash-alt" />
+							<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+						</a>
+					</xf:mustache>
+				</span>
+
+				<a class="file-info" href="{{ mustache('link') }}" target="_blank">
+					<span class="file-name">{{ mustache('filename') }}</span>
+
+					<div class="file-meta">
+						<xf:mustache name="#thumbnail_url">{{ mustache('width') }} x {{ mustache('height') }} &middot; </xf:mustache>
+						{{ mustache('file_size_printable') }}
+					</div>
+				</a>
+
+			</div>
+		</li>
+	</script>
+</xf:macro>
+
+
+
+
+<xf:macro name="upload_block" arg-attachmentData="!">
+
+	<xf:macro name="uploaded_files_list" arg-attachments="{$attachmentData.attachments}" />
+
+	<xf:macro name="upload_link_from_data" arg-attachmentData="{$attachmentData}" />
+</xf:macro>]]></template>
+  <template type="admin" title="item_custom_fields_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="custom_fields_view"
+	arg-type="!"
+	arg-group="!"
+	arg-set="!"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-wrapperClass=""
+	arg-valueClass="pairs pairs--columns pairs--fixedSmall pairs--customField">
+
+	<xf:if contentcheck="true">
+		<div class="{$wrapperClass}">
+		<xf:contentcheck>
+			<xf:macro name="custom_fields_values"
+				arg-type="{$type}"
+				arg-group="{$group}"
+				arg-set="{$set}"
+				arg-onlyInclude="{$onlyInclude}"
+				arg-additionalFilters="{$additionalFilters}"
+				arg-valueClass="{$valueClass}" />
+		</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="custom_fields_values"
+	arg-type="!"
+	arg-group="!"
+	arg-set="!"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-valueClass="pairs pairs--columns pairs--fixedSmall pairs--customField">
+
+	<xf:foreach loop="$xf.app.getCustomFields({$type}, {$group}, {$onlyInclude}, {$additionalFilters})" key="$fieldId" value="$fieldDefinition">
+		<xf:if is="$fieldDefinition.hasValue({$set.{$fieldDefinition.field_id}})">
+			
+			<xf:set var="$fieldValue"><xf:macro name="custom_field_value"
+				arg-definition="{$fieldDefinition}"
+				arg-value="{$set.{$fieldDefinition.field_id}}" /></xf:set>
+
+			<xf:if is="$fieldDefinition.wrapper_template">
+				{$fieldDefinition.getFormattedOutput($fieldValue)|raw}
+			<xf:else />
+				<dl class="{$valueClass}" data-field="{$fieldId}">
+					<dt>{$fieldDefinition.title}</dt>
+					<dd>{$fieldValue}</dd>
+				</dl>
+			</xf:if>
+		</xf:if>
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="custom_field_value" arg-definition="!" arg-value="!">
+
+	<xf:if is="$definition.field_type == 'stars'">
+		<xf:macro template="rating_macros" name="stars" arg-rating="{$value}" />
+	<xf:else />
+		<xf:if is="$definition.match_type == 'date'">
+			<xf:macro name="custom_field_value_date" arg-date="{$value}" />
+		<xf:elseif is="$definition.match_type == 'color'" />
+			<xf:macro name="custom_field_value_color" arg-color="{$value}" />
+		<xf:else />
+			{$definition.getFormattedValue($value)|raw}
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="custom_field_value_date"
+	arg-date="!">
+
+	{{ date(date_from_format('Y-m-d', $date)) }}
+</xf:macro>
+
+<xf:macro name="custom_field_value_color"
+	arg-color="!">
+
+	<span class="colorChip" data-xf-init="tooltip" title="{$color}">
+		<span class="colorChip-inner" style="background-color: {$color}">
+			<span class="colorChip-value">{$color}</span>
+		</span>
+	</span>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit"
+	arg-type="!"
+	arg-group="{{ null }}"
+	arg-set="!"
+	arg-editMode="user"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-rowType=""
+	arg-rowClass=""
+	arg-namePrefix="custom_fields"
+	arg-requiredOnly="{{ false }}">
+<xf:set var="$checkLabel" value="1"/>
+
+	<xf:foreach loop="$xf.app.getCustomFieldsForEdit({$type}, {$set}, {$editMode}, {$group}, {$onlyInclude}, {$additionalFilters})" key="$fieldId" value="$fieldDefinition">
+		<xf:if is="!$requiredOnly OR ($requiredOnly AND $fieldDefinition.required)">
+			<xf:set var="$controlId" value="{{
+				in_array($fieldDefinition.field_type, ['textbox', 'textarea', 'select', 'multiselect', 'date', 'stars', 'color'])
+				? unique_id()
+				: '' }}" />
+			<xf:set var="$labelId" value="{{
+				in_array($fieldDefinition.field_type, ['radio', 'checkbox'])
+				? unique_id()
+				: '' }}" />
+
+		
+		
+			<xf:if is ="$checkLabel=='1'">
+			<xf:set var="$label" value="{{phrase('custom_fields') }}"/>
+				<xf:else />
+				<xf:set var="$label" value=" "/>
+			</xf:if>
+			
+			
+			
+			<xf:checkboxrow hideempty="true" rowtype="{$rowType}" label="{{$label}}">
+		
+					<xf:option  data-hide="true"
+					 label="{$fieldDefinition.title}" checked="{{$set.{{$fieldDefinition.field_id}} ? true : false }}" >
+					
+		<xf:dependent>
+	
+			<xf:set var="$checkLabel" value="2"/>
+	
+			<xf:formrow
+				explain="{$fieldDefinition.description}"
+				hint="{{ $fieldDefinition.isRequired($editMode) ? phrase('required') : '' }}"
+				rowtype="{$rowType} customField {{ in_array($fieldDefinition.field_type, ['textbox', 'textarea', 'bbcode', 'select']) ? 'input' : '' }}"
+				rowclass="{}"
+				labelid="{$labelId}"
+				controlid="{$controlId}"
+				data-field="{$fieldDefinition.field_id}"label="{$fieldDefinition.title}">
+
+				<xf:macro name="custom_fields_edit_{$fieldDefinition.field_type}"
+					arg-set="{$set}"
+					arg-definition="{$fieldDefinition}"
+					arg-editMode="{$editMode}"
+					arg-refId="{{ $controlId ?: $labelId }}"
+					arg-namePrefix="{$namePrefix}" />
+			        
+			</xf:formrow>
+				</xf:dependent>
+				</xf:option>
+		</xf:checkboxrow>
+		</xf:if>
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_groups"
+	arg-type="!"
+	arg-groups="!"
+	arg-set="!"
+	arg-editMode="user"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-rowType=""
+	arg-namePrefix="custom_fields"
+	arg-requiredOnly="">
+
+	<xf:foreach loop="$groups" value="$group">
+		<xf:macro name="custom_fields_edit"
+			arg-type="{$type}"
+			arg-group="{$group}"
+			arg-set="{$set}"
+			arg-editMode="{$editMode}"
+			arg-onlyInclude="{$onlyInclude}"
+			arg-additionalFilters="{$additionalFilters}"
+			arg-rowType="{$rowType}"
+			arg-namePrefix="{$namePrefix}"
+			arg-requiredOnly="{$requiredOnly}" />
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_textbox" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:if is="$definition.match_type == 'date'">
+
+		<xf:dateinput name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+			data-field="{$definition.field_id}"
+			maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+			required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+			id="{$refId}"
+			class="field_{$definition.field_id}" />
+
+	<xf:elseif is="$definition.match_type == 'color'" />
+
+		<xf:macro template="color_picker_macros" name="color_picker"
+			arg-name="{$namePrefix}[{$definition.field_id}]"
+			arg-value="{$set.{$definition.field_id}}"
+			arg-mapName=""
+			arg-row="{{ false }}"
+			arg-controlId="{$refId}"
+			arg-required="{$definition.isRequired($editMode)}" />
+
+	<xf:elseif is="$definition.match_type == 'number'" />
+
+		<xf:set var="$step" value="1" />
+
+		<xf:if is="$definition.match_params.number_integer">
+			<xf:if is="$definition.match_params.number_min >= 0">
+				<xf:set var="$pattern" value="\d*" />
+			</xf:if>
+		<xf:else />
+			<xf:set var="$step" value="any" />
+		</xf:if>
+		<xf:if is="$definition.match_params.number_min !== ''">
+			<xf:set var="$min" value="{$definition.match_params.number_min}" />
+		</xf:if>
+		<xf:if is="$definition.match_params.number_max !== ''">
+			<xf:set var="$max" value="{$definition.match_params.number_max}" />
+		</xf:if>
+
+		<xf:numberbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+			maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+			pattern="{$pattern}"
+			default=""
+			min="{$min}"
+			max="{$max}"
+			step="{$step}"
+			required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+			id="{$refId}"
+			class="field_{$definition.field_id}" />
+
+	<xf:else />
+
+		<xf:if is="in_array($definition.match_type, ['regex', 'alphanumeric'])">
+
+			<xf:set var="$type" value="text" />
+			<xf:set var="$pattern" value="{{ $definition.match_type == 'regex' ? $definition.match_params.regex : '\w+' }}" />
+			<xf:set var="$title">{{ phrase('please_enter_value_that_matches_required_format') }}</xf:set>
+
+		<xf:elseif is="in_array($definition.match_type, ['date', 'email', 'url', 'color'])" />
+
+			<xf:set var="$type" value="{$definition.match_type}" />
+
+		<xf:else />
+
+			<xf:set var="$type" value="text" />
+
+		</xf:if>
+
+		<xf:textbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+			type="{$type}"
+			maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+			pattern="{$pattern}"
+			title="{$title}"
+			min="{$min}"
+			max="{$max}"
+			step="{$step}"
+			required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+			id="{$refId}"
+			class="field_{$definition.field_id}" />
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_textarea" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:textarea name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+		maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+		autosize="true"
+		required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+		id="{$refId}"
+		class="field_{$definition.field_id}" />
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_bbcode" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:editor name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+		previewable="0"
+		data-min-height="80"
+		data-attachment-target="false"
+		class="field_{$definition.field_id}" />
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_select" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-multi="" arg-namePrefix="custom_fields">
+
+	<xf:select name="{$namePrefix}[{$definition.field_id}]"
+		value="{{ $set.{$definition.field_id} === null ? '' : {$set.{$definition.field_id}} }}"
+		multiple="{$multi}"
+		id="{$refId}"
+		class="field_{$definition.field_id}">
+			<xf:option value="" />
+			<xf:options source="$definition.field_choices" />
+	</xf:select>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_radio" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:radio name="{$namePrefix}[{$definition.field_id}]"
+		value="{{ $set.{$definition.field_id} === null ? '' : {$set.{$definition.field_id}} }}"
+		class="field_{$definition.field_id}"
+		role="radiogroup" aria-labelledby="{$refId}"
+		listclass="listColumns">
+			<xf:if is="!$definition.isRequired($editMode)">
+				<xf:option value="">{{ phrase('no_selection') }}</xf:option>
+			</xf:if>
+			<xf:foreach loop="$definition.field_choices" key="$value" value="$label">
+				<xf:option value="{$value}" required="{{ $definition.isRequired($editMode) ? 'required' : '' }}">{$label}</xf:option>
+			</xf:foreach>
+	</xf:radio>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_checkbox" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:checkbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+		required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+		role="group" aria-labelledby="{$refId}"
+		listclass="field_{$definition.field_id} listColumns">
+			<xf:options source="$definition.field_choices" />
+	</xf:checkbox>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_multiselect" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:macro name="custom_fields_edit_select"
+		arg-set="{$set}"
+		arg-definition="{$definition}"
+		arg-editMode="{$editMode}"
+		arg-refId="{$refId}"
+		arg-multi="1"
+		arg-namePrefix="{$namePrefix}" />
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_stars" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+	<xf:macro template="rating_macros" name="rating"
+		arg-name="{$namePrefix}[{$definition.field_id}]"
+		arg-controlId="{$refId}"
+		arg-currentRating="{$set.{$definition.field_id}}"
+		arg-deselectable="{{ $definition.isRequired($editMode) ? 'false' : 'true' }}"
+		arg-row="{{ false }}" />
+</xf:macro>]]></template>
+  <template type="admin" title="rating_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="stars" arg-rating="!" arg-class="">
+	<xf:css src="rating_stars.less" />
+
+	<span class="ratingStars {$class}" title="{{ phrase('x_stars', {'rating': $rating|number(2)})|for_attr }}">
+		<span class="ratingStars-star{{ $rating >= 1 ? ' ratingStars-star--full' : '' }}{{ ($rating >= 0.5 AND $rating < 1) ? ' ratingStars-star--half' : '' }}"></span>
+		<span class="ratingStars-star{{ $rating >= 2 ? ' ratingStars-star--full' : '' }}{{ ($rating >= 1.5 AND $rating < 2) ? ' ratingStars-star--half' : '' }}"></span>
+		<span class="ratingStars-star{{ $rating >= 3 ? ' ratingStars-star--full' : '' }}{{ ($rating >= 2.5 AND $rating < 3) ? ' ratingStars-star--half' : '' }}"></span>
+		<span class="ratingStars-star{{ $rating >= 4 ? ' ratingStars-star--full' : '' }}{{ ($rating >= 3.5 AND $rating < 4) ? ' ratingStars-star--half' : '' }}"></span>
+		<span class="ratingStars-star{{ $rating >= 5 ? ' ratingStars-star--full' : '' }}{{ ($rating >= 4.5 AND $rating < 5) ? ' ratingStars-star--half' : '' }}"></span>
+		<span class="u-srOnly">{{ phrase('x_stars', {'rating': $rating|number(2)}) }}</span>
+	</span>
+</xf:macro>
+
+<xf:macro name="stars_text" arg-rating="!" arg-count="{{ null }}" arg-text="{{ null }}" arg-rowClass="" arg-starsClass="">
+	<span class="ratingStarsRow {$rowClass}">
+		<xf:macro template="rating_macros" name="stars"
+			arg-rating="{$rating}"
+			arg-class="{$starsClass}" />
+		<span class="ratingStarsRow-text">
+			<xf:if is="$text is not empty">{$text}<xf:else />{{ phrase('x_ratings', {'count': $count|number}) }}</xf:if>
+		</span>
+	</span>
+</xf:macro>
+
+<xf:macro name="setup">
+	<xf:css src="rating_stars.less" />
+	<xf:js prod="xf/rating-compiled.js" dev="vendor/barrating/jquery.barrating.js, xf/rating.js" />
+</xf:macro>
+
+<xf:macro name="rating"
+	arg-row="{{ true }}"
+	arg-rowType="{$rowType}"
+	arg-rowLabel="{{ phrase('rating') }}"
+	arg-rowHint=""
+	arg-rowExplain=""
+	arg-name="rating"
+	arg-currentRating="0"
+	arg-ratingHref=""
+	arg-controlId=""
+	arg-readOnly="false"
+	arg-deselectable="false"
+	arg-showSelected="true"
+	arg-range="{{ {
+		1: phrase('terrible'),
+		2: phrase('poor'),
+		3: phrase('average'),
+		4: phrase('good'),
+		5: phrase('excellent')
+	} }}">
+
+	<xf:macro name="setup" />
+
+	<xf:if is="$row AND !$controlId">
+		<xf:set var="$controlId" value="{{ unique_id() }}" />
+	</xf:if>
+
+	<xf:set var="$inner">
+		<xf:select name="{$name}"
+			class="br-select"
+			id="{$controlId}"
+			data-xf-init="rating"
+			data-initial-rating="{$currentRating}"
+			data-rating-href="{$ratingHref}"
+			data-readonly="{$readOnly}"
+			data-deselectable="{$deselectable}"
+			data-show-selected="{$showSelected}">
+
+			<xf:if is="$deselectable">
+				<xf:option value="" />
+			</xf:if>
+			<xf:foreach loop="$range" key="$value" value="$label">
+				<xf:option value="{$value}">{$label}</xf:option>
+			</xf:foreach>
+		</xf:select>
+	</xf:set>
+
+	<xf:if is="$row">
+		<xf:formrow class="u-jsOnly" rowtype="{$rowType}"
+			label="{$rowLabel}"
+			controlid="{$controlId}"
+			hint="{$rowHint|raw}"
+			explain="{$rowExplain|raw}">
+
+			{$inner|raw}
+		</xf:formrow>
+	<xf:else />
+		{$inner|raw}
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="alert_bh_item_display" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[{{ phrase('data_are_added_to', {
+    'title': $alert.extra_data.title,
+    'link': $alert.extra_data.link,
+     'detail': $alert.extra_data.detail
+  }) }}]]></template>
+  <template type="public" title="alert_bh_item_reaction" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[{{ phrase('bh_react_to_the_item', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'reaction': alert_reaction($extra.reaction_id)|preescaped,
+	'posterParams': 'href="' . link('bh_brands/item', $content) . '" class="fauxBlockLink-blockLink"',
+	'title': prefix('thread', $content.item_title).$content.item_title
+}) }}]]></template>
+  <template type="public" title="alert_bh_ownerpage_display" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[{{ phrase('data_are_added_to_page', {
+    'title': $alert.extra_data.title,
+    'link': $alert.extra_data.link,
+     'detail': $alert.extra_data.detail
+  }) }}]]></template>
+  <template type="public" title="alert_bh_ownerpage_reaction" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[{{ phrase('bh_react_to_the_page', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'reaction': alert_reaction($extra.reaction_id)|preescaped,
+	'posterParams': 'href="' . link('bh_item/ownerpage/page', $content) . '" class="fauxBlockLink-blockLink"',
+	'title': prefix('thread', $content.item_title).$content.Item.item_title
+}) }}]]></template>
+  <template type="public" title="bh_ad_macros" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[<xf:macro name="sideBar_brand" >
+	<xf:sidebar key="infoSidebar">
+		<div class="block">
+			<div class="block-container">
+				<div class="sideBar_ad">
+					[ad placeholder]
+				</div>
+			</div>
+		</div>
+	</xf:sidebar>
+</xf:macro>
+
+<xf:macro name="sideBar_itemlist" >
+	<xf:sidebar key="infoSidebar">
+		<div class="block">
+			<div class="block-container">
+				<div class="sideBar_ad">
+					[ad placeholder]
+				</div>
+			</div>
+		</div>
+	</xf:sidebar>
+</xf:macro>
+
+
+<xf:macro name="sideBar_itemdetail" >
+	<xf:sidebar key="infoSidebar">
+		<div class="block">
+			<div class="block-container">
+				<div class="sideBar_ad">
+					[ad placeholder]
+				</div>
+			</div>
+		</div>
+	</xf:sidebar>
+</xf:macro>
+
+<xf:macro name="sideBar_pageside" >
+	<xf:sidebar key="infoSidebar">
+		<div class="block">
+			<div class="block-container">
+				<div class="sideBar_ad">
+					[ad placeholder]
+				</div>
+			</div>
+		</div>
+	</xf:sidebar>
+</xf:macro>
+
+<xf:macro name="center_itemdetail1" >
+	<div class="block">
+		<div class="block-container">
+			<div class="center_ad">
+				[ad placeholder]
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="center_itemdetail2" >
+	<div class="block">
+		<div class="block-container">
+			<div class="center_ad">
+				[ad placeholder]
+			</div>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="bh_brandHub_list.less" version_id="1020300" version_string="1.2.3 Alpha"><![CDATA[@media screen and (max-width: 642px) {
+
+	 .borderpage{
+	
+		height:140px;
+		width: 100px;
+     }
+
+	.fas{
+			font-size: 5em;
+		}	
+	
+	.tabs--standalone .tabs-tab {
+      
+		padding: 11px 21px 3px;
+   
+         }
+	
+	.grid-page-item {
+		
+ 	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px 9px;
+    padding: 0px 0px;
+		
+     }
+	
+   .grid-page-all{
+		
+	display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px 9px;
+    padding: 0px 0px;
+		
+	}
+	
+	.pageimage{
+		width:110px;
+		height:70px;
+	}
+	
+		
+	}
+
+@media screen and (min-width:640px) {
+ 
+   .borderpage{
+	
+	height: 150px;
+    width: 150px;
+	   
+    }
+	.grid-page-item {
+		
+ 	display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0px 9px;
+    padding: 0px 0px;
+		
+     }
+	
+  .grid-page-all{
+		
+	display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0px 9px;
+    padding: 0px 0px;
+		
+	}
+	
+	.pageimage{
+		width:110px;
+		height:60px;
+	}
+	
+			
+	
+   }
+
+
+
+.innerpage{
+	
+		list-style: none;
+}
+
+.bh-title {
+	border-left:2 solid blue !important;
+}
+.brandHub {
+    font-size: 13px;
+	padding: 10px 20px;
+}
+
+.bh_item {
+    width: 100%;
+    /* font-family: CoreSans,Arial,sans-serif; */
+    letter-spacing: .5px;
+    padding: 12px 0 10px!important;
+	line-height: 18px;
+	list-style: none;
+}
+.bh_a:hover
+{
+	color:red !important;
+	text-decoration: none ;
+}
+
+.bh_a {
+	color:black;
+}
+
+.grid-list {
+ 	display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0px 25px;
+    padding: 0px 10px;
+}
+.highestRated_grid-list{
+	display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0px 25px;
+    padding: 0px 10px;
+}
+.clearfix{
+	clear: both;
+	margin-top: 25px;
+}
+.itemPageNav{
+	
+}
+[data-template="bh_item_detail"] .p-body-main--withSidebar &
+    {  
+		
+    }
+[data-template="bh_page_detail"] .p-body-main--withSidebar &
+    {
+		
+    }
+/* title rating */
+
+.title-rating {
+    position: relative;
+    top: -58px;
+    right: -196px;
+    width: 137px;
+}
+@media screen and (max-width: 642px){
+		.title-rating {
+			position: relative;
+			top: -70px;
+			right: -170px;
+			width: 129px;
+		}
+}
+@media screen and (max-width: 414px){
+	.title-rating {
+    position: relative;
+    top: -40px;
+    right:2px;
+    width: 129px;
+}
+	}
+/* white three button */
+
+.white-button {
+    margin-right: 5px;
+    background: white;
+    color: black;
+    border: white;
+}
+#white-button{
+	    margin-right: 5px;
+    background: white;
+    color: black;
+    border: white;
+}
+.tab-white-button{
+	
+	float:left;
+}
+@media screen and (max-width: 642px){
+		.tabs--standalone .tabs-tab {
+			padding: 8px 5px 3px;
+		}
+}
+/*
+@m-sticky-top: 48px;
+@media (min-width: (@xf-responsiveWide + 1px)) {
+    .p-body-main--withSidebar {
+        .p-body-sideNav,
+        .p-body-sidebar {
+            flex: 0 0 auto;
+            display: block;
+        }
+        @supports ((position: sticky) or (position: -webkit-sticky)) {
+            .p-body-sidebar {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 10px;
+                & when (@xf-publicNavSticky =primary) or (@xf-publicNavSticky =all) {
+                    top: @m-sticky-top * 1px + 10px;
+                }
+            }
+        }
+    }
+}*/
+
+
+.borderpage{
+	
+	border: 2px solid orange;
+    padding: 14px;
+    text-align: center;
+    border-radius: 5px;
+
+}
+
+.bh_center{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding:auto;
+}
+
+//rating bar --------------------------------------------------------
+
+
+.checked{
+	color: #f9c479;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 8%;
+  margin-top: 5px;
+}
+
+.middle {
+  float: left;
+  width: 77%;
+  margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+*/
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+	border-radius: 5px;
+}
+.reviewStarsDiv{
+	float:left;
+}
+.ratingBarsDiv{
+	width: 60%;
+	float:right;
+	font-size: smaller;
+}
+
+.bar {height: 10px; background-color: #f9c479; border-radius: 5px;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  /* Hide the right column on small screens */
+  .right {
+    display: none;
+  }
+}
+
+//ad -----------------------------------------------------------
+
+
+.sideBar_ad{
+	height:250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.center_ad{
+	height:150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+//************************************************item next and item preivew
+.media
+{
+	position: relative;
+	margin-bottom: 10px;
+}
+
+
+@_buttonWidth: 30px;
+@_buttonHeight: 50px;
+
+
+.media-button
+{
+	position: absolute;
+	top: ~"calc(50% - "(@_buttonHeight / 2) + 2~")";
+	z-index: @zIndex-1;
+
+	width: @_buttonWidth;
+	height: @_buttonHeight;
+
+	background: fade(mix(@xf-paletteNeutral2, @xf-paletteNeutral3), 70%);
+	border-radius: @xf-borderRadiusMedium;
+
+	opacity: 0.2;
+	.m-transition(opacity);
+
+	cursor: pointer;
+
+	.has-touchevents &,
+	.media:hover &
+	{
+		opacity: 0.6;
+	}
+
+	&&:hover
+	{
+		text-decoration: none;
+		opacity: 1;
+	}
+
+	.media-button-icon
+	{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		color: #FFF;
+		.m-textOutline(white, black);
+
+		.m-faBase();
+		font-size: 1.75em;
+	}
+
+	&.media-button--next
+	{
+		right: 5px;
+
+		.media-button-icon
+		{
+			&:before
+			{
+				.m-faContent(@fa-var-chevron-right, .71em, ltr);
+				.m-faContent(@fa-var-chevron-left, .71em, rtl);
+			}
+		}
+	}
+
+	&.media-button--prev
+	{
+		left: 5px;
+
+		.media-button-icon
+		{
+			&:before
+			{
+				.m-faContent(@fa-var-chevron-left, .71em, ltr);
+				.m-faContent(@fa-var-chevron-right, .71em, rtl);
+			}
+		}
+	}
+}
+
+//*************************]]></template>
+  <template type="public" title="bh_brand_description_edit" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:if is="$brand.isInsert()">
+	<xf:title>{{ phrase('bh_add_brand') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bh_edit_brand:') }} {$brand.brand_title}</xf:title>
+</xf:if>
+
+
+
+
+
+<xf:form action="{{ link('bh_brands/save', $brand) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+
+			
+			<xf:editorrow name="description" value="{$brand.Description.description}" data-min-height="200"
+				label="{{ phrase('bh_description') }}" />
+
+			<xf:if is="$brand.Description">
+				<xf:hiddenval name="descriptionId">{$brand.Description.desc_id}</xf:hiddenval>
+			</xf:if>
+			
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="bh_brand_hub_macros" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:macro name="navigation" arg-pageSelected="!" arg-total="" arg-route="" arg-brand="" >
+	<xf:if is="property('findThreadsNavStyle') == 'tabs'">
+		<div class="tabs tabs--standalone">
+			<div class="hScroller" data-xf-init="h-scroller">
+				<span class="hScroller-scroll">
+					<xf:macro name="links"
+						arg-pageSelected="{$pageSelected}"
+						arg-baseClass="tabs-tab"
+						arg-selectedClass="is-active"
+						arg-total="{$total}"
+						arg-route="{$route}"
+						arg-brand="{$brand}"
+						 />
+				</span>
+			</div>
+		</div>
+	<xf:else />
+		<xf:sidenav>
+			<div class="block">
+				<div class="block-container">
+					<h3 class="block-header">{{ phrase('bh_brand_lists') }}</h3>
+					<div class="block-body">
+						<xf:macro name="links"
+							arg-pageSelected="{$pageSelected}"
+							arg-baseClass="blockLink"
+							arg-selectedClass="is-selected"
+							arg-total="{$total}"
+							arg-route="{$route}"
+							arg-brand="{$brand}"
+							 />
+					</div>
+				</div>
+			</div>
+
+		</xf:sidenav>
+		<xf:page option="sideNavTitle">{{ phrase('bh_item_lists') }}</xf:page>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="links" arg-pageSelected="!" arg-baseClass="!" arg-selectedClass="!" arg-total="" arg-route="" arg-brand="" >
+	<a class="{$baseClass} {{ ($pageSelected == 'all') ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $brand) }}" rel="nofollow">{{ phrase('bh_all') }} ({$total}) </a>
+	
+	<a class="{$baseClass} {{ $pageSelected == 'view_count' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $brand, {'type': 'view_count'}) }}" rel="nofollow">{{ phrase('bh_most_viewed') }}</a>
+	
+	<a class="{$baseClass} {{ $pageSelected == 'discussion_count' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $brand, {'type': 'discussion_count'}) }}" rel="nofollow">{{ phrase('bh_most_discussed') }}</a>
+	
+	<a class="{$baseClass} {{ $pageSelected == 'rating_avg' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $brand, {'type': 'rating_avg'}) }}" rel="nofollow">{{ phrase('bh_highest_rated') }}</a>
+</xf:macro>
+
+
+
+<xf:macro name="brandRelatedLinks" arg-brandObj="!" >
+	<xf:if is="$brandObj.forums_link || $brandObj.website_link || $brandObj.for_sale_link || $brandObj.intro_link">
+	<div class="block">
+				<div class="block-container">
+					<xf:if contentcheck="true">
+						<h3 class="block-minorHeader">{{ $brandObj.brand_title ?  phrase('bh_related_x_links', {'brandTitle': $brandObj.brand_title}) : phrase('related_links') }}</h3>
+		
+							<div class="block-body block-row block-row--separated">
+								<xf:contentcheck>
+									<div class="block-body">
+										<xf:datalist data-xf-init="responsive-data-list">
+
+											<xf:if is="$brandObj.forums_link">
+												<xf:datarow if="$brandObj.forums_link">
+													<xf:cell href="{{ $brandObj.forums_link }}" target="_blank">{{ phrase('bh_x_brand_forums', {'brandTitle': $brandObj.brand_title}) }}</xf:cell>
+												</xf:datarow>
+											</xf:if>
+											<xf:if is="$brandObj.website_link">
+												<xf:datarow>
+														<xf:cell href="{{ $brandObj.website_link  }}" target="_blank">{{ phrase('bh_x_brand_website', {'brandTitle': $brandObj.brand_title}) }}</xf:cell>
+												</xf:datarow>
+											</xf:if>
+											<xf:if is="$brandObj.for_sale_link">
+												<xf:datarow>
+														<xf:cell href="{{ $brandObj.for_sale_link }}" target="_blank">{{ phrase('bh_x_brand_for_sale', {'brandTitle': $brandObj.brand_title}) }}</xf:cell>
+												</xf:datarow>
+											</xf:if>
+											<xf:if is="$brandObj.intro_link">
+												<xf:datarow>
+														<xf:cell href="{{ $brandObj.intro_link }}" target="_blank">{{ phrase('bh_introduction_x_brand', {'brandTitle': $brandObj.brand_title}) }}</xf:cell>
+												</xf:datarow>
+											</xf:if>
+										</xf:datalist>
+									</div>
+								</xf:contentcheck>
+							</div>
+					</xf:if>
+				</div>
+			</div>
+</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="bh_brand_list" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[<xf:title class="bh-title">{{ phrase('bh_select_brand') }}</xf:title>
+
+<xf:css src="bh_brandHub_list.less" />
+
+
+<xf:macro template="bh_brand_hub_macros" name="navigation" arg-pageSelected="{$pageSelected}" arg-total="{$total}" arg-route="bh_brands"  />
+
+<div class="block-container">
+	<div class="block-body">
+		<xf:if is="$brands is not empty">
+				<div class="brandHub">		
+					<ul class="grid-list">
+						<xf:foreach loop="$brands" value="$brand">
+							<li class="bh_item">
+								<a href="{{ link('bh_brands/brand', $brand) }}" class="bh_a" data-name="{$brand.brand_title}">{$brand.brand_title}</a>
+							</li>
+						</xf:foreach>
+					</ul>	
+				</div>
+		<xf:else />
+			<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+		
+	<xf:macro  template="bh_ad_macros" name="sideBar_brand"  />
+		
+	</div>
+</div>]]></template>
+  <template type="public" title="bh_delete_review" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:title>{{ phrase('bh_delete_review') }}</xf:title>
+
+<xf:breadcrumb source="$item.getBreadcrumbs()" />
+
+<xf:form action="{{ link('bh_brands/review/delete', $review) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$review.canDelete('hard')}" />
+
+			<xf:comment>
+			<xf:if is="$review.canSendModeratorActionAlert()">
+				<xf:macro template="helper_action" name="author_alert" />
+			</xf:if>
+			</xf:comment>
+		</div>
+		<xf:submitrow icon="delete" sticky="true" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="bh_helper_attachment_photo" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<xf:macro name="upload_link" arg-attachmentData="!">
+
+<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+<xf:button  href="{{ link('attachments/upload', null, {'type': 'bh_item', 'context': $attachmentData.context, 'hash': $attachmentData.hash}) }}"
+	 class="button--link js-attachmentUpload" icon="attach"
+	data-accept=".{$attachmentData.constraints.extensions|join(',.')}" />
+						
+	<xf:hiddenval name="attachment_hash">{$attachmentData.hash}</xf:hiddenval>
+								<xf:hiddenval name="attachment_hash_combined">{{ {
+									'type': 'bh_item',
+									'context': $attachmentData.context,
+									'hash': $attachmentData.hash
+								}|json }}</xf:hiddenval>
+</xf:macro>
+
+<xf:macro name="upload_link_from_data" arg-attachmentData="!">
+	<xf:macro name="upload_link"  arg-attachmentData="{$attachmentData}" />
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_files_list" arg-attachments="{{ [] }}" arg-class="">
+	<xf:css src="attachments.less" />
+	<div class="attachmentUploads js-attachmentUploads {$class} {{ $attachments is not empty ? 'is-active' : '' }}">
+		<div class="hScroller" data-xf-init="h-scroller">
+			<div class="hScroller-scroll">
+				<ul class="attachUploadList js-attachmentFiles">
+				<xf:foreach loop="$attachments" value="$attachment">
+					<xf:macro name="uploaded_file" arg-attachment="{$attachment}" />
+				</xf:foreach>
+				</ul>
+			</div>
+		</div>
+
+		<div class="attachmentUploads-banner js-attachmentInsertMultiRow u-hidden">
+			<xf:button class="button--link js-attachmentSelect" data-toggle="{{ phrase('button.cancel') }}">
+				{{ phrase('insert_multiple...') }}
+			</xf:button>
+			<ul class="attachmentUploads-selectActions js-attachmentSelectActions">
+				<li>
+					<span class="button button--link selectAll">
+						<span class="button-text">
+							<xf:checkbox standalone="true">
+								<xf:option check-all="< .attachmentUploads" label="{{ phrase('select_all') }}" />
+							</xf:checkbox>
+						</span>
+					</span>
+				</li>
+				<li class="js-attachmentSelectInsertActions">
+					<span class="insert-label">{{ phrase('insert:') }}</span>
+					<span class="buttonGroup">
+						<xf:button class="button--link js-attachmentSelectAction" data-action="thumbnail">
+							{{ phrase('thumbnail') }}
+						</xf:button>
+						<xf:button class="button--link js-attachmentSelectAction" data-action="full">
+							{{ phrase('full_image') }}
+						</xf:button>
+					</span>
+				</li>
+				<li>
+					<xf:button class="button--link button--iconOnly js-attachmentSelectAction" fa="fa-trash-alt" data-action="delete">
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</xf:button>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<xf:macro name="uploaded_file_template" />
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_file" arg-attachment="!" arg-noJsFallback="{{ false }}">
+	<li class="js-attachmentFile file" data-attachment-id="{$attachment.attachment_id}">
+		<xf:if is="$attachment.has_thumbnail">
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<img src="{{ base_url($attachment.thumbnail_url) }}" class="js-attachmentThumb" alt="{$attachment.filename}"
+					width="{$attachment.thumbnail_width}" height="{$attachment.thumbnail_height}" loading="lazy" />
+			</a>
+		<xf:elseif is="$attachment.is_video" />
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<video data-xf-init="video-init">
+					<source src="{$attachment.direct_url}" />
+				</video>
+			</a>
+		<xf:else />
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<span class="file-typeIcon">
+					<xf:fa icon="{$attachment.icon}" />
+				</span>
+			</a>
+		</xf:if>
+
+	
+		<div class="file-content">
+
+			<xf:if is="!$noJsFallback">
+				<xf:if is="$attachment.has_thumbnail">
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink"
+							data-xf-click="toggle"
+							data-target="< .js-attachmentInsert"
+							role="button"
+							tabindex="0">
+							{{ phrase('insert...') }}
+						</a>
+						<div class="file-menuOptions">
+							<a class="js-attachmentAction" data-action="thumbnail" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('thumbnail') }}</a>
+							<a class="js-attachmentAction" data-action="full" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('full_image') }}</a>
+						</div>
+					</div>
+				<xf:elseif is="$attachment.is_video" />
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink js-attachmentAction" data-action="full" data-type="video" role="button" tabindex="0">
+							{{ phrase('insert') }}
+						</a>
+					</div>
+				<xf:elseif is="$attachment.is_audio" />
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink js-attachmentAction" data-action="full" data-type="audio" role="button" tabindex="0">
+							{{ phrase('insert') }}
+						</a>
+					</div>
+				</xf:if>
+
+				<div class="file-checkbox">
+					<xf:checkbox standalone="true">
+						<xf:option value="" />
+					</xf:checkbox>
+				</div>
+			</xf:if>
+
+			<span class="file-delete">
+				<xf:if is="$noJsFallback">
+					<xf:button type="submit" class="button--small button--link" name="delete" value="{$attachment.attachment_id}">
+						<xf:fa icon="fa-trash-alt" />
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</xf:button>
+				<xf:else />
+					<a class="file-deleteLink js-attachmentAction"
+						data-action="delete"
+						data-type="{$attachment.type_grouping}"
+						role="button"
+						tabindex="0">
+						<xf:fa icon="fa-trash-alt" />
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</a>
+				</xf:if>
+			</span>
+
+			<a class="file-info"
+				href="{$attachment.direct_url}"
+				target="_blank">
+
+				<span class="file-name">{$attachment.filename}</span>
+
+				<div class="file-meta">
+					<xf:if is="$attachment.Data.width">{$attachment.Data.width} x {$attachment.Data.height} &middot; </xf:if>
+					{$attachment.file_size|file_size}
+				</div>
+			</a>
+		</div>
+	</li>
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_file_template">
+	<script type="text/template" class="js-attachmentUploadTemplate">
+		<li class="file js-attachmentFile" {{ mustache('#attachment_id', 'data-attachment-id="{{attachment_id}}"') }}>
+			<xf:mustache name="#uploading">
+				<div class="file-preview">
+					<div class="file-progress js-attachmentProgress"></div>
+					<span class="file-error js-attachmentError"></span>
+				</div>
+			</xf:mustache>
+			<xf:mustache name="^uploading">
+				<xf:mustache name="#thumbnail_url">
+					<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+						<img src="{{ mustache('thumbnail_url') }}" class="js-attachmentThumb" alt="{{ mustache('filename') }}" />
+					</a>
+				</xf:mustache>
+				<xf:mustache name="^thumbnail_url">
+					<xf:mustache name="#is_video">
+						<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+							<video data-xf-init="video-init">
+								<source src="{{ mustache('link') }}" />
+							</video>
+						</a>
+					</xf:mustache>
+					<xf:mustache name="^is_video">
+						<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+							<span class="file-typeIcon">
+								<i class="fa--xf fa{{ fa_weight() }} {{ mustache('icon') }}" aria-hidden="true"></i>
+							</span>
+						</a>
+					</xf:mustache>
+				</xf:mustache>
+			</xf:mustache>
+
+			<div class="file-content">
+
+				<xf:mustache name="#thumbnail_url">
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink"
+							data-xf-click="toggle"
+							data-target="< .js-attachmentInsert"
+							role="button"
+							tabindex="0">
+							{{ phrase('insert...') }}
+						</a>
+						<div class="file-menuOptions">
+							<a class="js-attachmentAction" data-action="thumbnail" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('thumbnail') }}</a>
+							<a class="js-attachmentAction" data-action="full" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('full_image') }}</a>
+						</div>
+					</div>
+				</xf:mustache>
+				<xf:mustache name="^thumbnail_url">
+					<xf:mustache name="#is_video">
+						<div class="file-insert js-attachmentInsert">
+							<a class="file-insertLink js-attachmentAction" data-action="full" data-type="video" role="button" tabindex="0">
+								{{ phrase('insert') }}
+							</a>
+						</div>
+					</xf:mustache>
+					<xf:mustache name="#is_audio">
+						<div class="file-insert js-attachmentInsert">
+							<a class="file-insertLink js-attachmentAction" data-action="full" data-type="audio" role="button" tabindex="0">
+								{{ phrase('insert') }}
+							</a>
+						</div>
+					</xf:mustache>
+				</xf:mustache>
+
+				<div class="file-checkbox">
+					<xf:checkbox standalone="true">
+						<xf:option value="" />
+					</xf:checkbox>
+				</div>
+
+				<span class="file-delete">
+					<xf:mustache name="#uploading">
+						<a class="file-deleteLink js-attachmentAction"
+							data-action="cancel"
+							role="button"
+							tabindex="0">
+							<xf:fa icon="fa-trash-alt" />
+							<span class="u-srOnly">{{ phrase('button.cancel') }}</span>
+						</a>
+					</xf:mustache>
+					<xf:mustache name="^uploading">
+						<a class="file-deleteLink js-attachmentAction"
+							data-action="delete"
+							data-type="{{ mustache('type_grouping') }}"
+							role="button"
+							tabindex="0">
+							<xf:fa icon="fa-trash-alt" />
+							<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+						</a>
+					</xf:mustache>
+				</span>
+
+				<a class="file-info" href="{{ mustache('link') }}" target="_blank">
+					<span class="file-name">{{ mustache('filename') }}</span>
+
+					<div class="file-meta">
+						<xf:mustache name="#thumbnail_url">{{ mustache('width') }} x {{ mustache('height') }} &middot; </xf:mustache>
+						{{ mustache('file_size_printable') }}
+					</div>
+				</a>
+
+			</div>
+		</li>
+	</script>
+</xf:macro>
+
+
+
+
+<xf:macro name="upload_block" arg-attachmentData="!">
+
+	<xf:macro name="uploaded_files_list" arg-attachments="{$attachmentData.attachments}" />
+
+	<xf:macro name="upload_link_from_data" arg-attachmentData="{$attachmentData}" />
+</xf:macro>]]></template>
+  <template type="public" title="bh_highestRatedItems" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<div class="block"{{ widget_data($widget) }}>
+		<div class="block-container">
+				<h3 class="block-minorHeader">
+					 {{phrase('bh_highest_rated_in_this_category')}}
+				</h3>
+				<ul class="block-body">
+					<xf:if is="$highestRatedItems is not empty">
+						<div class="brandHub">		
+							<ul class="highestRated_grid-list">
+								<xf:foreach loop="$highestRatedItems" value="$highestRatedItem">
+								
+								<li class="bh_item">
+
+									<div class="contentRow-main contentRow-main--close">
+										<xf:if is="$highestRatedItem.getthumbnailurl()!=''">
+											   <a href="{{ link('bh_item/ownerpage', $highestRatedItem) }}" class="bh_a" >
+												<img src="{{$highestRatedItem.getthumbnailurl() }}" alt="Item-image" />		
+
+													<div class="contentRow-lesser">
+														{{$highestRatedItem.item_title}}
+														<xf:macro template="rating_macros" name="stars" arg-rating="{$highestRatedItem.rating_avg}" arg-class="ratingStars--smaller" /> ({$highestRatedItem.rating_count}) 
+													</div>
+												</a>
+										<xf:else/>
+											   <a href="{{ link('bh_item/ownerpage', $highestRatedItem) }}" class="bh_a" >
+												   <i class="fas fa-image fa-4x" ></i>
+												<div class="contentRow-lesser">
+														{{$highestRatedItem.item_title}}
+														<xf:macro template="rating_macros" name="stars" arg-rating="{$highestRatedItem.rating_avg}" arg-class="ratingStars--smaller" /> ({$highestRatedItem.rating_count}) 
+													</div>
+												</a>
+										</xf:if>
+									</div>
+
+									</li>
+								</xf:foreach>
+							</ul>	
+						</div>
+				<xf:else />
+					<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+				</xf:if>
+				</ul>
+		</div>
+	</div>]]></template>
+  <template type="public" title="bh_inline_mod_assignItem" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[<xf:title>{{ phrase('bh_inline_moderation_thread_link_to_brand_hub') }}</xf:title>
+
+<xf:form action="{{ link('inline-mod') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">{{ phrase('bh_you_sure_you_want_to_assign_item_x_threads', {'count': $total}) }}</xf:inforow>
+
+			<xf:selectrow name="item_id" value="{$selectedItem}" label="{{ phrase('bh_item') }}">
+				<xf:option value="0" selected="!{$selectedItem}">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$items" value="$item">
+					<xf:option value="{$item.item_id}" label="{$item.item_title}" />
+				</xf:foreach>
+			</xf:selectrow>
+			
+		</div>
+		<xf:submitrow icon="confirm" />
+	</div>
+
+	<xf:foreach loop="$threads" value="$thread">
+		<xf:hiddenval name="ids[]">{$thread.thread_id}</xf:hiddenval>
+	</xf:foreach>
+
+	<xf:hiddenval name="type">thread</xf:hiddenval>
+	<xf:hiddenval name="action">link_to_brand_hub</xf:hiddenval>
+	<xf:hiddenval name="confirmed">1</xf:hiddenval>
+
+	<xf:redirect url="{$redirect}" />
+</xf:form>]]></template>
+  <template type="public" title="bh_item" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('bh_select_brand') }}</xf:title>
+
+<xf:css src="bh_brandHub_list.less" />
+
+
+		
+<xf:macro name="navigation" arg-pageSelected="{$pageSelected}" />
+
+<div class="block-container">
+	<div class="block-body">
+		<xf:if is="$brands is not empty">
+			
+		<xf:else />
+			<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+		
+		<div>{{ phrase('bh_select_brand') }}</div>
+		
+		
+		<xf:sidebar key="infoSidebar">
+			<div class="block">
+				<div class="block-container">
+					
+					<br><br><br><br><br><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	[ custom fields]
+					<br><br><br><br><br><br>
+				</div>
+			</div>
+		</xf:sidebar>
+		
+	</div>
+</div>
+
+
+
+
+
+
+<xf:macro name="navigation" arg-pageSelected="!">
+	<xf:if is="property('findThreadsNavStyle') == 'tabs'">
+		<div class="tabs tabs--standalone">
+			<div class="hScroller" data-xf-init="h-scroller">
+				<span class="hScroller-scroll">
+					<xf:macro name="links"
+						arg-pageSelected="{$pageSelected}"
+						arg-baseClass="tabs-tab"
+						arg-selectedClass="is-active"
+						 />
+				</span>
+			</div>
+		</div>
+	<xf:else />
+		<xf:sidenav>
+			<div class="block">
+				<div class="block-container">
+					<h3 class="block-header">{{ phrase('bh_brand_lists') }}</h3>
+					<div class="block-body">
+						<xf:macro name="links"
+							arg-pageSelected="{$pageSelected}"
+							arg-baseClass="blockLink"
+							arg-selectedClass="is-selected"
+							 />
+					</div>
+				</div>
+			</div>
+
+		</xf:sidenav>
+		<xf:page option="sideNavTitle">{{ phrase('bh_brand_lists') }}</xf:page>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="links" arg-pageSelected="!" arg-baseClass="!" arg-selectedClass="!">
+	<a class="{$baseClass} {{ ($pageSelected == 'all') ? {$selectedClass} : '' }}"
+		href="{{ link('bh_brands') }}" rel="nofollow">{{ phrase('bh_all') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'view_count' ? {$selectedClass} : '' }}"
+		href="{{ link('bh_brands&type=view_count') }}" rel="nofollow">{{ phrase('bh_most_viewed') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'discussion_count' ? {$selectedClass} : '' }}"
+		href="{{ link('bh_brands&type=discussion_count') }}" rel="nofollow">{{ phrase('bh_most_discussed') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'rating_avg' ? {$selectedClass} : '' }}"
+		href="{{ link('bh_brands&type=rating_avg') }}" rel="nofollow">{{ phrase('bh_highest_rated') }}</a>
+</xf:macro>]]></template>
+  <template type="public" title="bh_item_attachment_list.less" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[.itemList-itemTypeIcon
+{
+	&.itemList-itemTypeIcon--image
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-image);
+		}
+
+		display: none;
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		.m-faBase('Brands');
+		&::after
+		{
+			.m-faContent(@fa-var-youtube);
+		}
+	}
+
+	&.itemList-itemTypeIcon--video
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-video);
+		}
+	}
+
+	&.itemList-itemTypeIcon--audio
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-music);
+		}
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		&--applemusic
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-apple); }
+		}
+
+		&--facebook
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-facebook); }
+		}
+
+		&--flickr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-flickr); }
+		}
+
+		&--instagram
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-instagram); }
+		}
+
+		&--pinterest
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-pinterest-square); }
+		}
+
+		&--reddit
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-reddit-alien); }
+		}
+
+		&--soundcloud
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-soundcloud); }
+		}
+
+		&--spotify
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-spotify); }
+		}
+
+		&--tumblr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-tumblr-square); }
+		}
+
+		&--twitch
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitch); }
+		}
+
+		&--twitter
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitter); }
+		}
+
+		&--vimeo
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-vimeo); }
+		}
+
+		&--youtube
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-youtube); }
+		}
+	}
+}
+
+// ********* BrandHub filmStrip image thumbnils**************************************
+
+@_stripThumbSize: 50px;
+@_thumbSize: 300px;
+
+.itemList
+{
+	display: flex;
+	flex-flow: row wrap;
+	margin: @xf-paddingSmall;
+
+	&.itemList--strip
+	{
+		justify-content: center;
+		min-height: @_stripThumbSize + (@xf-paddingSmall * 2);
+
+		@media (max-width: @xf-responsiveNarrow)
+		{
+			min-height: @_stripThumbSize / 1.3 + (@xf-paddingSmall * 2);
+		}
+
+		@media (max-width: 360px)
+		{
+			min-height: @_stripThumbSize / 1.9 + (@xf-paddingSmall * 2);
+		}
+	}
+
+	&.itemList--slider
+	{
+		display: block;
+		margin: 0;
+
+		.itemList-item--slider
+		{
+			margin: 0;
+			display: none;
+
+			.lightSlider--loaded &
+			{
+				display: block;
+			}
+
+			.itemList-itemTypeIcon
+			{
+				display: none;
+			}
+		}
+	}
+}
+
+.itemList-item
+{
+	flex: auto;
+	width: (@_thumbSize) / 1.6;
+	max-width: @_thumbSize;
+	margin: @xf-paddingSmall;
+
+	position: relative;
+	overflow: hidden;
+
+	.itemList--strip &
+	{
+		justify-items: center;
+		width: (@_stripThumbSize) / 1.6;
+		max-width: @_stripThumbSize;
+		margin-top: auto;
+		margin-bottom: auto;
+
+		opacity: 1;
+		.m-transition(opacity);
+
+		&.itemList-item--fading
+		{
+			opacity: 0 !important;
+		}
+	}
+
+	@media (max-width: @xf-responsiveNarrow)
+	{
+		width: (@_thumbSize) / 2;
+
+		.itemList--strip && // for extra specificity
+		{
+			max-width: (@_stripThumbSize) / 1.3;
+		}
+	}
+
+	@media (max-width: 360px)
+	{
+		.itemList--strip &&
+		{
+			max-width: (@_stripThumbSize) / 1.9;
+		}
+	}
+
+	&.itemList-item--placeholder
+	{
+		margin-top: 0;
+		margin-bottom: 0;
+		height: 0;
+
+		.itemList--strip &
+		{
+			.xf-contentAltBase();
+			.xf-blockBorder();
+
+			margin-top: inherit;
+			margin-bottom: inherit;
+			height: initial;
+
+			opacity: 0.7;
+		}
+	}
+}
+
+.itemList-button
+{
+	.xf-contentAltBase();
+	.xf-blockBorder();
+
+	width: 25px;
+	border-radius: @xf-borderRadiusMedium;
+	color: @xf-linkColor;
+
+	display: block;
+	position: relative;
+	margin: @xf-paddingSmall;
+
+	cursor: pointer;
+
+	&.is-disabled
+	{
+		display: none;
+	}
+
+	&.is-loading
+	{
+		.xf-buttonDisabled();
+		pointer-events: none;
+		cursor: default;
+	}
+}
+
+.itemList-button-icon
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	.m-faBase();
+	font-size: 1.2em;
+
+	.itemList-button--next &
+	{
+		&:before
+		{
+			.m-faContent(@fa-var-chevron-right, .71em, ltr);
+			.m-faContent(@fa-var-chevron-left, .71em, rtl);
+		}
+	}
+
+	.itemList-button--prev &
+	{
+		&:before
+		{
+			.m-faContent(@fa-var-chevron-left, .71em, ltr);
+			.m-faContent(@fa-var-chevron-right, .71em, rtl);
+		}
+	}
+}
+
+.itemList-itemTypeIcon
+{
+	position: absolute;
+	top: @xf-paddingMedium;
+	right: @xf-paddingMedium;
+	z-index: @zIndex-1;
+
+	width: 20px;
+	height: 20px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.m-textOutline(white, black, thin);
+	color: #fff;
+	opacity: 0.6;
+
+	.has-touchevents &,
+	.itemList-item:hover &,
+	.itemList-item.is-mod-selected &
+	{
+		opacity: 1;
+	}
+
+	.m-faBase();
+
+	&::after
+	{
+		font-size: @xf-fontSizeLargest;
+	}
+}
+
+@_overlayHeight: 52px;
+
+.itemList-itemOverlay
+{
+	width: 100%;
+	height: @_overlayHeight;
+	bottom: -@_overlayHeight;
+	position: absolute;
+
+	background-color: rgba(0, 0, 0, 0.6);
+	.m-hiddenLinks();
+	.m-transition();
+
+	padding: 4px;
+	overflow: hidden;
+
+	.has-touchevents &,
+	.itemList-item:hover &
+	{
+		bottom: 0;
+	}
+
+	.itemList-item.is-mod-selected &
+	{
+		bottom: 0;
+		background: @xf-inlineModHighlightColor;
+	}
+
+	a:hover
+	{
+		text-decoration: none;
+	}
+}
+
+.itemList-itemOverlayTop
+{
+	cursor: pointer;
+
+	top: 3px;
+	left: 3px;
+	z-index: @zIndex-2 + 5; // above the state icon but below the filter menu
+
+	width: 25px;
+	height: 25px;
+	border-radius: @xf-borderRadiusMedium;
+
+	background: rgba(0, 0, 0, 0.4);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	opacity: 0;
+
+	.has-touchevents &,
+	.itemList-item:hover &
+	{
+		opacity: 1;
+	}
+
+	.itemList-item.is-mod-selected &
+	{
+		opacity: 1;
+		background: @xf-inlineModHighlightColor;
+
+		&.iconic
+		{
+			> input
+			{
+				+ i:before
+				{
+					color: @xf-textColorDimmed;
+				}
+
+				&:hover
+				{
+					+ i:before
+					{
+						color: @xf-textColorDimmed;
+					}
+				}
+			}
+		}
+	}
+
+	&&.iconic
+	{
+		display: flex;
+		position: absolute;
+
+		> input
+		{
+			+ i
+			{
+				&:before
+				{
+					color: #fff;
+				}
+
+				position: absolute;
+				top: 2px;
+				left: 6px;
+			}
+
+			&:hover
+			{
+				+ i:before
+				{
+					color: xf-intensify(#fff, 15%);
+				}
+			}
+		}
+	}
+}
+
+.itemInfoRow
+{
+	display: flex;
+	align-items: center;
+}
+
+.itemInfoRow-avatar
+{
+	white-space: nowrap;
+	word-wrap: normal;
+	text-align: center;
+}
+
+.itemInfoRow-main
+{
+	flex: 1;
+	min-width: 0;
+	vertical-align: top;
+
+	text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+	color: #fff;
+
+	.itemList-item.is-mod-selected &
+	{
+		text-shadow: none;
+		color: @xf-textColorDimmed;
+	}
+
+	&:before
+	{
+		// because of line height, there appears to be extra space at the top of this
+		content: '';
+		display: block;
+		margin-top: -.18em;
+	}
+}
+
+.itemInfoRow-title
+{
+	margin: 0;
+	padding: 0 0 0 @xf-paddingSmall;
+	font-size: @xf-fontSizeSmall;
+	font-weight: @xf-fontWeightNormal;
+	.m-overflowEllipsis();
+}
+
+.itemInfoRow-status
+{
+	margin: 0;
+	padding: 0 0 0 @xf-paddingSmall;
+	font-size: @xf-fontSizeSmallest;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+//******************************************************************************]]></template>
+  <template type="public" title="bh_item_description_edit" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:if is="$item.isInsert()">
+	<xf:title>{{ phrase('bh_add_item') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bh_edit_item:') }} {$item.item_title}</xf:title>
+</xf:if>
+
+
+
+
+<xf:form action="{{ link('bh_brands/item/save', $item) }}" ajax="true" class="block"  data-xf-init="attachment-manager">
+	<div class="block-container">
+		<div class="block-body">
+
+			
+			<xf:editorrow name="description" value="{$item.Description.description}" data-min-height="200"
+				label="{{ phrase('bh_description') }}" />
+
+
+			<xf:if is="$item.Description">
+				<xf:hiddenval name="descriptionId">{$item.Description.desc_id}</xf:hiddenval>
+			</xf:if>
+			
+			<xf:formrow>
+		
+					<xf:macro template="bh_helper_attachment_photo" name="upload_block"
+							  arg-attachmentData="{$attachmentData}" />
+		</xf:formrow>
+			
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="bh_item_detail" version_id="1020300" version_string="1.2.3 Alpha"><![CDATA[<xf:css src="bh_brandHub_list.less" />
+<xf:title class="bh-title">{{$item.Brand.brand_title}} {{ $item.item_title }} </xf:title>	
+<div>{{ $item.Category.category_title }} </div>
+<div class="title-rating">
+<xf:macro template="rating_macros" name="stars" arg-rating="{$item.rating_avg}" arg-class="ratingStars--smaller" /> ({{$item.rating_count}})
+
+</div>
+
+
+<xf:breadcrumb source="$item.getBreadcrumbs(false)" />
+
+<xf:pageaction>
+	<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_canUploadPhotos')">
+	<xf:button href="{{ link('bh_brands/item/uploadphoto', $item) }}" class="button--cta"  overlay="true">{{ phrase('bh_upload_photos', {'itemTitle': $item.item_title}) }}</xf:button>
+
+	</xf:if>
+	<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_canSetItemMainPhoto')">
+ 		<xf:button href="{{ link('bh_brands/item/mainphoto', $item) }}" class="" overlay="true">{{ phrase('bh_main_photo') }}</xf:button>
+	</xf:if>
+</xf:pageaction>
+
+<div class="itemPageNav">
+	
+	<br>
+	<div style="float:right;">
+		<xf:macro name="navigation" arg-pageSelected="{$pageSelected}"  arg-route="bh_brands/item"  arg-alreadySub="{$alreadySub}" 
+		  arg-item="{$item}" />
+	</div>	
+		
+</div>
+<div class="clearfix"></div>
+
+
+
+<xf:if is="$filmStripParams">
+<div class="media">
+	
+	<xf:if is="{$filmStripParams.prevItem}">
+		
+	<a href="{{ link('bh_brands/item',$item,{'attachment_id':$filmStripParams.prevItem.attachment_id}) }}" class="media-button media-button--prev" data-xf-key="ArrowLeft"><i class="media-button-icon"></i></a>	
+	
+		</xf:if>
+
+		 <div class="media-container">
+
+     	<xf:if is="{$mainItem}">
+        <xf:macro template="bh_item_filmstrip_view_macros" name="main_content" arg-mainItem="{$mainItem}" arg-item="{$item}" />
+		 </xf:if>
+		</div>
+	
+	
+
+	<xf:if is="$filmStripParams.nextItem">
+		<a href="{{ link('bh_brands/item',$item,{'attachment_id':$filmStripParams.nextItem.attachment_id}) }}" class="media-button media-button--next" data-xf-key="ArrowRight"><i class="media-button-icon"></i></a>
+	
+	</xf:if>
+		
+</div>
+
+	
+ <div class="block js-mediaInfoBlock">
+	 
+	<xf:if is="$filmStripParams.Items">
+	<xf:macro template="bh_item_filmstrip_view_macros" name="attachment_film_strip" arg-mainItem="{$mainItem}" arg-filmStripParams="{$filmStripParams}" arg-item="{$item}" />
+	 </xf:if>
+</div>
+		</xf:if>
+
+
+		
+	<xf:sidebar key="shareSidebar">
+			<div class="block">
+				<div class="block-container">
+					<div class="block-body block-row">
+					<xf:if contentcheck="true">
+						<h3 class="block-minorHeader">{{  phrase('bh_specifications') }}</h3>
+								<xf:contentcheck>
+								   <xf:macro template="item_custom_fields_macros_public" name="custom_fields_view"
+									  arg-type="bhItemfield"
+									  arg-group="below_record"
+									  arg-onlyInclude="{$category.field_cache}"
+									  arg-set="{$item.custom_fields}"	 
+									  arg-rowType="noGutter"
+									  arg-rowClass="mediaItem-input"
+									  arg-onlyInclude="{$category.field_cache}"
+									  arg-wrapperClass="resourceBody-fields resourceBody-fields--before"  />
+								</xf:contentcheck>
+						</xf:if>
+
+						</div>
+				</div>
+			</div>
+		</xf:sidebar>
+
+
+	<xf:sidebar key="">
+			<div class="block">
+				<div class="block-container">
+					<xf:if contentcheck="true">
+ 					<h3 class="block-minorHeader">{{  phrase('bh_x_item_community_rankings', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<div class="block-body block-row">
+
+							<xf:contentcheck>
+								<xf:datalist data-xf-init="responsive-data-list">
+									
+								<xf:if is="$itemPosition.categoryItemReviewPosition">
+										<xf:datarow>
+												<xf:cell>#{{$itemPosition.categoryItemReviewPosition}} user rating of {{$itemPosition.totalcategoryItems}} {{$item.Category.category_title }} items</xf:cell>
+										</xf:datarow>
+								</xf:if>
+								<xf:if is="$itemPosition.categoryItemViewPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.categoryItemViewPosition}} Viewed of {{$itemPosition.totalcategoryItems}} {{$item.Category.category_title }} items</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+									
+                          		<xf:if is="$itemPosition.categoryItemDiscussionPosition">
+										<xf:datarow>
+												<xf:cell>#{{$itemPosition.categoryItemDiscussionPosition}} discussed of {{$itemPosition.totalcategoryItems}} {{$item.Category.category_title }} items</xf:cell>
+										</xf:datarow>
+								</xf:if>
+									
+							
+								<xf:if is="$itemPosition.overallItemReviewPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.overallItemReviewPosition}} user rating of {{$itemPosition.totalItems}} items overall</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+									
+								<xf:if is="$itemPosition.overallItemViewPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.overallItemViewPosition}} Viewed of {{$itemPosition.totalItems}} items overall</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+									
+								<xf:if is="$itemPosition.overallItemDiscussionPosition">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.overallItemDiscussionPosition}} discussed of {{$itemPosition.totalItems}} items overall</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+								
+								
+									
+								 </xf:datalist>
+							</xf:contentcheck>
+
+							</div>
+					</xf:if>
+				</div>
+			</div>
+		</xf:sidebar>
+
+<xf:macro  template="bh_ad_macros" name="sideBar_itemdetail" />
+	<div class='clearfix'></div>
+
+<h3 class="block-body block-row block-row--separated">{{ phrase('bh_about_the_x_item', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3><br>
+<div class="block-container">
+	<div class="block-row">
+	<blockquote class="message-body">
+		{{ bb_code($item.Description.description, 'description', $item.Description) }}
+		<br>
+		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_can_edit_itemDescript')">
+			<a href="{{ link('bh_brands/item/edit', $item) }}" data-xf-click="overlay">{{ phrase('edit') }}</a>
+		</xf:if>
+		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'react') && $xf.visitor.user_id">
+			<xf:extension name="footer">
+				<xf:macro name="item_reaction_footer" arg-item="{$item}"  />
+			</xf:extension>
+		</xf:if>
+	</blockquote>
+			</div>
+</div>
+
+<div class='clearfix'></div>
+
+<xf:if contentcheck="true">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body block-row">
+
+				<h3 class="block-minorHeader">{{  phrase('bh_specifications') }}</h3>
+				<xf:contentcheck>
+					<xf:macro template="item_custom_fields_macros_public" name="custom_fields_view"
+							  arg-type="bhItemfield"
+							  arg-group="above_record"
+							  arg-onlyInclude="{$category.field_cache}"
+							  arg-set="{$item.custom_fields}"	 
+							  arg-rowType="noGutter"
+							  arg-rowClass="mediaItem-input"
+							  arg-onlyInclude="{$category.field_cache}"
+							  arg-wrapperClass="resourceBody-fields resourceBody-fields--before"  />
+				</xf:contentcheck>
+				<br>
+			</div>
+		</div>
+	</div>
+</xf:if>
+<div class='clearfix'></div>
+
+
+<div class="block" id="discussion">
+				<div class="block-container">
+					<div class="block-header">
+						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+					</div>
+							<div class="block-body block-row block-row--separated">
+								<div class="block-body">
+									<xf:datalist data-xf-init="responsive-data-list">
+										
+										<xf:if is="$discussions is not empty">
+											<xf:foreach loop="$discussions" value="$discussion">
+											<xf:if is="$discussion.isUnread()">
+												<xf:datarow>
+													<xf:cell style="font-weight:700;" href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ prefix('thread', $discussion) }}{{ $discussion.title }}</xf:cell>
+												</xf:datarow>
+												<xf:else />
+													<xf:datarow>
+													<xf:cell href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ $discussion.title }}</xf:cell>
+												</xf:datarow>
+												</xf:if>
+											</xf:foreach>
+											<xf:if is="$item.discussion_count > $xf.options.bh_discussions_on_item ">
+													<xf:datarow>
+														<xf:cell href="{{ link('bh_brands/item/itemthreads', $item) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}</xf:cell>
+													</xf:datarow>
+												</xf:if>
+										<xf:else />
+											<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+										</xf:if>
+
+									</xf:datalist>
+								</div>
+							</div>			
+				</div>
+			</div>
+
+
+<div class='clearfix'></div>
+
+<xf:macro  template="bh_ad_macros" name="center_itemdetail1" />
+	<div class='clearfix'></div>
+
+<xf:include template="bh_user_reviews" />
+	<div class='clearfix'></div>
+
+<xf:macro  template="bh_ad_macros" name="center_itemdetail2" />
+	<div class='clearfix'></div>
+
+<xf:include template="bh_item_owner_page" />
+	<div class='clearfix'></div>
+
+
+
+
+<xf:macro name="navigation" arg-pageSelected="!" arg-route="" arg-item=""  arg-alreadySub="">
+	
+	<xf:if is="property('findThreadsNavStyle') == 'tabs'">
+		
+		<xf:include template="whiteThreeButton"/>
+		
+		<div class="tabs tabs--standalone">
+			
+			
+			<div class="hScroller" data-xf-init="h-scroller">
+				<span class="hScroller-scroll">
+					<xf:macro name="links"
+						arg-pageSelected="{$pageSelected}"
+						arg-baseClass="tabs-tab"
+						arg-selectedClass="is-active"
+						arg-route="{$route}"
+						arg-item="{$item}"
+						 />
+				</span>
+			</div>
+		</div>
+	
+		<xf:page option="sideNavTitle">{{ phrase('bh_brand_lists') }}</xf:page>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="links" arg-pageSelected="!" arg-baseClass="!" arg-selectedClass="!" arg-route="" arg-item="">
+   
+	
+	<a class="{$baseClass} {{ ($pageSelected == 'overview') ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $item) }}" rel="nofollow">{{ phrase('bh_overview') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'discussion' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}.'/#discussion', $item) }}" rel="nofollow">{{ phrase('bh_discussion') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'reviews' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}.'/#reviews', $item) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a>
+	<a class="{$baseClass} {{ $pageSelected == 'ownerPage' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}.'/#ownerPage', $item) }}" rel="nofollow">{{ phrase('bh_owner_page') }}</a>
+</xf:macro>
+
+<xf:macro name="item_reaction_footer" arg-item="!">
+	<footer class="message-footer">
+		<xf:if contentcheck="true">
+			<div class="message-actionBar actionBar">
+				<xf:contentcheck>
+					<xf:macro name="item_action_bar" arg-item="{$item}" />
+				</xf:contentcheck>
+			</div>
+		</xf:if>
+
+		<div class="reactionsBar js-reactionsList {{ $item.reactions ? 'is-active' : '' }}">
+					<xf:reactions content="{$item}" link="bh_brands/item/reactions" />
+		</div>
+
+		<div class="js-historyTarget message-historyTarget toggleTarget" data-href="trigger-href"></div>
+	</footer>
+</xf:macro>
+
+
+<xf:macro name="item_action_bar" arg-item="!">
+	<xf:if contentcheck="true">
+		<div class="actionBar-set actionBar-set--external">
+		<xf:contentcheck>
+			<xf:react content="{$item}" link="bh_brands/item/react" list=".js-reactionsList" />
+		</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="bh_item_filmstrip_view_macros" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:macro name="attachment_film_strip" arg-mainItem="!" arg-filmStripParams="!"  arg-item="!">
+	
+	<xf:if is="$filmStripParams.Items is not empty">
+		<xf:js src="BrandHub/film_strip.js" min="1" />
+		<xf:css src="bh_item_attachment_list.less" />
+
+		<div class="block-outer">
+			<div class="block-outer-middle">
+				<div class="itemList itemList--strip js-filmStrip">
+					
+					<a data-xf-click="inserter" data-replace=".js-filmStrip"
+						href="{{ link('bh_brands/item/filmstripjump', $item, {'direction': 'prev', 'attachment_id': $filmStripParams.firstItem.attachment_id}) }}"
+						class="js-filmStrip-button itemList-button itemList-button--prev{{ !$filmStripParams.hasPrev ? ' is-disabled' : '' }}">
+
+						<i class="itemList-button-icon"></i>
+					</a>
+
+					<xf:foreach loop="$filmStripParams.Items" value="$attachItem">
+						<div class="js-filmStrip-item itemList-item">
+							<a href="{{ link('bh_brands/item',$item,{'attachment_id':$attachItem.attachment_id}) }}">
+								
+	
+					<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid xfmgThumbnail--iconSmallest {{$mainItem.attachment_id==$attachItem.attachment_id ? 'is-selected' :''}} ">
+			        <img class="xfmgThumbnail-image" src="{{$attachItem.getThumbnailUrl()}}" >
+			           <span class="xfmgThumbnail-icon"></span>
+		           </span>
+							</a>
+						</div>
+					</xf:foreach>
+
+					<a data-xf-click="inserter" data-replace=".js-filmStrip"
+						href="{{ link('bh_brands/item/filmstripjump', $item, {'direction': 'next', 'attachment_id': $filmStripParams.lastItem.attachment_id}) }}"
+						class="js-filmStrip-button itemList-button itemList-button--next{{ !$filmStripParams.hasNext ? ' is-disabled' : '' }}">
+
+						<i class="itemList-button-icon"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="main_content" arg-mainItem="!" arg-item="!">
+	<xf:css src="xfrb_media_view.less" />
+	<xf:if is="$mainItem">
+	
+			<div class="media-container-image js-mediaContainerImage">
+			
+			<xf:set var="$imageHtml">
+				<img src="{{link('attachments/full',$mainItem) }}" alt="{$mainItem.filename}" class="js-mediaImage" />
+			</xf:set>
+		
+
+				{$imageHtml|raw}
+				
+		
+	</div>
+		
+	<xf:elseif is="$mediaItem.media_type == 'video'" />
+		<xf:macro template="videojs_macros" name="setup" />
+   
+		<div class="bbMediaWrapper">
+			<div class="bbMediaWrapper-inner">
+				<video data-xf-init="video-player"
+					data-player-setup="{$mediaItem.player_setup|json}"
+					class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9">
+
+					<source src="{$mediaItem.getVideoUrl()}" type="video/mp4" />
+				</video>
+			</div>
+		</div>
+	<xf:elseif is="$mediaItem.media_type == 'audio'" />
+		<xf:macro template="videojs_macros" name="setup" />
+
+		<xf:set var="$audioItem">
+			<audio data-xf-init="video-player"
+				data-player-setup="{$mediaItem.player_setup|json}"
+				class="video-js vjs-default-skin vjs-big-play-centered bbMediaWrapper-fallback">
+
+				<source src="{$mediaItem.getAudioUrl()}" type="audio/mpeg" />
+			</audio>
+		</xf:set>
+
+		<xf:if is="$mediaItem.thumbnail_date">
+			<div class="bbMediaWrapper">
+				<div class="bbMediaWrapper-inner bbMediaWrapper-inner--thumbnail">
+					{$audioItem|raw}
+				</div>
+			</div>
+		<xf:else />
+			{$audioItem|raw}
+		</xf:if>
+	<xf:elseif is="$mediaItem.media_type == 'embed'" />
+		{{ bb_code($mediaItem.media_tag, 'xfmg_media', $mediaItem) }}
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="bh_item_list" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[<xf:title class="bh-title">{{$brandObj.brand_title}} {{ phrase('items') }}</xf:title>
+
+<xf:css src="bh_brandHub_list.less" />
+
+
+<xf:macro template="bh_brand_hub_macros" name="navigation" 
+		  arg-pageSelected="{$pageSelected}" 
+		  arg-total="{$total}" 
+		  arg-route="bh_brands/brand" 
+		  arg-brand="{$brandObj}"   />
+
+
+<div class="block-container">
+	<div class="block-body">
+		<xf:if is="$items is not empty">
+				<div class="brandHub">		
+					<ul class="grid-list">
+						<xf:foreach loop="$items" value="$item">
+							<li class="bh_item">
+								<a href="{{ link('bh_brands/item', $item) }}" class="bh_a" data-name="{$item.item_title}">{$item.item_title}</a>
+							</li>
+						</xf:foreach>
+					</ul>	
+				</div>
+		<xf:else />
+			<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+		
+		
+		
+
+			<xf:sidebar key="shareSidebar">
+				<xf:macro template="bh_brand_hub_macros" name="brandRelatedLinks" arg-brandObj="{$brandObj}" />
+			</xf:sidebar>
+		
+	<xf:macro  template="bh_ad_macros" name="sideBar_itemlist" />
+		
+	</div>
+</div>
+
+<div class='clearfix'></div>
+	<h4 class="block-body block-row block-row--separated">{{ phrase('bh_brand_about', {'brandTitle': $brandObj.brand_title}) }}</h4><br>
+
+	<div class="block-container">	
+		<blockquote class="message-body">
+			{{ bb_code($brandObj.Description.description, 'description', $brandObj.Description) }}
+			<br>
+			<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_can_edit_brandDescript')">
+			<a href="{{ link('bh_brands/edit', $brandObj) }}" data-xf-click="overlay">{{ phrase('edit') }}</a>
+		</xf:if>
+		</blockquote>
+		
+	</div>]]></template>
+  <template type="public" title="bh_item_list_main_photo_macros" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:macro name="item_list" arg-Items="!" arg-Selected="" arg-allowInlineMod="{{ false }}" arg-forceInlineMod="{{ false }}">
+ 	
+	<div class="itemList">
+	
+		<xf:foreach loop="$Items" value="$item">
+		
+			<xf:macro name="media_list_item"
+				arg-Item="{$item}"
+				 arg-Selected="{$Selected}"
+				arg-allowInlineMod="{$allowInlineMod}"
+				arg-forceInlineMod="{$forceInlineMod}" />
+		</xf:foreach>
+
+	</div>
+</xf:macro>
+
+
+
+<xf:macro name="media_list_item" arg-Item=""  arg-Selected="" arg-allowInlineMod="{{ false }}" arg-forceInlineMod="{{ false }}">
+	
+	
+	
+	
+	<div class="itemList-item js-inlineModContainer" >
+
+		
+		
+			<xf:macro name="media_list_item_thumb" arg-Item="{$Item}" 	 arg-Selected="{$Selected}" />
+		
+		
+	</div>
+</xf:macro>
+
+
+
+
+
+<xf:macro name="media_list_item_thumb" arg-Item="" arg-Selected="" >
+	
+
+    <xf:if is="$Item">
+	   <div style="width:25px;height:25px;background:grey;border-radius:3px;position:relative;top:30px;left:7px;">
+     
+		<xf:if is="$Item.attachment_id==$Selected.attachment_id">
+		<input type="radio" value ="{$Item.attachment_id}" name="mainitem"  style="margin:5px;" checked/>
+		<xf:else/>
+		<input type="radio" value ="{$Item.attachment_id}" name="mainitem"  style="margin:5px;"/>	
+		</xf:if>
+	</div>
+		<span class=" xfmgThumbnail--fluid">
+		 <img  src="{{$Item.getThumbnailUrl()}}"  width="200px" height="200px">
+			      
+	   </span>
+	</xf:if>	
+</xf:macro>]]></template>
+  <template type="public" title="bh_item_main_photo" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:title>{$item.item_title}</xf:title>
+
+<xf:form action="{{ link('bh_brands/item/setmainphoto',$item) }}" ajax="true" class="block" data-force-flash-message="true">
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$items is not empty">
+			
+				<xf:macro template="bh_item_list_main_photo_macros" name="item_list" arg-Items="{$items}" arg-Selected="{$selectedAttachment}" arg-allowInlineMod="true" />
+			</xf:if>
+		</div>
+	</div>
+	<xf:submitrow icon="save" sticky="true" />
+</div>
+</xf:form>]]></template>
+  <template type="public" title="bh_item_owner_page" version_id="1020400" version_string="1.2.4 Alpha"><![CDATA[<div class="block" id="ownerPage">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_x_item_owner_pages', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+			<div class="p-description">{{ phrase('bh_view_owner_pages_to_see_photos_customizations', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+		</div>
+		<div class="block-body block-row block-row--separated">
+			<div class="block-body">
+				<div class="">
+					<div style="float:left;">
+						<xf:macro template="bh_nav_for_ownerPage" name="navigation" 
+						  arg-pageSelected="{$pageSelected}" 
+						  arg-total="{$ownerPageTotal}" 
+						  arg-route="bh_item/ownerpage" 
+						  arg-brand="{$item}"
+							/>
+					</div>
+					<div style="float:right;">
+						<xf:button href="{{ link('bh_item/ownerpage/add', $item,{'item': $item.item_id}) }}" class="button--fullWidth" overlay="true">{{ phrase('bh_create_owner_page', {'itemTitle': $item.item_title}) }}</xf:button>
+					</div>
+				</div>
+
+
+			<div class="clearfix"></div>
+
+
+			<div class="block-body">
+				<xf:if is="$itemPages is not empty">
+						<div class="brandHub">		
+							<ul class="grid-page-item">
+								<xf:foreach loop="$itemPages" value="$itemPage">
+								<li class="bh_item">
+									<div class="borderpage">
+                                             
+										
+												<a href="{{ link('bh_item/ownerpage/page', $itemPage) }}" class="bh_a" >
+													<xf:if is="$itemPage.getthumbnailurl()!=''">
+														<img src="{{$itemPage.getthumbnailurl() }}" class="pageimage" />	
+													<xf:else />
+														<i class="fas fa-image fa-8x" ></i>
+													</xf:if>
+													<strong>{$itemPage.User.username} {{$item.Brand.brand_title}} {{$item.item_title}} </strong></a>
+
+								</div>
+
+
+									</li>
+								</xf:foreach>
+								
+							</ul>
+							<xf:if is="count($itemPages) == 10 ">
+								<div style="text-align:center;">
+										<a href="{{ link('bh_item/ownerpage', $item) }}" target="_blank">{{phrase('bh_load_more_owner_pages')}}</a>
+								</div>
+							</xf:if>
+						</div>
+				<xf:else />
+					<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+				</xf:if>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="bh_item_owner_page_all" version_id="1020400" version_string="1.2.4 Alpha"><![CDATA[<xf:title class="bh-title">{{ $item.Brand.brand_title }} {{ $item.item_title }}</xf:title>
+<xf:breadcrumb source="$page.getBreadcrumbs(false)" />
+
+<xf:css src="bh_brandHub_list.less" />
+<div class="block">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_x_item_owner_pages', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+			<div class="p-description">{{ phrase('bh_view_owner_pages_to_see_photos_customizations', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+		</div>
+		<div class="block-body block-row block-row--separated">
+			<div class="block-body">
+				<div class="">
+					<div style="float:left;">
+						<xf:macro template="bh_nav_for_ownerPage" name="navigation" 
+						  arg-pageSelected="{$pageSelected}" 
+						  arg-total="{$ownerPageTotal}" 
+						  arg-route="bh_item/ownerpage" 
+						  arg-brand="{$item}"
+							/>
+					</div>
+					<div style="float:right;">
+						<xf:button href="{{ link('bh_item/ownerpage/add', $item,{'item': $item.item_id}) }}" class="button--fullWidth" overlay="true">{{ phrase('bh_create_owner_page', {'itemTitle': $item.item_title}) }}</xf:button>
+					</div>
+				</div>
+
+
+			<div class="clearfix"></div>
+
+
+			<div class="block-body">
+				<xf:if is="$itemPages is not empty">
+						<div class="brandHub">		
+							<ul class="grid-page-all">
+								<xf:foreach loop="$itemPages" value="$itemPage">
+								<li class="innerpage">
+									<div class="borderpage">
+
+
+												<a href="{{ link('bh_item/ownerpage/page', $itemPage) }}" class="bh_a" >
+													<xf:if is="$itemPage.getthumbnailurl()">
+														<img src="{{$itemPage.getthumbnailurl() }}" class="pageimage" />	
+													<xf:else />
+														<i class="fas fa-image fa-8x icon"  ></i><br>
+													</xf:if>	
+
+													<strong>{$itemPage.User.username} {{$item.Brand.brand_title}} {{$item.item_title}} </strong></a>
+
+
+									</div>
+
+									</li>
+								</xf:foreach>
+							</ul>	
+						</div>
+				<xf:else />
+					<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+				</xf:if>
+		
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+
+
+
+</style>]]></template>
+  <template type="public" title="bh_item_page_edit" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<xf:if is="$Page.isInsert()">
+	<xf:title>{{ phrase('bh_add_owner_page') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bh_edit_owner_page:') }}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$Page.isUpdate()">
+	<xf:button href="{{ link('bh_item/ownerpage/delete', $Page) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+
+<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+<xf:form action="{{ link('bh_item/ownerpage/save', $Page) }}"  ajax="true" data-xf-init="attachment-manager" >
+ 
+	<xf:hiddenval name="attachment_time">{$attachment_time}</xf:hiddenval>
+	
+	<xf:hiddenval name="item_id">{$item.item_id}</xf:hiddenval>
+	<div class="block-container">
+		<div class="block-body">
+			
+		
+		<div class="js-inlineNewPostFields">
+			
+		<xf:editorrow name="about" value="{$Page.Detail.about}" 
+				label="{{ phrase('bh_page_about') }}" />
+			
+		<xf:editorrow name="attachment" value="{$Page.Detail.attachment}" 
+				label="{{ phrase('bh_page_attachment') }}" />
+		
+		<xf:editorrow name="customizations" value="{$Page.Detail.customizations}" 
+				label="{{ phrase('bh_page_customizations') }}" />
+		
+			
+	
+			
+		</div>
+	</div>
+		<xf:submitrow sticky="true" icon="save" />
+			
+	</div>
+
+</xf:form>]]></template>
+  <template type="public" title="bh_item_rate" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[<xf:title>{{ phrase('bh_rate_this_item') }}</xf:title>
+
+<xf:breadcrumb source="$item.getBreadcrumbs()" />
+
+<xf:form action="{{ link('bh_brands/item/rate', $item) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$existingRating">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('bh_you_have_already_rated_this_item_rerating_remove_existing') }}
+				</xf:inforow>
+			</xf:if>
+			
+			<xf:macro template="rating_macros" name="rating" arg-currentRating="{{$item.ItemRatings.{$xf.visitor.user_id}.rating}}" />
+			
+		
+				<xf:editorrow name="message" value="{$item.ItemRatings.{$xf.visitor.user_id}.message}" data-min-height="100"
+					label="{{ phrase('bh_review') }}"
+					data-xf-init="min-length"
+					data-min-length="{$xf.options.bh_MinimumReviewLength}"
+					data-allow-empty="{{ $xf.options.bh_ReviewRequired ? 'false' : 'true' }}"
+					data-toggle-target="#js-resourceReviewLength"
+					maxlength="{$xf.options.messageMaxLength}"
+					hint="{{ $xf.options.bh_ReviewRequired ? phrase('required') : '' }}" >
+	
+				<xf:explain>
+					{{ phrase('bh_explain_why_youre_giving_this_rating') }}
+					<xf:if is="$xf.options.bh_ReviewRequired">
+						{{ phrase('bh_review_is_required') }}
+					</xf:if>
+					<xf:if is="$xf.options.bh_MinimumReviewLength">
+						<span id="js-resourceReviewLength">{{ phrase('bh_your_review_must_be_at_least_x_characters', {'min': $xf.options.bh_MinimumReviewLength}) }}</span>
+					</xf:if>
+				</xf:explain>
+			</xf:editorrow>
+
+		</div>
+		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="bh_item_review_macros" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:macro name="review_simple" arg-review="!">
+	<xf:css src="message.less" />
+	
+	<span class="u-anchorTarget" id="item-review-{$review.item_rating_id}"></span>
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="{{ $review.User }}" size="xxs" />
+		</div>
+		<div class="contentRow-main contentRow-main--close">
+			<div class="contentRow-lesser">
+				<xf:macro template="rating_macros" name="stars" arg-rating="{$review.rating}" arg-class="ratingStars--smaller" /> 
+			</div>
+			<div class="contentRow-minor contentRow-minor--smaller">
+				<ul class="listInline listInline--bullet">
+					<li>
+							{{ $review.User.username ?: phrase('deleted_member') }}
+					</li>
+					<li><xf:date time="{$review.rating_date}" /></li>
+				</ul>
+			</div>
+			
+			<xf:if is="$review.rating_state == 'deleted'">
+				<div class="messageNotice messageNotice--deleted">
+					<xf:macro template="deletion_macros" name="notice" arg-log="{$review.DeletionLog}" />
+				</div>
+			</xf:if>
+			<div class="contentRow-lesser">{{ bb_code($review.message, 'message', $review) }}</div>
+			
+			<xf:if contentcheck="true">
+				<div class="actionBar-set actionBar-set--internal">
+					<xf:contentcheck>
+
+						<xf:set var="$hasActionBarMenu" value="{{ false }}" />
+						<xf:if is="$review.canDelete('soft')">
+							<a href="{{ link('bh_brands/review/delete', $review) }}"
+							   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+							   data-xf-click="overlay">
+								{{ phrase('delete') }}
+							</a>
+							<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+						</xf:if>
+						<xf:if is="$review.rating_state == 'deleted' AND $review.canUndelete()">
+							<a href="{{ link('bh_brands/review/undelete', $review) }}" data-xf-click="overlay"
+							   class="actionBar-action actionBar-action--undelete actionBar-action--menuItem">
+								{{ phrase('undelete') }}
+							</a>
+							<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</xf:if>
+						
+		</div>
+	</div>
+
+</xf:macro>]]></template>
+  <template type="public" title="bh_item_reviews" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[<xf:title class="bh-title">{{ $item.Brand.brand_title }} {{ $item.item_title }}</xf:title>
+<xf:breadcrumb source="$item.getBreadcrumbs()" />
+
+<xf:css src="bh_brandHub_list.less" />
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_user_reviews') }} ({{ $item.rating_count|number }})</h3>
+			<div class="p-description">{{ phrase('bh_read_what_tractor_by_net_members_thinkabout_the_x_item', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+		</div>
+		<div class="block-body block-row block-row--separated">
+			<div class="block-body">
+				
+		<xf:if is="$itemReviews is not empty">
+					<xf:foreach loop="$itemReviews" value="$review">
+						<xf:macro template="bh_item_review_macros" name="review_simple"
+							arg-review="{$review}" />
+						<br>
+					</xf:foreach>
+			
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($itemReviews, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+		
+		
+		</div>
+	</div>
+</div>
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="bh_brands/item/{$item.item_id}/reviews/" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />
+</div>]]></template>
+  <template type="public" title="bh_nav_for_ownerPage" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<xf:macro name="navigation" arg-pageSelected="!" arg-total="" arg-route="" arg-brand="" >
+	<xf:if is="property('findThreadsNavStyle') == 'tabs'">
+		<div class="tabs tabs--standalone">
+			<div class="hScroller" data-xf-init="h-scroller">
+				<span class="hScroller-scroll">
+					<xf:macro name="links"
+						arg-pageSelected="{$pageSelected}"
+						arg-baseClass="tabs-tab"
+						arg-selectedClass="is-active"
+						arg-total="{$total}"
+						arg-route="{$route}"
+						arg-brand="{$brand}"
+						 />
+				</span>
+			</div>
+		</div>
+	<xf:else />
+		<xf:sidenav>
+			<div class="block">
+				<div class="block-container">
+					<h3 class="block-header">{{ phrase('bh_brand_lists') }}</h3>
+					<div class="block-body">
+						<xf:macro name="links"
+							arg-pageSelected="{$pageSelected}"
+							arg-baseClass="blockLink"
+							arg-selectedClass="is-selected"
+							arg-total="{$total}"
+							arg-route="{$route}"
+							arg-brand="{$brand}"
+							 />
+					</div>
+				</div>
+			</div>
+
+		</xf:sidenav>
+		<xf:page option="sideNavTitle">{{ phrase('bh_item_lists') }}</xf:page>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="links" arg-pageSelected="!" arg-baseClass="!" arg-selectedClass="!" arg-total="" arg-route="" arg-brand="" >
+	<a class="{$baseClass} {{ ($pageSelected == 'all') ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $brand) }}" rel="nofollow">{{ phrase('bh_all') }} ({$total}) </a>
+	
+	<a class="{$baseClass} {{ $pageSelected == 'view_count' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $brand, {'type': 'view_count'}) }}" rel="nofollow">{{ phrase('bh_most_viewed') }}</a>
+	
+	<a class="{$baseClass} {{ $pageSelected == 'discussion_count' ? {$selectedClass} : '' }}"
+		href="{{ link({$route}, $brand, {'type': 'discussion_count'}) }}" rel="nofollow">{{ phrase('bh_most_discussed') }}</a>
+	
+</xf:macro>]]></template>
+  <template type="public" title="bh_page_detail" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[<xf:title class="bh-title">{{ $page.User.username }} in {{ $item.item_title }}  {{ $item.Brand.brand_title }}</xf:title><br>
+<xf:breadcrumb source="$page.getBreadcrumbs(false)" />
+
+<xf:pageaction>
+	<xf:button href="{{ link('bh_item/ownerpage/mainphoto', $page) }}" class="" overlay="true">{{ phrase('bh_main_photo') }}</xf:button>
+
+</xf:pageaction>
+
+
+<xf:css src="bh_brandHub_list.less" />
+		
+
+<xf:if is="$filmStripParams">
+<div class="media">
+	
+	<xf:if is="{$filmStripParams.prevItem}">
+		
+	<a href="{{ link('bh_item/ownerpage/page',$page,{'attachment_id':$filmStripParams.prevItem.attachment_id}) }}" class="media-button media-button--prev" data-xf-key="ArrowLeft"><i class="media-button-icon"></i></a>	
+	
+		</xf:if>
+
+		 <div class="media-container">
+
+     	<xf:if is="{$mainItem}">
+        <xf:macro template="bh_page_filmstrip_view_macros" name="main_content" arg-mainItem="{$mainItem}" arg-item="{$page}" />
+		 </xf:if>
+		</div>
+	
+	
+
+	<xf:if is="$filmStripParams.nextItem">
+		<a href="{{ link('bh_item/ownerpage/page',$page,{'attachment_id':$filmStripParams.nextItem.attachment_id}) }}" class="media-button media-button--next" data-xf-key="ArrowRight"><i class="media-button-icon"></i></a>
+	
+	</xf:if>
+		
+</div>
+
+	
+ <div class="block js-mediaInfoBlock">
+	
+	<xf:if is="$filmStripParams.Items">
+	<xf:macro template="bh_page_filmstrip_view_macros" name="attachment_film_strip" arg-mainItem="{$mainItem}" arg-filmStripParams="{$filmStripParams}" arg-item="{$page}" />
+	 </xf:if>
+</div>
+		</xf:if>
+
+
+		
+	
+<div class='clearfix'></div>
+<div class="block-container" style="border: 2px solid orange;">
+	<blockquote class="message-body">
+	
+     <h1>{{ phrase('bh_page_about_my_x_item', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h1>
+
+		
+		{{ bb_code($page.Detail.about, 'about', $page.Detail) }}<br>
+		
+		<xf:if is="{$page.Detail.attachment}">
+			<b>{{phrase('bh_page_attachment')}}</b><br><br>
+			{{ bb_code($page.Detail.attachment, 'attachment', $page.Detail) }}<br>
+		</xf:if>
+		
+		<xf:if is="{$page.Detail.customizations}">
+			<b>{{phrase('bh_page_customizations')}}</b><br><br>
+		   {{ bb_code($page.Detail.customizations, 'customizations', $page.Detail) }}
+		 </xf:if>
+		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_can_edit_ownerpage') && $xf.visitor.user_id==$page.user_id">
+			<a href="{{ link('bh_item/ownerpage/edit', $page) }}" >{{ phrase('edit') }}</a>
+		</xf:if>
+		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'react_page') && $xf.visitor.user_id">
+			<xf:extension name="footer">
+				<xf:macro name="page_reaction_footer" arg-page="{$page}"  />
+			</xf:extension>
+		</xf:if>
+	</blockquote>
+</div>
+
+
+
+
+<div class='clearfix'></div>
+<div class="block">
+				<div class="block-container">
+					<div class="block-header">
+						<h3 class="block-minorHeader">{{ phrase('bh_my_x_page_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }} ({$page.discussion_count})</h3>
+						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+					</div>
+							<div class="block-body block-row block-row--separated">
+								<div class="block-body">
+									<xf:datalist data-xf-init="responsive-data-list">
+										
+										<xf:if is="$discussions is not empty">
+											<xf:foreach loop="$discussions" value="$discussion">
+											<xf:if is="$discussion.isUnread()">
+												<xf:datarow>
+													<xf:cell style="font-weight:700;" href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ prefix('thread', $discussion) }}{{ $discussion.title }}</xf:cell>
+												</xf:datarow>
+												<xf:else />
+													<xf:datarow>
+													<xf:cell href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ $discussion.title }}</xf:cell>
+												</xf:datarow>
+												</xf:if>
+											</xf:foreach>
+											<xf:if is="$page.discussion_count > $xf.options.bh_discussions_on_item ">
+													<xf:datarow>
+														<xf:cell href="{{ link('bh_item/ownerpage/pagethreads', $page) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{phrase('bh_view_more_threads', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}</xf:cell>
+													</xf:datarow>
+												</xf:if>
+										<xf:else />
+											<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+										</xf:if>
+
+									</xf:datalist>
+								</div>
+							</div>			
+				</div>
+			</div>
+
+
+
+		<xf:sidebar key="">
+			<div class="block">
+				<div class="block-container">
+					<xf:if contentcheck="true">
+         
+					<h2 class="block-minorHeader">{{ phrase('bh_page_rank_my_X_owner_page', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h2>
+					
+ 						<div class="block-body block-row">
+
+									<xf:contentcheck>
+											  <xf:datalist data-xf-init="responsive-data-list">
+
+													<xf:if is="$pagePosition.pageViewPosition">
+															<xf:datarow>
+																	<xf:cell >#{{$pagePosition.pageViewPosition}} most Viewed</xf:cell>
+															</xf:datarow>	
+													</xf:if>
+
+												  <xf:if is="$pagePosition.pageDiscussionPosition">
+															<xf:datarow>
+																	<xf:cell >#{{$pagePosition.pageDiscussionPosition}} most discussions</xf:cell>
+															</xf:datarow>	
+													</xf:if>
+												  					<xf:if is="$pagePosition.pageFollowPosition">
+															<xf:datarow>
+																	<xf:cell >#{{$pagePosition.pageFollowPosition}} most followed</xf:cell>
+															</xf:datarow>	
+													</xf:if>
+												  <xf:if is="$pagePosition.pageAttachmentPosition">
+															<xf:datarow>
+																	<xf:cell >#{{$pagePosition.pageAttachmentPosition}} most photos</xf:cell>
+															</xf:datarow>	
+													</xf:if>
+											</xf:datalist>
+								</xf:contentcheck>
+
+
+								<br><br>
+
+							</div>
+					</xf:if>
+				</div>
+			</div>
+		</xf:sidebar>
+
+	    <xf:sidebar >
+			
+				  <xf:if is="{$alreadySub}">
+					  <div class="block">
+						<div class="block-container bh_center">
+							{{phrase('you_have_followed')}}
+						  </div>
+					  </div>
+					<xf:else/>
+						<xf:button href="{{ link('bh_item/ownerpage/pagesub', $page) }}" class="button--fullWidth">{{ phrase('bh_follow_owner_page') }}</xf:button>
+					</xf:if>
+				
+		  <br>
+		</xf:sidebar>
+
+<xf:macro  template="bh_ad_macros" name="sideBar_pageside" />
+
+<xf:macro name="page_reaction_footer" arg-page="!">
+	<footer class="message-footer">
+		<xf:if contentcheck="true">
+			<div class="message-actionBar actionBar">
+				<xf:contentcheck>
+					<xf:macro name="page_action_bar" arg-page="{$page}" />
+				</xf:contentcheck>
+			</div>
+		</xf:if>
+
+		<div class="reactionsBar js-reactionsList {{ $page.reactions ? 'is-active' : '' }}">
+					<xf:reactions content="{$page}" link="bh_item/ownerpage/reactions" />
+		</div>
+
+		<div class="js-historyTarget message-historyTarget toggleTarget" data-href="trigger-href"></div>
+	</footer>
+</xf:macro>
+
+
+<xf:macro name="page_action_bar" arg-page="!">
+	<xf:if contentcheck="true">
+		<div class="actionBar-set actionBar-set--external">
+		<xf:contentcheck>
+			<xf:react content="{$page}" link="bh_item/ownerpage/react" list=".js-reactionsList" />
+		</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="bh_page_filmstrip_view_macros" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:macro name="attachment_film_strip" arg-mainItem="!" arg-filmStripParams="!"  arg-item="!">
+	
+	<xf:if is="$filmStripParams.Items is not empty">
+		<xf:js src="BrandHub/film_strip.js" min="1" />
+		<xf:css src="bh_item_attachment_list.less" />
+
+		<div class="block-outer">
+			<div class="block-outer-middle">
+				<div class="itemList itemList--strip js-filmStrip">
+					
+					<a data-xf-click="inserter" data-replace=".js-filmStrip"
+						href="{{ link('bh_item/ownerpage/filmstripjump', $item, {'direction': 'prev', 'attachment_id': $filmStripParams.firstItem.attachment_id}) }}"
+						class="js-filmStrip-button itemList-button itemList-button--prev{{ !$filmStripParams.hasPrev ? ' is-disabled' : '' }}">
+
+						<i class="itemList-button-icon"></i>
+					</a>
+
+					<xf:foreach loop="$filmStripParams.Items" value="$attachItem">
+						<div class="js-filmStrip-item itemList-item">
+							<a href="{{ link('bh_item/ownerpage/page',$item,{'attachment_id':$attachItem.attachment_id}) }}">
+								
+	
+					<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid xfmgThumbnail--iconSmallest {{$mainItem.attachment_id==$attachItem.attachment_id ? 'is-selected' :''}} ">
+			        <img class="xfmgThumbnail-image" src="{{$attachItem.getThumbnailUrl()}}" >
+			           <span class="xfmgThumbnail-icon"></span>
+		           </span>
+							</a>
+						</div>
+					</xf:foreach>
+
+					<a data-xf-click="inserter" data-replace=".js-filmStrip"
+						href="{{ link('bh_item/ownerpage/filmstripjump', $item, {'direction': 'next', 'attachment_id': $filmStripParams.lastItem.attachment_id}) }}"
+						class="js-filmStrip-button itemList-button itemList-button--next{{ !$filmStripParams.hasNext ? ' is-disabled' : '' }}">
+
+						<i class="itemList-button-icon"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="main_content" arg-mainItem="!" arg-item="!">
+	<xf:css src="xfrb_media_view.less" />
+	<xf:if is="$mainItem">
+	
+			<div class="media-container-image js-mediaContainerImage">
+			
+			<xf:set var="$imageHtml">
+				<img src="{{link('attachments/full',$mainItem) }}" alt="{$mainItem.filename}" class="js-mediaImage" />
+			</xf:set>
+		
+
+				{$imageHtml|raw}
+				
+		
+	</div>
+		
+	<xf:elseif is="$mediaItem.media_type == 'video'" />
+		<xf:macro template="videojs_macros" name="setup" />
+   
+		<div class="bbMediaWrapper">
+			<div class="bbMediaWrapper-inner">
+				<video data-xf-init="video-player"
+					data-player-setup="{$mediaItem.player_setup|json}"
+					class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9">
+
+					<source src="{$mediaItem.getVideoUrl()}" type="video/mp4" />
+				</video>
+			</div>
+		</div>
+	<xf:elseif is="$mediaItem.media_type == 'audio'" />
+		<xf:macro template="videojs_macros" name="setup" />
+
+		<xf:set var="$audioItem">
+			<audio data-xf-init="video-player"
+				data-player-setup="{$mediaItem.player_setup|json}"
+				class="video-js vjs-default-skin vjs-big-play-centered bbMediaWrapper-fallback">
+
+				<source src="{$mediaItem.getAudioUrl()}" type="audio/mpeg" />
+			</audio>
+		</xf:set>
+
+		<xf:if is="$mediaItem.thumbnail_date">
+			<div class="bbMediaWrapper">
+				<div class="bbMediaWrapper-inner bbMediaWrapper-inner--thumbnail">
+					{$audioItem|raw}
+				</div>
+			</div>
+		<xf:else />
+			{$audioItem|raw}
+		</xf:if>
+	<xf:elseif is="$mediaItem.media_type == 'embed'" />
+		{{ bb_code($mediaItem.media_tag, 'xfmg_media', $mediaItem) }}
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="bh_page_main_photo" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:title>{$item.item_title}</xf:title>
+<xf:h1 hidden="true" />
+
+<xf:css src="bh_item_main_photo_view.less" />
+
+
+<xf:form action="{{ link('bh_item/ownerpage/setmainphoto',$page) }}" ajax="true" class="block" data-force-flash-message="true">
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$pageAttachments is not empty">
+			
+				<xf:macro template="bh_item_list_main_photo_macros" name="item_list" arg-Items="{$pageAttachments}"  arg-Selected="{$selectedAttachment}" arg-allowInlineMod="true" />
+			</xf:if>
+		</div>
+	</div>
+	<xf:submitrow icon="save" sticky="true" />
+</div>
+</xf:form>]]></template>
+  <template type="public" title="bh_tab_item_sub" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[<div class="block">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_item_subscribe') }}</h3>
+		</div>
+		<div class="block-body block-row block-row--separated">
+			<div class="block-body">
+
+			<div class="block-body">
+				<xf:if is="$sublist is not empty">
+		            <xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bh_item_title') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell>{{ phrase('subcribe_date') }}</xf:cell>
+						<xf:if is="$user.user_id == $xf.visitor.user_id">
+							<xf:cell>{{ phrase('action') }}</xf:cell>
+						</xf:if>
+				
+					</xf:datarow>
+					<xf:foreach loop="$sublist" value="$sub">
+						<xf:datarow>
+						<xf:cell>{$sub.Item.item_title}</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell><xf:date time="$sub.create_date"/></xf:cell>
+						<xf:if is="$user.user_id == $xf.visitor.user_id">
+							<xf:action href="{{ link('bh_brands/item/unsub', $sub) }}" overlay="true">{{ phrase('bh_unsubscribe') }}</xf:action>	
+						</xf:if>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+				<xf:else />
+					<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+				</xf:if>
+		
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="bh_tab_owner_pages" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<xf:title class="bh-title">{{ $item.Brand.brand_title }} {{ $item.item_title }}</xf:title>
+<xf:css src="bh_brandHub_list.less" />
+<div class="block">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_x_item_owner_pages', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+			<div class="p-description">{{ phrase('bh_view_owner_pages_to_see_photos_customizations', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+		</div>
+		<div class="block-body block-row block-row--separated">
+			<div class="block-body">
+
+			<div class="block-body">
+				<xf:if is="$ownerPages is not empty">
+						<div class="brandHub">		
+							<ul class="grid-list">
+								<xf:foreach loop="$ownerPages" value="$ownerPage">
+								<li class="bh_item">
+									<div class="borderpage">
+
+
+												<a href="{{ link('bh_item/ownerpage/page', $ownerPage) }}" class="bh_a" >
+													<xf:if is="$ownerPage.getthumbnailurl()">
+														<img src="{{$ownerPage.getthumbnailurl() }}"  />	
+													<xf:else />
+														<i class="fas fa-image fa-6x" ></i>
+													</xf:if>	
+
+													<strong>{$ownerPage.User.username} in {{$ownerPage.Item.item_title}} </strong>
+												</a>
+									</div>
+
+									</li>
+								</xf:foreach>
+							</ul>	
+						</div>
+				<xf:else />
+					<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+				</xf:if>
+		
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="bh_uploadPhoto" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:title>{{ phrase('bh_upload_photos') }}</xf:title>
+
+
+<xf:form action="{{ link('bh_brands/item/savephoto', $brand) }}" ajax="true" data-xf-init="attachment-manager">
+	<div class="block-container">
+		<div class="block-body">
+		
+			<xf:hiddenval name="attachment_time">{$attachment_time}</xf:hiddenval>
+			<xf:selectrow name="item_id" value="{$selectedItem.item_id}" label="{{ phrase('bh_item') }}">
+				<xf:option value="0" selected="!{$selectedItem.item_id}">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$items" value="$item">
+					<xf:option value="{$item.item_id}" label="{$item.item_title}" />
+				</xf:foreach>
+			</xf:selectrow>
+				
+				<xf:formrow>
+					<xf:macro template="bh_helper_attachment_photo" name="upload_block"
+							  arg-attachmentData="{$attachmentData}" />
+				</xf:formrow>
+			
+			<xf:submitrow sticky="true" icon="save" />
+				
+
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="bh_user_reviews" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:css src="bh_brandHub_list.less" />
+
+<div class="block" id="reviews">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_user_reviews') }} ({{ $item.rating_count|number }})</h3>
+			<div class="p-description">{{ phrase('bh_read_what_tractor_by_net_members_thinkabout_the_x_item', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+		</div>
+		<div class="block-body block-row block-row--separated">
+			<div class="block-body">
+
+				<div class="reviewStarsDiv">
+					<strong>{{ $item.rating_avg|number(1) }}<xf:macro template="rating_macros" name="stars" arg-rating="{$item.rating_avg}" /></strong>  <br/><br/>
+
+					<a href="{{ link('bh_brands/item/rate', $item) }}" class="bh_a" data-name="{$item.item_title}" data-xf-click="overlay">{{ phrase('bh_write_a_review') }}</a><br />
+					<a href="{{ link('bh_brands/item/reviews', $item) }}" target="_blank" class="bh_a" data-name="{$item.item_title}">{{ phrase('bh_view_all_x_reviews', {'total':$item.review_count}) }}</a>
+				</div>
+				<div class="ratingBarsDiv">
+					<xf:foreach loop="$itemRatings" key="$key" value="$itemRating" i="$i">		
+						<xf:macro name="ratingBar" arg-number="{{$key}}" arg-percentage="{{ $itemRating }}" />
+					</xf:foreach>
+				</div>
+				<div class="clearfix"></div>
+				
+	<h6 class="block-body block-row block-row--separated">{{ phrase('bh_most_recent_x_item_reviews', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h6><br>
+		<xf:if is="$itemReviews is not empty">
+					<xf:foreach loop="$itemReviews" value="$review">
+						<xf:macro template="bh_item_review_macros" name="review_simple"
+							arg-review="{$review}" />
+						<br>
+					</xf:foreach>
+			<hr class="menu-separator menu-separator--hard" />
+			
+		<xf:else />
+			<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+			<div class="block-footer">
+				<xf:if is="count($itemRatings) > $xf.options.bh_RecentReviewsCount">
+					<span class="block-footer-controls"><a href="{{ link('bh_brands/item/reviews', $item) }}" target="_blank" class="bh_a button--link button" data-name="{$item.item_title}"><span class="button-text">{{ phrase('bh_load_more_x_item_reviews', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</span></a></span>
+				</xf:if>
+				<a href="{{ link('bh_brands/item/rate', $item) }}" class="bh_a button--link button" data-name="{$item.item_title}" data-xf-click="overlay"><span class="button-text">{{ phrase('bh_write_a_review') }}</span></a>
+			</div>
+				
+		
+		<xf:sidebar>
+			<div class="block">
+				<div class="block-container">
+					<xf:widget key="bh_highest_rated_items" />
+				</div>
+			</div>
+		</xf:sidebar>
+		
+		
+		<xf:sidebar key="">
+			<xf:macro template="bh_brand_hub_macros" name="brandRelatedLinks" arg-brandObj="{$item.Brand}" />
+		</xf:sidebar>
+		
+		</div>
+	</div>
+</div>
+</div>
+
+
+<xf:macro name="ratingBar" arg-number="!" arg-percentage="!" >
+	<div class="side">
+		<div>{$number} <span class="fa fa-star checked ratingStars--smaller"></span></div>
+	</div>
+	<div class="middle" >
+		<div class="bar-container">
+			<div class="bar" style="width:{$percentage}%;"></div>
+		</div>
+	</div>
+	<div class="side right">
+		<div>{$percentage} %</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="delete_confirm_unsub" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('bh_brands/item/unsubitem',$item) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('are_sure_to_unsub:') }}
+				<xf:if is="$item">
+					<strong>{$item.item_title}</strong>
+				</xf:if>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple"  icon="submit" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="helper_attachment_owner_page" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[<xf:macro name="upload_link" arg-attachmentData="!">
+
+<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+<xf:button  href="{{ link('attachments/upload', null, {'type': 'bh_ownerpage', 'context': $attachmentData.context, 'hash': $attachmentData.hash}) }}"
+	 class="button--link js-attachmentUpload" icon="attach"
+	data-accept=".{$attachmentData.constraints.extensions|join(',.')}" />
+						
+	<xf:hiddenval name="attachment_hash">{$attachmentData.hash}</xf:hiddenval>
+								<xf:hiddenval name="attachment_hash_combined">{{ {
+									'type': 'bh_item',
+									'context': $attachmentData.context,
+									'hash': $attachmentData.hash
+								}|json }}</xf:hiddenval>
+</xf:macro>
+
+<xf:macro name="upload_link_from_data" arg-attachmentData="!">
+	<xf:macro name="upload_link"  arg-attachmentData="{$attachmentData}" />
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_files_list" arg-attachments="{{ [] }}" arg-class="">
+	<xf:css src="attachments.less" />
+	<div class="attachmentUploads js-attachmentUploads {$class} {{ $attachments is not empty ? 'is-active' : '' }}">
+		<div class="hScroller" data-xf-init="h-scroller">
+			<div class="hScroller-scroll">
+				<ul class="attachUploadList js-attachmentFiles">
+				<xf:foreach loop="$attachments" value="$attachment">
+					<xf:macro name="uploaded_file" arg-attachment="{$attachment}" />
+				</xf:foreach>
+				</ul>
+			</div>
+		</div>
+
+		<div class="attachmentUploads-banner js-attachmentInsertMultiRow u-hidden">
+			<xf:button class="button--link js-attachmentSelect" data-toggle="{{ phrase('button.cancel') }}">
+				{{ phrase('insert_multiple...') }}
+			</xf:button>
+			<ul class="attachmentUploads-selectActions js-attachmentSelectActions">
+				<li>
+					<span class="button button--link selectAll">
+						<span class="button-text">
+							<xf:checkbox standalone="true">
+								<xf:option check-all="< .attachmentUploads" label="{{ phrase('select_all') }}" />
+							</xf:checkbox>
+						</span>
+					</span>
+				</li>
+				<li class="js-attachmentSelectInsertActions">
+					<span class="insert-label">{{ phrase('insert:') }}</span>
+					<span class="buttonGroup">
+						<xf:button class="button--link js-attachmentSelectAction" data-action="thumbnail">
+							{{ phrase('thumbnail') }}
+						</xf:button>
+						<xf:button class="button--link js-attachmentSelectAction" data-action="full">
+							{{ phrase('full_image') }}
+						</xf:button>
+					</span>
+				</li>
+				<li>
+					<xf:button class="button--link button--iconOnly js-attachmentSelectAction" fa="fa-trash-alt" data-action="delete">
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</xf:button>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<xf:macro name="uploaded_file_template" />
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_file" arg-attachment="!" arg-noJsFallback="{{ false }}">
+	<li class="js-attachmentFile file" data-attachment-id="{$attachment.attachment_id}">
+		<xf:if is="$attachment.has_thumbnail">
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<img src="{{ base_url($attachment.thumbnail_url) }}" class="js-attachmentThumb" alt="{$attachment.filename}"
+					width="{$attachment.thumbnail_width}" height="{$attachment.thumbnail_height}" loading="lazy" />
+			</a>
+		<xf:elseif is="$attachment.is_video" />
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<video data-xf-init="video-init">
+					<source src="{$attachment.direct_url}" />
+				</video>
+			</a>
+		<xf:else />
+			<a class="file-preview js-attachmentView" href="{$attachment.direct_url}" target="_blank">
+				<span class="file-typeIcon">
+					<xf:fa icon="{$attachment.icon}" />
+				</span>
+			</a>
+		</xf:if>
+
+	
+		<div class="file-content">
+
+			<xf:if is="!$noJsFallback">
+				<xf:if is="$attachment.has_thumbnail">
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink"
+							data-xf-click="toggle"
+							data-target="< .js-attachmentInsert"
+							role="button"
+							tabindex="0">
+							{{ phrase('insert...') }}
+						</a>
+						<div class="file-menuOptions">
+							<a class="js-attachmentAction" data-action="thumbnail" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('thumbnail') }}</a>
+							<a class="js-attachmentAction" data-action="full" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('full_image') }}</a>
+						</div>
+					</div>
+				<xf:elseif is="$attachment.is_video" />
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink js-attachmentAction" data-action="full" data-type="video" role="button" tabindex="0">
+							{{ phrase('insert') }}
+						</a>
+					</div>
+				<xf:elseif is="$attachment.is_audio" />
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink js-attachmentAction" data-action="full" data-type="audio" role="button" tabindex="0">
+							{{ phrase('insert') }}
+						</a>
+					</div>
+				</xf:if>
+
+				<div class="file-checkbox">
+					<xf:checkbox standalone="true">
+						<xf:option value="" />
+					</xf:checkbox>
+				</div>
+			</xf:if>
+
+			<span class="file-delete">
+				<xf:if is="$noJsFallback">
+					<xf:button type="submit" class="button--small button--link" name="delete" value="{$attachment.attachment_id}">
+						<xf:fa icon="fa-trash-alt" />
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</xf:button>
+				<xf:else />
+					<a class="file-deleteLink js-attachmentAction"
+						data-action="delete"
+						data-type="{$attachment.type_grouping}"
+						role="button"
+						tabindex="0">
+						<xf:fa icon="fa-trash-alt" />
+						<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+					</a>
+				</xf:if>
+			</span>
+
+			<a class="file-info"
+				href="{$attachment.direct_url}"
+				target="_blank">
+
+				<span class="file-name">{$attachment.filename}</span>
+
+				<div class="file-meta">
+					<xf:if is="$attachment.Data.width">{$attachment.Data.width} x {$attachment.Data.height} &middot; </xf:if>
+					{$attachment.file_size|file_size}
+				</div>
+			</a>
+		</div>
+	</li>
+</xf:macro>
+
+
+
+<xf:macro name="uploaded_file_template">
+	<script type="text/template" class="js-attachmentUploadTemplate">
+		<li class="file js-attachmentFile" {{ mustache('#attachment_id', 'data-attachment-id="{{attachment_id}}"') }}>
+			<xf:mustache name="#uploading">
+				<div class="file-preview">
+					<div class="file-progress js-attachmentProgress"></div>
+					<span class="file-error js-attachmentError"></span>
+				</div>
+			</xf:mustache>
+			<xf:mustache name="^uploading">
+				<xf:mustache name="#thumbnail_url">
+					<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+						<img src="{{ mustache('thumbnail_url') }}" class="js-attachmentThumb" alt="{{ mustache('filename') }}" />
+					</a>
+				</xf:mustache>
+				<xf:mustache name="^thumbnail_url">
+					<xf:mustache name="#is_video">
+						<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+							<video data-xf-init="video-init">
+								<source src="{{ mustache('link') }}" />
+							</video>
+						</a>
+					</xf:mustache>
+					<xf:mustache name="^is_video">
+						<a class="file-preview js-attachmentView" href="{{ mustache('link') }}" target="_blank">
+							<span class="file-typeIcon">
+								<i class="fa--xf fa{{ fa_weight() }} {{ mustache('icon') }}" aria-hidden="true"></i>
+							</span>
+						</a>
+					</xf:mustache>
+				</xf:mustache>
+			</xf:mustache>
+
+			<div class="file-content">
+
+				<xf:mustache name="#thumbnail_url">
+					<div class="file-insert js-attachmentInsert">
+						<a class="file-insertLink"
+							data-xf-click="toggle"
+							data-target="< .js-attachmentInsert"
+							role="button"
+							tabindex="0">
+							{{ phrase('insert...') }}
+						</a>
+						<div class="file-menuOptions">
+							<a class="js-attachmentAction" data-action="thumbnail" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('thumbnail') }}</a>
+							<a class="js-attachmentAction" data-action="full" role="button" tabindex="0"
+								data-xf-click="toggle" data-target="< .js-attachmentInsert">{{ phrase('full_image') }}</a>
+						</div>
+					</div>
+				</xf:mustache>
+				<xf:mustache name="^thumbnail_url">
+					<xf:mustache name="#is_video">
+						<div class="file-insert js-attachmentInsert">
+							<a class="file-insertLink js-attachmentAction" data-action="full" data-type="video" role="button" tabindex="0">
+								{{ phrase('insert') }}
+							</a>
+						</div>
+					</xf:mustache>
+					<xf:mustache name="#is_audio">
+						<div class="file-insert js-attachmentInsert">
+							<a class="file-insertLink js-attachmentAction" data-action="full" data-type="audio" role="button" tabindex="0">
+								{{ phrase('insert') }}
+							</a>
+						</div>
+					</xf:mustache>
+				</xf:mustache>
+
+				<div class="file-checkbox">
+					<xf:checkbox standalone="true">
+						<xf:option value="" />
+					</xf:checkbox>
+				</div>
+
+				<span class="file-delete">
+					<xf:mustache name="#uploading">
+						<a class="file-deleteLink js-attachmentAction"
+							data-action="cancel"
+							role="button"
+							tabindex="0">
+							<xf:fa icon="fa-trash-alt" />
+							<span class="u-srOnly">{{ phrase('button.cancel') }}</span>
+						</a>
+					</xf:mustache>
+					<xf:mustache name="^uploading">
+						<a class="file-deleteLink js-attachmentAction"
+							data-action="delete"
+							data-type="{{ mustache('type_grouping') }}"
+							role="button"
+							tabindex="0">
+							<xf:fa icon="fa-trash-alt" />
+							<span class="u-srOnly">{{ phrase('button.delete') }}</span>
+						</a>
+					</xf:mustache>
+				</span>
+
+				<a class="file-info" href="{{ mustache('link') }}" target="_blank">
+					<span class="file-name">{{ mustache('filename') }}</span>
+
+					<div class="file-meta">
+						<xf:mustache name="#thumbnail_url">{{ mustache('width') }} x {{ mustache('height') }} &middot; </xf:mustache>
+						{{ mustache('file_size_printable') }}
+					</div>
+				</a>
+
+			</div>
+		</li>
+	</script>
+</xf:macro>
+
+
+
+
+<xf:macro name="upload_block" arg-attachmentData="!">
+
+	<xf:macro name="uploaded_files_list" arg-attachments="{$attachmentData.attachments}" />
+
+	<xf:macro name="upload_link_from_data" arg-attachmentData="{$attachmentData}" />
+</xf:macro>]]></template>
+  <template type="public" title="item_custom_fields_macros_public" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[<xf:macro name="custom_fields_view"
+	arg-type="!"
+	arg-group="!"
+	arg-set="!"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-wrapperClass=""
+	arg-valueClass="pairs pairs--columns pairs--fixedSmall pairs--customField">
+
+	<xf:if contentcheck="true">
+		<div class="{$wrapperClass}">
+		<xf:contentcheck>
+			<xf:macro name="custom_fields_values"
+				arg-type="{$type}"
+				arg-group="{$group}"
+				arg-set="{$set}"
+				arg-onlyInclude="{$onlyInclude}"
+				arg-additionalFilters="{$additionalFilters}"
+				arg-valueClass="{$valueClass}" />
+		</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="custom_fields_values"
+	arg-type="!"
+	arg-group="!"
+	arg-set="!"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-valueClass="pairs pairs--columns pairs--fixedSmall pairs--customField">
+
+	<xf:foreach loop="$xf.app.getCustomFields({$type}, {$group}, {$onlyInclude}, {$additionalFilters})" key="$fieldId" value="$fieldDefinition">
+		<xf:if is="$fieldDefinition.hasValue({$set.{$fieldDefinition.field_id}})">
+			
+			<xf:set var="$fieldValue"><xf:macro name="custom_field_value"
+				arg-definition="{$fieldDefinition}"
+				arg-value="{$set.{$fieldDefinition.field_id}}" /></xf:set>
+
+			<xf:if is="$fieldDefinition.wrapper_template">
+				{$fieldDefinition.getFormattedOutput($fieldValue)|raw}
+			<xf:else />
+				
+				<dl	class="pairs pairs--justified">
+					<dt>{$fieldDefinition.title}</dt>
+					<dd>{$fieldValue}</dd>
+				</dl>
+			</xf:if>
+		</xf:if>
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="custom_field_value" arg-definition="!" arg-value="!">
+
+	<xf:if is="$definition.field_type == 'stars'">
+		<xf:macro template="rating_macros" name="stars" arg-rating="{$value}" />
+	<xf:else />
+		<xf:if is="$definition.match_type == 'date'">
+			<xf:macro name="custom_field_value_date" arg-date="{$value}" />
+		<xf:elseif is="$definition.match_type == 'color'" />
+			<xf:macro name="custom_field_value_color" arg-color="{$value}" />
+		<xf:else />
+			{$definition.getFormattedValue($value)|raw}
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="custom_field_value_date"
+	arg-date="!">
+
+	{{ date(date_from_format('Y-m-d', $date)) }}
+</xf:macro>
+
+<xf:macro name="custom_field_value_color"
+	arg-color="!">
+
+	<span class="colorChip" data-xf-init="tooltip" title="{$color}">
+		<span class="colorChip-inner" style="background-color: {$color}">
+			<span class="colorChip-value">{$color}</span>
+		</span>
+	</span>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit"
+	arg-type="!"
+	arg-group="{{ null }}"
+	arg-set="!"
+	arg-editMode="user"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-rowType=""
+	arg-rowClass=""
+	arg-namePrefix="custom_fields"
+	arg-requiredOnly="{{ false }}">
+<xf:set var="$checkLabel" value="1"/>
+
+	<xf:foreach loop="$xf.app.getCustomFieldsForEdit({$type}, {$set}, {$editMode}, {$group}, {$onlyInclude}, {$additionalFilters})" key="$fieldId" value="$fieldDefinition">
+		<xf:if is="!$requiredOnly OR ($requiredOnly AND $fieldDefinition.required)">
+			<xf:set var="$controlId" value="{{
+				in_array($fieldDefinition.field_type, ['textbox', 'textarea', 'select', 'multiselect', 'date', 'stars', 'color'])
+				? unique_id()
+				: '' }}" />
+			<xf:set var="$labelId" value="{{
+				in_array($fieldDefinition.field_type, ['radio', 'checkbox'])
+				? unique_id()
+				: '' }}" />
+
+		
+		
+			<xf:if is ="$checkLabel=='1'">
+			<xf:set var="$label" value="{{phrase('custom_fields') }}"/>
+				<xf:else />
+				<xf:set var="$label" value=" "/>
+			</xf:if>
+			
+			
+			
+			<xf:checkboxrow hideempty="true" rowtype="{$rowType}" label="{{$label}}">
+		
+					<xf:option  data-hide="true"
+					 label="{$fieldDefinition.title}" checked="{{$set.{{$fieldDefinition.field_id}} ? true : false }}" >
+					
+		<xf:dependent>
+	
+			<xf:set var="$checkLabel" value="2"/>
+	
+			<xf:formrow
+				explain="{$fieldDefinition.description}"
+				hint="{{ $fieldDefinition.isRequired($editMode) ? phrase('required') : '' }}"
+				rowtype="{$rowType} customField {{ in_array($fieldDefinition.field_type, ['textbox', 'textarea', 'bbcode', 'select']) ? 'input' : '' }}"
+				rowclass="{}"
+				labelid="{$labelId}"
+				controlid="{$controlId}"
+				data-field="{$fieldDefinition.field_id}"label="{$fieldDefinition.title}">
+
+				<xf:macro name="custom_fields_edit_{$fieldDefinition.field_type}"
+					arg-set="{$set}"
+					arg-definition="{$fieldDefinition}"
+					arg-editMode="{$editMode}"
+					arg-refId="{{ $controlId ?: $labelId }}"
+					arg-namePrefix="{$namePrefix}" />
+			        
+			</xf:formrow>
+				</xf:dependent>
+				</xf:option>
+		</xf:checkboxrow>
+		</xf:if>
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_groups"
+	arg-type="!"
+	arg-groups="!"
+	arg-set="!"
+	arg-editMode="user"
+	arg-onlyInclude="{{ null }}"
+	arg-additionalFilters="{{ [] }}"
+	arg-rowType=""
+	arg-namePrefix="custom_fields"
+	arg-requiredOnly="">
+
+	<xf:foreach loop="$groups" value="$group">
+		<xf:macro name="custom_fields_edit"
+			arg-type="{$type}"
+			arg-group="{$group}"
+			arg-set="{$set}"
+			arg-editMode="{$editMode}"
+			arg-onlyInclude="{$onlyInclude}"
+			arg-additionalFilters="{$additionalFilters}"
+			arg-rowType="{$rowType}"
+			arg-namePrefix="{$namePrefix}"
+			arg-requiredOnly="{$requiredOnly}" />
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_textbox" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:if is="$definition.match_type == 'date'">
+
+		<xf:dateinput name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+			data-field="{$definition.field_id}"
+			maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+			required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+			id="{$refId}"
+			class="field_{$definition.field_id}" />
+
+	<xf:elseif is="$definition.match_type == 'color'" />
+
+		<xf:macro template="color_picker_macros" name="color_picker"
+			arg-name="{$namePrefix}[{$definition.field_id}]"
+			arg-value="{$set.{$definition.field_id}}"
+			arg-mapName=""
+			arg-row="{{ false }}"
+			arg-controlId="{$refId}"
+			arg-required="{$definition.isRequired($editMode)}" />
+
+	<xf:elseif is="$definition.match_type == 'number'" />
+
+		<xf:set var="$step" value="1" />
+
+		<xf:if is="$definition.match_params.number_integer">
+			<xf:if is="$definition.match_params.number_min >= 0">
+				<xf:set var="$pattern" value="\d*" />
+			</xf:if>
+		<xf:else />
+			<xf:set var="$step" value="any" />
+		</xf:if>
+		<xf:if is="$definition.match_params.number_min !== ''">
+			<xf:set var="$min" value="{$definition.match_params.number_min}" />
+		</xf:if>
+		<xf:if is="$definition.match_params.number_max !== ''">
+			<xf:set var="$max" value="{$definition.match_params.number_max}" />
+		</xf:if>
+
+		<xf:numberbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+			maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+			pattern="{$pattern}"
+			default=""
+			min="{$min}"
+			max="{$max}"
+			step="{$step}"
+			required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+			id="{$refId}"
+			class="field_{$definition.field_id}" />
+
+	<xf:else />
+
+		<xf:if is="in_array($definition.match_type, ['regex', 'alphanumeric'])">
+
+			<xf:set var="$type" value="text" />
+			<xf:set var="$pattern" value="{{ $definition.match_type == 'regex' ? $definition.match_params.regex : '\w+' }}" />
+			<xf:set var="$title">{{ phrase('please_enter_value_that_matches_required_format') }}</xf:set>
+
+		<xf:elseif is="in_array($definition.match_type, ['date', 'email', 'url', 'color'])" />
+
+			<xf:set var="$type" value="{$definition.match_type}" />
+
+		<xf:else />
+
+			<xf:set var="$type" value="text" />
+
+		</xf:if>
+
+		<xf:textbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+			type="{$type}"
+			maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+			pattern="{$pattern}"
+			title="{$title}"
+			min="{$min}"
+			max="{$max}"
+			step="{$step}"
+			required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+			id="{$refId}"
+			class="field_{$definition.field_id}" />
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_textarea" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:textarea name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+		maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+		autosize="true"
+		required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+		id="{$refId}"
+		class="field_{$definition.field_id}" />
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_bbcode" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:editor name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+		previewable="0"
+		data-min-height="80"
+		data-attachment-target="false"
+		class="field_{$definition.field_id}" />
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_select" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-multi="" arg-namePrefix="custom_fields">
+
+	<xf:select name="{$namePrefix}[{$definition.field_id}]"
+		value="{{ $set.{$definition.field_id} === null ? '' : {$set.{$definition.field_id}} }}"
+		multiple="{$multi}"
+		id="{$refId}"
+		class="field_{$definition.field_id}">
+			<xf:option value="" />
+			<xf:options source="$definition.field_choices" />
+	</xf:select>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_radio" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:radio name="{$namePrefix}[{$definition.field_id}]"
+		value="{{ $set.{$definition.field_id} === null ? '' : {$set.{$definition.field_id}} }}"
+		class="field_{$definition.field_id}"
+		role="radiogroup" aria-labelledby="{$refId}"
+		listclass="listColumns">
+			<xf:if is="!$definition.isRequired($editMode)">
+				<xf:option value="">{{ phrase('no_selection') }}</xf:option>
+			</xf:if>
+			<xf:foreach loop="$definition.field_choices" key="$value" value="$label">
+				<xf:option value="{$value}" required="{{ $definition.isRequired($editMode) ? 'required' : '' }}">{$label}</xf:option>
+			</xf:foreach>
+	</xf:radio>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_checkbox" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:checkbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+		required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+		role="group" aria-labelledby="{$refId}"
+		listclass="field_{$definition.field_id} listColumns">
+			<xf:options source="$definition.field_choices" />
+	</xf:checkbox>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_multiselect" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+
+	<xf:macro name="custom_fields_edit_select"
+		arg-set="{$set}"
+		arg-definition="{$definition}"
+		arg-editMode="{$editMode}"
+		arg-refId="{$refId}"
+		arg-multi="1"
+		arg-namePrefix="{$namePrefix}" />
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_stars" arg-set="!" arg-definition="!" arg-editMode="!" arg-refId="" arg-namePrefix="custom_fields">
+	<xf:macro template="rating_macros" name="rating"
+		arg-name="{$namePrefix}[{$definition.field_id}]"
+		arg-controlId="{$refId}"
+		arg-currentRating="{$set.{$definition.field_id}}"
+		arg-deselectable="{{ $definition.isRequired($editMode) ? 'false' : 'true' }}"
+		arg-row="{{ false }}" />
+</xf:macro>]]></template>
+  <template type="public" title="item_thread_lists" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[<xf:title></xf:title>
+<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+					<div class="block-header">
+						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+					</div>
+					<div class="structItemContainer-group js-threadList">
+												<xf:if is="$threads is not empty">
+													<xf:foreach loop="$threads" value="$thread">
+														<xf:macro template ="thread_list_macros" name="item"
+															arg-thread="{$thread}"
+														 />
+													</xf:foreach>
+
+												</xf:if>
+					</div>
+			</div>
+		</div>
+</div>]]></template>
+  <template type="public" title="ownerPage_thread_lists" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[<xf:title></xf:title>
+<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+					<div class="block-header">
+						<h3 class="block-minorHeader">{{ phrase('bh_my_x_page_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+					</div>
+					<div class="structItemContainer-group js-threadList">
+												<xf:if is="$threads is not empty">
+													<xf:foreach loop="$threads" value="$thread">
+														<xf:macro template ="thread_list_macros" name="item"
+															arg-thread="{$thread}"
+														 />
+													</xf:foreach>
+
+												<xf:else />
+													<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+												</xf:if>
+						
+					</div>
+			</div>
+		</div>
+</div>]]></template>
+  <template type="public" title="whiteThreeButton" version_id="1020300" version_string="1.2.3 Alpha"><![CDATA[<div class="tab-white-button">
+	
+
+				<xf:if is="{$alreadySub}">
+				
+					 <xf:button id="white-button" data-xf-click="overlay" href="{{ link('bh_brands/item/unsub', $item) }}">UnSubsribe</xf:button>
+						<xf:else/>
+					 <xf:button id="white-button"  href="{{ link('bh_brands/item/itemsub', $item) }}">Subsribe</xf:button>
+				</xf:if>
+	
+	<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'create_bookmark') && $xf.visitor.user_id">
+
+      	<xf:macro name="link" arg-content="{$item}" arg-confirmUrl="{{ link('bh_brands/item/bookmark', $item) }}"/>
+	
+	</xf:if>
+	
+
+</div>
+<xf:macro name="link"
+	arg-content="!"
+	arg-confirmUrl="!"
+	arg-editText="{{ phrase('bh_remove_bookmark') }}"
+	arg-addText="{{ phrase('bh_bookmark') }}"
+	arg-showText="{{ true }}">
+ 
+	<xf:if is="$content.canBookmark()">
+
+		<xf:button href="{$confirmUrl}" id="white-button"
+			title="{{ $showText ? '' : phrase('bookmark')|for_attr }}"
+			data-xf-click="bookmark-click"
+			data-label=".js-bookmarkText"
+			data-sk-bookmarked="addClass:is-bookmarked, {$editText|for_attr}"
+			data-sk-bookmarkremoved="removeClass:is-bookmarked, {$addText|for_attr}"><xf:trim>
+			<span class="js-bookmarkText"><xf:if is="$content.isBookmarked()">{$editText}<xf:else/>{$addText}</xf:if></span>
+		</xf:trim></xf:button>
+	</xf:if>
+</xf:macro>]]></template>
+</templates>

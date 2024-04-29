@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_property_groups>
+  <style_property_group group_name="klUIUTL" title="[TH] User Improvements: User title ladder" description="Styling related to the user title ladder widget." display_order="10000"/>
+  <style_property_group group_name="klUIUsernameColors" title="[TH] User Improvements: User name colors" description="All available user name colors can be modified here." display_order="10000"/>
+  <style_property_group group_name="thuserimprovements_trophies" title="[TH] User Improvements: Trophies" description="Styling related to trophies and the trophy showcase." display_order="10000"/>
+</style_property_groups>

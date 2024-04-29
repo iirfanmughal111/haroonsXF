@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Adds thread info to quick reply macro call",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "arg-message=\"{$thread.draft_reply.message}\"",
+    "replace": "$0\n\t\t\t\t\targ-thread=\"{$thread}\""
+}

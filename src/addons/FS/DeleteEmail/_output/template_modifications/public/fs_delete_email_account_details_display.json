@@ -1,0 +1,9 @@
+{
+    "template": "account_details",
+    "description": "fs_delete_email_account_details_display_email",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "is=\"$xf.visitor.email\"",
+    "replace": "is=\"$xf.visitor.email AND $xf.visitor.user_state == 'valid'\""
+}

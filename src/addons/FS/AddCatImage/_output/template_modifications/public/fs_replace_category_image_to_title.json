@@ -1,0 +1,9 @@
+{
+    "template": "xfrm_category_list_macros",
+    "description": "Replace Title to image",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{$category.title}",
+    "replace": "<xf:css src=\"fs_category_image.less\" />\n\t\t\t\t<xf:if is=\"$category.isImage() && $xf.options.fs_enable_image\">\n\t\t\t\t\t\t\t<div class=\"image_category\">\n \t\t\t\t\t\t\t\t<img src=\"{$category.getImgUrl(true)}\" style=\"max-width:100%\">\n\t\t\t\t\t\t\t\t<span class=\"categoryList-label image_label\">\n\t\t\t\t\t\t\t\t\t<span class=\"label label--subtle label--smallest\">{$extras.resource_count|number_short}</span>\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t<xf:else/>\n\t\t\t\t\t{$category.title} \n\t\t\t\t\t<span class=\"categoryList-label\">\n\t\t\t\t\t\t<span class=\"label label--subtle label--smallest\">{$extras.resource_count|number_short}</span>\n\t\t\t\t\t</span>\n\t\t\t\t</xf:if>"
+}

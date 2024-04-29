@@ -1,0 +1,15 @@
+<div class="block-container">
+	<div class="block-body">
+		<xf:if is="count($escrows) > 0 ">
+			  <xf:foreach loop="$escrows" value="$escrow">
+			<xf:macro template="fs_escrow_list_macro" name="escrow"
+			arg-escrow="{$escrow}"
+			arg-containerClass="contentRow-minor" />
+			</xf:foreach>
+		<xf:else />
+          <div class="block-body block-row">
+            {{ phrase('no_any_data_found') }}
+          </div>
+        </xf:if>
+	</div>
+</div>

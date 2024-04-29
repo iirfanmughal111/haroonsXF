@@ -1,0 +1,17 @@
+<style>
+	.limit-info{margin-right: 10px;}
+</style>
+
+<xf:set var="$dailyPostLimit" value="{{ $xf.visitor.hasPermission('fs_limitations', 'fs_dailyDiscussiontLimit') }}" />
+<xf:set var="$visitorDailyPostCount" value="{{ $xf.visitor.daily_discussion_count }}" />
+
+<xf:set var="$upgradeUrl" value="{{ $xf.visitor.user_id == 1 ?  link('account-upgrade/admirer') : link('account-upgrade/companion') }}" />
+
+<xf:if is="$dailyPostLimit == 0">
+	<span class="limit-info">{{ phrase('fs_l_discussion_not_allowed_please_upgrade',{'upgradeUrl': $upgradeUrl}) }}</span>
+<xf:elseif is="$dailyPostLimit > 0" />
+	<xf:set var="$remianingCount" value="{{ $dailyPostLimit - $visitorDailyPostCount}}" />
+	<span class="limit-info">{{ phrase('fs_l_your_daily_discussion_post_limit',{'visitorDailyPostCount': $visitorDailyPostCount,'dailyPostLimit': $dailyPostLimit,'remianingCount': $remianingCount}) }}</span>
+<xf:else />
+	<span class="limit-info">{{ phrase('fs_l_your_daily_discussion_post_limit_unlimited') }}</span>
+</xf:if>

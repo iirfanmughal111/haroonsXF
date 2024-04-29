@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "account-upgrade",
+    "sub_name": "",
+    "format": ":int<user_id,group_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\BitcoinIntegration:BitcoinIntegration",
+    "context": "upgradeAccount",
+    "action_prefix": ""
+}

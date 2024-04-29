@@ -1,0 +1,2 @@
+List the forum ids that are allowed to be display thumbnail to all. Use , (comma) between ids.
+Example: 1,2,3,4,..

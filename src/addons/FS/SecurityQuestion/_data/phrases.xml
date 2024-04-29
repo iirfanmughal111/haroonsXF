@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.allSecurityQuestion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Question]]></phrase>
+  <phrase title="admin_navigation.fsLoginSecurityQuestion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Security Question]]></phrase>
+  <phrase title="edit_questions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Question]]></phrase>
+  <phrase title="fs_add_question" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Question]]></phrase>
+  <phrase title="fs_add_questions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Security Questions]]></phrase>
+  <phrase title="fs_all_fields_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[All fields are required...!]]></phrase>
+  <phrase title="fs_answer" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Answer]]></phrase>
+  <phrase title="fs_answer_2" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Answer 2]]></phrase>
+  <phrase title="fs_answer_one_placeholder" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter first answer]]></phrase>
+  <phrase title="fs_answer_two_placeholder" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter second answer]]></phrase>
+  <phrase title="fs_choose_different_question" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Choose different questions...!]]></phrase>
+  <phrase title="fs_enter_user_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter User Name]]></phrase>
+  <phrase title="fs_invalid" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Invalid...!]]></phrase>
+  <phrase title="fs_method" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Method]]></phrase>
+  <phrase title="fs_no_question_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No Question About This User.]]></phrase>
+  <phrase title="fs_not_match" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Not matched...!]]></phrase>
+  <phrase title="fs_question" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Question]]></phrase>
+  <phrase title="fs_question_2" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Question 2]]></phrase>
+  <phrase title="fs_security_question" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Security Questions]]></phrase>
+  <phrase title="fs_security_question_all_records" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Security Question All Records]]></phrase>
+  <phrase title="fs_user_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Name]]></phrase>
+  <phrase title="fs_user_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Not Found...!]]></phrase>
+  <phrase title="fs_verify_by" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Verify By]]></phrase>
+  <phrase title="fs_verify_questions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Verify Questions]]></phrase>
+</phrases>

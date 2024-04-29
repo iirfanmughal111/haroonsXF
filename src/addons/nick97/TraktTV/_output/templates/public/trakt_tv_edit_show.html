@@ -1,0 +1,63 @@
+<xf:title>{{ phrase('trakt_tv_edit_show') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('tvTrakt/edit', $tvshow) }}" ajax="true" class="block"
+	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $thread.canEdit()) ? ' post-edit' : '' }}"
+	data-preview-url="{{ link('posts/preview', $post) }}">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$xf.visitor.hasPermission('forum', 'trakt_edit_shows')">
+				<xf:textboxrow label="{{ phrase('title') }}" name="tv_title" value="{$tvshow.tv_title}" />
+
+				<xf:textboxrow label="{{ phrase('trakt_tv_genre') }}" name="tv_genres" value="{$tvshow.tv_genres}" />
+
+				<xf:textarearow label="{{ phrase('trakt_tv_creator') }}" name="tv_director" value="{$tvshow.tv_director}" autosize="true" />
+
+				<xf:textarearow label="{{ phrase('trakt_tv_cast') }}" name="tv_cast" value="{$tvshow.tv_cast}" autosize="true" />
+
+				<xf:dateinputrow label="{{ phrase('trakt_tv_first_aired') }}" name="first_air_date" value="{{ $tvshow.first_air_date ? date($tvshow.first_air_date) : '' }}" />
+				<xf:dateinputrow label="{{ phrase('trakt_tv_last_air_date') }}" name="last_air_date" value="{{ $tvshow.last_air_date ? date($tvshow.last_air_date) : '' }}" />
+				
+				<xf:textboxrow label="{{ phrase('trakt_tv_status') }}" name="status" value="{$tvshow.status}" />
+
+				<xf:textarearow label="{{ phrase('trakt_tv_overview') }}" name="tv_plot" value="{$tvshow.tv_plot}" autosize="true" />
+				
+				<xf:textboxrow label="{{ phrase('trakt_tv_trailer') }}" name="tv_trailer" value="{$tvshow.tv_trailer}" explain="{{ phrase('trakt_tv_trailer_explain') }}"/>
+			<xf:else />
+				<input type="hidden" name="tv_title" value="{$tvshow.tv_title}" />
+				<input type="hidden" name="tv_genres" value="{$tvshow.tv_genres}" />
+				<input type="hidden" name="tv_director" value="{$tvshow.tv_director}" />
+				<input type="hidden" name="tv_cast" value="{$tvshow.tv_cast}" />
+				<input type="hidden" name="tv_release" value="{$tvshow.tv_release}" />
+				<input type="hidden" name="tv_plot" value="{$tvshow.tv_plot}" />
+				<input type="hidden" name="tv_trailer" value="{$tvshow.tv_trailer}" />
+			</xf:if>
+			
+			<xf:if is="$tvshow.comment">
+				<xf:editorrow name="message" value="{$tvshow.comment}"
+					attachments="{$attachmentData.attachments}"
+					rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}"
+					data-min-height="100"
+					maxlength="{$xf.options.messageMaxLength}" />
+
+				<xf:formrow rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}">
+					<xf:if is="$attachmentData">
+						<xf:macro template="helper_attach_upload" name="upload_block" arg-attachmentData="{$attachmentData}" />
+					</xf:if>
+					<xf:button class="button--link u-jsOnly" data-xf-click="preview-click" icon="preview" />
+				</xf:formrow>
+			</xf:if>
+	
+		</div>
+
+		<xf:submitrow icon="save" sticky="true" rowtype="{{ $quickEdit ? 'simple' : '' }}">
+			<xf:html>
+				<xf:if is="$quickEdit">
+					<xf:button class="js-cancelButton">{{ phrase('button.cancel') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>

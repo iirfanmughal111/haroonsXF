@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "upgradeGroup",
+    "sub_name": "",
+    "format": ":int<usg_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\UpgradeUserGroup:UpgradeUserGroup",
+    "context": "fsUpgradeGroup",
+    "action_prefix": ""
+}

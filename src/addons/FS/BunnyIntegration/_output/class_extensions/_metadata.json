@@ -1,0 +1,20 @@
+{
+    "XF-Entity-AttachmentData_FS-BunnyIntegration-XF-Entity-AttachmentData.json": {
+        "hash": "37a8ecbf861ad236630a6b3d2d49a4d5"
+    },
+    "XF-Entity-Attachment_FS-BunnyIntegration-XF-Entity-Attachment.json": {
+        "hash": "f577de51dd35e0597e316f1b28b4a1a6"
+    },
+    "XF-Entity-Thread_FS-BunnyIntegration-XF-Entity-Thread.json": {
+        "hash": "d849dbbc14fbaa433ebe8c19932f10df"
+    },
+    "XF-Pub-Controller-Attachment_FS-BunnyIntegration-XF-Pub-Controller-Attachment.json": {
+        "hash": "0c99bf1fb360abb11792ac19a09f4ad8"
+    },
+    "XF-Pub-Controller-Forum_FS-BunnyIntegration-XF-Pub-Controller-Forum.json": {
+        "hash": "8649dac9397f892c7259d91bcdef73a2"
+    },
+    "XF-Pub-Controller-Post_FS-BunnyIntegration-XF-Pub-Controller-Post.json": {
+        "hash": "cdd63b2a18acfba2fddb67235bcdc3ba"
+    }
+}

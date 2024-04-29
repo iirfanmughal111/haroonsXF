@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_tv",
+    "title": "TV show poster position",
+    "description": "Select the position for the TV show poster in threads. Note that this will invert the settings below.",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "radio",
+    "value_parameters": "left={{ phrase('left') }}\nright={{ phrase('right') }}",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "left",
+    "display_order": 10
+}

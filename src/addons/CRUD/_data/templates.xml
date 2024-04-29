@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="crud_record_all" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('CRUD') }}</xf:title>
+
+<xf:breadcrumb href="#">{{ phrase('CRUD') }}</xf:breadcrumb>
+
+<xf:pageaction>
+  <xf:button href="{{ link('crud/add') }}" icon="add"
+    >{{ phrase('Add Record') }}</xf:button
+  >
+</xf:pageaction>
+
+<div class="block">
+  <div class="block-outer">
+    <xf:macro
+      template="filter_macro"
+      name="quick_filter"
+      arg-key="crud"
+      arg-class="block-outer-opposite"
+    />
+  </div>
+  <div class="block-container">
+    <!-- filter macro -->
+
+    <xf:macro name="search_menu" arg-conditions="{$conditions}" />
+
+    <!-- filter macro -->
+    <div class="block-body">
+      <!--       < Records >  -->
+
+      <xf:datalist data-xf-init="responsive-data-list">
+        <xf:if is="$data is not empty">
+          <!-- list macro -->
+
+          <xf:macro name="record_table_list" arg-data="{$data}" />
+
+          <!-- list macro -->
+          <xf:else />
+          <div class="blockMessage">
+            {{ phrase('no_items_have_been_created_yet') }}
+          </div>
+        </xf:if>
+      </xf:datalist>
+      <xf:pagenav
+        page="{$page}"
+        perpage="{$perPage}"
+        total="{$total}"
+        link="crud"
+        wrapperclass="block"
+      />
+      <!--       </ Records > -->
+    </div>
+
+    <!-- <div class="block-footer">
+        <span class="block-footer-counter">footer</span>
+      </div> -->
+  </div>
+</div>
+
+<!-- All macros is here define in below -->
+
+<!-- Filter Bar Macro Start -->
+
+<xf:macro name="search_menu" arg-conditions="!">
+  <div class="block-filterBar">
+    <div class="filterBar">
+      <a
+        class="filterBar-menuTrigger"
+        data-xf-click="menu"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+        aria-haspopup="true"
+        >{{ phrase('filters') }}</a
+      >
+      <div
+        class="menu menu--wide"
+        data-menu="menu"
+        aria-hidden="true"
+        data-href="{{ link('crud/refine-search', null, $conditions)}}"
+        data-load-target=".js-filterMenuBody"
+      >
+        <div class="menu-content">
+          <h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+          <div class="js-filterMenuBody">
+            <div class="menu-row">{{ phrase('loading...') }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</xf:macro>
+
+<!-- Filter Bar Macro End -->
+
+<!-- Record Table List Start -->
+
+<xf:macro name="record_table_list" arg-data="{$data}">
+  <xf:datarow rowtype="header">
+    <xf:cell> Name </xf:cell>
+    <xf:cell> Class </xf:cell>
+    <xf:cell> Roll No </xf:cell>
+    <xf:cell class="dataList-cell--min"> Action </xf:cell>
+  </xf:datarow>
+  <xf:foreach loop="{$data}" value="$val">
+    <xf:datarow>
+      <xf:cell href="{{ link('crud/edit', $val) }}"> {{$val.name}} </xf:cell>
+      <xf:cell> {{$val.class}} </xf:cell>
+      <xf:cell> {{$val.rollNo}} </xf:cell>
+      <xf:delete href="{{ link('crud/delete-record', $val) }}" overlay="true" />
+    </xf:datarow>
+  </xf:foreach>
+</xf:macro>
+
+<!-- Record Table List End -->
+]]></template>
+  <template type="public" title="crud_record_insert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+  <xf:if is="$crud.id"> Edit Record {$crud.name} <xf:breadcrumb href="#">{{
+  phrase('Edit Record') }}</xf:breadcrumb> <xf:else /> Add new Record
+  <xf:breadcrumb href="#">{{ phrase('Add Record') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form action="{{ link('crud/save', $crud) }}" class="block" ajax="1">
+  <div class="block-container">
+    <div class="block-body">
+      <xf:textboxrow
+        name="name"
+        value="{$crud.name}"
+        label="Name"
+        autosize="true"
+        row="5"
+      />
+
+      <xf:textboxrow
+        name="class"
+        value="{$crud.class}"
+        label="Class"
+        autosize="true"
+        row="5"
+      />
+
+      <xf:numberboxrow
+        name="rollNo"
+        value="{$crud.rollNo}"
+        label="Roll No"
+        autosize="true"
+        row="5"
+      />
+    </div>
+
+    <xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+  </div>
+</xf:form>
+]]></template>
+  <template type="public" title="crud_record_search_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:form action="{{ link('crud') }}">
+  <div class="menu-row">
+    {{ phrase('name_contains:') }}
+    <div class="u-inputSpacer">
+      <xf:textbox
+        name="name"
+        type="search"
+        value="{$conditions.name}"
+        placeholder="what u want to find in Name?"
+        dir="ltr"
+      />
+    </div>
+  </div>
+
+  <div class="menu-row">
+    {{ phrase('class_contains:') }}
+    <div class="u-inputSpacer">
+      <xf:textbox
+        name="rClass"
+        type="search"
+        value="{$conditions.rClass}"
+        placeholder="what u want to find in Class?"
+        dir="ltr"
+      />
+    </div>
+  </div>
+
+  <div class="menu-row">
+    {{ phrase('rollNo_contains:') }}
+    <div class="u-inputSpacer">
+      <xf:textbox
+        name="rollNo"
+        type="search"
+        value="{$conditions.rollNo}"
+        placeholder="what u want to find in Roll No?"
+        dir="ltr"
+      />
+    </div>
+  </div>
+
+  <div class="menu-footer">
+    <span class="menu-footer-controls">
+      <xf:button type="submit" class="button--primary"
+        >{{ phrase('filter') }}</xf:button
+      >
+    </span>
+  </div>
+  <xf:hiddenval name="search">1</xf:hiddenval>
+</xf:form>
+]]></template>
+  <template type="public" title="filter_macro" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="quick_filter" arg-key="" arg-ajax="" arg-class="">
+	<xf:js src="xf/filter.js" min="1" />
+	<div class="{$class} quickFilter u-jsOnly" data-xf-init="filter" data-key="{$key}" data-ajax="{$ajax}">
+		<div class="inputGroup inputGroup--inline inputGroup--joined">
+			<input type="text" class="input js-filterInput" placeholder="{{ phrase('filter...')|for_attr }}" data-xf-key="{{ phrase('shortcut.filter')|for_attr }}" />
+			<span class="inputGroup-text">
+				<xf:checkbox standalone="true">
+					<xf:option class="js-filterPrefix" label="{{ phrase('prefix') }}" />
+				</xf:checkbox>
+			</span>
+			<i class="inputGroup-text js-filterClear is-disabled" aria-hidden="true"></i>
+		</div>
+	</div>
+</xf:macro>]]></template>
+</templates>

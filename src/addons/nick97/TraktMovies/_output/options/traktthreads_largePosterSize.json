@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "w92=w92\nw154=w154\nw185= w185\nw342=w342\nw500=w500\nw780=w780\noriginal=original",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "w185",
+    "relations": {
+        "traktMovies": 3110
+    }
+}

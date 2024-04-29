@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="snogTV1" cron_class="Snog\TV\Cron\EpisodeUpdate" cron_method="Process" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[4],"minutes":[30]}]]></entry>
+  <entry entry_id="snogTvWatchProvider" cron_class="Snog\TV\Cron\TvWatchProviderUpdate" cron_method="runDaily" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="snog_tv_changes" cron_class="Snog\TV\Cron\TvChanges" cron_method="run" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+</cron>

@@ -1,0 +1,21 @@
+<xf:if is="$context == 'create' AND $subContext == 'quick'">
+	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
+<xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
+	<xf:set var="$rowType" value="fullWidth mergeNext" />
+<xf:else />
+	<xf:set var="$rowType" value="" />
+</xf:if>
+
+<xf:if is="$thread.Forum.TVForum is not empty && $thread.Forum.TVForum.tv_parent_id">
+	<xf:textboxrow name="snog_tv_tv_id" value="{$thread.TV.tv_episode}"
+				   label="{{ phrase('nick97_tv_episode_number') }}"
+				   explain="{{ phrase('nick97_tv_episode_enter_episode_number') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+<xf:else />
+	<xf:textboxrow name="snog_tv_tv_id" value="{$thread.TV.tv_id}"
+				   label="{{ phrase('nick97_tv_post_show_title') }}"
+				   explain="{{ phrase('nick97_tv_show_lookup') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+</xf:if>

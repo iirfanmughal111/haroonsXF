@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_bb_code_desc.fs_word_highlight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Highlight block words in red using bbcode]]></phrase>
+  <phrase title="custom_bb_code_example.fs_word_highlight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.fs_word_highlight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.fs_word_highlight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Highlight in red]]></phrase>
+</phrases>

@@ -1,0 +1,13 @@
+<xf:if is="$context == 'create' AND $subContext == 'quick'">
+	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
+<xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
+	<xf:set var="$rowType" value="fullWidth mergeNext" />
+<xf:else />
+	<xf:set var="$rowType" value="" />
+</xf:if>
+
+<xf:textboxrow name="snog_movies_tmdb_id" value="{$thread.Movie.tmdb_id}"
+			   label="{{ phrase('nick97_movies_link_id') }}"
+			   explain="{{ phrase('nick97_movies_explain_link') }}"
+			   rowtype="{$rowType}"
+			   disabled="{{ $context == 'edit' }}" />

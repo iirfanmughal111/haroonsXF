@@ -1,0 +1,492 @@
+<xf:macro name="tv"
+	arg-post="!"
+	arg-thread="!"
+	arg-forum="{{ null }}"
+	arg-crews="{{ [] }}"
+	arg-crewsTotal="0"
+	arg-crewsHasMore="{{ false }}"
+	arg-casts="{{ [] }}"
+	arg-castsTotal="0"
+	arg-castsHasMore="{{ false }}"
+	arg-videos="{{ [] }}"
+	arg-videosTotal="0"
+	arg-videosHasMore="{{ false }}"
+	arg-companies="{{ [] }}"
+	arg-networks="{{ [] }}">
+
+	<xf:css src="message.less" />
+
+	<xf:extension name="before"></xf:extension>
+
+	<article class="message message--tv js-post js-inlineModContainer
+		{{ $thread.discussion_state == 'moderated' ? 'is-moderated' : '' }}
+		{{ $thread.discussion_state == 'deleted' ? 'is-deleted' : '' }}"
+		data-author="{{ $post.User.username ?: $post.username }}"
+		data-content="post-{$post.post_id}"
+		id="js-post-{$post.post_id}">
+
+		<span class="u-anchorTarget" id="post-{$post.post_id}"></span>
+		<div class="message-inner">
+			<div class="message-cell message-cell--main">
+				<div class="message-expandWrapper js-expandWatch is-expanded">
+					<div class="message-expandContent js-expandContent">
+						<div class="message-main js-quickEditTarget">
+
+							<xf:macro name="post_macros::post_attribution"
+									  arg-post="{$post}"
+									  arg-thread="{$thread}"
+									  arg-mainClass="listInline--bullet"
+									  arg-showPosition="{{ false }}" />
+
+							<xf:macro name="post_macros::post_notices" arg-post="{$post}" arg-thread="{$thread}" />
+
+							<div class="message-content js-messageContent">
+								<!--[XF:trakt_tv_tv_block_top]-->
+								<div class="message-tv{{ property('trakt_tv_messagePosterPosition') == 'right' ? ' message-tv--reverse' : ''}}">
+									<div class="message-tv-sidebar">
+										
+										<div class="message-tv-sidebar-poster">
+											<xf:if is="$post.TVPost">
+												<img src="{$post.TVPost.episode_image_url}" />
+											<xf:else />
+												<img src="{$thread.traktTV.getImageUrl('l', 1)}" />
+											</xf:if>
+											
+											<xf:if is="$xf.options.traktTvThreads_use_rating">
+												<xf:macro name="rating_block" arg-thread="{$thread}" />
+											</xf:if>
+										</div>
+										
+										<xf:if is="{{ property('trakt_tv_messageCompaniesPosition') == 'left' }}">
+											<xf:if is="$companies is not empty">
+												<div class="messageTV tv-companies">
+													<xf:if is="{{ property('trakt_tv_messageCompaniesTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('trakt_tv_production_companies:') }}</h4>
+													</xf:if>
+													<xf:macro name="production_company_list" arg-companies="{$companies}" />
+												</div>
+											</xf:if>
+										</xf:if>
+
+										<xf:if is="{{ property('trakt_tv_messageNetworksPosition') == 'left' }}">
+											<xf:if is="$networks is not empty">
+												<div class="messageTV tv-networks">
+													<xf:if is="{{ property('trakt_tv_messageNetworksTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('trakt_tv_networks:') }}</h4>
+													</xf:if>
+													<xf:macro name="network_list" arg-networks="{$networks}" />
+												</div>
+											</xf:if>
+										</xf:if>
+									</div>
+
+									<div class="message-tv-main">
+										<!--[XF:trakt_tv_tv_message_top]-->
+										<div class="message message--tv">
+											<xf:if is="$post.TVPost">
+												<xf:if is="$post.TVPost.tv_title">
+													<b><span itemprop="name">{$post.TVPost.tv_title}</span></b><br />
+													<b>{{ phrase('trakt_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.TVPost.tv_season}">{$post.TVPost.tv_season}<br />
+													<b>{{ phrase('trakt_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.TVPost.tv_episode}">{$post.TVPost.tv_episode}<br />
+													<b>{{ phrase('trakt_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.TVPost.tv_aired}">{$post.TVPost.tv_aired}<br /><br />
+													<xf:if is="$post.TVPost.tv_guest"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.TVPost.tv_guest}<br /></xf:if>
+												<xf:elseif is="$post.Thread is not empty && $post.Thread.TV.tv_season" />
+													<b><span itemprop="name">{$post.Thread.TV.tv_title}</span></b><br />
+													<b>{{ phrase('trakt_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.Thread.TV.tv_season}">{$post.Thread.TV.tv_season}<br />
+													<b>{{ phrase('trakt_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.Thread.TV.tv_episode}">{$post.Thread.TV.tv_episode}<br />
+													<b>{{ phrase('trakt_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.Thread.TV.tv_release}">{$post.Thread.TV.tv_release}<br /><br />
+													<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
+												</xf:if>
+											<xf:else />
+												<xf:if is="$xf.options.traktTvThreads_showThread.title"><b>{{ phrase('title') }}:</b> {$thread.traktTV.tv_title}<br /></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.genres && $thread.traktTV.tv_genres"><p><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.traktTV.tv_genres}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.director && $thread.traktTV.tv_director"><p><b>{{ phrase('trakt_tv_director') }}:</b> {$thread.traktTV.tv_director}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.cast && $thread.traktTV.tv_cast"><p><b>{{ phrase('trakt_tv_cast') }}:</b> {$thread.traktTV.tv_cast}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.release && $thread.traktTV.first_air_date"><p><b>{{ phrase('trakt_tv_first_aired') }}:</b> <xf:date time="{$thread.traktTV.first_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.last_air_date && $thread.traktTV.last_air_date"><p><b>{{ phrase('trakt_tv_last_air_date') }}:</b> <xf:date time="{$thread.traktTV.last_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.status && $thread.traktTV.status is not empty"><p><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.traktTV.status}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.plot && $thread.traktTV.tv_plot"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.traktTV.tv_plot}</xf:if>
+											</xf:if>
+										</div>
+										<!--[XF:trakt_tv_tv_message_bottom]-->
+										
+										<xf:if is="{{ property('trakt_tv_messageCompaniesPosition') == 'right' }}">
+											<xf:if is="$companies is not empty">
+												<div class="message message--tv tv-companies">
+													<xf:if is="{{ property('trakt_tv_messageCompaniesTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('trakt_tv_production_companies') }}</h4>
+													</xf:if>
+													<xf:macro name="production_company_list" arg-companies="{$companies}" />
+												</div>
+											</xf:if>
+										</xf:if>
+
+										<xf:if is="{{ property('trakt_tv_messageNetworksPosition') == 'right' }}">
+											<xf:if is="$networks is not empty">
+												<div class="message message--tv tv-networks">
+													<xf:if is="{{ property('trakt_tv_messageNetworksTitle') }}">
+														<h4 class="block-textHeader">{{ phrase('trakt_tv_networks') }}</h4>
+													</xf:if>
+													<xf:macro name="network_list" arg-networks="{$networks}" />
+												</div>
+											</xf:if>
+										</xf:if>
+
+										<xf:extension name="watch_providers">
+											<xf:set var="$watchProviders" value="{$thread.traktTV.getWatchProviders()}" />
+											<xf:if is="$watchProviders">
+												<div class="message message--tv tv-providers">
+													<h4 class="block-textHeader">
+														{{ phrase('trakt_tv_where_to_watch') }}
+														<div class="u-pullRight">
+															<xf:select value="{{ $xf.visitor.Option.nick97_tv_trakt_watch_region ?: $xf.options.traktTvThreads_watchProviderRegion }}">
+																<xf:foreach loop="{{ $thread.traktTV.getWatchProviderCountries() }}" key="$region" value="$phrase">
+																	<xf:option value="{$region}" data-xf-init="disabler" data-container=".js-tvWatchData-{$region}" data-hide="on">
+																		{$phrase}
+																	</xf:option>
+																</xf:foreach>
+															</xf:select>
+														</div>
+													</h4>
+
+													<xf:foreach loop="$watchProviders" key="$region" value="$watchProvider" if="$watchProvider.link">
+
+														<div class="js-tvWatchData-{$region}">
+															<xf:if is="$watchProvider.flatrate">
+																{{ phrase('trakt_tv_streaming:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.flatrate}" />
+															</xf:if>
+
+															<xf:if is="$watchProvider.buy">
+																{{ phrase('trakt_tv_buy:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.buy}" />
+															</xf:if>
+
+															<xf:if is="$watchProvider.rent">
+																{{ phrase('trakt_tv_rent:') }}
+																<xf:macro name="watch_provider_list" arg-providerType="{$watchProvider.rent}" />
+															</xf:if>
+
+															<br />
+															
+															<xf:button href="https://trakt.tv/shows/{{$thread.getTraktTVLink($thread.traktTV.tv_id)}}"  target="_blank">{{ phrase('nick97_tv_more_details_on_trakt') }}</xf:button>
+														</div>
+													</xf:foreach>
+												</div>
+
+											</xf:if>
+										</xf:extension>
+									</div>
+								</div>
+								<!--[XF:trakt_tv_tv_block_bottom]-->
+
+								<xf:if is="!$xf.options.traktTvThreads_force_comments">
+									<article class="message-body">
+										{{ bb_code($thread.traktTV.comment, 'post', $post.User, {
+											'attachments': $post.attach_count ? $post.Attachments : [],
+											'viewAttachments': $thread.canViewAttachments()
+										}) }}
+									</article>
+								</xf:if>
+
+								<xf:if contentcheck="true">
+									<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" role="tablist">
+										<span class="hScroller-scroll">
+											<xf:contentcheck>
+												<!--[XF:trakt_tv_tabs_start]-->
+												<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.traktTV.tv_trailer">
+													<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="tv-trailer">
+														{{ phrase('trakt_tv_trailer') }}
+													</a>
+												</xf:if>
+												<!--[XF:trakt_tv_tabs_before_cast]-->
+												<xf:if is="$xf.options.traktTvThreads_showThread.cast_tab && $casts is not empty">
+													<a class="tabs-tab" role="tab" tabindex="0" aria-controls="tv-cast">
+														{{ phrase('trakt_tv_cast') }}
+													</a>
+												</xf:if>
+												<!--[XF:trakt_tv_tabs_before_crew]-->
+												<xf:if is="$xf.options.traktTvThreads_showThread.crew_tab && $crews is not empty">
+													<a class="tabs-tab" role="tab" tabindex="0" aria-controls="tv-crew">
+														{{ phrase('trakt_tv_crew') }}
+													</a>
+												</xf:if>
+												<!--[XF:trakt_tv_tabs_before_videos]-->
+												<xf:if is="$xf.options.traktTvThreads_showThread.videos_tab && $videos is not empty">
+													<a class="tabs-tab" role="tab" tabindex="0" aria-controls="tv-crew">
+														{{ phrase('trakt_tv_videos') }}
+													</a>
+												</xf:if>
+												<!--[XF:trakt_tv_tabs_end]-->
+											</xf:contentcheck>
+										</span>
+									</h2>
+								</xf:if>
+								
+								<xf:if contentcheck="true">
+									<ul class="tabPanes">
+										<xf:contentcheck>
+											<!--[XF:trakt_tv_tabPanes_start]-->
+											<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.traktTV.tv_trailer">
+												<li class="block-body is-active" role="tabpanel" id="tv-trailer">
+													<div class="block-row">
+														<div class="bbMediaWrapper">
+															<div class="bbMediaWrapper-inner">
+																<iframe width="500"
+																	height="300"
+																	allowfullscreen
+																	src="https://www.youtube.com/embed/{$thread.traktTV.tv_trailer}?wmode=opaque&start=0"
+																	style="border:none;"></iframe>
+															</div>
+														</div>
+													</div>
+												</li>
+											</xf:if>
+											
+											<!--[XF:trakt_tv_tabPanes_before_casts]-->
+											<xf:if is="$xf.options.traktTvThreads_showThread.cast_tab && $casts is not empty">
+												<li class="block-body" role="tabpanel" id="tv-casts">
+													<div class="block-row">
+														<xf:macro template="trakt_tv_casts_macros" name="cast_list"
+															  arg-tv="{$thread.traktTV}" arg-casts="{$casts}" arg-page="1"
+															  arg-hasMore="{$castsHasMore}" />
+													</div>
+												</li>
+											</xf:if>
+											
+											<!--[XF:trakt_tv_tabPanes_before_crew]-->
+											<xf:if is="$xf.options.traktTvThreads_showThread.crew_tab && $crews is not empty">
+												<li class="block-body" role="tabpanel" id="tv-crew">
+													<div class="block-row">
+														<xf:macro template="trakt_tv_crews_macros" name="crew_list"
+															  arg-tv="{$thread.traktTV}" arg-crews="{$crews}" arg-page="1"
+															  arg-hasMore="{$crewsHasMore}" />
+													</div>
+												</li>
+											</xf:if>
+											
+											<!--[XF:trakt_tv_tabPanes_before_videos]-->
+											<xf:if is="$xf.options.traktTvThreads_showThread.videos_tab && $videos is not empty">
+												<li class="block-body" role="tabpanel" id="tv-videos">
+													<div class="block-row">
+														<xf:macro template="trakt_tv_videos_macros" name="video_list"
+															  arg-tv="{$thread.traktTV}" arg-videos="{$videos}" arg-page="1"
+															  arg-hasMore="{$videosHasMore}" />
+													</div>
+												</li>
+											</xf:if>
+											<!--[XF:trakt_tv_tabPanes_end]-->
+										</xf:contentcheck>
+									</ul>
+								</xf:if>
+
+								<xf:macro name="post_macros::post_last_edit" arg-post="{$post}" />
+							</div>
+
+							<xf:macro name="post_macros::post_footer" arg-post="{$post}" arg-thread="{$thread}" />
+						</div>
+					</div>
+					<div class="message-expandLink js-expandLink"><a role="button" tabindex="0">{{ phrase('click_to_expand') }}</a></div>
+				</div>
+			</div>
+		</div>
+
+		<aside class="message-tvUserInfo">
+			<div class="message-cell">
+				<xf:macro name="author_info" arg-user="{$post.User}" arg-fallbackName="{$post.username}" />
+			</div>
+		</aside>
+
+	</article>
+
+	<xf:ad position="post_below_container" arg-post="{$post}" />
+
+</xf:macro>
+
+<xf:macro name="network_list" arg-networks="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$networks}" value="$network">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a href="{$network.homepage}" target="_blank" class="tv-network" data-xf-init="tooltip" title="{$network.name}">
+						<xf:if is="$network.image_url is not empty">
+							<img src="{$network.image_url}" alt="{$network.name}"> 
+						<xf:else />
+							{$network.name}
+						</xf:if>
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="production_company_list" arg-companies="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$companies}" value="$company">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a href="{$company.homepage}" target="_blank" class="tv-company" data-xf-init="tooltip" title="{$company.name}">
+						<xf:if is="$company.image_url is not empty">
+							<img src="{$company.image_url}" alt="{$company.name}"> 
+						<xf:else />
+							{$company.name}
+						</xf:if>
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="watch_provider_list" arg-providerType="!">
+	<ul class="listHeap">
+		<xf:foreach loop="{$providerType}" value="$watchProvider">
+			<li>
+				<div class="listHeap-iconContainer">
+					<a class="tv-provider" data-xf-init="tooltip" title="{$watchProvider.provider_name}">
+						<img src="https://www.themoviedb.org/t/p/original/{$watchProvider.logo_path}" width="{{ property('trakt_tv_watchProviderImgSize') }}" height="{{ property('trakt_tv_watchProviderImgSize') }}"> 
+					</a>
+				</div>
+			</li>
+		</xf:foreach>
+	</ul>
+</xf:macro>
+
+<xf:macro name="author_info" arg-user="!" arg-fallbackName="">
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="$user" size="m" defaultname="{$fallbackName}" />
+		</div>
+		<div class="contentRow-main">
+
+			<div class="message-articleUserFirstLine">
+				<div class="message-articleWrittenBy u-srOnly">{{ phrase('article_written_by') }}</div>
+				<h3 class="message-articleUserName">
+					<xf:username user="$user" rich="true" defaultname="{$fallbackName}" />
+				</h3>
+
+				<xf:if contentcheck="true">
+					<div class="message-articleUserBlurb">
+						<xf:contentcheck>
+							<xf:userblurb user="$user" tag="div" />
+						</xf:contentcheck>
+					</div>
+				</xf:if>
+			</div>
+
+			<xf:if contentcheck="true">
+				<div class="message-articleUserAbout">
+					<xf:contentcheck>
+						<xf:if is="$user.Profile.about != ''">
+							{{ bb_code($user.Profile.about, 'user:about', $user) }}
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<xf:if contentcheck="true">
+				<div class="message-articleUserBanners">
+					<xf:contentcheck><xf:userbanners user="$user" /></xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<div class="message-articleUserStats">
+				<ul class="listInline listInline--bullet">
+					<!--[XF:stats:start]-->
+					<li><dl class="pairs pairs--inline">
+						<dt>{{ phrase('messages') }}</dt>
+						<dd>{$user.message_count|number}</dd>
+					</dl></li>
+					<!--[XF:stats:after_messages]-->
+					<li><dl class="pairs pairs--inline">
+						<dt>{{ phrase('reaction_score') }}</dt>
+						<dd>{$user.reaction_score|number}</dd>
+					</dl></li>
+					<!--[XF:stats:after_likes]-->
+					<!--[XF:stats:after_reactions]-->
+					<xf:if is="$xf.options.enableTrophies">
+						<li><dl class="pairs pairs--inline">
+							<dt>{{ phrase('points') }}</dt>
+							<dd>{$user.trophy_points|number}</dd>
+						</dl></li>
+					</xf:if>
+					<!--[XF:stats:end]-->
+				</ul>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="rating_block" arg-thread="!">
+	<xf:set var="$rating" value="{$thread.traktTV.tv_rating}" />
+	<div style="padding-top: 10px;">
+		<xf:macro template="rating_macros" name="stars_text"
+			arg-rating="{$rating}" arg-text=" " />
+	</div>
+
+	<div>{$thread.traktTV.tv_rating}/5 {$thread.traktTV.tv_votes} {{ phrase('votes') }}</div>
+
+	<xf:if is="$xf.visitor.user_id">
+		<div>
+			<xf:button class="button--link button--wrap" href="{{ link('tvTrakt/rate', $thread.traktTV) }}" overlay="true">
+				{{ phrase('trakt_tv_change_rating') }}
+			</xf:button>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="post" extends="post_macros::post">
+	<xf:extension name="user_content">
+		<xf:if is="$post.TVPost is not empty">
+
+			<div class="message messageEpisode" itemprop="episode" itemscope itemtype="http://schema.org/TVEpisode">
+				<xf:if is="$post.Thread.TV is not empty">
+					<b><meta itemprop="partOfTVSeries" content="{$thread.traktTV.tv_title}">{$thread.traktTV.tv_title}</b><br />
+				</xf:if>
+
+				<div class="episodeImage">
+					<xf:if is="$post.Thread.TV.tv_season && $post.Thread.TV.tv_image">
+						<img src="{$post.Thread.TV.getEpisodePosterUrl()}" />
+					<xf:else />
+						<img src="{$post.TVPost.getEpisodeImageUrl()}" />
+					</xf:if>
+				</div>
+
+				<div class="episodeInfo">
+					<xf:if is="$post.TVPost.tv_title">
+						<b><span itemprop="name">{$post.TVPost.tv_title}</span></b><br />
+						<b>{{ phrase('trakt_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.TVPost.tv_season}">{$post.TVPost.tv_season}<br />
+						<b>{{ phrase('trakt_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.TVPost.tv_episode}">{$post.TVPost.tv_episode}<br />
+						<b>{{ phrase('trakt_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.TVPost.tv_aired}">{$post.TVPost.tv_aired}<br /><br />
+						<xf:if is="$post.TVPost.tv_guest"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.TVPost.tv_guest}<br /></xf:if>
+					<xf:elseif is="$post.Thread is not empty && $post.Thread.TV.tv_season" />
+						<b><span itemprop="name">{$post.Thread.TV.tv_title}</span></b><br />
+						<b>{{ phrase('trakt_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.Thread.TV.tv_season}">{$post.Thread.TV.tv_season}<br />
+						<b>{{ phrase('trakt_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.Thread.TV.tv_episode}">{$post.Thread.TV.tv_episode}<br />
+						<b>{{ phrase('trakt_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.Thread.TV.tv_release}">{$post.Thread.TV.tv_release}<br /><br />
+						<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
+					</xf:if>
+				</div>
+
+				<div class="episodePlot">
+					<xf:if is="$post.TVPost.tv_plot">
+						{$post.TVPost.tv_plot}
+					<xf:elseif is="$post.Thread.TV.tv_season && $post.Thread.TV.tv_plot" />
+						{$post.Thread.TV.tv_plot}
+					</xf:if>
+				</div>
+			</div><br />
+
+			<xf:if is="$post.TVPost.message">
+				{{ bb_code($post.TVPost.message, 'post', $post.User, {
+					'attachments': $post.attach_count ? $post.Attachments : [],
+					'viewAttachments': $thread.canViewAttachments()
+				}) }}
+			</xf:if>
+		<xf:else/>
+			<xf:extensionparent />
+		</xf:if>
+	</xf:extension>
+
+</xf:macro>

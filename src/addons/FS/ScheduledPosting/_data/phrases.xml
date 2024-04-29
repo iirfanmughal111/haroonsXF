@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.addScheduled" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post Scheduled]]></phrase>
+  <phrase title="admin_navigation.fsScheduledPosting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Scheduled Posting]]></phrase>
+  <phrase title="all_field_required" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[All Fields required......!]]></phrase>
+  <phrase title="cron_entry.fs_schdulerposting" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[Scheduler posting]]></phrase>
+  <phrase title="fs_add_scheduled" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Scheduled]]></phrase>
+  <phrase title="fs_edit_scheduled" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Scheduled]]></phrase>
+  <phrase title="fs_location_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Location File]]></phrase>
+  <phrase title="fs_message_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Message File]]></phrase>
+  <phrase title="fs_post_Scheduled" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post Scheduled]]></phrase>
+  <phrase title="fs_post_start_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post Start Date]]></phrase>
+  <phrase title="fs_scheduled_end" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[End Date]]></phrase>
+  <phrase title="fs_scheduled_start" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Start Date]]></phrase>
+  <phrase title="fs_scheduled_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="fs_scheduled_window" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Scheduled Window]]></phrase>
+  <phrase title="fs_server_time" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Server Time]]></phrase>
+  <phrase title="option.thread_creater_user" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[Thread Creator]]></phrase>
+  <phrase title="option_explain.thread_creater_user" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_post_schdueling" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[[FS] Post schedule]]></phrase>
+  <phrase title="option_group_description.fs_post_schdueling" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="schdule_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="window_time_should_be_greater" version_id="1010010" version_string="1.1.0 Alpha"><![CDATA[Window Time should be greater then {hour} hours...!]]></phrase>
+</phrases>

@@ -1,0 +1,9 @@
+{
+    "template": "andy_trader_rating_buyer",
+    "description": "Hide name in buyer ....!",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "\t\t\t\t\t<xf:cell><a href=\"{$xf.options.traderMembersLink}{$result.seller_id}/\">{$result.UserSeller.username}</a></xf:cell>",
+    "replace": "\t\t\t\t\t<xf:cell><a href=\"{$xf.options.traderMembersLink}{$result.seller_id}/\">{$result.UserSeller.username|substr(0, 2)}***</a></xf:cell>"
+}

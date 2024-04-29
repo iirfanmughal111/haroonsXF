@@ -1,0 +1,1 @@
+*use Custom position to add the template for instance in a widget, advertising positons or any other location. Just include <code>cxf_google_translate_forum</code> template anywhere you want to show the Google Translate.

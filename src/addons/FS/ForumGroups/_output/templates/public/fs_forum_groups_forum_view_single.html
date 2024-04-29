@@ -1,0 +1,83 @@
+<xf:macro
+  name="fs_forum_groups_forum_view_single_macro"
+  arg-subForums="!"
+>
+
+<xf:css src="fs_forum_gorups_style.less" />
+	
+<xf:sidenav>
+	
+	<!-- Avatar -->
+	
+	<div class="block groupAvatar-block">
+           <xf:if is="$subForums.AvatarAttachment">
+        <a href="{{ link('forumGroups', $subForums) }}"
+       class="groupAvatar groupAvatar--link groupAvatar--default" style="background-color:#e08585;color:#8f2424">
+			<img src="{{ $subForums.AvatarAttachment.thumbnail_url }}"
+                 class="groupAvatar--img bbImage" width="250" height="250"
+                 data-width="{$subForums.AvatarAttachment.width}"
+                 data-height="{$subForums.AvatarAttachment.height}"
+                 alt="{$subForums.title}"/>
+    </a>
+			   
+			<xf:else />
+			   <xf:comment>
+            <span class="groupAvatar--text groupAvatar--dynamic">{$xf.visitor.username}</span>
+			   </xf:comment>
+			  <xf:avatar user="$xf.visitor" size="l" />
+			</xf:if>
+    </div>
+	
+	<!-- Avatar -->
+
+</xf:sidenav>
+
+<div class="groupWrapper groupWrapper-{$subForums.node_id}">
+
+
+	<!-- Cover Header -->
+
+	<div class="block">
+        <div class="block-container groupCover-header">
+            <div class="block-body">
+               <div class="groupCover groupCoverFrame groupCover--default" style="background-color:#{{$subForums.getRandomColor()}};color:#fff">
+        <a href="{{ link('forumGroups', $subForums) }}" style="color:#fff">
+                <xf:if is="$subForums.CoverAttachment">
+                <img data-crop="{$subForums->getCoverCropData()|json}"
+                     class="groupCover--img groupCover--lazy" data-xf-init="fs-forum-groups-cover-setup"
+                     {{ ($subForums.getImageAttributes()) ? (' ' . $subForums.getImageAttributes()) : '' }}/>
+            <xf:else />
+                <span class="groupCover--text">{{ snippet($subForums.title, 25) }}</span>
+            </xf:if>
+        </a>
+    </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- Cover Header -->
+	
+	<!-- Approval Status -->
+		
+		<xf:if is="$subForums.node_state == 'moderated' or $subForums.node_state == 'deleted'">
+		<div class="block-outer">
+			<dl class="blockStatus" style="margin-top: 10px;">
+				<dt>{{ phrase('status') }}</dt>
+					<xf:if is="$subForums.node_state == 'deleted'">
+						<dd class="blockStatus-message blockStatus-message--deleted">
+							<xf:macro template="deletion_macros" name="notice" arg-log="{$thread.DeletionLog}" />
+						</dd>
+					<xf:elseif is="$subForums.node_state == 'moderated'" />
+						<dd class="blockStatus-message blockStatus-message--moderated">
+							{{ phrase('awaiting_approval_before_being_displayed_publicly') }}
+						</dd>
+					</xf:if>
+			</dl>
+		</div>
+		</xf:if>
+    </div>
+	
+	<!-- Approval Status -->
+	
+</div>
+</xf:macro>

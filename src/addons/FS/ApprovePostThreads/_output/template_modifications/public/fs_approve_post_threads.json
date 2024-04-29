@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "add Approve btn...!",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$xf\\.visitor\\.canViewIps\\(\\) && \\$post\\.ip_id\">.*?<\\/xf:if>/si",
+    "replace": "$0\n<xf:if is=\"$post.isFirstPost()\">\n\t<xf:if is=\"$thread.canApproveUnapprove() AND $thread.discussion_state == 'moderated'\">\n\t<a href=\"{{ link('threads/approve', $thread) }}\"\n\t\t\t\t\tclass=\"actionBar-action actionBar-action--ip actionBar-action--menuItem\"\n\t\t\t\t\tdata-xf-click=\"overlay\">{{ phrase('approve') }}</a>\n\n\t\t\t\t<xf:set var=\"$hasActionBarMenu\" value=\"{{ true }}\" />\n\t</xf:if>\n\t<xf:else />\n\t<xf:if is=\"$post.canApproveUnapprove() AND $post.message_state == 'moderated'\">\n\t<a href=\"{{ link('posts/approve', $post) }}\"\n\t\t\t\t\tclass=\"actionBar-action actionBar-action--ip actionBar-action--menuItem\"\n\t\t\t\t\tdata-xf-click=\"overlay\">{{ phrase('approve') }}</a>\n\n\t\t\t\t<xf:set var=\"$hasActionBarMenu\" value=\"{{ true }}\" />\n\t</xf:if>\n</xf:if>\n"
+}

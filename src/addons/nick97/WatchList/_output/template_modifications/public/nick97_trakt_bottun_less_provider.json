@@ -1,0 +1,9 @@
+{
+    "template": "core.less",
+    "description": "Add trakt provider button styling.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ include('core_button.less') }}",
+    "replace": "$0\n{{ include('nick97_trakt_button.less') }}"
+}

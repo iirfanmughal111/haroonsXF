@@ -1,0 +1,8 @@
+<div id="make_attach_{{$content.post_id}}">
+
+	<xf:macro template="message_macros" name="attachments"
+				arg-attachments="{$content.Attachments}"
+				arg-message="{$content}"
+				arg-canView="{{ $content.Thread.canViewAttachments() }}" />
+	
+</div>

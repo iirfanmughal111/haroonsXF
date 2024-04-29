@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "adding_escrow_member_view_tab",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "$0\n<xf:if is=\"$user.user_id == $xf.visitor.user_id OR $xf.visitor.is_admin\">\n\t<a href=\"{{ link('members/my-escrow', $user) }}\"\n\t   class=\"tabs-tab\" id=\"my-escrow\" role=\"tab\">\n\t\t{{ phrase('fs_my_escrow') }}\n\t</a>\n\t<a href=\"{{ link('members/mentioned-escrow', $user) }}\"\n\t   class=\"tabs-tab\" id=\"mentioned-escrow\" role=\"tab\">\n\t\t{{ phrase('fs_mentioned_escrow') }}\n\t</a>\n\t<a href=\"{{ link('members/logs', $user) }}\"\n\t   class=\"tabs-tab\" id=\"escrow-logs\" role=\"tab\">\n\t\t{{ phrase('fs_escrow_logs') }}\n\t</a>\n</xf:if>"
+}

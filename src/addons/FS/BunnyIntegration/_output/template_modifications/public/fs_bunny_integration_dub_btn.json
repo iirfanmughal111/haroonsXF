@@ -1,0 +1,9 @@
+{
+    "template": "helper_attach_upload",
+    "description": "Add Bunny Upload Btn",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:button href=\"{{ link('attachments/upload', null, {'type': $type, 'context': $context, 'hash': $hash}) }}\"\n\t\ttarget=\"_blank\" class=\"button--link js-attachmentUpload\" icon=\"attach\"\n\t\tdata-accept=\".{$constraints.extensions|join(',.')}\"\n\t\tdata-video-size=\"{$constraints.video_size}\" />",
+    "replace": "<xf:if is=\"{{ $xf.visitor.hasPermission('fs_bunny', 'allow') AND $xf.options.fs_bi_accessKey AND $xf.options.fs_bi_libraryId }}\">\n\t<xf:js src=\"Bunny/OnClickBunny.js\"/>\n\t<xf:js src=\"Bunny/extend_manager.js\"/>\n\t<xf:button href=\"{{ link('attachments/upload', null, {'type': $type, 'context': $context, 'hash': $hash}) }}\"\n\t\t\t   target=\"_blank\" class=\"button--link js-attachmentUpload\" icon=\"attach\"\n\t\t\t   data-accept=\".{$constraints.extensions|join(',.')}\"\n\t\t\t   data-video-size=\"{$constraints.video_size}\" id=\"attachVideoBtn\"/>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

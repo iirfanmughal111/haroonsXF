@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_auction_post_thread_view_date",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$post\\.isFirstPost\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$thread.Forum.node_id == $xf.options.fs_auction_applicable_forum\">\n\t\t<div class=\"message-fields message-fields--after\">\n\t\t\t\t<dl class=\"pairs pairs--columns pairs--fixedSmall pairs--customField\" data-field=\"threadCustomField\">\n\t\t\t\t\t<dt>{{ phrase('auction_endDate') }}</dt>\n\t\t\t\t\t<dd>\n\t\t\t\t\t\t{{$thread.getFormatedTime12()}}\n\t\t\t\t\n\t\t\t\t\t</dd>\n\t\t\t\t</dl>\n\t\t\t\n\t\t\t</div>\n\t\t</xf:if>\n\n$0"
+}

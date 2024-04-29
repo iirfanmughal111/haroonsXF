@@ -1,0 +1,11 @@
+<xf:title>{{ phrase('trakt_tv_add_show') }}</xf:title>
+
+<xf:form action="{{ link('forums/add-tv-forum', $node) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow label="{{ phrase('trakt_tv_link') }}" name="tvlink" />
+		</div>
+
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>

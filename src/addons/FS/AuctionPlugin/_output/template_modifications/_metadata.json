@@ -1,0 +1,17 @@
+{
+    "public/fs_auction_post_thread.json": {
+        "hash": "f926504a515fbc9930d85c95e7142686"
+    },
+    "public/fs_auction_post_thread_add_date.json": {
+        "hash": "9c4350021a8583fcc0f1d77e5b40ada6"
+    },
+    "public/fs_auction_post_thread_add_default_prefix_id.json": {
+        "hash": "36ea5dffb26957e8cd8ef7898771d358"
+    },
+    "public/fs_auction_post_thread_edit_date.json": {
+        "hash": "e1d676bc1556d7298f0a083a16304807"
+    },
+    "public/fs_auction_post_thread_view_date.json": {
+        "hash": "696fa134334c4ee890e4fe2ab7322be1"
+    }
+}

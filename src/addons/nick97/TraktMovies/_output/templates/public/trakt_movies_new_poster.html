@@ -1,0 +1,24 @@
+<xf:title>{{ phrase('trakt_movies_check_poster') }}</xf:title>
+
+<xf:form action="{{ link('traktMovies/poster', $movie) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				<xf:if is="{$newposter}">
+					{{ phrase('trakt_movies_poster_available') }}
+					<div class="u-alignCenter"><img src="https://image.tmdb.org/t/p/{$xf.options.traktthreads_largePosterSize}{$posterpath}" alt="" /></div>
+				<xf:else />
+					{{ phrase('trakt_movies_poster_not_available') }}
+					<xf:if is="{$posterpath}">
+						<strong>{{ phrase('trakt_movies_reupload_old_poster') }}</strong>
+					</xf:if>
+				</xf:if>
+			</xf:inforow>
+
+			<xf:if is="{$posterpath}">
+				<xf:submitrow submit="{{ phrase('trakt_movies_save_poster') }}" rowtype="simple" />
+				<input type="hidden" name="posterpath" value="{$posterpath}" />
+			</xf:if>
+		</div>
+	</div>
+</xf:form>

@@ -1,0 +1,49 @@
+<xf:if is="$movies is not empty">
+
+	<xf:css src="carousel.less" />
+	<xf:css src="lightslider.less" />
+	<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js, xf/carousel.js" />
+	<xf:js dev="nick97/TraktMovies/slider.js" prod="nick97/TraktMovies/slider.min.js" addon="nick97/TraktMovies" />
+
+	<div class="carousel carousel--withFooter" {{ widget_data($widget) }}>
+		<ul class="carousel-body carousel-body--show2" data-xf-init="trakt-movies-slider"
+			data-xf-trakt-movies-slider="{$options.slider|json}">
+			<xf:foreach loop="$movies" value="$movie">
+				<li>
+					<div class="carousel-item">
+						<div class="contentRow">
+							<div class="contentRow-figure">
+								<span class="contentRow-figureIcon"><img src="{$movie.getImageUrl()}" /></span>
+							</div>
+
+							<div class="contentRow-main">
+								<div class="contentRow-title">
+									<a href="{{ link('threads', $movie.Thread) }}">{$movie.Thread.title}</a>
+									<span class="label"><xf:fa icon="star" /> {$movie.trakt_rating}</span>
+								</div>
+
+								<xf:if is="$options.show_plot && $movie.trakt_plot">
+									<div class="contentRow-lesser">
+										{{ snippet($movie.trakt_plot, 150) }}
+									</div>
+								</xf:if>
+
+								<div class="contentRow-minor contentRow-minor--smaller">
+									<ul class="listInline listInline--bullet">
+										<xf:if is="$options.show_tagline && $movie.trakt_tagline"><li><b>{{ phrase('trakt_movies_tagline') }}:</b> {$movie.trakt_tagline}</li></xf:if>
+										<xf:if is="$options.show_genres && $movie.trakt_genres"><li><b>{{ phrase('trakt_movies_genre') }}:</b> {$movie.trakt_genres}</li></xf:if>
+										<xf:if is="$options.show_director && $movie.trakt_director"><li><b>{{ phrase('trakt_movies_director') }}:</b> {$movie.trakt_director}</li></xf:if>
+										<xf:if is="$options.show_cast && $movie.trakt_cast"><li><b>{{ phrase('trakt_movies_cast') }}:</b> {$movie.trakt_cast}</li></xf:if>
+										<xf:if is="$options.show_status && $movie.trakt_status"><li><b>{{ phrase('trakt_movies_status') }}:</b> {$movie.trakt_status}</li></xf:if>
+										<xf:if is="$options.show_release_date && $movie.trakt_release"><li><b>{{ phrase('trakt_movies_release') }}:</b> {$movie.trakt_release}</li></xf:if>
+										<xf:if is="$options.show_runtime && $movie.trakt_runtime"><li><b>{{ phrase('trakt_movies_runtime') }}:</b> {$movie.trakt_runtime}</li></xf:if>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</xf:foreach>
+		</ul>
+	</div>
+</xf:if>

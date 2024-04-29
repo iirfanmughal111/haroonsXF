@@ -1,0 +1,119 @@
+<xf:macro
+  name="fs_forum_groups_forum_view_list_macro"
+  arg-subForum="!"
+>	  			
+	  <div class="gridCard js-inlineModContainer visible public" id="{{ unique_id() }}">
+		  
+        <div class="gridCard--container">
+			
+			<!-- Cover -->
+			
+			<div class="gridCard--cover">
+			
+				<div class="groupCover--wrapper">
+                
+        <div class="groupCover groupCoverFrame groupCover--default" style="background-color:#{{$subForum.getRandomColor()}};color:#70dbb8">
+            <a href="{{ link('forums', $subForum) }}" style="color:#fff">
+                <xf:if is="$subForum.CoverAttachment">
+                <img data-crop="{$subForum->getCoverCropData()|json}"
+                     class="groupCover--img groupCover--lazy" data-xf-init="fs-forum-groups-cover-setup" data-force-height="100"
+                     {{ ($subForum.getImageAttributes()) ? (' ' . $subForum.getImageAttributes()) : '' }}/>
+            <xf:else />
+                <span class="groupCover--text">{{ snippet($subForum.title, 25) }}</span>
+            </xf:if>
+            </a>
+        </div>
+                   
+                
+
+            </div>
+			
+			</div>
+			
+			<!-- Cover -->
+			
+			
+			<!-- Header -->
+			
+	  
+	   <div class="gridCard--header">
+		   
+			<!-- Avatar -->
+		   
+		   <div class="gridCard--header--avatar">
+			   
+           <xf:if is="$subForum.AvatarAttachment">
+			   <a href="{{ link('forums', $subForum) }}"
+       class="groupAvatar groupAvatar--link groupAvatar--default" style="background-color:#e08585;color:#8f2424">
+			<img src="{{ $subForum.AvatarAttachment.thumbnail_url }}"
+                 class="groupAvatar--img bbImage" width="100" height="100"
+                 data-width="{$subForum.AvatarAttachment.width}"
+                 data-height="{$subForum.AvatarAttachment.height}"
+                 alt="{$subForum.title}"/>
+    </a>		   
+			   
+			<xf:else />
+			   <xf:comment>
+            <span class="groupAvatar--text groupAvatar--dynamic">{$xf.visitor.username}</span>
+				   </xf:comment>
+			   			  <xf:avatar user="$xf.visitor" size="l" />
+			</xf:if>
+		   </div>
+		   
+			<!-- Avatar -->
+		   
+			<!-- Header Main -->
+              
+                <div class="gridCard--header--main">
+                    
+		<xf:trim>
+        <a href="{{ link('forums', $subForum) }}" class="gridCard--header--title"
+           data-tp-primary="on">
+            <span>{$subForum.title}</span>
+        </a>
+    </xf:trim>					
+					
+					
+		<xf:trim>
+        <ul class="listInline group--counterList u-muted">
+            <li class="groupItem-stat groupItem-stat--viewCount" style="margin-right:10px;">
+                <xf:fa icon="fa-eye" />
+                {$subForum.getViewCounts()}
+            </li>
+  
+            <xf:if is="$xf.options.tl_groups_enableForums">
+                <li class="groupItem-stat groupItem-stat--discussionCount">
+                    <xf:fa icon="fa-comment" />
+                    {$subForum.Forum.message_count}
+                </li>
+            </xf:if>
+        </ul>
+    </xf:trim>
+						
+                </div>
+		   
+			<!-- Header Main -->
+		   
+		
+		   
+            </div>
+			
+			<!-- Header -->
+			
+	  <xf:if contentcheck="true">
+                <div class="gridCard--body">
+                    <xf:contentcheck>
+					
+						<div class="groupList--description u-muted">{$subForum.description}</div>
+						
+					</xf:contentcheck>
+                </div>
+            </xf:if>
+			
+		  </div>
+		  
+	  </div>
+
+</xf:macro>
+
+    <!--Sub Forums List View--->

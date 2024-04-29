@@ -1,0 +1,1 @@
+2023-07-27 11:00:24: [E_WARNING] imagepng(http://localhost/data//var/www/html/xenforo/src/addons/FS/Escrow/Pub/Controller/Escrow.phpBarcode/64c24e48af270.png): failed to open stream: HTTP wrapper does not support writeable connections

@@ -1,0 +1,47 @@
+<xf:css src="trakt_tv.less" />
+
+<li class="block-row block-row--separated {{ $post.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $post.User.username ?: $post.username }}">
+	<div class="contentRow {{ !$post.isVisible() ? 'is-deleted' : '' }}">
+
+		<span class="contentRow-figure">
+			<img class="episodeImage episodeImage--search" src="{{ $post.TVPost.getEpisodeImageUrl('s') }}" />
+		</span>
+		<div class="contentRow-main">
+			<h3 class="contentRow-title">
+				<a href="{{ link('threads/post', $post.Thread, {'post_id': $post.post_id}) }}">{{ prefix('thread', $post.Thread) . highlight($post.Thread.title, $options.term) }}</a>
+			</h3>
+
+			<div>
+				<xf:if is="$post.TVPost.tv_title">
+					<b><span itemprop="name">{$post.TVPost.tv_title}</span></b><br />
+					<b>{{ phrase('trakt_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.TVPost.tv_season}">{$post.TVPost.tv_season}<br />
+					<b>{{ phrase('trakt_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.TVPost.tv_episode}">{$post.TVPost.tv_episode}<br />
+					<b>{{ phrase('trakt_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.TVPost.tv_aired}">{$post.TVPost.tv_aired}<br /><br />
+					<xf:if is="$post.TVPost.tv_guest"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.TVPost.tv_guest}<br /></xf:if>
+				<xf:elseif is="$post.Thread is not empty && $post.Thread.TV.tv_season" />
+					<b><span itemprop="name">{$post.Thread.TV.tv_title}</span></b><br />
+					<b>{{ phrase('trakt_tv_season') }}:</b> <meta itemprop="partOfSeason" content="{$post.Thread.TV.tv_season}">{$post.Thread.TV.tv_season}<br />
+					<b>{{ phrase('trakt_tv_episode') }}:</b> <meta itemprop="episodeNumber" content="{$post.Thread.TV.tv_episode}">{$post.Thread.TV.tv_episode}<br />
+					<b>{{ phrase('trakt_tv_air_date') }}:</b> <meta itemprop="datePublished" content="{$post.Thread.TV.tv_release}">{$post.Thread.TV.tv_release}<br /><br />
+					<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
+				</xf:if>
+			</div>
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<xf:if is="$options.mod == 'post' && $post.canUseInlineModeration()">
+						<li><xf:checkbox standalone="true">
+							<xf:option value="{$post.post_id}" class="js-inlineModToggle"
+								data-xf-init="tooltip"
+								title="{{ phrase('select_for_moderation') }}" />
+						</xf:checkbox></li>
+					</xf:if>
+					<li><xf:username user="{$post.User}" defaultname="{$post.username}" /></li>
+					<li>{{ phrase('post_x', {'position': number($post.position + 1)}) }}</li>
+					<li><xf:date time="{$post.post_date}" /></li>
+					<li>{{ phrase('forum:') }} <a href="{{ link('forums', $post.Thread.Forum) }}">{$post.Thread.Forum.title}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</li>

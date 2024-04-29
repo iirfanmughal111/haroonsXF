@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_escrow_hide_edit_on_reply",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:set var=\"\\$hasActionBarMenu\" value=\"{{ false }}\" \\/>.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$thread.node_id==$xf.options.fs_escrow_applicable_forum\">\n\t<xf:if is=\"$post.isFirstPost() && ($thread.user_id == $xf.visitor.user_id)\">\n\t\t$0\n\t</xf:if>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

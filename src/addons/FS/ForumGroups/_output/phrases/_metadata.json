@@ -1,0 +1,194 @@
+{
+    "fs_forum_Group_type.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "03937134cedab9078be39a77ee3a48a0"
+    },
+    "fs_forum_gorups_delete_existing_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "54ef1cb34e86c46e05c0111febae1397"
+    },
+    "fs_forum_group_avatar.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0017341bef207f924828355aa08cef80"
+    },
+    "fs_forum_group_cover.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "13e579eb7b2d1f6589f5d2ef8a7b0153"
+    },
+    "fs_forum_group_filter.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "03937134cedab9078be39a77ee3a48a0"
+    },
+    "fs_forum_group_moderator_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8e109249def5354c47efd5dcaa8068ca"
+    },
+    "fs_forum_groups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0b1db98b451709c6ba3205838455aa2f"
+    },
+    "fs_forum_groups_add_chatroom.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "06dbc213a49370c9e7f5f405bd5bbbdb"
+    },
+    "fs_forum_groups_add_sub_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b112803ab9deb7deba2a6b24ef3bb91a"
+    },
+    "fs_forum_groups_moderator.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "575311a705a163a867cf067e48daa652"
+    },
+    "fs_forum_groups_room_chat.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "16a418a65e5ac52ac98bcaf6b82fb9aa"
+    },
+    "fs_forum_groups_side_community.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9cfc797203acf28a3b3e1efe41eb51b8"
+    },
+    "fs_forum_groups_upload_avatar.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e525bf4b7a6ca5c6e0b1506e2e04f84c"
+    },
+    "fs_forum_groups_upload_cover.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "502e827457c577f0c38c8c3827150155"
+    },
+    "fs_group_please_upload_image_at_least_xy_pixels.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e90d04232ddca9cb7587c022de5ba78b"
+    },
+    "group_x_created_by_user_x.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "5fc17707de83914ddc9fe1d7b04f9a5b"
+    },
+    "nav.forumGroupsAddSubForum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5fda99d9f2b9d935c640a7ac767206ba"
+    },
+    "nav.fs_forumGroups_index.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0b1db98b451709c6ba3205838455aa2f"
+    },
+    "option.fs_forum_gorups_per_row.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0e67135f15372eaee160d1dc4c41b152"
+    },
+    "option.fs_forum_groups_applicable_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "71f931be04fdd468b2664e76e4db6d09"
+    },
+    "option.fs_forum_groups_approval.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "bf18324faf0a5cad832d6e8dcd11ab43"
+    },
+    "option_explain.fs_forum_gorups_per_row.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "653b1007e7e68a1888c02462fed9322f"
+    },
+    "option_explain.fs_forum_groups_applicable_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "34ff7f75c5175d74de26ebf3d9e37bfb"
+    },
+    "option_explain.fs_forum_groups_approval.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "354b5029831be50f5ee695470a6f6f26"
+    },
+    "option_group.fs_forum_groups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "51c873b35b7446c3b9a43fd3f6ef3935"
+    },
+    "option_group_description.fs_forum_groups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "51c873b35b7446c3b9a43fd3f6ef3935"
+    },
+    "permission.fs_forum_group_permission_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ab081a8f1b0164d9fd88c477dbc0f96c"
+    },
+    "permission_interface.fs_forum_group_permission.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c2e6fe54be1de5b9024f1ec05d8daa0f"
+    },
+    "style_prop.fs_avatarBorderRadius.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f8a868853c207c1be844b7d270dfe746"
+    },
+    "style_prop_desc.fs_avatarBorderRadius.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_group.fs_forum_gorups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "51c873b35b7446c3b9a43fd3f6ef3935"
+    },
+    "style_prop_group_desc.fs_forum_gorups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

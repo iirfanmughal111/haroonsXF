@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="post_macros" modification_key="fs_approve_post_threads" description="add Approve btn...!" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$xf\.visitor\.canViewIps\(\) && \$post\.ip_id">.*?<\/xf:if>/si]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$post.isFirstPost()">
+	<xf:if is="$thread.canApproveUnapprove() AND $thread.discussion_state == 'moderated'">
+	<a href="{{ link('threads/approve', $thread) }}"
+					class="actionBar-action actionBar-action--ip actionBar-action--menuItem"
+					data-xf-click="overlay">{{ phrase('approve') }}</a>
+
+				<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+	</xf:if>
+	<xf:else />
+	<xf:if is="$post.canApproveUnapprove() AND $post.message_state == 'moderated'">
+	<a href="{{ link('posts/approve', $post) }}"
+					class="actionBar-action actionBar-action--ip actionBar-action--menuItem"
+					data-xf-click="overlay">{{ phrase('approve') }}</a>
+
+				<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+	</xf:if>
+</xf:if>
+]]></replace>
+  </modification>
+</template_modifications>

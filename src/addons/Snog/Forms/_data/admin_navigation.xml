@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="ozzmodz_forms_logs" parent_navigation_id="logsUser" display_order="10030" link="logs/forms-logs" admin_permission_id="viewLogs" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="snogExport" parent_navigation_id="snog_forms" display_order="40" link="form-export" admin_permission_id="snogFormsAdmin" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="snogForms" parent_navigation_id="snog_forms" display_order="20" link="form-forms" admin_permission_id="snogFormsAdmin" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="snogImport" parent_navigation_id="snog_forms" display_order="50" link="form-import" admin_permission_id="snogFormsAdmin" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="snogQuestions" parent_navigation_id="snog_forms" display_order="30" link="form-questions" admin_permission_id="snogFormsAdmin" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="snogTypes" parent_navigation_id="snog_forms" display_order="10" link="form-types" admin_permission_id="snogFormsAdmin" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="snog_forms" display_order="310" link="form-forms/main" icon="fa-file" admin_permission_id="snogFormsAdmin" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

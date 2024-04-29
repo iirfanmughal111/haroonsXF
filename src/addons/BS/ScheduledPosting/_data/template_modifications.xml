@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="core.less" modification_key="bssp_core_bssp_less" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/$/]]></find>
+    <replace><![CDATA[$0
+{{ include('core_bssp.less') }}]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_quick_thread" modification_key="bssp_forum_post_quick_thread_schedule_input" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.options.multiQuote">]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.canCreateScheduled($forum.node_id)">
+	<xf:macro template="bssp_macros" name="scheduled_input" arg-class="ml" />
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="bssp_forum_post_thread_schedule_input" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="(\$canEditTags|\$forum\.canEditTags\(\))">/s]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.canCreateScheduled($forum.node_id)">
+	<xf:formrow label="{{ phrase('post_date') }}">
+		<xf:macro template="bssp_macros" name="scheduled_input" />
+	</xf:formrow>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="helper_js_global" modification_key="bssp_helper_js_global_phrases" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[// <!--[XF:js_global:xf_phrase_start]-->]]></find>
+    <replace><![CDATA[$0
+bssp_now: "{{ phrase('bssp_now')|escape('js') }}",]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="bssp_member_view_include_schedule_post_js" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="metadata_macros" name="metadata"]]></find>
+    <replace><![CDATA[<xf:js src="bs/scheduled_posting/scheduled_post.js" min="1" />
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_edit" modification_key="bssp_post_edit_schedule_change" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:editorrow name="message".*?.\/>/s]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$post.canEditSchedule()">
+	<xf:formrow rowtype="{{ $quickEdit ? 'fullWidth noLabel mergePrev' : '' }}">
+		<xf:macro template="bssp_macros" name="scheduled_input" 
+				  arg-class="ml" arg-value="{$post.Schedule.posting_date}" />
+	</xf:formrow>
+
+	<hr class="formRowSep" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="bssp_post_macros_is_schedule" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(' is-unread' : '' }})(.*?")/s]]></find>
+    <replace><![CDATA[$1 {{ $post.message_state == 'scheduled' ? 'is-scheduled' : '' }}$2
+data-xf-init="scheduled-post"]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="bssp_post_macros_schedule_date" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$post.isUnread()">]]></find>
+    <replace><![CDATA[<xf:if is="$post.message_state == 'scheduled' && $post.Schedule">
+	<li>
+		<a href="{{ link('threads/post', $thread, {'post_id': $post.post_id}) }}" class="u-concealed"
+		   rel="nofollow">
+			<xf:date time="{$post.Schedule.posting_date}"/>
+		</a>
+	</li>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_edit" modification_key="bssp_profile_post_edit_schedule_change" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$profilePost.canSendModeratorActionAlert()">]]></find>
+    <replace><![CDATA[<xf:if is="$profilePost.canEditSchedule()">
+	<xf:formrow label="{{ phrase('post_date') }}" rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}">
+		<xf:macro template="bssp_macros" name="scheduled_input" 
+			  arg-value="{$profilePost.Schedule.posting_date}" />
+	</xf:formrow>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="bssp_profile_post_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="quick_reply_macros" name="body"]]></find>
+    <replace><![CDATA[$0
+arg-showSchedule="{{ $xf.visitor.canCreateScheduled() }}"]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="bssp_profile_post_macros_is_scheduled" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(' is-ignored' : '' }})(.*?")/s]]></find>
+    <replace><![CDATA[$1 {{ $profilePost.message_state == 'scheduled' ? 'is-scheduled' : '' }}$2
+data-xf-init="scheduled-post"]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="bssp_profile_post_macros_schedule_date" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<li><a href="{{ link('profile-posts', $profilePost) }}" class="u-concealed" rel="nofollow"><xf:date time="$profilePost.post_date" /></a></li>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$profilePost.message_state == 'scheduled' && $profilePost.Schedule">
+	<li><a href="{{ link('profile-posts', $profilePost) }}" class="u-concealed" rel="nofollow"><xf:date time="$profilePost.Schedule.posting_date" /></a></li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="bssp_quick_reply_macros_schedule_show_body" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-simpleSubmit="{$simpleSubmit}"]]></find>
+    <replace><![CDATA[$0
+arg-showSchedule="{$showSchedule}"]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="bssp_quick_reply_macros_show_schedule" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.options.multiQuote && $multiQuoteHref">]]></find>
+    <replace><![CDATA[<xf:if is="$showSchedule && !$simpleSubmit">
+	<xf:macro template="bssp_macros" name="scheduled_input" arg-class="ml" />
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="bssp_quick_reply_macros_show_schedule_arg" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-simpleSubmit="{{ false }}"]]></find>
+    <replace><![CDATA[$0
+arg-showSchedule="{{ false }}"]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="bssp_quick_reply_macros_simple_schedule" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.options.multiQuote && $multiQuoteHref">]]></find>
+    <replace><![CDATA[<xf:if is="$showSchedule && $simpleSubmit">
+	<xf:macro template="bssp_macros" name="scheduled_input" arg-class="ml" />
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="structured_list.less" modification_key="bssp_structured_list_less" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/$/]]></find>
+    <replace><![CDATA[$0
+{{ include('bssp_structured_list.less') }}]]></replace>
+  </modification>
+  <modification type="public" template="thread_edit" modification_key="bssp_thread_edit_scheduled_change" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro template="custom_fields_macros".*?\/>/s]]></find>
+    <replace><![CDATA[<xf:if is="$thread.canEditSchedule()">
+	<xf:formrow label="{{ phrase('post_date') }}">
+		<xf:macro template="bssp_macros" name="scheduled_input" 
+				  arg-value="{$thread.Schedule.posting_date}" />
+	</xf:formrow>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="bssp_thread_list_macros_schedule_date" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<li class="structItem-startDate">.*?<\/li>/s]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$thread.discussion_state == 'scheduled' && $thread.Schedule">
+	<li class="structItem-scheduleDate"><a href="{{ link('threads', $thread) }}" rel="nofollow"><xf:date time="{$thread.Schedule.posting_date}" /></a></li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="bssp_thread_list_macros_scheduled_class" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[structItem--thread]]></find>
+    <replace><![CDATA[$0{{ $thread.discussion_state == 'scheduled' ? ' is-scheduled' : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="bssp_thread_list_macros_scheduled_status" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$thread.discussion_state == 'moderated'">]]></find>
+    <replace><![CDATA[<xf:if is="$thread.discussion_state == 'scheduled'">
+	<li>
+		<i class="structItem-status structItem-status--scheduled" aria-hidden="true" title="{{ phrase('bssp_scheduled_publication')|for_attr }}"></i>
+		<span class="u-srOnly">{{ phrase('bssp_scheduled_publication') }}</span>
+	</li>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="bssp_thread_view_include_schedule_post_js" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:h1>.*?<\/xf:h1>/s]]></find>
+    <replace><![CDATA[$0
+
+<xf:js src="bs/scheduled_posting/scheduled_post.js" min="1" />]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="bssp_thread_view_quick_reply_schedule" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-lastKnownDate="{$thread.last_post_date}"]]></find>
+    <replace><![CDATA[$0
+arg-showSchedule="{{ $xf.visitor.canCreateScheduled($thread.node_id) }}"]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="bssp_thread_view_schedule_cancel_btn" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$thread.canApproveUnapprove()]]></find>
+    <replace><![CDATA[<xf:if is="$thread.canEditSchedule()">
+	<xf:button href="{{ link('threads/schedule-cancel', $thread) }}" class="button--link" overlay="true">
+		{{ phrase('bssp_cancel_publication') }}
+	</xf:button>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="bssp_thread_view_schedule_clock" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.options.enableTagging]]></find>
+    <replace><![CDATA[<xf:if is="$thread.discussion_state == 'scheduled' && $thread.Schedule">
+	<li>
+		<xf:fa icon="fa-clock" title="{{ phrase('bssp_scheduled_publication')|for_attr }}" />
+		<span class="u-srOnly">{{ phrase('bssp_scheduled_publication') }}</span>
+
+		<a href="{{ link('threads', $thread) }}" class="u-concealed"><xf:date time="{$thread.Schedule.posting_date}" /></a>
+	</li>
+</xf:if>
+$0]]></replace>
+  </modification>
+</template_modifications>

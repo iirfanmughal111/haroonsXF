@@ -1,0 +1,9 @@
+{
+    "template": "alert_post_quote",
+    "description": "fs_escrow_notification_quated_phrase",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/{{ phrase\\('x_quoted_your_post_in_thread_y', {.*?}\\) }}/is",
+    "replace": "<xf:if is=\"$content.Thread.node_id == $xf.options.fs_escrow_applicable_forum AND $content.Thread.escrow_id!=0\">\n\t{{ phrase('x_quoted_your_post_in_escrow_y', {\n\t'name': username_link($user, false, {'defaultname': $alert.username}),\n\t'title': '<a href=\"' . link('posts', $content) . '\" class=\"fauxBlockLink-blockLink\">' . $content.Thread.title . '</a>'\n}) }}\n\t<xf:else />\n\t$0\n</xf:if>\t"
+}

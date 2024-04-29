@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread",
+    "description": "Changes post link for episode forums",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "link('forums/post-thread', $forum)",
+    "replace": "($forum.TVForum is not empty && $forum.TVForum.tv_parent_id) ? link('forums/newepisode', $forum) : $0"
+}

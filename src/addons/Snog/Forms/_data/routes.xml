@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="form-editquestions" format=":int&lt;posid&gt;/" controller="Snog\Forms:Questions"/>
+  <route route_type="admin" route_prefix="form-export" controller="Snog\Forms:Export" context="snogExport"/>
+  <route route_type="admin" route_prefix="form-forms" format=":int&lt;posid&gt;/" controller="Snog\Forms:Forms" context="snog_forms"/>
+  <route route_type="admin" route_prefix="form-import" controller="Snog\Forms:Import" context="snogImport"/>
+  <route route_type="admin" route_prefix="form-questions" format=":int&lt;questionid&gt;/" controller="Snog\Forms:Questions" context="snogQuestions"/>
+  <route route_type="admin" route_prefix="form-types" format=":int&lt;appid&gt;/" controller="Snog\Forms:Types" context="snogTypes"/>
+  <route route_type="admin" route_prefix="logs" sub_name="forms-logs" format="forms-logs/:int&lt;log_id&gt;/" controller="XF:Log" context="ozzmodz_forms_logs" action_prefix="formsLogs"/>
+  <route route_type="public" route_prefix="form" format=":int&lt;posid,position&gt;/" controller="Snog\Forms:Form" context="snog_forms_navtab"/>
+</routes>

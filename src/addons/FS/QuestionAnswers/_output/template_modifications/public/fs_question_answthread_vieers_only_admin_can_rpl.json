@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_question_answthread_vieers_only_admin_can_replys",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:macro template=\"quick_reply_macros\" name=\"body\".*?arg-previewUrl=\"{{ link\\('threads\\/reply-preview', \\$thread\\) }}\"\\/>/is",
+    "replace": "<xf:if is=\"{{$xf.reply.containerKey == 'node-'.$xf.options.fs_questionAnswerForum || $xf.app.request.getRoutePath() == 'esperto/'}}\">\n\t<xf:if is=\"$xf.visitor.is_admin\">\n$0\n</xf:if>\n<xf:else />\n\t$0\n</xf:if>"
+}

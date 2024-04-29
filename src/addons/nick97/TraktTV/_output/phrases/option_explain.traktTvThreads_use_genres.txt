@@ -1,0 +1,1 @@
+You can limit the type of TV shows posted in each forum to a specific genre. Check this box to enable this option. The genre for each forum is specified in Forums->Nodes. Click on the forum you wish to limit and select the genres you wish to allow in the forum.

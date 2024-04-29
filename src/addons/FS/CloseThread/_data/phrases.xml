@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_close_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Close Thread]]></phrase>
+  <phrase title="fs_unclose_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unclose Thread]]></phrase>
+  <phrase title="option.close_thread_prefix_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Prefix Id]]></phrase>
+  <phrase title="option_explain.close_thread_prefix_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.closeThread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Close Thread]]></phrase>
+  <phrase title="option_group_description.closeThread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fs close thread options]]></phrase>
+</phrases>

@@ -1,0 +1,6 @@
+{
+    "from_class": "Snog\\Forms\\Pub\\Controller\\Form",
+    "to_class": "FS\\FormThreadModeration\\Snog\\Forms\\Pub\\Controller\\Form",
+    "execute_order": 10,
+    "active": true
+}

@@ -1,0 +1,26 @@
+{
+    "fs_thread_thumbnail_unique_id.txt": {
+        "global_cache": false,
+        "version_id": 1020500,
+        "version_string": "1.2.5 Alpha",
+        "hash": "490aa6e856ccf208a054389e47ce0d06"
+    },
+    "fs_thumbnail_only_numbers.txt": {
+        "global_cache": false,
+        "version_id": 1020500,
+        "version_string": "1.2.5 Alpha",
+        "hash": "99ba7e7cd17436e731b253cbbbfc3117"
+    },
+    "option.fs_thumbnail_applicable_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "167847f7264c7306d4d8e1f81e91ff87"
+    },
+    "option_explain.fs_thumbnail_applicable_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1a0d27468400ced3240433585bb80622"
+    }
+}

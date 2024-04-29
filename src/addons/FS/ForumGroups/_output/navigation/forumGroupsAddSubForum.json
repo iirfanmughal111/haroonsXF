@@ -1,0 +1,13 @@
+{
+    "parent_navigation_id": "fs_forumGroups_index",
+    "display_order": 20,
+    "navigation_type_id": "basic",
+    "type_config": {
+        "link": "{{ link('forumGroups/add') }}",
+        "display_condition": "",
+        "extra_attributes": {
+            "data-xf-click": "overlay"
+        }
+    },
+    "enabled": true
+}

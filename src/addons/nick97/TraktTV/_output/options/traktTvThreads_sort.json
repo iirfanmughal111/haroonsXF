@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "DESC={{ phrase('descending') }}\nASC={{ phrase('ascending') }}",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "DESC",
+    "relations": {
+        "traktTvThreads": 510
+    }
+}

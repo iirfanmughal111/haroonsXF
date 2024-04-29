@@ -1,0 +1,9 @@
+{
+    "template": "quick_reply_macros",
+    "description": "Adds thread info to quick reply macro",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "arg-message=\"\"",
+    "replace": "$0\narg-thread=\"\""
+}

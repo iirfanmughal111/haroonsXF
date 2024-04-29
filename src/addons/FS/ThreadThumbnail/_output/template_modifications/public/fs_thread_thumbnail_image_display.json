@@ -1,0 +1,9 @@
+{
+    "template": "thread_list_macros",
+    "description": "fs_thread_thumbnail_image_display",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"structItem structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}{{ $thread.isIgnored() ? ' is-ignored' : '' }}{{ ($thread.isUnread() AND !$forceRead) ? ' is-unread' : '' }}{{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }}{{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}\" data-author=\"{{ $thread.User.username ?: $thread.username }}\">",
+    "replace": "$0\n<xf:if is=\"$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)\">\n\n\t<div class=\"num-top\">{{$thread.thumb_unique_id != 0 ? $thread.thumb_unique_id : $thread.thread_id}}</div>\n\t<div class=\"thread-cover\">\n\t\t<img src=\"{{ $thread.getThumbnailExit() ? $thread.getThumbnailPath() : base_url('styles/FS/ThreadThumbnail/no_image.png',true) }}\" style=\"width:100%;\" />\n\n\n\t\t<div class=\"structItem-title-cover-perifix\">\n\t\t\t<xf:set var=\"$canPreview\" value=\"{{ $thread.canPreview() }}\" />\n\t\t\t<xf:if is=\"$thread.prefix_id\">\n\t\t\t\t<xf:if is=\"$forum\">\n\t\t\t\t\t<a href=\"{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}\" class=\"labelLink\" rel=\"nofollow\">{{ prefix('thread', $thread, 'html', '') }}</a>\n\t\t\t\t\t<xf:else />\n\t\t\t\t\t{{ prefix('thread', $thread, 'html', '') }}\n\t\t\t\t</xf:if>\n\t\t\t</xf:if>\n\n\t\t</div>\n\t</div>\n\t<div class=\"date-thread\">\n\t\t<div class=\"time-thread\">\n\t\t\t<xf:date time=\"{$thread.post_date}\" />\t\n\t\t</div>\n\t\t<div class=\"dot\">\n\t\t\t\u2022\n\t\t</div>\n\t\t<div class=\"thread-comments\">\n\t\t\t{$thread.reply_count|number_short}<span>comments </span>\t\n\t\t</div>\n\n\t</div>\n\n</xf:if>"
+}

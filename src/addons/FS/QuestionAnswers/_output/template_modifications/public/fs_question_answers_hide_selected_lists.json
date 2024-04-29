@@ -1,0 +1,9 @@
+{
+    "template": "search_form_post",
+    "description": "fs_question_answers_hide_selected_lists",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:option value=\"{$treeEntry.record.node_id}\">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>",
+    "replace": "<xf:if is=\"$treeEntry.record.node_id != $xf.options.fs_questionAnswerForum AND $treeEntry.record.parent_node_id != $xf.options.fs_questionAnswerForum\">\n\t\t\t\t$0\n\t\t\t</xf:if>"
+}

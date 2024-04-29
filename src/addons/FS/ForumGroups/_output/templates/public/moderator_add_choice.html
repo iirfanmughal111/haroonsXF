@@ -1,0 +1,23 @@
+<xf:title>{{ phrase('add_moderator') }}</xf:title>
+
+<xf:form action="{{ link('forumGroups/add-moderator', $subForum) }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="username" value="{$username}" type="search" ac="single"
+				placeholder="{{ phrase('user_name...') }}"
+				label="{{ phrase('moderator_user_name') }}" />
+
+			<xf:radiorow name="type" value="{$type}"
+				label="{{ phrase('type_of_moderator') }}">
+
+				<xf:comment>
+				<xf:option value="_super"
+					label="{{ phrase('super_moderator') }}"
+					hint="{{ phrase('super_moderator_can_moderate_entire_board') }}" />
+				</xf:comment>
+					<xf:option value="node" label="Forum moderator" selected="true"/>
+			</xf:radiorow>
+		</div>
+		<xf:submitrow submit="{{ phrase('add_moderator...') }}" />
+	</div>
+</xf:form>

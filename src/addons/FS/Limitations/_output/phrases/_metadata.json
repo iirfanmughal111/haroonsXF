@@ -1,0 +1,110 @@
+{
+    "admin_navigation.fsLimitations.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a458be0f08b7e4ff3c0f633c100176c0"
+    },
+    "admin_navigation.fsLimitationsMain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9056669f3641b7e2f50de0d9b3ef0b67"
+    },
+    "cron_entry.fs_resetUserDailyAds.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f07f8c8f1d85b6036a1506a27a08ad08"
+    },
+    "fs_limitaions_daily_ads.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d0de7131cdd408f0e1a91fc7f1d15ac7"
+    },
+    "fs_limitaions_daily_repost.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7c9fb2fa085d85de3a07fcf6d7098b2c"
+    },
+    "fs_limitaions_node_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6d6159fca6082f1cb87099b02cef6681"
+    },
+    "fs_limitaions_node_ids_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bc752de781f024d1b9a918439c2784f0"
+    },
+    "fs_limitations.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9056669f3641b7e2f50de0d9b3ef0b67"
+    },
+    "fs_limitations_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "62550b555b6c6024525183ef1387d84d"
+    },
+    "fs_limitations_add_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2e70c3824c128eb860cfb630b6bdde10"
+    },
+    "fs_limitations_admirer_mail_body.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "654f12891adcc958ca4af9ffef8b05da"
+    },
+    "fs_limitations_companion_mail_body.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7bc9d2c94ab2863a1607b1e888e8a036"
+    },
+    "fs_limitations_daily_ads.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e252c87f16a733b2935e576ecc877059"
+    },
+    "fs_limitations_daily_repost.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9f8573b9e9b1ca793732a3aed33cfc42"
+    },
+    "fs_limitations_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "00037ef68d36037962218d947a915733"
+    },
+    "fs_limitations_node_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6d6159fca6082f1cb87099b02cef6681"
+    },
+    "fs_limitations_user_Group.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4d01e3bd5fff4e8dcae69a8c2d9310de"
+    },
+    "fs_limitations_user_group_already_exist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4bd1950c1f41c311f919e943c7dabda7"
+    }
+}

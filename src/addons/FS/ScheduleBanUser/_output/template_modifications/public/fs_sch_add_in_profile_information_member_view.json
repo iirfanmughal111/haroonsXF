@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Adds a warning to the profile",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<ul class=\"tabPanes js-memberTabPanes\">",
+    "replace": "<xf:if is=\"{$user.is_banned}\">\n\t<xf:macro template=\"fs_sch_user_ban_macros\" name=\"banInfo\" arg-user=\"{$user}\" />\n</xf:if>\n<xf:if is=\"$user.ScheduleBan.ban_date && !$user.is_banned\">\n\t<xf:macro template=\"fs_sch_user_ban_macros\" name=\"banInfoBeforeBanProfile\" arg-user=\"{$user}\" />\n</xf:if>\n$0"
+}

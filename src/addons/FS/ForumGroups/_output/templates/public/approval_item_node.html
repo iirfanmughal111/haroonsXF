@@ -1,0 +1,18 @@
+<xf:set var="$messageHtml">
+	<h4 class="message-title"><a href="{{ link('forumGroups/', $content) }}">{{$content.title}}</a></h4>
+</xf:set>
+<xf:macro template="approval_queue_macros" name="item_message_type"
+	arg-content="{$content}"
+	arg-contentDate="{$content.created_at}"
+	arg-user="{$content.User}"
+	arg-messageHtml="{$messageHtml}"
+	arg-typePhraseHtml="{{ phrase('fs_forum_Group_type') }}"
+	arg-spamDetails="{$spamDetails}"
+	arg-unapprovedItem="{$unapprovedItem}"
+	arg-handler="{$handler}"
+	arg-headerPhraseHtml="{{ phrase('group_x_created_by_user_x', {
+		'userLink': link('members', $content.User),
+		'userName': $content.User.username,
+		'groupLink': link('forumGroups', $content),
+		'groupTitle': $content.title					
+	}) }}"/>

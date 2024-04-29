@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread_chooser",
+    "description": "fs_question_answer",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro name=\"node_list_entry_forum_level_0\"\n\t\t\t\targ-node=\"{$node}\"\n\t\t\t\targ-extras=\"{$extras}\"\n\t\t\t\targ-children=\"{$children}\"\n\t\t\t\targ-childExtras=\"{$childExtras}\"\n\t\t\t\targ-depth=\"{$depth}\" />",
+    "replace": "<xf:if is=\"$node.node_id != $xf.options.fs_questionAnswerForum\">\n\t\t\t$0\n\t\t\t\t</xf:if>"
+}

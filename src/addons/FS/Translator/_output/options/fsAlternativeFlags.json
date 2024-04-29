@@ -1,0 +1,21 @@
+{
+    "edit_format": "checkbox",
+    "edit_format_params": "us=USA flag (English)\nca=Canada flag (English)\nbr=Brazil flag (Portuguese)\nmx=Mexico flag (Spanish)\nar=Argentina flag (Spanish)\nco=Colombia flag (Spanish)\nqc=Quebec flag (French)",
+    "data_type": "array",
+    "sub_options": [
+        "us",
+        "ca",
+        "br",
+        "mx",
+        "ar",
+        "co",
+        "qc"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "{\"us\":0,\"ca\":0,\"br\":0,\"mx\":0,\"ar\":0,\"co\":0,\"qc\":0}",
+    "relations": {
+        "fs_translator": 20
+    }
+}

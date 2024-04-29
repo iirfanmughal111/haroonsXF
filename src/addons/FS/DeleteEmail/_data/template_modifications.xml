@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_details" modification_key="fs_delete_account_details_add_delete_btn" description="fs_delete_account_details_add_delete_btn" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button href="{{ link('account/email') }}" class="button--link" overlay="true">{{ phrase('change') }}</xf:button>]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$xf.visitor.email AND $xf.visitor.user_state == 'valid'">
+	<xf:button href="{{ link('account/delete-email') }}" class="button--link" overlay="true">{{ phrase('delete') }}</xf:button>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="account_details" modification_key="fs_delete_email_account_details_display" description="fs_delete_email_account_details_display_email" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[is="$xf.visitor.email"]]></find>
+    <replace><![CDATA[is="$xf.visitor.email AND $xf.visitor.user_state == 'valid'"]]></replace>
+  </modification>
+</template_modifications>

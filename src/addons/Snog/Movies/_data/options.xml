@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="tmdbthreads_addgroups" edit_format="callback" data_type="array" advanced="1">
+    <default_value>[]</default_value>
+    <edit_format_params>Snog\Movies\Option\UserGroup::renderCheckboxes</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="debug" display_order="1000000003"/>
+  </option>
+  <option option_id="tmdbthreads_apikey" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="snogMovies" display_order="1"/>
+  </option>
+  <option option_id="tmdbthreads_backdropCoverSize" edit_format="select" data_type="string" advanced="0">
+    <default_value>none</default_value>
+    <edit_format_params>none={{ phrase('none') }}
+original=original
+w1920_and_h800_multi_faces=w1920_and_h800_multi_faces
+w1400_and_h450_face=w1400_and_h450_face</edit_format_params>
+    <relation group_id="snogMovies" display_order="3150"/>
+  </option>
+  <option option_id="tmdbthreads_castsLimit" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>30</default_value>
+    <relation group_id="snogMovies" display_order="1100"/>
+  </option>
+  <option option_id="tmdbthreads_cdn_path" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="snogMovies" display_order="3020"/>
+  </option>
+  <option option_id="tmdbthreads_changesLanguage" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>en</default_value>
+    <relation group_id="snogMovies" display_order="129"/>
+  </option>
+  <option option_id="tmdbthreads_companiesLimit" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>10</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="snogMovies" display_order="1103"/>
+  </option>
+  <option option_id="tmdbthreads_crewLimit" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>30</default_value>
+    <relation group_id="snogMovies" display_order="1101"/>
+  </option>
+  <option option_id="tmdbthreads_crosslink" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="110"/>
+  </option>
+  <option option_id="tmdbthreads_fetchCompanies" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="snogMovies" display_order="123"/>
+  </option>
+  <option option_id="tmdbthreads_fetchCredits" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="snogMovies" display_order="122"/>
+  </option>
+  <option option_id="tmdbthreads_fetchVideos" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="snogMovies" display_order="121"/>
+  </option>
+  <option option_id="tmdbthreads_force_comments" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="395"/>
+  </option>
+  <option option_id="tmdbthreads_forum" edit_format="callback" data_type="array" advanced="1">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="debug" display_order="1000000000"/>
+  </option>
+  <option option_id="tmdbthreads_forum_local" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="snogMovies" display_order="3000"/>
+  </option>
+  <option option_id="tmdbthreads_language" edit_format="textbox" data_type="string" validation_class="Snog\Movies\Option\Language" validation_method="verifyOption" advanced="0">
+    <default_value>en</default_value>
+    <edit_format_params>size=5
+maxlength=5</edit_format_params>
+    <relation group_id="snogMovies" display_order="10"/>
+  </option>
+  <option option_id="tmdbthreads_largeCompanyLogoSize" edit_format="select" data_type="string" advanced="0">
+    <default_value>original</default_value>
+    <edit_format_params>original=original
+h50=h50
+h100=h100</edit_format_params>
+    <relation group_id="snogMovies" display_order="3140"/>
+  </option>
+  <option option_id="tmdbthreads_largePosterSize" edit_format="select" data_type="string" advanced="0">
+    <default_value>w185</default_value>
+    <edit_format_params>w92=w92
+w154=w154
+w185= w185
+w342=w342
+w500=w500
+w780=w780
+original=original</edit_format_params>
+    <relation group_id="snogMovies" display_order="3110"/>
+  </option>
+  <option option_id="tmdbthreads_mix" edit_format="onoff" data_type="boolean" advanced="1">
+    <default_value>0</default_value>
+    <relation group_id="debug" display_order="1000000001"/>
+  </option>
+  <option option_id="tmdbthreads_replaceSearchTemplate" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="1020"/>
+  </option>
+  <option option_id="tmdbthreads_showThreadInfo" edit_format="checkbox" data_type="array" advanced="0">
+    <default_value>{"title":1,"tagline":1,"genres":1,"director":1,"cast":1,"release_date":1,"status":1,"runtime":1,"plot":1,"production_companies":1,"trailer":1,"cast_tab":1,"crew_tab":1,"videos_tab":1}</default_value>
+    <edit_format_params>title={{ phrase('snog_movies_title') }}
+tagline={{ phrase('snog_movies_tagline') }}
+genres={{ phrase('snog_movies_genres') }}
+director={{ phrase('snog_movies_director') }}
+cast={{ phrase('snog_movies_cast') }}
+status={{ phrase('snog_movies_status') }}
+release_date={{ phrase('snog_movies_release_date') }}
+runtime={{ phrase('snog_movies_runtime') }}
+plot={{ phrase('snog_movies_plot') }}
+production_companies={{ phrase('snog_movies_production_companies') }}
+trailer={{ phrase('snog_movies_trailer') }}
+cast_tab={{ phrase('snog_movies_cast_tab') }}
+crew_tab={{ phrase('snog_movies_crew_tab') }}
+videos_tab={{ phrase('snog_movies_videos') }}</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="snogMovies" display_order="1010"/>
+  </option>
+  <option option_id="tmdbthreads_smallCompanyLogoWidth" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>50</default_value>
+    <edit_format_params>units={{ phrase('units_pixels') }}
+min=0</edit_format_params>
+    <relation group_id="snogMovies" display_order="3120"/>
+  </option>
+  <option option_id="tmdbthreads_smallPosterWidth" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>92</default_value>
+    <edit_format_params>units={{ phrase('units_pixels') }}
+min=0</edit_format_params>
+    <relation group_id="snogMovies" display_order="3100"/>
+  </option>
+  <option option_id="tmdbthreads_syncTitle" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="snogMovies" display_order="130"/>
+  </option>
+  <option option_id="tmdbthreads_threadListInfo" edit_format="checkbox" data_type="array" advanced="0">
+    <default_value>{"title":"1","tagline":"genres","director":"1","runtime":"1","status":"1","release_date":1}</default_value>
+    <edit_format_params>title={{ phrase('title') }}
+tagline={{ phrase('snog_movies_tagline') }}
+genres={{ phrase('snog_movies_genre') }}
+director={{ phrase('snog_movies_director') }}
+runtime={{ phrase('snog_movies_runtime') }}
+status={{ phrase('snog_movies_status') }}
+release_date ={{ phrase('snog_movies_release') }}</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="snogMovies" display_order="1000"/>
+  </option>
+  <option option_id="tmdbthreads_trackChanges" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="127"/>
+  </option>
+  <option option_id="tmdbthreads_trackChangesPeriod" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>1</default_value>
+    <edit_format_params>units={{ phrase('units_days') }}</edit_format_params>
+    <relation group_id="snogMovies" display_order="129"/>
+  </option>
+  <option option_id="tmdbthreads_trackCommunityChanges" edit_format="checkbox" data_type="array" advanced="1">
+    <default_value>[]</default_value>
+    <edit_format_params>images={{ phrase('image') }}
+name={{ phrase('name') }}
+overview={{ phrase('snog_movies_plot') }}
+status={{ phrase('snog_movies_status') }}
+runtime={{ phrase('snog_movies_runtime') }}
+cast={{ phrase('snog_movies_cast') }}
+release_dates={{ phrase('snog_movies_release_date') }}
+videos={{ phrase('snog_movies_videos') }}
+imdb_id=IMDB ID</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="snogMovies" display_order="128"/>
+  </option>
+  <option option_id="tmdbthreads_update" edit_format="onoff" data_type="boolean" advanced="1">
+    <default_value>0</default_value>
+    <relation group_id="debug" display_order="1000000002"/>
+  </option>
+  <option option_id="tmdbthreads_use_genres" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="100"/>
+  </option>
+  <option option_id="tmdbthreads_use_rating" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="120"/>
+  </option>
+  <option option_id="tmdbthreads_usecdn" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="3010"/>
+  </option>
+  <option option_id="tmdbthreads_useyear" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="snogMovies" display_order="390"/>
+  </option>
+  <option option_id="tmdbthreads_videoLimit" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>10</default_value>
+    <relation group_id="snogMovies" display_order="1102"/>
+  </option>
+  <option option_id="tmdbthreads_watchProviderRegion" edit_format="callback" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>Snog\Movies\Option\Country::renderSelect</edit_format_params>
+    <relation group_id="snogMovies" display_order="801"/>
+  </option>
+  <option option_id="tmdbthreads_watchProviderRegions" edit_format="callback" data_type="array" advanced="0">
+    <default_value>["US"]</default_value>
+    <edit_format_params>Snog\Movies\Option\Country::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="snogMovies" display_order="800"/>
+  </option>
+</options>

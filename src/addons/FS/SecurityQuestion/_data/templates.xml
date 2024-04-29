@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="security_question_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+  <xf:if is="$question.question_id"> {{ phrase('edit_question') }} :
+  <xf:breadcrumb href="#">{{ phrase('edit_question') }}</xf:breadcrumb> <xf:else
+  /> {{ phrase('fs_add_question') }} <xf:breadcrumb href="#">{{
+  phrase('fs_add_question') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form
+  action="{{ link('securityQuestion/save', $question) }}"
+  class="block"
+  ajax="1"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <xf:textboxrow
+        name="security_question"
+        value="{$question.security_question}"
+        label="Question"
+        autosize="true"
+        row="5"
+      />
+    </div>
+
+    <xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+  </div>
+</xf:form>
+]]></template>
+  <template type="admin" title="security_question_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('edit_node_url') }} : {$data.title}</xf:title>
+
+<xf:breadcrumb href="{{ link('nodeUrl')}}">{{ phrase('Home') }}</xf:breadcrumb>
+<xf:breadcrumb href="{{ link('#')}}">{{ phrase('edit_node_url') }}</xf:breadcrumb>
+
+
+<xf:form action="{{ link('nodeUrl/edit' ,$data)}}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+        name="nodeUrl"
+		value="{$data.node_url}"
+        label="Edit Url"
+        autosize="true"
+		type="url"
+        row="5"
+      />
+		</div>
+		    <xf:submitrow submit="{{ phrase('Update') }}" fa="fa-edit" sticky="true" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="security_question_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="quick_filter" arg-key="" arg-ajax="" arg-class="">
+	<xf:js src="xf/filter.js" min="1" />
+	<div class="{$class} quickFilter u-jsOnly" data-xf-init="filter" data-key="{$key}" data-ajax="{$ajax}">
+		<div class="inputGroup inputGroup--inline inputGroup--joined">
+			<input type="text" class="input js-filterInput" placeholder="{{ phrase('filter...')|for_attr }}" data-xf-key="{{ phrase('shortcut.filter')|for_attr }}" />
+			<i class="inputGroup-text js-filterClear is-disabled" aria-hidden="true"></i>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="admin" title="security_question_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_security_question_all_records') }}</xf:title>
+
+<xf:breadcrumb href="#"
+  >{{ phrase('fs_security_question_all_records') }}</xf:breadcrumb
+>
+
+<xf:pageaction>
+  <xf:button href="{{ link('securityQuestion/add') }}" icon="add"
+    >{{ phrase('fs_add_question') }}</xf:button
+  >
+</xf:pageaction>
+
+<xf:if is="$question is not empty">
+  <div class="block">
+    <div class="block-outer">
+      <xf:macro
+        template="security_question_filter"
+        name="quick_filter"
+        arg-key="securityQuestion"
+        arg-class="block-outer-opposite"
+      />
+    </div>
+    <div class="block-container">
+      <div class="block-body">
+        <!--       < Records >  -->
+
+        <xf:datalist data-xf-init="responsive-data-list">
+          <xf:datarow rowtype="header">
+            <xf:cell> {{ phrase('question') }} </xf:cell>
+            <xf:cell class="dataList-cell--min"> </xf:cell>
+            <xf:cell class="dataList-cell--min"> </xf:cell>
+          </xf:datarow>
+          <xf:foreach loop="$question" value="$val">
+            <xf:datarow>
+              <xf:cell> {{$val.security_question}} </xf:cell>
+              <xf:action
+                href="{{ link('securityQuestion/edit', $val) }}"
+                overlay="true"
+                >{{ phrase('edit') }}</xf:action
+              >
+              <xf:delete
+                href="{{ link('securityQuestion/delete-record', $val) }}"
+                overlay="true"
+              />
+            </xf:datarow>
+          </xf:foreach>
+        </xf:datalist>
+        <xf:pagenav
+          page="{$page}"
+          perpage="{$perPage}"
+          total="{$total}"
+          link="securityQuestion"
+          wrapperclass="block"
+        />
+        <!--       </ Records > -->
+      </div>
+
+      <!-- <div class="block-footer">
+        <span class="block-footer-counter">footer</span>
+      </div> -->
+    </div>
+  </div>
+  <xf:else />
+  <div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>
+]]></template>
+  <template type="public" title="how_to_verify" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title> {{ phrase('fs_verify_by') }} </xf:title>
+
+<xf:form
+  action="{{ link('sec-qu/select') }}"
+  ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <xf:selectrow
+        name="select_option"
+        label="{{ phrase('fs_method') }}"
+        hint="{{ phrase('required') }}"
+        required="required"
+      >
+        <xf:option value="1">{{ phrase('email')}}</xf:option>
+        <xf:option value="2">{{ phrase('fs_security_question')}}</xf:option>
+      </xf:selectrow>
+    </div>
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>
+]]></template>
+  <template type="public" title="security_question_index" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[<xf:title> {{ phrase('fs_security_question') }} </xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<xf:form
+  action="{{ link('sec-qu/save') }}"
+  ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <!-- Question One -->
+<xf:set var="$customs" value="{{[$c1,$c2]}}" />
+<xf:foreach loop="$customs"  value="$custom"  i="$i">
+	
+	<xf:foreach loop="$questions" value="$question">
+
+					
+					
+	</xf:foreach>
+	  <xf:selectrow
+				name="questions[]"
+				label="{{ phrase('fs_question') }} {{$i}}"
+				hint="{{ phrase('required') }}"
+				 required="true"
+			  >
+		  	<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+					 <xf:foreach loop="$questions" value="$question">
+
+					
+						
+							<xf:option
+								value="{$question.question_id}"
+								selected="{{$question.question_id==$questionExist.{{$i}}}}">{{$question.security_question}}</xf:option>
+				          
+		  </xf:foreach>
+			  </xf:selectrow>
+	
+			 <xf:formrow
+				rowtype="input"
+				label="{{ phrase('fs_answer') }} {{$i}}"
+				hint="{{ phrase('required') }}"
+			  >
+				<xf:textboxrow
+				  name="answers[]"
+				  value="{$answersArray.{{$i}}}"
+				  placeholder="{{ phrase('fs_answer_one_placeholder') }}"
+				  data-i="0"
+				  rowtype="fullWidth"
+							    required="true"
+				/>
+	</xf:formrow>
+	 
+			 
+
+	</xf:foreach>
+
+    </div>
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>]]></template>
+  <template type="public" title="security_question_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title> </xf:title>
+
+<xf:form
+  action="{{ link('sec-qu/verifyuser') }}"
+  ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <xf:formrow
+        rowtype="input"
+        label="{{ phrase('fs_user_name') }}"
+        hint="{{ phrase('required') }}"
+      >
+        <xf:textboxrow
+          name="user_name"
+          placeholder="{{ phrase('fs_enter_user_name') }}"
+          data-i="0"
+          rowtype="fullWidth"
+        />
+      </xf:formrow>
+    </div>
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>
+]]></template>
+  <template type="public" title="security_question_verify" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[<xf:title> {{ phrase('fs_verify_questions') }} </xf:title>
+
+<xf:form
+  action="{{ link('sec-qu/compare') }}"
+  ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+   <div class="block-container">
+    <div class="block-body">
+      <!-- Question One -->
+	
+	<xf:foreach loop="$questions" value="$question">
+
+		<xf:formrow  label="{{ phrase('fs_question') }}" 
+					hint="{{ phrase('required') }}">{{$question.userQuestion.security_question}}</xf:formrow>
+					
+			<input type="hidden" name="questions[]" value="{$question.question_id}"/>
+			 <xf:formrow
+				rowtype="input"
+				label="{{ phrase('fs_answer') }}"
+				hint="{{ phrase('required') }}"
+			   >
+				<xf:textboxrow
+				  name="answers[]"
+				  placeholder="{{ phrase('fs_answer_one_placeholder') }}"
+				  data-i="0"
+				  rowtype="fullWidth"
+							    required="true"
+				/>
+	</xf:formrow>
+		
+	</xf:foreach>	
+	 
+			 
+
+	
+    </div>
+	   <input type="hidden" name="user_id" value={{$user}} />
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>]]></template>
+</templates>

@@ -1,0 +1,106 @@
+<xf:title>{{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:title>
+<xf:h1>{{ prefix('thread', $thread) }}{$thread.title}</xf:h1>
+
+<xf:if is="$xf.options.traktthreads_use_rating">
+	<xf:set var="$rating" value="{$thread.traktMovie.trakt_rating}" />
+	<div style="margin-bottom:10px;">
+		<xf:macro template="rating_macros" name="stars_text"
+			arg-rating="{$rating}"
+			arg-text="{{ phrase('rating') }}: {$thread.traktMovie.trakt_rating}/5 {$thread.traktMovie.trakt_votes} {{ phrase('votes') }}"
+		/>
+	
+		<xf:if is="$xf.visitor.user_id">
+			<a href="{{ link('traktMovies/rate',$thread.traktMovie)}}" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">{{ phrase('trakt_movies_change_rating') }}</span></button></a>
+		</xf:if>
+	</div>
+</xf:if>
+
+<div class="movieBlock">
+	<xf:if is="property('trakt_movies_messagePosterPosition') == 'left'">
+		<div class="moviethreadposter">
+			<img src="{{ $thread.traktMovie.getImageUrl('l') }}" />
+		</div>
+	</xf:if>
+	
+	<div class="message{{ property('trakt_movies_messagePosterPosition') == 'left' ? ' messageMovie' : ' messageMovieLeft' }}">
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.title"><b>{{ phrase('title') }}:</b> {$thread.traktMovie.trakt_title}<br /></xf:if>
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.tagline && $thread.traktMovie.trakt_tagline"><p><b>{{ phrase('trakt_movies_tagline') }}:</b> {$thread.traktMovie.trakt_tagline}</p></xf:if>
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.genres && $thread.traktMovie.trakt_genres"><p><b>{{ phrase('trakt_movies_genre') }}:</b> {$thread.traktMovie.trakt_genres}</p></xf:if>
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.director && $thread.traktMovie.trakt_director"><p><b>{{ phrase('trakt_movies_director') }}:</b> {$thread.traktMovie.trakt_director}</p></xf:if>
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.cast && $thread.traktMovie.trakt_cast"><p><b>{{ phrase('trakt_movies_cast') }}:</b> {$thread.traktMovie.trakt_cast}</p></xf:if>
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.release_date && $thread.traktMovie.trakt_release"><p><b>{{ phrase('trakt_movies_release') }}:</b> {$thread.traktMovie.trakt_release}</p></xf:if>
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.runtime && $thread.traktMovie.trakt_runtime"><p><b>{{ phrase('trakt_movies_runtime') }}:</b> {$thread.traktMovie.trakt_runtime}</p></xf:if>
+		<xf:if is="$xf.options.traktthreads_showThreadInfo.plot && $thread.traktMovie.trakt_plot"><b>{{ phrase('trakt_movies_plot') }}:</b> {$thread.traktMovie.trakt_plot}</xf:if>
+	</div>
+	
+	<xf:if is="property('trakt_movies_messagePosterPosition') == 'right'">
+		<div class="moviethreadposter">
+			<img src="{{ $thread.traktMovie.getImageUrl('l') }}" />
+		</div>
+	</xf:if>
+</div>
+
+<xf:if is="$xf.options.traktthreads_showThreadInfo.trailer && $thread.traktMovie.trakt_trailer">
+	<div class="bbMediaWrapper">
+		<div class="bbMediaWrapper-inner">
+			<iframe width="500"
+				height="300"
+				allowfullscreen
+				src="https://www.youtube.com/embed/{$thread.traktMovie.trakt_trailer}?wmode=opaque&start=0"
+				style="border:none;"></iframe>
+		</div>
+	</div>
+	<p></p>
+</xf:if>
+
+<xf:if is="!$xf.options.traktthreads_force_comments">
+	{{ bb_code($thread.traktMovie.comment, 'post', $post.User, {
+		'attachments': $post.attach_count ? $post.Attachments : [],
+		'viewAttachments': $thread.canViewAttachments()
+	}) }}
+</xf:if>
+
+<xf:set var="$fpSnippet" value="{{ snippet($post.message, 0, {'stripBbCode': true}) }}" />
+
+<xf:page option="ldJsonHtml">
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "DiscussionForumPosting",
+		"@id": "{{ link('canonical:threads', $thread)|escape('js') }}",
+		"headline": "{$thread.title|escape('htmljs')}",
+		"datePublished": "{{ date($post.post_date,'Y-m-d') }}",
+		"articleBody": "{$fpSnippet|escape('htmljs')}",
+		"articleSection": "{$thread.Forum.Node.title|escape('htmljs')}",
+		"author": {
+			"@type": "Person",
+			"name": "{{ ($thread.User ? $thread.User.username : $thread.username)|escape('htmljs') }}"
+		},
+		"interactionStatistic": {
+			"@type": "InteractionCounter",
+			"interactionType": "https://schema.org/ReplyAction",
+			"userInteractionCount": {$thread.reply_count}
+		}
+	}
+	</script>
+	
+	<script type="application/ld+json">
+	{
+  		"@context": "http://schema.org/",
+  		"@type": "Movie",
+  		"name": "{$thread.traktMovie.trakt_title}",
+		"director": "{$thread.traktMovie.trakt_director}",
+		"dateCreated": "{$thread.traktMovie.trakt_release}",
+		"duration": "PT{$thread.traktMovie.trakt_runtime}M",
+  		"image": "{$thread.traktMovie.getImageUrl('l')}",
+  		"description": "{$thread.traktMovie.trakt_plot}"<xf:if is="$thread.traktMovie.trakt_rating > 0">,
+		"aggregateRating": {
+    		"@type": "AggregateRating",
+    		"bestRating": "5",
+			"worstRating": "1",
+    		"ratingCount": "{$thread.traktMovie.trakt_votes}",
+    		"ratingValue": "{$thread.traktMovie.trakt_rating}"
+  		}</xf:if>
+	}
+	</script>
+</xf:page>

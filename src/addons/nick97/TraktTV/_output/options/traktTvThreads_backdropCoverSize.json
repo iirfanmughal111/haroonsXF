@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "none={{ phrase('none') }}\noriginal=original\nw1920_and_h800_multi_faces=w1920_and_h800_multi_faces\nw1400_and_h450_face=w1400_and_h450_face",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "none",
+    "relations": {
+        "traktTvThreads": 3120
+    }
+}

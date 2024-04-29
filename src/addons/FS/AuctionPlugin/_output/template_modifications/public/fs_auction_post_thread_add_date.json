@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread",
+    "description": "add Date and time",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:macro name=\"type_fields\".*?arg-subContext=\"full\" \\/>/is",
+    "replace": "<xf:if is=\"$forum.node_id == $xf.options.fs_auction_applicable_forum\">\n\t<xf:formrow label=\"{{ phrase('auction_endDate') }}\" rowtype=\"input\" hint=\"{{ phrase('auction_required') }}\" explain=\"{{ phrase('auction_endDate_explain') }}\"> \n\t         <div class=\"inputGroup\">         \n\t\t\t <xf:dateinput name=\"ends_on\" value=\"{{ $data.ends_on ? date($data.ends_on, 'Y-m-d') : date($xf.time, 'Y-m-d')}}\"   required=\"true\" />            \n\t\t\t <span class=\"inputGroup-splitter\"></span> \n\t\t\t <span class=\"inputGroup\" dir=\"ltr\">  \n\t\t\t <xf:textbox name=\"ends_on_time\" class=\"input--date time start\" required=\"true\" type=\"time\" value=\"{{$data.ends_on ? $data.getFormatedTime() : ''}}\"data-xf-init=\"time-picker\" data-moment=\"{$timeFormat}\" /></span>          \n\t\t\t </div>        \n\t\t\t </xf:formrow>\n\t\t\t <xf:hiddenval name=\"category_id\" value=\"{$category_id}\" />\n\t\t\t </xf:if>\n\t\t\t \n\t\t\t $0"
+}

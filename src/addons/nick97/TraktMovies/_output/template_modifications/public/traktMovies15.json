@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Adds filter removal links",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$filters.last_days AND {$dateLimits.{$filters.last_days}}\">",
+    "replace": "<xf:if is=\"$filters.genre\">\n\t<li><a href=\"{{ link('forums', $forum, $filters|replace('genre', null)) }}\"\n\t\tclass=\"filterBar-filterToggle\" data-xf-init=\"tooltip\" title=\"{{ phrase('remove_this_filter') }}\">\n\t\t<span class=\"filterBar-filterToggle-label\">{{ phrase('trakt_movies_genre') }}:</span>\n\t\t{$filters.genre}</a></li>\n</xf:if>\n<xf:if is=\"$filters.director\">\n\t<li><a href=\"{{ link('forums', $forum, $filters|replace('director', null)) }}\"\n\t\tclass=\"filterBar-filterToggle\" data-xf-init=\"tooltip\" title=\"{{ phrase('remove_this_filter') }}\">\n\t\t<span class=\"filterBar-filterToggle-label\">{{ phrase('trakt_movies_director') }}:</span>\n\t\t{$filters.director}</a></li>\n</xf:if>\n<xf:if is=\"$filters.cast\">\n\t<li><a href=\"{{ link('forums', $forum, $filters|replace('cast', null)) }}\"\n\t\tclass=\"filterBar-filterToggle\" data-xf-init=\"tooltip\" title=\"{{ phrase('remove_this_filter') }}\">\n\t\t<span class=\"filterBar-filterToggle-label\">{{ phrase('trakt_movies_cast') }}:</span>\n\t\t{$filters.cast}</a></li>\n</xf:if>\n<xf:if is=\"$filters.movie_title\">\n\t<li><a href=\"{{ link('forums', $forum, $filters|replace('movie_title', null)) }}\"\n\t\tclass=\"filterBar-filterToggle\" data-xf-init=\"tooltip\" title=\"{{ phrase('remove_this_filter') }}\">\n\t\t<span class=\"filterBar-filterToggle-label\">{{ phrase('trakt_movies_title') }}:</span>\n\t\t{$filters.movie_title}</a></li>\n</xf:if>\n$0"
+}

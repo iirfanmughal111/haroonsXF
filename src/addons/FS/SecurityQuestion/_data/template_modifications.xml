@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_visitor_menu" modification_key="securityQuestionTemMod" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:account_links:bottom]-->]]></find>
+    <replace><![CDATA[$0
+<li><a href="{{ link('sec-qu') }}" class="menu-linkRow">{{ phrase('fs_security_question') }}</a></li>]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="securityQuestionTempMod" description="add one more option" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[					{{ phrase('ignoring') }}
+				</a>]]></find>
+    <replace><![CDATA[$0
+
+<a class="blockLink {{ $pageSelected == '' ? 'is-selected' : '' }}" href="{{ link('sec-qu') }}">
+					{{ phrase('fs_security_question') }}
+				</a>]]></replace>
+  </modification>
+</template_modifications>

@@ -1,0 +1,20 @@
+{
+    "fs_export_post_attachments.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5ab9a704ffd490cef7968011ca3ccecc"
+    },
+    "fs_no_attachments_exist_in_this_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "06c461c5f1e88b31f6b4825c985b1d5a"
+    },
+    "please_confirm_that_you_want_to_export_all_attachments_of_the_following_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0237bedef5b317f4fe3f141877f07d63"
+    }
+}

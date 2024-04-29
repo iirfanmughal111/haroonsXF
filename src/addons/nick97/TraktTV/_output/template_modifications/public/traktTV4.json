@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Changes post thread to post TV show",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ phrase('post_thread') }}",
+    "replace": "<xf:if is=\"in_array($forum.node_id, $xf.options.traktTvThreads_forum) && !$xf.options.traktTvThreads_mix\">\n\t{{ phrase('trakt_tv_post_new_show') }}\n<xf:else />\n$0\t\n</xf:if>\n"
+}

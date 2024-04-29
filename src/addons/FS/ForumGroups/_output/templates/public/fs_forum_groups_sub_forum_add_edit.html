@@ -1,0 +1,81 @@
+<xf:if is="$forum.isInsert()">
+	<xf:title>{{ phrase('add_forum') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('edit_forum:') }} {$node.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$forum.isUpdate()">
+	<div class="buttonGroup">
+		<xf:if is="$canChangeForumType">
+			<xf:button href="{{ link('forumGroups/change-type', $node) }}" overlay="true">{{ phrase('change_type') }}</xf:button>
+		</xf:if>
+		<xf:button href="{{ link('forumGroups/delete', $node) }}" icon="delete" overlay="true" />
+	</div>
+</xf:pageaction>
+
+<xf:form action="{{ link('forumGroups/save', $node) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:macro template="node_edit_macros" name="title" arg-node="{$node}" />
+			<xf:macro template="node_edit_macros" name="description" arg-node="{$node}" />
+			
+			<xf:textboxrow name="replace_route" value="{$routeFilter.replace_route_readable}"
+				maxlength="{{ max_length($routeFilter, 'replace_route') }}"
+				label="{{ phrase('replace_with') }}"
+				explain="{{ phrase('route_filter_find_replace_fields_support_wildcards') }}"
+				dir="ltr" 
+				required="required" hint="{{ phrase('required') }}"/>
+			
+			
+			 <xf:uploadrow name="avatarFile"
+                          label="{{ phrase('fs_forum_group_avatar') }}"
+                          explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+                                'width': $avatarWidth,
+                                'height': $avatarHeight
+                          }) }}" />
+			
+			<xf:uploadrow name="coverFile"
+                          label="{{ phrase('fs_forum_group_cover') }}"
+                          explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+                                'width': $coverWidth,
+                                'height': $coverHeight
+                          }) }}" />
+				
+			
+			<xf:textboxrow name="room_name"
+						   value="{$room.room_name}"
+						   label="{{ phrase('siropu_chat_room_name') }}"
+						   maxlength="{{ max_length($room, 'room_name') }}" />
+
+			<xf:textarearow name="room_description"
+							value="{$room.room_description}"
+							label="{{ phrase('siropu_chat_room_description') }}"
+							maxlength="{{ max_length($room, 'room_description') }}"
+							rows="3" />
+			
+			<xf:if is="$xf.visitor.canSetSiropuChatRoomUsers()">
+				<xf:tokeninputrow name="room_users"
+						   value="{{ array_values($room.room_users)|join(',') }}"
+						   label="{{ phrase('siropu_chat_room_users') }}"
+						   explain="{{ phrase('siropu_chat_room_users_explain') }}"
+							hint="{{ phrase('optional') }}"
+						   href="{{ link('members/find') }}" />
+			</xf:if>
+
+			<xf:if is="$xf.visitor.canPasswordProtectSiropuChatRooms()">
+				<xf:textboxrow name="room_password"
+							   value="{$room.room_password}"
+							   label="{{ phrase('siropu_chat_room_password') }}"
+							   explain="{{ phrase('siropu_chat_room_password_explain') }}"
+							   hint="{{ phrase('optional') }}"
+							   maxlength="{{ max_length($room, 'room_password') }}" />
+			</xf:if>
+
+			<xf:hiddenval name="forum_type_id">{$forumTypeId}</xf:hiddenval>
+
+			<hr class="formRowSep" />
+		</div>
+
+		<xf:submitrow icon="save" sticky="true" />
+	</div>
+</xf:form>

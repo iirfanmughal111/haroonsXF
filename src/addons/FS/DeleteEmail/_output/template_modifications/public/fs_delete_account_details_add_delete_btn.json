@@ -1,0 +1,9 @@
+{
+    "template": "account_details",
+    "description": "fs_delete_account_details_add_delete_btn",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:button href=\"{{ link('account/email') }}\" class=\"button--link\" overlay=\"true\">{{ phrase('change') }}</xf:button>",
+    "replace": "$0\n\n<xf:if is=\"$xf.visitor.email AND $xf.visitor.user_state == 'valid'\">\n\t<xf:button href=\"{{ link('account/delete-email') }}\" class=\"button--link\" overlay=\"true\">{{ phrase('delete') }}</xf:button>\n</xf:if>"
+}

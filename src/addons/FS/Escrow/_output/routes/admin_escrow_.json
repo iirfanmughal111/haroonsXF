@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "escrow",
+    "sub_name": "",
+    "format": ":int<escrow_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\Escrow:Escrow",
+    "context": "",
+    "action_prefix": ""
+}

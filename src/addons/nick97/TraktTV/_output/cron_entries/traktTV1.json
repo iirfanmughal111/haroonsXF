@@ -1,0 +1,17 @@
+{
+    "cron_class": "nick97\\TraktTV\\Cron\\EpisodeUpdate",
+    "cron_method": "Process",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            4
+        ],
+        "minutes": [
+            30
+        ]
+    },
+    "active": true
+}

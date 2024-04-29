@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="bot_option_lists" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('option_lists') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('opt-bot/add') }}" icon="add">{{ phrase('bot_add_option') }}</xf:button>
+</xf:pageaction>
+	
+	<div class="block-container">
+		<xf:if is="$options is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_option_title') }}</xf:cell>
+					
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$options" value="$option">
+						<xf:datarow>
+							<xf:cell>{$option.title}</xf:cell>
+							<xf:action href="{{ link('opt-bot/edit', $option) }}" >{{ phrase('edit') }}</xf:action>
+							<xf:delete href="{{ link('opt-bot/delete', $option) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($brandCategories, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="opt-bot" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />]]></template>
+  <template type="admin" title="option_template_botModel" version_id="1050000" version_string="1.5.0 Alpha"><![CDATA[<xf:radiorow name="{$inputName}[gptmodel]" value="{$option.option_value.gptmodel}"
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	html="{$listedHtml}">
+	
+	<xf:option value="gptChat" label="{{ phrase('bot_model_chat') }}" data-hide="true" hint="{{ phrase('bot_chat_endpoint') }}">
+		<xf:dependent>
+			<xf:textbox name="{$inputName}[gptChat_model]" placeholder="{{ phrase('gpt_mode_name') }}" value="{$option.option_value.gptChat_model}"  required="true"/>
+		</xf:dependent>
+	</xf:option>
+	
+	<xf:option value="gptDev" label="{{ phrase('bot_model_gpt_dev') }}" data-hide="true" hint="{{ phrase('bot_gptdev_endpoint') }}">
+		<xf:dependent>
+			<xf:textbox name="{$inputName}[gptDev_model]" placeholder="{{ phrase('gpt_mode_name') }}" value="{$option.option_value.gptDev_model}"  required="true"/>
+		</xf:dependent>
+	</xf:option>
+</xf:radiorow>]]></template>
+  <template type="admin" title="options_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$Option.isInsert()">
+	<xf:title>{{ phrase('add_option_bot') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('add_option_bot_edit:') }} {$Option.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$Option.isUpdate()">
+	<xf:button href="{{ link('opt-bot/delete', $Option) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('opt-bot/save', $Option) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="title" value="{$Option.title}" label="{{ phrase('bot_option_title') }}" />
+			<xf:textboxrow name="bot_instruction" value="{$Option.bot_instruction}" label="{{ phrase('bot_instruction') }}" />
+		
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="bot_content" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<pre style="white-space:pre-wrap;"><span style="font-size:14px;">{{$content}}</span></pre>]]></template>
+  <template type="public" title="text_box_article" version_id="1040000" version_string="1.4.0 Alpha"><![CDATA[<xf:title>{{ phrase('title_write') }}</xf:title>
+	
+<xf:js src="botGPT/submit.js" />
+
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:textarearow name="article"  rows="7" autosize="true"
+				label="{{ phrase('bot_article') }}"  hint="{{ phrase('required') }}" />
+		
+		<xf:if is="$botOptions">	
+			<xf:selectrow name="option_bot"  label="{{ phrase('bot_option') }}" >
+				
+				<xf:foreach loop="$botOptions" value="$botOption">
+					<xf:option value="{$botOption.bot_instruction}" label="{$botOption.title}" />
+				</xf:foreach>
+			</xf:selectrow>
+		</xf:if>
+		</div>
+	     <xf:submitrow icon="send"  label="send" data-xf-click="insert-article" sticky="true" />
+		<xf:comment>
+			<xf:button type="submit" data-xf-click="insert-article" class="button--primary">Submit</xf:button>
+		</xf:comment>
+	</div>]]></template>
+</templates>

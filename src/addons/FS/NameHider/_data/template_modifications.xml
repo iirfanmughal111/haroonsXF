@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="andy_trader_rating_buyer" modification_key="hideNameInBuyer" description="Hide name in buyer ....!" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[					<xf:cell><a href="{$xf.options.traderMembersLink}{$result.seller_id}/">{$result.UserSeller.username}</a></xf:cell>]]></find>
+    <replace><![CDATA[					<xf:cell><a href="{$xf.options.traderMembersLink}{$result.seller_id}/">{$result.UserSeller.username|substr(0, 2)}***</a></xf:cell>]]></replace>
+  </modification>
+  <modification type="public" template="andy_trader_rating_seller" modification_key="hideNameInSeller" description="Hide name in seller ....!" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[					<xf:cell><a href="{$xf.options.traderMembersLink}{$result.buyer_id}/">{$result.UserBuyer.username}</a></xf:cell>]]></find>
+    <replace><![CDATA[					<xf:cell><a href="{$xf.options.traderMembersLink}{$result.buyer_id}/">{$result.UserBuyer.username|substr(0, 2)}***</a></xf:cell>]]></replace>
+  </modification>
+</template_modifications>

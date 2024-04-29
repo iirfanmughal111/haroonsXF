@@ -1,0 +1,15 @@
+{
+    "edit_format": "checkbox",
+    "edit_format_params": "title={{ phrase('title') }}\ntagline={{ phrase('snog_movies_tagline') }}\ngenres={{ phrase('snog_movies_genre') }}\ndirector={{ phrase('snog_movies_director') }}\nruntime={{ phrase('snog_movies_runtime') }}\nstatus={{ phrase('snog_movies_status') }}\nrelease_date ={{ phrase('snog_movies_release') }}",
+    "data_type": "array",
+    "sub_options": [
+        "*"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "{\"title\":\"1\",\"tagline\":\"genres\",\"director\":\"1\",\"runtime\":\"1\",\"status\":\"1\",\"release_date\":1}",
+    "relations": {
+        "traktMovies": 1000
+    }
+}

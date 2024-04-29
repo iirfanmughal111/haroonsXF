@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread",
+    "description": "fs_escrow_hide_thread_extra",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"!\\$xf\\.visitor\\.user_id AND !\\$forum\\.canCreateThreadPreReg\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$forum.node_id == $xf.options.fs_escrow_applicable_forum\">\n\t\n\t<xf:else />\n\t$0\t\n</xf:if>"
+}

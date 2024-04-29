@@ -1,0 +1,1 @@
+If you are using your own CDN, enter the CDN path here.<br />Example: http://cdn.yourpath.com/data<br />DO NOT end the path with a /

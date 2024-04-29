@@ -1,0 +1,30 @@
+<xf:extends template="thread_view" />
+
+<xf:extension name="content_top">
+	<xf:css src="trakt_movies.less" />
+</xf:extension>
+
+<xf:extension name="thread_action_buttons">
+
+	<xf:if is="{{ $thread.traktMovie && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'trakt_movies_movie' || $thread.discussion_type == 'trakt_tv') }}">
+
+		<xf:button href="{{ link('traktMovies/sync', $thread.traktMovie) }}" class="button--link" overlay="true">
+			{{ phrase('trakt_movies_sync') }}
+		</xf:button>
+
+	</xf:if>
+
+	<xf:if is="{{ property('trakt_movies_posterUpdateButtonPosition') == 'default' && $thread.traktMovie && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+		<xf:button href="{{ link('traktMovies/poster', $thread.traktMovie) }}" class="button--link" overlay="true">
+			{{ phrase('trakt_movies_check_poster') }}
+		</xf:button>
+	</xf:if>
+
+	<xf:extensionparent />
+</xf:extension>
+
+<xf:extension name="above_messages_below_pinned">
+	<xf:if is="$thread.traktMovie is not empty && $page <= 1">
+		<span class="moviehint">{{ phrase('trakt_movies_information_thread')}}</span>
+	</xf:if>
+</xf:extension>

@@ -1,0 +1,1 @@
+Number of slides to show at a time

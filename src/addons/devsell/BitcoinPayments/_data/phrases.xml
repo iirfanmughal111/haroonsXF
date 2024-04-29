@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="ncp_cc_api_key" version_id="11170" version_string="1.1.1"><![CDATA[API key]]></phrase>
+  <phrase title="ncp_cc_api_key_explain" version_id="11170" version_string="1.1.1"><![CDATA[Enter your API key for Coinbase Commerce. You can find this <a href="https://commerce.coinbase.com/dashboard/settings">here</a>. Additionally, you may also need to whitelist your domain on that page (your board URL is: {boardUrl}).]]></phrase>
+  <phrase title="ncp_cc_webhook_secret" version_id="11170" version_string="1.1.1"><![CDATA[Webhook secret]]></phrase>
+  <phrase title="ncp_cc_webhook_secret_explain" version_id="11170" version_string="1.1.1"><![CDATA[The key for your webhook secret. Found on the <a href="https://commerce.coinbase.com/dashboard/settings">Coinbase Commerce settings page</a>. You will also need to add your callback URL in the same location. Click "Add an endpoint" and add: {boardUrl}/{url}]]></phrase>
+</phrases>

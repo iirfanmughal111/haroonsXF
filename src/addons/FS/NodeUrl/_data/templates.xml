@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="node_url_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('add_node_url') }}</xf:title>
+
+<xf:breadcrumb href="{{ link('nodeUrl')}}">{{ phrase('Home') }}</xf:breadcrumb>
+<xf:breadcrumb href="{{ link('#')}}">{{ phrase('add_node_url') }}</xf:breadcrumb>
+
+
+<xf:form action="{{ link('nodeUrl/save') }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+        name="nodeUrl"
+        label="Node Url"
+		type="url"
+        autosize="true"
+        row="5"
+      />
+	<ul class="inputList">
+		<li><xf:selectrow name="listData[]" value="{$nodeIds}" multiple="multiple" size="7"
+			label="{{ phrase('applicable_forums') }}">
+			<xf:foreach loop="$forums" value="$forum">
+				<xf:option value="{$forum.value}" disabled="{$forum.disabled}">{$forum.label}</xf:option>
+			</xf:foreach>
+		</xf:selectrow></li>
+	</ul>
+		</div>
+		    <xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" sticky="true" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="node_url_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('edit_node_url') }} : {$data.title}</xf:title>
+
+<xf:breadcrumb href="{{ link('nodeUrl')}}">{{ phrase('Home') }}</xf:breadcrumb>
+<xf:breadcrumb href="{{ link('#')}}">{{ phrase('edit_node_url') }}</xf:breadcrumb>
+
+
+<xf:form action="{{ link('nodeUrl/edit' ,$data)}}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+        name="nodeUrl"
+		value="{$data.node_url}"
+        label="Edit Url"
+        autosize="true"
+		type="url"
+        row="5"
+      />
+		</div>
+		    <xf:submitrow submit="{{ phrase('Update') }}" fa="fa-edit" sticky="true" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="node_url_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="quick_filter" arg-key="" arg-ajax="" arg-class="">
+	<xf:js src="xf/filter.js" min="1" />
+	<div class="{$class} quickFilter u-jsOnly" data-xf-init="filter" data-key="{$key}" data-ajax="{$ajax}">
+		<div class="inputGroup inputGroup--inline inputGroup--joined">
+			<input type="text" class="input js-filterInput" placeholder="{{ phrase('filter...')|for_attr }}" data-xf-key="{{ phrase('shortcut.filter')|for_attr }}" />
+			<i class="inputGroup-text js-filterClear is-disabled" aria-hidden="true"></i>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="admin" title="node_url_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('node_url_all_records') }}</xf:title>
+
+<xf:breadcrumb href="#">{{ phrase('Home') }}</xf:breadcrumb>
+
+<xf:pageaction>
+  <xf:button href="{{ link('nodeUrl/add-view') }}" icon="add"
+    >{{ phrase('fs_add_url') }}</xf:button
+  >
+</xf:pageaction>
+
+<xf:if is="$data is not empty">
+  <div class="block">
+    <div class="block-outer">
+      <xf:macro
+        template="node_url_filter"
+        name="quick_filter"
+        arg-key="nodeUrl"
+        arg-class="block-outer-opposite"
+      />
+    </div>
+    <div class="block-container">
+      <div class="block-body">
+        <!--       < Records >  -->
+
+        <xf:datalist data-xf-init="responsive-data-list">
+          <xf:datarow rowtype="header">
+            <xf:cell> {{ phrase('node_name') }} </xf:cell>
+            <xf:cell> Node Url </xf:cell>
+            <xf:cell class="dataList-cell--min">  </xf:cell>
+            <xf:cell class="dataList-cell--min">  </xf:cell>
+          </xf:datarow>
+          <xf:foreach loop="$data" value="$val">
+            <xf:datarow>
+              <xf:cell> {{$val.title}} </xf:cell>
+              <xf:cell> {{$val.node_url}} </xf:cell>
+				<xf:action href="{{ link('nodeUrl/edit-view', $val) }}" overlay="true">{{ phrase('edit') }}</xf:action>
+              <xf:delete
+                href="{{ link('nodeUrl/delete-record', $val) }}"
+                overlay="true"
+              />
+            </xf:datarow>
+          </xf:foreach>
+        </xf:datalist>
+        <xf:pagenav
+          page="{$page}"
+          perpage="{$perPage}"
+          total="{$total}"
+          link="nodeUrl"
+          wrapperclass="block"
+        />
+        <!--       </ Records > -->
+      </div>
+
+      <!-- <div class="block-footer">
+        <span class="block-footer-counter">footer</span>
+      </div> -->
+    </div>
+  </div>
+  <xf:else />
+  <div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>]]></template>
+</templates>

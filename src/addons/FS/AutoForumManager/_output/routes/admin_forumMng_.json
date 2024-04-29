@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "forumMng",
+    "sub_name": "",
+    "format": ":int<forum_manage_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\AutoForumManager:AutoForumManager",
+    "context": "fsAutoForumManagerAdd",
+    "action_prefix": ""
+}

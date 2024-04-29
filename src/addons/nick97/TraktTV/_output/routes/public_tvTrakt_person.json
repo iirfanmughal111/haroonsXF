@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "tvTrakt",
+    "sub_name": "person",
+    "format": "person/:int<person_id,name>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "nick97\\TraktTV:Person",
+    "context": "",
+    "action_prefix": ""
+}

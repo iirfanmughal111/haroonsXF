@@ -1,0 +1,9 @@
+{
+    "template": "approval_queue_filters",
+    "description": "fs_add_drop_down_filter",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:option value=\"{$contentType}\">{$xf.app.getContentTypePhrase($contentType)}</xf:option>",
+    "replace": "<xf:if is=\"$contentType=='node'\">\n\t<xf:option value=\"{$contentType}\">{{phrase('fs_forum_group_filter')}}</xf:option>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

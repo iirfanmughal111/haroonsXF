@@ -1,0 +1,6 @@
+<xf:css src="trakt_tv.less" />
+<div class="node-description">
+	<xf:if is="$node.TVForum.tv_genres">{{ phrase('trakt_tv_genre') }}: {$node.TVForum.tv_genres|raw}<br /></xf:if>
+	<xf:if is="$node.TVForum.tv_director">{{ phrase('trakt_tv_creator') }}: {$node.TVForum.tv_director|raw}<br /></xf:if>
+	<xf:if is="$node.TVForum.tv_release">{{ phrase('trakt_tv_first_aired') }}: {$node.TVForum.tv_release}</xf:if>
+</div>

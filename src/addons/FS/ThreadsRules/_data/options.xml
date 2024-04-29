@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_color" edit_format="radio" data_type="string" advanced="0">
+    <default_value>blockMessage--error</default_value>
+    <edit_format_params>blockMessage--error={{ phrase('fs_red') }}
+blockMessage--important={{ phrase('fs_yellow') }}
+blockMessage--success={{ phrase('fs_green') }}</edit_format_params>
+    <relation group_id="fs_thread_rules" display_order="3"/>
+  </option>
+  <option option_id="fs_forums" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="fs_thread_rules" display_order="1"/>
+  </option>
+  <option option_id="fs_show_icon" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="fs_thread_rules" display_order="4"/>
+  </option>
+  <option option_id="fs_thread_rules" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>These are rules of threads</default_value>
+    <edit_format_params>rows=5</edit_format_params>
+    <relation group_id="fs_thread_rules" display_order="1"/>
+  </option>
+</options>

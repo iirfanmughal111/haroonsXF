@@ -1,0 +1,12 @@
+{
+    "admin/fs_upgrade_usergroup_add_edit.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "06462fe196d76400c62e9393c6e241dd"
+    },
+    "admin/fs_upgrade_usergroup_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "31676c14fd9ee95ffa87fd04d2cda325"
+    }
+}

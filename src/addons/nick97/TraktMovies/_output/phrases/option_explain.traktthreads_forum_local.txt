@@ -1,0 +1,1 @@
+Instead of using the TMDb cloud for poster images, you can use the poster images that are stored on your server. To use the images stored on your server, check this box.

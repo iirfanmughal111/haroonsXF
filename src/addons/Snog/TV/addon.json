@@ -1,0 +1,19 @@
+{
+    "legacy_addon_id": "Snog_TvThreads",
+    "title": "[OzzModz] TMDb TV Thread Starter",
+    "description": "Creates threads for TV shows using The Movie Database for show information",
+    "version_id": 2020063,
+    "version_string": "2.2.0 Release Candidate 13",
+    "dev": "Ozzy47/Snog",
+    "dev_url": "https://snogssite.com",
+    "faq_url": "",
+    "support_url": "https://snogssite.com/threads/tmdb-tv-thread-starter-for-xenforo-paid.2370/",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "fa-tv"
+}

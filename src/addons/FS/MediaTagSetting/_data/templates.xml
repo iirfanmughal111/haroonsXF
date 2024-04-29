@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_media_tag_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$mediaTag.isInsert()">
+	<xf:title>{{ phrase('fs_add_media_tag') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('fs_edit_media_tag:') }} {$mediaTag.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$mediaTag.isUpdate()">
+	<xf:button href="{{ link('media-tag/delete', $mediaTag) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+
+<xf:set var="$mediaTagSelection">
+	<xf:macro template="input_selection" name="select_media_tags"
+			  arg-mediaIds="{$mediaTag.media_site_ids}"
+			  arg-mediaSites="{$mediaSites}" />
+</xf:set>
+
+<xf:set var="$userGroupSelection">
+	<xf:macro template="input_selection" name="select_groups"
+			  arg-userGroupIds="{$mediaTag.user_group_ids}"
+			  arg-userGroups="{$userGroups}" />
+</xf:set>
+
+
+
+
+<xf:form action="{{ link('media-tag/save', $mediaTag) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:comment>
+			<xf:textboxrow name="title" value="{{ $mediaTag.title }}"
+				label="{{ phrase('title') }}" required="true" />
+			</xf:comment>
+
+			{$mediaTagSelection|raw}
+
+			{$userGroupSelection|raw}
+
+			<xf:textboxrow name="custom_message" value="{{ $mediaTag.custom_message }}"
+				label="{{ phrase('custom_message') }}" required="true" />
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_media_tag_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_media_tag_list') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('media-tag/add') }}" icon="add" overlay="true">{{ phrase('fs_add_media_tag') }}</xf:button>
+</xf:pageaction>
+
+<div class="block-container">
+		<xf:if is="$mediaTags is not empty">
+			<div class="block-body">
+
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('title') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$mediaTags" value="$mediaTag">
+						<xf:datarow>
+							<xf:cell>{$mediaTag.title}</xf:cell>
+
+							<xf:action href="{{ link('media-tag/edit', $mediaTag) }}" overlay="true">{{ phrase('edit') }}</xf:action>
+							<xf:delete href="{{ link('media-tag/delete', $mediaTag) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($mediaTags, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="media-tag" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />]]></template>
+  <template type="admin" title="input_selection" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="select_groups"
+	arg-userGroupIds="!"
+	arg-userGroups="!"
+	arg-withRow="1"
+	arg-selectName="user_group_ids"
+	arg-required="true">
+
+	<xf:set var="$inner">
+		<ul class="inputList">
+			<li><xf:select name="{$selectName}[]" value="{$userGroupIds}" size="7" multiple="multiple" required="{$required}" id="js-applicableUserGroups">
+
+				<xf:comment>
+				<xf:option value="" selected="!{$userGroupIds}">{{ phrase('(none)') }}</xf:option>
+				</xf:comment>
+
+				<xf:foreach loop="$userGroups" value="$group">
+					<xf:option value="{$group.user_group_id}"
+						label="{$group.title}" />
+				</xf:foreach>
+
+			</xf:select></li>
+
+			<xf:checkbox>
+				<xf:option label="{{ phrase('select_all') }}" id="js-selectAllUsergroups" />
+			</xf:checkbox>
+		</ul>
+	</xf:set>
+
+	<xf:if is="$withRow">
+		<xf:formrow rowtype="input" label="{{ phrase('fs_mts_user_groups') }}" explain="{{ phrase('fs_mts_user_groups_explain') }}">
+			{$inner|raw}
+		</xf:formrow>
+	<xf:else />
+		{$inner|raw}
+	</xf:if>
+
+	<xf:js>
+		$(function()
+		{
+			$('#js-selectAllUsergroups').click(function(e)
+			{
+				$('#js-applicableUserGroups').find('option:enabled:not([value=""])').prop('selected', this.checked);
+			});
+		});
+	</xf:js>
+</xf:macro>
+
+
+<xf:macro name="select_media_tags"
+	arg-mediaIds="!"
+	arg-mediaSites="!"
+	arg-withRow="1"
+	arg-selectName="media_site_ids"
+	arg-required="true">
+
+	<xf:set var="$inner">
+		<ul class="inputList">
+			<li><xf:select name="{$selectName}[]" value="{$mediaIds}" size="7" multiple="multiple" required="{$required}" id="js-applicableMediaSites">
+
+				<xf:foreach loop="$mediaSites" value="$mediaSite">
+					<xf:option value="{$mediaSite.media_site_id}"
+						label="{$mediaSite.site_title}" />
+				</xf:foreach>
+
+			</xf:select></li>
+
+			<xf:checkbox>
+				<xf:option label="{{ phrase('select_all') }}" id="js-selectAllMediaSites" />
+			</xf:checkbox>
+		</ul>
+	</xf:set>
+
+	<xf:if is="$withRow">
+		<xf:formrow rowtype="input" label="{{ phrase('fs_mts_media_sites') }}" explain="{{ phrase('fs_mts_media_sites_explain') }}">
+			{$inner|raw}
+		</xf:formrow>
+	<xf:else />
+		{$inner|raw}
+	</xf:if>
+
+	<xf:js>
+		$(function()
+		{
+			$('#js-selectAllMediaSites').click(function(e)
+			{
+				$('#js-applicableMediaSites').find('option:enabled:not([value=""])').prop('selected', this.checked);
+			});
+		});
+	</xf:js>
+</xf:macro>]]></template>
+  <template type="public" title="fs_custom_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div style="color: {$xf.options.fs_mts_customMsgColor};
+			background-color: {$xf.options.fs_mts_customMsgbackGroundColor};
+			font-size: larger;
+			padding: 8px;">
+	{$customMessage}
+</div>]]></template>
+</templates>

@@ -1,0 +1,9 @@
+{
+    "template": "user_edit",
+    "description": "Add input (region code)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:selectrow name=\"user[timezone]\" value=\"{$user.timezone}\"",
+    "replace": "\t\t\t<xf:if is=\"!in_array('', $xf.options.traktTvThreads_watchProviderRegions)\">\n\t\t\t\t<xf:selectrow name=\"option[nick97_tv_trakt_watch_region]\" value=\"{$user.Option.nick97_tv_trakt_watch_region}\"\n\t\t\t\t\tlabel=\"{{ phrase('nick97_tv_trakt_watch_region') }}\">\n\n\t\t\t\t\t<xf:options source=\"$traktTvWatchRegions\" />\n\t\t\t\t</xf:selectrow>\n\t\t\t</xf:if>\n\n$0"
+}

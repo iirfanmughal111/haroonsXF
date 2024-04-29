@@ -1,0 +1,56 @@
+{
+    "admin_navigation.fsCrud.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a458be0f08b7e4ff3c0f633c100176c0"
+    },
+    "admin_navigation.fs_Crud.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1650cfab2726b080ff6f68068bb1e5cb"
+    },
+    "fs_crud.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "92a2a8df859e43c9d9b6ffa3cc07df9a"
+    },
+    "fs_crud_add_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "84160aa6648c6e6973f6f3334d602ae0"
+    },
+    "fs_crud_class.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9bd81329febf6efe22788e03ddeaf0af"
+    },
+    "fs_crud_edit_record.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b5544585b93d41036f432d064bfe3a26"
+    },
+    "fs_crud_name.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "49ee3087348e8d44e1feda1917443987"
+    },
+    "fs_crud_new_record.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c31891d98a2badfbb0d7b6a5ac8e41bf"
+    },
+    "fs_crud_rollNo.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "46b35bfc1424bfb23f27dd84509bee60"
+    }
+}

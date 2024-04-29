@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="AwedoTceSpecialChars" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="xb_stop_human_span" display_order="5"/>
+  </option>
+  <option option_id="shsBannedCharsArabic" edit_format="textbox" data_type="string">
+    <default_value>[5][/\p{Arabic}/iu]</default_value>
+    <relation group_id="xb_stop_human_span" display_order="10"/>
+  </option>
+  <option option_id="shsBannedCharsChinese" edit_format="textbox" data_type="string">
+    <default_value>[5][/\p{Han}/iu]</default_value>
+    <relation group_id="xb_stop_human_span" display_order="8"/>
+  </option>
+  <option option_id="shsBannedCharsHebrew" edit_format="textbox" data_type="string">
+    <default_value>[5][/\p{Hebrew}/iu]</default_value>
+    <relation group_id="xb_stop_human_span" display_order="12"/>
+  </option>
+  <option option_id="shsBannedCharsRussian" edit_format="textbox" data_type="string">
+    <default_value>[5][/\p{Cyrillic}/iu]</default_value>
+    <relation group_id="xb_stop_human_span" display_order="9"/>
+  </option>
+  <option option_id="shsBannedPostContent" edit_format="onoff" data_type="unsigned_integer">
+    <default_value>1</default_value>
+    <relation group_id="xb_stop_human_span" display_order="2"/>
+  </option>
+  <option option_id="shsBannedPostContentWords" edit_format="textbox" data_type="string">
+    <default_value>adipex, advicer, baccarrat, carisoprodol, cialis, coolcoolhu, coolhu, cwas, cyclen, cyclobenzaprine, debt consolidation, equityloans, fioricet, holdem, holdempoker, holdemsoftware, hotel deals, jrcreations, levitra, macinstruct, online gambling, onlinegambling, ottawavalleyag, ownsthis,  paxil,  phentermine, poker chip, thorcarlson, tramadol, ultram, vioxx, xanax, zolus, viagra*, *viagra, ugg boots, uggboots*, *uggboots, louis vuitton, louisvuitton*, *louisvuitton</default_value>
+    <edit_format_params>rows=4</edit_format_params>
+    <relation group_id="xb_stop_human_span" display_order="7"/>
+  </option>
+  <option option_id="shsBannedThreadTitle" edit_format="onoff" data_type="unsigned_integer">
+    <default_value>1</default_value>
+    <relation group_id="xb_stop_human_span" display_order="1"/>
+  </option>
+  <option option_id="shsBannedThreadTitleWords" edit_format="textbox" data_type="string">
+    <default_value>*.com, *.net, *.org, *.co.*, *.biz, porn, anal, fuck, *viagra, viagra*, *vuitton, ugg boots</default_value>
+    <edit_format_params>rows=4</edit_format_params>
+    <relation group_id="xb_stop_human_span" display_order="3"/>
+  </option>
+</options>

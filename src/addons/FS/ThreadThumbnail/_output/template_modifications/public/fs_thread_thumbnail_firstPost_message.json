@@ -1,0 +1,9 @@
+{
+    "template": "thread_list_macros",
+    "description": "fs_thread_thumbnail_firstPost_message",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "\"<div class=\\\"structItem-title\\\">.*?</div>\"si",
+    "replace": "$0\n<xf:if is=\"$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)\">\n\n\t<div class=\"inter-view-des\">\n\t\t<p>\n\t\t\t{{ strlen($thread.FirstPost.message) > 113 ? snippet($thread.FirstPost.message, 113, {'stripBbCode': true}).\"....\" : $thread.FirstPost.message}}\n\t\t</p>\n\t</div>\n\n</xf:if>"
+}

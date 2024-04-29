@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="public" route_prefix="tv" format=":int&lt;thread_id,title&gt;/" controller="Snog\TV:TV"/>
+  <route route_type="public" route_prefix="tv" sub_name="episode" format="episode/:int&lt;post_id&gt;/" controller="Snog\TV:TVPost"/>
+  <route route_type="public" route_prefix="tv" sub_name="person" format="person/:int&lt;person_id,name&gt;/" controller="Snog\TV:Person"/>
+  <route route_type="public" route_prefix="tvshow" format=":int&lt;node_id,title&gt;/" controller="Snog\TV:TV"/>
+</routes>

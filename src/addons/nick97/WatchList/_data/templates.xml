@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="connected_account_provider_nick_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('nick97_trakt_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('nick97_trakt_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_test_nick_trakt" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[<xf:if is="!$providerData">
+	<xf:inforow>
+		{{ phrase('this_will_test_x_connected_account_provider_explain', {'title': $provider.title}) }}
+	</xf:inforow>
+
+	<xf:formrow label="{{ phrase('client_id') }}">{$provider.options.client_id}</xf:formrow>
+<xf:else />
+	<xf:inforow rowtype="confirm"><strong>{{ phrase('test_passed') }}</strong></xf:inforow>
+
+	<xf:formrow label="{{ phrase('name') }}">{{ $providerData.username ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('email') }}">{{ $providerData.email ?: phrase('n_a') }}</xf:formrow>
+
+	<xf:formrow label="{{ phrase('picture') }}">
+		<xf:if is="$providerData.avatar_url">
+			<img src="{$providerData.avatar_url}" width="48" />
+		<xf:else />
+			N/A
+		</xf:if>
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="public" title="connected_account_associated_nick_trakt" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</xf:if>
+<div>
+	{{ $providerData.username ?: phrase('th_cap_unknown_account') }}
+</div>]]></template>
+  <template type="public" title="fs_watch_list_thread_watch_list" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$thread.getWatchListExist()">
+	<xf:title>{{ phrase('remove_watch_list') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('add_watch_list') }}</xf:title>
+</xf:if>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('threads/watch-list', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$thread.getWatchListExist()">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('you_sure_you_want_to_remove_watch_from_list') }}
+				</xf:inforow>
+
+				<xf:hiddenval name="stop">1</xf:hiddenval>
+			<xf:else />
+				<xf:inforow rowtype="confirm">
+					{{ phrase('you_sure_you_want_to_add_watch_from_list') }}
+				</xf:inforow>
+			</xf:if>
+		</div>
+		<xf:if is="$thread.getWatchListExist()">
+			<xf:submitrow submit="{{ phrase('remove_watch_list_submit') }}" rowtype="simple" />
+		<xf:else />
+			<xf:submitrow submit="{{ phrase('add_watch_list_submit') }}" />
+		</xf:if>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="nick97_stats.less" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[.stats-p-body-section{
+				margin-bottom:0 !important;
+			}
+
+			/* Container to hold the two boxes */
+			.statsContainer {
+				display: flex; /* Use flexbox */
+				justify-content: space-between; /* Add space between the two boxes */
+				flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+			}
+
+			/* Styles for the individual boxes */
+			.statsBox {
+				display: block;
+				box-sizing: border-box; /* Include padding and border in the box's total width */
+				margin-bottom: 5px; /* Add some space between the boxes */
+			}
+
+			.myContainer {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin: 0 auto;
+				width: 100%;
+			}
+
+			.myBox {
+				background-color: #eee;
+				border: 1px solid #ddd; /* Added border definition */
+				border-radius: 4px;
+				width: 24%;
+				margin-bottom: 10px;
+				color: #000;
+			}
+
+			.myBox-heading {
+				font-size: 18px;
+				font-weight: bold;
+				margin-bottom: 10px;
+				text-align: center;
+				border-bottom: 1px solid #ddd;
+				padding-bottom: 10px;
+			}
+
+			.myBox-body{
+				text-align: center;
+			}
+
+			@media screen and (max-width: 768px) {
+				.myBox {
+					width: 45%;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				.myBox {
+					width: 100%;
+				}
+			}
+
+			.myContainer1 {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				margin: 0 auto;
+				width: 100%;
+			}
+
+			.right_statsvideo{
+				cursor: pointer;
+			}
+
+			.right_statsvideo:hover{
+				color: blue;
+			}]]></template>
+  <template type="public" title="nick97_trakt_button.less" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[.button,
+a.button // needed for specificity over a:link
+{
+	&.button--provider
+	{
+		&--nick_trakt
+		{
+			.m-buttonColorVariation(#7289DA, white);
+			.button-text::before {
+				background: url(styles/nick97/TraktLogo/trakt-icon-red.svg);
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-position: center;
+				content: ' ';
+				display: inline-block;
+				margin-left: -3px;
+				margin-top: -8px;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+a.button.button--provider--nick_trakt{
+	background-color: #000;	
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:hover{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:focus{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:active{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
+}]]></template>
+  <template type="public" title="nick97_trakt_movies_thread_type_fields_movie" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
+	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
+<xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
+	<xf:set var="$rowType" value="fullWidth mergeNext" />
+<xf:else />
+	<xf:set var="$rowType" value="" />
+</xf:if>
+
+<xf:textboxrow name="nick97_trakt_movies_tmdb_id" value="{$thread.traktMovie.tmdb_id}"
+			   label="{{ phrase('nick97_trakt_movies_link_id') }}"
+			   explain="{{ phrase('nick97_trakt_movies_explain_link') }}"
+			   rowtype="{$rowType}"
+			   disabled="{{ $context == 'edit' }}" />]]></template>
+  <template type="public" title="nick97_trakt_thread_my_watch_list" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('remove_watch_list') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('threads/my-watch-list', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('you_sure_you_want_to_remove_watch_from_list') }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('remove_watch_list_submit') }}" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="nick97_trakt_tv_thread_type_fields_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
+	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
+<xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
+	<xf:set var="$rowType" value="fullWidth mergeNext" />
+<xf:else />
+	<xf:set var="$rowType" value="" />
+</xf:if>
+
+<xf:if is="$thread.Forum.TVForum is not empty && $thread.Forum.TVForum.tv_parent_id">
+	<xf:textboxrow name="nick97_trakt_tv_tv_id" value="{$thread.TV.tv_episode}"
+				   label="{{ phrase('nick97_trakt_tv_episode_number') }}"
+				   explain="{{ phrase('nick97_trakt_tv_episode_enter_episode_number') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+<xf:else />
+	<xf:textboxrow name="snog_tv_tv_id" value="{$thread.TV.tv_id}"
+				   label="{{ phrase('nick97_trakt_tv_post_show_title') }}"
+				   explain="{{ phrase('nick97_trakt_tv_show_lookup') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+</xf:if>]]></template>
+  <template type="public" title="nick97_watch_list_index" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<br>
+
+<xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'view_own_stats') && $stats">
+
+<xf:macro template="nick97_watch_list_movies_macro" name="stats" arg-stats="{$stats}" />
+	
+</xf:if>
+
+<xf:macro template="nick97_watch_list_movies_macro" name="movies" arg-movies="{$movies}" />
+
+<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />]]></template>
+  <template type="public" title="nick97_watch_list_movies.less" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[.p-body-section{
+	margin-bottom:0 !important;
+}
+#container
+{
+
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	margin-bottom:20px;
+}
+#list-container
+{
+	overflow: hidden;
+	width: 100%;
+	float: left;
+}
+.list
+{
+
+	min-width: 3400px;
+	float: left;
+	display: flex;
+}
+
+#arrowL::before,#arrowR::before{
+	font-family: "Font Awesome 5 Pro";
+	content: "\f053";
+	background: #fff;
+	border-radius: 50%;
+
+	color: #2196f3;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	opacity: 1;
+	width: 40px;
+	text-align: center;
+}
+
+
+
+#arrowR::before {
+	font-family: "Font Awesome 5 Pro";
+	content: "\f054";
+}	
+
+
+#arrowR
+{
+	background: transparent;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	float: right;
+	cursor: pointer;
+	top: 126px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 0px;
+	color: transparent;
+	padding:2px 2px;
+	position: absolute;
+	z-index: 100;
+	right: 20px;
+
+	display: block;
+	line-height: 0px;
+	font-size: 0px;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+#arrowL
+{
+	top: 145px;
+	left: 9px;
+	background: transparent;
+	width: 40px;
+	height: 40px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	font-family: Arial;
+	color: transparent;
+	position: absolute;
+	z-index: 100;
+	border-radius: 50%;
+	cursor: pointer;
+	display: block;
+	line-height: 0px;
+	font-size: 0px;
+	-webkit-transform: translate(0, -50%);
+	padding: 0;
+	border: none;
+	outline: none;
+}
+.item
+{
+	margin: 0 10px 0 0;
+	float: left;
+	position: relative;
+	text-align: center;
+	font-family: Arial;
+	font-size: 20px;
+	color: White;
+	max-width: 185px;
+	max-height: 278px;
+	min-width: 185px;
+    min-height: 278px;
+}
+
+div.item iframe{
+	width: 100%;
+	height: 100%;
+}
+div.p-body-section div.p-body-section-header span.p-body-section-icon i.fa-gamepad-alt.screen-icon:before {
+	content: "\f108" !important;
+}
+
+
+/* MEDIA QUERIES.............
+MEDIA QUERIES.............
+MEDIA QUERIES............. */
+
+@media only screen and (max-width: 600px) {
+	#container{
+		width: 100%;
+	}
+	.item{
+		margin: 0 15px 0 15px;
+	}
+}
+
+
+
+/* Container to hold the two boxes */
+.container {
+	display: flex; /* Use flexbox */
+	justify-content: space-between; /* Add space between the two boxes */
+	flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+}
+
+/* Styles for the individual boxes */
+.box {
+	display: block;
+	box-sizing: border-box; /* Include padding and border in the box's total width */
+	margin-bottom: 5px; /* Add some space between the boxes */
+}
+
+.right_watch_list{
+	cursor: pointer;
+}
+
+.right_watch_list:hover{
+	color: blue;
+}]]></template>
+  <template type="public" title="nick97_watch_list_movies_macro" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<xf:macro name="stats" arg-stats="!">
+
+	<xf:css src="nick97_stats.less" />
+
+	<div class="stats-p-body-section">
+		<div class="p-body-section-header">
+			<div class="statsContainer">
+				<div class="statsBox">
+					<h2>{{ phrase('nick97_watch_list_stats') }}</h2>
+				</div>
+
+				<xf:comment>
+
+					<xf:if is="true">
+
+						<div class="statsBox right_statsvideo">
+							<h2><i class="fas fa-chevron-right"></i></h2>
+						</div>
+
+					</xf:if>
+
+				</xf:comment>
+			</div>
+		</div>
+	</div>
+
+	<div class="myContainer">
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-tv"></i> {{ phrase('nick97_watch_list_tv_time') }}</h1>
+			<div class="myContainer1">
+				<div class="myBox-body">
+					<h2>
+						{$stats.moviesTime.months}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_month') }}
+					</h5>
+				</div>
+				<div class="myBox-body">
+					<h2>
+						{$stats.moviesTime.days}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_days') }}
+					</h5>
+				</div>
+
+				<div class="myBox-body">
+					<h2>
+						{$stats.moviesTime.hours}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_hours') }}
+					</h5>
+				</div>
+			</div>
+		</div>
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-tv"></i> {{ phrase('nick97_stats_episode_watched') }}</h1>
+			<div class="myBox-body">
+				<h1>
+					{$stats.episodesWatched}
+				</h1>
+			</div>
+		</div>
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-film"></i> {{ phrase('nick97_stats_movie_time') }}</h1>
+			<div class="myContainer1">
+				<div class="myBox-body">
+					<h2>
+						{$stats.episodesTime.months}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_month') }}
+					</h5>
+				</div>
+				<div class="myBox-body">
+					<h2>
+						{$stats.episodesTime.days}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_days') }}
+					</h5>
+				</div>
+
+				<div class="myBox-body">
+					<h2>
+						{$stats.episodesTime.hours}
+					</h2>
+					<h5>
+						{{ phrase('nick97_stats_hours') }}
+					</h5>
+				</div>
+			</div>
+		</div>
+		<div class="myBox">
+			<h1 class="myBox-heading"><i class="fa fa-film"></i> {{ phrase('nick97_stats_movie_watched') }}</h1>
+			<div class="myBox-body">
+				<h1>
+					{$stats.moviesWatched}
+				</h1>
+			</div>
+		</div>
+	</div>
+
+</xf:macro>
+
+
+
+<xf:macro name="movies" arg-movies="!">
+
+	<xf:css src="nick97_watch_list_movies.less" />
+
+	<div class="p-body-section">
+		<div class="p-body-section-header">
+			<div class="container">
+				<div class="box">
+					<h2>{{ phrase('nick97_watch_list_movies') }}</h2>
+				</div>
+
+				<xf:if is="count($movies) > 1">
+
+					<div class="right_watch_list box">
+						<h2><i class="fas fa-chevron-right"></i></h2>
+					</div>
+
+				</xf:if>
+			</div>
+		</div>
+	</div>
+
+	<xf:if is="count($movies) > 0">
+
+
+		<div id="container">
+
+
+			<div id="list-container">
+
+
+
+				<div class='list watch_list' style="">
+
+					<xf:foreach loop="{$movies}" value="$movie">
+
+						<div class='item'>
+							<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
+								<img src="{$movie.getImageUrl()}" style="width: 185px; height: 278px; border-radius: 6px;" />
+							</a>
+						</div>
+
+					</xf:foreach>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<xf:else />
+
+		<div class="empty">{{ phrase('nick97_watch_list_movies_empty') }}</div>
+
+	</xf:if>
+
+
+	<xf:js>
+
+		$(document).ready(function(){
+		$(".right_watch_list").click(function(){
+		var item_width = $('#list-container div.watch_list div.item').width(); 
+		var left_value = item_width * (-1); 
+		var left_indent = parseInt($('#list-container div.watch_list').css('left')) - item_width;
+		$('#list-container div.watch_list ').animate({'left' : left_indent}, 100, function () {
+		$('#list-container div.watch_list div.item:last').after($('#list-container div.watch_list div.item:first'));                  
+		$('#list-container div.watch_list').css({'left' : left_value});
+		});
+		});
+
+		$(".left_watch_list").click(function(){
+		var item_width = $('#list-container div.watch_list div.item').width(); 
+		var right_value = item_width * (+1); 
+		var right_indent = parseInt($('#list-container div.watch_list').css('right')) + item_width;
+		$('#list-container div.watch_list ').animate({'right' : right_indent}, 100, function () {
+		$('#list-container div.watch_list div.item:first').before($('#list-container div.watch_list div.item:last'));                  
+		$('#list-container div.watch_list').css({'right' : right_value});
+		});
+		});
+		});
+
+	</xf:js>
+
+</xf:macro>
+
+
+<xf:macro name="tvShow" arg-tvShows="!">
+
+	<xf:css src="nick97_watch_list_tv_shows.less" />
+
+
+	<div class="p-body-section1">
+		<div class="p-body-section-header1">
+			<div class="container1">
+				<div class="box1">
+					<h2>{{ phrase('nick97_watch_list_tv_shows') }}</h2>
+				</div>
+
+				<xf:if is="count($tvShows) > 1">
+
+					<div class="right_watch_list1 box1">
+						<h2><i class="fas fa-chevron-right"></i></h2>
+					</div>
+
+				</xf:if>
+			</div>
+		</div>
+	</div>
+
+	<xf:if is="count($tvShows) > 0">
+
+		<div id="container1">
+
+			<xf:comment>
+
+				<div id="arrowL1" class="left_watch_list1" style="">
+					<i class="fa fa-chevron-left"></i>
+				</div>
+				<div id="arrowR1" class="right_watch_list1"  style="">
+					<i class="fa fa-chevron-right"></i>
+				</div>	
+
+			</xf:comment>
+
+			<div id="list-container1">
+
+
+				<div class='list1 watch_list1' style="">
+
+					<xf:foreach loop="{$tvShows}" value="$movie">
+
+						<div class='item1'>
+							<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
+								<img src="{$movie.getImageUrl()}" style="width: 185px; height: 278px; border-radius: 6px;" />
+							</a>
+						</div>
+
+					</xf:foreach>		
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<xf:else />
+
+		<div class="empty">{{ phrase('nick97_watch_list_tv_show_empty') }}</div>
+
+	</xf:if>
+
+
+	<xf:js>
+
+		$(document).ready(function(){
+		$(".right_watch_list1").click(function(){
+		var item_width = $('#list-container1 div.watch_list1 div.item1').width(); 
+		var left_value = item_width * (-1); 
+		var left_indent = parseInt($('#list-container1 div.watch_list1').css('left')) - item_width;
+		$('#list-container1 div.watch_list1 ').animate({'left' : left_indent}, 100, function () {
+		$('#list-container1 div.watch_list1 div.item1:last').after($('#list-container1 div.watch_list1 div.item1:first'));                  
+		$('#list-container1 div.watch_list1').css({'left' : left_value});
+		});
+		});
+
+		$(".left_watch_list1").click(function(){
+		var item_width = $('#list-container1 div.watch_list1 div.item1').width(); 
+		var right_value = item_width * (+1); 
+		var right_indent = parseInt($('#list-container1 div.watch_list1').css('right')) + item_width;
+		$('#list-container1 div.watch_list1 ').animate({'right' : right_indent}, 100, function () {
+		$('#list-container1 div.watch_list1 div.item1:first').before($('#list-container1 div.watch_list1 div.item1:last'));                  
+		$('#list-container1 div.watch_list1').css({'right' : right_value});
+		});
+		});
+		});
+
+	</xf:js>
+
+</xf:macro>]]></template>
+  <template type="public" title="nick97_watch_list_my_watch_list" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[<xf:title>{{ phrase('my_watch_list') }}</xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<div class="block-container">
+	<div class="block-body">
+
+		<xf:css src="structured_list.less" />
+		<xf:css src="xfrm.less" />
+
+		<!-- Tmdb Movies -->
+
+		<xf:if is="$movies is not empty">
+
+			<xf:macro name="my_watch_list_tmdb_movies" arg-movies="{$movies}" />
+
+		</xf:if>
+
+		<!-- Tmdb Tv & Shows -->
+
+		<xf:if is="$tmdbTvShows is not empty">
+
+			<xf:macro name="my_watch_list_tmdb_tv" arg-tmdbTvShows="{$tmdbTvShows}" />
+
+		</xf:if>
+
+		<xf:if is="$movies is empty AND $traktMovies is empty AND $tmdbTvShows is empty AND $traktTvShows is empty">
+
+			<div class="blockMessage">
+				{{ phrase('nick97_watch_list_my_tv_and_movies_empty') }}
+			</div>
+
+		</xf:if>
+
+	</div>
+
+</div>
+
+
+<!-- Tmdb Movies -->
+
+<xf:macro name="my_watch_list_tmdb_movies" arg-movies="!">
+
+	<xf:foreach loop="$movies" value="$movie">
+
+		<div class="structItem structItem--resource">
+
+			<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded">
+				<div class="structItem-iconContainer">
+
+					<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
+						<img class="tvPoster" src="{$movie.getImageUrl()}">
+					</a>
+
+				</div>
+			</div>
+			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+
+				<div class="structItem-title">
+
+					<a href="{{ link('threads', $movie.Thread) }}" class="" data-tp-primary="on">{$movie.Thread.title}</a>
+
+				</div>
+
+				<xf:if is="$resource.resource_state != 'deleted'">
+					<div class="structItem-resourceTagLine">{$movie.tmdb_tagline}</div>
+				</xf:if>
+			</div>
+			<div class="structItem-cell structItem-cell--resourceMeta">
+
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--status">
+					<dt>{{ phrase('nick97_watch_list_status') }}</dt>
+					<dd>{$movie.tmdb_status}</dd>
+				</dl>
+
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--release">
+					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
+					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$movie.tmdb_release}</a></dd>
+				</dl>
+
+				<xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'manage_watchlist')">
+
+					<dl>
+						<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
+							{{ phrase('remove') }}
+						</xf:button>
+
+						<xf:button href="{{ link('movies/sync', $movie.Thread) }}" icon="refresh" overlay="true">
+							{{ phrase('nick97_trakt_movies_sync') }}
+						</xf:button>
+					</dl>
+
+				</xf:if>
+
+			</div>
+		</div>
+	</xf:foreach>
+
+</xf:macro>
+
+<!-- Tmdb Tv & Shows -->
+
+<xf:macro name="my_watch_list_tmdb_tv" arg-tmdbTvShows="!">
+
+	<xf:foreach loop="$tmdbTvShows" value="$tv">
+
+		<div class="structItem structItem--resource">
+
+			<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded">
+				<div class="structItem-iconContainer">
+
+					<a class="carousel-item-image" href="{{ link('threads', $tv.Thread) }}">
+						<img class="tvPoster" src="{$tv.getImageUrl()}">
+					</a>
+
+				</div>
+			</div>
+			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+
+				<div class="structItem-title">
+
+					<a href="{{ link('threads', $tv.Thread) }}" class="" data-tp-primary="on">{$tv.Thread.title}</a>
+
+				</div>
+
+				<xf:if is="$resource.resource_state != 'deleted'">
+					<div class="structItem-resourceTagLine">{$tv.tv_genres}</div>
+				</xf:if>
+			</div>
+			<div class="structItem-cell structItem-cell--resourceMeta">
+
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--status">
+					<dt>{{ phrase('nick97_watch_list_status') }}</dt>
+					<dd>{$tv.status}</dd>
+				</dl>
+
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--release">
+					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
+					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$tv.tv_release}</a></dd>
+				</dl>
+
+				<dl>
+					<xf:button href="{{ link('threads/my-watch-list', $tv.Thread) }}" icon="delete" overlay="true">
+						{{ phrase('remove') }}
+					</xf:button>
+
+					<xf:button href="{{ link('tv/sync', $tv.Thread) }}" icon="refresh" overlay="true">
+						{{ phrase('nick97_trakt_tv_sync') }}
+					</xf:button>
+				</dl>
+
+			</div>
+		</div>
+	</xf:foreach>
+
+</xf:macro>]]></template>
+  <template type="public" title="nick97_watch_list_tv_shows.less" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[.p-body-section1{
+	margin-bottom:0 !important;
+}
+#container1
+{
+
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	margin-bottom:20px;
+}
+#list-container1
+{
+	overflow: hidden;
+	width: 100%;
+	float: left;
+}
+.list1
+{
+
+	min-width: 3400px;
+	float: left;
+	display: flex;
+}
+
+#arrowL1::before,#arrowR1::before{
+	font-family: "Font Awesome 5 Pro";
+	content: "\f053";
+	background: #fff;
+	border-radius: 50%;
+
+	color: #2196f3;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	opacity: 1;
+	width: 40px;
+	text-align: center;
+}
+
+
+
+#arrowR1::before {
+	font-family: "Font Awesome 5 Pro";
+	content: "\f054";
+}	
+
+
+#arrowR1
+{
+	background: transparent;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	float: right;
+	cursor: pointer;
+	top: 126px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 0px;
+	color: transparent;
+	padding:2px 2px;
+	position: absolute;
+	z-index: 100;
+	right: 20px;
+
+	display: block;
+	line-height: 0px;
+	font-size: 0px;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+#arrowL1
+{
+	top: 145px;
+	left: 9px;
+	background: transparent;
+	width: 40px;
+	height: 40px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	font-family: Arial;
+	color: transparent;
+	position: absolute;
+	z-index: 100;
+	border-radius: 50%;
+	cursor: pointer;
+	display: block;
+	line-height: 0px;
+	font-size: 0px;
+	-webkit-transform: translate(0, -50%);
+	padding: 0;
+	border: none;
+	outline: none;
+}
+.item1
+{
+	margin: 0 10px 0 0;
+	float: left;
+	position: relative;
+	text-align: center;
+	font-family: Arial;
+	font-size: 20px;
+	color: White;
+	max-width: 185px;
+	max-height: 278px;
+	min-width: 185px;
+    min-height: 278px;
+}
+
+div.item1 iframe1{
+	width: 100%;
+	height: 100%;
+}
+div.p-body-section1 div.p-body-section-header1 span.p-body-section-icon1 i.fa-gamepad-alt1.screen-icon1:before {
+	content: "\f108" !important;
+}
+
+
+/* MEDIA QUERIES.............
+MEDIA QUERIES.............
+MEDIA QUERIES............. */
+
+@media only screen and (max-width: 600px) {
+	#container1{
+		width: 100%;
+	}
+	.item1{
+		margin: 0 15px 0 15px;
+	}
+}
+
+
+
+/* container1 to hold the two boxes */
+.container1 {
+	display: flex; /* Use flexbox */
+	justify-content: space-between; /* Add space between the two boxes */
+	flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+}
+
+/* Styles for the individual boxes */
+.box1 {
+	display: block;
+	box-sizing: border-box; /* Include padding and border in the box's total width */
+	margin-bottom: 5px; /* Add some space between the boxes */
+}
+
+.right_watch_list1{
+	cursor: pointer;
+}
+
+.right_watch_list1:hover{
+	color: blue;
+}
+
+.empty {
+	text-align: center;
+	font-size: 18px;
+	color: #555;
+}]]></template>
+  <template type="public" title="nick97_watchlist_profile_watchlist" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[<xf:if is="$stats">
+	<xf:macro template="nick97_watch_list_movies_macro" name="stats" arg-stats="{$stats}" />
+	<xf:else/>
+
+	<xf:if is="$statsLimit">
+		<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_stats') }}</div>
+		<xf:else/>
+		<div class="blockMessage">{{ phrase('nick97_member_empty_viewing_stats') }}</div>
+	</xf:if>
+</xf:if>
+
+<xf:if is="$limit">
+	<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_watchlist') }}</div>
+
+	<xf:else/>
+	<xf:macro template="nick97_watch_list_movies_macro" name="movies" arg-movies="{$movies}" />
+
+	<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />
+</xf:if>]]></template>
+</templates>

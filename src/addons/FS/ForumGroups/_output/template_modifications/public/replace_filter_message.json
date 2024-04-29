@@ -1,0 +1,9 @@
+{
+    "template": "approval_queue",
+    "description": "replace_filter_message",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ $xf.app.getContentTypePhrase($filters.content_type) ?: $filters.content_type }}",
+    "replace": "<xf:if is=\"$filters.content_type=='node'\">\n\t{{phrase('fs_forum_group_filter')}}\n\t<xf:else />\n\t$0\n</xf:if>"
+}

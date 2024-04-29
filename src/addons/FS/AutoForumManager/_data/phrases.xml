@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsAutoForumManager" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Auto Forum Manage]]></phrase>
+  <phrase title="admin_navigation.fsAutoForumManagerAdd" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="cron_entry.fsAutoForumManager" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Auto Forum Manager]]></phrase>
+  <phrase title="fs_auto_filled_required_fields" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fill required fields...!]]></phrase>
+  <phrase title="fs_auto_forum_manage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Forums]]></phrase>
+  <phrase title="fs_auto_forum_manage_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Forum]]></phrase>
+  <phrase title="fs_auto_forum_manage_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Auto Forum Manage]]></phrase>
+  <phrase title="fs_auto_forum_manager_days" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Days]]></phrase>
+  <phrase title="fs_auto_forum_manager_days_place" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[123...!]]></phrase>
+  <phrase title="fs_auto_forum_manager_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Forums]]></phrase>
+  <phrase title="fs_auto_forum_manager_select_admin" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Admin]]></phrase>
+  <phrase title="fs_cell_auto_forum_admin" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Admin]]></phrase>
+  <phrase title="fs_cell_auto_forum_days" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Days]]></phrase>
+  <phrase title="fs_cell_auto_forum_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum]]></phrase>
+  <phrase title="fs_edit_auto_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Forum]]></phrase>
+</phrases>

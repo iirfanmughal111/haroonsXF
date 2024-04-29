@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_tv",
+    "title": "Thread list poster image width",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "unit",
+    "value_parameters": "",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "75px",
+    "display_order": 100
+}

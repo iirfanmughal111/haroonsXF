@@ -1,0 +1,32 @@
+{
+    "admin/connected_account_provider_th_trakt.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a7bf856494ff92c9b4899fd742284339"
+    },
+    "public/crud_record_all.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "52e9b5e0428441600d4112da85ee8820"
+    },
+    "public/crud_record_insert.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "21e3ef205f1be3c2fcc28233c6cfc512"
+    },
+    "public/crud_record_testing_only.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "335e3786cd0a5fe9fa335c9364dbcd59"
+    },
+    "public/crud_record_testing_pg_1.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2bb05767122437cc4c60afa31ff5900e"
+    },
+    "public/crud_record_testing_pg_2.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e39b7ae4791991d0ba1dd6c0d8f72670"
+    }
+}

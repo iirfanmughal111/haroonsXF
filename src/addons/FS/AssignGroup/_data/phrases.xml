@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fs_assign_group_applicable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Group]]></phrase>
+  <phrase title="option_explain.fs_assign_group_applicable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use as default group for registration.]]></phrase>
+  <phrase title="option_group.fs_assign_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Assign Group]]></phrase>
+  <phrase title="option_group_description.fs_assign_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Assign Group]]></phrase>
+</phrases>

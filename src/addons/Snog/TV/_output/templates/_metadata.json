@@ -1,0 +1,12 @@
+{
+    "public/snog_tv_post_macros.html": {
+        "version_id": 2020063,
+        "version_string": "2.2.0 Release Candidate 13",
+        "hash": "bccd2c239b1ed2f8d35b9191197daadb"
+    },
+    "public/snog_tv_thread_view_type_tv.html": {
+        "version_id": 2020063,
+        "version_string": "2.2.0 Release Candidate 13",
+        "hash": "7b0a8d9518ded8995c409359e99cb116"
+    }
+}

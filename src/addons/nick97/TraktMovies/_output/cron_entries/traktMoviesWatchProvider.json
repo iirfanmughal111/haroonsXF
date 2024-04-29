@@ -1,0 +1,17 @@
+{
+    "cron_class": "nick97\\TraktMovies\\Cron\\MovieWatchProviderUpdate",
+    "cron_method": "runDaily",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            0
+        ],
+        "minutes": [
+            0
+        ]
+    },
+    "active": true
+}

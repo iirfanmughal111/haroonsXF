@@ -1,0 +1,54 @@
+<xf:set var="$template">
+	<xf:if is="$tvShows is not empty">
+		<xf:css src="carousel.less" />
+		<xf:css src="lightslider.less" />
+		<xf:css src="trakt_tv_slider.less" />
+
+		<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js" />
+		<xf:js dev="nick97/TraktTV/slider.js" prod="nick97/TraktTV/slider.min.js" addon="nick97/TraktTV" />
+
+		<div class="carousel carousel-tvPosterSlider carousel--withFooter" {{ widget_data($widget) }}>
+			<ul class="carousel-body" data-xf-init="trakt-tv-slider"
+				data-xf-trakt-tv-slider="{$options.slider|json}">
+
+				<xf:foreach loop="$tvShows" value="$tv">
+					<li>
+						<div class="carousel-item-simple">
+							<a class="carousel-item-image" href="{{ link('threads', $tv.Thread) }}">
+								<img src="{$tv.getImageUrl()}" style="width: {$options.image_width}; height: {$options.image_height}" />
+
+								<xf:if is="{$options.show_rating}">
+									<span class="carousel-item-label">
+										<xf:fa icon="star" /> {$tv.tv_rating}
+									</span>
+								</xf:if>
+								
+								<span class="carousel-item-caption" title="{$tv.Thread.title}">
+									{$tv.Thread.title}
+								</span>
+							</a>
+						</div>
+					</li>
+				</xf:foreach>
+			</ul>
+
+		</div>
+	</xf:if>
+</xf:set>
+
+<xf:if is="!$options.advanced_mode">
+	<xf:if contentcheck="true">
+	<div class="block">
+		<div class="block-container" {{ widget_data($widget) }}>
+			<xf:if is="$title">
+				<h3 class="block-minorHeader">{$title}</h3>
+			</xf:if>
+			<div class="block-body block-row">
+				<xf:contentcheck>{$template|raw}</xf:contentcheck>
+			</div>
+		</div>
+	</div>
+	</xf:if>
+<xf:else />
+	{$template|raw}
+</xf:if>

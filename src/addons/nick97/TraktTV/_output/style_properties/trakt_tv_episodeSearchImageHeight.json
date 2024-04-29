@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_tv",
+    "title": "Episode image height (search results)",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "unit",
+    "value_parameters": "",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "auto",
+    "display_order": 121
+}

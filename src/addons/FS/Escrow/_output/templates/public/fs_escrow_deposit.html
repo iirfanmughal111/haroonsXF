@@ -1,0 +1,17 @@
+<xf:title> {{ phrase('fs_escrow_deposit') }} </xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<xf:form
+  action="{{ link('escrow/deposit-save') }}"
+  ajax="true"
+  class="block"
+  data-force-flash-message="true"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <xf:numberboxrow name="deposit_amount" explain="{{ phrase('escrow_current_amount') }} {{phrase('fs_escrow_amount_symbol')}}{$xf.visitor.deposit_amount}" min="0" label="{{ phrase('fs_escrow_amount') }}" />
+    </div>
+    <xf:submitrow submit="" icon="save" />
+  </div>
+</xf:form>

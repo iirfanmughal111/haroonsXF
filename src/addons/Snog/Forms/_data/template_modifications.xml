@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="XMMT_more_thread" modification_key="snog_forms_XMMT_more_thread" description="Adds approve/deny/extend links if needed to XMMT_more_thread template" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$hasActionBarMenu">]]></find>
+    <replace><![CDATA[<xf:if is="$post.Promotions is not empty">
+	<xf:if is="{{ $xf.visitor.canApproveAdvancedForms() }} && $post.Promotions.approve">
+		<a href="{{ link('form/approve', {'posid': $post.post_id}) }}"
+		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
+		   data-xf-click="overlay">
+			{{ phrase('approve') }}
+		</a>
+	
+		<a href="{{ link('form/deny', {'posid': $post.post_id}) }}"
+		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
+		   data-xf-click="overlay">
+			{{ phrase('snog_forms_deny') }}
+		</a>
+	</xf:if>
+	<xf:if is="{{ $xf.visitor.canExtendAdvancedFormsPolls() }} && $post.Promotions.poll_id">
+		<a href="{{ link('form/extend', {'posid': $post.post_id}) }}"
+		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem">
+			{{ phrase('snog_forms_extend') }}
+		</a>
+	</xf:if>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread_chooser" modification_key="snog_home_post" description="Changes post link to form link if needed" execution_order="6" enabled="1" action="str_replace">
+    <find><![CDATA[link('forums/post-thread', $node)]]></find>
+    <replace><![CDATA[($node.snog_posid ? link('form/select', {'posid': $node.snog_posid}) : $0)]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snog_forms_view1" description="Replaces post thread link with form link if needed" execution_order="7733" enabled="1" action="str_replace">
+    <find><![CDATA[link('forums/post-thread', $forum)]]></find>
+    <replace><![CDATA[($forum.Node.snog_posid ? link('form/select', {'posid': $forum.Node.snog_posid}) : $0)]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snog_forms_view2" description="Changes Post thread phrase if needed" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('post_thread') }}]]></find>
+    <replace><![CDATA[<xf:if is="$forum.Node.snog_posid && $forum.Node.snog_label">
+	{$forum.Node.snog_label}
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snog_forms_view3" description="Remove quick thread in application forums XF 2.1" execution_order="11" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:macro template="thread_list_macros" name="quick_thread"(.*)\/>#Us]]></find>
+    <replace><![CDATA[<xf:if is="!$forum.Node.snog_posid">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snog_forms_view4" description="Remove quick thread in application forums XF 2.2" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro name="{{ \$templateOverrides\.quick_thread_macro.+\/>/Us]]></find>
+    <replace><![CDATA[<xf:if is="!$forum.Node.snog_posid">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="snogForms1" description="Adds vertically displayed user criteria" execution_order="1" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="page_panes" arg-container="" arg-active="" arg-criteria="!" arg-data="!">]]></find>
+    <replace><![CDATA[<xf:macro name="Snog_user_page" arg-container="" arg-active="" arg-criteria="!" arg-data="!" arg-th_nodeTree="">
+
+	<xf:set var="$data.thqaforums_nodetree" value="{$th_nodeTree}" />
+	<xf:set var="$app" value="{$xf.app}" />
+	<xf:set var="$visitor" value="{$xf.visitor}" />
+	<xf:set var="$em" value="{$app.em}" />
+
+	<xf:set var="$page">
+		<!--[XF:user:top]-->
+
+		<xf:checkboxrow label="{{ phrase('privileges_and_status') }}">
+			<!--[XF:user:status_top]-->
+
+			<xf:option name="user_criteria[is_guest][rule]" value="is_guest" selected="{$criteria.is_guest}"
+				label="{{ phrase('user_is_guest') }}" />
+			<xf:option name="user_criteria[is_logged_in][rule]" value="is_logged_in" selected="{$criteria.is_logged_in}"
+				label="{{ phrase('user_is_logged_in') }}" />
+			<xf:option name="user_criteria[is_moderator][rule]" value="is_moderator" selected="{$criteria.is_moderator}"
+				label="{{ phrase('user_is_moderator') }}" />
+			<xf:option name="user_criteria[is_admin][rule]" value="is_admin" selected="{$criteria.is_admin}"
+				label="{{ phrase('user_is_administrator') }}" />
+			<xf:option name="user_criteria[is_banned][rule]" value="is_banned" selected="{$criteria.is_banned}"
+				label="{{ phrase('user_is_banned') }}"/>
+			<xf:option name="user_criteria[birthday][rule]" value="birthday" selected="{$criteria.birthday}"
+				label="{{ phrase('user_birthday_is_today') }}"/>
+			<xf:option name="user_criteria[user_state][rule]" value="user_state" selected="{$criteria.user_state}"
+				label="{{ phrase('user_state_is:') }}">
+
+				<xf:dependent>
+					<xf:select name="user_criteria[user_state][data][state]" value="{$criteria.user_state.state}">
+						<xf:option value="valid">{{ phrase('valid') }}</xf:option>
+						<xf:option value="email_confirm">{{ phrase('awaiting_email_confirmation') }}</xf:option>
+						<xf:option value="email_confirm_edit">{{ phrase('awaiting_email_confirmation_from_edit') }}</xf:option>
+						<xf:option value="email_bounce">{{ phrase('email_invalid_bounced') }}</xf:option>
+						<xf:option value="moderated">{{ phrase('awaiting_approval') }}</xf:option>
+						<xf:option value="rejected">{{ phrase('rejected') }}</xf:option>
+						<xf:option value="disabled">{{ phrase('disabled') }}</xf:option>
+					</xf:select>
+				</xf:dependent>
+
+			</xf:option>
+
+			<!--[XF:user:status_bottom]-->
+		</xf:checkboxrow>
+
+		<hr class="formRowSep" />
+
+		<!--[XF:user:after_status]-->
+
+		<xf:checkboxrow label="{{ phrase('connected_accounts') }}">
+			<xf:option name="user_criteria[connected_accounts][rule]" value="connected_accounts" selected="{$criteria.connected_accounts}"
+				label="{{ phrase('user_is_associated_with_any_of_selected_connected_account_providers:') }}">
+
+				<xf:select name="user_criteria[connected_accounts][data][provider_ids]" size="4" multiple="true" value="{$criteria.connected_accounts.provider_ids}">
+					<xf:options source="$data.connectedAccProviders" />
+				</xf:select>
+
+			</xf:option>
+		</xf:checkboxrow>
+
+		<hr class="formRowSep" />
+
+		<!--[XF:user:after_connected]-->
+
+		<xf:checkboxrow label="{{ phrase('user_groups') }}">
+			<xf:option name="user_criteria[user_groups][rule]" value="user_groups" selected="{$criteria.user_groups}"
+				label="{{ phrase('user_is_member_of_any_of_selected_user_groups:') }}">
+
+				<xf:select name="user_criteria[user_groups][data][user_group_ids]" size="4" multiple="true" value="{$criteria.user_groups.user_group_ids}">
+					<xf:foreach loop="$data.userGroups" key="$userGroupId" value="$userGroupTitle">
+						<xf:option value="{$userGroupId}">{$userGroupTitle}</xf:option>
+					</xf:foreach>
+				</xf:select>
+
+			</xf:option>
+
+			<xf:option name="user_criteria[not_user_groups][rule]" value="not_user_groups" selected="{$criteria.not_user_groups}"
+				label="{{ phrase('user_is_not_member_of_any_of_selected_user_groups:') }}">
+
+				<xf:select name="user_criteria[not_user_groups][data][user_group_ids]" size="4" multiple="true" value="{$criteria.not_user_groups.user_group_ids}">
+					<xf:foreach loop="$data.userGroups" key="$userGroupId" value="$userGroupTitle">
+						<xf:option value="{$userGroupId}">{$userGroupTitle}</xf:option>
+					</xf:foreach>
+				</xf:select>
+
+			</xf:option>
+		</xf:checkboxrow>
+
+		<hr class="formRowSep" />
+
+		<!--[XF:user:after_groups]-->
+
+		<xf:checkboxrow label="{{ phrase('content_and_achievements') }}">
+			<!--[XF:user:content_top]-->
+
+			<xf:option name="user_criteria[messages_posted][rule]" value="messages_posted" selected="{$criteria.messages_posted}"
+				label="{{ phrase('user_has_posted_at_least_x_messages:') }}">
+				<xf:numberbox name="user_criteria[messages_posted][data][messages]" value="{$criteria.messages_posted.messages}"
+					size="5" min="0" step="1" />
+			</xf:option>
+
+			<xf:option name="user_criteria[messages_maximum][rule]" value="messages_maximum" selected="{$criteria.messages_maximum}"
+				label="{{ phrase('user_has_posted_no_more_than_x_messages:') }}">
+				<xf:numberbox name="user_criteria[messages_maximum][data][messages]" value="{$criteria.messages_maximum.messages}"
+					size="5" min="0" step="1" />
+			</xf:option>
+
+			<!--[XF:user:content_after_messages]-->
+
+			<xf:option name="user_criteria[reaction_score][rule]" value="reaction_score" selected="{$criteria.reaction_score}"
+				label="{{ phrase('user_has_received_a_reaction_sore_of_at_least_x:') }}">
+				<xf:numberbox name="user_criteria[reaction_score][data][reactions]" value="{$criteria.reaction_score.reactions}"
+					size="5" min="0" step="1" />
+			</xf:option>
+
+			<xf:option name="user_criteria[reaction_ratio][rule]" value="reaction_ratio" selected="{$criteria.reaction_ratio}"
+				label="{{ phrase('user_reaction_message_ratio_is_at_least:') }}">
+				<xf:numberbox name="user_criteria[reaction_ratio][data][ratio]" value="{$criteria.reaction_ratio.ratio}"
+					size="5" min="0" step="0.25" />
+				<xf:afterhint>{{ phrase('reaction_message_ratio_explanation') }}</xf:afterhint>
+			</xf:option>
+
+			<!--[XF:user:content_after_reactions]-->
+
+			<xf:option name="user_criteria[trophy_points][rule]" value="trophy_points" selected="{$criteria.trophy_points}"
+				label="{{ phrase('user_has_at_least_x_trophy_points:') }}">
+				<xf:numberbox name="user_criteria[trophy_points][data][points]" value="{$criteria.trophy_points.points}"
+					size="5" min="0" step="1" />
+			</xf:option>
+
+			<!--[XF:user:content_after_trophies]-->
+
+			<xf:option name="user_criteria[registered_days][rule]" value="registered_days" selected="{$criteria.registered_days}"
+				label="{{ phrase('user_has_been_registered_for_at_least_x_days:') }}">
+				<xf:numberbox name="user_criteria[registered_days][data][days]" value="{$criteria.registered_days.days}"
+					size="5" min="0" step="1" />
+			</xf:option>
+
+			<xf:option name="user_criteria[inactive_days][rule]" value="inactive_days" selected="{$criteria.inactive_days}"
+				label="{{ phrase('user_has_not_visited_for_at_least_x_days:') }}">
+				<xf:numberbox name="user_criteria[inactive_days][data][days]" value="{$criteria.inactive_days.days}"
+					size="5" min="0" step="1" />
+			</xf:option>
+
+			<!--[XF:user:content_bottom]-->
+		</xf:checkboxrow>
+
+		<hr class="formRowSep" />
+
+		<!--[XF:user:after_content]-->
+
+		<xf:checkboxrow label="{{ phrase('user_profile_and_options') }}">
+			<!--[XF:user:profile_top]-->
+
+			<xf:option name="user_criteria[language][rule]" value="language" selected="{$criteria.language}"
+				label="{{ phrase('user_is_browsing_with_following_language:') }}">
+
+				<xf:select name="user_criteria[language][data][language_id]" value="{$criteria.language.language_id}">
+					<xf:foreach loop="$data.languageTree.getFlattened(0)" value="$treeEntry">
+						<xf:option value="{$treeEntry.record.language_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+					</xf:foreach>
+				</xf:select>
+
+			</xf:option>
+
+			<xf:optgroup label="{{ phrase('avatar:') }}">
+				<xf:option name="user_criteria[has_avatar][rule]" value="has_avatar" selected="{$criteria.has_avatar}"
+					label="{{ phrase('user_has_avatar') }}" />
+
+				<xf:option name="user_criteria[no_avatar][rule]" value="no_avatar" selected="{$criteria.no_avatar}"
+					label="{{ phrase('user_has_no_avatar') }}" />
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('high_resolution_avatar:') }}">
+				<xf:option name="user_criteria[has_highdpi_avatar][rule]" value="has_highdpi_avatar" selected="{$criteria.has_highdpi_avatar}"
+					label="{{ phrase('user_has_highdpi_avatar') }}" />
+
+				<xf:option name="user_criteria[no_highdpi_avatar][rule]" value="no_highdpi_avatar" selected="{$criteria.no_highdpi_avatar}"
+					label="{{ phrase('user_has_no_highdpi_avatar') }}" />
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('two_step_verification:') }}">
+				<xf:option name="user_criteria[with_tfa][rule]" value="with_tfa" selected="{$criteria.with_tfa}"
+					label="{{ phrase('user_has_enabled_two_step_verification') }}" />
+
+				<xf:option name="user_criteria[without_tfa][rule]" value="without_tfa" selected="{$criteria.without_tfa}"
+					label="{{ phrase('user_has_not_enabled_two_step_verification') }}"/>
+			</xf:optgroup>
+
+			<!--[XF:user:profile_bottom]-->
+		</xf:checkboxrow>
+
+		<hr class="formRowSep" />
+
+		<!--[XF:user:after_profile]-->
+
+		<xf:checkboxrow label="{{ phrase('specific_users') }}">
+			<!--[XF:user:specific_top]-->
+
+			<xf:option name="user_criteria[username][rule]" value="username" selected="{$criteria.username}"
+				label="{{ phrase('username_is:') }}">
+				<xf:textbox name="user_criteria[username][data][names]" value="{$criteria.username.names}" ac="true" />
+				<xf:afterhint>{{ phrase('username_criteria_explain') }}</xf:afterhint>
+
+			</xf:option>
+
+			<xf:option name="user_criteria[username_search][rule]" value="username_search" selected="{$criteria.username_search}"
+				label="{{ phrase('username_contains:') }}">
+				<xf:textbox name="user_criteria[username_search][data][needles]" value="{$criteria.username_search.needles}" />
+				<xf:afterhint>{{ phrase('username_search_criteria_explain') }}</xf:afterhint>
+			</xf:option>
+
+			<xf:option name="user_criteria[email_search][rule]" value="email_search" selected="{$criteria.email_search}"
+				label="{{ phrase('email_address_contains:') }}">
+				<xf:textbox name="user_criteria[email_search][data][needles]" value="{$criteria.email_search.needles}" />
+				<xf:afterhint>{{ phrase('email_search_criteria_explain') }}</xf:afterhint>
+			</xf:option>
+
+			<!--[XF:user:specific_bottom]-->
+		</xf:checkboxrow>
+
+		<!--[XF:user:bottom]-->
+
+		<h3 class="block-formSectionHeader">
+			<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+				<span class="block-formSectionHeader-aligner"><b>{{ phrase('snog_forms_userfield')}}</b></span>
+			</span>
+		</h3>
+
+		<div class="block-body block-body--collapsible">
+			<xf:if contentcheck="true">
+				<xf:contentcheck>
+					<xf:foreach loop="$xf.app.em.getRepository('XF:UserField').getDisplayGroups()" key="$fieldGroup" value="$groupPhrase">
+
+						<xf:set var="$customFields" value="{$app.getCustomFields('users', $fieldGroup)}" />
+						<xf:if contentcheck="true">
+							<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">{$groupPhrase}</span></h2>
+							<xf:contentcheck>
+								<xf:foreach loop="$customFields" key="$fieldId" value="$fieldDefinition">
+									<xf:set var="$fieldName" value="user_field_{$fieldId}" />
+									<xf:set var="$choices" value="{$fieldDefinition.field_choices}" />
+									<xf:checkboxrow label="{$fieldDefinition.title}">
+										<xf:option name="user_criteria[{$fieldName}][rule]" value="{$fieldName}" selected="{$criteria.{$fieldName}}"
+											label="{{ $choices ? phrase('criteria_userfield_choice_among') : phrase('criteria_userfield_contains_text:') }}">
+											<xf:dependent>
+												<xf:if is="!{$choices}">
+													<xf:textbox name="user_criteria[{$fieldName}][data][text]" value="{$criteria.{$fieldName}.text}" />
+												<xf:elseif is="{{ count($choices) }} > 6" />
+													<xf:select name="user_criteria[{$fieldName}][data][choices]" value="{$criteria.{$fieldName}.choices}" multiple="multiple" size="5">
+														<xf:options source="{$choices}" />
+													</xf:select>
+												<xf:else />
+													<xf:checkbox name="user_criteria[{$fieldName}][data][choices]" value="{$criteria.{$fieldName}.choices}" listclass="listColumns">
+														<xf:options source="{$choices}" />
+													</xf:checkbox>
+												</xf:if>
+											</xf:dependent>
+										</xf:option>
+									</xf:checkboxrow>
+								</xf:foreach>
+							</xf:contentcheck>
+						</xf:if>
+
+					</xf:foreach>
+				</xf:contentcheck>
+			<xf:else />
+				{{ phrase('snog_forms_no_custom_fields') }}
+			</xf:if>
+		</div>
+	</xf:set>
+
+	{$page|raw}
+</xf:macro>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snog_forms_post" description="Adds approve/deny/extend links if needed" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$hasActionBarMenu">]]></find>
+    <replace><![CDATA[<xf:if is="$post.Promotions is not empty">
+	<xf:if is="{{ $xf.visitor.canApproveAdvancedForms() }} && $post.Promotions.approve">
+		<a href="{{ link('form/approve', {'posid': $post.post_id}) }}"
+		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
+		   data-xf-click="overlay">
+			{{ phrase('approve') }}
+		</a>
+	
+		<a href="{{ link('form/deny', {'posid': $post.post_id}) }}"
+		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
+		   data-xf-click="overlay">
+			{{ phrase('snog_forms_deny') }}
+		</a>
+	</xf:if>
+	<xf:if is="{{ $xf.visitor.canExtendAdvancedFormsPolls() }} && $post.Promotions.poll_id">
+		<a href="{{ link('form/extend', {'posid': $post.post_id}) }}"
+		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem">
+			{{ phrase('snog_forms_extend') }}
+		</a>
+	</xf:if>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="snog_forms_quickreply" description="Adds button to quick reply form" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button type="submit"]]></find>
+    <replace><![CDATA[<xf:if is="$thread">
+				<xf:set var="$qrform" value="{$thread.getQrform()}" />
+				<xf:if is="$qrform">
+					<xf:if is="!$qrform.qrstarter || ($qrform.qrstarter && $xf.visitor.user_id == $thread.user_id)">
+						<xf:button href="{{ link('form/select', $qrform, {'thread': $thread.thread_id}) }} " class="button--cta" icon="write">
+							{$qrform.qrbutton}
+						</xf:button>
+					</xf:if>
+				</xf:if>
+			</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="snog_forms_quickreply1" description="Adds thread data option to quick reply macro" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-message=""]]></find>
+    <replace><![CDATA[$0
+arg-thread=""]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="snog_forms_quickreply2" description="Adds thread info to quick reply macro" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-message="{$message}"]]></find>
+    <replace><![CDATA[$0
+arg-thread="{$thread}"]]></replace>
+  </modification>
+  <modification type="public" template="th_node_macros_nodes" modification_key="snog_forms_nodegrid" description="Changes quick post link to form link if needed" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[link('forums/post-thread', $node)]]></find>
+    <replace><![CDATA[($node.snog_posid ? link('form/select', {'posid': $node.snog_posid}) : $0)]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snog_forms_thread1" description="Adds form for quick reply substitution" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:form action="{{ link\('threads\/add-reply', \$thread\).*<\/xf:form>#s]]></find>
+    <replace><![CDATA[<xf:if is="$thread.Form is not empty && $thread.Form.quickreply">
+	<xf:macro template="snog_forms_macro" name="form" arg-form="{$thread.Form}"
+			  arg-warnings="{$formWarnings}"
+			  arg-questions="{$formQuestions}"
+			  arg-conditionQuestions="{$conditionQuestions}"
+			  arg-canSubmit="{$canSubmitForm}"
+			  arg-attachmentData="{$attachmentData}"
+			  arg-nodeTree="{$nodeTree}" />
+
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snog_forms_threadview" description="Adds thread info to quick reply macro call" execution_order="1" enabled="1" action="str_replace">
+    <find><![CDATA[arg-message="{$thread.draft_reply.message}"]]></find>
+    <replace><![CDATA[$0
+arg-thread="{$thread}"]]></replace>
+  </modification>
+</template_modifications>

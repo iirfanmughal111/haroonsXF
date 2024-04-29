@@ -1,0 +1,15 @@
+<xf:title>{{phrase('fs_bitcoin_account_upgrade')}}</xf:title>
+
+<xf:css src="user_upgrad_card.less"/>
+
+<xf:js src="{{'bionomics/upgrade.js?'.$xf.time}}"  />
+<div class="creditsPricingCards" id="recurringCreditsCards">
+
+	<xf:if is="$xf.visitor.user_id == 2">
+		<xf:macro template="fs_bitcoin_upgrade_card_macros" name="men" arg-sixMonthUpgrade="{$sixMonthUpgrade}" arg-oneYearUpgrade="{$oneYearUpgrade}" />
+		<xf:elseif is="$xf.visitor.user_id == 1" />
+		<xf:macro template="fs_bitcoin_upgrade_card_macros" name="women" arg-premiumUpgrade="{$premiumUpgrade}" arg-providerCityUpgrade="{$providerCityUpgrade}" arg-vipUpgrade="{$vipUpgrade}" arg-providerVipUpgrade="{$providerVipUpgrade}" />
+	</xf:if>
+
+</div>
+<div id="purchase_bitcoin"></div>

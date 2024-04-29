@@ -1,0 +1,17 @@
+{
+    "public/CMTV_Math_insert_math_dialog.html": {
+        "version_id": 3000170,
+        "version_string": "3.0.1",
+        "hash": "90d4164f00951f46999e60281d5d6819"
+    },
+    "public/CMTV_Math_js.html": {
+        "version_id": 3010070,
+        "version_string": "3.1.0",
+        "hash": "20907afa386f8773a490f5d97cf6c6fd"
+    },
+    "public/CMTV_Math_katex.html": {
+        "version_id": 3010070,
+        "version_string": "3.1.0",
+        "hash": "739a56414e78782ba0597494fef03088"
+    }
+}

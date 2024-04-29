@@ -1,0 +1,6 @@
+{
+  "additional_files": ["data/assets/trakt_movies_cast", "data/assets/trakt_movies_crew"],
+  "exec": [
+    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/nick97/TraktMovies/_build/built.txt'"
+  ]
+}

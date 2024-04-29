@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_thread_thumbnail_article_change_view",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "\"<div class=\\\"structItemContainer-group js-threadList\\\">\n\t\t\t\t\t\t\t<xf:if is=\\\"\\$threads is not empty\\\">.*?</div>\"si",
+    "replace": "<xf:if is=\"$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)\">\n\t<div class=\"structItemContainer-group js-threadList thread-grid\">\n\t\t<xf:if is=\"$threads is not empty\">\n\t\t\t<xf:foreach loop=\"$threads\" value=\"$thread\">\n\t\t\t\t<xf:macro name=\"{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}\"\n\t\t\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t\t\t  arg-forum=\"{$forum}\"\n\t\t\t\t\t\t  args=\"{$templateOverrides.thread_list_macro_args}\"  />\n\t\t\t</xf:foreach>\n\t\t\t<xf:if is=\"$showDateLimitDisabler\">\n\t\t\t\t<xf:macro name=\"date_limit_disabler\" arg-forum=\"{$forum}\" arg-page=\"{$page}\" arg-filters=\"{$filters}\" />\n\t\t\t</xf:if>\n\t\t</xf:if>\n\t</div>\n\t<xf:else/>\n\t$0\n</xf:if>"
+}

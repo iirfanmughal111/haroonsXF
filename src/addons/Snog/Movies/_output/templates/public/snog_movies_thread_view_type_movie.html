@@ -1,0 +1,21 @@
+<xf:extends template="thread_view" />
+
+<xf:extension name="content_top">
+	<xf:css src="snog_movies.less" />
+</xf:extension>
+
+<xf:extension name="thread_action_buttons">
+	<xf:if is="{{ property('snog_movies_posterUpdateButtonPosition') == 'default' && $thread.Movie && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+		<xf:button href="{{ link('movies/poster', $thread.Movie) }}" class="button--link" overlay="true">
+			{{ phrase('snog_movies_check_poster') }}
+		</xf:button>
+	</xf:if>
+
+	<xf:extensionparent />
+</xf:extension>
+
+<xf:extension name="above_messages_below_pinned">
+	<xf:if is="$thread.Movie is not empty && $page <= 1">
+		<span class="moviehint">{{ phrase('snog_movies_information_thread')}}</span>
+	</xf:if>
+</xf:extension>

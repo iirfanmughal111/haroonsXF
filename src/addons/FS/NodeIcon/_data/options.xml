@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="Fs_NodeIcon_nodeDimensions" edit_format="template" data_type="array">
+    <default_value>{"width":"48","height":"48"}</default_value>
+    <edit_format_params>option_template_attachmentMaxDimensions</edit_format_params>
+    <sub_options>width
+height</sub_options>
+    <relation group_id="Fs_NodeIcon" display_order="1"/>
+  </option>
+</options>

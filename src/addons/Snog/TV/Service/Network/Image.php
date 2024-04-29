@@ -1,0 +1,68 @@
+<?php
+
+namespace Snog\TV\Service\Network;
+
+
+use Snog\TV\Service\AbstractTvSizeMapImage;
+use XF\Util\File;
+
+class Image extends AbstractTvSizeMapImage
+{
+	/**
+	 * @var \Snog\TV\Entity\Network
+	 */
+	protected $network;
+
+	public function getImageSizeMap()
+	{
+		return [
+			'l' => 0,
+			's' => $this->app->options()->TvThreads_smallNetworkLogoWidth
+		];
+	}
+
+	protected $allowedTypes = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
+
+	public function __construct(\XF\App $app, \Snog\TV\Entity\Network $network)
+	{
+		parent::__construct($app);
+
+		$this->network = $network;
+	}
+
+	protected function saveImageFile($size, $file)
+	{
+		$dataFile = $this->network->getAbstractedImagePath($size);
+		if ($dataFile)
+		{
+			File::copyFileToAbstractedPath($file, $dataFile);
+		}
+	}
+
+	protected function resizeImage(\XF\Image\AbstractDriver $image, $size)
+	{
+		if ($size != 0)
+		{
+			$image->resizeWidth($size);
+		}
+	}
+
+	public function deleteImages()
+	{
+		$this->deleteImageFiles();
+
+		$this->network->image_url = '';
+		$this->network->save();
+
+		return true;
+	}
+
+	public function deleteImageFiles()
+	{
+		if ($this->network->image_url)
+		{
+			File::deleteFromAbstractedPath($this->network->getAbstractedImagePath('s'));
+			File::deleteFromAbstractedPath($this->network->getAbstractedImagePath('l'));
+		}
+	}
+}

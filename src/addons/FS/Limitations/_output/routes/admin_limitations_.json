@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "limitations",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\Limitations:Limitations",
+    "context": "fsLimitations",
+    "action_prefix": ""
+}

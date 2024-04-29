@@ -1,0 +1,13 @@
+{
+    "group_name": "cxfGoogleTranslateForum",
+    "title": "Float",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "radio",
+    "value_parameters": "left=left\nright=right",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "right",
+    "display_order": 120
+}

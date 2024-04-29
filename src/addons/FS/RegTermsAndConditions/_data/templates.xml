@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_registration_terms_conditions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:js src="xf/login_signup.js" min="1" />
+
+<xf:title>{{ phrase('fs_register_terms_title') }}</xf:title>
+
+<xf:form action="{{ link('register/') }}" ajax="true" class="block"	data-xf-init="reg-form">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow>
+			{{ phrase('fs_register_terms_conditions_text') }}
+			</xf:inforow>
+			<xf:checkboxrow standalone="true">
+				<xf:option name="accept" required="required">{{ phrase('fs_register_terms_you_agree_to_our_terms_and_conditions') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+		<xf:submitrow><xf:html>
+			<xf:button type="submit" class="button--primary" id="js-signUpButton">
+				<xf:if is="$xf.options.registrationTimer">
+					<span id="js-regTimer" data-timer-complete="{{ phrase('accept')|for_attr }}">
+						{{ phrase('(please_wait_x_seconds)', {'seconds': "<span>{$xf.options.registrationTimer}</span>"}) }}
+					</span>
+					<xf:else />
+					{{ phrase('accept') }}
+				</xf:if>
+			</xf:button>
+			</xf:html></xf:submitrow>
+	</div>
+
+</xf:form>]]></template>
+</templates>

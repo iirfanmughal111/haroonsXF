@@ -1,0 +1,20 @@
+{
+    "XF-Entity-Thread_FS-AuctionPlugin-XF-Entity-Thread.json": {
+        "hash": "7415e31de8d521398b524add41f9a264"
+    },
+    "XF-Pub-Controller-Forum_FS-AuctionPlugin-XF-Pub-Controller-Forum.json": {
+        "hash": "2929bab8deb73e73ab32622413377025"
+    },
+    "XF-Pub-Controller-Post_FS-AuctionPlugin-XF-Pub-Controller-Post.json": {
+        "hash": "4886cfa3eefd8751e917ffb6755f8ead"
+    },
+    "XF-Pub-Controller-Thread_FS-AuctionPlugin-XF-Pub-Controller-Thread.json": {
+        "hash": "1cadf34ec2c065bc332e3872ec56d25c"
+    },
+    "XF-Service-Thread-Creator_FS-AuctionPlugin-XF-Service-Thread-Creator.json": {
+        "hash": "4d8f6a665038704c48d4e4b5fa0e516e"
+    },
+    "XF-Service-Thread-Replier_FS-AuctionPlugin-XF-Service-Replier.json": {
+        "hash": "f67748662aa8ca86c864bd7b69cfcac4"
+    }
+}

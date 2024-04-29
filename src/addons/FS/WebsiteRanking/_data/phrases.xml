@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsWebsiteCreate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Create Website]]></phrase>
+  <phrase title="admin_navigation.fsWebsiteRanking" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Website Ranking]]></phrase>
+  <phrase title="fs_issue_pennding" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Issue Pending]]></phrase>
+  <phrase title="fs_issue_solved" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Issue Solved]]></phrase>
+  <phrase title="fs_issue_unsolved" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Issue Unsolved]]></phrase>
+  <phrase title="fs_web_Ranking_desc_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Website Description]]></phrase>
+  <phrase title="fs_web_Ranking_table_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Website Title]]></phrase>
+  <phrase title="fs_web_Ranking_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Website Ranking]]></phrase>
+  <phrase title="fs_web_ranking_are_you_sure" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Are you sure you want to mark this issue as Solved?]]></phrase>
+  <phrase title="fs_web_ranking_asce" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Ascending]]></phrase>
+  <phrase title="fs_web_ranking_create_issue" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Create Issue]]></phrase>
+  <phrase title="fs_web_ranking_create_website" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Create Website]]></phrase>
+  <phrase title="fs_web_ranking_desc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Descending]]></phrase>
+  <phrase title="fs_web_ranking_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit]]></phrase>
+  <phrase title="fs_web_ranking_high" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Highest Resolution]]></phrase>
+  <phrase title="fs_web_ranking_issue_approve" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Website Issue]]></phrase>
+  <phrase title="fs_web_ranking_issue_reply" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Issue Reply]]></phrase>
+  <phrase title="fs_web_ranking_issue_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Issue title]]></phrase>
+  <phrase title="fs_web_ranking_lowest" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Lowest Resolution]]></phrase>
+  <phrase title="fs_web_ranking_solved_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Issue Solved]]></phrase>
+  <phrase title="fs_web_ranking_sortBy" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sort by]]></phrase>
+  <phrase title="fs_web_ranking_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Complaints]]></phrase>
+  <phrase title="fs_web_ranking_there_no_issue_in_this_site" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[There are no issue in this website.]]></phrase>
+  <phrase title="fs_website_ranking" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Website Ranking]]></phrase>
+  <phrase title="fs_website_ranking_lowest_complaint_resolution_percentage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Lowest Complaint Resolution :]]></phrase>
+  <phrase title="fs_website_ranking_most_complaint" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Most Complaints :]]></phrase>
+  <phrase title="fs_website_ranking_solved_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Solved]]></phrase>
+  <phrase title="fs_wr_are_you_sure_unsolved_issue" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Are you sure you want to mark this issue as Unsolved?]]></phrase>
+  <phrase title="fs_wr_complains" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Complains]]></phrase>
+  <phrase title="fs_wr_issue_edit" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Edit Issue]]></phrase>
+  <phrase title="fs_wr_issue_unsolved" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Issue Unsolved]]></phrase>
+  <phrase title="fs_wr_issue_unsolved_btn" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unsolved]]></phrase>
+  <phrase title="fs_wr_issues" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Issues]]></phrase>
+  <phrase title="fs_wr_most_complains" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Complains]]></phrase>
+  <phrase title="fs_wr_most_complains_websites" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Complains sites]]></phrase>
+  <phrase title="fs_wr_most_pending" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Pending]]></phrase>
+  <phrase title="fs_wr_most_pending_issues_websites" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Pending issues sites]]></phrase>
+  <phrase title="fs_wr_most_solved" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Solved]]></phrase>
+  <phrase title="fs_wr_most_solved_issues_websites" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Solved issues sites]]></phrase>
+  <phrase title="fs_wr_most_unsolved" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Unsolved]]></phrase>
+  <phrase title="fs_wr_most_unsolved_issues_websites" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Unsolved issues sites]]></phrase>
+  <phrase title="fs_wr_overall_issue_solved_average" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Overall Solved Issues Average]]></phrase>
+  <phrase title="fs_wr_solved" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Solved]]></phrase>
+  <phrase title="fs_wr_unsolved" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unsolved]]></phrase>
+  <phrase title="nav.fsWebsiteRanking" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Website Ranking]]></phrase>
+  <phrase title="option.fs_web_ranking_parent_web_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Parent Website Id]]></phrase>
+  <phrase title="option.fs_wr_numOfSites" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Number of sites]]></phrase>
+  <phrase title="option_explain.fs_web_ranking_parent_web_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_wr_numOfSites" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[How many Websites will be display in stats list (sits percentage)]]></phrase>
+  <phrase title="option_group.fs_web_ranking" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Website Ranking]]></phrase>
+  <phrase title="option_group_description.fs_web_ranking" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.fs_website_ranking_check" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check Website]]></phrase>
+  <phrase title="permission.fs_website_ranking_perm_check" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check Website Ranking]]></phrase>
+  <phrase title="permission_interface.fs_website_ranking" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Website Ranking]]></phrase>
+</phrases>

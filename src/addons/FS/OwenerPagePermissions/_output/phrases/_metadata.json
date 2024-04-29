@@ -1,0 +1,128 @@
+{
+    "permission.ownerPagePost_approveUnapprove.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f3b06083a7de3f03d73bc96caa784ad8"
+    },
+    "permission.ownerPagePost_comment.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bcbc29b65aae64d24d84883da9de4fb2"
+    },
+    "permission.ownerPagePost_deleteAny.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3fece08991bc4a566583640489eae558"
+    },
+    "permission.ownerPagePost_deleteOwn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f1306fd78ebbee53966928f93ec0a0b5"
+    },
+    "permission.ownerPagePost_editAny.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "05cebe963409c8d3a2f91c36385db2fa"
+    },
+    "permission.ownerPagePost_editOwn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "78583db1f7dbd547a07415f322ff9a89"
+    },
+    "permission.ownerPagePost_hardDeleteAny.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3fc618582f93012eeedf17a65f0b6f33"
+    },
+    "permission.ownerPagePost_inlineMod.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5c291f6eb8d89e341a5ff6913b56826d"
+    },
+    "permission.ownerPagePost_manageOwn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4dddd8eec713c24878905ffca9bab512"
+    },
+    "permission.ownerPagePost_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7915382033f267c9d01001d62628c270"
+    },
+    "permission.ownerPagePost_react.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fc353964de2b1e4b0947f541ab0ad1e6"
+    },
+    "permission.ownerPagePost_undelete.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5ed26aa2b4520e764a94ba04f3c91735"
+    },
+    "permission.ownerPagePost_uploadAttachment.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "219487ddb296c2c185f095b138f7a5ea"
+    },
+    "permission.ownerPagePost_uploadVideo.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0149c882fe0554b5650d113aa8a16670"
+    },
+    "permission.ownerPagePost_view.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4bbfc17cba9851c1933ad7a06e97a746"
+    },
+    "permission.ownerPagePost_viewAttachment.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4718e0ddeae4109d0abbaaecfe8cad2e"
+    },
+    "permission.ownerPagePost_viewDeleted.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ffa3a348b6f89b195845808f15d63d62"
+    },
+    "permission.ownerPagePost_viewModerated.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "01b946eca0c5ee58ec285587d560cbd5"
+    },
+    "permission.ownerPagePost_warn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3e4145e703d0bdb854bf101d49ce5056"
+    },
+    "permission_interface.OwnerPagePostModeratorPermissions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5b67f2f07836246d6aa8ff8516ddc9aa"
+    },
+    "permission_interface.OwnerPagePostPermissions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "af6b7edaca63a6b3ea920ccef8d26b12"
+    }
+}

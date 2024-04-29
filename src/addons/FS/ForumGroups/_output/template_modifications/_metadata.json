@@ -1,0 +1,20 @@
+{
+    "public/fs_add_drop_down_filter.json": {
+        "hash": "9e1f73b5d8f24e0638242524579b2042"
+    },
+    "public/fs_forum_gorups_forum_view.json": {
+        "hash": "1434eaf393154ba297ce6a407d8667eb"
+    },
+    "public/fs_forum_gorups_forum_view_single.json": {
+        "hash": "abfeb11106740f3d3b3864812d217a6f"
+    },
+    "public/fs_forum_groups_hide_filters_threads_approval.json": {
+        "hash": "898042e9f76e821dd7977e2f2bd8b45d"
+    },
+    "public/fs_forum_groups_post_thread_btn_approval.json": {
+        "hash": "4bb07942ea07892c5720fb70149bc3f2"
+    },
+    "public/replace_filter_message.json": {
+        "hash": "49b1113aa32b82fd901d4e22cc3d908a"
+    }
+}

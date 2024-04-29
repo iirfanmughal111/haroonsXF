@@ -1,0 +1,1 @@
+Highlight banned words in red using bbcode.

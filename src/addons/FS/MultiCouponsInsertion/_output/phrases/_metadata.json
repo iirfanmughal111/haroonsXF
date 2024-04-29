@@ -1,0 +1,14 @@
+{
+    "fs_enter_multiple_values.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5a2699ee8cef5606f3ffe2b95034e125"
+    },
+    "fs_multi_coupon.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "c84c0a7017cef6ab4ed68822c2c061ed"
+    }
+}

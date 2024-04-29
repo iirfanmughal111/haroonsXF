@@ -1,0 +1,20 @@
+<?php
+return array (
+  'forum_sort.first_post_reaction_score' => 'First message reaction score',
+  'forum_sort.last_post_date' => 'Last message',
+  'forum_sort.post_date' => 'First message',
+  'forum_sort.reply_count' => 'Replies',
+  'forum_sort.snog_movies_director' => 'Movie director',
+  'forum_sort.snog_movies_genres' => 'Movie genres',
+  'forum_sort.snog_movies_rating' => 'Movie rating',
+  'forum_sort.snog_movies_release' => 'Movie release date',
+  'forum_sort.snog_tv_creator' => 'TV Creator',
+  'forum_sort.snog_tv_episode' => 'TV episode',
+  'forum_sort.snog_tv_first_aired' => 'TV first aired',
+  'forum_sort.snog_tv_genres' => 'TV Genres',
+  'forum_sort.snog_tv_rating' => 'TV Rating',
+  'forum_sort.snog_tv_season' => 'TV season',
+  'forum_sort.title' => 'Title',
+  'forum_sort.view_count' => 'Views',
+  'forum_sort.vote_score' => 'Votes',
+);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_post_thread" modification_key="fs_anonymous_user_name_filed" description="Hide „Name Field“ from post new thread as guest user." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[					<xf:textboxrow name="_xfUsername" data-xf-init="guest-username"
+						maxlength="{{ max_length($xf.visitor, 'username') }}"
+						label="{{ phrase('name') }}" />]]></find>
+    <replace><![CDATA[					<xf:textboxrow name="_xfUsername" value="anonymous"
+						label="{{ phrase('name') }}" readonly="true"/>
+					]]></replace>
+  </modification>
+</template_modifications>

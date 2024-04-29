@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "whats-new",
+    "sub_name": "answers",
+    "format": "answers/:int<find_new_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\QuestionAnswers:WhatsNewAnswer",
+    "context": "fs_questionAnswer_nav",
+    "action_prefix": ""
+}

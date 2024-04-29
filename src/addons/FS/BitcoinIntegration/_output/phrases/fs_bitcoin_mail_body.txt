@@ -1,0 +1,1 @@
+<p>Hey, <strong>{username}</strong>. Your account approved successfully</p>

@@ -1,0 +1,26 @@
+<xf:title>{$tvshow.tv_title}</xf:title>
+
+<xf:form action="{{ link('tvshow/rate-show', $tvshow) }}" ajax="true" class="block">
+	<div class="block-container">
+			<div class="block-body">
+				<xf:macro template="rating_macros" name="rating"
+						  arg-row="{{ true }}"
+						  arg-name="rating"
+						  arg-currentRating="{$userRating.rating}"
+						  arg-rowLabel="{{ phrase('rating') }}"
+						  arg-rowHint=""
+						  arg-rowExplain="{{ phrase('trakt_tv_already_rated') }}" />
+		</div>
+		
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('submit_rating') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:form>

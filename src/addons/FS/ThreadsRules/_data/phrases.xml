@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_green" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Green]]></phrase>
+  <phrase title="fs_red" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Red]]></phrase>
+  <phrase title="fs_yellow" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Yellow]]></phrase>
+  <phrase title="option.fs_color" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select The Colour]]></phrase>
+  <phrase title="option.fs_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Forums]]></phrase>
+  <phrase title="option.fs_show_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show Icon]]></phrase>
+  <phrase title="option.fs_thread_rules" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Rules]]></phrase>
+  <phrase title="option_explain.fs_color" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_show_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_thread_rules" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_thread_rules" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Threads Rules]]></phrase>
+  <phrase title="option_group_description.fs_thread_rules" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

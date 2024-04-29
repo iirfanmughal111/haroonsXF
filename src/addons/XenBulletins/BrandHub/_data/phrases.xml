@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.bh_brand" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brands]]></phrase>
+  <phrase title="admin_navigation.bh_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories]]></phrase>
+  <phrase title="admin_navigation.bh_item" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Items]]></phrase>
+  <phrase title="admin_navigation.brand_hub" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brand Hub]]></phrase>
+  <phrase title="admin_navigation.custom_item_fields" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Item Custom FIelds]]></phrase>
+  <phrase title="are_sure_to_unsub" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[Are You Sure To Unsubcribe]]></phrase>
+  <phrase title="bh_about_the_x_item" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[About the {brandTitle} {itemTitle}]]></phrase>
+  <phrase title="bh_add_brand" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Brand]]></phrase>
+  <phrase title="bh_add_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Category]]></phrase>
+  <phrase title="bh_add_item" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add item]]></phrase>
+  <phrase title="bh_add_items" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Add Item]]></phrase>
+  <phrase title="bh_add_owner_page" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[Add Owner Page]]></phrase>
+  <phrase title="bh_all" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[All]]></phrase>
+  <phrase title="bh_bookmark" version_id="1020300" version_string="1.2.3 Alpha"><![CDATA[Bookmark]]></phrase>
+  <phrase title="bh_brand" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Brand]]></phrase>
+  <phrase title="bh_brand_about" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[About {brandTitle}]]></phrase>
+  <phrase title="bh_brand_categories" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Categories]]></phrase>
+  <phrase title="bh_brand_for_sale_link" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Used for sale link]]></phrase>
+  <phrase title="bh_brand_forums_link" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Forums link]]></phrase>
+  <phrase title="bh_brand_intro_link" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Introduction link]]></phrase>
+  <phrase title="bh_brand_lists" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Brand list]]></phrase>
+  <phrase title="bh_brand_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="bh_brand_website_link" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Website link]]></phrase>
+  <phrase title="bh_brands" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brands]]></phrase>
+  <phrase title="bh_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Category]]></phrase>
+  <phrase title="bh_category_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="bh_create_owner_page" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Create {itemTitle} owner page]]></phrase>
+  <phrase title="bh_delete_review" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Delete review]]></phrase>
+  <phrase title="bh_description" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Description]]></phrase>
+  <phrase title="bh_discussion" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Discussion]]></phrase>
+  <phrase title="bh_discussions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Discussions]]></phrase>
+  <phrase title="bh_edit_brand" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Brand]]></phrase>
+  <phrase title="bh_edit_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Category]]></phrase>
+  <phrase title="bh_edit_item" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Edit Item]]></phrase>
+  <phrase title="bh_edit_owner_page" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[Edit Owner Page]]></phrase>
+  <phrase title="bh_explain_why_youre_giving_this_rating" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Explain why you're giving this rating. Reviews which are not constructive may be removed without notice.]]></phrase>
+  <phrase title="bh_follow_owner_page" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Follow The Owner Page]]></phrase>
+  <phrase title="bh_here_are_the_most_recent_x_item_topics_from_our_community" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Here are the most recent {itemTitle} topics from our community.]]></phrase>
+  <phrase title="bh_highest_rated" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Highest Rated]]></phrase>
+  <phrase title="bh_highest_rated_in_this_category" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Highest Rated in This Category]]></phrase>
+  <phrase title="bh_inline_moderation_thread_link_to_brand_hub" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Thread link to BrandHub (Inline moderation)]]></phrase>
+  <phrase title="bh_introduction_x_brand" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Introduction to {brandTitle}]]></phrase>
+  <phrase title="bh_item" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Item]]></phrase>
+  <phrase title="bh_item_fields" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Item Fields]]></phrase>
+  <phrase title="bh_item_list_sub" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[Subscribe Items]]></phrase>
+  <phrase title="bh_item_make" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Make]]></phrase>
+  <phrase title="bh_item_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model]]></phrase>
+  <phrase title="bh_item_subscribe" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[Subscribe Items]]></phrase>
+  <phrase title="bh_item_title" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="bh_items" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Items]]></phrase>
+  <phrase title="bh_link_to_brand_hub" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Link to Brand-Hub...]]></phrase>
+  <phrase title="bh_load_more_owner_pages" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Load more Owner Pages]]></phrase>
+  <phrase title="bh_load_more_x_item_reviews" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Load more {brandTitle} {itemTitle} reviews]]></phrase>
+  <phrase title="bh_main_container_item" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Main Container]]></phrase>
+  <phrase title="bh_main_photo" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[Main Photo]]></phrase>
+  <phrase title="bh_most_discussed" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Discussed]]></phrase>
+  <phrase title="bh_most_recent_x_item_reviews" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Most recent {brandTitle} {itemTitle} reviews]]></phrase>
+  <phrase title="bh_most_viewed" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Most Viewed]]></phrase>
+  <phrase title="bh_my_x_page_topics" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[My {brandTitle} {itemTitle} Topics]]></phrase>
+  <phrase title="bh_no_brand_assign_to_selected_forum" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Brand not assign to selected forum.]]></phrase>
+  <phrase title="bh_no_items_available_for_selected_brand" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[No items are available for specified Brand.]]></phrase>
+  <phrase title="bh_overview" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Overview]]></phrase>
+  <phrase title="bh_owner_page" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Owner Page]]></phrase>
+  <phrase title="bh_owner_page_photos" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[Photos]]></phrase>
+  <phrase title="bh_owner_pages" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[Owner Pages]]></phrase>
+  <phrase title="bh_page_about" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[About]]></phrase>
+  <phrase title="bh_page_about_my_x_item" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[About My {brandTitle} {itemTitle}]]></phrase>
+  <phrase title="bh_page_attachment" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[Attachment]]></phrase>
+  <phrase title="bh_page_customizations" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[Customization]]></phrase>
+  <phrase title="bh_page_rank_my_X_owner_page" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[My {brandTitle} {itemTitle} Rankings]]></phrase>
+  <phrase title="bh_photos" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Photos]]></phrase>
+  <phrase title="bh_please_provide_review_with_your_rating" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[Please provide a review with your rating.]]></phrase>
+  <phrase title="bh_please_select_star_rating" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[Please select a star rating.]]></phrase>
+  <phrase title="bh_rate_this_item" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Rate this Item]]></phrase>
+  <phrase title="bh_rating_avg" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rating average]]></phrase>
+  <phrase title="bh_ratings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Ratings]]></phrase>
+  <phrase title="bh_react_to_the_item" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[{name} reacted to <a {posterParams}>{title}</a> with {reaction}]]></phrase>
+  <phrase title="bh_react_to_the_page" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[{name} reacted to owner page <a {posterParams}>{title}</a> with {reaction}]]></phrase>
+  <phrase title="bh_read_what_tractor_by_net_members_thinkabout_the_x_item" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Read what TractorByNet members think about the {brandTitle} {itemTitle} Subcompact Tractor]]></phrase>
+  <phrase title="bh_related_x_links" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Related {brandTitle} Links]]></phrase>
+  <phrase title="bh_remove_bookmark" version_id="1020300" version_string="1.2.3 Alpha"><![CDATA[Remove Bookmark]]></phrase>
+  <phrase title="bh_requested_item_not_found" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[Requested item not found]]></phrase>
+  <phrase title="bh_requested_media_item_not_found" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[Requested media item not found.]]></phrase>
+  <phrase title="bh_requested_review_not_found" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[Requested review not found.]]></phrase>
+  <phrase title="bh_review" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Review]]></phrase>
+  <phrase title="bh_review_in_x_item" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[ Review in '{itemTitle}' Item]]></phrase>
+  <phrase title="bh_review_is_required" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[Review is required]]></phrase>
+  <phrase title="bh_reviews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reviews]]></phrase>
+  <phrase title="bh_select_brand" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Select a Brand]]></phrase>
+  <phrase title="bh_side_bar_item" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Side Bar ]]></phrase>
+  <phrase title="bh_specifications" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Specifications]]></phrase>
+  <phrase title="bh_subscribe_x_item" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Subscribe to the {brandTitle} {itemTitle}]]></phrase>
+  <phrase title="bh_subscribed" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[You have Subscribed {itemTitle}]]></phrase>
+  <phrase title="bh_unsubscribe" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[UnSubcribe]]></phrase>
+  <phrase title="bh_upload_photos" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[Upload Photos]]></phrase>
+  <phrase title="bh_user_reviews" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[User Reviews]]></phrase>
+  <phrase title="bh_view_all_x_item_topics" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[View all {brandTitle} {itemTitle} Topics]]></phrase>
+  <phrase title="bh_view_all_x_reviews" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[View all {total} reviews]]></phrase>
+  <phrase title="bh_view_more_threads" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[View More Threads]]></phrase>
+  <phrase title="bh_view_owner_pages_to_see_photos_customizations" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[View owner pages to see photos, customization and comments  about member-owner {brandTitle} {itemTitle}s]]></phrase>
+  <phrase title="bh_views" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Views]]></phrase>
+  <phrase title="bh_write_a_review" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Write a review  >]]></phrase>
+  <phrase title="bh_x_brand_for_sale" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Used {brandTitle} for sale]]></phrase>
+  <phrase title="bh_x_brand_forums" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[{brandTitle} Forums]]></phrase>
+  <phrase title="bh_x_brand_website" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[{brandTitle} Website]]></phrase>
+  <phrase title="bh_x_item_community_rankings" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[{brandTitle} {itemTitle} Community Rankings]]></phrase>
+  <phrase title="bh_x_item_descussion" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[{brandTitle} {itemTitle} Discussions]]></phrase>
+  <phrase title="bh_x_item_owner_pages" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[{brandTitle} {itemTitle} Owner Pages]]></phrase>
+  <phrase title="bh_you_have_already_rated_this_item_rerating_remove_existing" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[You have already rated this Item. Re-rating it will remove your existing rating or review.]]></phrase>
+  <phrase title="bh_you_have_selected_threads_from_multiple_forums" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[You have selected threads from Multiple forums. Please select from one forum at a time.]]></phrase>
+  <phrase title="bh_you_sure_you_want_to_assign_item_x_threads" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Are you sure you want to assign the Item specified below to the {count} selected threads?]]></phrase>
+  <phrase title="bh_your_review_must_be_at_least_x_characters" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[Your review must be at least {min} characters.]]></phrase>
+  <phrase title="data_are_added_to" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Item <a href="{link}">{title}</a> {detail}  updated check it ]]></phrase>
+  <phrase title="data_are_added_to_page" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Item <a href="{link}">{title}</a> Onwer Page {detail}  updated check it ]]></phrase>
+  <phrase title="item_description" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Description]]></phrase>
+  <phrase title="nav.bh_brand_hub" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Brand Hub]]></phrase>
+  <phrase title="option.bh_ImageExtensions" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Allowed image extensions]]></phrase>
+  <phrase title="option.bh_MinimumReviewLength" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Minimum review length]]></phrase>
+  <phrase title="option.bh_RecentReviewsCount" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Recent reviews count]]></phrase>
+  <phrase title="option.bh_ReviewRequired" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Review Required]]></phrase>
+  <phrase title="option.bh_ReviewsPerPage" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Reviews per page]]></phrase>
+  <phrase title="option.bh_discussions_on_item" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Discussions display on Item]]></phrase>
+  <phrase title="option.bh_highest_rated_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Highest Rated items in Widget]]></phrase>
+  <phrase title="option.forum_items_display" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Items display on forum]]></phrase>
+  <phrase title="option.hide_forum_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Hide items block on forum]]></phrase>
+  <phrase title="option_explain.bh_ImageExtensions" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[List the file extensions that are allowed to be uploaded for images. Use spaces or line breaks between extensions.]]></phrase>
+  <phrase title="option_explain.bh_MinimumReviewLength" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[If a review is entered, it will not be accepted unless it is at least this long. If a review is not required, this setting will be ignored if no review is entered.]]></phrase>
+  <phrase title="option_explain.bh_RecentReviewsCount" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[The maximum number of recent reviews to display on the Item page.]]></phrase>
+  <phrase title="option_explain.bh_ReviewRequired" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[If enabled, users must submit a review when rating a item.]]></phrase>
+  <phrase title="option_explain.bh_ReviewsPerPage" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of reviews show on per page]]></phrase>
+  <phrase title="option_explain.bh_discussions_on_item" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of discussions to show on item page]]></phrase>
+  <phrase title="option_explain.bh_highest_rated_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of items show in Highest Rated Category widget]]></phrase>
+  <phrase title="option_explain.forum_items_display" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[Number of items display in items-Block on forum]]></phrase>
+  <phrase title="option_explain.hide_forum_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Hide items block on forum-view page]]></phrase>
+  <phrase title="option_group.bh_brand_hub" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[[XB] Brand Hub]]></phrase>
+  <phrase title="option_group_description.bh_brand_hub" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_canSetItemMainPhoto" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[Can Set Item Main-Photo]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_canUploadPhotos" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[Can Upload Photos into Hub]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_canViewOwnerPageTab" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[Can View owner page tab on Profile]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_can_assignThreadsToHub" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can Assign Threads to HUB]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_can_edit_brandDescript" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can Edit Brand-Description]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_can_edit_itemDescript" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can Edit Item Description]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_can_edit_ownerpage" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can Edit Owner-Page]]></phrase>
+  <phrase title="permission.bh_brand_hub_bh_rate_item" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Can Rate/Review Items]]></phrase>
+  <phrase title="permission.bh_brand_hub_can_view_subscribe_items" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[Can View Subscribe items on Profile]]></phrase>
+  <phrase title="permission.bh_brand_hub_create_bookmark" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[Create bookmark]]></phrase>
+  <phrase title="permission.bh_brand_hub_deleteAnyReview" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can Delete any Item reviews]]></phrase>
+  <phrase title="permission.bh_brand_hub_hardDelete" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can Hard-delete review]]></phrase>
+  <phrase title="permission.bh_brand_hub_react" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[React to item]]></phrase>
+  <phrase title="permission.bh_brand_hub_react_page" version_id="1010900" version_string="1.1.9 Alpha"><![CDATA[React to OwnerPage]]></phrase>
+  <phrase title="permission.bh_brand_hub_undelete" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can Undelete reviews]]></phrase>
+  <phrase title="permission.bh_brand_hub_viewDeleted" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Can View Deleted reviews]]></phrase>
+  <phrase title="permission_interface.bh_brand_hub" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[[XB] Brand-Hub]]></phrase>
+  <phrase title="please_select_a_x" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[Please select a {type}]]></phrase>
+  <phrase title="popular_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Popular items]]></phrase>
+  <phrase title="related_links" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Related Links]]></phrase>
+  <phrase title="subcribe_date" version_id="1010600" version_string="1.1.6 Alpha"><![CDATA[Subcribe Date]]></phrase>
+  <phrase title="widget_def.highestRatedInCategory" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Highest rated Item in Category]]></phrase>
+  <phrase title="widget_def_desc.highestRatedInCategory" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[]]></phrase>
+  <phrase title="you_have_followed" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[You have Followed]]></phrase>
+</phrases>

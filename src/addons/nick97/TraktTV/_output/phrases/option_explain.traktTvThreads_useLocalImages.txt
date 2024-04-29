@@ -1,0 +1,1 @@
+Store the poster images stored directly on your server. If not, TMDb image links will be used to display.

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_hcwp_btnUrl" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_hcwp" display_order="2"/>
+  </option>
+  <option option_id="fs_hcwp_userGroups" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\UserGroup::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="fs_hcwp" display_order="1"/>
+  </option>
+</options>

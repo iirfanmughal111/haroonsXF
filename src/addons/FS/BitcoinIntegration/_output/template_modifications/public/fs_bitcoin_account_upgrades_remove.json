@@ -1,0 +1,9 @@
+{
+    "template": "account_upgrades",
+    "description": "fs_bitcoin_account_upgrades_remove",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:foreach loop=\"\\$available\" value=\"\\$upgrade\">.*?<\\/xf:foreach>.*?<\\/xf:foreach>/is",
+    "replace": "<xf:foreach loop=\"$available\" value=\"$upgrade\">\n\t<xf:if is=\"!in_array($upgrade.user_upgrade_id, [{{$xf.options.fs_bitcoin_premium_companion}},{{$xf.options.fs_bitcoin_provider_city}},{{$xf.options.fs_bitcoin_vip_companion}},{{$xf.options.fs_bitcoin_provider_vip}}])\">\n\t\t<xf:formrow rowtype=\"button\"\n\t\t\t\t\tlabel=\"{$upgrade.title}\"\n\t\t\t\t\thint=\"{$upgrade.cost_phrase}\"\n\t\t\t\t\texplain=\"{$upgrade.description|raw}\">\n\n\t\t\t<xf:form action=\"{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}\" ajax=\"true\" data-xf-init=\"payment-provider-container\">\n\t\t\t\t<div class=\"inputGroup\">\n\t\t\t\t\t<xf:if is=\"{{ count($upgrade.payment_profile_ids) > 1 }}\">\n\t\t\t\t\t\t<xf:select name=\"payment_profile_id\">\n\t\t\t\t\t\t\t<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>\n\t\t\t\t\t\t\t<xf:foreach loop=\"$upgrade.payment_profile_ids\" value=\"$profileId\">\n\t\t\t\t\t\t\t\t<xf:option value=\"{$profileId}\">{$profiles.{$profileId}}</xf:option>\n\t\t\t\t\t\t\t</xf:foreach>\n\t\t\t\t\t\t</xf:select>\n\n\t\t\t\t\t\t<span class=\"inputGroup-splitter\"></span>\n\n\t\t\t\t\t\t<xf:button type=\"submit\" icon=\"purchase\" />\n\t\t\t\t\t\t<xf:else />\n\t\t\t\t\t\t<xf:button type=\"submit\" icon=\"purchase\" />\n\n\t\t\t\t\t\t<xf:hiddenval name=\"payment_profile_id\">{$upgrade.payment_profile_ids|first}</xf:hiddenval>\n\t\t\t\t\t</xf:if>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"js-paymentProviderReply-user_upgrade{$upgrade.user_upgrade_id}\"></div>\n\t\t\t</xf:form>\n\n\t\t</xf:formrow>\n\t</xf:if>\n</xf:foreach>"
+}

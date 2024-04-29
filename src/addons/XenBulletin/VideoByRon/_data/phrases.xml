@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_logo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Logo]]></phrase>
+  <phrase title="add_ron_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Ron Video]]></phrase>
+  <phrase title="admin_navigation.xb_videos_by_ron" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Videos by Ron]]></phrase>
+  <phrase title="edit_ron_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Ron Video]]></phrase>
+  <phrase title="logo_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Logo image]]></phrase>
+  <phrase title="update_logo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Update Logo]]></phrase>
+  <phrase title="videos_by_ron" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Videos by Ron]]></phrase>
+  <phrase title="youtube_url_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Insert only YouTube Video URL]]></phrase>
+</phrases>

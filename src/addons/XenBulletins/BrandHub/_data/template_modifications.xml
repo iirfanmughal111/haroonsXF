@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_post_thread" modification_key="add_items_dropdown" description="Add items dropDown in post thread template" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:after_title]-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_can_assignThreadsToHub')">
+<xf:selectrow name="item_id" value="{$thread.item_id}" label="{{ phrase('bh_item') }}">
+	<xf:option value="0" selected="!{$thread.item_id}">{{ phrase('(none)') }}</xf:option>
+
+	<xf:foreach loop="$items" value="$item">
+		<xf:option value="{$item.item_id}" label="{$item.item_title}" />
+	</xf:foreach>
+</xf:selectrow>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="item_lists" description="brand item lists" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="above_node_list"></xf:extension>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$items is not empty && !$xf.options.hide_forum_items" >
+	<xf:css src="bh_brandHub_list.less" />
+<br>
+<div class="block-container">
+	<div class="block-body">
+			
+			<div class="brandHub">	
+				<div>
+					<h4> {{phrase ('popular_items')}}
+				<a href="{{ link('bh_brands/brand', $brand) }}" class="bh_a" data-name="{$brand.brand_title}"> (view all)</a>
+				
+					</h4>
+				</div>
+					<ul class="grid-list">
+						<xf:foreach loop="$items" value="$item">
+							<li class="bh_item">
+								<a href="{{ link('bh_brands/item', $item) }}" class="bh_a" data-name="{$item.item_title}">{$item.item_title} ({{$item.discussion_count}})</a>
+							</li>
+						</xf:foreach>
+				
+					 <xf:if is="$itemCount > count($items)">
+						<a href="{{ link('bh_brands/brand', $brand) }}" class="bh_a" data-name="{$brand.brand_title}">{{phrase('bh_item_more')}}</a>
+					</xf:if>
+						
+					</ul>	
+				</div>
+	
+	</div>
+</div>
+	<br>
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="bh_owner_pages_tab" description="Add ownerpages Tab in to user profile" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tabs:after_recent_content]-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$user.canViewOwnerPagesOnProfile()">
+	<a href="{{ link('members/tabpages') }}"
+	   class="tabs-tab"
+	   id="bh_owner_page_tab"
+	   role="tab">{{ phrase('bh_owner_pages') }}</a>
+</xf:if>
+
+
+<xf:if is="$user.canViewItemsOnProfile()">
+<a href="{{ link('members/itemlistsub', $user) }}"
+       class="tabs-tab"
+	   id="bh_item_list_sub"
+	   role="tab">{{ phrase('bh_item_list_sub') }}</a>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="bh_owner_pages_tab_pane" description="add owner pages pane" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:after_recent_content]-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$user.canViewOwnerPagesOnProfile()">
+	<li data-href="{{ link('members/tabpages', $user) }}" role="tabpanel" aria-labelledby="bh_owner_page_tab">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+</xf:if>
+
+<xf:if is="$user.canViewItemsOnProfile()">
+<li data-href="{{ link('members/itemlistsub', $user) }}" role="tabpanel" aria-labelledby="bh_item_list_sub">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="thread_edit" modification_key="items_dropdown_in_thread_edit" description="Add items Drop-down in thread-edit template" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[help-href="{{ link('forums/prefix-help', $forum) }}"/>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_can_assignThreadsToHub')">
+<xf:selectrow name="item_id" value="{$thread.item_id}" label="{{ phrase('bh_item') }}">
+	<xf:option value="0" selected="!{$thread.item_id}">{{ phrase('(none)') }}</xf:option>
+
+	<xf:foreach loop="$items" value="$item">
+		<xf:option value="{$item.item_id}" label="{$item.item_title}" />
+	</xf:foreach>
+</xf:selectrow>
+</xf:if>
+]]></replace>
+  </modification>
+</template_modifications>

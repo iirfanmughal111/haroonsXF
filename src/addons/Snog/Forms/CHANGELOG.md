@@ -1,0 +1,31 @@
+# 2.2.0:
+- General code refactor
+- Added Xon's MultiPrefix support
+- Added button to copy Form's Direct access URL in ACP & make it clickable
+- Added form submit count statistic
+- Added option to make form publicly visible (regardless on user criteria settings)
+- Fixed default answer variables for multi-line text
+- Fixed "Accessed unknown getter 'video_url' on XF:Attachment" on XF 2.2+
+- Added link to thread in the email report
+- Added flood checking option
+- Added time limit option when user can submit form again
+- Reduced query amount for forms with post, thread or conversation report
+- Fixed "Require approval" checkbox was unavailable for "Report in existing thread"
+- Optimized an answer storing
+- Added CSV export
+- Added export for answers & logs
+- Added form widget
+- Fixed redirect to visible threads & posts on moderation
+- Fixed thread/post with approval mode is not appearing to reported user
+- Refactor: Render report message for each report type separately to handle it by custom add-ons
+- Refactor: Form redirect URL
+- Refactor: Properly filter viewable forms
+- Refactor: Form submit & view logic
+- Refactor: Cleanup ACP templates & add hooks for template modifications
+- Fixed attempting to save thread/post/conversation with validation errors
+- Fixed broken redirect on forms with quick reply to existing thread
+- Fixed missing & mismatching maxLenght option on input fields & properly handle maxLenght values
+- Fix: avoid "Attempted to convert NULL to integer [prefix_id]" error if no default forum prefixes available
+- Removed hardcoded template callbacks
+- Completely removed XF <2.2 stuff support
+- Cache navigation tab display condition result to session storage

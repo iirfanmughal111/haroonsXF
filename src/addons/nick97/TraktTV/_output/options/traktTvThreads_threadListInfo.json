@@ -1,0 +1,15 @@
+{
+    "edit_format": "checkbox",
+    "edit_format_params": "title={{ phrase('snog_tv_title') }}\ngenres={{ phrase('snog_tv_genre') }}\nfirst_air_date={{ phrase('snog_tv_first_aired') }}\nlast_air_date={{ phrase('snog_tv_last_air_date') }}\nstatus={{ phrase('snog_tv_status') }}\ndirector={{ phrase('snog_tv_creator') }}\nplot={{ phrase('snog_tv_overview') }}",
+    "data_type": "array",
+    "sub_options": [
+        "*"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "{\"title\":1,\"genres\":1,\"first_air_date\":1,\"last_air_date\":1,\"status\":1,\"director\":1}",
+    "relations": {
+        "traktTvThreads": 1041
+    }
+}

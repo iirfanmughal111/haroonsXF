@@ -1,0 +1,12 @@
+{
+    "public/cxf_google_translate_forum.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "98d65d833daddd0fb477c6d9031c2ef7"
+    },
+    "public/cxf_google_translate_forum.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4b76b45b1791661a503a9d6f069ec619"
+    }
+}

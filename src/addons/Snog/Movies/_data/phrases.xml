@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.snogMoviesConvert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Convert XF1 movie threads to XF2 version]]></phrase>
+  <phrase title="cron_entry.snogMoviesWatchProvider" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[[OzzModz] TMDb Movie Thread Starter: Update watch provider data]]></phrase>
+  <phrase title="cron_entry.snog_movies_changes" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[[OzzModz] TMDb Movie Thread Starter: Check for Movie changes]]></phrase>
+  <phrase title="custom_bb_code_desc.actor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.container" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.plot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_desc.runtime" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For formatting old XF1 TMDb movie threads]]></phrase>
+  <phrase title="custom_bb_code_example.actor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.container" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.plot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.runtime" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.actor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.container" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.plot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.runtime" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.actor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDB actor]]></phrase>
+  <phrase title="custom_bb_code_title.container" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb container]]></phrase>
+  <phrase title="custom_bb_code_title.director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb director]]></phrase>
+  <phrase title="custom_bb_code_title.genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb genre]]></phrase>
+  <phrase title="custom_bb_code_title.movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb movie]]></phrase>
+  <phrase title="custom_bb_code_title.plot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb plot]]></phrase>
+  <phrase title="custom_bb_code_title.poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb poster container]]></phrase>
+  <phrase title="custom_bb_code_title.release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb release date]]></phrase>
+  <phrase title="custom_bb_code_title.runtime" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb runtime]]></phrase>
+  <phrase title="forum_sort.snog_movies_director" version_id="2020000" version_string="2.2.0"><![CDATA[Movie director]]></phrase>
+  <phrase title="forum_sort.snog_movies_genres" version_id="2020000" version_string="2.2.0"><![CDATA[Movie genres]]></phrase>
+  <phrase title="forum_sort.snog_movies_rating" version_id="2020000" version_string="2.2.0"><![CDATA[Movie rating]]></phrase>
+  <phrase title="forum_sort.snog_movies_release" version_id="2020000" version_string="2.2.0"><![CDATA[Movie release date]]></phrase>
+  <phrase title="forum_type.snog_movies_movie" version_id="2020000" version_string="2.2.0"><![CDATA[TMDb Movie Forum]]></phrase>
+  <phrase title="forum_type_desc.snog_movies_movie" version_id="2020000" version_string="2.2.0"><![CDATA[TMDb movie thread starter]]></phrase>
+  <phrase title="option.tmdbthreads_addgroups" version_id="2020000" version_string="2.2.0"><![CDATA[[DEPRECATED] Manual update user group(s)]]></phrase>
+  <phrase title="option.tmdbthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API Key]]></phrase>
+  <phrase title="option.tmdbthreads_backdropCoverSize" version_id="2020041" version_string="2.2.0 Beta 11"><![CDATA[Backdrop cover size]]></phrase>
+  <phrase title="option.tmdbthreads_castsLimit" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[Casts results on thread tab]]></phrase>
+  <phrase title="option.tmdbthreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CDN Path]]></phrase>
+  <phrase title="option.tmdbthreads_changesLanguage" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Movie changes tracking language]]></phrase>
+  <phrase title="option.tmdbthreads_companiesLimit" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Production results limit on thread view]]></phrase>
+  <phrase title="option.tmdbthreads_crewLimit" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[Crew results on thread tab]]></phrase>
+  <phrase title="option.tmdbthreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crosslink into all genre forums]]></phrase>
+  <phrase title="option.tmdbthreads_fetchCompanies" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Fetch movie companies]]></phrase>
+  <phrase title="option.tmdbthreads_fetchCredits" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Fetch movie credits]]></phrase>
+  <phrase title="option.tmdbthreads_fetchVideos" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Fetch movie videos]]></phrase>
+  <phrase title="option.tmdbthreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Force comments to second post]]></phrase>
+  <phrase title="option.tmdbthreads_forum" version_id="2020000" version_string="2.2.0"><![CDATA[[DEPRECATED] Movie thread forums]]></phrase>
+  <phrase title="option.tmdbthreads_forum_local" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use local poster images]]></phrase>
+  <phrase title="option.tmdbthreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie information language]]></phrase>
+  <phrase title="option.tmdbthreads_largeCompanyLogoSize" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Large company logo size]]></phrase>
+  <phrase title="option.tmdbthreads_largePosterSize" version_id="2020034" version_string="2.2.0 Beta 4"><![CDATA[Large poster size]]></phrase>
+  <phrase title="option.tmdbthreads_mix" version_id="2020000" version_string="2.2.0"><![CDATA[[DEPRECATED] Allow mixed content]]></phrase>
+  <phrase title="option.tmdbthreads_replaceSearchTemplate" version_id="2020016" version_string="2.2.0 Alpha 6"><![CDATA[Replace search results template]]></phrase>
+  <phrase title="option.tmdbthreads_showThreadInfo" version_id="2020013" version_string="2.2.0 Alpha 3"><![CDATA[Items to show in thread]]></phrase>
+  <phrase title="option.tmdbthreads_smallCompanyLogoWidth" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Small company logo size]]></phrase>
+  <phrase title="option.tmdbthreads_smallPosterWidth" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Small poster width]]></phrase>
+  <phrase title="option.tmdbthreads_syncTitle" version_id="2020010" version_string="2.2.0 Alpha"><![CDATA[Sync thread title with TMDb movie title]]></phrase>
+  <phrase title="option.tmdbthreads_threadListInfo" version_id="2020020" version_string="2.2.0 Alpha 10"><![CDATA[Items to show in forum thread list]]></phrase>
+  <phrase title="option.tmdbthreads_trackChanges" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Track movie change list]]></phrase>
+  <phrase title="option.tmdbthreads_trackChangesPeriod" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Movies changes tracking period]]></phrase>
+  <phrase title="option.tmdbthreads_trackCommunityChanges" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Track community changes for movies]]></phrase>
+  <phrase title="option.tmdbthreads_update" version_id="2020000" version_string="2.2.0"><![CDATA[[DEPRECATED] Enable manual updates]]></phrase>
+  <phrase title="option.tmdbthreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use forum genre limiting]]></phrase>
+  <phrase title="option.tmdbthreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use Rating System]]></phrase>
+  <phrase title="option.tmdbthreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use CDN]]></phrase>
+  <phrase title="option.tmdbthreads_useyear" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Include release year in thread title]]></phrase>
+  <phrase title="option.tmdbthreads_videoLimit" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[Video results on thread tab]]></phrase>
+  <phrase title="option.tmdbthreads_watchProviderRegion" version_id="2020035" version_string="2.2.0 Beta 5"><![CDATA[Default watch provider region]]></phrase>
+  <phrase title="option.tmdbthreads_watchProviderRegions" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Enabled watch provider regions]]></phrase>
+  <phrase title="option_explain.tmdbthreads_addgroups" version_id="2000070" version_string="2.0.0"><![CDATA[Select the user groups that will be able to manually update exisiting threads that DO NOT contain TMDb information.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_backdropCoverSize" version_id="2020041" version_string="2.2.0 Beta 11"><![CDATA[Requires <a href="https://xenforo.com/community/resources/ozzmodz-covers.8589/" target="_blank">[OzzModz] Covers</a> add-on installed. Select "none" to disable. The file size of the selected option must not exceed the max. file cover size.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_castsLimit" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you are using your own CDN, enter the CDN path here.<br />Example: http://cdn.yourpath.com/data<br />DO NOT end the path with a /]]></phrase>
+  <phrase title="option_explain.tmdbthreads_changesLanguage" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Enter the ISO 639-1 Language Code that will be used for movie information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a movie at The Movie Database. Those are both handled by The Movie Database and not translated by this add-on.<br />]]></phrase>
+  <phrase title="option_explain.tmdbthreads_companiesLimit" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_crewLimit" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To place a redirect link to the main movie thread in all genre limited forums that a movie can belong to, check this box.<br />EXAMPLE: A movie is in these genres: Drama, Science Fiction, Thriller<br />A member posts the movie in the Science Fiction forum.<br />Redirect links will be placed in the Drama and Thriller forums.<br /><b>NOTE: </b>Forum genre limiting must be enabled for this to work]]></phrase>
+  <phrase title="option_explain.tmdbthreads_fetchCompanies" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Enable this option if you want to receive a list of movie companies. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_fetchCredits" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Enable this option if you want to receive a list of movie credits. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_fetchVideos" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Enable this option if you want to receive a list of movie videos. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you want to force any comments entered with a new movie thread to be posted as the second post in the new movie thread. NOTE: This does not change existing threads. This only affects the first post in a new movie thread.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the forums that will be used to post movie threads]]></phrase>
+  <phrase title="option_explain.tmdbthreads_forum_local" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Instead of using the TMDb cloud for poster images, you can use the poster images that are stored on your server. To use the images stored on your server, check this box.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for movie information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a movie at The Movie Database. Those are both handled by The Movie Database and not translated by this add-on.<br /><br />Changing language will NOT change threads already posted. Only new threads will post in the new language.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_largeCompanyLogoSize" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_largePosterSize" version_id="2020034" version_string="2.2.0 Beta 4"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to download.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_mix" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to allow normal threads to be posted in a movie forum.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_replaceSearchTemplate" version_id="2020016" version_string="2.2.0 Alpha 6"><![CDATA[Check this option if you want to display movie data in XF search/tag results.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_showThreadInfo" version_id="2020013" version_string="2.2.0 Alpha 3"><![CDATA[Select the items to show in a movie thread.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_smallCompanyLogoWidth" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to resize.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_smallPosterWidth" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to resize.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_syncTitle" version_id="2020010" version_string="2.2.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_threadListInfo" version_id="2020020" version_string="2.2.0 Alpha 10"><![CDATA[Select the items to show in the forum thread list.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_trackChanges" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Enable if you want to keep track of the list of changed TVs to automatically apply rebuilding data.
+<b>Note:</b> This will overwrite all your manual edits if the TV has been updated.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_trackChangesPeriod" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[You can query up to 14 days]]></phrase>
+  <phrase title="option_explain.tmdbthreads_trackCommunityChanges" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Please note that TMDb changes are made by users and may not always correct.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_update" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Checking this box will enable manual updates for existing threads that DO NOT contain TMDb Movie information.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the type of movies posted in each forum to a specific genre. Check this box to enable this option. The genre for each forum is specified in Forums->Nodes. Click on the forum you wish to limit and select the genres you wish to allow in the forum.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to turn on the movie rating system.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to use your own CDN for all poster images. Your CDN must pick up images from your server's data/movies folder.]]></phrase>
+  <phrase title="option_explain.tmdbthreads_useyear" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To include the year a movie was released in the thread title, check this box.<br />Example: Blended (2014)]]></phrase>
+  <phrase title="option_explain.tmdbthreads_videoLimit" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_watchProviderRegion" version_id="2020035" version_string="2.2.0 Beta 5"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tmdbthreads_watchProviderRegions" version_id="2020048" version_string="2.2.0 Beta 18"><![CDATA[Leave it empty to disable.<br />
+Phrases can be translated with "snog_movies_country.{countryCode}" key.]]></phrase>
+  <phrase title="option_group.snogMovies" version_id="2020020" version_string="2.2.0 Alpha 10"><![CDATA[[OzzModz] TMDb Movie Thread Starter]]></phrase>
+  <phrase title="option_group_description.snogMovies" version_id="2000070" version_string="2.0.0"><![CDATA[Options for the TMDb movie thread starter add-on]]></phrase>
+  <phrase title="permission.snog_movies_updatePersons" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[Can update persons data]]></phrase>
+  <phrase title="permission_interface.snog_movies" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[[OzzModz] TMDb Movie Thread Starter]]></phrase>
+  <phrase title="snog_movies_add_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add movie information]]></phrase>
+  <phrase title="snog_movies_already_rated" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you have already rated this movie, your current rating is shown]]></phrase>
+  <phrase title="snog_movies_apply_changes" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Apply changes]]></phrase>
+  <phrase title="snog_movies_available_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Available movie genres]]></phrase>
+  <phrase title="snog_movies_available_genre_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the movie type by genre in this forum.<br />If you select ALL then any movie genre will be allowed.<br />If you select any other genres then new threads for this forum will be limited to movies in those genres.<br />NOTE: If someone tries to post a movie in a genre that does not have a node assigned to it, then they will receive an error message stating that the genre is not allowed to be posted. So, if you decide to keep movie genres in separate forums, be sure to either create a forum for every genre listed or create one forum set to accept ALL genres. The ALL genre is the last to be considered for a new thread. That way, if someone tries to post a movie with a different genre for the node they are posting in, it will be automatically posted in the correct node without an error.]]></phrase>
+  <phrase title="snog_movies_breakpoint" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Breakpoint]]></phrase>
+  <phrase title="snog_movies_buy" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Buy]]></phrase>
+  <phrase title="snog_movies_cast" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cast]]></phrase>
+  <phrase title="snog_movies_cast_tab" version_id="2020013" version_string="2.2.0 Alpha 3"><![CDATA[Casts (tab)]]></phrase>
+  <phrase title="snog_movies_change_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add/Change rating]]></phrase>
+  <phrase title="snog_movies_change_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change thread title to movie title]]></phrase>
+  <phrase title="snog_movies_check_for_new_backdrop_image" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Check new backdrop image]]></phrase>
+  <phrase title="snog_movies_check_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check for new poster]]></phrase>
+  <phrase title="snog_movies_country.ad" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Andorra]]></phrase>
+  <phrase title="snog_movies_country.ae" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[United Arab Emirates]]></phrase>
+  <phrase title="snog_movies_country.af" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Afghanistan]]></phrase>
+  <phrase title="snog_movies_country.ag" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Antigua and Barbuda]]></phrase>
+  <phrase title="snog_movies_country.ai" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Anguilla]]></phrase>
+  <phrase title="snog_movies_country.al" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Albania]]></phrase>
+  <phrase title="snog_movies_country.am" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Armenia]]></phrase>
+  <phrase title="snog_movies_country.an" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Netherlands Antilles]]></phrase>
+  <phrase title="snog_movies_country.ao" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Angola]]></phrase>
+  <phrase title="snog_movies_country.aq" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Antarctica]]></phrase>
+  <phrase title="snog_movies_country.ar" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Argentina]]></phrase>
+  <phrase title="snog_movies_country.as" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[American Samoa]]></phrase>
+  <phrase title="snog_movies_country.at" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Austria]]></phrase>
+  <phrase title="snog_movies_country.au" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Australia]]></phrase>
+  <phrase title="snog_movies_country.aw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Aruba]]></phrase>
+  <phrase title="snog_movies_country.az" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Azerbaijan]]></phrase>
+  <phrase title="snog_movies_country.ba" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bosnia and Herzegovina]]></phrase>
+  <phrase title="snog_movies_country.bb" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Barbados]]></phrase>
+  <phrase title="snog_movies_country.bd" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bangladesh]]></phrase>
+  <phrase title="snog_movies_country.be" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Belgium]]></phrase>
+  <phrase title="snog_movies_country.bf" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Burkina Faso]]></phrase>
+  <phrase title="snog_movies_country.bg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bulgaria]]></phrase>
+  <phrase title="snog_movies_country.bh" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bahrain]]></phrase>
+  <phrase title="snog_movies_country.bi" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Burundi]]></phrase>
+  <phrase title="snog_movies_country.bj" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Benin]]></phrase>
+  <phrase title="snog_movies_country.bm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bermuda]]></phrase>
+  <phrase title="snog_movies_country.bn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Brunei Darussalam]]></phrase>
+  <phrase title="snog_movies_country.bo" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bolivia]]></phrase>
+  <phrase title="snog_movies_country.br" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Brazil]]></phrase>
+  <phrase title="snog_movies_country.bs" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bahamas]]></phrase>
+  <phrase title="snog_movies_country.bt" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bhutan]]></phrase>
+  <phrase title="snog_movies_country.bv" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Bouvet Island]]></phrase>
+  <phrase title="snog_movies_country.bw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Botswana]]></phrase>
+  <phrase title="snog_movies_country.by" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Belarus]]></phrase>
+  <phrase title="snog_movies_country.bz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Belize]]></phrase>
+  <phrase title="snog_movies_country.ca" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Canada]]></phrase>
+  <phrase title="snog_movies_country.cc" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cocos (Keeling) Islands]]></phrase>
+  <phrase title="snog_movies_country.cd" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Congo, the Democratic Republic of the]]></phrase>
+  <phrase title="snog_movies_country.cf" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Central African Republic]]></phrase>
+  <phrase title="snog_movies_country.cg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Congo]]></phrase>
+  <phrase title="snog_movies_country.ch" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Switzerland]]></phrase>
+  <phrase title="snog_movies_country.ci" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cote D'Ivoire]]></phrase>
+  <phrase title="snog_movies_country.ck" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cook Islands]]></phrase>
+  <phrase title="snog_movies_country.cl" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Chile]]></phrase>
+  <phrase title="snog_movies_country.cm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cameroon]]></phrase>
+  <phrase title="snog_movies_country.cn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[China]]></phrase>
+  <phrase title="snog_movies_country.co" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Colombia]]></phrase>
+  <phrase title="snog_movies_country.cr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Costa Rica]]></phrase>
+  <phrase title="snog_movies_country.cs" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Serbia and Montenegro]]></phrase>
+  <phrase title="snog_movies_country.cu" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cuba]]></phrase>
+  <phrase title="snog_movies_country.cv" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cape Verde]]></phrase>
+  <phrase title="snog_movies_country.cx" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Christmas Island]]></phrase>
+  <phrase title="snog_movies_country.cy" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cyprus]]></phrase>
+  <phrase title="snog_movies_country.cz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Czech Republic]]></phrase>
+  <phrase title="snog_movies_country.de" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Germany]]></phrase>
+  <phrase title="snog_movies_country.dj" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Djibouti]]></phrase>
+  <phrase title="snog_movies_country.dk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Denmark]]></phrase>
+  <phrase title="snog_movies_country.dm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Dominica]]></phrase>
+  <phrase title="snog_movies_country.do" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Dominican Republic]]></phrase>
+  <phrase title="snog_movies_country.dz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Algeria]]></phrase>
+  <phrase title="snog_movies_country.ec" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Ecuador]]></phrase>
+  <phrase title="snog_movies_country.ee" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Estonia]]></phrase>
+  <phrase title="snog_movies_country.eg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Egypt]]></phrase>
+  <phrase title="snog_movies_country.eh" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Western Sahara]]></phrase>
+  <phrase title="snog_movies_country.er" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Eritrea]]></phrase>
+  <phrase title="snog_movies_country.es" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Spain]]></phrase>
+  <phrase title="snog_movies_country.et" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Ethiopia]]></phrase>
+  <phrase title="snog_movies_country.fi" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Finland]]></phrase>
+  <phrase title="snog_movies_country.fj" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Fiji]]></phrase>
+  <phrase title="snog_movies_country.fk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Falkland Islands (Malvinas)]]></phrase>
+  <phrase title="snog_movies_country.fm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Micronesia, Federated States of]]></phrase>
+  <phrase title="snog_movies_country.fo" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Faroe Islands]]></phrase>
+  <phrase title="snog_movies_country.fr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[France]]></phrase>
+  <phrase title="snog_movies_country.ga" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Gabon]]></phrase>
+  <phrase title="snog_movies_country.gb" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[United Kingdom]]></phrase>
+  <phrase title="snog_movies_country.gd" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Grenada]]></phrase>
+  <phrase title="snog_movies_country.ge" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Georgia]]></phrase>
+  <phrase title="snog_movies_country.gf" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[French Guiana]]></phrase>
+  <phrase title="snog_movies_country.gh" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Ghana]]></phrase>
+  <phrase title="snog_movies_country.gi" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Gibraltar]]></phrase>
+  <phrase title="snog_movies_country.gl" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Greenland]]></phrase>
+  <phrase title="snog_movies_country.gm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Gambia]]></phrase>
+  <phrase title="snog_movies_country.gn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Guinea]]></phrase>
+  <phrase title="snog_movies_country.gp" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Guadeloupe]]></phrase>
+  <phrase title="snog_movies_country.gq" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Equatorial Guinea]]></phrase>
+  <phrase title="snog_movies_country.gr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Greece]]></phrase>
+  <phrase title="snog_movies_country.gs" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[South Georgia and the South Sandwich Islands]]></phrase>
+  <phrase title="snog_movies_country.gt" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Guatemala]]></phrase>
+  <phrase title="snog_movies_country.gu" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Guam]]></phrase>
+  <phrase title="snog_movies_country.gw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Guinea-Bissau]]></phrase>
+  <phrase title="snog_movies_country.gy" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Guyana]]></phrase>
+  <phrase title="snog_movies_country.hk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Hong Kong]]></phrase>
+  <phrase title="snog_movies_country.hm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Heard Island and Mcdonald Islands]]></phrase>
+  <phrase title="snog_movies_country.hn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Honduras]]></phrase>
+  <phrase title="snog_movies_country.hr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Croatia]]></phrase>
+  <phrase title="snog_movies_country.ht" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Haiti]]></phrase>
+  <phrase title="snog_movies_country.hu" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Hungary]]></phrase>
+  <phrase title="snog_movies_country.id" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Indonesia]]></phrase>
+  <phrase title="snog_movies_country.ie" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Ireland]]></phrase>
+  <phrase title="snog_movies_country.il" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Israel]]></phrase>
+  <phrase title="snog_movies_country.in" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[India]]></phrase>
+  <phrase title="snog_movies_country.io" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[British Indian Ocean Territory]]></phrase>
+  <phrase title="snog_movies_country.iq" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Iraq]]></phrase>
+  <phrase title="snog_movies_country.ir" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Iran, Islamic Republic of]]></phrase>
+  <phrase title="snog_movies_country.is" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Iceland]]></phrase>
+  <phrase title="snog_movies_country.it" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Italy]]></phrase>
+  <phrase title="snog_movies_country.jm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Jamaica]]></phrase>
+  <phrase title="snog_movies_country.jo" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Jordan]]></phrase>
+  <phrase title="snog_movies_country.jp" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Japan]]></phrase>
+  <phrase title="snog_movies_country.ke" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Kenya]]></phrase>
+  <phrase title="snog_movies_country.kg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Kyrgyzstan]]></phrase>
+  <phrase title="snog_movies_country.kh" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cambodia]]></phrase>
+  <phrase title="snog_movies_country.ki" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Kiribati]]></phrase>
+  <phrase title="snog_movies_country.km" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Comoros]]></phrase>
+  <phrase title="snog_movies_country.kn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Saint Kitts and Nevis]]></phrase>
+  <phrase title="snog_movies_country.kp" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Korea, Democratic People's Republic of]]></phrase>
+  <phrase title="snog_movies_country.kr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Korea, Republic of]]></phrase>
+  <phrase title="snog_movies_country.kw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Kuwait]]></phrase>
+  <phrase title="snog_movies_country.ky" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Cayman Islands]]></phrase>
+  <phrase title="snog_movies_country.kz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Kazakhstan]]></phrase>
+  <phrase title="snog_movies_country.la" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Lao People's Democratic Republic]]></phrase>
+  <phrase title="snog_movies_country.lb" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Lebanon]]></phrase>
+  <phrase title="snog_movies_country.lc" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Saint Lucia]]></phrase>
+  <phrase title="snog_movies_country.li" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Liechtenstein]]></phrase>
+  <phrase title="snog_movies_country.lk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Sri Lanka]]></phrase>
+  <phrase title="snog_movies_country.lr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Liberia]]></phrase>
+  <phrase title="snog_movies_country.ls" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Lesotho]]></phrase>
+  <phrase title="snog_movies_country.lt" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Lithuania]]></phrase>
+  <phrase title="snog_movies_country.lu" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Luxembourg]]></phrase>
+  <phrase title="snog_movies_country.lv" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Latvia]]></phrase>
+  <phrase title="snog_movies_country.ly" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Libyan Arab Jamahiriya]]></phrase>
+  <phrase title="snog_movies_country.ma" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Morocco]]></phrase>
+  <phrase title="snog_movies_country.mc" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Monaco]]></phrase>
+  <phrase title="snog_movies_country.md" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Moldova, Republic of]]></phrase>
+  <phrase title="snog_movies_country.mg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Madagascar]]></phrase>
+  <phrase title="snog_movies_country.mh" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Marshall Islands]]></phrase>
+  <phrase title="snog_movies_country.mk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Macedonia, the Former Yugoslav Republic of]]></phrase>
+  <phrase title="snog_movies_country.ml" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Mali]]></phrase>
+  <phrase title="snog_movies_country.mm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Myanmar]]></phrase>
+  <phrase title="snog_movies_country.mn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Mongolia]]></phrase>
+  <phrase title="snog_movies_country.mo" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Macao]]></phrase>
+  <phrase title="snog_movies_country.mp" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Northern Mariana Islands]]></phrase>
+  <phrase title="snog_movies_country.mq" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Martinique]]></phrase>
+  <phrase title="snog_movies_country.mr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Mauritania]]></phrase>
+  <phrase title="snog_movies_country.ms" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Montserrat]]></phrase>
+  <phrase title="snog_movies_country.mt" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Malta]]></phrase>
+  <phrase title="snog_movies_country.mu" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Mauritius]]></phrase>
+  <phrase title="snog_movies_country.mv" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Maldives]]></phrase>
+  <phrase title="snog_movies_country.mw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Malawi]]></phrase>
+  <phrase title="snog_movies_country.mx" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Mexico]]></phrase>
+  <phrase title="snog_movies_country.my" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Malaysia]]></phrase>
+  <phrase title="snog_movies_country.mz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Mozambique]]></phrase>
+  <phrase title="snog_movies_country.na" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Namibia]]></phrase>
+  <phrase title="snog_movies_country.nc" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[New Caledonia]]></phrase>
+  <phrase title="snog_movies_country.ne" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Niger]]></phrase>
+  <phrase title="snog_movies_country.nf" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Norfolk Island]]></phrase>
+  <phrase title="snog_movies_country.ng" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Nigeria]]></phrase>
+  <phrase title="snog_movies_country.ni" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Nicaragua]]></phrase>
+  <phrase title="snog_movies_country.nl" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Netherlands]]></phrase>
+  <phrase title="snog_movies_country.no" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Norway]]></phrase>
+  <phrase title="snog_movies_country.np" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Nepal]]></phrase>
+  <phrase title="snog_movies_country.nr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Nauru]]></phrase>
+  <phrase title="snog_movies_country.nu" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Niue]]></phrase>
+  <phrase title="snog_movies_country.nz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[New Zealand]]></phrase>
+  <phrase title="snog_movies_country.om" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Oman]]></phrase>
+  <phrase title="snog_movies_country.pa" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Panama]]></phrase>
+  <phrase title="snog_movies_country.pe" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Peru]]></phrase>
+  <phrase title="snog_movies_country.pf" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[French Polynesia]]></phrase>
+  <phrase title="snog_movies_country.pg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Papua New Guinea]]></phrase>
+  <phrase title="snog_movies_country.ph" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Philippines]]></phrase>
+  <phrase title="snog_movies_country.pk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Pakistan]]></phrase>
+  <phrase title="snog_movies_country.pl" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Poland]]></phrase>
+  <phrase title="snog_movies_country.pm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Saint Pierre and Miquelon]]></phrase>
+  <phrase title="snog_movies_country.pn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Pitcairn]]></phrase>
+  <phrase title="snog_movies_country.pr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Puerto Rico]]></phrase>
+  <phrase title="snog_movies_country.ps" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Palestinian Territory, Occupied]]></phrase>
+  <phrase title="snog_movies_country.pt" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Portugal]]></phrase>
+  <phrase title="snog_movies_country.pw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Palau]]></phrase>
+  <phrase title="snog_movies_country.py" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Paraguay]]></phrase>
+  <phrase title="snog_movies_country.qa" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Qatar]]></phrase>
+  <phrase title="snog_movies_country.re" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Reunion]]></phrase>
+  <phrase title="snog_movies_country.ro" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Romania]]></phrase>
+  <phrase title="snog_movies_country.ru" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Russian Federation]]></phrase>
+  <phrase title="snog_movies_country.rw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Rwanda]]></phrase>
+  <phrase title="snog_movies_country.sa" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Saudi Arabia]]></phrase>
+  <phrase title="snog_movies_country.sb" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Solomon Islands]]></phrase>
+  <phrase title="snog_movies_country.sc" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Seychelles]]></phrase>
+  <phrase title="snog_movies_country.sd" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Sudan]]></phrase>
+  <phrase title="snog_movies_country.se" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Sweden]]></phrase>
+  <phrase title="snog_movies_country.sg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Singapore]]></phrase>
+  <phrase title="snog_movies_country.sh" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Saint Helena]]></phrase>
+  <phrase title="snog_movies_country.si" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Slovenia]]></phrase>
+  <phrase title="snog_movies_country.sj" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Svalbard and Jan Mayen]]></phrase>
+  <phrase title="snog_movies_country.sk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Slovakia]]></phrase>
+  <phrase title="snog_movies_country.sl" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Sierra Leone]]></phrase>
+  <phrase title="snog_movies_country.sm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[San Marino]]></phrase>
+  <phrase title="snog_movies_country.sn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Senegal]]></phrase>
+  <phrase title="snog_movies_country.so" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Somalia]]></phrase>
+  <phrase title="snog_movies_country.sr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Suriname]]></phrase>
+  <phrase title="snog_movies_country.st" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Sao Tome and Principe]]></phrase>
+  <phrase title="snog_movies_country.sv" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[El Salvador]]></phrase>
+  <phrase title="snog_movies_country.sy" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Syrian Arab Republic]]></phrase>
+  <phrase title="snog_movies_country.sz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Swaziland]]></phrase>
+  <phrase title="snog_movies_country.tc" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Turks and Caicos Islands]]></phrase>
+  <phrase title="snog_movies_country.td" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Chad]]></phrase>
+  <phrase title="snog_movies_country.tf" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[French Southern Territories]]></phrase>
+  <phrase title="snog_movies_country.tg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Togo]]></phrase>
+  <phrase title="snog_movies_country.th" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Thailand]]></phrase>
+  <phrase title="snog_movies_country.tj" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Tajikistan]]></phrase>
+  <phrase title="snog_movies_country.tk" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Tokelau]]></phrase>
+  <phrase title="snog_movies_country.tl" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Timor-Leste]]></phrase>
+  <phrase title="snog_movies_country.tm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Turkmenistan]]></phrase>
+  <phrase title="snog_movies_country.tn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Tunisia]]></phrase>
+  <phrase title="snog_movies_country.to" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Tonga]]></phrase>
+  <phrase title="snog_movies_country.tr" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Turkey]]></phrase>
+  <phrase title="snog_movies_country.tt" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Trinidad and Tobago]]></phrase>
+  <phrase title="snog_movies_country.tv" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Tuvalu]]></phrase>
+  <phrase title="snog_movies_country.tw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Taiwan, Province of China]]></phrase>
+  <phrase title="snog_movies_country.tz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Tanzania, United Republic of]]></phrase>
+  <phrase title="snog_movies_country.ua" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Ukraine]]></phrase>
+  <phrase title="snog_movies_country.ug" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Uganda]]></phrase>
+  <phrase title="snog_movies_country.um" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[United States Minor Outlying Islands]]></phrase>
+  <phrase title="snog_movies_country.us" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[United States]]></phrase>
+  <phrase title="snog_movies_country.uy" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Uruguay]]></phrase>
+  <phrase title="snog_movies_country.uz" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Uzbekistan]]></phrase>
+  <phrase title="snog_movies_country.va" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Holy See (Vatican City State)]]></phrase>
+  <phrase title="snog_movies_country.vc" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Saint Vincent and the Grenadines]]></phrase>
+  <phrase title="snog_movies_country.ve" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Venezuela]]></phrase>
+  <phrase title="snog_movies_country.vg" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Virgin Islands, British]]></phrase>
+  <phrase title="snog_movies_country.vi" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Virgin Islands, U.s.]]></phrase>
+  <phrase title="snog_movies_country.vn" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Viet Nam]]></phrase>
+  <phrase title="snog_movies_country.vu" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Vanuatu]]></phrase>
+  <phrase title="snog_movies_country.wf" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Wallis and Futuna]]></phrase>
+  <phrase title="snog_movies_country.ws" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Samoa]]></phrase>
+  <phrase title="snog_movies_country.ye" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Yemen]]></phrase>
+  <phrase title="snog_movies_country.yt" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Mayotte]]></phrase>
+  <phrase title="snog_movies_country.za" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[South Africa]]></phrase>
+  <phrase title="snog_movies_country.zm" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Zambia]]></phrase>
+  <phrase title="snog_movies_country.zw" version_id="2020048" version_string="2.2.0 Beta 18" global_cache="1"><![CDATA[Zimbabwe]]></phrase>
+  <phrase title="snog_movies_crew" version_id="2020013" version_string="2.2.0 Alpha 3"><![CDATA[Crew]]></phrase>
+  <phrase title="snog_movies_crew_tab" version_id="2020013" version_string="2.2.0 Alpha 3"><![CDATA[Crew (tab)]]></phrase>
+  <phrase title="snog_movies_director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Director]]></phrase>
+  <phrase title="snog_movies_edit_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit movie]]></phrase>
+  <phrase title="snog_movies_error_badapi" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API Key is not valid]]></phrase>
+  <phrase title="snog_movies_error_genre" version_id="2000770" version_string="2.0.7"><![CDATA[Movie genre not allowed]]></phrase>
+  <phrase title="snog_movies_error_no_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must select a forum for movie threads]]></phrase>
+  <phrase title="snog_movies_error_no_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No movie entered]]></phrase>
+  <phrase title="snog_movies_error_not_found" version_id="2000070" version_string="2.0.0"><![CDATA[The movie was not found at The Movie Database]]></phrase>
+  <phrase title="snog_movies_error_not_valid" version_id="2000670" version_string="2.0.6"><![CDATA[TMDb ID not valid]]></phrase>
+  <phrase title="snog_movies_error_posted" version_id="2000670" version_string="2.0.6"><![CDATA[Movie has already been posted]]></phrase>
+  <phrase title="snog_movies_error_release_date_format" version_id="2020011" version_string="2.2.0 Alpha 1"><![CDATA[Release date must be formatted YYYY-MM-DD]]></phrase>
+  <phrase title="snog_movies_error_tv_id" version_id="2000270" version_string="2.0.2"><![CDATA[You are trying to post a TV show in a movie forum]]></phrase>
+  <phrase title="snog_movies_error_valid_3166" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 3166-1 Country Code]]></phrase>
+  <phrase title="snog_movies_error_valid_639" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 639-1 Language Code]]></phrase>
+  <phrase title="snog_movies_explain_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the TMDb Link or ID for your movie? Go to <a href="https://themoviedb.org" target="_blank" >The Movie Database</a> and look it up.]]></phrase>
+  <phrase title="snog_movies_fetch_changes" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Fetch changes]]></phrase>
+  <phrase title="snog_movies_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Genre]]></phrase>
+  <phrase title="snog_movies_genres" version_id="2020015" version_string="2.2.0 Alpha 5"><![CDATA[Genres]]></phrase>
+  <phrase title="snog_movies_image_height" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Image height]]></phrase>
+  <phrase title="snog_movies_image_width" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Image width]]></phrase>
+  <phrase title="snog_movies_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie information provided by <a href="https://themoviedb.org" target="_blank" >The Movie Database</a>]]></phrase>
+  <phrase title="snog_movies_information_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie information in first post provided by <a href="https://themoviedb.org" target="_blank" >The Movie Database</a>]]></phrase>
+  <phrase title="snog_movies_insert_new_companies" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Inserting new companies]]></phrase>
+  <phrase title="snog_movies_insert_new_persons" version_id="2020013" version_string="2.2.0 Alpha 3"><![CDATA[Inserting new persons]]></phrase>
+  <phrase title="snog_movies_latest_movies" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Latest movies]]></phrase>
+  <phrase title="snog_movies_link_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb link or Movie ID]]></phrase>
+  <phrase title="snog_movies_more_details_on_tmdb" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[More details on TMDb]]></phrase>
+  <phrase title="snog_movies_most_rated_movies" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Most rated movies]]></phrase>
+  <phrase title="snog_movies_new_backdrop_available" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[New backdrop available]]></phrase>
+  <phrase title="snog_movies_new_backdrop_not_available" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[New backdrop is not available]]></phrase>
+  <phrase title="snog_movies_plot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Plot]]></phrase>
+  <phrase title="snog_movies_post_button" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post movie]]></phrase>
+  <phrase title="snog_movies_post_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new movie]]></phrase>
+  <phrase title="snog_movies_poster_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is available]]></phrase>
+  <phrase title="snog_movies_poster_not_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is not available]]></phrase>
+  <phrase title="snog_movies_production_companies" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Production companies]]></phrase>
+  <phrase title="snog_movies_random_movies" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Random movies]]></phrase>
+  <phrase title="snog_movies_rebuild_credits" version_id="2020013" version_string="2.2.0 Alpha 3"><![CDATA[Movie casts & crew]]></phrase>
+  <phrase title="snog_movies_rebuild_general_movie_info" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Rebuild general movie info]]></phrase>
+  <phrase title="snog_movies_rebuild_movie_production_companies" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Rebuild movie production companies]]></phrase>
+  <phrase title="snog_movies_rebuild_persons" version_id="2020017" version_string="2.2.0 Alpha 7"><![CDATA[Rebuild person data]]></phrase>
+  <phrase title="snog_movies_rebuild_thread_covers" version_id="2020041" version_string="2.2.0 Beta 11"><![CDATA[Rebuild thread covers]]></phrase>
+  <phrase title="snog_movies_rebuild_videos" version_id="2020022" version_string="2.2.0 Alpha 12"><![CDATA[Rebuild videos]]></phrase>
+  <phrase title="snog_movies_rebuild_watch_providers" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Rebuild watch providers]]></phrase>
+  <phrase title="snog_movies_recalculate_ratings" version_id="2020000" version_string="2.2.0"><![CDATA[Recalculate ratings]]></phrase>
+  <phrase title="snog_movies_release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Release]]></phrase>
+  <phrase title="snog_movies_release_date" version_id="2020015" version_string="2.2.0 Alpha 5"><![CDATA[Release date]]></phrase>
+  <phrase title="snog_movies_rent" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Rent]]></phrase>
+  <phrase title="snog_movies_reupload_old_backdrop" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Re-upload old backdrop?]]></phrase>
+  <phrase title="snog_movies_reupload_old_poster" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Re-upload old poster?]]></phrase>
+  <phrase title="snog_movies_runtime" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Runtime]]></phrase>
+  <phrase title="snog_movies_save_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Save new poster]]></phrase>
+  <phrase title="snog_movies_show_rating" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Show rating]]></phrase>
+  <phrase title="snog_movies_slider_auto_play" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Automatically start to play]]></phrase>
+  <phrase title="snog_movies_slider_controls" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Show prev/next buttons]]></phrase>
+  <phrase title="snog_movies_slider_items" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Number of slides to show at a time]]></phrase>
+  <phrase title="snog_movies_slider_items_items_medium" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Medium items]]></phrase>
+  <phrase title="snog_movies_slider_items_items_wide" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Wide items]]></phrase>
+  <phrase title="snog_movies_slider_loop_slides" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Loop slides]]></phrase>
+  <phrase title="snog_movies_slider_options" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Slider options]]></phrase>
+  <phrase title="snog_movies_slider_pager" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Display pager]]></phrase>
+  <phrase title="snog_movies_slider_pause" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[The time (in ms) between each auto transition]]></phrase>
+  <phrase title="snog_movies_slider_pause_on_hover" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Pause on hover]]></phrase>
+  <phrase title="snog_movies_slider_widget_shown_elements" version_id="2020039" version_string="2.2.0 Beta 9"><![CDATA[Elements to show]]></phrase>
+  <phrase title="snog_movies_started_x_threads" version_id="2000070" version_string="2.0.0"><![CDATA[User has started at least X movie threads]]></phrase>
+  <phrase title="snog_movies_status" version_id="2020020" version_string="2.2.0 Alpha 10"><![CDATA[Status]]></phrase>
+  <phrase title="snog_movies_streaming" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Streaming]]></phrase>
+  <phrase title="snog_movies_tagline" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Tagline]]></phrase>
+  <phrase title="snog_movies_thread_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new thread or movie]]></phrase>
+  <phrase title="snog_movies_thread_tools_menu" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Thread tools menu]]></phrase>
+  <phrase title="snog_movies_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie title]]></phrase>
+  <phrase title="snog_movies_title_link_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread title, TMDb link or Movie ID]]></phrase>
+  <phrase title="snog_movies_tmdb_watch_region" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Movie watch providers default region]]></phrase>
+  <phrase title="snog_movies_trailer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trailer]]></phrase>
+  <phrase title="snog_movies_trailer_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter either a youtube video ID or a youtube link]]></phrase>
+  <phrase title="snog_movies_update_person_info" version_id="2020019" version_string="2.2.0 Alpha 9"><![CDATA[Update person image & data]]></phrase>
+  <phrase title="snog_movies_videos" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[Videos]]></phrase>
+  <phrase title="snog_movies_where_to_watch" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Where to watch]]></phrase>
+  <phrase title="snog_movies_x_casts" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[{name} casts]]></phrase>
+  <phrase title="snog_movies_x_crews" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[{name} crew]]></phrase>
+  <phrase title="snog_movies_x_videos" version_id="2020021" version_string="2.2.0 Alpha 11"><![CDATA[Movie {name} videos]]></phrase>
+  <phrase title="style_prop.snog_moviesMessagePosterMaxWidth" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[Movie message poster max width]]></phrase>
+  <phrase title="style_prop.snog_moviesMessageSidebarWidth" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[Movie message sidebar width]]></phrase>
+  <phrase title="style_prop.snog_movies_castPersonLargeImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Default cast person avatar (large)]]></phrase>
+  <phrase title="style_prop.snog_movies_castPersonSmallImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Default cast person avatar (small)]]></phrase>
+  <phrase title="style_prop.snog_movies_crewPersonLargeImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Default crew person avatar (large)]]></phrase>
+  <phrase title="style_prop.snog_movies_crewPersonSmallImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Default crew person avatar (small)]]></phrase>
+  <phrase title="style_prop.snog_movies_messageCompaniesPosition" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Movie production company list position]]></phrase>
+  <phrase title="style_prop.snog_movies_messageCompaniesTitle" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[Show movies production company list block title]]></phrase>
+  <phrase title="style_prop.snog_movies_messagePosterPosition" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Movie poster position]]></phrase>
+  <phrase title="style_prop.snog_movies_posterImageHeight" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[Thread list poster image height]]></phrase>
+  <phrase title="style_prop.snog_movies_posterImageWidth" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[Thread list poster image width]]></phrase>
+  <phrase title="style_prop.snog_movies_posterUpdateButtonPosition" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[Check poster updates button position]]></phrase>
+  <phrase title="style_prop.snog_movies_productionCompanyImgHeight" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Production company image height]]></phrase>
+  <phrase title="style_prop.snog_movies_productionCompanyImgWidth" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[Production company image width]]></phrase>
+  <phrase title="style_prop.snog_movies_watchProviderImgSize" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[Watch provider image size]]></phrase>
+  <phrase title="style_prop_desc.snog_moviesMessagePosterMaxWidth" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_moviesMessageSidebarWidth" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_castPersonLargeImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_castPersonSmallImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_crewPersonLargeImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_crewPersonSmallImageUrl" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_messageCompaniesPosition" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_messageCompaniesTitle" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_messagePosterPosition" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[Select the position for the Movie Poster in threads. Note that this will invert the settings below.]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_posterImageHeight" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_posterImageWidth" version_id="2020032" version_string="2.2.0 Beta 2"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_posterUpdateButtonPosition" version_id="2020050" version_string="2.2.0 Release Candidate"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_productionCompanyImgHeight" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_productionCompanyImgWidth" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.snog_movies_watchProviderImgSize" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.snog_movies" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[[OzzModz] TMDb Movie Thread Starter]]></phrase>
+  <phrase title="style_prop_group_desc.snog_movies" version_id="2020031" version_string="2.2.0 Beta 1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_vgroup.snog_movies_message" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[Post message]]></phrase>
+  <phrase title="style_prop_vgroup.snog_movies_thumbnail" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[Thumbnails]]></phrase>
+  <phrase title="thread_type.snog_movies_movie" version_id="2020000" version_string="2.2.0"><![CDATA[TMDb Movie]]></phrase>
+  <phrase title="thread_type_plural.snog_movies_movie" version_id="2020000" version_string="2.2.0"><![CDATA[TMDb Movies]]></phrase>
+  <phrase title="widget_def.snog_movies_poster_slider" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[[OzzModz] TMDb Movie Thread Starter: Poster Carousel]]></phrase>
+  <phrase title="widget_def.snog_movies_slider" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[[OzzModz] TMDb Movie Thread Starter: Detailed carousel]]></phrase>
+  <phrase title="widget_def_desc.snog_movies_poster_slider" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[]]></phrase>
+  <phrase title="widget_def_desc.snog_movies_slider" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[]]></phrase>
+</phrases>

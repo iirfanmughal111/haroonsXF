@@ -1,0 +1,9 @@
+<div class="card_descriptions" style="">
+	<div class="user-upgrades__block box1-upgrades__block">
+		<ul>
+			<li>Post as many times per day.</li>
+			<li>Unlimited message storage.</li>
+			<li>Unlimited photo storage capacity.</li>
+		</ul>
+	</div>
+</div>

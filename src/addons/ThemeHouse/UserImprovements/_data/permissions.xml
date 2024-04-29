@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="klUI" permission_id="klUIChangeUsername" permission_type="flag" interface_group_id="klUI" display_order="100"/>
+  <permission permission_group_id="klUI" permission_id="klUIChangeUsernameTime" permission_type="integer" depend_permission_id="klUIChangeUsername" interface_group_id="klUI" display_order="110"/>
+  <permission permission_group_id="klUI" permission_id="klUIChoseUsernameColor" permission_type="flag" interface_group_id="klUI" display_order="500"/>
+  <permission permission_group_id="klUI" permission_id="klUIManageStatsPrivacy" permission_type="flag" interface_group_id="klUI" display_order="210"/>
+  <permission permission_group_id="klUI" permission_id="klUIManageUsernamePrivacy" permission_type="flag" interface_group_id="klUI" display_order="200"/>
+  <permission permission_group_id="klUI" permission_id="klUINoLimit" permission_type="flag" depend_permission_id="klUIChangeUsername" interface_group_id="klUI" display_order="111"/>
+  <permission permission_group_id="klUI" permission_id="klUIResetProfileViews" permission_type="flag" interface_group_id="klUI" display_order="10000"/>
+  <permission permission_group_id="klUI" permission_id="klUISelfDeactivate" permission_type="flag" interface_group_id="klUI" display_order="1000"/>
+  <permission permission_group_id="klUI" permission_id="klUISelfReactivate" permission_type="flag" interface_group_id="klUI" display_order="1010"/>
+  <permission permission_group_id="klUI" permission_id="klUISelfReactivationTime" permission_type="integer" depend_permission_id="klUISelfReactivate" interface_group_id="klUI" display_order="1020"/>
+  <permission permission_group_id="klUI" permission_id="klUITSS_postbit" permission_type="integer" interface_group_id="klUI" display_order="11100"/>
+  <permission permission_group_id="klUI" permission_id="klUITSS_profile" permission_type="integer" interface_group_id="klUI" display_order="11000"/>
+  <permission permission_group_id="klUI" permission_id="klUITSS_tooltip" permission_type="integer" interface_group_id="klUI" display_order="11200"/>
+  <permission permission_group_id="klUI" permission_id="klUIViewNameChangeTime" permission_type="flag" depend_permission_id="klUIViewUsernameChanges" interface_group_id="klUI" display_order="140"/>
+  <permission permission_group_id="klUI" permission_id="klUIViewUsernameChanges" permission_type="flag" interface_group_id="klUI" display_order="120"/>
+  <permission permission_group_id="klUIModerator" permission_id="klUIBypassPSBPrivacy" permission_type="flag" interface_group_id="klUIModerator" display_order="200"/>
+  <permission permission_group_id="klUIModerator" permission_id="klUIBypassUNCPrivacy" permission_type="flag" interface_group_id="klUIModerator" display_order="100"/>
+  <permission permission_group_id="klUIModerator" permission_id="klUISeeDeactivatedProfile" permission_type="flag" interface_group_id="klUIModerator" display_order="1000"/>
+</permissions>

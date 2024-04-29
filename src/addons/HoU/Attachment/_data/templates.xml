@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="reaction_attachment" version_id="101" version_string="1.0.1"><![CDATA[<div id="make_attach_{{$content.post_id}}">
+
+	<xf:macro template="message_macros" name="attachments"
+				arg-attachments="{$content.Attachments}"
+				arg-message="{$content}"
+				arg-canView="{{ $content.Thread.canViewAttachments() }}" />
+	
+</div>]]></template>
+</templates>

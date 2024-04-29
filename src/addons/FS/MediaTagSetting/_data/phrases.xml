@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_media_tag" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Media Tag]]></phrase>
+  <phrase title="admin_navigation.fs_media_tag_setting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Media Tag Setting]]></phrase>
+  <phrase title="custom_bb_code_desc.fs_custom_msg" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add custom message for media tags]]></phrase>
+  <phrase title="custom_bb_code_example.fs_custom_msg" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.fs_custom_msg" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.fs_custom_msg" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Media Tags Custom message]]></phrase>
+  <phrase title="custom_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Custom message]]></phrase>
+  <phrase title="fs_add_media_tag" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Media Tag]]></phrase>
+  <phrase title="fs_edit_media_tag" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Media Tag]]></phrase>
+  <phrase title="fs_media_tag_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Media Tag List]]></phrase>
+  <phrase title="fs_mts_media_sites" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Media sites (media tags)]]></phrase>
+  <phrase title="fs_mts_media_sites_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select media sites (tags) which you want to hide (you can select multiple)]]></phrase>
+  <phrase title="fs_mts_user_groups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Groups to hide media tags
+]]></phrase>
+  <phrase title="fs_mts_user_groups_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select UserGroups to hide media tags. The Users of  these Usergroups can't see the content of media tags that are selected to hide above (you can select multiple)]]></phrase>
+  <phrase title="option.fs_mts_customMsgColor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Custom message Text Color]]></phrase>
+  <phrase title="option.fs_mts_customMsgbackGroundColor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Custom message Background Color]]></phrase>
+  <phrase title="option_explain.fs_mts_customMsgColor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the colour name or colour code for Custom message]]></phrase>
+  <phrase title="option_explain.fs_mts_customMsgbackGroundColor" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the colour name or colour code for custom message Background]]></phrase>
+  <phrase title="option_group.fs_MediaTagSetting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Media-Tag-Setting]]></phrase>
+  <phrase title="option_group_description.fs_MediaTagSetting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

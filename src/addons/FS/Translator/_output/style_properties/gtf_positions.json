@@ -1,0 +1,13 @@
+{
+    "group_name": "cxfGoogleTranslateForum",
+    "title": "Predefined positions for FS Translator",
+    "description": "*use Custom position to add the template for instance in a widget, advertising positons or any other location. Just include <code>cxf_google_translate_forum</code> template anywhere you want to show the Google Translate.",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "radio",
+    "value_parameters": "above_notices=above notices\nbelow_notices=below notices\nbelow_bottom_breadcrumbs=below bottom breadcrumbs\ncustom=custom",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "above_notices",
+    "display_order": 100
+}

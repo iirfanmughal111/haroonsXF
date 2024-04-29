@@ -1,0 +1,6 @@
+<xf:checkboxrow name="type_config[available_genres]" value="{$forum.type_config.available_genres}" listclass="field listColumns"
+	label="{{ phrase('trakt_tv_available_genre') }}"
+	explain="{{ phrase('trakt_tv_available_genre_explain') }}">
+
+	<xf:options source="$availableGenres" />
+</xf:checkboxrow>

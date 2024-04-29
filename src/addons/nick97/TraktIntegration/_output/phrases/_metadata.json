@@ -1,0 +1,146 @@
+{
+    "nick97_movies_explain_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e044ebc2dd8118cd7ceaf87a2948564a"
+    },
+    "nick97_movies_link_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "166afe9076ad80eb3f1c6ccaeb661967"
+    },
+    "nick97_trakt_api_key_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f7b8ecc03a8ba3aa4d18d02823fef077"
+    },
+    "nick97_trakt_more_details.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b532573d9200c50a64e0677b9b3062cf"
+    },
+    "nick97_trakt_movies_sync.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d8e87c0927539672f54462c837be0b7f"
+    },
+    "nick97_trakt_request_empty_body.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9c0b5fec18a8b70126b833de771d84e8"
+    },
+    "nick97_trakt_request_method_not_allowed.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d8b6ac9ee89ebf22124fd652f69e43d2"
+    },
+    "nick97_trakt_request_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ab8b4e5b8190ee1b0ae0817623b6ca70"
+    },
+    "nick97_trakt_request_not_success.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e0d9b82f2da1eb5b18d70b92db3fdc72"
+    },
+    "nick97_trakt_request_server_error.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2dcea37424779992a82da727cead6818"
+    },
+    "nick97_trakt_request_unauthorized.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "28045961007db78defefcce04ff6cbfd"
+    },
+    "nick97_trakt_request_unsported_media.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f12c0ddf5b63d9da81c47b69b07cf89a"
+    },
+    "nick97_trakt_tv_sync.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d8e87c0927539672f54462c837be0b7f"
+    },
+    "nick97_tv_episode_enter_episode_number.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c78c8fa799b4ad5f19d5273f908cf10e"
+    },
+    "nick97_tv_episode_number.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "45fd63854a3f932945c1c777f2d32f7f"
+    },
+    "nick97_tv_post_show_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d9ec95f561e74b4361049c8463717167"
+    },
+    "nick97_tv_show_lookup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a2bbbf94ee5fd01ef88f37dfd73c1468"
+    },
+    "nick97_you_sure_you_want_to_sync.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3e170d18530e4e7d18727668552f138d"
+    },
+    "option.nick97_trakt_api_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3b7d33b56fcf2f6d28ff69b5ebbee0a4"
+    },
+    "option_explain.nick97_trakt_api_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "289d2b690a4018c64cc63cce8ba4aef4"
+    },
+    "option_group.nick97traktIntegration.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e4fd8086ba4f3f4e55ff5632d9284631"
+    },
+    "option_group_description.nick97traktIntegration.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c9c47b4cc24f2b49166399d97e4b23de"
+    },
+    "thread_type.nick97_trakt_movies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b3ce6605b294de4c6982f6bee86bd270"
+    },
+    "thread_type_plural.nick97_trakt_movies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b3ce6605b294de4c6982f6bee86bd270"
+    }
+}

@@ -1,0 +1,1 @@
+Auto switch to browser language

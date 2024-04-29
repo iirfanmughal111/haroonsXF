@@ -1,0 +1,14 @@
+<xf:title>{{ phrase('fs_export_post_attachments') }}</xf:title>
+
+
+<xf:form action="{{ link('posts/export-attachments',$post) }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_export_all_attachments_of_the_following_post:') }}
+				<strong>{$post.Thread.title}</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow class="js-overlayClose" icon="export" />
+	</div>
+</xf:form>

@@ -1,0 +1,13 @@
+{
+    "group_name": "trakt_tv",
+    "title": "Check poster updates button position",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "radio",
+    "value_parameters": "default={{ phrase('default') }}\nthread_tools_menu={{ phrase('trakt_tv_thread_tools_menu') }}",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "default",
+    "display_order": 11
+}

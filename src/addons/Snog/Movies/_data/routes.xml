@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="public" route_prefix="movies" format=":int&lt;thread_id,title&gt;/" controller="Snog\Movies:Movies"/>
+  <route route_type="public" route_prefix="movies" sub_name="person" format="person/:int&lt;person_id,name&gt;/" controller="Snog\Movies:Person"/>
+</routes>

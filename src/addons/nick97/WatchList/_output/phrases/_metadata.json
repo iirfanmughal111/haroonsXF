@@ -1,0 +1,410 @@
+{
+    "add_watch_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7486d011e4621c5e039f875cabec27df"
+    },
+    "add_watch_list_submit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec211f7c20af43e742bf2570c3cb84f9"
+    },
+    "choose_who_see_my_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "89afecd0acfd97caba5129cacf05379d"
+    },
+    "choose_who_see_my_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2e75c12f2daaa3992ceeef6d93079d76"
+    },
+    "con_acc.nick_trakt.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a5570c8009900fc3ddb40cfdc44d42f4"
+    },
+    "con_acc_desc.nick_trakt.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "forum_type.nick97_trakt_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9841db696f101fccf94551c2350d530d"
+    },
+    "forum_type.nick97_trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2e9de7416bac8f5f34e5fb205a5c251c"
+    },
+    "forum_type_desc.nick97_trakt_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3d615a326c6a6bbf602969e8adffb1ea"
+    },
+    "forum_type_desc.nick97_trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6d5443c0376254f58963f3c60da83c98"
+    },
+    "my_watch_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "afcfcce1c3bc846f73ed81877dae88b7"
+    },
+    "nav.nick97WatchList.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "afcfcce1c3bc846f73ed81877dae88b7"
+    },
+    "nick97_member_empty_viewing_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "a16c80f14f28d74e05904a5221a4d52b"
+    },
+    "nick97_member_limits_viewing_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8f2f72eac1f4f6bbc2445dee7756ecf1"
+    },
+    "nick97_member_limits_viewing_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "baee952dee22f32a41a0506cd86418f5"
+    },
+    "nick97_stats_days.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "85367c3faf74b058939654bdef8968d7"
+    },
+    "nick97_stats_episode_watched.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "d24a0d965326bca8670f73645f8bbf9b"
+    },
+    "nick97_stats_hours.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "5ab9376a7869a83e84e94bcb25aa8cbd"
+    },
+    "nick97_stats_month.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "383316922f2516abe5abe53370284a7f"
+    },
+    "nick97_stats_movie_time.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "4262ad98a9fb6e1e5c9ba715e1e98a58"
+    },
+    "nick97_stats_movie_watched.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "97fcbdef421bcdbd87b5684a8fcb4009"
+    },
+    "nick97_trakt_client_id_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "235bcf3876bd436848c84475fcaeebee"
+    },
+    "nick97_trakt_client_secret_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9a83c1ecd1e242b1211cc6b8e3ccd2d5"
+    },
+    "nick97_trakt_movies_explain_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e044ebc2dd8118cd7ceaf87a2948564a"
+    },
+    "nick97_trakt_movies_key_missing_api.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "4ab22f1923c5783516ea3afdea771571"
+    },
+    "nick97_trakt_movies_link_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "166afe9076ad80eb3f1c6ccaeb661967"
+    },
+    "nick97_trakt_tv_episode_enter_episode_number.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c78c8fa799b4ad5f19d5273f908cf10e"
+    },
+    "nick97_trakt_tv_episode_number.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "45fd63854a3f932945c1c777f2d32f7f"
+    },
+    "nick97_trakt_tv_post_show_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d9ec95f561e74b4361049c8463717167"
+    },
+    "nick97_trakt_tv_show_lookup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a2bbbf94ee5fd01ef88f37dfd73c1468"
+    },
+    "nick97_watch_list_movies.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "80662e1f485e79d07ef4973f6b1b9f88"
+    },
+    "nick97_watch_list_movies_empty.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "184f94f3389d68e3931f92b11c89719d"
+    },
+    "nick97_watch_list_my_tv_and_movies_empty.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "16ebe69ebf4907d6a411322a0511477b"
+    },
+    "nick97_watch_list_release.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b8e7b465df7c5979dc731d06e84ce2cf"
+    },
+    "nick97_watch_list_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "452a7601dbc6f2c38aa89e68bda8b603"
+    },
+    "nick97_watch_list_status.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec53a8c4f07baed5d8825072c89799be"
+    },
+    "nick97_watch_list_trakt_api_key_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f7b8ecc03a8ba3aa4d18d02823fef077"
+    },
+    "nick97_watch_list_tv_show_empty.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "153f6fe22bdd605c7c251a3c9db8576e"
+    },
+    "nick97_watch_list_tv_shows.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "93557faa552091a459fa1d003cf9f222"
+    },
+    "nick97_watch_list_tv_time.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "e42f396383d4d1d0970c3794310901c6"
+    },
+    "nick97_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "afcfcce1c3bc846f73ed81877dae88b7"
+    },
+    "nick97_watchlist_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "452a7601dbc6f2c38aa89e68bda8b603"
+    },
+    "nick9t_watchlist_request_empty_body.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "9c0b5fec18a8b70126b833de771d84e8"
+    },
+    "nick9t_watchlist_request_method_not_allowed.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "d8b6ac9ee89ebf22124fd652f69e43d2"
+    },
+    "nick9t_watchlist_request_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ab8b4e5b8190ee1b0ae0817623b6ca70"
+    },
+    "nick9t_watchlist_request_not_success.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e0d9b82f2da1eb5b18d70b92db3fdc72"
+    },
+    "nick9t_watchlist_request_server_error.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "2dcea37424779992a82da727cead6818"
+    },
+    "nick9t_watchlist_request_unauthorized.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "28045961007db78defefcce04ff6cbfd"
+    },
+    "nick9t_watchlist_request_unsported_media.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "f12c0ddf5b63d9da81c47b69b07cf89a"
+    },
+    "option.nick97_watch_list_trakt_api_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3b7d33b56fcf2f6d28ff69b5ebbee0a4"
+    },
+    "option_explain.nick97_watch_list_trakt_api_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "289d2b690a4018c64cc63cce8ba4aef4"
+    },
+    "option_group.traktWatchLists.txt": {
+        "global_cache": false,
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "ee807dde4641654d6c3f6941bd9d0e17"
+    },
+    "option_group_description.traktWatchLists.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0bf972b57d95a3ce69b9bf609c186bc3"
+    },
+    "permission.nick97_watch_list_manage_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d21f53fd4be8fb0b8a0fe714839aedae"
+    },
+    "permission.nick97_watch_list_view_anyone_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3fbb939f7d2c1ccdae8b0f9691c2474a"
+    },
+    "permission.nick97_watch_list_view_everyone_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "37b2bc059da5e77338d2ff2f9e20ba2e"
+    },
+    "permission.nick97_watch_list_view_own_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5dff5599e67acef63343843d103e51e3"
+    },
+    "permission.nick97_watch_list_view_own_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "aa7cd395bacf450dc668bfdc6368739d"
+    },
+    "permission_interface.nick97_watch_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ee807dde4641654d6c3f6941bd9d0e17"
+    },
+    "remove_watch_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "58fe4c7a06f7d2380bcaa188b29010e2"
+    },
+    "remove_watch_list_submit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1063e38cb53d94d386f21227fcd84717"
+    },
+    "thread_type.nick97_trakt_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "557a6fd6f9a9b711ab964527aa16c896"
+    },
+    "thread_type.nick97_trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fbd0b2e3dacf6551101015ee2f557fd3"
+    },
+    "thread_type_plural.nick97_trakt_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "557a6fd6f9a9b711ab964527aa16c896"
+    },
+    "thread_type_plural.nick97_trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fbd0b2e3dacf6551101015ee2f557fd3"
+    },
+    "you_sure_you_want_to_add_watch_from_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d0af6cfba320101bc5e9a2face990740"
+    },
+    "you_sure_you_want_to_remove_watch_from_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "087d87ca2be6d9b038b873f31f680c0c"
+    },
+    "you_sure_you_want_to_sync.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3e170d18530e4e7d18727668552f138d"
+    }
+}

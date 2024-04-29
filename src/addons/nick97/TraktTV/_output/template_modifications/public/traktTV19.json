@@ -1,0 +1,9 @@
+{
+    "template": "node_list_forum",
+    "description": "Adds TV show info to forum list (template: trakt_tv_node_info)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$descriptionDisplay != 'none' && $node.description\">",
+    "replace": "<xf:if is=\"$node.TVForum is not empty\">\n\t<xf:include template=\"trakt_tv_node_info\" />\n</xf:if>\n$0"
+}

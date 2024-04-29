@@ -1,0 +1,9 @@
+{
+    "template": "quick_reply_macros",
+    "description": "Adds tv episode input to quick reply (template: trakt_tv_quick_reply_episode)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#<xf:editor name=\"message\".*\\/>#Us",
+    "replace": "<xf:if is=\"$thread && $thread.traktTV is not empty && !$thread.traktTV.tv_episode\">\n\t$0\n\t<xf:include template=\"trakt_tv_quick_reply_episode\" />\n<xf:else />\n\t$0\n</xf:if>"
+}

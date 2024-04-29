@@ -1,0 +1,1 @@
+2023-07-27 11:23:17: [E_WARNING] imagepng(/var/www/html/xenforo/data/Barcode/64c253a5ef170.png): failed to open stream: No such file or directory

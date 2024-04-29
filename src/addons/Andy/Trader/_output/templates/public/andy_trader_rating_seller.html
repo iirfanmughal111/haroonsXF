@@ -1,0 +1,65 @@
+<xf:title>{{ phrase('trader_selling_history') }}</xf:title>
+
+<xf:username user="$user" rich="true" />
+
+<br /><br />
+
+<a href="{{ link('trader/history', '', {'user_id': $userId}) }}" rel="nofollow">{{ phrase('trader_return_to_trader_history') }}</a>
+<br />
+<br />
+
+<div class="block-container">
+	<div class="block-body">
+		<xf:datalist data-xf-init="responsive-data-list">
+			<xf:datarow rowtype="header">
+				<xf:cell>{{ phrase('trader_date') }}</xf:cell>
+				<xf:cell>{{ phrase('trader_rating') }}</xf:cell>
+				<xf:cell>{{ phrase('trader_seller') }}</xf:cell>
+				<xf:cell>{{ phrase('trader_buyer') }}</xf:cell>
+				<xf:cell>{{ phrase('trader_buyer_comment') }}</xf:cell>
+				<xf:cell>{{ phrase('trader_action') }}</xf:cell>
+			</xf:datarow>
+			<xf:foreach loop="$results" value="$result">
+				<xf:datarow rowclass="dataList-row--noHover">
+					<xf:cell><xf:date time="{$result.timestamp}" /></xf:cell>
+					
+					<xf:if is="{$result.rating} == 0">
+					<xf:cell>{{ phrase('trader_positive') }}</xf:cell>
+					</xf:if>
+
+					<xf:if is="{$result.rating} == 1">
+					<xf:cell>{{ phrase('trader_neutral') }}</xf:cell>
+					</xf:if>
+
+					<xf:if is="{$result.rating} == 2">
+					<xf:cell>{{ phrase('trader_negative') }}</xf:cell>
+					</xf:if>					
+					
+					<xf:cell><a href="{$xf.options.traderMembersLink}{$result.seller_id}/">{$result.UserSeller.username}</a></xf:cell>
+					<xf:cell><a href="{$xf.options.traderMembersLink}{$result.buyer_id}/">{$result.UserBuyer.username}</a></xf:cell>
+					
+					<xf:cell>{$result.buyer_comment}</xf:cell>
+					
+					<xf:if is="{$xf.visitor.user_id} == {$result.buyer_id} AND {$editLimit} < {$result.timestamp} AND !{{ $xf.visitor.hasPermission('trader', 'admin') }}">
+						<xf:cell><a href="{{ link('trader/editseller', '', {'trader_id': $result.trader_id}) }}">{{ phrase('trader_edit') }}</a></xf:cell>
+					</xf:if>
+
+					<xf:if is="{$xf.visitor.user_id} == {$result.buyer_id} AND {$editLimit} >= {$result.timestamp} AND !{{ $xf.visitor.hasPermission('trader', 'admin') }}">
+						<xf:cell>&nbsp</xf:cell>
+					</xf:if>    	
+
+					<xf:if is="{{ $xf.visitor.hasPermission('trader', 'admin') }}">
+						<xf:cell><a href="{{ link('trader/editseller', '', {'trader_id': $result.trader_id}) }}">{{ phrase('trader_edit') }}</a></xf:cell>
+					</xf:if>  	
+
+					<xf:if is="{$xf.visitor.user_id} != {$result.buyer_id} AND !{{ $xf.visitor.hasPermission('trader', 'admin') }}">
+						<xf:cell>&nbsp</xf:cell>
+					</xf:if> 					
+
+				</xf:datarow>
+			</xf:foreach>
+		</xf:datalist>
+	</div>
+</div>
+
+<br />

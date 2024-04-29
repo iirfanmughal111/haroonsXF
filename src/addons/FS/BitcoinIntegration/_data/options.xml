@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_bitcoin_blockonomics_api_key" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="1"/>
+  </option>
+  <option option_id="fs_bitcoin_premium_companion" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="3"/>
+  </option>
+  <option option_id="fs_bitcoin_premium_companion_widget_uid" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="2"/>
+  </option>
+  <option option_id="fs_bitcoin_provider_city" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="5"/>
+  </option>
+  <option option_id="fs_bitcoin_provider_city_widget_uid" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="4"/>
+  </option>
+  <option option_id="fs_bitcoin_provider_vip" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="9"/>
+  </option>
+  <option option_id="fs_bitcoin_provider_vip_widget_uid" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="8"/>
+  </option>
+  <option option_id="fs_bitcoin_vip_companion" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="7"/>
+  </option>
+  <option option_id="fs_bitcoin_vip_companion_widget_uid" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_bitcoin_integ" display_order="6"/>
+  </option>
+</options>

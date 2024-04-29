@@ -1,0 +1,234 @@
+<xf:macro name="group_list_block"
+          arg-baseUrl="!"
+          arg-groups="!"
+          arg-canInlineMod="!"
+          arg-page="!"
+          arg-perPage="!"
+          arg-total="!"
+          arg-linkData="{{ null }}"
+          arg-category="{{ null }}"
+          arg-filters="{{ null }}"
+          arg-creatorFilter="{{ null }}"
+          arg-showFilters="{{ true }}"
+          arg-showMembers="{{ false }}"
+          arg-columnsPerRow="{{ 3 }}"
+          arg-filterBarMacroName="tlg_filter_bar_macros::group_list_filter_bar">
+    <xf:if is="$canInlineMod">
+        <xf:js src="xf/inline_mod.js" min="1" />
+    </xf:if>
+
+    <xf:css src="tlg_group_list.less" />
+
+    <div class="block groupListBlock{{ $total > 0 ? '' : ' groupListBlock--empty' }}" data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}"
+         data-type="tl_group"
+         data-href="{{ link('inline-mod') }}">
+        <div class="block-outer"><xf:trim>
+
+            <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+                        link="{$baseUrl}" params="{$filters}" data="{$linkData}"
+                        wrapperclass="block-outer-main" />
+
+            <xf:if contentcheck="true">
+                <div class="block-outer-opposite">
+                    <div class="buttonGroup">
+                        <xf:contentcheck>
+                            <xf:if is="$canInlineMod">
+                                <xf:macro template="inline_mod_macros" name="button" />
+                            </xf:if>
+                        </xf:contentcheck>
+                    </div>
+                </div>
+            </xf:if>
+
+        </xf:trim></div>
+
+        <xf:if is="$showFilters">
+            <div class="block-container">
+                <xf:macro name="{$filterBarMacroName}"
+                          arg-filters="{$filters}"
+                          arg-baseLinkPath="{$baseUrl}"
+                          arg-category="{$category}"
+                          arg-creatorFilter="{$creatorFilter}" />
+            </div>
+        </xf:if>
+
+        <xf:if is="$groups is not empty">
+            <xf:macro name="group_list"
+                      arg-columnsPerRow="{$columnsPerRow}"
+                      arg-canInlineMod="{$canInlineMod}"
+                      arg-showMembers="{$showMembers}"
+                      arg-groups="{$groups}" />
+        <xf:elseif is="$filters AND $showFilters" />
+            <div class="blockMessage">{{ phrase('tlg_there_no_groups_matching_your_filters') }}</div>
+        <xf:else />
+            <div class="blockMessage">{{ phrase('tlg_no_groups_have_been_created_yet') }}</div>
+        </xf:if>
+
+        <div class="block-outer block-outer--after">
+            <xf:pagenav
+                    page="{$page}" perpage="{$perPage}" total="{$total}"
+                    link="{$baseUrl}" data="{$linkData}" params="{$filters}"
+                    wrapperclass="block-outer-main" />
+            <xf:showignored wrapperclass="block-outer-opposite" />
+        </div>
+    </div>
+</xf:macro>
+
+<xf:macro name="group_list"
+          arg-groups="!"
+          arg-canInlineMod="{{ false }}"
+          arg-showMembers="{{ false }}"
+          arg-columnsPerRow="{{ 3 }}"
+          arg-showSettings="{{ true }}">
+
+    <xf:if is="$groups is not empty">
+        <div class="groupList h-dFlex h-dFlex--wrap gridCardList--flex--{$columnsPerRow}-col" data-xf-init="tl_groups_list">
+            <xf:foreach loop="$groups" value="$group">
+                <xf:macro name="group"
+                          arg-showInlineMod="{$canInlineMod}"
+                          arg-showMembers="{$showMembers}"
+                          arg-showSettings="{$showSettings}"
+                          arg-group="{$group}" />
+            </xf:foreach>
+        </div>
+    </xf:if>
+</xf:macro>
+
+<xf:macro name="group_simple" arg-group="!" arg-showCategory="{{ true }}" arg-showJoinButton="{{ false }}">
+    <xf:css src="tlg_style.less" />
+
+    <div class="contentRow">
+        <div class="contentRow-figure">
+            <xf:callback class="Truonglv\Groups\Callback"
+                         method="renderAvatar"
+                         params="{'group': $group}" />
+        </div>
+
+        <div class="contentRow-main contentRow-main--close">
+            <a href="{{ link('groups', $group) }}"
+               data-preview-url="{{ link('groups/preview', $group) }}"
+               data-xf-init="preview-tooltip">{$group.name}</a>
+
+            <div class="contentRow-minor contentRow-minor--hideLinks">
+                <ul class="listInline listInline--bullet">
+                    <li><xf:macro template="tlg_group_macros" name="privacy_html" arg-group="{$group}" /></li>
+                    <li>{{ phrase('tlg_x_members', {'count': $group.member_count|number_short}) }}</li>
+                </ul>
+            </div>
+            <xf:if is="$showCategory">
+                <div class="contentRow-minor contentRow-minor--hideLinks">
+                    <a href="{{ link('group-categories', $group.Category) }}">{$group.Category.category_title}</a>
+                </div>
+            </xf:if>
+            <xf:if is="$showJoinButton AND $group.canJoin()">
+                <xf:button href="{{ link('groups/join', $group) }}" overlay="true"
+                           class="button--small button--icon button--link">
+                    <xf:fa icon="fas fa-sign-in" />
+                    {{ phrase('tlg_join_group') }}
+                </xf:button>
+            </xf:if>
+        </div>
+    </div>
+</xf:macro>
+
+<xf:macro name="group" arg-group="!" arg-showInlineMod="{{ false }}"
+          arg-showSettings="{{ true }}"
+          arg-showMembers="{{ false }}">
+    <xf:css src="tlg_group_list.less" />
+    <xf:css src="tlg_style.less" />
+
+    <xf:js src="Truonglv/Groups/group.js" addon="Truonglv/Groups" min="1" />
+
+    <xf:set var="$coverHtml">
+        <div class="groupCover--wrapper">
+            <xf:callback class="Truonglv\Groups\Callback"
+                                          method="renderCover"
+                                          params="{'group': $group, 'forceHeight': 100}" />
+
+            <xf:if is="$showInlineMod">
+             
+            </xf:if>
+            <xf:if is="!$group.isVisible()">
+                <span class="badge badge--highlighted">{$group.getGroupStatePhrase()}</span>
+            </xf:if>
+        </div>
+    </xf:set>
+
+    <xf:set var="$avatarHtml"><xf:callback class="Truonglv\Groups\Callback"
+                                           method="renderAvatar"
+                                           params="{'group': $group, 'full': false}" /></xf:set>
+
+    <xf:set var="$actionHtml">
+        <xf:if is="$xf.visitor.user_id > 0 AND $showSettings">
+            <xf:macro template="tlg_group_macros" name="settings" arg-group="{$group}" />
+        </xf:if>
+    </xf:set>
+
+    <xf:set var="$cardTitle"><xf:trim>
+        <a href="{{ link('groups', $group) }}" class="gridCard--header--title"
+           data-tp-primary="on">
+            <span>{$group.name}</span>
+            <xf:if is="$group.isUnread()">
+                <span class="badge badge--highlighted"></span>
+            </xf:if>
+        </a>
+    </xf:trim></xf:set>
+    <xf:set var="$config" value="{{{ 'cardClass': $group.group_state . ' ' . $group.privacy}}}" />
+
+    <xf:set var="$extraHeaderHtml"><xf:trim>
+        <ul class="listInline u-muted groupItem--meta">
+            <li><xf:macro template="tlg_group_macros" name="privacy_html" arg-group="{$group}" /></li>
+        </ul>
+
+        <ul class="listInline group--counterList u-muted">
+            <li class="groupItem-stat groupItem-stat--viewCount">
+                <xf:fa icon="fa-eye" />
+                {$group.view_count|number_short}
+            </li>
+            <li class="groupItem-stat groupItem-stat--memberCount">
+                <xf:fa icon="fa-users" />
+                {$group.member_count|number_short}
+            </li>
+            <xf:if is="$xf.options.tl_groups_enableForums">
+                <li class="groupItem-stat groupItem-stat--discussionCount">
+                    <xf:fa icon="fa-comment" />
+                    {$group.discussion_count|number_short}
+                </li>
+            </xf:if>
+            <li class="groupItem-stat groupItem-stat--eventCount">
+                <xf:fa icon="fa-calendar" />
+                {$group.event_count|number_short}
+            </li>
+        </ul>
+    </xf:trim></xf:set>
+
+    <xf:set var="$bodyHtml">
+        <div class="groupList--description u-muted">{$group.short_description}</div>
+    </xf:set>
+
+    <xf:set var="$footerHtml">
+        <xf:if is="$xf.options.tl_groups_maxMembersInCard > 0 && $showMembers">
+            <ol class="listInline groupItem--members">
+                <xf:foreach loop="$group.CardMembers" value="$member">
+                    <li><xf:avatar user="$member.User" size="xs" defaultname="{$member.username}" /></li>
+                </xf:foreach>
+            </ol>
+        </xf:if>
+
+        <xf:macro template="tlg_group_macros"
+                  name="join_button"
+                  arg-hiddenLeave="{{ true }}"
+                  arg-group="{$group}" />
+    </xf:set>
+
+    <xf:macro template="tlg_grid_card_macros"
+              name="card"
+              arg-cardTitle="{$cardTitle}"
+              arg-extraHeaderHtml="{$extraHeaderHtml}"
+              arg-config="{$config}"
+              arg-bodyHtml="{$bodyHtml}"
+              arg-footerHtml="{$footerHtml}"
+              arg-actionHtml="{$actionHtml}"
+              arg-avatarHtml="{$avatarHtml}"
+              arg-coverHtml="{$coverHtml}" />
+</xf:macro>

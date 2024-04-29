@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="_help_page_trophies" modification_key="thuserimprovements_help_page_trophies" description="Add categories to trophy help page." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<div class="block">(.*?)<xf:else />#s]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_help_page_trophies" /><xf:else />]]></replace>
+  </modification>
+  <modification type="public" template="account_details" modification_key="thuserimprovements_account_details_nickcolor" description="Add account username color selection." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.visitor.canUploadAvatar()">]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_username_color_select" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_details" modification_key="thuserimprovements_account_details_nickname" description="Add nickname change option." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.visitor.canUploadAvatar()">]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_change_username" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_details" modification_key="thuserimprovements_account_details_viewCounter" description="Add reset view counter option." execution_order="100" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="{{ $xf.visitor.Profile.dob_day && $xf.visitor.Profile.dob_month && $xf.visitor.Profile.dob_year }}">]]></find>
+    <replace><![CDATA[<xf:if is="$xf.options.klUiProfileViews && $xf.visitor.hasPermission('klUI', 'klUIResetProfileViews')">
+		<xf:checkboxrow>
+		<xf:option value="1" name="reset_profile_views"
+			label="{{ phrase('thuserimprovements_reset_profile_views') }}">
+		</xf:option>
+	</xf:checkboxrow>
+</xf:if>
+<hr class="formRowSep" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_privacy" modification_key="thuserimprovements_account_privacy" description="Add account privacy options." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-label="{{ phrase('view_your_identities:') }}" />]]></find>
+    <replace><![CDATA[$0
+
+<xf:include template="thuserimprovements_account_privacy" />]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="thuserimprovements_account_wrapper_selfDeactivate" description="Add self deactivation menu point." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('logout', null, {'t': csrf_token()}) }}" class="blockLink">{{ phrase('log_out') }}</a>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.visitor.hasPermission('klUI', 'klUISelfDeactivate')">
+	<a class="blockLink {{ $pageSelected == 'self_deactivate' ? 'is-selected' : '' }}" href="{{ link('account/thui-deactivate/') }}">
+		{{ phrase('thuserimprovements_deactivate_account') }}
+	</a>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="app_username_styles.less" modification_key="thuserimprovements_app_username_styles_less" description="Add username colors to stylesheet." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/$/]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_app_username_styles.less" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="core.less" modification_key="thuserimprovements_core_less_provider" description="Add provider button styling." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ include('core_button.less') }}]]></find>
+    <replace><![CDATA[$0
+{{ include('thuserimprovements_core_button.less') }}]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="thuserimprovements_helper_criteria" description="User improvements criteria." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:user:profile_bottom]-->]]></find>
+    <replace><![CDATA[$0
+
+<xf:optgroup label="{{ phrase('thuserimprovements_name_changes:') }}">
+	<xf:option name="user_criteria[kl_ui_min_username_changes][rule]" value="kl_ui_min_username_changes" selected="{$criteria.kl_ui_min_username_changes}"
+			   label="{{ phrase('thuserimprovements_user_has_changed_his_name_at_least_x_times:') }}">
+		<xf:numberbox name="user_criteria[kl_ui_min_username_changes][data][count]" value="{$criteria.kl_ui_min_username_changes.count}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+
+	<xf:option name="user_criteria[kl_ui_max_username_changes][rule]" value="kl_ui_max_username_changes" selected="{$criteria.kl_ui_max_username_changes}"
+			   label="{{ phrase('thuserimprovements_user_has_changed_his_name_no_more_than_x_times:') }}">
+		<xf:numberbox name="user_criteria[kl_ui_max_username_changes][data][count]" value="{$criteria.kl_ui_max_username_changes.count}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+</xf:optgroup>
+
+<xf:optgroup label="{{ phrase('thuserimprovements_user_name_color:') }}">
+	<xf:option name="user_criteria[kl_ui_username_color][rule]" value="kl_ui_username_color" selected="{$criteria.kl_ui_username_color}"
+			   label="{{ phrase('thuserimprovements_user_has_username_color') }}" />
+
+	<xf:option name="user_criteria[kl_ui_no_username_color][rule]" value="kl_ui_no_username_color" selected="{$criteria.kl_ui_no_username_color}"
+			   label="{{ phrase('thuserimprovements_user_has_no_username_color') }}" />
+</xf:optgroup>
+
+<xf:optgroup label="{{ phrase('thuserimprovements_profile_views:') }}">
+	<xf:option name="user_criteria[kl_ui_min_profile_views][rule]" value="kl_ui_min_profile_views" selected="{$criteria.kl_ui_min_profile_views}"
+			   label="{{ phrase('thuserimprovements_user_has_at_least_x_profile_views:') }}">
+		<xf:numberbox name="user_criteria[kl_ui_min_profile_views][data][count]" value="{$criteria.kl_ui_min_profile_views.count}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+
+	<xf:option name="user_criteria[kl_ui_max_profile_views][rule]" value="kl_ui_max_profile_views" selected="{$criteria.kl_ui_max_profile_views}"
+			   label="{{ phrase('thuserimprovements_user_has_no_more_than_x_profile_views:') }}">
+		<xf:numberbox name="user_criteria[kl_ui_max_profile_views][data][count]" value="{$criteria.kl_ui_max_profile_views.count}"
+					  size="5" min="0" step="1" />
+	</xf:option>
+</xf:optgroup>]]></replace>
+  </modification>
+  <modification type="public" template="member_about" modification_key="thuserimprovements_member_about" description="Categorize trophies on member_about page." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<h4 class="block-textHeader">{{ phrase\('trophies'\) }}</h4>(.*?)</ol>#s]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_member_about" />]]></replace>
+  </modification>
+  <modification type="public" template="member_about" modification_key="thuserimprovements_member_about_trophy_list" description="Remove trophy list." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<xf:if is="\$trophies.*<\/xf:if>)/sU]]></find>
+    <replace><![CDATA[<xf:if is="!$xf.options.klUISeparateTrophyTab">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_macros" modification_key="thuserimprovements_member_macros" description="Add profile view counter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:stat_pairs:above_likes]-->]]></find>
+    <replace><![CDATA[<xf:if is="$xf.options.klUiProfileViews && $user.th_view_count && $user.canViewTHUIProfileViewCount()">
+	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+		<dt>{{ phrase('thuserimprovements_profile_views') }}</dt>
+		<dd>
+			{$user.th_view_count|number}
+		</dd>
+	</dl>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_macros" modification_key="thuserimprovements_member_macros_statsbar" description="Implement stats bar privacy." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<!--\[XF:stat_pairs:above_joined]-->.*<!--\[XF:stat_pairs:below_trophies]-->)/s]]></find>
+    <replace><![CDATA[<xf:if is="$user.canViewTHUIProfileStatsBar()">
+	$0
+<xf:else />
+	<style>.memberHeader-separator{display: none}</style>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_notable" modification_key="thuserimprovements_member_notable" description="Add trophies to notable members pages." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$memberStats is empty">.*?<xf:else \/>/s]]></find>
+    <replace><![CDATA[$0
+	<xf:macro template="thuserimprovements_member_notable_macros" name="trophies" arg-active="{$active}" arg-trophies="{$trophies}" />]]></replace>
+  </modification>
+  <modification type="public" template="member_tooltip" modification_key="thuserimprovements_member_tooltip" description="Add trophy showcase." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="memberTooltip-info">]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.options.thuserimprovements_member_tooltip_showcase">
+	<xf:macro name="showcase_display" template="thuserimprovements_trophy_showcase_macros" arg-user="{$user}" arg-position="tooltip" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_trophies" modification_key="thuserimprovements_member_trophies" description="Add trophy categories." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<div class="block">(.*)$#s]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_member_trophies" />]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="thuserimprovements_member_view" description="Add username change history." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:username user="{$user}" rich="true" href="" />]]></find>
+    <replace><![CDATA[$0
+<xf:include template="thuserimprovements_username_change_history" />]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="thuserimprovements_member_view_trophy_list" description="Add trophies tab." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tabs:end]-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.options.klUISeparateTrophyTab">
+	<a href="{{ link('members/trophies', $user) }}"
+	   class="tabs-tab"
+	   id="trophies"
+	   role="tab">{{ phrase('trophies') }}</a>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="thuserimprovements_member_view_trophy_list_addTab" description="Add trophies tab." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.options.klUISeparateTrophyTab">
+	<li data-href="{{ link('members/trophies', $user) }}" role="tabpanel" aria-labelledby="trophies">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="thuserimprovements_member_view_trophy_showcase" description="Add trophy showcase." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</h1>]]></find>
+    <replace><![CDATA[<xf:if is="$xf.options.klUIProfileShowcase">
+	<xf:macro name="showcase_display" template="thuserimprovements_trophy_showcase_macros" arg-user="{$user}" arg-position="profile" />
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="message_macros" modification_key="thuserimprovements_message_macros_addShowcase" description="Add trophy showcase." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<div class="message-userExtras">\s*<xf:contentcheck>.*?)(<\/xf:contentcheck>)/s]]></find>
+    <replace><![CDATA[$1	<xf:if is="$xf.options.klUIPostbitShowcase">
+						<xf:macro name="showcase_display" template="thuserimprovements_trophy_showcase_macros" arg-user="{$user}" arg-position="postbit" />
+					</xf:if>
+				$2]]></replace>
+  </modification>
+  <modification type="admin" template="trophy_edit" modification_key="thuserimprovements_trophy_edit" description="Add trophy category selection." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textarearow name="description"]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_trophy_category_select" />
+<xf:include template="thuserimprovements_trophy_icon_select" />
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="trophy_list" modification_key="thuserimprovements_trophy_list" description="Add trophy category add button." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</xf:pageaction>]]></find>
+    <replace><![CDATA[<xf:button href="{{ link('trophies/thui-category/add') }}" icon="add">{{ phrase('thuserimprovements_add_trophy_category') }}</xf:button>
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="trophy_list" modification_key="thuserimprovements_trophy_list_list" description="Include categories into trophy list." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<div class="block">(.*?)<xf:else />#s]]></find>
+    <replace><![CDATA[<xf:include template="thuserimprovements_trophy_list" /><xf:else />]]></replace>
+  </modification>
+  <modification type="admin" template="trophy_list" modification_key="thuserimprovements_trophy_list_reward" description="Add rewards form to bottom of trophy list." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/$/]]></find>
+    <replace><![CDATA[
+
+<xf:include template="thuserimprovements_trophy_list_reward" />]]></replace>
+  </modification>
+</template_modifications>

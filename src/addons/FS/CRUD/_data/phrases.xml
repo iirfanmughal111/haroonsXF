@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsCrud" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Insert]]></phrase>
+  <phrase title="admin_navigation.fs_Crud" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] CRUD]]></phrase>
+  <phrase title="fs_crud" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[FS CRUD]]></phrase>
+  <phrase title="fs_crud_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Record]]></phrase>
+  <phrase title="fs_crud_class" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Class]]></phrase>
+  <phrase title="fs_crud_edit_record" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Record]]></phrase>
+  <phrase title="fs_crud_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name]]></phrase>
+  <phrase title="fs_crud_new_record" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add New Record]]></phrase>
+  <phrase title="fs_crud_rollNo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Roll No]]></phrase>
+</phrases>

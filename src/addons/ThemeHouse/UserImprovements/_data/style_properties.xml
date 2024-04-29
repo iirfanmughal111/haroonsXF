@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="klUIDisabledUsername" group_name="misc" title="Disabled user name" description="Controls the richtext styling of disabled user names." property_type="css" display_order="100000" css_components="text,extra">
+    <value>{
+    "color": "@xf-textColorMuted",
+    "extra": "text-decoration: line-through;"
+}</value>
+  </style_property>
+  <style_property property_name="klUITrophyIconItem" group_name="thuserimprovements_trophies" title="Trophy showcase item" description="Trophy showcase item styling" property_type="css" display_order="1000" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "padding-top": "0px",
+    "padding-right": "@xf-paddingMedium",
+    "padding-bottom": "0px",
+    "padding-left": "@xf-paddingMedium",
+    "extra": "display: inline-block;\ntext-align: center;\nimg {\n\tvertical-align: middle;\n}"
+}</value>
+  </style_property>
+  <style_property property_name="klUITrophyIconItemPostbit" group_name="thuserimprovements_trophies" title="Trophy showcase item - Postbit" property_type="css" display_order="1100" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "font-size": "14px",
+    "padding": "0",
+    "extra": "min-width: 22px;\nimg {\n\tmax-height: 16px;\n}"
+}</value>
+  </style_property>
+  <style_property property_name="klUITrophyIconItemProfile" group_name="thuserimprovements_trophies" title="Trophy showcase item - Member profile" property_type="css" display_order="1200" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "font-size": "25px",
+    "extra": "min-width: 34px;\nimg {\n\tmax-height: 20px;\n}"
+}</value>
+  </style_property>
+  <style_property property_name="klUITrophyShowcase" group_name="thuserimprovements_trophies" title="Trophy showcase container" property_type="css" display_order="100" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "color": "@xf-textColor",
+    "padding": "@xf-paddingMedium",
+    "extra": "display: inline-block;"
+}</value>
+  </style_property>
+  <style_property property_name="klUITrophyShowcasePostbit" group_name="thuserimprovements_trophies" title="Trophy showcase container - Postbit" property_type="css" display_order="200" css_components="text,background,border,border_radius,padding,extra">
+    <value>[]</value>
+  </style_property>
+  <style_property property_name="klUITrophyShowcaseProfile" group_name="thuserimprovements_trophies" title="Trophy showcase container - Member profile" property_type="css" display_order="300" css_components="text,background,border,border_radius,padding,extra">
+    <value>[]</value>
+  </style_property>
+  <style_property property_name="klUIUTLPBar" group_name="klUIUTL" title="Progress bar" description="Styling for the progress bar." property_type="css" display_order="100" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "color": "@xf-paletteNeutral1",
+    "background-color": "@xf-paletteColor4",
+    "border-radius": "@xf-borderRadiusMedium",
+    "padding-right": "@xf-paddingMedium",
+    "padding-left": "@xf-paddingMedium",
+    "extra": "text-align: right;\ndisplay: inline-block;"
+}</value>
+  </style_property>
+  <style_property property_name="klUIUTLPContainer" group_name="klUIUTL" title="Progress bar container" description="Styling for the progress bar container." property_type="css" display_order="0" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "font-weight": "@xf-fontWeightHeavy",
+    "border-width": "@xf-borderSize",
+    "border-color": "@xf-paletteColor4",
+    "border-radius": "@xf-borderRadiusMedium",
+    "padding": "@xf-paddingSmall"
+}</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor1" group_name="klUIUsernameColors" title="User name color 1" property_type="value" value_type="color" display_order="100">
+    <value>"#61BD6D"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor10" group_name="klUIUsernameColors" title="User name color 10" property_type="value" value_type="color" display_order="1000">
+    <value>"#3D8EB9"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor11" group_name="klUIUsernameColors" title="User name color 11" property_type="value" value_type="color" display_order="1100">
+    <value>"#2969B0"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor12" group_name="klUIUsernameColors" title="User name color 12" property_type="value" value_type="color" display_order="1200">
+    <value>"#553982"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor13" group_name="klUIUsernameColors" title="User name color 13" property_type="value" value_type="color" display_order="1300">
+    <value>"#28324E"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor14" group_name="klUIUsernameColors" title="User name color 14" property_type="value" value_type="color" display_order="1400">
+    <value>"#000000"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor15" group_name="klUIUsernameColors" title="User name color 15" property_type="value" value_type="color" display_order="1500">
+    <value>"#F7DA64"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor16" group_name="klUIUsernameColors" title="User name color 16" property_type="value" value_type="color" display_order="1600">
+    <value>"#FBA026"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor17" group_name="klUIUsernameColors" title="User name color 17" property_type="value" value_type="color" display_order="1700">
+    <value>"#EB6B56"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor18" group_name="klUIUsernameColors" title="User name color 18" property_type="value" value_type="color" display_order="1800">
+    <value>"#E25041"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor19" group_name="klUIUsernameColors" title="User name color 19" property_type="value" value_type="color" display_order="1900">
+    <value>"#A38F84"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor2" group_name="klUIUsernameColors" title="User name color 2" property_type="value" value_type="color" display_order="200">
+    <value>"#1ABC9C"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor20" group_name="klUIUsernameColors" title="User name color 20" property_type="value" value_type="color" display_order="2000">
+    <value>"#EFEFEF"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor21" group_name="klUIUsernameColors" title="User name color 21" property_type="value" value_type="color" display_order="2100">
+    <value>"#FFFFFF"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor22" group_name="klUIUsernameColors" title="User name color 22" property_type="value" value_type="color" display_order="2200">
+    <value>"#FAC51C"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor23" group_name="klUIUsernameColors" title="User name color 23" property_type="value" value_type="color" display_order="2300">
+    <value>"#F37934"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor24" group_name="klUIUsernameColors" title="User name color 24" property_type="value" value_type="color" display_order="2400">
+    <value>"#D14841"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor25" group_name="klUIUsernameColors" title="User name color 25" property_type="value" value_type="color" display_order="2500">
+    <value>"#B8312F"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor26" group_name="klUIUsernameColors" title="User name color 26" property_type="value" value_type="color" display_order="2600">
+    <value>"#7C706B"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor27" group_name="klUIUsernameColors" title="User name color 27" property_type="value" value_type="color" display_order="2700">
+    <value>"#D1D5D8"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor3" group_name="klUIUsernameColors" title="User name color 3" property_type="value" value_type="color" display_order="300">
+    <value>"#54ACD2"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor4" group_name="klUIUsernameColors" title="User name color 4" property_type="value" value_type="color" display_order="400">
+    <value>"#2C82C9"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor5" group_name="klUIUsernameColors" title="User name color 5" property_type="value" value_type="color" display_order="500">
+    <value>"#9365B8"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor6" group_name="klUIUsernameColors" title="User name color 6" property_type="value" value_type="color" display_order="600">
+    <value>"#475577"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor7" group_name="klUIUsernameColors" title="User name color 7" property_type="value" value_type="color" display_order="700">
+    <value>"#CCCCCC"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor8" group_name="klUIUsernameColors" title="User name color 8" property_type="value" value_type="color" display_order="800">
+    <value>"#41A85F"</value>
+  </style_property>
+  <style_property property_name="klUIUsernameColor9" group_name="klUIUsernameColors" title="User name color 9" property_type="value" value_type="color" display_order="900">
+    <value>"#00A885"</value>
+  </style_property>
+  <style_property property_name="thuserimprovements_trophyProgressBarBackground" group_name="thuserimprovements_trophies" title="Trophy progress bar background color" property_type="value" value_type="color" display_order="1">
+    <value>"@xf-paletteNeutral1"</value>
+  </style_property>
+  <style_property property_name="thuserimprovements_trophyProgressBarBorder" group_name="thuserimprovements_trophies" title="Trophy progress bar border color" property_type="value" value_type="color" display_order="20">
+    <value>"@xf-borderColorLight"</value>
+  </style_property>
+  <style_property property_name="thuserimprovements_trophyProgressBarForeground" group_name="thuserimprovements_trophies" title="Trophy progress bar foreground color" property_type="value" value_type="color" display_order="10">
+    <value>"@xf-paletteColor4"</value>
+  </style_property>
+</style_properties>

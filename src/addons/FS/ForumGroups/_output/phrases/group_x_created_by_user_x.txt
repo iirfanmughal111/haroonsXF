@@ -1,0 +1,1 @@
+Group <a href="{groupLink}"><strong>{groupTitle}</strong></a> created by <a href="{userLink}"><strong>{userName}</strong></a>.

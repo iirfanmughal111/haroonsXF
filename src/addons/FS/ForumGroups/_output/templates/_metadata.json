@@ -1,0 +1,87 @@
+{
+    "public/approval_item_node.html": {
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "b0cb3d43fbc3f7f9385c4221a0581968"
+    },
+    "public/display_order_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a2e981cd90be92305896a5dc06f02fe5"
+    },
+    "public/fs_forum_gorups_css_helper.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1f22da9b6835e44e72b7a3671f70654c"
+    },
+    "public/fs_forum_gorups_grid_card.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cef170c9835862c028f38b1e31a2e75e"
+    },
+    "public/fs_forum_gorups_group_list.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ea9a350e49e60cd53b9f0a3b4dbe3258"
+    },
+    "public/fs_forum_gorups_style.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6b7507bb573eb609d03e59b8d3056a5f"
+    },
+    "public/fs_forum_groups_form_upload.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9bc9fd6d495a513f520e18034d51e83d"
+    },
+    "public/fs_forum_groups_forum_view_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8dc73e0f3e10b0a24ede2915e658142f"
+    },
+    "public/fs_forum_groups_forum_view_single.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "c4837bdfce83d617aab2cf58ad63641e"
+    },
+    "public/fs_forum_groups_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ca9272065b9ea5b51b1f60a7c25fc993"
+    },
+    "public/fs_forum_groups_moderator_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dc39a1b0504dcdd843fc54a6a01b918c"
+    },
+    "public/fs_forum_groups_sub_forum_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "49a5c92db1ca7d37b4d5a686bb281bd7"
+    },
+    "public/fs_forum_groups_thread_list_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e9f36ffca1e786068708b494899570ec"
+    },
+    "public/fs_forum_groups_view.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "33e994c7f9f59569254380c850f4e78f"
+    },
+    "public/moderator_add_choice.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "df9b7e1f5c10b44a8b62de7c22a776f2"
+    },
+    "public/moderator_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cfb2e531d8ff0f3dcc1de9c0748c11e1"
+    },
+    "public/node_edit_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "133411c74b6c23c0234e3a99e5727610"
+    }
+}

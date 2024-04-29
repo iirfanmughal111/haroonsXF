@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "tvTrakt",
+    "sub_name": "episode",
+    "format": "episode/:int<post_id>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "nick97\\TraktTV:TVPost",
+    "context": "",
+    "action_prefix": ""
+}

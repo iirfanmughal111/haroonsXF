@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="ron_addEdit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$ron.isInsert()">
+	<xf:title>{{ phrase('add_ron_video') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('edit_ron_video:') }} {$ron.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$ron.isUpdate()">
+	<xf:button href="{{ link('by-rons/delete', $ron) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('by-rons/save', $ron) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="title" value="{$ron.title}" maxlength="{{ max_length($ron, 'title') }}" autofocus="true" required="true"
+				label="{{ phrase('title') }}" />
+			
+			<xf:textboxrow name="video_url" type="url" value="{$ron.video_url}" maxlength="{{ max_length($ron, 'video_url') }}" required="true"
+				label="{{ phrase('youtube_video_url') }}" explain="{{ phrase('youtube_url_explain') }}"/>
+			
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="upload_logo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="!$ronLogo">
+	<xf:title>{{ phrase('add_logo') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('update_logo:') }}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('by-rons/upload-logo', $ron) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+	
+				<xf:if is="$ronLogo">
+					<xf:uploadrow name="logo_img" accept=".jpeg,.jpg,.png"
+								  label="{{ phrase('logo_img') }}"  />
+
+					<xf:inforow rowtype="confirm">
+						<img src="{{ base_url('data/brand_img/logo_images/ron-logo.jpg?t=') }}{$xf.time}" width="170" height="170" alt="Ron-page-logo-image" />
+					</xf:inforow>
+				<xf:else />
+					<xf:uploadrow name="logo_img" accept=".jpeg,.jpg,.png" required="true"
+								  label="{{ phrase('logo_img') }}"  />
+				</xf:if>
+
+			
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="xb_videos_by_ron" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('videos_by_ron') }}</xf:title>
+	
+<xf:pageaction>
+	<xf:button href="{{ link('by-rons/add') }}" icon="add" overlay="true">{{ phrase('add_ron_video') }}</xf:button>
+	<xf:button href="{{ link('by-rons/upload-logo') }}" overlay="true"><i class="far fa-image"></i>  {{ $ronLogo ? phrase('update_logo') : phrase('add_logo') }}</xf:button>
+	
+	<img src="{{ base_url('data/brand_img/logo_images/ron-logo.jpg?t=') }}{$xf.time}" width="60" height="50" alt="Ron-page-logo-image" />
+</xf:pageaction>
+
+
+	<div class="block-container">
+		<xf:if is="$rons is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('title') }}</xf:cell>
+						<xf:cell>{{ phrase('url') }}</xf:cell>					
+					
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$rons" value="$ron">
+						<xf:datarow>
+							<xf:cell>{$ron.title}</xf:cell>
+							<xf:cell>{$ron.video_url}</xf:cell>
+							
+							<xf:action href="{{ link('by-rons/edit', $ron) }}" overlay="true">{{ phrase('edit') }}</xf:action>
+							<xf:delete href="{{ link('by-rons/delete', $ron) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($rons, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="by-rons" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />]]></template>
+  <template type="public" title="xb_video_by_ron" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<xf:js src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<xf:css>
+@charset "UTF-8";
+
+<xf:comment>
+    Name: YouTubePopUp
+    Description: jQuery plugin to display YouTube or Vimeo video in PopUp, responsive and retina, easy to use.
+    Version: 1.0.1
+    Plugin URL: http://wp-time.com/youtube-popup-jquery-plugin/
+    Written By: Qassim Hassan
+    Twitter: @QQQHZ
+    Websites: wp-time.com | qass.im | wp-plugins.in
+    Dual licensed under the MIT and GPL licenses:
+        http://www.opensource.org/licenses/mit-license.php
+        http://www.gnu.org/licenses/gpl.html
+    Copyright (c) 2016 - Qassim Hassan
+</xf:comment>
+.p-body-header
+{
+	display: none;
+}
+	
+.YouTubePopUp-Wrap{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-color:#000;
+    background-color:rgba(0,0,0,0.8);
+    top:0;
+    left:0;
+    z-index:9999999999999;
+}
+
+.YouTubePopUp-animation{
+    opacity: 0;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: YouTubePopUp;
+    animation-name: YouTubePopUp;
+}
+
+@-webkit-keyframes YouTubePopUp {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes YouTubePopUp {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+body.logged-in .YouTubePopUp-Wrap{ / For WordPress /
+    top:32px;
+    z-index:99998;
+}
+
+.YouTubePopUp-Content{
+    max-width: 846px;
+    display:block;
+    margin:0 auto;
+    height:100%;
+    position:relative;
+}
+
+.YouTubePopUp-Content iframe{
+    max-width:100% !important;
+    width:100% !important;
+    display:block !important;
+    height:480px !important;
+    border:none !important;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.YouTubePopUp-Hide{
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: YouTubePopUpHide;
+    animation-name: YouTubePopUpHide;
+}
+
+@-webkit-keyframes YouTubePopUpHide {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes YouTubePopUpHide {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+	.video-title-text {
+width: 100%;
+padding: 0px;
+text-align: center;
+margin: 0px auto;
+color: white;
+font-size: 12px;
+	}
+.YouTubePopUp-Close{
+    position:absolute;
+    top:0;
+    cursor:pointer;
+    bottom: 475px;
+    right: -57px;
+    margin:auto 0;
+    width:24px;
+    height:24px;
+    background:url("styles/img/close.png") no-repeat;
+    background-size:24px 24px;
+    -webkit-background-size:24px 24px;
+    -moz-background-size:24px 24px;
+    -o-background-size:24px 24px;
+}
+
+.YouTubePopUp-Close:hover{
+    opacity:0.5;
+}
+
+@media all and (max-width: 1050px) and (min-width: 10px){
+    .YouTubePopUp-Close{
+        bottom:550px;
+        right:0px
+    }
+    .YouTubePopUp-Content {
+        max-width: 85%;
+    }
+}
+@media all and (max-width: 768px) and (min-width: 10px){
+    .YouTubePopUp-Content{
+        max-width:90%;
+    }
+}
+
+@media all and (max-width: 600px) and (min-width: 10px){
+    .YouTubePopUp-Content iframe{
+        height:320px !important;
+    }
+
+    .YouTubePopUp-Close{
+        bottom:362px;
+    }
+}
+
+@media all and (max-width: 480px) and (min-width: 10px){
+    .YouTubePopUp-Content iframe{
+        height:220px !important;
+    }
+
+    .YouTubePopUp-Close{
+        bottom:262px;
+        right:0px
+    }
+}	
+
+	.block-container{
+		background: #000;
+	}
+    .bar-icon{
+        display: none;
+    }
+.navbar {
+	  overflow: hidden;
+	 color: #fff;
+	  border-bottom: 2px solid;
+	  background: rgb(19 18 18);
+	  transition: ease-in .15s all;
+	}
+
+	.nav-inner {
+	  max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+		width: fit-content;
+		transition: max-width .2s;
+		height: 43px;
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+	}
+	.nav-inner a {
+		color:rgba(255,255,255,0.7);
+		text-decoration: none;
+		color:#fff;
+		 padding: 12px 16px;
+	}
+
+	.subnav {
+	  float: left;
+	  overflow: hidden;
+	}
+
+	.subnav .subnavbtn {  
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 12px 16px;
+	  background-color: inherit;
+	  font-family: inherit;
+	  margin: 0;
+
+	}
+
+	.navbar a:hover, .subnav:hover .subnavbtn {
+	  background-color: #fff;
+	  color:black;
+	}
+
+	.subnav-content {
+	   display: none;
+		background-color: black;
+		width: 11.60em;
+		z-index: 1;
+		position: absolute;
+	}
+
+	.subnav-content a {
+		 color: white;
+		text-decoration: none;
+		display: block;
+	    padding: 10px 0px 5px 10px;
+	    border-bottom: 1px solid;
+	}
+
+	.subnav-content a:hover {
+	  background-color: #eee;
+	  color: black;
+	}
+
+	.subnav:hover .subnav-content {
+	  display: block;
+	}
+
+.main-body{
+    background:black;
+}  
+.main-inner-body{
+    margin:10px;
+}
+.slider1{
+    display: flex;
+ 
+    overflow: hidden;
+    width:100%;
+}
+ .featured-video{
+	  width: 100%;
+	  height: 100%;
+	  margin:0;
+	}
+.slider2{
+    display: flex;
+   
+    overflow: hidden;
+    width:100%;
+}
+.slider3,.slider4{
+    display: flex;
+
+    overflow: hidden;
+    width:100%;
+}
+.arrowL1{
+    position: absolute;
+    font-size: 40px;
+    color:#fff;
+    top: 17px;
+    left: 0px;
+    background: black;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.arrowR1{
+    position: absolute;
+    font-size: 40px;
+    color:#fff;
+    top: 17px;
+    right: 0px;
+    background: black;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.arrowL2{
+    position: absolute;
+    font-size: 40px;
+    color:#fff;
+    top: 17px;
+    left: 0px;
+    background: black;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.arrowR2{
+    position: absolute;
+    font-size: 40px;
+    color:#fff;
+    top: 17px;
+    right: 0px;
+    background: black;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.arrowL3,.arrowL4{
+    position: absolute;
+    font-size: 40px;
+    color:#fff;
+    top: 17px;
+    left: 0px;
+    background: black;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.arrowR3,.arrowR4{
+    position: absolute;
+    font-size: 40px;
+    color:#fff;
+    top: 17px;
+    right: 0px;
+    background: black;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.thumbnail{
+    display: inline-flex;
+    width:193px;
+object-fit: contain;
+	height:135px;
+}
+#mainPlayer {
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+  
+  #mainPlayer p {
+    font-size: 20px;
+    height: 600px;
+    padding: 0;
+    margin: 0;
+  }
+  .featureV{
+    width: 90%;
+    height: 600px;
+    border: none;
+  }
+  .slider-heading{
+    font-size: 20px;
+    color: #fff;
+    margin-top: 0px;    
+    margin-left: 0.5%;
+	margin-bottom: 0px;
+  }
+  .slider-list{
+    display: flex;
+    list-style: none;
+    padding-left: 0px;
+    overflow: hidden;
+	   width: 100%;
+  }
+  .slider-list-item{
+    min-width: 18%;
+    margin-left: 3px;
+    margin-right: 3px;
+	max-width: 18%;
+  }
+  .largeSlider{
+      overflow:hidden;
+  }
+<xf:comment>
+  /*MEDIA QUERIES*/
+	</xf:comment>
+  @media screen and (max-width:650px){
+    #mainPlayer p {
+        font-size: 20px;
+        height: 300px;
+        padding: 0;
+        margin: 0;
+      }
+      .featureV{
+        width: 90%;
+        height: 300px;
+        border: none;
+      }
+      .slider1 {
+          width:125%;
+          margin-bottom: 5px;
+      }
+      .slider2 {
+        width:125%;
+        margin-bottom: 5px;
+      }
+      .slider3,.slider4 {
+        width:125%;
+        margin-bottom: 5px;
+      }
+      .slider-heading {
+        font-size: 20px;
+      }
+ 
+    .arrowL1 {
+        font-size: 30px;
+    }
+    .arrowR1 {
+        font-size: 30px;
+    }
+    .arrowL2 {
+        font-size: 30px;
+    }
+    .arrowR2 {
+        font-size: 30px;
+    }
+    .arrowL3,.arrowL4 {
+        font-size: 30px;
+    }
+    .arrowR3,.arrowL4 {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 480px){
+
+    .arrowL1 {
+        font-size: 15px;
+        padding-top: 35px;
+	    padding-left: 5px;
+    padding-right: 5px;
+    }
+    .arrowR1 {
+        font-size: 15px;
+        padding-top: 35px;
+	    padding-left: 5px;
+    padding-right: 5px;
+    }
+    .arrowL2 {
+        font-size: 15px;
+        padding-top: 35px;
+	    padding-left: 5px;
+    padding-right: 5px;
+    }
+    .arrowR2 {
+        font-size: 15px;
+        padding-top: 35px;
+	    padding-left: 5px;
+    padding-right: 5px;
+    }
+    .arrowL3,.arrowL4 {
+        font-size: 15px;
+        padding-top: 35px;
+	    padding-left: 5px;
+    padding-right: 5px;
+    }
+    .arrowR3,.arrowR4 {
+        font-size: 15px;
+        padding-top: 35px;
+	    padding-left: 5px;
+    padding-right: 5px;
+    }
+	
+}
+	<xf:comment>
+	//.....NAVBAR QUERIES.....
+	</xf:comment>
+	@media screen and (min-width:501px) and (max-width:600px){
+	.nav-inner a{
+	padding: 12px 13px;
+	}
+	.subnav .subnavbtn{
+	padding: 12px 13px;
+	}
+	.subnav-content{
+	width: 11.15em;
+	}
+	}
+	@media screen and (min-width:401px) and (max-width:500px){
+	.nav-inner a{
+	padding: 12px 5px;
+    	font-size: 14px;
+	}
+	.subnav .subnavbtn{
+	padding: 12px 5px;
+    	font-size: 14px;
+	}
+	.subnav-content{
+	width: 9.50em;
+	}
+	}
+	@media screen and (min-width:301px) and (max-width:400px){
+	.nav-inner a{
+	padding: 8px 4px;
+    	font-size: 11px;
+	}
+	.subnav .subnavbtn{
+	padding: 8px 4px;
+    	font-size: 11px;
+	}
+	.subnav-content{
+	width: 7.5em;
+	}
+	.nav-inner {
+	height: 31px;
+	}
+	}
+	@media screen and (max-width:300px){
+	.nav-inner a{
+	padding: 8px 4px;
+    	font-size: 10px;
+	}
+	.subnav .subnavbtn{
+	padding: 8px 4px;
+    	font-size: 10px;
+	}
+	.subnav-content{
+	width: 6.9em;
+	}
+	.nav-inner {
+	height: 31px;
+	}
+	}
+	
+</xf:css>
+
+<xf:js>
+
+$(document).ready(function(){
+	
+	         jQuery('a.bla-1').magnificPopup({
+                type: 'iframe'
+            });
+	
+	
+	$(".arrowR1").click(function(){
+			var item_width = $('.slider1 ul li').width(); 
+			var left_value = item_width * (-1); 
+			var left_indent = parseInt($('.slider1 ul').css('left')) - item_width;
+			$('.slider1 ul').animate({'left' : left_indent}, 100, function () {
+			$('.slider1 ul li:last').after($('.slider1 ul li:first'));                  
+			$('.slider1 ul').css({'left' : left_value,});
+	});
+	});
+
+	$(".arrowL1").click(function(){
+			var item_width = $('.slider1 ul li').width(); 
+			var right_value = item_width * (+1); 
+			var right_indent = parseInt($('.slider1 ul').css('right')) + item_width;
+			$('.slider1 ul').animate({'right' : right_indent}, 100, function () {
+			$('.slider1 ul li:first').before($('.slider1 ul li:last'));                  
+			$('.slider1 ul').css({'right' : right_value,});
+	});
+	});
+});	
+	
+</xf:js>
+
+
+<style>
+	.vbr-page-logo
+	{
+		text-align: center;
+		padding: 5px;
+	}
+</style>
+
+	
+   	<div class="main-body">
+		
+		<div class='vbr-page-logo'>	
+			<img src="{{ base_url('data/brand_img/logo_images/ron-logo.jpg?t=') }}{$xf.time}" alt="Ron-page-logo-image" />
+		</div>
+		
+		<xf:if is="$featureVideo is not empty">
+			<div id="mainPlayer" data-activethumb="0">
+				 <p id="promptText">
+					<iframe  class="featured-video" src="https://www.youtube.com/embed/{$featureVideo.video_id}?controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				 </p>
+			</div>
+		</xf:if>
+			
+			
+    <div class="main-inner-body">
+		
+		  <!--LATEST ADDED-->
+		<xf:if is="$ronVideos is not empty">
+			<h1 class="slider-heading">Latest Added</h1>
+
+			<div style="position: relative;" class="largeSlider">
+
+
+				<div class="arrowL1">
+					<i class="fa fa-chevron-left"></i>
+				</div>
+				<div class="arrowR1">
+					<i class="fa fa-chevron-right"></i>
+				</div>
+
+				<div class="slider1">
+					<ul class="slider-list">
+
+						<xf:foreach loop="$ronVideos" value="$ron">
+							<li class="slider-list-item">
+								<a class="bla-1" href="{{$ron.video_url}}">
+									<img class="thumbnail" src="{{$ron.getImgUrl()}}">
+									<div class="video-title-text">
+										{{$ron.title}}
+									</div>
+								</a>
+							</li>
+						</xf:foreach>
+
+					</ul>
+				</div>
+			</div>
+		</xf:if>	
+		
+	</div>
+  </div>]]></template>
+</templates>

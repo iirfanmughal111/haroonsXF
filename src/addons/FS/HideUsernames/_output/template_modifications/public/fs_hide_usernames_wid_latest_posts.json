@@ -1,0 +1,9 @@
+{
+    "template": "thread_list_macros",
+    "description": "fs_hide_usernames_wid_latest_posts",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>",
+    "replace": "<xf:if is=\"{{ $xf.visitor.hasPermission('fs_user_names', 'hide') }}\">\n\n\t<li>{{ phrase('latest_x', {'name': $thread.User.username}) }}</li>\n<xf:else />\n\t$0\n</xf:if>"
+}

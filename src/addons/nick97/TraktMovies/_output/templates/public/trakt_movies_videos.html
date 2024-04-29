@@ -1,0 +1,9 @@
+<xf:title>{{ phrase('trakt_movies_x_videos', {'name': $movie.trakt_title}) }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<div class="block">
+	<xf:macro template="trakt_movies_videos_macros" name="video_list"
+			  arg-movie="{$movie}" arg-videos="{$videos}" arg-page="{$page}"
+			  arg-hasMore="{$hasMore}" />
+</div>

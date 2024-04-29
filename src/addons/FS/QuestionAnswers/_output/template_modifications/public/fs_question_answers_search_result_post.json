@@ -1,0 +1,9 @@
+{
+    "template": "search_result_post",
+    "description": "fs_question_answers_search_result_post",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<a href=\"{{ link('threads/post', $post.Thread, {'post_id': $post.post_id}) }}\">{{ prefix('thread', $post.Thread) . highlight($post.Thread.title, $options.term) }}</a>",
+    "replace": "<a href=\"{{ link('threads/post', $post.Thread, {'post_id': $post.post_id}) }}\">{{ prefix('thread', $post.Thread) . highlight($post.Thread.title, $options.term) }}</a> <xf:if is=\"$post.Thread.node_id == $xf.options.fs_questionAnswerForum\"> {{ phrase('fs_question_search_related_to', {\n'forumTitle': {$post.Thread.Forum.title}\n}) }} </xf:if>"
+}

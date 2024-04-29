@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.ozzmodz_forms_logs" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Form submit log]]></phrase>
+  <phrase title="admin_navigation.snogExport" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Export]]></phrase>
+  <phrase title="admin_navigation.snogForms" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forms]]></phrase>
+  <phrase title="admin_navigation.snogImport" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Import]]></phrase>
+  <phrase title="admin_navigation.snogQuestions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default Questions]]></phrase>
+  <phrase title="admin_navigation.snogTypes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Types]]></phrase>
+  <phrase title="admin_navigation.snog_forms" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Advanced Forms]]></phrase>
+  <phrase title="admin_permission.snogFormsAdmin" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Manage Forms]]></phrase>
+  <phrase title="cron_entry.snogProcessPolls" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Process form poll results]]></phrase>
+  <phrase title="custom_bb_code_desc.tab" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Adds a 35px tab]]></phrase>
+  <phrase title="custom_bb_code_example.tab" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.tab" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.tab" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Adds a tab]]></phrase>
+  <phrase title="nav.snog_forms_nav" version_id="1000573" version_string="1.0.5.3"><![CDATA[Forms]]></phrase>
+  <phrase title="option.ozzmodz_forms_floodCheck" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Minimum time between submitting new form]]></phrase>
+  <phrase title="option.snogFormsLastUpdate" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[[OzzModz] Advanced Forms Last Update]]></phrase>
+  <phrase title="option_explain.ozzmodz_forms_floodCheck" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Users will have to wait this many seconds between submitting new form.]]></phrase>
+  <phrase title="option_explain.snogFormsLastUpdate" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[]]></phrase>
+  <phrase title="option_group.ozzmodz_forms" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[[OzzModz] Advanced Forms]]></phrase>
+  <phrase title="option_group_description.ozzmodz_forms" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[]]></phrase>
+  <phrase title="permission.snogForms_canApproveForms" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can approve/deny submitted forms]]></phrase>
+  <phrase title="permission.snogForms_canExtendPolls" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Can extend promotion poll end date]]></phrase>
+  <phrase title="permission.snogForms_canViewForms" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Can view forms]]></phrase>
+  <phrase title="permission_interface.snogForms" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Advanced Forms Permissions]]></phrase>
+  <phrase title="sn_minimum_attachment_allowed" version_id="2003570" version_string="2.0.35"><![CDATA[Minimum attachments]]></phrase>
+  <phrase title="sn_minimum_attachment_allowed_explain" version_id="2003570" version_string="2.0.35"><![CDATA[Minimum limit of attachments for a form, if you have used Attachment feild in form.]]></phrase>
+  <phrase title="snog_forms_add_conditional" version_id="2001570" version_string="2.0.15"><![CDATA[Add conditional question]]></phrase>
+  <phrase title="snog_forms_add_form" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add New Form]]></phrase>
+  <phrase title="snog_forms_add_new_question" version_id="2001470" version_string="2.0.14"><![CDATA[Add new question]]></phrase>
+  <phrase title="snog_forms_add_secondary" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add secondary user groups]]></phrase>
+  <phrase title="snog_forms_add_secondary_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you wish to add secondary user groups to the member's account after they submit this form, check this box.]]></phrase>
+  <phrase title="snog_forms_add_type" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Form Type]]></phrase>
+  <phrase title="snog_forms_addto_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Promotion Options - You did not select any user groups to instantly add the user to]]></phrase>
+  <phrase title="snog_forms_agreement_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Agreement Text]]></phrase>
+  <phrase title="snog_forms_all_above" version_id="1000070" version_string="1.0.0"><![CDATA[All of the above]]></phrase>
+  <phrase title="snog_forms_also_close" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This action will also close the poll]]></phrase>
+  <phrase title="snog_forms_answer_color" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report answer color]]></phrase>
+  <phrase title="snog_forms_answer_color_explain" version_id="1000770" version_string="1.0.7"><![CDATA[This will change the answer color in report posts and PCs in all styles. Leave blank to use the default text color for your styles.<br /><br /><span style="color:red;">WARNING:</span> If you include a BB Code in your question report formatting, these color settings may appear in the questions or answers. If you are including codes such as the CODE BB Code in your question report format, DO NOT use these color options. Format the colors in your question report format instead.]]></phrase>
+  <phrase title="snog_forms_answer_note" version_id="2001470" version_string="2.0.14"><![CDATA[If there are conditional questions attached to this question, they will also be deleted.<br />If you are saving answers for this form to the database, answers to this question will also be deleted.]]></phrase>
+  <phrase title="snog_forms_answer_type" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Answer type]]></phrase>
+  <phrase title="snog_forms_answers" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Answers]]></phrase>
+  <phrase title="snog_forms_approval" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Require approval]]></phrase>
+  <phrase title="snog_forms_approval_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[If you want the thread or post created when a member submits this form to be moderated and require approval, check this box.]]></phrase>
+  <phrase title="snog_forms_approved_by" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Approved by:]]></phrase>
+  <phrase title="snog_forms_approved_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Approved PC text]]></phrase>
+  <phrase title="snog_forms_approved_text_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the text for the approved application PC.<br />Replacement Variable: {1} = Form Name]]></phrase>
+  <phrase title="snog_forms_approved_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Approved PC title]]></phrase>
+  <phrase title="snog_forms_approved_title_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the title for the approved form PC. Leave blank if you do not want to send an approved PC.]]></phrase>
+  <phrase title="snog_forms_as_attachment" version_id="1000470" version_string="1.0.4"><![CDATA[As attachment]]></phrase>
+  <phrase title="snog_forms_available_forms" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Available forms]]></phrase>
+  <phrase title="snog_forms_bbcend" version_id="2002070" version_string="2.0.20"><![CDATA[Wrap IP in BBCode end]]></phrase>
+  <phrase title="snog_forms_bbcend_explain" version_id="2002070" version_string="2.0.20"><![CDATA[Enter the BBCode end code to wrap an unregistered user's IP in. LEAVE BLANK if not used.<br />Example: [/SIZE]]]></phrase>
+  <phrase title="snog_forms_bbcstart" version_id="2002070" version_string="2.0.20"><![CDATA[Wrap IP in BBCode start]]></phrase>
+  <phrase title="snog_forms_bbcstart_explain" version_id="2002070" version_string="2.0.20"><![CDATA[Enter the BBCode start code to wrap an unregistered user's IP in. LEAVE BLANK if not used.<br />Example: [SIZE=7]]]></phrase>
+  <phrase title="snog_forms_below" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Below question]]></phrase>
+  <phrase title="snog_forms_button_phrase" version_id="2002070" version_string="2.0.20"><![CDATA[Button phrase]]></phrase>
+  <phrase title="snog_forms_button_phrase_explain" version_id="2002070" version_string="2.0.20"><![CDATA[Enter the phrase that will be displayed in the button]]></phrase>
+  <phrase title="snog_forms_by_pc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Report by PC]]></phrase>
+  <phrase title="snog_forms_by_pc_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you would like to send a new PC when this form is submitted.]]></phrase>
+  <phrase title="snog_forms_change_primary" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change primary user group]]></phrase>
+  <phrase title="snog_forms_change_primary_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you wish to promote the member to a different primary usergroup after they submit this form, check this box.]]></phrase>
+  <phrase title="snog_forms_change_to" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change to]]></phrase>
+  <phrase title="snog_forms_checkbox_error" version_id="2000070" version_string="2.0.0"><![CDATA[Checkbox limit error]]></phrase>
+  <phrase title="snog_forms_checkbox_error_explain" version_id="2000070" version_string="2.0.0"><![CDATA[Enter the error to be displayed if the users makes too many selections.]]></phrase>
+  <phrase title="snog_forms_checkbox_limit" version_id="2000070" version_string="2.0.0"><![CDATA[Checkbox answer limit]]></phrase>
+  <phrase title="snog_forms_checkbox_limit_explain" version_id="2000070" version_string="2.0.0"><![CDATA[You may limit the number of selections a user can make for a checkbox. Set to zero for no limit.]]></phrase>
+  <phrase title="snog_forms_choose_one" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Choose one]]></phrase>
+  <phrase title="snog_forms_clear_answers" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Clear answers]]></phrase>
+  <phrase title="snog_forms_close_poll" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Close poll]]></phrase>
+  <phrase title="snog_forms_close_poll_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the number of days the poll poll should run.]]></phrase>
+  <phrase title="snog_forms_conditional_answer_explain" version_id="2001570" version_string="2.0.15"><![CDATA[Select the question and answer that must be given for this question to be displayed]]></phrase>
+  <phrase title="snog_forms_conditional_on" version_id="2001570" version_string="2.0.15"><![CDATA[Conditional on QID]]></phrase>
+  <phrase title="snog_forms_conditional_question_explain" version_id="2001570" version_string="2.0.15"><![CDATA[Conditional questions are questions that will only be displayed if another question is answered with a specific answer.]]></phrase>
+  <phrase title="snog_forms_conditional_type_explain" version_id="2001771" version_string="2.0.17.1"><![CDATA[Select the type of answer you expect to receive for this question.<br /><br />If this is a header phrase select 'None - This is a Header Phrase'.<br />If this is a date picker, the date will appear in reports in the format set in your language options.<br />The File Upload answer type displays the standard XF upload prompt and files are displayed as attachments in PC's, new threads and thread replies. If you use <b>BOTH</b> the PC and new thread or existing thread options at the same time, the attachments will only appear in the thread or reply. Attachments are not displayed in the second thread if that report option is selected.<br /><br />If this is a Thread prefixes answer type, all available prefixes that the user can use for the forum the thread is to be posted in will be listed. And the thread prefix will be set to the user's selection. <br /><b>The Thread prefixes answer type only works for new threads, it DOES NOT work with "Report in second new thread" or "Report in existing thread".</b><br /><b>The Thread prefixes answer type DOES NOT appear in the form report.</b><br /><br /><b>NOTE:</b> If this is a WYSIWYG answer type and you want people to be able to upload photos, etc. into the field, you must add a File Upload question to the form.<br /><br /><b>NOTE:</b> If this is a File Upload answer type, these permissions for the user's user group MUST be set to 'Yes' for the forum the form is going to be posted in:<br />Post new thread<br />View attachments to posts<br />Upload attachments to posts]]></phrase>
+  <phrase title="snog_forms_confirm_approve" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm that you want to approve:]]></phrase>
+  <phrase title="snog_forms_confirm_deny" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm that you want to deny:]]></phrase>
+  <phrase title="snog_forms_confirm_reset_all" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Please confirm that you want to reset all user counts for this form]]></phrase>
+  <phrase title="snog_forms_cooldown" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Form cooldown]]></phrase>
+  <phrase title="snog_forms_cooldown_explain" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Minimum time between user can submit this form again.<br/>
+Set 0 to no limit.<br/>
+Set -1 to limit with one submit to user (or IP if guest).]]></phrase>
+  <phrase title="snog_forms_copy" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Copy]]></phrase>
+  <phrase title="snog_forms_count_exceeded" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[You have already reached the limit of the number of times you can fill out this form.]]></phrase>
+  <phrase title="snog_forms_create_normal" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Create normal poll]]></phrase>
+  <phrase title="snog_forms_create_normal_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Check this box if you would like to create a normal poll when this form is submitted.<br /><font style="color:blue"><b>NOTE:</b></font> You MUST select 'Report in New Thread' in Report Type/Thread report options if you use this option.]]></phrase>
+  <phrase title="snog_forms_create_voting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Create promotion voting poll]]></phrase>
+  <phrase title="snog_forms_create_voting_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[If you want members to vote on this form, check this box.<br />This will create a Yes/No poll in the thread.<br />The user will be automatically promoted (or not) based on the outcome of the poll.<br /><font style="color:blue;"><b>NOTE:</b></font> You MUST select 'Report in New Thread' in Report Type/Thread report options if you use this option.]]></phrase>
+  <phrase title="snog_forms_cron_error" version_id="2001570" version_string="2.0.15"><![CDATA[The poll, [url='{link}']{poll}[/url] resulted in an error during processing. Please check the thread for any possible reason (poll deleted from thread, etc.) that might cause the system to be unable to process this poll.]]></phrase>
+  <phrase title="snog_forms_cron_error_title" version_id="2001570" version_string="2.0.15"><![CDATA[Error processing form poll]]></phrase>
+  <phrase title="snog_forms_csv_export_php_min_x_version" version_id="2020048" version_string="2.2.0 Beta 18"><![CDATA[CSV export requires a PHP {version} and newer.]]></phrase>
+  <phrase title="snog_forms_decide_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Promotion Options - You must select a user group to promote user to when including decision links]]></phrase>
+  <phrase title="snog_forms_decision_poll" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Decision or poll promote]]></phrase>
+  <phrase title="snog_forms_decision_poll_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Places decision links in thread and/or creates a voting poll]]></phrase>
+  <phrase title="snog_forms_default_answer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default answer]]></phrase>
+  <phrase title="snog_forms_default_answer_explain" version_id="2000070" version_string="2.0.0"><![CDATA[If you wish to provide a default answer for this question enter it here.<br />
+All question types except Agreement, File Upload and Header can have a default answer.<br /><b>Text Questions:</b> Will display what you enter here.<br /><b>Single Line Text Questions:</b> Will display either what you enter here and/or the value for the following tags. You may combine text and tags.<br />&nbsp;&nbsp;&nbsp;{username} = User's Name<br />&nbsp;&nbsp;&nbsp;{userid} = User's User ID<br />&nbsp;&nbsp;&nbsp;{email} = User's Email<br />&nbsp;&nbsp;&nbsp;{location} = User's Location<br />&nbsp;&nbsp;&nbsp;{custom.CustomUserFieldID} = Custom User Field<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: {custom.skype}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom user fields MUST be a Single-line text box custom field<br /><b>Spinbox Questions:</b> You may enter a default value such as 0 or 0.01<br /><b>Yes/No Questions:</b> You MUST use the exact Xenforo Yes or No phrase including any capital letters. In English this is Yes or No.<br /><b>Single selection forum list:</b> Enter the name of the forum EXACTLY how it is entered in the Forums/Nodes list.<br /><b>All other question types:</b> You must enter one of the selections EXACTLY as you entered it in Expected Answers.]]></phrase>
+  <phrase title="snog_forms_default_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[The  Default answer you have defined is not in the Expected answers]]></phrase>
+  <phrase title="snog_forms_delete_form_notice" version_id="1000270" version_string="1.0.2"><![CDATA[You are saving the answers to questions for this form in the database, they will be deleted if you delete this form.]]></phrase>
+  <phrase title="snog_forms_delete_pcs" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Delete PCs]]></phrase>
+  <phrase title="snog_forms_delete_pcs_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to automatically delete sent PCs from the Private Conversation sender's conversation list. This will prevent the database from increasing in size if the PC sender never logs in to read and delete their PCs. This will also close the PC to replies.]]></phrase>
+  <phrase title="snog_forms_deleted_form" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[Deleted form]]></phrase>
+  <phrase title="snog_forms_denied_by" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Denied by:]]></phrase>
+  <phrase title="snog_forms_denied_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Denied PC text]]></phrase>
+  <phrase title="snog_forms_denied_text_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the text for the denied application PC.<br />Replacement Variable: {1} = Form Name]]></phrase>
+  <phrase title="snog_forms_denied_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Denied PC title]]></phrase>
+  <phrase title="snog_forms_denied_title_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the title for the denied form PC. Leave blank if you do not want to send an denied PC.]]></phrase>
+  <phrase title="snog_forms_deny" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Deny]]></phrase>
+  <phrase title="snog_forms_description_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The description for this question.<br />(Displayed below answer area - Not displayed if blank)]]></phrase>
+  <phrase title="snog_forms_direct_access" version_id="1001170" version_string="1.0.11"><![CDATA[Direct access URL]]></phrase>
+  <phrase title="snog_forms_do_not" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Do not change]]></phrase>
+  <phrase title="snog_forms_edit_form" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Form]]></phrase>
+  <phrase title="snog_forms_edit_question" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Question]]></phrase>
+  <phrase title="snog_forms_edit_type" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Type]]></phrase>
+  <phrase title="snog_forms_email_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report type - There is an invalid email address in Email recipients]]></phrase>
+  <phrase title="snog_forms_email_options" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Email report options]]></phrase>
+  <phrase title="snog_forms_email_recipients" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Email recipients]]></phrase>
+  <phrase title="snog_forms_email_recipients_explain" version_id="2002171" version_string="2.0.21.1"><![CDATA[Email address(es) to send reports to. Use a comma to separate the values.<br />(ie: youremail@website.com,youremail@yoursite.com)<br />If you do not want to send email when a form is submitted, leave this field blank.<br /><span style="color:blue;"><b>NOTE:</b></span> Attachments to forms are not sent in emailed reports.]]></phrase>
+  <phrase title="snog_forms_end_date_error" version_id="2001771" version_string="2.0.17.1"><![CDATA[End date error]]></phrase>
+  <phrase title="snog_forms_end_date_error_explain" version_id="2001771" version_string="2.0.17.1"><![CDATA[You may enter the error displayed if this form is used after the end date. Leave blank to use the standard no permission error.]]></phrase>
+  <phrase title="snog_forms_end_explain" version_id="1001170" version_string="1.0.11"><![CDATA[If you want this form to stop being available on a certain date, select it here.<br />Uses site guest timezone.<br />Leave date blank if not used.<br />This has no effect if using this form as a quick reply in a thread.]]></phrase>
+  <phrase title="snog_forms_error_answer" version_id="1000770" version_string="1.0.7"><![CDATA[{answer} variable is missing from Report format]]></phrase>
+  <phrase title="snog_forms_error_color" version_id="1000170" version_string="1.0.1"><![CDATA[RGBA is not allowed for question or answer colors]]></phrase>
+  <phrase title="snog_forms_error_conditional_answer" version_id="2001570" version_string="2.0.15"><![CDATA[You did not select an Answer condition for this conditional question]]></phrase>
+  <phrase title="snog_forms_error_conditional_question" version_id="2001570" version_string="2.0.15"><![CDATA[You did not select a Question condition for this conditional question]]></phrase>
+  <phrase title="snog_forms_error_email_length" version_id="1001170" version_string="1.0.11"><![CDATA[Email recipient list (Report Type tab) contains more than 200 characters]]></phrase>
+  <phrase title="snog_forms_error_existing_qr" version_id="2001771" version_string="2.0.17.1"><![CDATA[Report Type - You can not use Report in existing thread and Quick reply option button at the same time]]></phrase>
+  <phrase title="snog_forms_error_forum_button" version_id="2001972" version_string="2.0.19.2"><![CDATA[Report type-Thread report options: Another form is being used with a post thread button in the selected forum]]></phrase>
+  <phrase title="snog_forms_error_forum_used" version_id="2001771" version_string="2.0.17.1"><![CDATA[Report Type - Forum selected is already in use in form: {form}]]></phrase>
+  <phrase title="snog_forms_error_noerror" version_id="2000070" version_string="2.0.0"><![CDATA[You did not enter an error message for the checkbox answer limit]]></phrase>
+  <phrase title="snog_forms_error_none_answered" version_id="2001270" version_string="2.0.12"><![CDATA[You must answer at least one question on this form]]></phrase>
+  <phrase title="snog_forms_error_none_defined" version_id="2001671" version_string="2.0.16.1"><![CDATA[No questions that have answers which may be used as a conditional have been defined.]]></phrase>
+  <phrase title="snog_forms_error_pcsender_receiver" version_id="2001470" version_string="2.0.14"><![CDATA[PC Sender (Form) the same as one of the Private conversation recipients (Report Type->PC report options)]]></phrase>
+  <phrase title="snog_forms_error_pmto_length" version_id="1001170" version_string="1.0.11"><![CDATA[Private conversation recipients (Report Type tab) contains more than 200 characters]]></phrase>
+  <phrase title="snog_forms_error_poster" version_id="1000770" version_string="1.0.7"><![CDATA[The user you have set to post the thread in thread report options does not exist]]></phrase>
+  <phrase title="snog_forms_error_qro_noforum" version_id="2001771" version_string="2.0.17.1"><![CDATA[Report Type - You must select a forum when using the Quick reply option button]]></phrase>
+  <phrase title="snog_forms_error_question" version_id="1000770" version_string="1.0.7"><![CDATA[{question} variable is missing from Report format]]></phrase>
+  <phrase title="snog_forms_error_question_used" version_id="2002070" version_string="2.0.20"><![CDATA[This answer to this question is being used in the form report title.<br />You must provide a Question error or remove the question answer from the report title.]]></phrase>
+  <phrase title="snog_forms_error_quick_reply" version_id="2001770" version_string="2.0.17"><![CDATA[Report Type - You can not use this form as a quick reply without using Report in existing thread]]></phrase>
+  <phrase title="snog_forms_error_reply_poll" version_id="1000270" version_string="1.0.2"><![CDATA[You can not create a poll for a form used as a quick reply to a thread]]></phrase>
+  <phrase title="snog_forms_error_return_length" version_id="1001170" version_string="1.0.11"><![CDATA[Return link (Redirect Options tab) contains more than 200 characters]]></phrase>
+  <phrase title="snog_forms_error_second_poster" version_id="1000770" version_string="1.0.7"><![CDATA[The user you have set to post the second thread in thread report options does not exist]]></phrase>
+  <phrase title="snog_forms_error_threadqr_qro" version_id="2001771" version_string="2.0.17.1"><![CDATA[Report Type - You can not use Use form as thread quick reply and Quick reply option button at the same time]]></phrase>
+  <phrase title="snog_forms_error_title_answer" version_id="2002070" version_string="2.0.20"><![CDATA[You may not use question answer {number} in the report title. It is not a required question.]]></phrase>
+  <phrase title="snog_forms_error_title_assign" version_id="2002070" version_string="2.0.20"><![CDATA[You may not assign answers to the report title until you have defined questions for the form]]></phrase>
+  <phrase title="snog_forms_error_title_not_exist" version_id="2002171" version_string="2.0.21.1"><![CDATA[Question answer {number} does not exist and can't be used in the Report title]]></phrase>
+  <phrase title="snog_forms_error_title_plural" version_id="2002170" version_string="2.0.21"><![CDATA[The report title could not be created<br />Questions {questions} were not answered.<br />Please notify the site admin that you received this error.]]></phrase>
+  <phrase title="snog_forms_error_title_single" version_id="2002170" version_string="2.0.21"><![CDATA[The report title could not be created<br /> Question {question} was not answered.<br />Please notify the site admin that you received this error.]]></phrase>
+  <phrase title="snog_forms_error_title_type" version_id="2002070" version_string="2.0.20"><![CDATA[You may not use question answer {number} in the report title. It is not a type that can be used in the report title.]]></phrase>
+  <phrase title="snog_forms_existing" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Report in existing thread]]></phrase>
+  <phrase title="snog_forms_existing_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report type - The existing thread entered does not exist.]]></phrase>
+  <phrase title="snog_forms_existing_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you would like the report posted in an existing thread, enter the thread ID number for that thread here. Set to zero if you do not want to use this option.]]></phrase>
+  <phrase title="snog_forms_expected" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Expected answers]]></phrase>
+  <phrase title="snog_forms_expected_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[The question type you have selected requires Expected answers]]></phrase>
+  <phrase title="snog_forms_expected_explain" version_id="2000070" version_string="2.0.0"><![CDATA[If you selected 'Single Selection' or 'Multiple Choice' for the answer type, enter the answers you want to display for this question.<br />Place each answer on a new line.<br />This is not needed for the 'Single selection forum list' answer type.<br /><br />If you selected 'Spinbox' for the answer type, enter the number of decimal places that will be allowed and the step or just the step for whole numbers.<br />(decimal example: 0.0001 = 4 decimal places that will step in 0001 increments)<br />(whole number example: 2 = step in increments of 2)<br /><br />If you selected 'Agreement' for the answer type, enter the text that will be displayed next to the checkbox. If this is left blank with the 'Agreement' answer type selected, no checkbox will be displayed.]]></phrase>
+  <phrase title="snog_forms_export_explain" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[* Cannot be used to import.]]></phrase>
+  <phrase title="snog_forms_export_format" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Export file format]]></phrase>
+  <phrase title="snog_forms_export_forms" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Export forms]]></phrase>
+  <phrase title="snog_forms_extend" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Extend]]></phrase>
+  <phrase title="snog_forms_file_attached" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[File(s) attached]]></phrase>
+  <phrase title="snog_forms_file_display" version_id="1000470" version_string="1.0.4"><![CDATA[File display]]></phrase>
+  <phrase title="snog_forms_file_display_explain" version_id="1000470" version_string="1.0.4"><![CDATA[Select how the file will be displayed if it is an image]]></phrase>
+  <phrase title="snog_forms_filling_out" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Filling out form:]]></phrase>
+  <phrase title="snog_forms_form" version_id="2001271" version_string="2.0.12.1"><![CDATA[Form]]></phrase>
+  <phrase title="snog_forms_form_active" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This form is active]]></phrase>
+  <phrase title="snog_forms_form_active_explain" version_id="1000770" version_string="1.0.7"><![CDATA[Check this box to show this form to members.<br />This box does not need to be checked if using this form as a quick reply in a thread.]]></phrase>
+  <phrase title="snog_forms_form_criteria_error" version_id="2000070" version_string="2.0.0"><![CDATA[User criteria - You did not set the user criteria for this form]]></phrase>
+  <phrase title="snog_forms_form_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Form name]]></phrase>
+  <phrase title="snog_forms_form_name_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the name of this form.]]></phrase>
+  <phrase title="snog_forms_form_not_found" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Form not found]]></phrase>
+  <phrase title="snog_forms_form_order" version_id="2002171" version_string="2.0.21.1"><![CDATA[Form order]]></phrase>
+  <phrase title="snog_forms_form_type" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Form type]]></phrase>
+  <phrase title="snog_forms_form_type_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you select a form type, the form will be listed under that type and users must meet the criteria for <b>BOTH</b> the form type and this form to be able to fill out this form.]]></phrase>
+  <phrase title="snog_forms_forms_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forms list]]></phrase>
+  <phrase title="snog_forms_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum for new thread]]></phrase>
+  <phrase title="snog_forms_forum_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[The forum you have defined in Default answer does not exist]]></phrase>
+  <phrase title="snog_forms_forum_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The user entered in Poster User Name MUST have permission to post in the forum selected.]]></phrase>
+  <phrase title="snog_forms_forum_home" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum home]]></phrase>
+  <phrase title="snog_forms_forums_option" version_id="2002070" version_string="2.0.20"><![CDATA[Forums for option button]]></phrase>
+  <phrase title="snog_forms_forums_option_explain" version_id="2002070" version_string="2.0.20"><![CDATA[Select the forums where the quick reply option button will be shown in threads]]></phrase>
+  <phrase title="snog_forms_full_size" version_id="1000470" version_string="1.0.4"><![CDATA[In message - full size]]></phrase>
+  <phrase title="snog_forms_import_directory_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use this option to scan a web-accessible directory containing your form definitions.]]></phrase>
+  <phrase title="snog_forms_import_forms" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Import forms]]></phrase>
+  <phrase title="snog_forms_import_forms_was_completed_successfully" version_id="2020047" version_string="2.2.0 Beta 17"><![CDATA[Forms import was completed successfully]]></phrase>
+  <phrase title="snog_forms_import_merge" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Merge import]]></phrase>
+  <phrase title="snog_forms_import_merge_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The default action of an import is to replace all existing information. To keep your existing information and merge the import with the existing information, check this box.]]></phrase>
+  <phrase title="snog_forms_import_valid_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please supply a valid forms XML file.]]></phrase>
+  <phrase title="snog_forms_import_xml_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use this option to import an XML file containing your form definitions.]]></phrase>
+  <phrase title="snog_forms_include_decision" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Include decision links]]></phrase>
+  <phrase title="snog_forms_include_decision_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Places both an approve and deny link in the thread where the form is posted.<br /><font style="color:blue;"><b>NOTE:</b></font> You MUST select 'Report in New Thread' or 'Report in existing thread' in Report Type/Thread report options if you use this option.]]></phrase>
+  <phrase title="snog_forms_include_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Include PHP File When Approved]]></phrase>
+  <phrase title="snog_forms_include_file_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This is for an external file to process anything that may be needed.<br />LEAVE BLANK IF NOT USED.<br />Enter the relative path to a PHP file to be included when this form is approved. (example: includes/includefile.php)<br />This file will be run before returning to the thread when decision links are used, or during the poll cron task. It should NOT return any values to the forms system, return to any page in Xenforo or display any information.<br />This is a simple PHP include. No variables are passed to the file. <b>No support will be provided for included files.</b>]]></phrase>
+  <phrase title="snog_forms_include_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Include member name/IP address]]></phrase>
+  <phrase title="snog_forms_include_name_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you want to include the member name on the first line of reports, check this box. If the user is unregistered, their IP address will be included instead of their member name.]]></phrase>
+  <phrase title="snog_forms_insert_default" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Insert Default Questions]]></phrase>
+  <phrase title="snog_forms_instant_promote" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Instant promote]]></phrase>
+  <phrase title="snog_forms_instant_promote_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Instantly promotes a user when they submit this form]]></phrase>
+  <phrase title="snog_forms_is_public_visible" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Publicly visible]]></phrase>
+  <phrase title="snog_forms_is_public_visible_explain" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[If selected, this form will be visible for everyone regardless user criteria settings.]]></phrase>
+  <phrase title="snog_forms_link_defined" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Link defined below]]></phrase>
+  <phrase title="snog_forms_link_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Redirect options - You did not provide a return link]]></phrase>
+  <phrase title="snog_forms_log" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Form submit log]]></phrase>
+  <phrase title="snog_forms_log_by_x_from_x" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Log record by {username} from {time}]]></phrase>
+  <phrase title="snog_forms_log_list" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Form submit log]]></phrase>
+  <phrase title="snog_forms_logs" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Logs]]></phrase>
+  <phrase title="snog_forms_main_form" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Main Form Settings]]></phrase>
+  <phrase title="snog_forms_make_moderator" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Make moderator]]></phrase>
+  <phrase title="snog_forms_make_moderator_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To make the user a moderator if the poll result is Yes, select the type of moderator you want them to be.<br /><font style="color:blue;"><b>NOTE:</b></font> If Forum Moderator is selected, the form MUST contain a question with the answer type 'Single Selection (Dropdown Forum List)' and the user will be made a moderator in the selected forum.]]></phrase>
+  <phrase title="snog_forms_may_be_used" version_id="2000070" version_string="2.0.0"><![CDATA[Question numbers in <span style="color:red;font-weight:bold;">RED</span> may be used in report title creation.<br />Conditional questions ALWAYS appear immediately after the question that triggers them no matter where they are in the sort order shown here.<br /><span style="color:blue;font-weight:bold;">NOTE: </span>If using a question in the report title, you MUST arrange the questions so any conditional questions appear immediately after the question that triggers the conditional question. This ensures the question/answer numbering is correct.]]></phrase>
+  <phrase title="snog_forms_minimum_attachment_error" version_id="2003570" version_string="2.0.35"><![CDATA[You must have to upload minimum {attachments} attachments.]]></phrase>
+  <phrase title="snog_forms_misc_options" version_id="2000070" version_string="2.0.0"><![CDATA[Misc. options]]></phrase>
+  <phrase title="snog_forms_name_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Form - You must enter a name for this form]]></phrase>
+  <phrase title="snog_forms_new_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Report in new thread]]></phrase>
+  <phrase title="snog_forms_new_thread_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you would like to create a new thread when this form is submitted.]]></phrase>
+  <phrase title="snog_forms_newly_created" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Newly created thread/post]]></phrase>
+  <phrase title="snog_forms_next_to" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Next to question]]></phrase>
+  <phrase title="snog_forms_no_answer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[(DID NOT ANSWER QUESTION)]]></phrase>
+  <phrase title="snog_forms_no_custom_fields" version_id="2000070" version_string="2.0.0"><![CDATA[No custom fields have been created yet.]]></phrase>
+  <phrase title="snog_forms_no_forms" version_id="1000070" version_string="1.0.0"><![CDATA[You do not meet the criteria for any forms. No forms are available for you.]]></phrase>
+  <phrase title="snog_forms_no_node" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type - You must select a Forum for new thread]]></phrase>
+  <phrase title="snog_forms_no_node_button" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Report Type - You selected 'Post thread button to form' without selecting a Forum for new thread]]></phrase>
+  <phrase title="snog_forms_normal_poll" version_id="2000070" version_string="2.0.0"><![CDATA[Normal poll]]></phrase>
+  <phrase title="snog_forms_normal_poll_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Creates a normal poll when this form is submitted. It DOES NOT affect promotion options and should not be used if Poll promotion is used.]]></phrase>
+  <phrase title="snog_forms_normal_question_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Normal Poll - You must enter a poll question]]></phrase>
+  <phrase title="snog_forms_normalpoll_thread_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type or Normal Poll - You can not create a normal voting poll without posting the form in a new thread.]]></phrase>
+  <phrase title="snog_forms_not_allowed_to_submit" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[You are not allowed to submit this form.]]></phrase>
+  <phrase title="snog_forms_oldnew_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type - You can not post this form in both a New thread and an Existing thread]]></phrase>
+  <phrase title="snog_forms_only_starter" version_id="2002070" version_string="2.0.20"><![CDATA[Only thread starter]]></phrase>
+  <phrase title="snog_forms_only_starter_explain" version_id="2002070" version_string="2.0.20"><![CDATA[Check this box to only allow the thread starter to use the form button]]></phrase>
+  <phrase title="snog_forms_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Order]]></phrase>
+  <phrase title="snog_forms_order_note" version_id="2002070" version_string="2.0.20"><![CDATA[If you use question answers in your report title, be sure to match the new question numbers in the report title after changing the order.]]></phrase>
+  <phrase title="snog_forms_parse" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Parse URLs]]></phrase>
+  <phrase title="snog_forms_parse_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you want to parse URLs so they are live in posts and PCs, check this box.]]></phrase>
+  <phrase title="snog_forms_pc_options" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User PC options]]></phrase>
+  <phrase title="snog_forms_pc_recipients" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Private conversation recipients]]></phrase>
+  <phrase title="snog_forms_pc_report_options" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[PC report options]]></phrase>
+  <phrase title="snog_forms_pc_sender" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[PC sender name]]></phrase>
+  <phrase title="snog_forms_pc_sender_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the name of the member that will send private conversations. This is used for any PCs sent by the forms system about this form.<br /><font style="color:blue;"><b>NOTE:</b></font> This must be set to a valid user name. The user name must be set to something other than a user name that may need to receive PCs from the forms system. (<b>you can't send PCs to yourself</b>)<br />It is strongly suggested that you set up a special user to send PCs from the forms system. (IE: a username of 'Forms System')]]></phrase>
+  <phrase title="snog_forms_pc_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[PC text]]></phrase>
+  <phrase title="snog_forms_pc_text_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Options - You did not enter the text for the User PC]]></phrase>
+  <phrase title="snog_forms_pc_text_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the text for the PC here.<br />Replacement Variables:<br />{1} = Name of Member Submitting Form<br />{2} = Your Site Name<br />{3} = PC Sender Name]]></phrase>
+  <phrase title="snog_forms_placeholder" version_id="2001771" version_string="2.0.17.1"><![CDATA[Placeholder]]></phrase>
+  <phrase title="snog_forms_placeholder_explain" version_id="2001771" version_string="2.0.17.1"><![CDATA[Text and WYSIWYG answer types can have a placeholder displayed in the field. If you wish to display a placeholder, enter it here. 200 character limit. Leave blank if not used.]]></phrase>
+  <phrase title="snog_forms_poll_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Promotion Options & Normal Poll - You can not have both a promotion poll and a normal poll at the same time]]></phrase>
+  <phrase title="snog_forms_poll_is_not_creatable_in_selected_forum" version_id="2020041" version_string="2.2.0 Beta 11"><![CDATA[Poll creation is not available in selected forum]]></phrase>
+  <phrase title="snog_forms_poll_question_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Promotion Options - You must enter a question for the promotion poll]]></phrase>
+  <phrase title="snog_forms_poster_name_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type - Poster user name does not exist]]></phrase>
+  <phrase title="snog_forms_primary_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Promotion Options - You did not select a primary user group to instantly promote the user to]]></phrase>
+  <phrase title="snog_forms_promopoll_thread_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type or Promotion Options - You can not create a promotion voting poll without posting the form in a new thread.]]></phrase>
+  <phrase title="snog_forms_promotion_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Promotions are only applied to registered users. You can not promote an unregistered/not logged in user.]]></phrase>
+  <phrase title="snog_forms_promotion_not_found" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Promotion not found]]></phrase>
+  <phrase title="snog_forms_promotion_options" version_id="2000070" version_string="2.0.0"><![CDATA[Promotion options]]></phrase>
+  <phrase title="snog_forms_qid" version_id="2001570" version_string="2.0.15"><![CDATA[QID]]></phrase>
+  <phrase title="snog_forms_qrbutton" version_id="2002070" version_string="2.0.20"><![CDATA[Quick reply option button]]></phrase>
+  <phrase title="snog_forms_qrbutton_explain" version_id="2002070" version_string="2.0.20"><![CDATA[Check this box to put a button in the quick reply box to optionally use this form as a reply to a thread.<br />This differs from "Use form as thread quick reply" in that it does not replace the quick reply box in the thread. And it applies to all threads in a forum, not individual threads.]]></phrase>
+  <phrase title="snog_forms_question_color" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report question color]]></phrase>
+  <phrase title="snog_forms_question_color_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This will change the question color in report posts and PCs in all styles. Leave blank to use the default text color for your styles.]]></phrase>
+  <phrase title="snog_forms_question_count_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Normal Poll - You must enter at least two responses for the poll]]></phrase>
+  <phrase title="snog_forms_question_error" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Question error]]></phrase>
+  <phrase title="snog_forms_question_error_explain" version_id="2001271" version_string="2.0.12.1"><![CDATA[What error should be displayed if the user fails to answer this question?<br />
+<font style="color:blue;"><b>NOTE:</b></font> If you do not include an error, the question will be optional and the user will not be required to answer it.<br />
+<font style="color:blue;"><b>NOTE:</b></font> If this is a Thread prefixes question and there is a thread prefix selected in the Thread report options for this form, and you include an error here, the error will never be displayed and the default prefix for the form will be used.<br /><font style="color:red;"><b>WARNING:</b></font> If you are promoting a user to a forum moderator with Poll & Promote YOU MUST enter an error for the 'Single selection forum list' answer type.]]></phrase>
+  <phrase title="snog_forms_question_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the question that should be asked with this poll.]]></phrase>
+  <phrase title="snog_forms_question_header" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Question or Header phrase]]></phrase>
+  <phrase title="snog_forms_question_header_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the question to ask the member or the header phrase for this section of the application. You may use BBCode here.]]></phrase>
+  <phrase title="snog_forms_question_not_found" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Question not found]]></phrase>
+  <phrase title="snog_forms_question_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Question Order]]></phrase>
+  <phrase title="snog_forms_question_position" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Question position in report Post/PC]]></phrase>
+  <phrase title="snog_forms_question_position_explain" version_id="1000770" version_string="1.0.7"><![CDATA[Select where you want the question to appear in the report post/pc.]]></phrase>
+  <phrase title="snog_forms_question_postion_1" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Two lines below previous question]]></phrase>
+  <phrase title="snog_forms_question_postion_2" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[One line below previous question]]></phrase>
+  <phrase title="snog_forms_question_postion_5" version_id="1000671" version_string="1.0.6.1"><![CDATA[Same line as previous question]]></phrase>
+  <phrase title="snog_forms_question_text_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[You did not enter a Question or Header phrase]]></phrase>
+  <phrase title="snog_forms_questions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Questions]]></phrase>
+  <phrase title="snog_forms_quick_reply" version_id="1000270" version_string="1.0.2"><![CDATA[Use form as thread quick reply]]></phrase>
+  <phrase title="snog_forms_quick_reply_explain" version_id="1000270" version_string="1.0.2"><![CDATA[If you entered an existing thread above, you can use this form as a substitute for the quick reply box in the thread.<br /><span style="color:blue;">NOTE: </span>Form user criteria is ignored when this option is selected and normal XenForo reply permissions are used.]]></phrase>
+  <phrase title="snog_forms_redirect_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[After submitting this form, the user will be sent to your selection below.]]></phrase>
+  <phrase title="snog_forms_redirect_options" version_id="2000070" version_string="2.0.0"><![CDATA[Redirect options]]></phrase>
+  <phrase title="snog_forms_regex_error" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Regular expression validation error]]></phrase>
+  <phrase title="snog_forms_regex_error_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[What error should be displayed if the answer fails regular expression validation?]]></phrase>
+  <phrase title="snog_forms_report_error" version_id="2001770" version_string="2.0.17"><![CDATA[Report Type - You must report the form in a thread, by email or in a PC]]></phrase>
+  <phrase title="snog_forms_report_format" version_id="1000770" version_string="1.0.7"><![CDATA[Report format]]></phrase>
+  <phrase title="snog_forms_report_format_explain" version_id="1000770" version_string="1.0.7"><![CDATA[Enter the report format for this question. Use BB Codes.<br />This MUST contain the {question} and {answer} replacement variables, even if one of them is not used.]]></phrase>
+  <phrase title="snog_forms_report_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Report title]]></phrase>
+  <phrase title="snog_forms_report_title_explain" version_id="2002170" version_string="2.0.21"><![CDATA[Enter the title that will be used on reports when members fill out this application.<br />Replacement variables:<br />{1} = Name of Member Submitting Form<br />{A#} = Answer to question number (example: {A4})<br />This is limited to these answer types:<br />Date picker<br />Single line text<br />Single selection dropdown<br />Single selection forum list<br />Single selection radio<br />Yes/No<br /><font style="color:red;"><b>NOTE:</b></font> The question used for an {A#} must be required to be answered.<br /><font style="color:blue;"><b>NOTE:</b></font> Use caution when using these options. A thread title is limited to 150 characters. Use that as a guide when considering using replacement variables in the title.]]></phrase>
+  <phrase title="snog_forms_report_type" version_id="2000070" version_string="2.0.0"><![CDATA[Report type]]></phrase>
+  <phrase title="snog_forms_report_type_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select and define how you would like this form to be reported on your site.]]></phrase>
+  <phrase title="snog_forms_reset_name" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Reset user name]]></phrase>
+  <phrase title="snog_forms_reset_name_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Enter the user name of the user you want to reset the form count for]]></phrase>
+  <phrase title="snog_forms_reset_one" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Please enter the name of the user to reset the counts for this form]]></phrase>
+  <phrase title="snog_forms_return_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Return link]]></phrase>
+  <phrase title="snog_forms_return_link_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you selected 'Link Defined Below', enter the link here.]]></phrase>
+  <phrase title="snog_forms_return_member" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Return member to]]></phrase>
+  <phrase title="snog_forms_reverse" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reverse instant promote]]></phrase>
+  <phrase title="snog_forms_reverse_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you wish to reverse all actions taken by Instant Promote, check this box.<br /><font style="color:blue;"><b>NOTE:</b></font> This reverses the action of Instant Promote no matter what the outcome of the promotion is.]]></phrase>
+  <phrase title="snog_forms_save_answers" version_id="1000270" version_string="1.0.2"><![CDATA[Save answers to database]]></phrase>
+  <phrase title="snog_forms_save_answers_explain" version_id="1000270" version_string="1.0.2"><![CDATA[By checking this box all answers to questions for this form (except file upload and header answer types) will be saved to the xf_snog_forms_answers table in the database.<br /><span style="color:red;">Under normal use this should not be checked.</span><br /><span style="color:blue;"><b>NOTE:</b></span> No processing is, or will be done with the data that is saved. The option is provided for those that would like to process the information on their own. People using this option should already know how to use, and extract information from, multiple database tables.<br />No support will be given for processing the xf_snog_forms_answers table.]]></phrase>
+  <phrase title="snog_forms_second_thread" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report in second new thread]]></phrase>
+  <phrase title="snog_forms_second_thread_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you would like to create a second new thread in a different forum when this form is submitted.<br /><font style="color:blue;"><b>NOTE:</b></font> All settings above are used to post the second thread with the exception of Watch Thread, User Name and Forum settings. No promotion poll will be created in this thread.]]></phrase>
+  <phrase title="snog_forms_second_thread_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum for second thread]]></phrase>
+  <phrase title="snog_forms_second_thread_forum_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type - You did not select the forum for the the second thread]]></phrase>
+  <phrase title="snog_forms_second_thread_forum_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The user entered in Second Thread Poster User Name MUST have permission to post in the forum selected.]]></phrase>
+  <phrase title="snog_forms_second_thread_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Second thread poster user name]]></phrase>
+  <phrase title="snog_forms_second_thread_poster_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Enter the user name for the member that will be used to post the reports in the second thread for this form.<br /><font style="color:blue"><b>NOTE:</b></font> If not set, the user name of user submitting the form will be used. If the user submitting the form is unregistered, the user name of the first super-admin will be used.]]></phrase>
+  <phrase title="snog_forms_send_pc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Send PC to user]]></phrase>
+  <phrase title="snog_forms_send_pc_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you wish to send a PC to the user after they submit this form, check this box.]]></phrase>
+  <phrase title="snog_forms_send_ties" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Send ties to]]></phrase>
+  <phrase title="snog_forms_send_ties_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Promotion Options - Send ties to not a valid user name]]></phrase>
+  <phrase title="snog_forms_send_ties_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the user name of the person that should receive notification in the event of a tie.]]></phrase>
+  <phrase title="snog_forms_sender_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Form - You must enter a PC sender name for this form]]></phrase>
+  <phrase title="snog_forms_sender_name_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Form - PC sender name does not exist]]></phrase>
+  <phrase title="snog_forms_sender_same" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Report Options - PC Sender and Promotion Options/Poll Poll Promote - Send Ties To should not be the same user ID.]]></phrase>
+  <phrase title="snog_forms_show_above" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show above form]]></phrase>
+  <phrase title="snog_forms_show_above_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[What you enter here will be shown above the questions for the form.]]></phrase>
+  <phrase title="snog_forms_show_below" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show below form]]></phrase>
+  <phrase title="snog_forms_show_below_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[What you enter here will be shown below the questions for the form.]]></phrase>
+  <phrase title="snog_forms_show_navtab" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show in navigation tab]]></phrase>
+  <phrase title="snog_forms_show_question" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show question in report]]></phrase>
+  <phrase title="snog_forms_show_question_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to show the actual question in the report post/pc. If this box is not checked, only the answer to this question will be posted.]]></phrase>
+  <phrase title="snog_forms_show_type_navtab_explain" version_id="2002171" version_string="2.0.21.1"><![CDATA[Check this box to show this type in the forms list when the forms navigation tab is selected.]]></phrase>
+  <phrase title="snog_forms_show_type_widget_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Check this box to show this type in the forms widget]]></phrase>
+  <phrase title="snog_forms_show_unanswered" version_id="1000570" version_string="1.0.5"><![CDATA[Show question if not answered]]></phrase>
+  <phrase title="snog_forms_show_unanswered_explain" version_id="1000570" version_string="1.0.5"><![CDATA[Check this box to show the actual question in the report post/pc if it is not answered. If this box is not checked, the question will not be displayed if the question is not answered.<br /><b>NOTE:</b> If this box is not checked, the unanswered question will also not be saved to the database if the "Save answers to database" option is selected in the main form options.]]></phrase>
+  <phrase title="snog_forms_show_widget" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Show in widget]]></phrase>
+  <phrase title="snog_forms_spinbox" version_id="1000770" version_string="1.0.7"><![CDATA[Spinbox (number input)]]></phrase>
+  <phrase title="snog_forms_start_explain" version_id="1001170" version_string="1.0.11"><![CDATA[If you want this form to become available on a certain date, select it here.<br />Uses site guest timezone.<br />Leave date blank if not used.<br />This has no effect if using this form as a quick reply in a thread.]]></phrase>
+  <phrase title="snog_forms_style" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[If specified, all users will view this form using the selected style, regardless of their personal style preference.]]></phrase>
+  <phrase title="snog_forms_submit_count" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Submit count]]></phrase>
+  <phrase title="snog_forms_success_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Success message]]></phrase>
+  <phrase title="snog_forms_success_message_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter what you would like displayed when a user successfully submits this form.]]></phrase>
+  <phrase title="snog_forms_sure_you_want_to_clear_log" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Are you sure you want to clear the form submit log?]]></phrase>
+  <phrase title="snog_forms_text_regex" version_id="1000770" version_string="1.0.7"><![CDATA[Match regular expression]]></phrase>
+  <phrase title="snog_forms_text_regex_explain" version_id="1000770" version_string="1.0.7"><![CDATA[You may require Single Line, Multi-Line Text and Spinbox answers to match a regular expression.]]></phrase>
+  <phrase title="snog_forms_thread_button" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post thread button to form]]></phrase>
+  <phrase title="snog_forms_thread_button_explain" version_id="2001770" version_string="2.0.17"><![CDATA[Check this box to have the Post Thread button in the forum node selected above go directly to this form.<br /><font style="color:red"><b>WARNING:</b></font> This option should only be used once per forum node. Multiple forms in the same forum node with this option selected will result in unexpected results.]]></phrase>
+  <phrase title="snog_forms_thread_button_phrase" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post thread button phrase]]></phrase>
+  <phrase title="snog_forms_thread_button_phrase_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If Post Thread Button to Form is checked above, enter a new phrase for the button here. Leave blank to use the default Post Thread phrase.]]></phrase>
+  <phrase title="snog_forms_thread_options" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread report options]]></phrase>
+  <phrase title="snog_forms_thread_poster_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Poster user name]]></phrase>
+  <phrase title="snog_forms_thread_poster_name_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Enter the user name for the member that will be used to post the reports for this form.<br /><font style="color:blue"><b>NOTE:</b></font> If not set, the user name of user submitting the form will be used. If the user submitting the form is unregistered, the user name of the first super-admin will be used.]]></phrase>
+  <phrase title="snog_forms_thread_prefix" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread prefix]]></phrase>
+  <phrase title="snog_forms_thread_prefix_explain" version_id="2001770" version_string="2.0.17"><![CDATA[If you would like to use a thread prefix for the report, select the prefix here.<br /><font style="color:blue"><b>NOTE:</b></font> ALL PREFIXES ARE LISTED HERE. The prefix you select MUST BE A VALID PREFIX for the forum the thread will be created in. Also the user group the member filling out the form belongs to must be able to use the prefix in the forum the thread will be created in.]]></phrase>
+  <phrase title="snog_forms_thread_prefixes" version_id="2001570" version_string="2.0.15"><![CDATA[Thread prefixes (No more than 1 per form)]]></phrase>
+  <phrase title="snog_forms_thumbnail" version_id="1000470" version_string="1.0.4"><![CDATA[In message - thumbnail]]></phrase>
+  <phrase title="snog_forms_tie_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Promotion Options - You must enter a user name for 'Send ties to']]></phrase>
+  <phrase title="snog_forms_tie_title" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[A form poll has resulted in a tie]]></phrase>
+  <phrase title="snog_forms_title_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type - You must enter a title for reports]]></phrase>
+  <phrase title="snog_forms_to_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type - You did not enter who to send the PC to]]></phrase>
+  <phrase title="snog_forms_to_name_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Report Type - Private conversation recipients - {names} not valid name(s)]]></phrase>
+  <phrase title="snog_forms_type_active" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This type is active]]></phrase>
+  <phrase title="snog_forms_type_active_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to activate this form type.<br />If this type is not active, all forms that use this type will not be shown even if the form itself is active.]]></phrase>
+  <phrase title="snog_forms_type_criteria_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[You did not set the user criteria for this form type]]></phrase>
+  <phrase title="snog_forms_type_criteria_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A user must meet the criteria set here to view this form type and fill out all forms in this form type (including admins)]]></phrase>
+  <phrase title="snog_forms_type_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[You did not enter a name for this form type]]></phrase>
+  <phrase title="snog_forms_type_explain" version_id="2001771" version_string="2.0.17.1"><![CDATA[Select the type of answer you expect to receive for this question.<br />Answers types marked with <span style="color:red;font-weight:bold;">*</span> may be used as a trigger for conditional questions.<br /><span style="color:red;"><b>WARNING: </b></span>If this question has conditional questions attached to it and you change the type to a type that can not be used by conditional questions, the conditional questions attached to it will be deleted.<br /><br />If this is a header phrase select 'None - This is a Header Phrase'.<br />If this is a date picker, the date will appear in reports in the format set in your language options.<br />The File Upload answer type displays the standard XF upload prompt and files are displayed as attachments in PC's, new threads and thread replies. If you use <b>BOTH</b> the PC and new thread or existing thread options at the same time, the attachments will only appear in the thread or reply. Attachments are not displayed in the second thread if that report option is selected.<br /><br />If this is a Thread prefixes answer type, all available prefixes that the user can use for the forum the thread is to be posted in will be listed. And the thread prefix will be set to the user's selection. <br /><b>The Thread prefixes answer type only works for new threads, it DOES NOT work with "Report in second new thread" or "Report in existing thread".</b><br /><b>The Thread prefixes answer type DOES NOT appear in the form report.</b><br /><br /><b>NOTE:</b> If this is a WYSIWYG answer type and you want people to be able to upload photos, etc. into the field, you must add a File Upload question to the form.<br /><br /><b>NOTE:</b> If this is a File Upload answer type, these permissions for the user's user group MUST be set to 'Yes' for the forum the form is going to be posted in:<br />Post new thread<br />View attachments to posts<br />Upload attachments to posts]]></phrase>
+  <phrase title="snog_forms_type_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Type name]]></phrase>
+  <phrase title="snog_forms_type_name_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the name of this form type.]]></phrase>
+  <phrase title="snog_forms_type_not_found" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Type not found]]></phrase>
+  <phrase title="snog_forms_type_order" version_id="2002171" version_string="2.0.21.1"><![CDATA[Type order]]></phrase>
+  <phrase title="snog_forms_typedef_agree" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Agreement (Displays question text with optional checkbox below text)]]></phrase>
+  <phrase title="snog_forms_typedef_check" version_id="2001570" version_string="2.0.15"><![CDATA[Multiple choice (Checkboxes)]]></phrase>
+  <phrase title="snog_forms_typedef_checkall" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Multiple Choice w/ all of the above option (Checkboxes)]]></phrase>
+  <phrase title="snog_forms_typedef_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Date picker]]></phrase>
+  <phrase title="snog_forms_typedef_dropdown" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Single selection dropdown]]></phrase>
+  <phrase title="snog_forms_typedef_file" version_id="1000573" version_string="1.0.5.3"><![CDATA[File upload (No more than 1 per form)]]></phrase>
+  <phrase title="snog_forms_typedef_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Single selection forum list]]></phrase>
+  <phrase title="snog_forms_typedef_multiline" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Multi-line text]]></phrase>
+  <phrase title="snog_forms_typedef_none" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[None - This is a header phrase]]></phrase>
+  <phrase title="snog_forms_typedef_radio" version_id="2001570" version_string="2.0.15"><![CDATA[Single selection radio button]]></phrase>
+  <phrase title="snog_forms_typedef_singleline" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Single line text]]></phrase>
+  <phrase title="snog_forms_typedef_yesno" version_id="2001570" version_string="2.0.15"><![CDATA[Yes/No]]></phrase>
+  <phrase title="snog_forms_types" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Types]]></phrase>
+  <phrase title="snog_forms_upload_not_allowed" version_id="1000070" version_string="1.0.0"><![CDATA[You are not allowed to upload files to the forum selected for this form.<br />Please inform the site admin of this error.]]></phrase>
+  <phrase title="snog_forms_use_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Form use limit]]></phrase>
+  <phrase title="snog_forms_use_limit_explain" version_id="2002171" version_string="2.0.21.1"><![CDATA[Select the number of times a user may fill out this form. Zero = unlimited<br /><font style="color:blue;"><b>NOTE:</b></font> This DOES NOT work with Unregistered users.]]></phrase>
+  <phrase title="snog_forms_use_update" version_id="2001771" version_string="2.0.17.1"><![CDATA[Use update form]]></phrase>
+  <phrase title="snog_forms_user_criteria_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A user must meet the criteria set here to view and fill out this form (including admins)]]></phrase>
+  <phrase title="snog_forms_userfield" version_id="2000070" version_string="2.0.0"><![CDATA[User field criteria]]></phrase>
+  <phrase title="snog_forms_usergroup_option" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User group option]]></phrase>
+  <phrase title="snog_forms_viewing_list" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Viewing form list]]></phrase>
+  <phrase title="snog_forms_watch" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Watch new thread]]></phrase>
+  <phrase title="snog_forms_watch_explain" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[If this form is being posted in a new thread and you DO NOT have a user name set in Poster User Name above and want the user that fills out the form to receive notices of posts in the new thread, check this box.]]></phrase>
+  <phrase title="snog_forms_widget_full_width" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Full width widget]]></phrase>
+  <phrase title="snog_forms_wysiwyg" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[WYSIWYG editor]]></phrase>
+  <phrase title="snog_forms_x_result_tie" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[The poll, [url='{link}']{poll}[/url] has resulted in a tie. A manual decision is required.]]></phrase>
+  <phrase title="snog_forms_yesno_error" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Default answer does not equal a XenForo Yes or No phrase]]></phrase>
+  <phrase title="snog_forms_you_cant_submit_this_form_after_x" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[You can submit this form again after {time}]]></phrase>
+  <phrase title="snog_forms_you_cant_submit_this_form_again" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[You can't submit this form again.]]></phrase>
+  <phrase title="snog_forms_you_not_meet_form_criteria" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[You do not meet the criteria for the form ]]></phrase>
+  <phrase title="widget_def.snog_forms" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[Form list]]></phrase>
+  <phrase title="widget_def.snog_forms_form" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Form]]></phrase>
+  <phrase title="widget_def_desc.snog_forms" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Displays a list of available forms.]]></phrase>
+  <phrase title="widget_def_desc.snog_forms_form" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[Displays a selected forms.]]></phrase>
+  <phrase title="widget_pos.snogFormListSidebar" version_id="2001470" version_string="2.0.14"><![CDATA[Advanced Form List: Sidebar]]></phrase>
+  <phrase title="widget_pos.snogFormSidebar" version_id="2001470" version_string="2.0.14"><![CDATA[Advanced Form: Sidebar]]></phrase>
+  <phrase title="widget_pos_desc.snogFormListSidebar" version_id="2001470" version_string="2.0.14"><![CDATA[Position inside the Advanced form list sidebar.]]></phrase>
+  <phrase title="widget_pos_desc.snogFormSidebar" version_id="2001470" version_string="2.0.14"><![CDATA[Position inside the Advanced form sidebar.]]></phrase>
+</phrases>

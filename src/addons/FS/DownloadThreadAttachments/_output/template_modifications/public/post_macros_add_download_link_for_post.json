@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "post_macros_add_download_link_for_post",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"actionBar-set actionBar-set--external\">",
+    "replace": "$0\n\n<xf:if is=\"$thread.canViewAttachments() && count($post.Attachments) > 0\">\n\t<a href=\"{{ link('posts/export-attachments', $post) }}\"\n\t   class=\"actionBar-action actionBar-action--download\"\n\t   data-xf-click=\"overlay\"><i class=\"far fa-download\"></i> {{ phrase('download') }}</a>\n</xf:if>"
+}

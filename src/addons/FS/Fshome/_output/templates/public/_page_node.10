@@ -1,0 +1,4 @@
+<xf:include template="shome_servey_Main"/><br>
+<xf:include template="shome_servey_earn_money"/><br>
+<xf:include template="shome_servey_about"/><br>
+<xf:include template="shome_servey_earn_with"/><br>

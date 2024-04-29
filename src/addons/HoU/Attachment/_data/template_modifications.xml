@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="attachment_macros" modification_key="HoUAttachment_attachment_macros" description="HoUAttachment_attachment_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[		<div class="file-content">
+			<div class="file-info">
+				<span class="file-name" title="{$attachment.filename}">{$attachment.filename}</span>
+				<div class="file-meta">
+					{$attachment.file_size|file_size} &middot; {{ phrase('views:') }} {$attachment.view_count|number}
+				</div>
+			</div>
+		</div>]]></find>
+    <replace><![CDATA[]]></replace>
+  </modification>
+  <modification type="public" template="message_macros" modification_key="HoUAttachment_message_macros" description="HoUAttachment_message_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="attachments" arg-attachments="!" arg-message="!" arg-canView="!">
+	<xf:if contentcheck="true">
+		<xf:css src="attachments.less" />
+		<section class="message-attachments">
+			<h4 class="block-textHeader">{{ phrase('attachments') }}</h4>
+			<ul class="attachmentList">
+				<xf:contentcheck>
+					<xf:foreach loop="$attachments" value="$attachment" if="!$message.isAttachmentEmbedded($attachment)">
+						<xf:macro template="attachment_macros" name="attachment_list_item"
+							arg-attachment="{$attachment}"
+							arg-canView="{$canView}" />
+					</xf:foreach>
+				</xf:contentcheck>
+			</ul>
+		</section>
+	</xf:if>
+</xf:macro>]]></find>
+    <replace><![CDATA[<xf:macro name="attachments" arg-attachments="!" arg-message="!" arg-canView="!">
+	<xf:if contentcheck="true">
+		<xf:css src="attachments.less" />
+		<section class="message-attachments">
+			<xf:if is="$attachment.canViewAttachment()">
+				<h4 class="block-textHeader">{{ phrase('attachments') }}</h4>
+			</xf:if>
+			<xf:contentcheck>
+				<xf:if contentcheck="true">
+					<xf:contentcheck>
+							<xf:foreach loop="$attachments" value="$attachment" if="!$message.isAttachmentEmbedded($attachment) AND $attachment.has_thumbnail AND $attachment.canViewAttachment()">
+								<xf:if is="$attachment.has_thumbnail">
+									<xf:macro template="lightbox_macros" name="setup" arg-canViewAttachments="{$canView}" />
+									<a class="{{ $canView ? 'js-lbImage' : '' }}" href="{$attachment.direct_url}" target="_blank">
+										<img src="{$attachment.thumbnail_url}" alt="{$attachment.filename}"
+											 width="{$attachment.thumbnail_width}" height="{$attachment.thumbnail_height}" loading="lazy" />
+									</a>
+								</xf:if>	
+							</xf:foreach>
+					</xf:contentcheck>
+				</xf:if>
+
+				<xf:if contentcheck="true">
+					<xf:contentcheck>
+						<xf:foreach loop="$attachments" value="$attachment" if="!$message.isAttachmentEmbedded($attachment) AND !$attachment.has_thumbnail AND $attachment.canViewAttachment()">
+							<div style="padding:0px 0px 0px 10px">
+								<div>
+									<span class="file-typeIcon">
+										<xf:fa icon="{$attachment.icon}" />
+									</span>
+									<span style="display:inline-block;vertical-align:middle;">
+										<a href="{$attachment.direct_url}" target="_blank">{$attachment.filename}</a><br />
+										<span class="u-muted">
+											{$attachment.file_size|file_size} &middot; {{ phrase('views:') }} {$attachment.view_count|number}
+										</span>
+									</span>
+								</div>
+							</div>
+							<hr class="formRowSep">
+						</xf:foreach>
+					</xf:contentcheck>
+				</xf:if>
+			</xf:contentcheck>
+		</section>	
+	</xf:if>
+</xf:macro>]]></replace>
+  </modification>
+  <modification type="public" template="message_macros" modification_key="set_post_id" description="Set post id in attachment" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<section class="message-attachments">]]></find>
+    <replace><![CDATA[<section class="message-attachments" id="attachpost_{{$message.post_id}}">
+	
+]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="js_for_reaction" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="extra_classes" value="message--post" />]]></find>
+    <replace><![CDATA[<xf:js src="HoU/action.js"/>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="show_attachement_outload" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="after_content">]]></find>
+    <replace><![CDATA[<div id="appendattach_{{$post.post_id}}"></div>
+$0]]></replace>
+  </modification>
+</template_modifications>

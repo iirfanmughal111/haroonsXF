@@ -1,0 +1,22 @@
+<xf:title>{$fieldLabel}</xf:title>
+
+<xf:form action="{$formAction}" ajax="true" upload="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:uploadrow name="file"
+                          label="{$fieldLabel}"
+                          explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+                                'width': $baseWidth,
+                                'height': $baseHeight
+                          }) }}" />
+
+            <xf:if is="$canDelete">
+                <xf:checkboxrow>
+                    <xf:option name="delete">{{ phrase('fs_forum_gorups_delete_existing_image') }}</xf:option>
+                </xf:checkboxrow>
+            </xf:if>
+        </div>
+
+        <xf:submitrow submit="{{ phrase('upload') }}" rowtype="simple" icon="upload" />
+    </div>
+</xf:form>

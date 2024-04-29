@@ -1,0 +1,9 @@
+{
+    "template": "register_complete",
+    "description": "fs_bitcoin_register_complete_email_veri_notice",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"blockMessage\">",
+    "replace": "<div class=\"blockMessage\">\n\t{{phrase('fs_bitcoin_notice_email_verify_top')}}\t\t\n</div>\n\n$0"
+}

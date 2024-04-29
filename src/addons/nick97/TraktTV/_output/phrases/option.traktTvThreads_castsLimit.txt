@@ -1,0 +1,1 @@
+Casts results on thread tab

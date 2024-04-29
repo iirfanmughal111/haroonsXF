@@ -1,0 +1,26 @@
+{
+    "XF-BbCode-Renderer-Html_FS-HideUsernames-XF-BbCode-Renderer-Html.json": {
+        "hash": "6f75a1388ee8f6fd97eee903c40b622e"
+    },
+    "XF-Entity-User_FS-HideUsernames-XF-Entity-User.json": {
+        "hash": "eb7d5fe167baeeb814df894de64648a7"
+    },
+    "XF-Pub-Controller-Conversation_FS-HideUsernames-XF-Pub-Controller-Conversation.json": {
+        "hash": "eb1893b716ac6e578f93e518334de982"
+    },
+    "XF-Pub-Controller-Member_FS-HideUsernames-XF-Pub-Controller-Member.json": {
+        "hash": "f2bf1a034f84cf6fa9c0502102c11047"
+    },
+    "XF-Repository-User_FS-HideUsernames-XF-Repository-User.json": {
+        "hash": "95883262a6b1709bf9f107d3e2d83582"
+    },
+    "XF-Str-Formatter_FS-HideUsernames-XF-Str-Formatter.json": {
+        "hash": "34457434e481fd9e85bacab3c5c090e6"
+    },
+    "XF-Str-MentionFormatter_FS-HideUsernames-XF-Str-MentionFormatter.json": {
+        "hash": "87938d96c67bdf4b5aa33eafdf81f8c0"
+    },
+    "XF-Template-Templater_FS-HideUsernames-XF-Template-Templater.json": {
+        "hash": "b67cb3a2e000394127bea677925d66ed"
+    }
+}

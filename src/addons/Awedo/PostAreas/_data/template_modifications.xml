@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="member_view" modification_key="awedo_pa_tab_header" description="Add „Post Areas“ tab header to member profile page" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tabs:after_recent_content]-->]]></find>
+    <replace><![CDATA[$0
+
+<a href="{{ link('members/postAreas', $user) }}"
+					class="tabs-tab"
+					id="postAreas"
+					role="tab">{{ phrase('awedo_pa_post_areas') }}</a>
+
+]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="awedo_pa_tab_pane" description="Add „Post Areas“ tab pane to member profile page" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:after_recent_content]-->]]></find>
+    <replace><![CDATA[$0
+
+	<li data-href="{{ link('members/postAreas', $user) }}" role="tabpanel" aria-labelledby="post-areas">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>]]></replace>
+  </modification>
+</template_modifications>

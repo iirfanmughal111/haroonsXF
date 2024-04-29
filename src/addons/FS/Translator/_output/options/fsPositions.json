@@ -1,0 +1,13 @@
+{
+    "edit_format": "radio",
+    "edit_format_params": "above_notices=above notices\nbelow_notices=below notices\nbelow_bottom_breadcrumbs=below bottom breadcrumbs\ncustom=custom",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "above_notices",
+    "relations": {
+        "fs_translator": 30
+    }
+}

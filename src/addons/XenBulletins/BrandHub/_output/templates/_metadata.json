@@ -1,0 +1,12 @@
+{
+    "public/bh_item_detail.html": {
+        "version_id": 1020500,
+        "version_string": "1.2.5 Alpha",
+        "hash": "b4aa10ac38b16297a24118905b4b1fa6"
+    },
+    "public/bh_item_page_edit.html": {
+        "version_id": 1000900,
+        "version_string": "1.0.9 Alpha",
+        "hash": "3ceb641223ac93db102b70c3a674b9c0"
+    }
+}

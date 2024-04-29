@@ -1,0 +1,98 @@
+{
+    "traktMovieThreads_apikey.json": {
+        "hash": "7e3d7ea7243f637d71d3436cd890532e"
+    },
+    "traktthreads_apikey.json": {
+        "hash": "7e3d7ea7243f637d71d3436cd890532e"
+    },
+    "traktthreads_backdropCoverSize.json": {
+        "hash": "bd62bb9a4c77fe38b5f44bcbf772c12f"
+    },
+    "traktthreads_castsLimit.json": {
+        "hash": "fe9a0a3f9a15f1f12c84ebf180924f6d"
+    },
+    "traktthreads_cdn_path.json": {
+        "hash": "39ca46d4be847444f5edbc18f5d9afa9"
+    },
+    "traktthreads_changesLanguage.json": {
+        "hash": "36354f1ea176e3b50e9f6f66362a494c"
+    },
+    "traktthreads_companiesLimit.json": {
+        "hash": "3b6dc6b40405aee64b832940c16de96b"
+    },
+    "traktthreads_crewLimit.json": {
+        "hash": "19eba0f5f5e0e0cdfb2c549d781f0a44"
+    },
+    "traktthreads_crosslink.json": {
+        "hash": "3330b52d6c23e294bae55d82899fe701"
+    },
+    "traktthreads_fetchCompanies.json": {
+        "hash": "a6a2ed24640cf78c92cc112c6d1bb682"
+    },
+    "traktthreads_fetchCredits.json": {
+        "hash": "42deb0c91160de2134165d4eedcd9521"
+    },
+    "traktthreads_fetchVideos.json": {
+        "hash": "e438a740e58001a78bce9ffd2a64ade1"
+    },
+    "traktthreads_force_comments.json": {
+        "hash": "93c5401bc3746c27c877db2c4b58d308"
+    },
+    "traktthreads_forum_local.json": {
+        "hash": "0dc2e0facae7aa7ede4b3bc4add698b0"
+    },
+    "traktthreads_language.json": {
+        "hash": "88edbf0bfde80ad5e3e1e57e8a0b7ad9"
+    },
+    "traktthreads_largeCompanyLogoSize.json": {
+        "hash": "d84168c6589f774970e254125cd21d2c"
+    },
+    "traktthreads_largePosterSize.json": {
+        "hash": "d4149cd9a885ce009d2a364f5737bbd3"
+    },
+    "traktthreads_replaceSearchTemplate.json": {
+        "hash": "eb340394494117e1135572a5aa96dac5"
+    },
+    "traktthreads_showThreadInfo.json": {
+        "hash": "7666f5f6f57862c9bdf605f4ec78d6b7"
+    },
+    "traktthreads_smallCompanyLogoWidth.json": {
+        "hash": "21c2830b4e41755dbe156dd93196d913"
+    },
+    "traktthreads_smallPosterWidth.json": {
+        "hash": "808634bac17f2c4e7e8836da9d309d8d"
+    },
+    "traktthreads_syncTitle.json": {
+        "hash": "2868d199ae63c7ce068871952c1cac65"
+    },
+    "traktthreads_threadListInfo.json": {
+        "hash": "a6488a77d1dc9ec1b96131531e4dea9d"
+    },
+    "traktthreads_trackChanges.json": {
+        "hash": "09140e8dbcee337f9b60c18b285d3ed9"
+    },
+    "traktthreads_trackChangesPeriod.json": {
+        "hash": "959d5d5422305730d2c1c82f1d432aa7"
+    },
+    "traktthreads_use_genres.json": {
+        "hash": "ff16a1c2ce7f402a92d5b4698a0ad141"
+    },
+    "traktthreads_use_rating.json": {
+        "hash": "0685a0bc2f7971d84ebc0b8be35df65c"
+    },
+    "traktthreads_usecdn.json": {
+        "hash": "c732b3ac1bd7df41130bc6a213b53ea8"
+    },
+    "traktthreads_useyear.json": {
+        "hash": "0226ead78752a987a3eb0b0cf446f83d"
+    },
+    "traktthreads_videoLimit.json": {
+        "hash": "2a09f063a05a75e0478bd8691a4879d3"
+    },
+    "traktthreads_watchProviderRegion.json": {
+        "hash": "f67c49285b5eeb9ef96d0bcf6b928ec6"
+    },
+    "traktthreads_watchProviderRegions.json": {
+        "hash": "be09a1e2de588d96872fee4bee96a7cc"
+    }
+}

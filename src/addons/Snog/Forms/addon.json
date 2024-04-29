@@ -1,0 +1,23 @@
+{
+    "legacy_addon_id": "Snog_Applications",
+    "title": "[OzzModz] Advanced Forms",
+    "description": "Create forms that users can fill out on your site.",
+    "version_id": 2020048,
+    "version_string": "2.2.0 Beta 18",
+    "dev": "Ozzy47",
+    "dev_url": "https://snogssite.com",
+    "faq_url": "https://snogssite.com/resources/advanced-forms-for-xenforo-2-x.44/field?field=resource_faq",
+    "support_url": "https://snogssite.com/threads/advanced-forms-for-xenforo-paid.2329/",
+    "extra_urls": {
+        "Donate": "https://www.paypal.com/paypalme/ozzy47",
+        "Documentation": "https://snogssite.com/threads/advanced-forms-documentation.3677/"
+    },
+    "require": {
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "fa-file",
+    "composer_autoload": "vendor/composer"
+}

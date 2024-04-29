@@ -1,0 +1,1 @@
+2023-07-27 10:51:19: [E_WARNING] imagepng(data://Barcode/64c24c27d2f3c.png): failed to open stream: rfc2397: no comma in URL

@@ -1,0 +1,37 @@
+<xf:title>
+	<xf:if is="$crud.id"> Edit Record {$crud.name} <xf:breadcrumb href="#">{{
+		phrase('Edit Record') }}</xf:breadcrumb> <xf:else /> Add new Record
+		<xf:breadcrumb href="#">{{ phrase('Add Record') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form action="{{ link('crud/save', $crud) }}" class="block" ajax="1">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="name"
+						   value="{$crud.name}"
+						   label="Name"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:textboxrow
+						   name="class"
+						   value="{$crud.class}"
+						   label="Class"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:numberboxrow
+							 name="rollNo"
+							 value="{$crud.rollNo}"
+							 label="Roll No"
+							 autosize="true"
+							 row="5"
+							 />
+		</div>
+
+		<xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+	</div>
+</xf:form>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_conversation_limits_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	.limit-info{margin-right: 10px;}
+</style>
+
+<xf:set var="$conversasionLimit" value="{{ $xf.visitor.hasPermission('fs_limitations', 'fs_conversationLimit') }}" />
+<xf:set var="$visitorConversationMessageCount" value="{{ $xf.visitor.conversation_message_count }}" />
+
+<xf:set var="$upgradeUrl" value="{{ $xf.visitor.account_type == 1 ?  link('account-upgrade/admirer') : link('account-upgrade/companion') }}" />
+
+<xf:if is="$conversasionLimit == 0">
+	<span class="limit-info">{{ phrase('fs_l_conversation_not_allowed_please_upgrade',{'upgradeUrl': $upgradeUrl}) }}</span>
+<xf:elseif is="$conversasionLimit > 0" />
+	<xf:set var="$remianingCount" value="{{ $conversasionLimit - $visitorConversationMessageCount}}" />
+	<span class="limit-info">{{ phrase('fs_l_your_consersation_limit',{'visitorConversationMessageCount': $visitorConversationMessageCount,'conversasionLimit': $conversasionLimit,'remianingCount': $remianingCount}) }}</span>
+<xf:else />
+	<span class="limit-info">{{ phrase('fs_l_your_conversation_limit_unlimited') }}</span>
+</xf:if>]]></template>
+  <template type="public" title="fs_discussion_post_limits_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	.limit-info{margin-right: 10px;}
+</style>
+
+<xf:set var="$dailyPostLimit" value="{{ $xf.visitor.hasPermission('fs_limitations', 'fs_dailyDiscussiontLimit') }}" />
+<xf:set var="$visitorDailyPostCount" value="{{ $xf.visitor.daily_discussion_count }}" />
+
+<xf:set var="$upgradeUrl" value="{{ $xf.visitor.account_type == 1 ?  link('account-upgrade/admirer') : link('account-upgrade/companion') }}" />
+
+<xf:if is="$dailyPostLimit == 0">
+	<span class="limit-info">{{ phrase('fs_l_discussion_not_allowed_please_upgrade',{'upgradeUrl': $upgradeUrl}) }}</span>
+<xf:elseif is="$dailyPostLimit > 0" />
+	<xf:set var="$remianingCount" value="{{ $dailyPostLimit - $visitorDailyPostCount}}" />
+	<span class="limit-info">{{ phrase('fs_l_your_daily_discussion_post_limit',{'visitorDailyPostCount': $visitorDailyPostCount,'dailyPostLimit': $dailyPostLimit,'remianingCount': $remianingCount}) }}</span>
+<xf:else />
+	<span class="limit-info">{{ phrase('fs_l_your_daily_discussion_post_limit_unlimited') }}</span>
+</xf:if>]]></template>
+  <template type="public" title="fs_limitation_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="limitBar" arg-number="10" arg-percentage="!" >
+	<style>
+.checked{
+	color: #f9c479;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 8%;
+  margin-top: 5px;
+}
+
+.middle {
+  float: left;
+  width: 77%;
+  margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+*/
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+	border-radius: 5px;
+}
+.reviewStarsDiv{
+	float:left;
+}
+.ratingBarsDiv{
+	width: 60%;
+	float:right;
+	font-size: smaller;
+}
+
+.bar {height: 10px; background-color: #f9c479; border-radius: 5px;}
+
+</style>
+	<div class="side">
+	
+	</div>
+	<div class="middle" >
+		<div class="bar-container">
+			<div class="bar" style="width:{$percentage}%;"></div>
+		</div>
+	</div>
+	<div class="side right">
+		<div>{$percentage} %</div>
+	</div>
+</xf:macro>]]></template>
+</templates>

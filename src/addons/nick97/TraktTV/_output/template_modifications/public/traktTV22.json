@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Adds post thread button back in a new position (template: trakt_tv_post_thread)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:ad position=\"forum_view_above_thread_list\" arg-forum=\"{$forum}\" />",
+    "replace": "$0\n<xf:if is=\"$forum.TVForum is not empty && !$forum.TVForum.tv_parent_id\">\n\t<xf:if is=\"$forum.canCreateThread()\">\n\t\t<xf:include template=\"trakt_tv_post_thread\" />\n\t</xf:if>\n</xf:if>"
+}

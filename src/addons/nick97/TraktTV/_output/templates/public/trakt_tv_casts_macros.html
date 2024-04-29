@@ -1,0 +1,79 @@
+<xf:macro name="cast_list" arg-tv="!" arg-casts="!" arg-page="1" arg-hasMore="{{ false }}">
+	<ul class="listPlain listColumns listColumns--3 listColumns--spaced js-tvCastsList{$tv.tv_id}">
+		<xf:foreach loop="{$casts}" value="$cast">
+			<li>
+				<xf:macro name="cast_info" arg-cast="{$cast}" />
+			</li>
+		</xf:foreach>
+	</ul>
+
+	<xf:if is="$hasMore">
+		<div class="block-footer js-tvCastsLoadMore{$tv.tv_id}">
+			<span class="block-footer-controls">
+				<xf:button href="{{ link('tvTrakt/casts', $tv, {'page': $page + 1}) }}"
+					data-xf-click="inserter"
+					data-append=".js-tvCastsList{$tv.tv_id}"
+					data-replace=".js-tvCastsLoadMore{$tv.tv_id}">
+					{{ phrase('more...') }}
+				</xf:button>
+			</span>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="cast_info" arg-cast="!">
+	<div class="block-row block-row--separated">
+		<div class="contentRow movieTab--casts">
+			<span class="contentRow-figure contentRow-figure--fixedMedium contentRow-figure--fixedMedium contentRow-figure--fluidWidth">
+				<img src="{{ $cast.Person.image_url ?: base_url(property('trakt_tv_castPersonSmallImageUrl')) }}" />
+			</span>
+
+			<div class="contentRow-main">
+				<xf:macro name="person_menu" arg-person="{$cast.Person}" />
+				<h3 class="block-textHeader">
+					{$cast.Person.name}
+				</h3>
+				<xf:if is="$cast.total_episode_count">
+					<div>{{ phrase('trakt_tv_total_x_episodes', {'count': $cast.total_episode_count}) }}</div>
+				</xf:if>
+				<xf:if is="$cast.roles">
+					<div>
+						<ul class="listInline listInline--bullet u-muted">
+							<xf:foreach loop="{$cast.roles}" value="{$role}">
+								<li>{$role.character} ({{ phrase('trakt_tv_x_episodes', {'count': $role.episode_count}) }})</li>
+							</xf:foreach>
+						</ul>	
+					</div>
+				<xf:else />
+					<div>{$cast.character}</div>
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+
+<xf:macro name="person_menu" arg-person="!">
+	<xf:if contentcheck="true">
+		<div class="contentRow-extra">
+
+			<xf:button class="button--link menuTrigger"
+					   data-xf-click="menu"
+					   aria-label="{{ phrase('more_options') }}"
+					   aria-expanded="false"
+					   aria-haspopup="true">
+				<xf:fa icon="fa-cog" />
+			</xf:button>
+
+			<div class="menu" data-menu="menu" aria-hidden="true">
+				<div class="menu-content">
+					<xf:contentcheck>
+						<xf:if is="$person.canUpdate()">
+							<a href="{{ link('tvTrakt/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_tv_update_person_info') }}</a>
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>

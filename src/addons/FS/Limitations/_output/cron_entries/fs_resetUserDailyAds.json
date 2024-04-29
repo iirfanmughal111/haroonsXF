@@ -1,0 +1,17 @@
+{
+    "cron_class": "FS\\Limitations\\Cron\\Limits",
+    "cron_method": "resetUserDailyAdsAndRepost",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            23
+        ],
+        "minutes": [
+            59
+        ]
+    },
+    "active": true
+}

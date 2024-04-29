@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_view" modification_key="Fs_Node_Url" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button href="{{ link('forums/post-thread', $forum) }}" class="button--cta" icon="write" rel="nofollow">]]></find>
+    <replace><![CDATA[<xf:button href="{{$forum.Node.node_url ? $forum.Node.node_url : link('forums/post-thread', $forum) }}" class="button--cta" icon="write" rel="nofollow">]]></replace>
+  </modification>
+</template_modifications>

@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "nick97_watch_list_add_tab_in_profile",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<a href=\"{{ link('members/about', $user) }}\"\n\t\t\t\t\tclass=\"tabs-tab\"\n\t\t\t\t\tid=\"about\"\n\t\t\t\t\trole=\"tab\">{{ phrase('about') }}</a>",
+    "replace": "$0\t\n<a href=\"{{ link('members/watchlist', $user) }}\"\n   class=\"tabs-tab\"\n   id=\"watchlist\"\n   role=\"tab\">{{ phrase('nick97_watchlist') }}</a>"
+}

@@ -1,0 +1,164 @@
+{
+    "admin_navigation.fsDownGrade.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b54368b43842ac04fce8926d284b5529"
+    },
+    "admin_navigation.fsUpgradeGroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f683581d3e75f05f9d9215f9b4696cef"
+    },
+    "admin_navigation.fsUpgradeUserGroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2f800e52baaf57aae9138164551a652b"
+    },
+    "cron_entry.fs_upgradeUsergroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ebfe2eaf4950f708f1ea10e80e71fde6"
+    },
+    "cron_entry.fs_upgradeUsergroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6d87fc2216e72badcf19cc926aae6506"
+    },
+    "fs_cell_Messages.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "41de6d6cfb8953c021bbe4ba0701c8a1"
+    },
+    "fs_cell_change_usergroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d46a069c51ac46dd778a61b110ed92de"
+    },
+    "fs_cell_login.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a235efe8452eee7c9cbdb6dbe3d6b978"
+    },
+    "fs_cell_upgrade_usergroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e937c9c87309fd0b890959d3f4837812"
+    },
+    "fs_cell_usergroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a6cc71e783f009f32eb7a87485cfbbfd"
+    },
+    "fs_cell_username.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f6039d44b29456b20f8f373155ae4973"
+    },
+    "fs_change_user_groups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bd3a4c070ba90dbd26f01a947408df40"
+    },
+    "fs_change_usergroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d46a069c51ac46dd778a61b110ed92de"
+    },
+    "fs_change_usergroup_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "83d8e6802fd182be275e58e6a0277db8"
+    },
+    "fs_edit_userGroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "565b951695570ae0355daa932e308514"
+    },
+    "fs_enter_last_login.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "606fad817a42b8eeff4d7aaec2f27201"
+    },
+    "fs_enter_last_logins.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0878835a3c7764cf5fd8437b29ed9dfc"
+    },
+    "fs_enter_message.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "2e59a14b7e2d721861fce5b174312825"
+    },
+    "fs_enter_total_messages.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5c08d2cae60f6077d14b59246db455a7"
+    },
+    "fs_enter_user.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "281cc0b0e22e2736a142410a319606fc"
+    },
+    "fs_filled_reqired_fields.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9c9365bfc768ab4ec7f77a0f8e3fc0d0"
+    },
+    "fs_select_change_usergroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "11ba37a9fb7c8f34f14c37f8a8158a11"
+    },
+    "fs_select_different_usergroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b6e97e2e0a020562d1b1ad5663071e84"
+    },
+    "fs_select_user_group.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b0f26e67137a711fd40c32152de4e842"
+    },
+    "fs_upgrade_user_group.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e937c9c87309fd0b890959d3f4837812"
+    },
+    "fs_upgrade_usergroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "279033a398d5199a2639c1259cb2308b"
+    },
+    "fs_upgrade_usergroup_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "da4c0b9f949179b5fe3e0e90baa68cf4"
+    }
+}

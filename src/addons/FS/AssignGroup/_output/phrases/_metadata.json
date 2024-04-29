@@ -1,0 +1,26 @@
+{
+    "option.fs_assign_group_applicable.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7ca482e97bd866af26582e800d5a3db8"
+    },
+    "option_explain.fs_assign_group_applicable.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cf26af1cc188899802b4fd67a6c5c11f"
+    },
+    "option_group.fs_assign_group.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5632ffa0abf906bef953c4c8b7a108ba"
+    },
+    "option_group_description.fs_assign_group.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5632ffa0abf906bef953c4c8b7a108ba"
+    }
+}

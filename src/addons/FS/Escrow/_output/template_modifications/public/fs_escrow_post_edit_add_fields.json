@@ -1,0 +1,9 @@
+{
+    "template": "post_edit",
+    "description": "fs_escrow_post_edit_add_fields",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:formrow rowtype=\"{{ \\$quickEdit \\? 'fullWidth noLabel mergePrev' : '' }}\">.*?<\\/xf:formrow>/is",
+    "replace": "$0\n<xf:if is=\"$forum.node_id == $xf.options.fs_escrow_applicable_forum && $post.isFirstPost()\">\n    \t\t\t<xf:textboxrow name=\"to_user\" value=\"{{ $thread.Escrow.User.username ?: '' }}\" label=\"{{ phrase('escrow_user') }}\" ac=\"single\"\n                maxlength=\"{{ max_length($xf.visitor, 'username') }}\" id=\"ctrl_started_by\" />\n                <xf:numberboxrow name=\"escrow_amount\" value=\"{{ $thread.Escrow.escrow_amount ?: '' }}\" explain=\"{{ phrase('escrow_total_amount') }} {{$xf.visitor.deposit_amount}}\" min=\"0\" label=\"{{ phrase('escrow_amount') }}\" />\n\t\t\t </xf:if>"
+}

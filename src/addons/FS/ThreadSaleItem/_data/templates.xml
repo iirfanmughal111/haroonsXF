@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_saleitem_fields" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:formrow>
+	<xf:checkbox>
+			<xf:option name="sale_item" value="1" checked="{{$Thread.sale_item ? 'checked' : ''}}">
+				{{ phrase('fs_sale_item') }}
+			</xf:option>
+	</xf:checkbox>
+</xf:formrow>]]></template>
+  <template type="public" title="fs_saleitem_post_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:formrow>
+	<xf:checkbox>
+			<xf:option name="sale_item" value="1" checked="{{$post.Thread.sale_item ? 'checked' : ''}}">
+				{{ phrase('fs_sale_item') }}
+			</xf:option>
+	</xf:checkbox>
+</xf:formrow>]]></template>
+</templates>

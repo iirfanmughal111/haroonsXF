@@ -1,0 +1,3465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="snog_forms.less" version_id="1000270" version_string="1.0.2"><![CDATA[.colorPicker-alpha
+{
+	display:none;
+}
+
+.inputGroup.inputGroup--colorMedium
+{
+	width: 200px;
+}]]></template>
+  <template type="admin" title="snog_forms_con_question_edit" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:if is="$action == 'edit' || !$question.isInsert()">
+	<xf:title>{{phrase('snog_forms_edit_question')}}</xf:title>
+<xf:else/>
+	<xf:title>{{ $form.posid ? '' : phrase('admin_navigation.snogQuestions') }} Add conditional question</xf:title>
+</xf:if>
+
+<xf:breadcrumb href="{{ link('form-editquestions/formquestions', $form) }}">{$form.position} {{ phrase('snog_forms_questions') }}</xf:breadcrumb>
+<xf:page option="section" value="{{ $form.posid ? 'snogForms' : 'snogQuestions' }}" />
+
+<xf:form action="{{ link('form-questions/save', $question) }}" ajax="false" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow explain="{{ phrase('snog_forms_conditional_question_explain') }}"></xf:formrow>
+
+			<xf:if is="$conditionals">
+				<xf:radiorow label="Question/Answer condition" name="conditional" value="{{ ($question.conditional ? $question.conditional : -1) }}">
+					<xf:option value="-1" label="{{ phrase('none') }}" />
+					<xf:foreach loop="$conditionals" value="$conditional">
+						<xf:if is="$conditional.questionId == $question.conditional">
+							<xf:option value="{$conditional.questionId}" label="{$conditional.text}">
+	
+								<xf:select name="conanswer" value="{{ ($question.conanswer ? $question.conanswer : '') }}">
+									<xf:foreach loop="$conditional.answers" key="$key" value="$answer">
+										<xf:if is="$conditional.type == 3">
+											<xf:option value="{$key}">{$answer}</xf:option>
+										<xf:else />
+											<xf:option value="{{ $key + 1 }}">{$answer}</xf:option>
+										</xf:if>
+									</xf:foreach>
+								</xf:select>
+							</xf:option>
+						<xf:else />
+							<xf:if is="$conditional.questionId !== $question.questionid">
+								<xf:option value="{$conditional.questionId}" label="{$conditional.text}">
+	
+									<xf:select name="conanswer" value="">
+										<xf:foreach loop="$conditional.answers" key="$key" value="$answer">
+											<xf:if is="$conditional.type == 3">
+												<xf:option value="{$key}">{$answer}</xf:option>
+											<xf:else />
+												<xf:option value="{{ $key + 1 }}">{$answer}</xf:option>
+											</xf:if>
+										</xf:foreach>
+									</xf:select>
+								</xf:option>
+							</xf:if>
+						</xf:if>
+					</xf:foreach>
+					<xf:explain>{{ phrase('snog_forms_conditional_answer_explain') }}</xf:explain>
+				</xf:radiorow>
+				
+				<input type="hidden" name="originalConditional" value="{$question.conditional}"/>
+				
+				<hr class="formRowSep" />
+			</xf:if>
+
+			<xf:textarearow name="text" value="{$question.text}" autosize="true"
+							maxlength="{{ max_length($question, 'text') }}"
+							label="{{ phrase('snog_forms_question_header') }}"
+							explain="{{ phrase('snog_forms_question_header_explain') }}"/>
+			
+			<xf:textboxrow name="description" value="{$question.description}"
+						   maxlength="{{ max_length($question, 'description') }}"
+						   label="{{ phrase('description') }}"
+						   explain="{{ phrase('snog_forms_description_explain') }}" />
+
+			<xf:radiorow name="type" value="{{ ($question.type) ? {$question.type} : 1 }}"
+						 label="{{ phrase('snog_forms_answer_type') }}"
+						 explain="{{ phrase('snog_forms_type_explain') }}">
+
+				<xf:option value="9" data-xf-init="disabler" data-container="#expagree" data-hide="true" data-autofocus="false">{{ phrase('snog_forms_typedef_agree') }}</xf:option>
+				<xf:option value="11">{{ phrase('snog_forms_typedef_date') }}</xf:option>
+				<xf:option value="10" disabled="{{ $filetype ? 'disabled' : '' }}" data-xf-init="disabler" data-container="#inline" data-hide="true" data-autofocus="false">{{ phrase('snog_forms_typedef_file') }}</xf:option>
+				<xf:option value="2" data-xf-init="disabler" data-container="#multiline, #defmultiline, #regmultiline" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_multiline')}}</xf:option>
+				<xf:option value="5" data-xf-init="disabler" data-container="#limitholder, #expmulti, #defmulticheck" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_check')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="8" data-xf-init="disabler" data-container="#expmultiall, #defmulticheckall" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_checkall')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="6" data-xf-init="disabler" data-container="#mainplaceholder" data-hide="true" data-invert="true">{{phrase('snog_forms_typedef_none')}}</xf:option>
+				<xf:option value="1" data-xf-init="disabler" data-container="#singleline, #defsingleline, #regsingleline" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_singleline')}}</xf:option>
+				<xf:option value="7" data-xf-init="disabler" data-container="#expsingle, #defsingledrop" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_dropdown')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="12" data-xf-init="disabler" data-container="#defsingleforum" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_forum')}}</xf:option>
+				<xf:option value="4" data-xf-init="disabler" data-container="#expradio, #defradio" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_radio')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="14" data-xf-init="disabler" data-container="#expspin, #defspin, #regspin" data-hide="true" data-autofocus="false">{{phrase('snog_forms_spinbox')}}</xf:option>
+				<xf:option value="15" disabled="{{ $prefixtype || $form.oldthread ? 'disabled' : '' }}">{{phrase('snog_forms_thread_prefixes')}}</xf:option>
+				<xf:option value="3" data-xf-init="disabler" data-container="#defyesno" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_yesno')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="13" data-xf-init="disabler" data-container="#wysiwyg" data-hide="true" data-autofocus="false">{{phrase('snog_forms_wysiwyg')}}</xf:option>
+
+			</xf:radiorow>
+
+			<div id="mainplaceholder">
+				<div id="limitholder">
+					<xf:numberboxrow name="checklimit" value="{{ ($question.checklimit ? $question.checklimit : 0) }}" min="0" max= "999" step="1"
+									 label="{{ phrase('snog_forms_checkbox_limit') }}"
+									 explain="{{ phrase('snog_forms_checkbox_limit_explain') }}" />
+				
+					<xf:textboxrow name="checkerror" value="{{ ($question.checkerror ? $question.checkerror : '') }}"
+								   maxlength="{{ max_length($question, 'checkerror') }}"
+								   label="{{ phrase('snog_forms_checkbox_error') }}"
+								   explain="{{ phrase('snog_forms_checkbox_error_explain') }}" />
+
+				</div>
+
+				<div id="singleline">
+					<xf:textboxrow name="singleline" value="{$question.placeholder}"
+								   maxlength="{{ max_length($question, 'placeholder') }}"
+								   label="{{ phrase('snog_forms_placeholder') }}"
+								   explain="{{ phrase('snog_forms_placeholder_explain') }}" />
+				</div>
+
+				<div id="multiline">
+					<xf:textboxrow name="multiline" value="{$question.placeholder}"
+								   maxlength="{{ max_length($question, 'placeholder') }}"
+								   label="{{ phrase('snog_forms_placeholder') }}"
+								   explain="{{ phrase('snog_forms_placeholder_explain') }}" />
+				</div>
+
+				<div id="wysiwyg">
+					<xf:textboxrow name="wysiwyg" value="{$question.placeholder}"
+								   maxlength="{{ max_length($question, 'placeholder') }}"
+								   label="{{ phrase('snog_forms_placeholder') }}"
+								   explain="{{ phrase('snog_forms_placeholder_explain') }}" />
+
+				</div>
+			
+				<div id="inline">
+					<xf:radiorow label="{{ phrase('snog_forms_file_display') }}" name="inline" value="{{ ($question.inline ? $question.inline : 1) }}">
+						<xf:option value="1">{{ phrase('snog_forms_as_attachment') }}</xf:option>
+						<xf:option value="2">{{ phrase('snog_forms_full_size') }}</xf:option>
+						<xf:option value="3">{{ phrase('snog_forms_thumbnail') }}</xf:option>
+						<xf:explain>{{ phrase('snog_forms_file_display_explain') }}</xf:explain>
+					</xf:radiorow>				
+				</div>
+
+				<div id="expagree">
+					<xf:textarearow name="expectedagree" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+			
+				<div id="expmulti">
+					<xf:textarearow name="expectedmulti" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<div id="expmultiall">
+					<xf:textarearow name="expectedmultiall" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<div id="expsingle">
+					<xf:textarearow name="expectedsingle" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<div id="expradio">
+					<xf:textarearow name="expectedradio" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<div id="expspin">
+					<xf:textarearow name="expectedspin" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<div id="defmulticheck">
+					<xf:textboxrow name="defmulticheck" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defmulticheckall">
+					<xf:textboxrow name="defmulticheckall" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defmultiline">
+					<xf:textboxrow name="defmultiline" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defsingleline">
+					<xf:textboxrow name="defsingleline" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defsingledrop">
+					<xf:textboxrow name="defsingledrop" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defsingleforum">
+					<xf:textboxrow name="defsingleforum" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defradio">
+					<xf:textboxrow name="defradio" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}" 
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defspin">
+					<xf:textboxrow name="defspin" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defyesno">
+					<xf:textboxrow name="defyesno" value="{$question.defanswer}" 
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="regmultiline">
+					<xf:textboxrow name="regexmulti" value="{$question.regex}" 
+								   maxlength="{{ max_length($question, 'regex') }}"
+								   label="{{ phrase('snog_forms_text_regex') }}"
+								   explain="{{ phrase('snog_forms_text_regex_explain') }}" />
+			
+					<xf:textboxrow name="regexerrormulti" value="{$question.regexerror}"
+								   maxlength="{{ max_length($question, 'regexerror') }}"
+								   label="{{ phrase('snog_forms_regex_error') }}" 
+								   explain="{{phrase('snog_forms_regex_error_explain')}}" />
+				</div>
+
+				<div id="regsingleline">
+					<xf:textboxrow name="regexsingle" value="{$question.regex}"
+								   maxlength="{{ max_length($question, 'regex') }}"
+								   label="{{ phrase('snog_forms_text_regex') }}"
+								   explain="{{ phrase('snog_forms_text_regex_explain') }}" />
+
+					<xf:textboxrow name="regexerrorsingle" value="{$question.regexerror}"
+								   maxlength="{{ max_length($question, 'regexerror') }}"
+								   label="{{ phrase('snog_forms_regex_error') }}"
+								   explain="{{ phrase('snog_forms_regex_error_explain') }}" />
+				</div>
+
+				<div id="regspin">
+					<xf:textboxrow name="regexspin" value="{$question.regex}"
+								   maxlength="{{ max_length($question, 'regex') }}"
+								   label="{{ phrase('snog_forms_text_regex') }}"
+								   explain="{{ phrase('snog_forms_text_regex_explain') }}" />
+			
+					<xf:textboxrow name="regexerrorspin" value="{$question.regexerror}"
+								   maxlength="{{ max_length($question, 'regexerror') }}"
+								   label="{{ phrase('snog_forms_regex_error') }}"
+								   explain="{{ phrase('snog_forms_regex_error_explain') }}" />
+				</div>
+			
+				<xf:textboxrow name="error" value="{$question.error}"
+							   maxlength="{{ max_length($question, 'error') }}"
+							   label="{{ phrase('snog_forms_question_error') }}"
+							   explain="{{ phrase('snog_forms_question_error_explain') }}" />
+
+				<hr class="formRowSep" />
+
+				<xf:checkboxrow label="{{ phrase('snog_forms_show_question') }}">
+					<xf:option name="showquestion" value="1" selected="$question.showquestion" >&nbsp;</xf:option>
+					<xf:explain>{{ phrase('snog_forms_show_question_explain') }}</xf:explain>
+				</xf:checkboxrow>
+			
+				<xf:checkboxrow label="{{ phrase('snog_forms_show_unanswered') }}">
+					<xf:option name="showunanswered" value="1" selected="$question.showunanswered" >&nbsp;</xf:option>
+					<xf:explain>{{ phrase('snog_forms_show_unanswered_explain') }}</xf:explain>
+				</xf:checkboxrow>
+			
+				<hr class="formRowSep" />
+
+				<xf:textarearow name="format" value="{{ $question.format ? $question.format : '[B]{question}[/B] {answer}' }}" autosize="true"
+								maxlength="{{ max_length($question, 'format') }}"
+								label="{{ phrase('snog_forms_report_format') }}" 
+								explain="{{ phrase('snog_forms_report_format_explain') }}" />
+			
+				<xf:selectrow label="{{ phrase('snog_forms_question_position') }}" name="questionpos" value="{{ ($question.questionpos) ? {$question.questionpos} : 1 }}">
+					<xf:option value="1">{{ phrase('snog_forms_question_postion_1') }}</xf:option>
+					<xf:option value="2">{{ phrase('snog_forms_question_postion_2') }}</xf:option>
+					<xf:option value="5">{{ phrase('snog_forms_question_postion_5') }}</xf:option>
+					<xf:explain>{{ phrase('snog_forms_question_position_explain') }}</xf:explain>
+				</xf:selectrow>
+			</div>
+
+			<xf:if is="$nextquestion">
+				<input type="hidden" value="{$nextquestion}" name="display" />
+			<xf:else />
+				<input type="hidden" value="{$question.display}" name="display" />
+			</xf:if>
+			
+			<input type="hidden" value="{{ $question.posid ? $question.posid : ( $form.posid ? $form.posid : 0) }}" name="posid" />
+			<input type="hidden" value="1" name="isconditional" />
+			
+			<xf:submitrow icon="save" sticky="true" />
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="snog_forms_confirm" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:if is="$type">
+	<xf:form action="{{ link('form-types/delete', $type) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+					<strong><a href="{{ link('form-types/edit', $type) }}">[{$type.type}]</a></strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$form">
+		<xf:form action="{{ link('form-forms/delete', $form) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+					<strong><a href="{{ link('form-forms/edit', $form) }}">[{$form.position}]</a></strong>
+					<xf:if is="$form.store > 0">
+						<br />{{ phrase('snog_forms_delete_form_notice') }}
+					</xf:if>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$question">
+		<xf:form action="{{ link('form-questions/delete', $question) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+					<strong><a href="{{ link('form-questions/edit', $question) }}">[{$question.text}]</a></strong>
+					<xf:if is="$question.posid > 0">
+						<br />{{ phrase('snog_forms_answer_note') }}
+					</xf:if>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$reset">
+	<xf:form action="{{ link('form-forms/reset', $reset) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('snog_forms_confirm_reset_all') }}
+					<strong><a href="{{ link('form-forms/edit', $reset) }}">[{$reset.position}]</a></strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="refresh" submit="Reset" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$resetone">
+	<xf:form action="{{ link('form-forms/resetone', $resetone) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('snog_forms_reset_one') }}
+					<strong><a href="{{ link('form-forms/edit', $resetone) }}">[{$resetone.position}]</a></strong>
+				</xf:inforow>
+				<xf:textboxrow label="{{phrase('snog_forms_reset_name')}}" name="resetuser" value="" type="search" ac="single" placeholder="{{ phrase('user_name...') }}" explain="{{phrase('snog_forms_reset_name_explain')}}" />
+			</div>
+			<xf:submitrow rowtype="simple" icon="refresh" submit="Reset" />
+		</div>
+	</xf:form>
+</xf:if>]]></template>
+  <template type="admin" title="snog_forms_export" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[<xf:title>{{ phrase('snog_forms_export_forms') }}</xf:title>
+
+<xf:form action="{{ link('form-export') }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:selectrow name="mode" value="xml" label="{{ phrase('snog_forms_export_format') }}">
+				<xf:option label="XML" value="xml" hint="{{ phrase('snog_forms_import_xml_explain') }}" />
+				<xf:option label="CSV*" value="csv" hint="{{ phrase('snog_forms_import_directory_explain') }}" />
+			</xf:selectrow>
+			<xf:checkboxrow name="data" label="{{ phrase('snog_forms_export_format') }}">
+				<xf:option label="{{ phrase('snog_forms_form') }}" value="forms" checked="1" />
+				<xf:option label="{{ phrase('snog_forms_types') }}" value="types" checked="1" />
+				<xf:option label="{{ phrase('snog_forms_questions') }}" value="questions" checked="1" />
+				<xf:option label="{{ phrase('snog_forms_logs') }}*" value="logs" />
+				<xf:option label="{{ phrase('snog_forms_answers') }}*" value="answers" />
+			</xf:checkboxrow>
+			<xf:formrow>
+				{{ phrase('snog_forms_export_explain') }}
+			</xf:formrow>
+		</div>
+		<xf:submitrow submit="{{ phrase('proceed...') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="snog_forms_form_edit" version_id="2020044" version_string="2.2.0 Beta 14"><![CDATA[<xf:css src="public:color_picker.less" />
+<xf:css src="snog_forms.less" />
+<xf:js src="xf/color_picker.js" />
+
+<xf:if is="$form.isUpdate()">
+	<xf:title>{{ phrase('snog_forms_edit_form') }}: {$form.position}</xf:title>
+<xf:else/>
+	<xf:title>{{ phrase('snog_forms_add_form') }}</xf:title>
+</xf:if>
+
+<xf:page option="section" value="snogForms" />
+
+<xf:pageaction>
+	<xf:button href="{{ link('form-editquestions/formquestions', $form) }}" fa="fa-question-circle">{{ phrase('snog_forms_questions') }}</xf:button>
+	<xf:button href="{{ link('form-forms/delete', $form) }}" icon="delete" overlay="true">{{ phrase('button.delete') }}</xf:button>
+</xf:pageaction>
+
+
+<xf:if contentcheck="true">
+	<div class="blockMessage blockMessage--error">
+		<xf:contentcheck>
+			<xf:if is="$errorUsernames is not empty">
+				<div>{{ phrase('you_can_not_start_conversation_with_following_users_because_of_privacy', {'usernames': $errorUsernames|join(', ')}) }}</div>
+			</xf:if>
+
+			<xf:if is="$notFoundUsernames is not empty">
+				<div>{{ phrase('following_users_not_found_x', {'usernames': $notFoundUsernames|join(', ')}) }}</div>
+			</xf:if>
+
+			<xf:if is="$recipientLimit">
+				<div>{{ phrase('you_have_exceeded_allowed_number_of_recipients_x_for', {'limit': $recipientLimit}) }}</div>
+			</xf:if>
+		</xf:contentcheck>
+	</div>
+</xf:if>
+
+<xf:form action="{{ link('form-forms/save', $form) }}" ajax="true" class="block">
+	<!--[XF:form_edit:start]-->
+	
+	<div class="block-container">
+		<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" data-state="replace" role="tablist">
+			<span class="hScroller-scroll">
+				<!--[XF:form_edit:tabs_start]-->
+				<a href="#form-data" id="form-data" class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="form-data">{{ phrase('snog_forms_form') }}</a>
+				<a href="#form-criteria" id="form-criteria" class="tabs-tab" role="tab" tabindex="0" aria-controls="form-criteria">{{ phrase('user_criteria') }}</a>
+				<a href="#form-report" id="form-report" class="tabs-tab" role="tab" tabindex="0" aria-controls="form-report">{{ phrase('snog_forms_report_type') }}</a>
+				<a href="#form-redirect" id="form-redirect" class="tabs-tab" role="tab" tabindex="0" aria-controls="form-redirect">{{ phrase('snog_forms_redirect_options') }}</a>
+				<a href="#form-promote" id="form-promote" class="tabs-tab" role="tab" tabindex="0" aria-controls="form-promote">{{ phrase('snog_forms_promotion_options') }}</a>
+				<a href="#form-poll" id="form-poll" class="tabs-tab" role="tab" tabindex="0" aria-controls="form-poll">{{ phrase('snog_forms_normal_poll') }}</a>
+				<a href="#form-misc" id="form-misc" class="tabs-tab" role="tab" tabindex="0" aria-controls="form-misc">{{ phrase('snog_forms_misc_options') }}</a>
+				<!--[XF:form_edit:tabs_end]-->
+			</span>
+		</h2>
+		
+		<ul class="tabPanes block-body">
+			<!--[XF:form_edit:tab_panes_start]-->
+			<li class="is-active" role="tabpanel" id="form-data">
+				<xf:include template="snog_forms_form_edit_tab_pane_data" />
+			</li>
+
+			<li role="tabpanel" id="form-criteria">
+				<xf:include template="snog_forms_form_edit_tab_pane_criteria" />
+			</li>
+
+			<li role="tabpanel" id="form-report">
+				<xf:include template="snog_forms_form_edit_tab_pane_report" />
+			</li>
+			
+			<li role="tabpanel" id="form-redirect">
+				<xf:include template="snog_forms_form_edit_tab_pane_redirect" />
+			</li>
+			
+			<li role="tabpanel" id="form-promote">
+				<xf:include template="snog_forms_form_edit_tab_pane_promote" />
+			</li>
+			
+			<li role="tabpanel" id="form-poll">
+				<xf:include template="snog_forms_form_edit_tab_pane_poll" />
+			</li>
+			
+			<li role="tabpanel" id="form-misc">
+				<xf:include template="snog_forms_form_edit_tab_pane_misc" />
+			</li>
+			
+			<!--[XF:form_edit:tab_panes_end]-->
+
+			<xf:if is="$copyform"><input type="hidden" name="copyform" value="{$copyform}"></xf:if>
+			
+			<xf:submitrow icon="save" sticky="true" />
+		</ul>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="snog_forms_form_edit_tab_pane_criteria" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_user_criteria_explain') }}" />
+
+<div class="block-body">
+
+	<!--[XF:form_edit:tab_form_criteria_start]-->
+
+	<xf:formrow label="{{ phrase('snog_forms_use_limit') }}" explain="{{ phrase('snog_forms_use_limit_explain') }}" rowtype="input">
+		<div class="inputGroup">
+			<div class="inputGroup inputGroup--numbers inputNumber" data-xf-init="number-box">
+				<xf:textbox name="formlimit"
+					value="{{  $form.formlimit >= 1 ? $form.formlimit : 0 }}"
+					type="number"
+					min="0"
+					class="input input--number js-numberBoxTextInput js-permissionIntInput" />
+			</div>
+		</div>
+	</xf:formrow>
+	
+	<!--[XF:form_edit:tab_form_criteria_end]-->
+
+	{$userCriteriaRendered|raw}
+</div>]]></template>
+  <template type="admin" title="snog_forms_form_edit_tab_pane_data" version_id="2020046" version_string="2.2.0 Beta 16"><![CDATA[<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_main_form') }}" />
+
+<!--[XF:form_edit:tab_form_data_start]-->
+
+<div class="block-body">
+
+	<xf:if is="$form.posid">
+		<xf:formrow label="{{ phrase('snog_forms_direct_access') }}" rowtype="input">
+			<div class="inputGroup">
+				<xf:set var="$formUrl" value="{{ link_type('public', 'canonical:form/select', $form) }}" />
+				<div class="inputGroup-text">
+					<a href="{$formUrl}" target="_blank">
+						{$formUrl}
+					</a>
+				</div>
+				<span class="inputGroup-splitter"></span>
+				<xf:button icon="copy" data-xf-init="copy-to-clipboard" data-copy-text="{$formUrl}" class="button--link" />
+			</div>
+		</xf:formrow>
+	</xf:if>
+	
+	<xf:formrow label="{{ phrase('snog_forms_submit_count') }}">
+		{$form.submit_count|number}
+	</xf:formrow>
+
+	<!--[XF:form_edit:before_position]-->
+	<xf:textboxrow name="position" value="{$form.position}"
+				   maxlength="{{ max_length($form, 'position') }}"
+				   maxlength="200"
+				   label="{{ phrase('snog_forms_form_name') }}"
+				   explain="{{ phrase('snog_forms_form_name_explain') }}" />
+
+	<!--[XF:form_edit:before_display]-->
+	<xf:formrow label="{{ phrase('display_order') }}" rowtype="input">
+		<div class="inputGroup">
+			<div class="inputGroup inputGroup--numbers inputNumber" data-xf-init="number-box">
+				<xf:textbox name="display"
+					value="{{ $form.display >= 1 ? $form.display : 1 }}"
+					type="number"
+					min="1"
+					class="input input--number js-numberBoxTextInput js-permissionIntInput" />
+			</div>
+		</div>
+	</xf:formrow>
+
+	<!--[XF:form_edit:before_minimum_attachments]-->
+	<xf:numberboxrow name="minimum_attachments" min="0" step="1" 
+					 value="{$form.minimum_attachments}"
+					 label="{{ phrase('sn_minimum_attachment_allowed')}}" 
+					 explain="{{ phrase('sn_minimum_attachment_allowed_explain') }}" />
+
+	<!--[XF:form_edit:before_minimum_active]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_form_active') }}" explain="{{ phrase('snog_forms_form_active_explain') }}" standalone="true">
+		<xf:option value="1" name="active" selected="{$form.active}" />
+	</xf:checkboxrow>
+
+	<!--[XF:form_edit:before_is_public_visible]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_is_public_visible') }}" explain="{{ phrase('snog_forms_is_public_visible_explain') }}" standalone="true" >
+		<xf:option value="1" name="is_public_visible" selected="{$form.is_public_visible}" />
+	</xf:checkboxrow>
+	
+	<xf:selectrow name="appid" value="{$form.appid}" label="{{ phrase('snog_forms_form_type') }}"
+				  explain="{{ phrase('snog_forms_form_type_explain') }}">
+		<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+		<xf:foreach loop="$types" value="$typeEntry">
+			<xf:option value="{$typeEntry.appid}">{$typeEntry.type}</xf:option>
+		</xf:foreach>
+	</xf:selectrow>
+	
+	<!--[XF:form_edit:before_pmsender]-->
+	<xf:textboxrow name="pmsender" value="{$form.pmsender}" type="search" ac="single"
+				   maxlength="{{ max_length($form, 'pmsender') }}"
+				   label="{{ phrase('snog_forms_pc_sender') }}"
+				   placeholder="{{ phrase('user_name...') }}"
+				   explain="{{ phrase('snog_forms_pc_sender_explain') }}" />
+
+	<!--[XF:form_edit:before_pmdelete]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_delete_pcs') }}" explain="{{ phrase('snog_forms_delete_pcs_explain') }}">
+		<xf:option name="pmdelete" value="1" selected="$form.pmdelete" >&nbsp;</xf:option>
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_thanks]-->
+	<xf:textarearow name="thanks" value="{$form.thanks}" autosize="true"
+					maxlength="{{ max_length($form, 'thanks') }}" 
+					label="{{ phrase('snog_forms_success_message') }}"
+					explain="{{ phrase('snog_forms_success_message_explain') }}" />
+	
+	<!--[XF:form_edit:before_app_style]-->
+	<xf:checkboxrow label="{{ phrase('override_user_style_choice') }}">
+		<xf:option name="style_override" selected="$form.app_style">
+			<xf:select name="app_style" value="{$form.app_style}">
+				<xf:foreach loop="$styleTree.getFlattened(0)" value="$treeEntry">
+					<xf:option value="{$treeEntry.record.style_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+				</xf:foreach>
+			</xf:select>
+		</xf:option>
+		<xf:explain>{{ phrase('snog_forms_style') }}</xf:explain>
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_store]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_save_answers') }}" explain="{{ phrase('snog_forms_save_answers_explain') }}" standalone="true">
+		<xf:option name="store" value="1" selected="$form.store" >&nbsp;</xf:option>
+	</xf:checkboxrow>
+
+	<!--[XF:form_edit:before_cooldown]-->
+	<xf:numberboxrow name="cooldown" value="{$form.cooldown}"
+					 label="{{ phrase('snog_forms_cooldown') }}"
+					 units="{{ phrase('seconds') }}"
+					 min="-1"
+					 explain="{{ phrase('snog_forms_cooldown_explain') }}" />
+	
+</div>
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('date_range') }}</span>
+	</span>
+</h3>
+
+<div class="block-body block-body--collapsible">
+	
+	<!--[XF:form_edit:before_start_date]-->
+	<xf:formrow label="{{ phrase('start_date') }}" >
+		<div class="inputGroup">
+			<xf:dateinput name="start" value="{{ ($form.start ? date($form.start, 'picker') : '') }}" />
+			<span class="inputGroup-text">{{ phrase('criteria_time:') }}</span>
+			<span class="inputGroup" dir="ltr">
+				<xf:select name="starthour" value="{$data.starthour}" class="input--inline input--autoSize">
+					<xf:foreach loop="$data.hours" value="$hour">
+						<xf:option value="{$hour}" label="{$hour}" />
+					</xf:foreach>
+				</xf:select>
+				<span class="inputGroup-text">:</span>
+				<xf:select name="startminute" value="{$data.startminute}" class="input--inline input--autoSize">
+					<xf:foreach loop="$data.minutes" value="$minute">
+						<xf:option value="{$minute}" label="{$minute}" />
+					</xf:foreach>
+				</xf:select>
+			</span>
+		</div>
+		<dfn class="inputChoices-explain inputChoices-explain--after">{{ phrase('snog_forms_start_explain') }}</dfn>
+	</xf:formrow>
+
+	<!--[XF:form_edit:before_end_date]-->
+	<xf:formrow label="{{ phrase('end_date') }}" >
+		<div class="inputGroup">
+			<xf:dateinput name="end" value="{{ ($form.end ? date($form.end, 'picker') : '') }}" />
+			<span class="inputGroup-text">{{ phrase('criteria_time:') }}</span>
+			<span class="inputGroup" dir="ltr">
+				<xf:select name="endhour" value="{$data.endhour}" class="input--inline input--autoSize">
+					<xf:foreach loop="$data.hours" value="$hour">
+						<xf:option value="{$hour}" label="{$hour}" />
+					</xf:foreach>
+				</xf:select>
+				<span class="inputGroup-text">:</span>
+				<xf:select name="endminute" value="{$data.endminute}" class="input--inline input--autoSize">
+					<xf:foreach loop="$data.minutes" value="$minute">
+						<xf:option value="{$minute}" label="{$minute}" />
+					</xf:foreach>
+				</xf:select>
+			</span>
+		</div>
+		<dfn class="inputChoices-explain inputChoices-explain--after">{{ phrase('snog_forms_end_explain') }}</dfn>
+	</xf:formrow>
+
+	<!--[XF:form_edit:before_aftererror]-->
+	<xf:textboxrow name="aftererror" value="{$form.aftererror}"
+				   maxlength="{{ max_length($form, 'aftererror') }}"
+				   label="{{ phrase('snog_forms_end_date_error') }}"
+				   explain="{{ phrase('snog_forms_end_date_error_explain') }}" />						
+
+</div>
+
+<!--[XF:form_edit:tab_form_data_end]-->]]></template>
+  <template type="admin" title="snog_forms_form_edit_tab_pane_misc" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<div class="block-body">
+	
+	<!--[XF:form_edit:tab_form_misc_start]-->
+	
+	<!--[XF:form_edit:before_aboveapp]-->
+	<xf:editorrow name="aboveapp" value="{$form.aboveapp}" rowtype="fullWidth" 
+				  label="<b>{{ phrase('snog_forms_show_above') }}</b>"
+				  explain="{{ phrase('snog_forms_show_above_explain') }}" />
+	
+	<hr class="formRowSep" />
+	
+	<!--[XF:form_edit:before_belowapp]-->
+	<xf:editorrow name="belowapp" value="{$form.belowapp}" rowtype="fullWidth"
+				  label="<b>{{ phrase('snog_forms_show_below') }}</b>"
+				  explain="{{ phrase('snog_forms_show_below_explain') }}" />
+	
+	<hr class="formRowSep" />
+	
+	<!--[XF:form_edit:before_qcolor]-->
+	<xf:formrow label="{{ phrase('snog_forms_question_color') }}" explain="{{ phrase('snog_forms_question_color_explain') }}" rowclass="formRow--input {$rowClass}">
+		<div class="inputGroup inputGroup--joined inputGroup--colorMedium" data-xf-init="color-picker" data-allow-palette="true">
+			<xf:textbox name="qcolor" value="{$form.qcolor}" maxlength="{{ max_length($form, 'qcolor') }}" />
+			<div class="inputGroup-text"><span class="colorPickerBox js-colorPickerTrigger"></span></div>
+		</div>
+	</xf:formrow>
+	
+	<!--[XF:form_edit:before_acolor]-->
+	<xf:formrow label="{{ phrase('snog_forms_answer_color') }}" explain="{{ phrase('snog_forms_answer_color_explain') }}" rowclass="formRow--input {$rowClass}">
+		<div class="inputGroup inputGroup--joined inputGroup--colorMedium" data-xf-init="color-picker" data-allow-palette="true">
+			<xf:textbox name="acolor" value="{$form.acolor}" maxlength="{{ max_length($form, 'acolor') }}" />
+			<div class="inputGroup-text"><span class="colorPickerBox js-colorPickerTrigger"></span></div>
+		</div>
+	</xf:formrow>
+	
+	<!--[XF:form_edit:tab_form_misc_end]-->
+</div>]]></template>
+  <template type="admin" title="snog_forms_form_edit_tab_pane_poll" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_normal_poll_explain') }}" />
+
+<div class="block-body">
+	
+	<!--[XF:form_edit:tab_form_poll_start]-->
+	
+	<!--[XF:form_edit:before_normalpoll]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_create_normal') }}" explain="{{ phrase('snog_forms_create_normal_explain') }}" standalone="true">
+		<xf:option name="normalpoll" value="1" selected="$form.normalpoll" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_normalpublic]-->
+	<xf:checkboxrow label="{{ phrase('display_votes_publicly') }}" standalone="true">
+		<xf:option name="normalpublic" value="1" selected="$form.normalpublic" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_normalchange]-->
+	<xf:checkboxrow label="{{ phrase('allow_voters_to_change_their_votes') }}" standalone="true">
+		<xf:option name="normalchange" value="1" selected="$form.normalchange" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_normalview]-->
+	<xf:checkboxrow label="{{ phrase('allow_results_to_be_viewed_without_voting') }}" standalone="true">
+		<xf:option name="normalview" value="1" selected="$form.normalview" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_normalclose]-->
+	<xf:formrow label="{{ phrase('snog_forms_close_poll') }}" explain="{{ phrase('snog_forms_close_poll_explain') }}" rowtype="input">
+		<div class="inputGroup">
+			<div class="inputGroup inputGroup--numbers inputNumber" data-xf-init="number-box">
+				<xf:textbox name="normalclose" value="{{  $form.normalclose >= 1 ? $form.normalclose : 1 }}"
+					type="number"
+					min="1"
+					class="input input--number js-numberBoxTextInput js-permissionIntInput" />
+			</div>
+		</div>
+	</xf:formrow>
+
+	<!--[XF:form_edit:before_normalquestion]-->
+	<xf:textboxrow label="{{ phrase('question') }}" explain="{{ phrase('snog_forms_question_explain') }}"
+				   name="normalquestion"
+				   value="{$form.normalquestion}"
+				   maxlength="{{ max_length($form, 'normalquestion') }}" />
+
+	<!--[XF:form_edit:before_response]-->
+	<xf:formrow label="{{ phrase('possible_responses') }}" rowtype="input">
+		<ul class="inputList">
+			<xf:if is="$form.response">
+				<xf:foreach loop="$form.response" value="$response" key="$key">
+					<xf:if is="$response">
+						<li>
+							<xf:textbox name="response[{$key}]" value="{$response}" placeholder="{{ phrase('poll_choice...') }}" maxlength="100" />
+						</li>
+					</xf:if>
+				</xf:foreach>
+			</xf:if>
+			<xf:set var="$remainingResponses" value="{{ $xf.options.pollMaximumResponses - ($responses ? count($responses) : 0) }}" />
+			<xf:if is="$remainingResponses > 0">
+				<li data-xf-init="field-adder" data-remaining="{{ $remainingResponses - 1 }}">
+					<xf:textbox name="response[]" value="" placeholder="{{ phrase('poll_choice...') }}" maxlength="100" />
+				</li>
+			</xf:if>
+		</ul>
+	</xf:formrow>
+	
+	<!--[XF:form_edit:tab_form_poll_end]-->
+	
+</div>]]></template>
+  <template type="admin" title="snog_forms_form_edit_tab_pane_promote" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_promotion_explain') }}" />
+
+<!--[XF:form_edit:tab_form_promote_start]-->
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('snog_forms_instant_promote') }}</span>
+	</span>
+</h3>
+
+<div class="block-body block-body--collapsible">
+	
+	<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_instant_promote_explain') }}" />
+
+	<hr class="block-separator" />
+	
+	<!--[XF:form_edit:before_apppromote]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_change_primary') }}" explain="{{ phrase('snog_forms_change_primary_explain') }}" standalone="true">
+		<xf:option name="apppromote" value="1" selected="{$form.apppromote}" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_promoteto]-->
+	<xf:selectrow label="{{ phrase('primary_user_group') }}" name="promoteto" value="{$form.promoteto}">
+		<xf:option value="0">{{ phrase('snog_forms_do_not') }}</xf:option>
+		<xf:foreach loop="$userGroups" value="$userGroup">
+			<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+		</xf:foreach>
+	</xf:selectrow>
+	
+	<hr class="formRowSep" />
+	
+	<!--[XF:form_edit:before_appadd]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_add_secondary') }}" standalone="true">
+		<xf:option name="appadd" value="1" selected="{$form.appadd}" />
+		<xf:explain>{{ phrase('snog_forms_add_secondary_explain') }}</xf:explain>
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_addto]-->
+	<xf:checkboxrow label="{{ phrase('add_to_selected_groups') }}">
+		<xf:foreach loop="$userGroups" value="$userGroup" key="$key">
+			<xf:option name="addto[{$userGroup.user_group_id}]" value="{$userGroup.user_group_id}" checked="{{ ($form.addto.{$userGroup.user_group_id}) ? 'checked' : ''}}">
+				{$userGroup.title}
+			</xf:option>
+		</xf:foreach>
+	</xf:checkboxrow>
+</div>
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('snog_forms_decision_poll') }}</span>
+	</span>
+</h3>
+
+<div class="block-body block-body--collapsible">
+	
+	<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_decision_poll_explain') }}" />
+
+	<hr class="block-separator" />
+	
+	<!--[XF:form_edit:before_instant]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_include_decision') }}" explain="{{ phrase('snog_forms_include_decision_explain') }}" standalone="true">
+		<xf:option name="instant" value="1" selected="{$form.instant}" />
+	</xf:checkboxrow>
+
+	<!--[XF:form_edit:before_postpoll]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_create_voting') }}" explain="{{ phrase('snog_forms_create_voting_explain') }}" standalone="true">
+		<xf:option name="postpoll" value="1" selected="{$form.postpoll}" data-xf-init="disabler" data-container="#polls" data-hide="true">&nbsp;</xf:option>
+	</xf:checkboxrow>
+	
+	<div id="polls">
+		
+		<!--[XF:form_edit:before_pollpublic]-->
+		<xf:checkboxrow label="{{ phrase('display_votes_publicly') }}" standalone="true">
+			<xf:option name="pollpublic" value="1" selected="{$form.pollpublic}" />
+		</xf:checkboxrow>
+	
+		<!--[XF:form_edit:before_pollchange]-->
+		<xf:hiddenval name="pollchange" value="0" />
+		<xf:checkboxrow label="{{ phrase('allow_voters_to_change_their_votes') }}" standalone="true">
+			<xf:option name="pollchange" value="1" selected="{$form.pollchange}" />
+		</xf:checkboxrow>
+		
+		<!--[XF:form_edit:before_pollview]-->
+		<xf:checkboxrow label="{{ phrase('allow_results_to_be_viewed_without_voting') }}" standalone="true">
+			<xf:option name="pollview" value="1" selected="$form.pollview" />
+		</xf:checkboxrow>
+
+		<!--[XF:form_edit:before_pollquestion]-->
+		<xf:textboxrow name="pollquestion" value="{$form.pollquestion}"
+					   maxlength="{{ max_length($form, 'pollquestion') }}"
+					   label="{{ phrase('question') }}"
+					   explain="{{ phrase('snog_forms_question_explain') }}" />
+
+		<!--[XF:form_edit:before_pollclose]-->
+		<xf:formrow label="{{ phrase('snog_forms_close_poll') }}" explain="{{ phrase('snog_forms_close_poll_explain') }}" rowtype="input">
+			<div class="inputGroup">
+				<div class="inputGroup inputGroup--numbers inputNumber" data-xf-init="number-box">
+					<xf:textbox name="pollclose" value="{{  $form.pollclose >= 1 ? $form.pollclose : 1 }}"
+						type="number"
+						min="1"
+						class="input input--number js-numberBoxTextInput js-permissionIntInput" />
+				</div>
+			</div>
+		</xf:formrow>
+
+		<!--[XF:form_edit:before_pmerror]-->
+		<xf:textboxrow name="pmerror" value="{$form.pmerror}" type="search" ac="single" class="input--autoSize" size="50" 
+					   maxlength="{{ max_length($form, 'pmerror') }}"
+					   label="{{ phrase('snog_forms_send_ties') }}" 
+					   placeholder="{{ phrase('user_name...') }}" 
+					   explain="{{ phrase('snog_forms_send_ties_explain') }}" />
+	</div>
+	
+	<!--[XF:form_edit:before_promote_type]-->
+	<xf:radiorow name="promote_type" value="{{ ($form.promote_type) ? {$form.promote_type} : 2 }}" label="{{ phrase('snog_forms_usergroup_option') }}">
+		<xf:option value="1" data-xf-init="disabler" data-container="#prim" data-hide="true">{{ phrase('snog_forms_change_primary') }}</xf:option>
+		<xf:option value="2" data-xf-init="disabler" data-container="#secs" data-hide="true">{{ phrase('snog_forms_add_secondary') }}</xf:option>
+	</xf:radiorow>
+	
+	<div id="prim">
+		<!--[XF:form_edit:before_decidepromote]-->
+		<xf:selectrow label="{{ phrase('snog_forms_change_to') }}" name="decidepromote" value="{$form.decidepromote}">
+			<xf:option value="0">{{ phrase('snog_forms_do_not') }}</xf:option>
+			<xf:foreach loop="$userGroups" value="$userGroup">
+				<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+			</xf:foreach>
+		</xf:selectrow>
+	</div>
+	
+	<div id="secs">
+		<xf:checkboxrow label="{{ phrase('add_to_selected_groups') }}">
+			<!--[XF:form_edit:before_pollpromote]-->
+			<xf:foreach loop="$userGroups" value="$userGroup" key="$key">
+				<xf:option name="pollpromote[{$userGroup.user_group_id}]" value="{$userGroup.user_group_id}" checked="{{ ($form.pollpromote.{$userGroup.user_group_id}) ? 'checked' : ''}}" >{$userGroup.title}</xf:option>
+			</xf:foreach>
+		</xf:checkboxrow>
+	</div>
+	
+	<!--[XF:form_edit:before_make_moderator]-->
+	<xf:radiorow label="{{ phrase('snog_forms_make_moderator') }}" name="make_moderator" value="{{ ($form.make_moderator) ? {$form.make_moderator} : 1 }}">
+		<xf:option value="1">{{phrase('no')}}</xf:option>
+		<xf:option value="2" data-xf-init="disabler" data-container="#forummod" data-hide="true">{{ phrase('forum_moderator') }}</xf:option>
+		<xf:option value="3" data-xf-init="disabler" data-container="#supermod" data-hide="true">{{ phrase('super_moderator') }}</xf:option>
+		<xf:explain>{{phrase('snog_forms_make_moderator_explain')}}</xf:explain>
+	</xf:radiorow>
+
+	<div id="forummod">
+		
+		<!--[XF:form_edit:before_displaystaff]-->
+		<xf:hiddenval name="forummod[displaystaff]" value="0" />
+		<xf:checkboxrow label="{{ phrase('display_user_as_staff') }}" standalone="true">
+			<xf:option name="forummod[displaystaff]" value="1" selected="{$form.forummod.displaystaff}" />
+		</xf:checkboxrow>
+		
+		<!--[XF:form_edit:before_forummod]-->
+		<xf:foreach loop="$interfaceGroups" key="$interfaceGroupId" value="$interfaceGroup">
+			<xf:foreach loop="{$globalPermissions.{$interfaceGroupId}}" value="$permission">
+				<xf:hiddenval name="forummod[globalPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="unset" />
+			</xf:foreach>
+			<xf:foreach loop="{$contentPermissions.{$interfaceGroupId}}" value="$permission">
+				<xf:hiddenval name="forummod[contentPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="unset" />
+			</xf:foreach>
+		</xf:foreach>
+		
+		<xf:foreach loop="$interfaceGroups" key="$interfaceGroupId" value="$interfaceGroup">
+			<xf:if is="{$globalPermissions.{$interfaceGroupId}} && {$interfaceGroup.interface_group_id} == 'generalModeratorPermissions'">
+				<xf:checkboxrow label="{$interfaceGroup.title}" listclass="listColumns">
+					<xf:hint><label><input type="checkbox" data-xf-init="check-all" data-container="< .formRow" /> {{ phrase('select_all') }}</label></xf:hint>
+					<xf:foreach loop="{$globalPermissions.{$interfaceGroupId}}" value="$permission">
+						<xf:option label="{$permission.title}" name="forummod[globalPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="allow" 
+								   selected="{{ {$form.forummod.globalPermissions.{$permission.permission_group_id}.{$permission.permission_id}} == 'allow' }}" />
+					</xf:foreach>
+				</xf:checkboxrow>
+			</xf:if>
+		</xf:foreach>
+		
+		<xf:foreach loop="$interfaceGroups" key="$interfaceGroupId" value="$interfaceGroup">
+			<xf:if is="{$contentPermissions.{$interfaceGroupId}}">
+				<xf:checkboxrow label="{$interfaceGroup.title}" listclass="listColumns">
+				<xf:hint><label><input type="checkbox" data-xf-init="check-all" data-container="< .formRow" /> {{ phrase('select_all') }}</label></xf:hint>
+				<xf:foreach loop="{$contentPermissions.{$interfaceGroupId}}" value="$permission">
+					<xf:option label="{$permission.title}" name="forummod[contentPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="content_allow" 
+							   selected="{{ {$form.forummod.contentPermissions.{$permission.permission_group_id}.{$permission.permission_id}} == 'content_allow' }}" />
+				</xf:foreach>
+				</xf:checkboxrow>
+			</xf:if>
+		</xf:foreach>
+	</div>
+
+	<div id="supermod">
+		
+		<!--[XF:form_edit:before_displaystaff]-->
+		<xf:hiddenval name="supermod[displaystaff]" value="0" />
+		<xf:checkboxrow label="{{ phrase('display_user_as_staff') }}" standalone="true">
+			<xf:option name="supermod[displaystaff]" value="1" selected="{$form.supermod.displaystaff}" />
+		</xf:checkboxrow>
+		
+		<!--[XF:form_edit:before_supermod]-->
+		<xf:foreach loop="$interfaceGroups" key="$interfaceGroupId" value="$interfaceGroup">
+			<xf:foreach loop="{$globalPermissions.{$interfaceGroupId}}" value="$permission">
+				<xf:hiddenval name="supermod[globalPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="unset" />
+			</xf:foreach>
+			<xf:foreach loop="{$contentPermissions.{$interfaceGroupId}}" value="$permission">
+				<xf:hiddenval name="supermod[globalPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="unset" />
+			</xf:foreach>
+		</xf:foreach>
+		
+		<xf:foreach loop="$interfaceGroups" key="$interfaceGroupId" value="$interfaceGroup">
+			<xf:if is="{$globalPermissions.{$interfaceGroupId}}">
+				<xf:checkboxrow label="{$interfaceGroup.title}" listclass="listColumns">
+					<xf:hint><label><input type="checkbox" data-xf-init="check-all" data-container="< .formRow" /> {{ phrase('select_all') }}</label></xf:hint>
+					<xf:foreach loop="{$globalPermissions.{$interfaceGroupId}}" value="$permission">
+						<xf:option label="{$permission.title}" name="supermod[globalPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="allow"
+								   selected="{{ {$form.supermod.globalPermissions.{$permission.permission_group_id}.{$permission.permission_id}} == 'allow' }}"/>
+					</xf:foreach>
+				</xf:checkboxrow>
+			</xf:if>
+		</xf:foreach>
+		
+		<xf:foreach loop="$interfaceGroups" key="$interfaceGroupId" value="$interfaceGroup">
+			<xf:if is="{$contentPermissions.{$interfaceGroupId}}">
+				<xf:checkboxrow label="{$interfaceGroup.title}" listclass="listColumns">
+				<xf:hint><label><input type="checkbox" data-xf-init="check-all" data-container="< .formRow" /> {{ phrase('select_all') }}</label></xf:hint>
+				<xf:foreach loop="{$contentPermissions.{$interfaceGroupId}}" value="$permission">
+					<xf:option label="{$permission.title}" name="supermod[globalPermissions][{$permission.permission_group_id}][{$permission.permission_id}]" value="allow"
+							   selected="{{ {$form.supermod.globalPermissions.{$permission.permission_group_id}.{$permission.permission_id}} == 'allow' }}" />
+				</xf:foreach>
+				</xf:checkboxrow>
+			</xf:if>
+		</xf:foreach>
+	</div>
+	
+	<xf:checkboxrow label="{{ phrase('snog_forms_reverse') }}" explain="{{ phrase('snog_forms_reverse_explain') }}" standalone="true">
+		<xf:option name="removeinstant" value="1" selected="{$form.removeinstant}" />
+	</xf:checkboxrow>
+	
+	<hr class="formRowSep" />
+	
+	<!--[XF:form_edit:before_approved_title]-->
+	<xf:textboxrow name="approved_title" value="{$form.approved_title}"
+				   maxlength="{{ max_length($form, 'approved_title') }}"
+				   label="{{ phrase('snog_forms_approved_title') }}"
+				   explain="{{ phrase('snog_forms_approved_title_explain') }}" />
+	
+	<!--[XF:form_edit:before_approved_text]-->
+	<xf:editorrow name="approved_text" value="{$form.approved_text}" 
+				  label="{{ phrase('snog_forms_approved_text') }}"
+				  explain="{{ phrase('snog_forms_approved_text_explain') }}" />
+	
+	<!--[XF:form_edit:before_approved_file]-->
+	<xf:textboxrow name="approved_file" value="{$form.approved_file}"
+				   maxlength="{{ max_length($form, 'approved_file') }}"
+				   label="{{ phrase('snog_forms_include_file') }}"
+				   explain="{{ phrase('snog_forms_include_file_explain') }}" />
+	
+	<hr class="formRowSep" />
+	
+	<!--[XF:form_edit:before_denied_title]-->
+	<xf:textboxrow name="denied_title" value="{$form.denied_title}"
+				   maxlength="{{ max_length($form, 'denied_title') }}"
+				   label="{{ phrase('snog_forms_denied_title') }}"
+				   explain="{{ phrase('snog_forms_denied_title_explain') }}" />
+	
+	<!--[XF:form_edit:before_denied_text]-->
+	<xf:editorrow name="denied_text" value="{$form.denied_text}"
+				  label="{{ phrase('snog_forms_denied_text') }}"
+				  explain="{{ phrase('snog_forms_denied_text_explain') }}" />
+
+</div>
+
+<!--[XF:form_edit:tab_form_promote_end]-->]]></template>
+  <template type="admin" title="snog_forms_form_edit_tab_pane_redirect" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_redirect_explain') }}" />
+
+<!--[XF:form_edit:tab_form_redirect_start]-->
+
+<xf:radiorow label="{{ phrase('snog_forms_return_member') }}" name="returnto" value="{{ ($form.returnto) ? {$form.returnto} : 2 }}">
+	<xf:option value="1">{{ phrase('snog_forms_forms_list') }}</xf:option>
+	<xf:option value="2">{{ phrase('snog_forms_forum_home') }}</xf:option>
+	<xf:option value="3">{{ phrase('snog_forms_newly_created') }}</xf:option>
+	<xf:option value="4">{{ phrase('snog_forms_link_defined') }}</xf:option>
+</xf:radiorow>
+
+<xf:textboxrow name="returnlink" value="{$form.returnlink}"
+			   maxlength="{{ max_length($form, 'returnlink') }}"
+			   label="{{phrase('snog_forms_return_link')}}" 
+			   explain="{{ phrase('snog_forms_return_link_explain') }}" />
+
+<!--[XF:form_edit:tab_form_redirect_end]-->]]></template>
+  <template type="admin" title="snog_forms_form_edit_tab_pane_report" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_report_type_explain') }}" />
+
+<!--[XF:form_edit:tab_form_report_start]-->
+
+<div class="block-body">
+
+	<!--[XF:form_edit:before_subject]-->
+	<xf:textboxrow name="subject" value="{$form.subject}"
+				   maxlength="{{ max_length($form, 'subject') }}"
+				   label="{{ phrase('snog_forms_report_title') }}" 
+				   explain="{{ phrase('snog_forms_report_title_explain') }}" />
+	
+	<!--[XF:form_edit:before_parseyesno]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_parse') }}" explain="{{ phrase('snog_forms_parse_explain') }}" standalone="true">
+		<xf:option name="parseyesno" value="1" selected="{$form.parseyesno}" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_incname]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_include_name') }}" explain="{{ phrase('snog_forms_include_name_explain') }}" standalone="true">
+		<xf:option name="incname" value="1" selected="{$form.incname}"
+				   data-xf-init="disabler" 
+				   data-container="#ipheader" 
+				   data-hide="true" />
+	</xf:checkboxrow>
+	
+	<div id="ipheader">
+		<!--[XF:form_edit:before_bbstart]-->
+		<xf:textboxrow name="bbstart" value="{$form.bbstart}"
+					   maxlength="{{ max_length($form, 'bbstart') }}"
+					   label="{{ phrase('snog_forms_bbcstart') }}"
+					   explain="{{ phrase('snog_forms_bbcstart_explain') }}" />
+		
+		<!--[XF:form_edit:before_bbend]-->
+		<xf:textboxrow name="bbend" value="{$form.bbend}"
+					   maxlength="{{ max_length($form, 'bbend') }}"
+					   label="{{ phrase('snog_forms_bbcend') }}"
+					   explain="{{ phrase('snog_forms_bbcend_explain') }}" />
+	</div>
+</div>
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('snog_forms_email_options') }}</span>
+	</span>
+</h3>
+<div class="block-body block-body--collapsible">
+	<!--[XF:form_edit:before_email]-->
+	<xf:textboxrow name="email" value="{$form.email}"
+				   maxlength="{{ max_length($form, 'email') }}"
+				   label="{{ phrase('snog_forms_email_recipients') }}"
+				   explain="{{ phrase('snog_forms_email_recipients_explain') }}" />
+</div>
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('snog_forms_thread_options') }}</span>
+	</span>
+</h3>
+<div class="block-body block-body--collapsible">
+	<!--[XF:form_edit:before_posterid]-->
+	<xf:textboxrow name="posterid" value="{$form.posterid}" type="search" ac="single" class="input--autoSize" size="50"
+				   maxlength="{{ max_length($form, 'posterid') }}"
+				   label="{{ phrase('snog_forms_thread_poster_name') }}"
+				   placeholder="{{ phrase('user_name...') }}"
+				   explain="{{ phrase('snog_forms_thread_poster_name_explain') }}" />
+
+	<hr class="formRowSep" />
+	
+	<!--[XF:form_edit:before_oldthread]-->
+	<xf:textboxrow name="oldthread" class="input--autoSize" size="10" maxlength="30" 
+				   label="{{ phrase('snog_forms_existing') }}"
+				   value="{$form.oldthread}" explain="{{ phrase('snog_forms_existing_explain') }}" />
+
+	<!--[XF:form_edit:before_postapproval]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_approval') }}" explain="{{ phrase('snog_forms_approval_explain') }}" standalone="true">
+		<xf:option name="postapproval" value="1" selected="{$form.postapproval}" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_postapproval]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_quick_reply') }}" explain="{{ phrase('snog_forms_quick_reply_explain') }}" standalone="true">
+		<xf:option name="quickreply" value="1" selected="{$form.quickreply}" />
+	</xf:checkboxrow>
+	
+	<hr class="formRowSep" />
+	
+	<!--[XF:form_edit:before_qroption]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_qrbutton') }}" explain="{{ phrase('snog_forms_qrbutton_explain') }}" standalone="true">
+		<xf:option name="qroption" value="1" selected="{$form.qroption}"
+				   data-xf-init="disabler" 
+				   data-container="#qroption" 
+				   data-hide="true" />
+	</xf:checkboxrow>
+	
+	<div id="qroption">
+		<!--[XF:form_edit:before_qrbutton]-->
+		<xf:textboxrow name="qrbutton" value="{{ $form.qrbutton ? $form.qrbutton : phrase('snog_forms_use_update') }}"
+					   class="input--autoSize" size="30"
+					   maxlength="{{ max_length($form, 'qrbutton') }}" 
+					   label="{{ phrase('snog_forms_button_phrase') }}" 
+					   explain="{{ phrase('snog_forms_button_phrase_explain') }}"></xf:textboxrow>
+
+		<!--[XF:form_edit:before_qrstarter]-->
+		<xf:checkboxrow label="{{ phrase('snog_forms_only_starter') }}" explain="{{ phrase('snog_forms_only_starter_explain') }}" standalone="true">
+			<xf:option name="qrstarter" value="1" selected="{$form.qrstarter}" />
+		</xf:checkboxrow>
+
+		<!--[XF:form_edit:before_qrforums]-->
+		<xf:selectrow name="qrforums" multiple="true" value="{$form.qrforums}"
+					  label="{{ phrase('snog_forms_forums_option') }}"
+					  explain="{{ phrase('snog_forms_forums_option_explain') }}">
+
+			<xf:option value="-1">{{ phrase('(none)') }}</xf:option>
+			<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+				<xf:if is="{$treeEntry.record.node_type_id} == 'Forum'">
+					<xf:option value="{$treeEntry.record.node_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+				<xf:else/>
+					<xf:option value="{$treeEntry.record.node_id}" disabled="disabled">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+				</xf:if>
+			</xf:foreach>
+		</xf:selectrow>
+	</div>
+	
+	<hr class="formRowSep" />
+
+	<!--[XF:form_edit:before_inthread]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_new_thread') }}" explain="{{ phrase('snog_forms_new_thread_explain') }}" standalone="true">
+		<xf:option name="inthread" value="1" selected="{$form.inthread}"
+				   data-xf-init="disabler" 
+				   data-container="#forumoption" 
+				   data-hide="true" />
+	</xf:checkboxrow>
+	
+	<div id="forumoption">
+		
+		<!--[XF:form_edit:before_node_id]-->
+		<xf:selectrow name="node_id" value="{$form.node_id}" label="{{ phrase('snog_forms_forum') }}" explain="{{ phrase('snog_forms_forum_explain') }}">
+			<xf:option value="-1">{{ phrase('(none)') }}</xf:option>
+			<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+				<xf:if is="{$treeEntry.record.node_type_id} == 'Forum'">
+					<xf:option value="{$treeEntry.record.node_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+				<xf:else/>
+					<xf:option value="{$treeEntry.record.node_id}" disabled="disabled">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+				</xf:if>
+			</xf:foreach>
+		</xf:selectrow>
+	
+		<!--[XF:form_edit:before_threadapp]-->
+		<xf:checkboxrow label="{{ phrase('snog_forms_thread_button') }}" explain="{{ phrase('snog_forms_thread_button_explain') }}" standalone="true">
+			<xf:option name="threadapp" value="1" selected="{$form.threadapp}" 
+					   data-xf-init="disabler" 
+					   data-container="#threadbutton" 
+					   data-hide="true" />
+		</xf:checkboxrow>
+
+		<div id="threadbutton">
+			<!--[XF:form_edit:before_threadbutton]-->
+			<xf:textboxrow name="threadbutton" value="{$form.threadbutton}" class="input--autoSize" size="30"
+						   maxlength="{{ max_length($form, 'threadbutton') }}"
+						   label="{{ phrase('snog_forms_thread_button_phrase') }}"
+						   explain="{{ phrase('snog_forms_thread_button_phrase_explain') }}" />
+		</div>
+
+		<xf:if is="$availablePrefixes is not empty">
+			<!--[XF:form_edit:before_prefix_id]-->
+			
+			<xf:if is="is_addon_active('SV/MultiPrefix')">
+				<xf:selectrow label="{{ phrase('snog_forms_thread_prefixes') }}" name="prefix_ids" value="{$form.prefix_ids}" multiple="true" rows="5">
+					<xf:option value="-1">{{ phrase('(none)') }}</xf:option>
+					<xf:options source="$availablePrefixes" />
+					<xf:explain>{{phrase('snog_forms_thread_prefix_explain')}}</xf:explain>
+				</xf:selectrow>
+			<xf:else />
+				<xf:selectrow label="{{ phrase('snog_forms_thread_prefix') }}" name="prefix_id" value="{$form.prefix_ids|first()}">
+					<xf:option value="-1">{{ phrase('(none)') }}</xf:option>
+					<xf:options source="$availablePrefixes" />
+					<xf:explain>{{ phrase('snog_forms_thread_prefix_explain') }}</xf:explain>
+				</xf:selectrow>
+			</xf:if>
+		</xf:if>
+
+		<!--[XF:form_edit:before_watchthread]-->
+		<xf:checkboxrow label="{{ phrase('snog_forms_watch') }}" explain="{{ phrase('snog_forms_watch_explain') }}" standalone="true">
+			<xf:option name="watchthread" value="1" selected="{$form.watchthread}" />
+		</xf:checkboxrow>
+	
+		<hr class="formRowSep" />
+	
+		<!--[XF:form_edit:before_insecthread]-->
+		<xf:checkboxrow label="{{ phrase('snog_forms_second_thread') }}" explain="{{ phrase('snog_forms_second_thread_explain') }}" standalone="true">
+			<xf:option name="insecthread" value="1" selected="{$form.insecthread}" />
+		</xf:checkboxrow>
+	
+		<!--[XF:form_edit:before_secposterid]-->
+		<xf:textboxrow name="secposterid" value="{$form.secposterid}" type="search" ac="single" class="input--autoSize" size="50"
+					   maxlength="{{ max_length($form, 'secposterid') }}"
+					   label="{{ phrase('snog_forms_second_thread_poster') }}"
+					   placeholder="{{ phrase('user_name...') }}"
+					   explain="{{ phrase('snog_forms_second_thread_poster_explain') }}" />
+
+		<!--[XF:form_edit:before_secnode_id]-->
+		<xf:selectrow name="secnode_id" value="{$form.secnode_id}"
+					  label="{{ phrase('snog_forms_second_thread_forum') }}"
+					  explain="{{ phrase('snog_forms_second_thread_forum_explain') }}">
+			
+			<xf:option value="-1">{{ phrase('(none)') }}</xf:option>
+			<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+				<xf:if is="{$treeEntry.record.node_type_id} == 'Forum'">
+					<xf:option value="{$treeEntry.record.node_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+				<xf:else/>
+					<xf:option value="{$treeEntry.record.node_id}" disabled="disabled">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+				</xf:if>
+			</xf:foreach>
+		</xf:selectrow>
+	</div>
+</div>
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('snog_forms_pc_report_options') }}</span>
+	</span>
+</h3>
+<div class="block-body block-body--collapsible">
+	<!--[XF:form_edit:before_bypm]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_by_pc') }}" explain="{{ phrase('snog_forms_by_pc_explain') }}" standalone="true">
+		<xf:option name="bypm" value="1" selected="{$form.bypm}" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_pmto]-->
+	<xf:textboxrow name="pmto" value="{$form.pmto}" type="search" ac="multiple"
+				   maxlength="{{ max_length($form, 'pmto') }}"
+				   label="{{ phrase('snog_forms_pc_recipients') }}"
+				   placeholder="{{ phrase('user_name...') }}" />
+	
+</div>
+
+<h3 class="block-formSectionHeader">
+	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+		<span class="block-formSectionHeader-aligner">{{ phrase('snog_forms_pc_options') }}</span>
+	</span>
+</h3>
+<div class="block-body block-body--collapsible">
+	<!--[XF:form_edit:before_pmto]-->
+	<xf:checkboxrow label="{{ phrase('snog_forms_send_pc') }}" explain="{{ phrase('snog_forms_send_pc_explain') }}" standalone="true">
+		<xf:option name="pmapp" value="1" selected="{$form.pmapp}" />
+	</xf:checkboxrow>
+	
+	<!--[XF:form_edit:before_pmtext]-->
+	<xf:editorrow name="pmtext" value="{$form.pmtext}" 
+				  label="{{ phrase('snog_forms_pc_text') }}"
+				  explain="{{ phrase('snog_forms_pc_text_explain') }}" />
+</div>
+
+<!--[XF:form_edit:tab_form_report_end]-->]]></template>
+  <template type="admin" title="snog_forms_form_list" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:title>{{ phrase('admin_navigation.snogForms') }}</xf:title>
+
+<xf:page option="section" value="snogForms" />
+
+<xf:pageaction>
+	<div class="buttonGroup">
+		<xf:button href="{{ link('form-forms/add') }}" icon="add">{{ phrase('snog_forms_add_form' )}}</xf:button>
+		<xf:button href="{{ link('form-forms/sort') }}" icon="sort" overlay="true">{{ phrase('snog_forms_order') }}</xf:button>
+	</div>
+</xf:pageaction>
+
+<xf:if is="$forms is not empty">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$forms" value="$form">
+					<xf:datarow>
+						<xf:main href="{{ link('form-forms/edit', $form) }}" label="{$form.position}" explain="{{ link_type('public', 'canonical:form/select', $form) }}">
+							<xf:label>{$form.position}</xf:label>
+							<xf:hint>{{ phrase('snog_forms_submit_count:') }} {$form.submit_count|number}</xf:hint>
+							<xf:explain>{{ link_type('public', 'canonical:form/select', $form) }}</xf:explain>
+						</xf:main>
+
+						<xf:cell class="dataList-cell--min">
+							<xf:if is="$form.formlimit">
+								<xf:button href="{{ link('form-forms/reset', $form) }}" icon="refresh" overlay="true">{{ phrase('reset') }}</xf:button>
+								<xf:button href="{{ link('form-forms/resetone', $form) }}" icon="refresh" overlay="true">{{ phrase('reset') }} 1</xf:button>
+							</xf:if>
+						</xf:cell>
+
+						<xf:cell class="dataList-cell--min">
+							<xf:button href="{{ link('form-editquestions/formquestions', $form) }}" fa="fa-question-circle">{{ phrase('snog_forms_questions') }}</xf:button>
+							<xf:button href="{{ link('form-forms/copy', $form) }}" fa="fa-copy">{{ phrase('snog_forms_copy') }}</xf:button>
+						</xf:cell>
+
+						<xf:delete href="{{ link('form-forms/delete', $form) }}" />
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('there_is_nothing_to_display') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="snog_forms_form_order" version_id="2002171" version_string="2.0.21.1"><![CDATA[<xf:js src="vendor/nestable/jquery.nestable.min.js" />
+<xf:js src="Snog/Forms/nestable.min.js" />
+<xf:css src="public:nestable.less" />
+
+<xf:title>{{ phrase('snog_forms_form_order') }}</xf:title>
+
+<xf:form action="{{ link('form-forms/sort') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<div class="nestable-container" data-xf-init="nestable">
+				<xf:macro name="form_list" arg-children="{$formList}" />
+				<xf:hiddenval name="forms" value="" />
+			</div>
+		</div>
+		<input type="hidden" name="display_parent" value="0"/>
+		<xf:submitrow icon="save" rowtype="simple" />
+	</div>
+</xf:form>
+
+<xf:macro name="form_list" arg-children="!">
+	<ol class="nestable-list">
+		<xf:foreach loop="$children" key="$id" value="$child">
+			<xf:macro name="form_list_entry" arg-form="{$child}" arg-children="{$child.children}" />
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="form_list_entry" arg-form="!" arg-children="!">
+	<li class="nestable-item" data-id="{$form.id}">
+		<div class="nestable-handle" aria-label="{{ phrase('drag_handle') }}"><i class="fa fa-bars" aria-hidden="true"></i></div>
+		<div class="nestable-content">
+			<div style="width:50%;float:left;overflow:hidden;text-overflow: ellipsis;">{$form.record.position}</div>
+		</div>
+	</li>
+</xf:macro>]]></template>
+  <template type="admin" title="snog_forms_import" version_id="2020037" version_string="2.2.0 Beta 7"><![CDATA[<xf:title>{{ phrase('snog_forms_import_forms') }}</xf:title>
+
+<xf:if is="$success">
+	<div class="blockMessage blockMessage--success blockMessage--iconic">{{ phrase('snog_forms_import_forms_was_completed_successfully') }}</div>
+</xf:if>
+
+<xf:form action="{{ link('form-import') }}" upload="true" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:radiorow name="mode" value="upload">
+				<xf:option label="{{ phrase('import_from_uploaded_xml_file') }}" value="upload" hint="{{ phrase('snog_forms_import_xml_explain') }}">
+					<xf:upload name="upload" accept=".xml" />
+				</xf:option>
+				<xf:option label="{{ phrase('import_from_directory_on_server') }}" value="directory" hint="{{ phrase('snog_forms_import_directory_explain') }}">
+					<xf:textbox name="directory" placeholder="data/forms-export.xml" />
+				</xf:option>
+			</xf:radiorow>
+			
+			<xf:checkboxrow label="{{phrase('snog_forms_import_merge')}}">
+				<xf:option name="merge" value="1">&nbsp;</xf:option>
+				<xf:explain>{{phrase('snog_forms_import_merge_explain')}}</xf:explain>
+			</xf:checkboxrow>
+		</div>
+		<xf:submitrow submit="{{ phrase('proceed...') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="snog_forms_log_clear" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('logs/forms-logs/clear') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('snog_forms_sure_you_want_to_clear_log') }}
+			</xf:inforow>
+			
+			<xf:inforow rowtype="confirm">
+				<xf:checkbox standalone="true">
+					<xf:option name="clear_answers" selected="1">{{ phrase('snog_forms_clear_answers') }}</xf:option>
+				</xf:checkbox>
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('clear') }}" rowtype="simple" icon="delete" />
+	</div>
+ </xf:form>]]></template>
+  <template type="admin" title="snog_forms_log_list" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[<xf:title>{{ phrase('snog_forms_log_list') }}</xf:title>
+
+<xf:pageaction if="$entries is not empty">
+	<xf:button href="{{ link('logs/forms-logs/clear') }}" icon="delete" overlay="true">
+		{{ phrase('clear') }}
+	</xf:button>
+</xf:pageaction>
+
+<xf:if is="$entries is not empty">
+	<div class="block" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<tbody>
+						<xf:foreach loop="$entries" value="$entry">
+							<xf:datarow overlay="true"
+										label="{{ $entry.Form ? $entry.Form.position : phrase('snog_forms_deleted_form') }}"
+										href="{{ link('logs/forms-logs', $entry) }}"
+										delete="{{ link('logs/forms-logs/delete', $entry) }}"
+										dir="auto">
+								<xf:explain>
+									<ul class="listInline listInline--bullet">
+										<li><xf:date time="{$entry.log_date}" /></li>
+										<li>
+											<xf:if is="{$entry.User}">
+												<xf:username user="{$entry.User}" />
+											<xf:else />
+												{$entry.ip_address|ip}
+											</xf:if>
+										</li>
+									</ul>
+								</xf:explain>
+							</xf:datarow>
+						</xf:foreach>
+					</tbody>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($entries, $total) }}</span>
+			</div>
+		</div>
+
+		<div class="block-outer block-outer--after">
+			<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}" link="logs/forms-logs"
+					wrapperclass="block-outer-opposite" />
+		</div>
+
+	</div>
+	<xf:else />
+	<div class="blockMessage">{{ phrase('there_is_nothing_to_display') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="snog_forms_log_view" version_id="2020038" version_string="2.2.0 Beta 8"><![CDATA[<xf:title>{{ phrase('snog_forms_log') }}</xf:title>
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:formrow label="{{ phrase('date') }}">
+				<div class="u-ltr">
+					<xf:date time="$entry.log_date" />
+				</div>
+			</xf:formrow>
+
+			<xf:if is="$entry.User">
+				<xf:formrow label="{{ phrase('user_name') }}">
+					<div class="u-ltr">
+						<xf:username user="$entry.User" href="{{ link('users/edit', $entry.User) }}" />
+					</div>
+				</xf:formrow>
+			</xf:if>
+			
+			<xf:formrow label="{{ phrase('ip_address') }}">
+				<div class="u-ltr">
+					{$entry.ip_address|ip}
+				</div>
+			</xf:formrow>
+
+			<xf:formrow label="{{ phrase('snog_forms_form') }}">
+				<div class="u-ltr">
+					<xf:if is="$entry.Form">
+						<a href="{{ link('form-forms/edit', $entry.Form) }}">
+							{{ $entry.Form.position }}
+						</a>
+					<xf:else/>
+						{{ phrase('snog_forms_deleted_form') }}
+					</xf:if>
+				</div>
+			</xf:formrow>
+
+		</div>
+
+		<xf:if is="$answers is not empty">
+			<h3 class="block-formSectionHeader">
+				<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+					<span class="block-formSectionHeader-aligner">{{ phrase('snog_forms_answers') }}</span>
+				</span>
+			</h3>
+			<div class="block-body block-body--collapsible">
+				<xf:foreach loop="$answers" value="$answer">
+					<xf:formrow label="{$answer.Question.text}">
+						<div class="u-ltr">
+							{{ $answer.answer }}
+						</div>
+					</xf:formrow>
+				</xf:foreach>
+			</div>	
+		</xf:if>
+		
+		<div class="block-footer">
+			<span class="block-footer-controls">
+				<xf:button href="{{ link('logs/forms-logs/delete', $entry) }}" icon="delete" overlay="true" />
+			</span>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="admin" title="snog_forms_main" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('admin_navigation.snog_forms') }}</xf:title>
+
+<xf:macro template="section_nav_macros" name="section_nav" arg-section="snog_forms" />]]></template>
+  <template type="admin" title="snog_forms_question_edit" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:if is="$action == 'edit' || !$question.isInsert()">
+	<xf:title>{{ phrase('snog_forms_edit_question') }}</xf:title>
+<xf:else/>
+	<xf:title>{{ $form.posid ? '' : phrase('admin_navigation.snogQuestions') }} {{ phrase('snog_forms_add_new_question') }}</xf:title>
+</xf:if>
+
+<xf:breadcrumb href="{{ link('form-editquestions/formquestions', $form) }}">{$form.position} {{ phrase('snog_forms_questions') }}</xf:breadcrumb>
+
+<xf:page option="section" value="{{ $form.posid ? 'snogForms' : 'snogQuestions' }}" />
+
+<xf:form action="{{ link('form-questions/save', $question) }}" ajax="false" class="block">
+	<div class="block-container">
+		<div class="block-body">
+
+			<!--[XF:question_edit:start]-->
+			
+			<!--[XF:question_edit:before_text]-->
+			<xf:textarearow name="text" value="{$question.text}" autosize="true"
+							label="{{ phrase('snog_forms_question_header') }}"
+							explain="{{ phrase('snog_forms_question_header_explain') }}" />
+			
+			
+			<!--[XF:question_edit:before_description]-->
+			<xf:textboxrow name="description" value="{$question.description}"
+						   maxlength="{{ max_length($question, 'description') }}"
+						   label="{{ phrase('description') }}" 
+						   explain="{{ phrase('snog_forms_description_explain') }}" />
+
+			<!--[XF:question_edit:before_type]-->
+			<xf:radiorow label="{{ phrase('snog_forms_answer_type') }}" name="type" value="{{ ($question.type) ? {$question.type} : 1 }}">
+				<xf:option value="9" data-xf-init="disabler" data-container="#expagree" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_agree')}}</xf:option>
+				<xf:option value="11">{{phrase('snog_forms_typedef_date')}}</xf:option>
+				<xf:option value="10" disabled="{{ $filetype ? 'disabled' : '' }}" data-xf-init="disabler" data-container="#inline" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_file')}}</xf:option>
+				<xf:option value="2" data-xf-init="disabler" data-container="#multiline, #defmultiline, #regmultiline" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_multiline')}}</xf:option>
+				<xf:option value="5" data-xf-init="disabler" data-container="#limitholder, #expmulti, #defmulticheck" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_check')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="8" data-xf-init="disabler" data-container="#expmultiall, #defmulticheckall" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_checkall')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="6" data-xf-init="disabler" data-container="#mainplaceholder" data-hide="true" data-invert="true">{{phrase('snog_forms_typedef_none')}}</xf:option>
+				<xf:option value="1" data-xf-init="disabler" data-container="#singleline, #defsingleline, #regsingleline" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_singleline')}}</xf:option>
+				<xf:option value="7" data-xf-init="disabler" data-container="#expsingle, #defsingledrop" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_dropdown')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="12" data-xf-init="disabler" data-container="#defsingleforum" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_forum')}}</xf:option>
+				<xf:option value="4" data-xf-init="disabler" data-container="#expradio, #defradio" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_radio')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="14" data-xf-init="disabler" data-container="#expspin, #defspin, #regspin" data-hide="true" data-autofocus="false">{{phrase('snog_forms_spinbox')}}</xf:option>
+				<xf:option value="15" disabled="{{ $prefixtype || $form.oldthread ? 'disabled' : '' }}">{{phrase('snog_forms_thread_prefixes')}}</xf:option>
+				<xf:option value="3" data-xf-init="disabler" data-container="#defyesno" data-hide="true" data-autofocus="false">{{phrase('snog_forms_typedef_yesno')}}<span style="color:red;font-weight:bold;">*</span></xf:option>
+				<xf:option value="13" data-xf-init="disabler" data-container="#wysiwyg" data-hide="true" data-autofocus="false">{{phrase('snog_forms_wysiwyg')}}</xf:option>
+				<xf:explain>{{phrase('snog_forms_type_explain')}}</xf:explain>
+			</xf:radiorow>
+
+			<div id="mainplaceholder">
+				<div id="limitholder">
+					<!--[XF:question_edit:before_checklimit]-->
+					<xf:numberboxrow name="checklimit" value="{{ ($question.checklimit ? $question.checklimit : 0) }}" step="1" min="0" max="999"
+									 label="{{ phrase('snog_forms_checkbox_limit') }}" 
+									 explain="{{ phrase('snog_forms_checkbox_limit_explain') }}" />
+				
+					<!--[XF:question_edit:before_checkerror]-->
+					<xf:textboxrow name="checkerror" value="{{ ($question.checkerror ? $question.checkerror : '') }}"
+								   maxlength="{{ max_length($question, 'checkerror') }}"
+								   label="{{ phrase('snog_forms_checkbox_error') }}"
+								   explain="{{ phrase('snog_forms_checkbox_error_explain') }}" />
+				</div>
+
+				<!--[XF:question_edit:before_placeholder]-->
+				<div id="singleline">
+					<xf:textboxrow name="singleline" value="{$question.placeholder}"
+								   maxlength="{{ max_length($question, 'singleline') }}"
+								   label="{{ phrase('snog_forms_placeholder') }}"
+								   explain="{{ phrase('snog_forms_placeholder_explain') }}" />
+				</div>
+
+				<div id="multiline">
+					<xf:textboxrow name="multiline" value="{$question.placeholder}"
+								   maxlength="{{ max_length($question, 'singleline') }}"
+								   label="{{ phrase('snog_forms_placeholder') }}"
+								   explain="{{ phrase('snog_forms_placeholder_explain') }}" />
+				</div>
+
+				<div id="wysiwyg">
+					<xf:textboxrow name="wysiwyg" value="{$question.placeholder}"
+								   maxlength="{{ max_length($question, 'singleline') }}"
+								   label="{{ phrase('snog_forms_placeholder') }}" 
+								   explain="{{ phrase('snog_forms_placeholder_explain') }}" />
+				</div>
+			
+				<div id="inline">
+					<!--[XF:question_edit:before_inline]-->
+					<xf:radiorow label="{{ phrase('snog_forms_file_display') }}" name="inline" value="{{ ($question.inline ? $question.inline : 1) }}">
+						<xf:option value="1">{{ phrase('snog_forms_as_attachment') }}</xf:option>
+						<xf:option value="2">{{ phrase('snog_forms_full_size') }}</xf:option>
+						<xf:option value="3">{{ phrase('snog_forms_thumbnail') }}</xf:option>
+						<xf:explain>{{ phrase('snog_forms_file_display_explain') }}</xf:explain>
+					</xf:radiorow>				
+				</div>
+
+				<!--[XF:question_edit:before_expected]-->
+				<div id="expagree">
+					<!--[XF:question_edit:before_expectedagree]-->
+					<xf:textarearow name="expectedagree" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+			
+				<div id="expmulti">
+					<!--[XF:question_edit:before_expectedmulti]-->
+					<xf:textarearow name="expectedmulti" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<div id="expmultiall">
+					<!--[XF:question_edit:before_expectedmultiall]-->
+					<xf:textarearow name="expectedmultiall" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{phrase('snog_forms_expected_explain')}}" />
+				</div>
+
+				<div id="expsingle">
+					<!--[XF:question_edit:before_expectedsingle]-->
+					<xf:textarearow name="expectedsingle" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{phrase('snog_forms_expected_explain')}}" />
+				</div>
+
+				<div id="expradio">
+					<!--[XF:question_edit:before_expectedradio]-->
+					<xf:textarearow name="expectedradio" value="{$question.expected}" autosize="true"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<div id="expspin">
+					<!--[XF:question_edit:before_expectedspin]-->
+					<xf:textarearow name="expectedspin" value="{$question.expected}" autosize="true"
+									maxlength="{{ max_length($question, 'expected') }}"
+									label="{{ phrase('snog_forms_expected') }}"
+									explain="{{ phrase('snog_forms_expected_explain') }}" />
+				</div>
+
+				<!--[XF:question_edit:before_defanswer]-->
+				<div id="defmulticheck">
+					<!--[XF:question_edit:before_defmulticheck]-->
+					<xf:textboxrow name="defmulticheck" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defmulticheckall">
+					<!--[XF:question_edit:before_defmulticheckall]-->
+					<xf:textboxrow name="defmulticheckall" value="{$question.defanswer}" 
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defmultiline">
+					<!--[XF:question_edit:before_defmultiline]-->
+					<xf:textboxrow name="defmultiline" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defsingleline">
+					<!--[XF:question_edit:before_defsingleline]-->
+					<xf:textboxrow name="defsingleline" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defsingledrop">
+					<!--[XF:question_edit:before_defsingledrop]-->
+					<xf:textboxrow name="defsingledrop" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}"
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defsingleforum">
+					<!--[XF:question_edit:before_defsingleforum]-->
+					<xf:textboxrow name="defsingleforum" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}" 
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defradio">
+					<!--[XF:question_edit:before_defradio]-->
+					<xf:textboxrow name="defradio" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}" 
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defspin">
+					<!--[XF:question_edit:before_defspin]-->
+					<xf:textboxrow name="defspin" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}" 
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="defyesno">
+					<!--[XF:question_edit:before_defyesno]-->
+					<xf:textboxrow name="defyesno" value="{$question.defanswer}"
+								   maxlength="{{ max_length($question, 'defanswer') }}"
+								   label="{{ phrase('snog_forms_default_answer') }}" 
+								   explain="{{ phrase('snog_forms_default_answer_explain') }}" />
+				</div>
+
+				<div id="regmultiline">
+					<!--[XF:question_edit:before_regexmulti]-->
+					<xf:textboxrow name="regexmulti" value="{$question.regex}" 
+								   maxlength="{{ max_length($question, 'regex') }}"
+								   label="{{ phrase('snog_forms_text_regex') }}" 
+								   explain="{{phrase('snog_forms_text_regex_explain')}}" />
+			
+					<!--[XF:question_edit:before_regexerrormulti]-->
+					<xf:textboxrow name="regexerrormulti" value="{$question.regexerror}"
+								   maxlength="{{ max_length($question, 'regex') }}"
+								   label="{{ phrase('snog_forms_regex_error' ) }}"
+								   explain="{{ phrase('snog_forms_regex_error_explain') }}" />
+				</div>
+
+				<div id="regsingleline">
+					<!--[XF:question_edit:before_regexsingle]-->
+					<xf:textboxrow name="regexsingle" value="{$question.regex}"
+								   maxlength="{{ max_length($question, 'regex') }}"
+								   label="{{ phrase('snog_forms_text_regex') }}"
+								   explain="{{ phrase('snog_forms_text_regex_explain') }}" />
+			
+					<!--[XF:question_edit:before_regexerrorsingle]-->
+					<xf:textboxrow name="regexerrorsingle" value="{$question.regexerror}"
+								   maxlength="{{ max_length($question, 'regexerror') }}"
+								   label="{{ phrase('snog_forms_regex_error') }}"
+								   explain="{{ phrase('snog_forms_regex_error_explain') }}" />
+				</div>
+
+				<div id="regspin">
+					<!--[XF:question_edit:before_regexspin]-->
+					<xf:textboxrow name="regexspin" value="{$question.regex}" 
+								   maxlength="{{ max_length($question, 'regexerror') }}"
+								   label="{{ phrase('snog_forms_text_regex') }}" 
+								   explain="{{ phrase('snog_forms_text_regex_explain') }}" />
+					
+					<!--[XF:question_edit:before_regexerrorspin]-->
+					<xf:textboxrow name="regexerrorspin" value="{$question.regexerror}"
+								   maxlength="{{ max_length($question, 'regexerror') }}"
+								   label="{{ phrase('snog_forms_regex_error') }}"
+								   explain="{{ phrase('snog_forms_regex_error_explain') }}" />
+				</div>
+			
+				<!--[XF:question_edit:before_error]-->
+				<xf:textboxrow name="error" value="{$question.error}"
+							   maxlength="{{ max_length($question, 'error') }}"
+							   label="{{ phrase('snog_forms_question_error') }}"
+							   explain="{{ phrase('snog_forms_question_error_explain') }}" />
+
+				<hr class="formRowSep" />
+
+				<!--[XF:question_edit:before_showquestion]-->
+				<xf:checkboxrow label="{{ phrase('snog_forms_show_question') }}" standalone="true">
+					<xf:option name="showquestion" value="1" selected="$question.showquestion" />
+					<xf:explain>{{ phrase('snog_forms_show_question_explain') }}</xf:explain>
+				</xf:checkboxrow>
+				
+				<!--[XF:question_edit:before_showunanswered]-->
+				<xf:checkboxrow label="{{ phrase('snog_forms_show_unanswered') }}" standalone="true">
+					<xf:option name="showunanswered" value="1" selected="$question.showunanswered" />
+					<xf:explain>{{ phrase('snog_forms_show_unanswered_explain') }}</xf:explain>
+				</xf:checkboxrow>
+				
+				<!--[XF:question_edit:after_showunanswered]-->
+			
+				<hr class="formRowSep" />
+
+				<!--[XF:question_edit:before_format]-->
+				<xf:textarearow name="format" value="{{ $question.format ? $question.format : '[B]{question}[/B] {answer}' }}" autosize="true"
+								label="{{ phrase('snog_forms_report_format') }}" 
+								explain="{{ phrase('snog_forms_report_format_explain') }}" />
+
+				<!--[XF:question_edit:before_questionpos]-->
+				<xf:selectrow name="questionpos" value="{{ ($question.questionpos) ? {$question.questionpos} : 1 }}"
+							  label="{{ phrase('snog_forms_question_position') }}" 
+							  explain="{{ phrase('snog_forms_question_position_explain') }}">
+
+					<xf:option value="1">{{ phrase('snog_forms_question_postion_1') }}</xf:option>
+					<xf:option value="2">{{ phrase('snog_forms_question_postion_2') }}</xf:option>
+					<xf:option value="5">{{ phrase('snog_forms_question_postion_5') }}</xf:option>
+				</xf:selectrow>
+
+			</div>
+			
+			<!--[XF:question_edit:end]-->
+			
+			<xf:if is="$nextquestion">
+				<input type="hidden" value="{$nextquestion}" name="display" />
+			<xf:else />
+				<input type="hidden" value="{$question.display}" name="display" />
+			</xf:if>
+			<input type="hidden" value="{{ $question.posid ? $question.posid : ( $form.posid ? $form.posid : 0) }}" name="posid" />
+			
+			<xf:if is="$question.hasconditional">
+				<xf:foreach loop="$question.hasconditional" key="$key" value="$conditional">
+					<input type="hidden" value="{$conditional}" name="hasconditional[{$key}]" />
+				</xf:foreach>
+			</xf:if>
+			
+			<xf:if is="$question.conditional">
+				<input type="hidden" value="{$question.conditional}" name="originalConditional" />
+			</xf:if>
+			<xf:submitrow icon="save" sticky="true" />
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="snog_forms_question_list" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[<xf:title>{{ $form.posid ? {$form.position} : phrase('default') }} {{phrase('snog_forms_questions')}}</xf:title>
+
+<xf:page option="section" value="{{ $form.posid ? 'snogForms' : 'snogQuestions' }}" />
+
+<xf:pageaction>
+	<div class="buttonGroup">
+		<xf:button href="{{ link('form-editquestions/add', $form) }}" icon="add">{{ phrase('snog_forms_add_new_question') }}</xf:button>
+		<xf:if is="$conditionalPermitted">
+			<xf:button href="{{ link('form-editquestions/addcon', $form) }}" icon="add">{{ phrase('snog_forms_add_conditional') }}</xf:button>
+		</xf:if>
+		<xf:button href="{{ link('form-editquestions/sort', $form) }}" icon="sort" overlay="true" >{{ phrase('snog_forms_order') }}</xf:button>
+	</div>
+	
+	<xf:button href="{{ link('form-forms/edit', $form) }}" icon="edit">{{ phrase('snog_forms_edit_form') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$questions is not empty">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist class="dataList">
+				<xf:foreach loop="$questions.getFlattened(0)" value="$question">
+					<xf:macro name="question" arg-question="{$question.record}" />
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('there_is_nothing_to_display') }}</div>
+</xf:if>
+
+{{ phrase('snog_forms_may_be_used') }}
+<xf:if is="$form.posid">
+	<div class="p-title" style="margin-top:15px;">
+		<div class="p-title-pageAction">
+			<div class="buttonGroup">
+				<xf:button href="{{ link('form-editquestions/adddefault', $form) }}" icon="add">{{ phrase('snog_forms_insert_default') }}</xf:button>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:macro name="question" arg-question="{$question}">
+
+	<xf:datarow class="dataList-row">
+		<xf:if is="$question.type == 9">
+			<xf:cell class="dataList-cell dataList-cell--min">{$question.display}</xf:cell>
+			<xf:main href="{{ link('form-questions/edit', $question) }}" label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ phrase('snog_forms_agreement_text') }}" />
+			<xf:cell class="dataList-cell dataList-cell--min"></xf:cell>
+		<xf:else />
+			<xf:if is="$question.type == 6">
+				<xf:cell class="dataList-cell dataList-cell--min">{$question.display}</xf:cell>
+			<xf:else />
+				<xf:cell class="dataList-cell dataList-cell--min">
+					<xf:if is="{{ $question.canUsedForReportTitle() && $question.error }}">
+						<span style="color:red;font-weight:bold;">{$question.display}</span>
+					<xf:else />
+						{$question.display}
+					</xf:if>
+				</xf:cell>
+			</xf:if>
+
+			<xf:if is="$question.hasUrl()">
+				<xf:if is="$question.conditional">
+					<xf:main href="{{ link('form-questions/conedit', $question) }}">
+						<xf:label><xf:macro name="row_label_wrapper" arg-question="{$question}" arg-contents="{{ $question.text }}" /></xf:label>
+					</xf:main>
+					<xf:cell class="dataList-cell dataList-cell--min">
+						{{ $question.hasconditional ? phrase('snog_forms_qid:')  . ' ' . $question.questionid . ' & ' : '' }}
+						<span style="color:green;font-weight:bold;">{{ phrase('snog_forms_conditional_on') }} {$question.conditional}</span>
+					</xf:cell>
+				<xf:else/>
+					<xf:main href="{{ link('form-questions/edit', $question) }}">
+						<xf:label><xf:macro name="row_label_wrapper" arg-question="{$question}" arg-contents="{{ $question.text }}" /></xf:label>
+					</xf:main>
+					<xf:cell class="dataList-cell dataList-cell--min">{{ $question.hasconditional ? phrase('snog_forms_qid:')  . ' ' . $question.questionid : '' }}</xf:cell>
+				</xf:if>
+			<xf:else />
+				<xf:if is="$question.conditional">
+					<xf:main href="{{ link('form-questions/conedit', $question) }}">
+						<xf:label><xf:macro name="row_label_wrapper" arg-question="{$question}" arg-contents="{{ bb_code({$question.text}, '', '')|raw }}" arg-raw="{{ true }}" /></xf:label>
+					</xf:main>
+					<xf:cell class="dataList-cell dataList-cell--min">
+						{{ $question.hasconditional ? phrase('snog_forms_qid:')  . ' ' . $question.questionid . ' & ' : '' }}
+						<span style="color:green;font-weight:bold;">
+							{{ phrase('snog_forms_conditional_on') }} {$question.conditional}
+						</span>
+					</xf:cell>
+				<xf:else/>
+					<xf:main href="{{ link('form-questions/edit', $question) }}">
+						<xf:label>
+							<xf:macro name="row_label_wrapper" arg-question="{$question}" arg-contents="{{ bb_code($question.text, '', '')|raw }}" arg-raw="{{ true }}" />
+						</xf:label>
+					</xf:main>
+					<xf:cell class="dataList-cell dataList-cell--min">{{ $question.hasconditional ? phrase('snog_forms_qid:')  . ' ' . $question.questionid : '' }}</xf:cell>
+				</xf:if>
+			</xf:if>
+		</xf:if>
+
+		<xf:delete href="{{ link('form-questions/delete', $question) }}" />
+	</xf:datarow>
+
+</xf:macro>
+
+<xf:macro name="row_label_wrapper" arg-question="!" arg-contents="!" arg-raw="{{ false }}">
+	<xf:if is="$question.type == 6">
+		<div style='width=100%;text-align:center;'><xf:if is="$raw">
+			{{ $contents|raw }}
+		<xf:else />
+			{{ $contents }}
+		</xf:if></div>
+	<xf:else />
+		<xf:if is="$raw">
+			{{ $contents|raw }}
+		<xf:else />
+			{{ $contents }}
+		</xf:if>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="admin" title="snog_forms_question_order" version_id="2010070" version_string="2.1.0"><![CDATA[<xf:js src="vendor/nestable/jquery.nestable.min.js" />
+<xf:js src="Snog/Forms/nestable.min.js" />
+<xf:css src="public:nestable.less" />
+
+<xf:title>{{phrase('snog_forms_question_order')}}</xf:title>
+
+<xf:form action="{{ link('form-editquestions/sort', $form) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div style="width:100%;padding-right:20px;padding-left:20px;">
+			{{ phrase('snog_forms_order_note') }}
+		</div>
+		<div class="block-body">
+			<div class="nestable-container" data-xf-init="nestable">
+				<xf:macro name="question_list" arg-children="{$questionList}" />
+				<xf:hiddenval name="questions" value="" />
+			</div>
+		</div>
+		<input type="hidden" name="posid" value="{$posid}"/>
+		<xf:submitrow icon="save" rowtype="simple" />
+	</div>
+</xf:form>
+
+<xf:macro name="question_list" arg-children="!">
+	<ol class="nestable-list">
+		<xf:foreach loop="$children" key="$id" value="$child">
+			<xf:macro name="question_list_entry" arg-ques="{$child}" arg-children="{$child.children}" />
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="question_list_entry" arg-ques="!" arg-children="!">
+	<li class="nestable-item" data-id="{$ques.id}">
+		<div class="nestable-handle" aria-label="{{ phrase('drag_handle') }}"><i class="fa fa-bars" aria-hidden="true"></i></div>
+		<div class="nestable-content">
+			<xf:if is="$ques.record.type == 9">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{phrase('snog_forms_agreement_text')}}
+			<xf:else />
+				<div style="width:50%;float:left;overflow:hidden;text-overflow: ellipsis;"><span {{ $ques.record.type === 6 ? 'style="float:right;text-align:center;"' : '' }}>{$ques.record.text}</span></div><div style="float:right;overflow:hidden;">{{ $ques.record.hasconditional ? phrase('snog_forms_qid:')  . ' ' . $ques.record.questionid . ($ques.record.conditional ? ' & ' : '') : '' }}{{ $ques.record.conditional ? 'Conditional for QID' . $ques.record.conditional : '' }}</div>
+			</xf:if>
+		</div>
+		<xf:if is="$ques.children is not empty">
+			<xf:macro name="question_list" arg-children="{$ques.children}" />
+		</xf:if>
+	</li>
+</xf:macro>]]></template>
+  <template type="admin" title="snog_forms_type_edit" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:if is="$type.isUpdate()">
+	<xf:title>{{ phrase('snog_forms_edit_type') }}: {$type.type}</xf:title>
+<xf:else/>
+	<xf:title>{{ phrase('snog_forms_add_type') }}</xf:title>
+</xf:if>
+
+<xf:page option="section" value="snogTypes" />
+
+<xf:form action="{{ link('form-types/save', $type) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<!--[XF:type_edit:before_type]-->
+			<xf:textboxrow name="type" value="{$type.type}"
+						   maxlength="{{ max_length($type, 'type') }}"
+						   label="{{ phrase('snog_forms_type_name') }}"
+						   explain="{{ phrase('snog_forms_type_name_explain') }}" />
+
+			<!--[XF:type_edit:before_display]-->
+			<xf:formrow label="{{ phrase('display_order') }}" rowtype="input">
+				<div class="inputGroup">
+					<div class="inputGroup inputGroup--numbers inputNumber" data-xf-init="number-box">
+						<xf:textbox name="display" value="{{ $type.display >= 1 ? $type.display : 1 }}" type="number" min="1"
+							class="input input--number js-numberBoxTextInput js-permissionIntInput" />
+					</div>
+				</div>
+			</xf:formrow>
+			
+			<!--[XF:type_edit:before_active]-->
+			<xf:checkboxrow label="{{ phrase('snog_forms_type_active') }}" explain="{{ phrase('snog_forms_type_active_explain') }}" standalone="true">
+				<xf:option value="1" name="active" selected="{$type.active}" />
+			</xf:checkboxrow>
+
+			<!--[XF:type_edit:before_sidebar]-->
+			<xf:checkboxrow label="{{ phrase('snog_forms_show_widget') }}" explain="{{ phrase('snog_forms_show_type_widget_explain') }}" standalone="true">
+				<xf:option value="1" name="sidebar" selected="{$type.sidebar}" />
+			</xf:checkboxrow>
+			
+			<!--[XF:type_edit:before_navtab]-->
+			<xf:checkboxrow label="{{ phrase('snog_forms_show_navtab') }}" explain="{{ phrase('snog_forms_show_type_navtab_explain') }}" standalone="true">
+				<xf:option value="1" name="navtab" selected="{$type.navtab}" />
+			</xf:checkboxrow>
+			
+			<h3 class="block-formSectionHeader">
+				<span class="block-formSectionHeader-aligner"><b>{{ phrase('user_criteria') }}</b></span>
+			</h3>
+				
+			<div class="block-body">
+				<xf:formrow rowtype="fullWidth noLabel" explain="{{ phrase('snog_forms_type_criteria_explain') }}" />
+
+				{$userCriteriaRendered|raw}
+			</div>
+			
+			<xf:submitrow icon="save" sticky="true" />
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="snog_forms_type_list" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:title>{{phrase('admin_navigation.snogTypes')}}</xf:title>
+
+<xf:page option="section" value="snogTypes" />
+
+<xf:pageaction>
+	<div class="buttonGroup">
+		<xf:button href="{{ link('form-types/add') }}" icon="add">{{phrase('snog_forms_add_type')}}</xf:button>
+		<xf:button href="{{ link('form-types/sort') }}" icon="sort" overlay="true" >{{phrase('snog_forms_order')}}</xf:button>
+	</div>
+</xf:pageaction>
+
+<xf:if is="$types is not empty">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$types" value="$type">
+					<xf:datarow>
+						<xf:main href="{{ link('form-types/edit', $type) }}" label="{$type.type}" />
+
+						<xf:cell class="dataList-cell--min">
+							<xf:button href="{{ link('form-types/copy', $type) }}"><i class="fa fa-files-o" aria-hidden="true"> {{phrase('snog_forms_copy')}}</i></xf:button>
+						</xf:cell>
+
+						<xf:delete href="{{ link('form-types/delete', $type) }}" />
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('there_is_nothing_to_display') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="snog_forms_type_order" version_id="2002171" version_string="2.0.21.1"><![CDATA[<xf:js src="vendor/nestable/jquery.nestable.min.js" />
+<xf:js src="Snog/Forms/nestable.min.js" />
+<xf:css src="public:nestable.less" />
+
+<xf:title>{{ phrase('snog_forms_type_order') }}</xf:title>
+
+<xf:form action="{{ link('form-types/sort') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<div class="nestable-container" data-xf-init="nestable">
+				<xf:macro name="type_list" arg-children="{$typeList}" />
+				<xf:hiddenval name="types" value="" />
+			</div>
+		</div>
+		<input type="hidden" name="display_parent" value="0"/>
+		<xf:submitrow icon="save" rowtype="simple" />
+	</div>
+</xf:form>
+
+<xf:macro name="type_list" arg-children="!">
+	<ol class="nestable-list">
+		<xf:foreach loop="$children" key="$id" value="$child">
+			<xf:macro name="type_list_entry" arg-type="{$child}" arg-children="{$child.children}" />
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="type_list_entry" arg-type="!" arg-children="!">
+	<li class="nestable-item" data-id="{$type.id}">
+		<div class="nestable-handle" aria-label="{{ phrase('drag_handle') }}"><i class="fa fa-bars" aria-hidden="true"></i></div>
+		<div class="nestable-content">
+			<div style="width:50%;float:left;overflow:hidden;text-overflow: ellipsis;">{$type.record.type}</div>
+		</div>
+	</li>
+</xf:macro>]]></template>
+  <template type="admin" title="widget_def_options_snog_forms" version_id="1000030" version_string="1.0.0 Release Candidate"><![CDATA[<hr class="formRowSep" />
+
+<xf:radiorow label="{{ phrase('display_style') }}" name="options[style]" value="{{ $options.style ?: 'simple' }}">
+	<xf:option value="simple" hint="{{ phrase('new_posts_display_style_simple_explain') }}">{{ phrase('simple') }}</xf:option>
+	<xf:option value="full" hint="{{ phrase('new_posts_display_style_full_explain') }}">{{ phrase('full') }}</xf:option>
+</xf:radiorow>]]></template>
+  <template type="admin" title="widget_def_options_snog_forms_form" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[<hr class="formRowSep" />
+
+<xf:set var="$aviableForms" value="{{ $xf.app.em.getRepository('Snog\Forms:Form').findActiveFormsForList() }}" />
+
+<xf:selectrow name="options[posid]" label="{{ phrase('snog_forms_form') }}" value="{$options.posid}">
+	<xf:foreach loop="$aviableForms" value="$form">
+		<xf:option value="{$form.posid}" >
+			{{ $form.position }}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<xf:checkboxrow standalone="true">
+	<xf:option name="options[row]" value="{$options.row}">{{ phrase('snog_forms_widget_full_width') }}</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="email" title="snog_forms_email" version_id="2020035" version_string="2.2.0 Beta 5"><![CDATA[<mail:subject>
+{{ phrase('contact_email_subject', {
+	'subject': $subject,
+	'board_title': $xf.options.boardTitle
+}) }}
+</mail:subject>
+
+<h2>{$subject}</h2>
+
+<blockquote>{{ bb_code($message, '', '') }}</blockquote>
+
+<xf:if is="$thread">
+	{{ phrase('thread:') }} <a href="{{ link('threads', $thread) }}">{$thread.title}</a>
+</xf:if>]]></template>
+  <template type="public" title="snog_forms_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:if is="$deny">
+	<xf:form action="{{ link('form/deny', {'posid': $deny.post_id}) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{phrase('snog_forms_confirm_deny')}}
+					<strong>{$title}</strong>
+					<xf:if is="$deny.poll_id">
+						{{phrase('snog_forms_also_close')}}
+					</xf:if>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" submit="{{phrase('snog_forms_deny')}}" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$approve">
+	<xf:form action="{{ link('form/approve', {'posid': $approve.post_id}) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{phrase('snog_forms_confirm_approve')}}
+					<strong>{$title}</strong>
+					<xf:if is="$approve.poll_id">
+						{{phrase('snog_forms_also_close')}}
+					</xf:if>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" submit="{{phrase('approve')}}" />
+		</div>
+	</xf:form>
+</xf:if>]]></template>
+  <template type="public" title="snog_forms_form" version_id="2020042" version_string="2.2.0 Beta 12"><![CDATA[<xf:js src="xf/prefix_menu.js" min="1" />
+<xf:css src="prefix_menu.less" />
+
+<xf:title>{$form.position}</xf:title>
+
+<xf:if is="$forum && $form.threadapp || $form.quickreply">
+	<xf:page option="section" value="forums" />
+	<xf:if is="!$form.quickreply">
+		<xf:breadcrumb source="$forum.getBreadcrumbs()" />
+	</xf:if>
+<xf:else />
+	<xf:if is="$form.active && (empty($form.Type) || $form.Type.navtab)">
+		<xf:page option="section" value="snog_forms_nav" />
+	</xf:if>
+</xf:if>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+<xf:head option="metaNofollow"><meta name="robots" content="nofollow" /></xf:head>
+
+<xf:h1>{$form.position}</xf:h1>
+
+<xf:macro template="snog_forms_macro" name="form" arg-form="{$form}" arg-warnings="{$warnings}"
+		  arg-questions="{$questions}"
+		  arg-conditionQuestions="{$conditionQuestions}"
+		  arg-canSubmit="{$canSubmit}"
+		  arg-replyThread="{$replythread}"
+		  arg-attachmentData="{$attachmentData}"
+		  arg-noupload="{$noupload}"
+		  arg-nodeTree="{$nodeTree}" />
+
+<xf:widgetpos id="snogFormSidebar" position="sidebar" />]]></template>
+  <template type="public" title="snog_forms_helper_upload" version_id="2001770" version_string="2.0.17"><![CDATA[<xf:macro name="upload_link"
+	arg-type="!"
+	arg-hash="!"
+	arg-context="!"
+	arg-constraints="!"
+	arg-hiddenName="attachment_hash"
+>
+	<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+	<xf:button href="{{ link('attachments/UploadAutomated', null, {'type': $type, 'context': $context, 'hash': $hash}) }}"
+		target="_blank" class="button--link js-attachmentUpload" icon="attach"
+		data-accept=".{$constraints.extensions|join(',.')}"
+		data-video-size="{$constraints.video_size}"
+	/>
+	<xf:hiddenval name="{$hiddenName}">{$hash}</xf:hiddenval>
+	<xf:hiddenval name="{$hiddenName}_combined">{{ {'type': $type, 'context': $context, 'hash': $hash}|json }}</xf:hiddenval>
+</xf:macro>
+
+<xf:macro name="uploaded_files_list" arg-attachments="{{ [] }}">
+	<xf:css src="attachments.less" />
+	<ul class="attachUploadList js-attachmentFiles u-hidden {{ $attachments is not empty ? 'is-active' : '' }}">
+		<xf:foreach loop="$attachments" value="$attachment">
+			<xf:macro name="uploaded_file" arg-attachment="{$attachment}" />
+		</xf:foreach>
+	</ul>
+	<xf:macro name="uploaded_file_template" />
+</xf:macro>
+
+<xf:macro name="uploaded_file" arg-attachment="!" arg-noJsFallback="{{ false }}">
+	<li class="js-attachmentFile" data-attachment-id="{$attachment.attachment_id}">
+		<div class="contentRow">
+			<span class="contentRow-figure attachUploadList-figure">
+				<xf:if is="$attachment.has_thumbnail">
+					<a href="{{ link('attachments', $attachment, {'hash': $attachment.temp_hash}) }}" target="_blank"><img src="{{ base_url($attachment.thumbnail_url) }}" class="js-attachmentThumb" alt="{$attachment.filename}" /></a>
+				<xf:elseif is="$attachment.is_video" />
+					<a href="{$attachment.video_url}" target="_blank">
+						<video data-xf-init="video-init">
+							<source src="{{ base_url($attachment.video_url) }}" />
+							<i class="attachUploadList-placeholder" aria-hidden="true"></i>
+						</video>
+					</a>
+				<xf:else />
+					<a href="{{ link('attachments', $attachment, {'hash': $attachment.temp_hash}) }}" target="_blank"><i class="attachUploadList-placeholder" aria-hidden="true"></i></a>
+				</xf:if>
+			</span>
+			<div class="contentRow-main">
+				<xf:if is="$noJsFallback">
+					<span class="contentRow-extra">
+						<xf:button type="submit" class="button--small" name="delete" value="{$attachment.attachment_id}">
+							{{ phrase('button.delete') }}
+						</xf:button>
+					</span>
+				<xf:else />
+					<span class="contentRow-extra u-jsOnly">
+						<xf:button class="button--small js-attachmentAction" data-action="delete">
+							{{ phrase('button.delete') }}
+						</xf:button>
+					</span>
+				</xf:if>
+				<div class="contentRow-title">
+					<a href="{{ $attachment.is_video ? $attachment.video_url : link('attachments', $attachment, {'hash': $attachment.temp_hash}) }}" class="js-attachmentView" target="_blank">{$attachment.filename}</a>
+				</div>
+			</div>
+		</div>
+	</li>
+</xf:macro>
+
+<xf:macro name="uploaded_file_template">
+	<!--suppress Annotator -->
+	<script type="text/template" class="js-attachmentUploadTemplate">
+		<li class="js-attachmentFile" {{ mustache('#attachment_id', 'data-attachment-id="{{attachment_id}}"') }}>
+			<div class="contentRow">
+				<span class="contentRow-figure attachUploadList-figure">
+					<xf:mustache name="#thumbnail_url">
+						<a href="{{ mustache('link') }}" target="_blank"><img src="{{ mustache('thumbnail_url') }}" class="js-attachmentThumb" alt="{{ mustache('filename') }}" /></a>
+					</xf:mustache>
+					<xf:mustache name="^thumbnail_url">
+						<i class="attachUploadList-placeholder" aria-hidden="true"></i>
+					</xf:mustache>
+				</span>
+				<div class="contentRow-main">
+					<span class="contentRow-extra u-jsOnly">
+						<xf:mustache name="^uploading">
+							<xf:button class="button--small js-attachmentAction" data-action="delete">
+								{{ phrase('button.delete') }}
+							</xf:button>
+						</xf:mustache>
+						<xf:mustache name="#uploading">
+							<xf:button class="button--small js-attachmentAction" data-action="cancel">
+								{{ phrase('button.cancel') }}
+							</xf:button>
+						</xf:mustache>
+					</span>
+					<div class="contentRow-title">
+						<xf:mustache name="#link">
+							<a href="{{ mustache('link') }}" class="js-attachmentView" target="_blank">{{ mustache('filename') }}</a>
+						</xf:mustache>
+						<xf:mustache name="^link">
+							<span>{{ mustache('filename') }}</span>
+						</xf:mustache>
+					</div>
+
+					<xf:mustache name="#uploading">
+						<div class="contentRow-spaced">
+							<div class="attachUploadList-progress js-attachmentProgress"></div>
+							<div class="attachUploadList-error js-attachmentError"></div>
+						</div>
+					</xf:mustache>
+
+					<xf:mustache name="^uploading">
+						<xf:mustache name="#thumbnail_url">
+						</xf:mustache>
+					</xf:mustache>
+				</div>
+			</div>
+		</li>
+	</script>
+</xf:macro>
+
+<xf:macro name="upload_block" arg-attachmentData="!" arg-forceHash="">
+	<xf:macro name="uploaded_files_list" arg-attachments="{$attachmentData.attachments}" />
+
+	<xf:macro name="upload_link"
+		arg-type="{$attachmentData.type}"
+		arg-hash="{{ $forceHash ? $forceHash : $attachmentData.hash }}"
+		arg-context="{$attachmentData.context}"
+		arg-constraints="{$attachmentData.constraints}"
+	/>
+</xf:macro>]]></template>
+  <template type="public" title="snog_forms_list" version_id="2001470" version_string="2.0.14"><![CDATA[<xf:title>{{ phrase('snog_forms_available_forms') }}</xf:title>
+<xf:h1>{{ phrase('snog_forms_available_forms') }}</xf:h1>
+<xf:set var="$headrow" value="" />
+<xf:page option="section" value="snog_forms_nav" />
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+<xf:head option="metaNofollow"><meta name="robots" content="nofollow" /></xf:head>
+
+<div class="block-container">
+	<div class="block-body">
+		<xf:if is="$forms is not empty">
+		<xf:foreach loop="$headervalues" value="$header">
+			<xf:if is="$headrow !== $header">
+				<xf:formrow label="{$header}">
+					<xf:set var="$headrow" value="{{ $header }}" />
+					<xf:set var="$newline" value="0" />
+					<xf:foreach loop="$forms" value="$form">
+						<xf:if is="$form.Type.type == $header">
+							<xf:if is="$newline">
+								<br /><a href="{{ link('form/select', $form) }}">{$form.position}</a>
+							<xf:else />
+								<a href="{{ link('form/select', $form) }}">{$form.position}</a>
+								<xf:set var="$newline" value="1" />
+							</xf:if>
+						</xf:if>
+					</xf:foreach>
+				</xf:formrow>
+			</xf:if>
+		</xf:foreach>
+		<xf:else />
+			<div class="block-row">
+				{{phrase('snog_forms_no_forms')}}
+			</div>
+		</xf:if>
+	</div>
+</div>
+
+<xf:widgetpos id="snogFormListSidebar" position="sidebar" />]]></template>
+  <template type="public" title="snog_forms_macro" version_id="2020045" version_string="2.2.0 Beta 15"><![CDATA[<xf:macro name="form"
+		  arg-form="!"
+		  arg-warnings="!"
+		  arg-questions="!"
+		  arg-conditionQuestions="!"
+		  arg-canSubmit="!"
+		  arg-replyThread="{{ null }}"
+		  arg-noupload="{{ false }}"
+		  arg-attachmentData="{{ null }}"
+		  arg-row="{{ true }}"
+		  arg-nodeTree="">
+
+	<xf:form action="{{ link('form/submit', $form) }}" ajax="true" class="block" data-xf-init="attachment-manager" data-force-flash-message="true" data-ajax-redirect="true">
+
+		<xf:if is="$warnings">
+			<div class="blockMessage blockMessage--warning">
+				<xf:foreach loop="$warnings" value="$warning">
+					{$warning}
+				</xf:foreach>
+			</div>
+		</xf:if>
+
+		<div class="block-container">
+			<div class="block-body">
+				<xf:if is="$form.aboveapp">
+					<xf:inforow>
+						{{ bb_code({$form.aboveapp}, '', '') }}
+					</xf:inforow>
+				</xf:if>
+
+				<xf:set var="$divcreated" value="0" />
+				
+				<xf:if is="count($questions) > 0">
+					<xf:foreach loop="$questions" value="$question">
+						<xf:if is="!$question.conditional">
+							<xf:comment><!-- SINGLE LINE TEXT --></xf:comment>
+							<xf:if is="$question.type == 1">
+								<xf:macro name="type_text" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- MULTI LINE TEXT --></xf:comment>
+							<xf:if is="$question.type == 2">
+								<xf:macro name="type_text_multi" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}"  />
+							</xf:if>
+
+							<xf:comment><!-- YES/NO --></xf:comment>
+							<xf:if is="$question.type == 3">
+								<xf:macro name="type_yes_no" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}"
+										  arg-conditionQuestions="{{ $conditionQuestions.{$question.questionid} }}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- SINGLE SELECTION RADIO --></xf:comment>
+							<xf:if is="{$question.type} == 4">
+								<xf:macro name="type_radio" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}"
+										  arg-conditionQuestions="{{ $conditionQuestions.{$question.questionid} }}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- CHECK BOXES --></xf:comment>
+							<xf:if is="{$question.type} == 5 || {$question.type} == 8">
+								<xf:macro name="type_checkboxes" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}"
+										  arg-conditionQuestions="{{ $conditionQuestions.{$question.questionid} }}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- HEADER PHRASE --></xf:comment>
+							<xf:if is="{$question.type} == 6">
+								<xf:macro name="type_header" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- SINGLE SELECTION DROPDOWN --></xf:comment>
+							<xf:if is="{$question.type} == 7">
+								<xf:macro name="type_select" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}"
+										  arg-conditionQuestions="{{ $conditionQuestions.{$question.questionid} }}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- AGREEMENT --></xf:comment>
+							<xf:if is="{$question.type} == 9">
+								<xf:macro name="type_agreement" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- FILE UPLOAD --></xf:comment>
+							<xf:if is="{$question.type} == 10">
+								<xf:macro name="type_file_upload" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}"
+										  arg-noupload="{$noupload}" arg-attachmentData="{$attachmentData}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- DATE PICKER --></xf:comment>
+							<xf:if is="$question.type == 11">
+								<xf:macro name="type_date_input" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- SINGLE SELECTION FORUM LIST --></xf:comment>
+							<xf:if is="{$question.type} == 12">
+								<xf:macro name="type_forum_select" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}"
+										  arg-nodeTree="{$nodeTree}" />
+							</xf:if>
+
+							<xf:comment><!-- WYSIWYG EDITOR --></xf:comment>
+							<xf:if is="{$question.type} == 13">
+								<xf:macro name="type_wisywig" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!--SPINBOX--></xf:comment>
+							<xf:if is="{$question.type} == 14">
+								<xf:macro name="type_spinbox" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:comment><!-- PREFIX SELECTION --></xf:comment>
+							<xf:if is="{$question.type} == 15">
+								<xf:macro name="type_prefix" arg-form="{$form}" arg-question="{$question}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+							</xf:if>
+
+							<xf:if is="$question.hasconditional">
+								<xf:macro name="conditional_questions"
+									arg-question="{$question}"
+									arg-questions="{$questions}"
+									arg-attachmentData="{$attachmentData}"
+									arg-forum="{$forum}"
+									arg-conditionQuestions="{$conditionQuestions}"
+									arg-row="{$row}"
+								/>
+							</xf:if>
+						</xf:if>
+					</xf:foreach>
+				<xf:else />
+					<xf:if is="$row">
+						<xf:formrow rowtype="fullWidth noLabel">
+							{{ phrase('there_is_nothing_to_display') }}
+						</xf:formrow>
+					<xf:else />
+						<div class="menu-row">{{ phrase('there_is_nothing_to_display') }}</div>
+					</xf:if>
+				</xf:if>
+
+				<xf:if is="$form.belowapp">
+					<dl class="formRow">
+						<dt style="width:100%; text-align:left; border:none;">{{ bb_code({$form.belowapp}, '', '') }}</dt>
+						<dd style="display:none;"></dd>
+					</dl>
+				</xf:if>
+
+				<xf:if is="$canSubmit">
+					<xf:set var="$formData"><xf:captcha /></xf:set>
+					<xf:if is="{$formData|raw} is not empty">
+						<xf:if is="$row">
+							<xf:formrow rowtype="input" label="{{ phrase('verification') }}">
+									{$formData|raw}
+							</xf:formrow>
+						<xf:else />
+							<div class="menu-row">
+								<label>{{ phrase('verification') }}</label>
+								<div class="u-inputSpacer">
+									{$formData|raw}
+								</div>
+							</div>
+						</xf:if>
+					</xf:if>
+				</xf:if>
+			</div>
+
+			<xf:if is="$replyThread">
+				<input type="hidden" name="replythread" value="{$replyThread}" />
+			</xf:if>
+
+			<xf:if is="!$called">
+				<xf:submitrow icon="save" submit="{{ phrase('button.submit')}}" rowtype="{{ $row ? '' : 'simple' }}"
+							  sticky="false" class="{{ !$canSubmit ? 'is-disabled' : '' }}" disabled="{{ !$canSubmit }}" />
+			<xf:else />
+				<xf:submitrow icon="reply" submit="{{ phrase('post_reply') }}" rowtype="{{ $row ? '' : 'simple' }}"
+							  sticky="false" class="{{ !$canSubmit ? 'is-disabled' : '' }}" disabled="{{ !$canSubmit }}" />
+			</xf:if>
+		</div>
+	</xf:form>
+</xf:macro>
+
+<xf:macro name="type_agreement" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:if is="$row">
+		<xf:formrow rowtype="noLabel fullWidth mergeNext">
+			{{ bb_code($question.text, '', '') }}
+			<xf:if is="$question.expected">
+				<div class="u-alignCenter">
+					<input type="checkbox" name="question[{$question.questionid}]" value="{{ phrase('yes') }}" /> {$question.expected}
+				</div>
+			</xf:if>
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			{{ bb_code($question.text, '', '') }}<br />
+			<xf:if is="$question.expected">
+				<div class="u-alignCenter">
+					<input type="checkbox" name="question[{$question.questionid}]" value="{{ phrase('yes') }}" /> {$question.expected}
+				</div>
+			</xf:if>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_header" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:if is="$row">
+		<dl class="formRow">
+			<dt style="width:100%; border:none;text-align:center;"><b>{{ bb_code($question.text, '', '') }}</b></dt>
+			<dd style="display:none;"></dd>
+		</dl>
+	<xf:else />
+		<div class="menu-row">
+			<h4 class="menu-header">{{ bb_code($question.text, '', '') }}</h4>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_text" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:set var="$defanswer" value="{$question.getDefaultAnswer()}" />
+	<xf:set var="$formData">
+		<xf:textbox placeholder="{$question.placeholder}"
+					name="question[{$question.questionid}]"
+					value="{{ $defanswer ?: '' }}" 
+					readonly="{{ !$canSubmit }}"
+					required="{{ $question.error ? 'required' : '' }}" />
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon"
+					label="{{ bb_code($question.text, '', '') }}" 
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_text_multi" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:set var="$formData">
+		<xf:textarea placeholder="{$question.placeholder}"
+					 name="question[{$question.questionid}]"
+					 value="{$question.defanswer}"
+					 required="{{ $question.error ? 'required' : '' }}"
+					 autosize="true"
+					 readonly="{{ !$canSubmit }}" />
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}" 
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_yes_no" arg-form="!" arg-question="!" arg-canSubmit="!" arg-conditionQuestions="!" arg-row="!">
+	<xf:set var="$answer1" value="{{ phrase('yes') }}" />
+	<xf:set var="$answer2" value="{{ phrase('no') }}" />
+
+	<xf:set var="$formData">
+		<xf:radio name="question[{$question.questionid}]" value="" readonly="{{ !$canSubmit }}" required="{{ $question.error ? 'required' : '' }}">
+			<xf:if is="$question.hasconditional">
+				<xf:set var="$answer" value="1" />
+				<xf:set var="$allset" value="0" />
+				<xf:set var="$set" value="0" />
+				<xf:set var="$set2" value="0" />
+				<xf:foreach loop="$conditionQuestions" key="$conkey" value="$conditionQuestion">
+					<xf:if is="$answer == 1">
+						<xf:if is="$conditionQuestion.answer == 1 && !$set">
+							<xf:option value="1" selected="{{ $question.defanswer == $answer1 ? true : false }}" data-xf-init="disabler" data-container="#conditional{$question.questionid}-1" data-hide="true">
+								{{ phrase('yes') }}
+							</xf:option>
+							<xf:set var="$set" value="1" />
+							<xf:set var="$answer" value="2" />
+						</xf:if>
+
+						<xf:if is="!$set">
+							<xf:option value="1" selected="{{ $question.defanswer == $answer1 ? true : false }}">{{ phrase('yes') }}</xf:option>
+							<xf:set var="$answer" value="2" />
+						</xf:if>
+					</xf:if>
+					<xf:if is="$answer == 2">
+						<xf:if is="!$allset">
+							<xf:if is="$conditionQuestion.answer == 2 && !$set2">
+								<xf:option value="2" selected="{{ $question.defanswer == $answer2 ? true : false }}" data-xf-init="disabler" data-container="#conditional{$question.questionid}-2" data-hide="true">
+									{{ phrase('no') }}
+								</xf:option>
+								<xf:set var="$set2" value="1" />
+								<xf:set var="$allset" value="1" />
+							</xf:if>
+						</xf:if>
+
+						<xf:if is="!$set2 && !$allset">
+							<xf:option value="2" selected="{{ $question.defanswer == $answer2 ? true : false }}">{{ phrase('no') }}</xf:option>
+							<xf:set var="$allset" value="1" />
+						</xf:if>
+					</xf:if>
+				</xf:foreach>
+			<xf:else />
+				<xf:option value="1" selected="{{ $question.defanswer == $answer1 ? true : false }}">{{ phrase('yes') }}</xf:option>
+				<xf:option value="2" selected="{{ $question.defanswer == $answer2 ? true : false }}">{{ phrase('no') }}</xf:option>
+			</xf:if>
+		</xf:radio>
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}" 
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_radio" arg-form="!" arg-question="!" arg-canSubmit="!" arg-conditionQuestions="!" arg-row="!">
+	<xf:set var="$formData">
+
+		<xf:radio name="question[{$question.questionid}]" value="" readonly="{{ !$canSubmit }}" required="{{ $question.error ? 'required' : '' }}">
+			<xf:set var="$allset" value="0" />
+
+			<xf:foreach loop="$question.getExpectedAnswers()" key="$key" value="$answer">
+				<xf:if is="$question.hasconditional">
+					
+					<xf:set var="$hasConditional" value="{{ false }}" />
+					<xf:foreach loop="$conditionQuestions" key="$conkey" value="$conditionQuestion">
+						<xf:if is="$conditionQuestion.answer == $key + 1">
+							<xf:set var="$hasConditional" value="{{ true }}" />
+						</xf:if>
+					</xf:foreach>
+					
+					<xf:if is="$hasConditional">
+						<xf:option value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}" data-xf-init="disabler" data-container="#conditional{$question.questionid}-{{ $key + 1 }}" data-hide="true">
+							{$answer}
+						</xf:option>
+					<xf:else />
+						<xf:option value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}">{$answer}</xf:option>
+					</xf:if>
+					
+				<xf:else />
+					<xf:option value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}">{$answer}</xf:option>
+				</xf:if>
+			</xf:foreach>
+				
+		</xf:radio>
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}" 
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_checkboxes" arg-form="!" arg-question="!" arg-canSubmit="!" arg-conditionQuestions="!" arg-row="!">
+	<xf:set var="$formData">
+		<xf:checkbox name="question[{$question.questionid}]" required="{{ $question.error ? 'required' : '' }}">
+			<xf:set var="$allset" value="0" />
+			
+			<xf:foreach loop="$question.getExpectedAnswers()" key="$key" value="$answer">
+				<xf:if is="$question.hasconditional">
+	
+					<xf:set var="$hasConditional" value="{{ false }}" />
+					<xf:foreach loop="$conditionQuestions" key="$conkey" value="$conditionQuestion">
+						<xf:if is="$conditionQuestion.answer == $key + 1">
+							<xf:set var="$hasConditional" value="{{ true }}" />
+						</xf:if>
+					</xf:foreach>
+					
+					<xf:if is="$hasConditional">
+						<xf:option class="checkAll{$question.questionid}" value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}" data-xf-init="disabler" data-container="#conditional{$question.questionid}-{{ $key + 1 }}" data-autofocus="false" data-hide="true">
+							{$answer}
+						</xf:option>
+					<xf:else />
+						<xf:option class="checkAll{$question.questionid}" value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}">
+							{$answer}
+						</xf:option>
+					</xf:if>
+					
+				<xf:else />
+					<xf:option class="checkAll{$question.questionid}" value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}">
+						{$answer}
+					</xf:option>
+				</xf:if>
+			</xf:foreach>
+				
+			<xf:if is="{$question.type} == 8">
+				<xf:option id="selectAll{$question.questionid}" value="all">{{ phrase('snog_forms_all_above') }}</xf:option>
+			</xf:if>
+		</xf:checkbox>
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}"  
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+
+	<xf:if is="{$question.type} == 8">
+		<script>
+			$("#selectAll{$question.questionid}").change(function() {
+				$('.checkAll{$question.questionid}').click();
+				$('.checkAll{$question.questionid}').prop('checked', this.checked).change();
+			});
+
+			$('.checkAll{$question.questionid}').click(function() {
+				if($('#selectAll{$question.questionid}').prop('checked'))
+				{
+					$('#selectAll{$question.questionid}').prop('checked', this.checked).change();
+				}
+			});
+		</script>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_select" arg-form="!" arg-question="!" arg-canSubmit="!" arg-conditionQuestions="!" arg-row="!">
+
+	<xf:set var="$formData">
+		<xf:select name="question[{$question.questionid}]" value="{$question.expected}" readonly="{{ !$canSubmit }}" required="{{ $question.error ? 'required' : '' }}">
+			<xf:option value="0">{{ phrase('snog_forms_choose_one') }}</xf:option>
+
+			<xf:foreach loop="$question.getExpectedAnswers()" key="$key" value="$answer">
+				<xf:if is="$question.hasconditional">
+
+					<xf:set var="$hasConditional" value="{{ false }}" />
+					<xf:foreach loop="$conditionQuestions" key="$conkey" value="$conditionQuestion">
+						<xf:if is="$conditionQuestion.answer == $key + 1">
+							<xf:set var="$hasConditional" value="{{ true }}" />
+						</xf:if>
+					</xf:foreach>
+					
+					<xf:if is="$hasConditional">
+						<xf:option value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}" data-xf-init="disabler" data-container="#conditional{$question.questionid}-{{ $key + 1 }}" data-hide="true">
+							{$answer}
+						</xf:option>
+					<xf:else />
+						<xf:option value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}">{$answer}</xf:option>
+					</xf:if>
+
+				<xf:else />
+					<xf:option value="{{ $key + 1 }}" selected="{{ $question.defanswer == $answer ? true : false }}">{$answer}</xf:option>
+				</xf:if>
+			</xf:foreach>
+				
+		</xf:select>
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}" 
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_file_upload" arg-form="!" arg-question="!" arg-canSubmit="!" arg-noupload="!" arg-attachmentData="!" arg-row="!">
+	<xf:if is="$attachmentData">
+		<xf:set var="$formData">
+			<xf:if is="$forum is not empty">
+				<xf:macro template="snog_forms_helper_upload" name="upload_block"
+					arg-attachmentData="{$attachmentData}"
+					arg-forceHash="{$forum.draft_thread.attachment_hash}"
+				/>
+			<xf:else />
+				<xf:macro template="snog_forms_helper_upload" name="upload_block"
+					arg-attachmentData="{$attachmentData}"
+					arg-forceHash="{$draft.attachment_hash}"
+				/>
+			</xf:if>
+		</xf:set>
+		<xf:if is="$row">
+			<xf:if is="!$noupload">
+				<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}" 
+							explain="{$question.description|raw}"
+							hint="{{ $question.error ? phrase('required') : '' }}">
+					{$formData|raw}
+				</xf:formrow>
+			<xf:else />
+				<dl class="formRow">
+					<dt>{{ bb_code({$question.text}, '', '') }}</dt>
+					<dd class="blockMessage blockMessage--error"><b>{{ phrase('snog_forms_upload_not_allowed') }}</b></dd>
+				</dl>
+			</xf:if>
+		<xf:else />
+			<div class="menu-row">
+				<xf:if is="!$noupload">
+					<label>{{ bb_code($question.text, '', '') }}</label>
+					<div class="u-inputSpacer">{$formData|raw}</div>
+					<label class="u-muted">{$question.description|raw}</label>
+					<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+				<xf:else />
+					<label>{{ bb_code($question.text, '', '') }}</label>
+					<div class="blockMessage blockMessage--error"><b>{{ phrase('snog_forms_upload_not_allowed') }}</b></div>
+				</xf:if>
+			</div>
+		</xf:if>
+
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_date_input" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:set var="$formData">
+		<xf:dateinput data-year-range="50" name="question[{$question.questionid}]" value="{$input.c.newer_than}" readonly="{{ !$canSubmit }}"
+					  required="{{ $question.error ? 'required' : '' }}" />
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}"  
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_forum_select" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!" arg-nodeTree="">
+	<xf:set var="$formData">
+		<xf:select name="question[{$question.questionid}]" value="" readonly="{{ !$canSubmit }}" required="{{ $question.error ? 'required' : '' }}">
+			<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+			<xf:if is="{$nodeTree}">
+				<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+					<xf:if is="{$treeEntry.record.node_type_id} == 'Forum'">
+						<xf:option value="{$treeEntry.record.node_id}" selected="{{ $treeEntry.record.title == $question.defanswer ? true : false }}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+					<xf:else/>
+						<xf:option value="{$treeEntry.record.node_id}" disabled="disabled">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+					</xf:if>
+				</xf:foreach>
+			</xf:if>
+			<xf:explain>{$question.description}</xf:explain>
+		</xf:select>
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}"  
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_wisywig" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:set var="$formData">
+		<xf:editor name="question[{$question.questionid}]" 
+				   value="{$question.defanswer}"
+				   placeholder="{$question.placeholder}"
+				   readonly="{{ !$canSubmit }}"
+				   required="{{ $question.error ? 'required' : '' }}" />
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}"  
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_spinbox" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:set var="$formData">
+		<xf:numberbox name="question[{$question.questionid}]" 
+					  value="{{ $question.defanswer ? $question.defanswer : 0 }}" 
+					  min="0" 
+					  step="{{ $question.expected ? $question.expected : 1}}"
+					  readonly="{{ !$canSubmit }}"
+					  required="{{ $question.error ? 'required' : '' }}" />
+	</xf:set>
+	<xf:if is="$row">
+		<xf:formrow rowtype="input" rowclass="formRow--noColon" label="{{ bb_code($question.text, '', '') }}" 
+					explain="{$question.description|raw}"
+					hint="{{ $question.error ? phrase('required') : '' }}">
+			{$formData|raw}
+		</xf:formrow>
+	<xf:else />
+		<div class="menu-row">
+			<label>{{ bb_code($question.text, '', '') }}</label>
+			<div class="u-inputSpacer">{$formData|raw}</div>
+			<label class="u-muted">{$question.description|raw}</label>
+			<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="type_prefix" arg-form="!" arg-question="!" arg-canSubmit="!" arg-row="!">
+	<xf:set var="$prefixes" value="{{ $form.Forum ? $form.Forum.getUsablePrefixes() : null }}" />
+	<xf:if is="$prefixes is not empty">
+		<xf:if is="is_addon_active('SV/MultiPrefix')">
+			<xf:if is="$row">
+				<xf:macro name="form_row"
+					arg-name="question[{$question.questionid}]"
+					arg-selected="{{ $form.prefix_ids ? $form.prefix_ids : [0] }}"
+					arg-explain="{$question.description}"
+					arg-label="{$question.text}"
+					arg-prefixes="{$prefixes}"
+					arg-type="thread"
+					arg-multiple="true"
+					arg-hint="{{ $question.error ? phrase('required') : '' }}"
+					arg-readOnly="{{ !$canSubmit }}" />
+			<xf:else />
+				<div class="menu-row">
+					<label>{$question.description|raw}</label>
+					<div class="u-inputSpacer">
+						<xf:macro name="form_select"
+							arg-prefixes="{$prefixes}"
+							arg-type="thread"
+							arg-selected="{{ $form.prefix_ids ? $form.prefix_ids : [0] }}"
+							arg-name="question[{$question.questionid}]"
+							arg-multiple="true"
+							arg-readOnly="{{ !$canSubmit }}" />
+					</div>
+					<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+				</div>
+			</xf:if>
+		<xf:else />
+			<xf:if is="$row">
+				<xf:macro name="form_row"
+					arg-name="question[{$question.questionid}]"
+					arg-selected="{{ $form.prefix_ids ? $form.prefix_ids|first() : 0 }}"
+					arg-explain="{$question.description}"
+					arg-label="{$question.text}"
+					arg-prefixes="{$prefixes}"
+					arg-type="thread"
+					arg-hint="{{ $question.error ? phrase('required') : '' }}"
+					arg-readOnly="{{ !$canSubmit }}" />
+			<xf:else />
+				<div class="menu-row">
+					<label>{$question.description|raw}</label>
+					<div class="u-inputSpacer">
+						<xf:macro name="form_select"
+							arg-prefixes="{$prefixes}"
+							arg-type="thread"
+							arg-selected="{{ $form.prefix_ids ? $form.prefix_ids|first() : 0 }}"
+							arg-name="question[{$question.questionid}]"
+							arg-readOnly="{{ !$canSubmit }}" />
+					</div>
+					<label class="u-muted">{{ $question.error ? phrase('required') : '' }}</label>
+				</div>
+			</xf:if>
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="form_select"
+	arg-prefixes="!"
+	arg-type="!"
+	arg-selected=""
+	arg-name="prefix_id"
+	arg-noneLabel="{{ phrase('(no_prefix)') }}"
+	arg-multiple="{{ false }}"
+	arg-includeAny="{{ false }}"
+	arg-class=""
+	arg-href=""
+	arg-listenTo=""
+	arg-readOnly="{{ false }}">
+
+	<xf:select name="{$name}" value="{$selected}" multiple="{$multiple}" class="{$class}"
+		data-xf-init="{{ ($href AND $listenTo) ? 'prefix-loader' : '' }}"
+		data-href="{$href}"
+		data-listen-to="{$listenTo}"
+		title="{{ phrase('prefix')|for_attr }}"
+		readonly="{{ $readOnly }}">
+
+		<xf:if is="$includeAny">
+			<xf:option value="-1" label="{{ phrase('(any)') }}" />
+		</xf:if>
+		<xf:option value="0" label="{$noneLabel}" />
+		<xf:foreach loop="array_keys($prefixes)" value="$groupId">
+			<xf:if is="$groupId > 0">
+				<xf:optgroup label="{{ prefix_group($type, $groupId) }}">
+					<xf:foreach loop="{$prefixes.{$groupId}}" key="$prefixId" value="$prefix">
+						<xf:option value="{$prefixId}" label="{{ prefix_title($type, $prefixId) }}" data-prefix-class="{$prefix.css_class}" />
+					</xf:foreach>
+				</xf:optgroup>
+			<xf:else />
+				<xf:foreach loop="{$prefixes.{$groupId}}" key="$prefixId" value="$prefix">
+					<xf:option value="{$prefixId}" label="{{ prefix_title($type, $prefixId) }}" data-prefix-class="{$prefix.css_class}" />
+				</xf:foreach>
+			</xf:if>
+		</xf:foreach>
+	</xf:select>
+</xf:macro>
+
+<xf:macro name="form_row"
+	arg-prefixes="!"
+	arg-type="!"
+	arg-label="{{ phrase('prefix') }}"
+	arg-explain=""
+	arg-selected=""
+	arg-name="prefix_id"
+	arg-hint=""
+	arg-noneLabel="{{ phrase('(none)') }}"
+	arg-multiple="{{ false }}"
+	arg-includeAny="{{ false }}"
+	arg-class=""
+	arg-readOnly="">
+
+	<xf:formrow rowtype="input noColon" label="{$label}" hint="{{ $hint ? phrase('required') : '' }}">
+		<xf:macro name="form_select"
+			arg-prefixes="{$prefixes}"
+			arg-type="{$type}"
+			arg-selected="{$selected}"
+			arg-name="{$name}"
+			arg-noneLabel="{$noneLabel}"
+			arg-multiple="{$multiple}"
+			arg-includeAny="{$includeAny}"
+			arg-class="{$class}"
+			arg-readOnly="{{ $readOnly }}" />
+		<xf:if is="$explain">
+			<div class="formRow-explain">{$explain|raw}</div>
+		</xf:if>
+	</xf:formrow>
+</xf:macro>
+
+<xf:macro name="conditional_questions"
+	arg-question="!"
+	arg-questions="!"
+	arg-attachmentData=""
+	arg-forum=""
+	arg-conditionQuestions=""
+	arg-readOnly=""
+	arg-row="{{ true }}"
+	arg-nodeTree="">
+
+	<xf:set var="$current" value="0" />
+	<xf:foreach loop="$conditionQuestions" key="$keyquestion" value="$conditionQuestion">
+		<xf:if is="$keyquestion == $question.questionid">
+			<xf:foreach loop="$conditionQuestion" value="$condition">
+				<xf:if is="$current !== $condition.answer">
+					<xf:if is="$current">
+						</div>
+					</xf:if>
+
+					<div id="conditional{$question.questionid}-{$condition.answer}">
+					<xf:set var="$current" value="{$condition.answer}"/>
+				</xf:if>
+
+				<xf:foreach loop="$questions" value="$hiddenquestion">
+					<xf:if is="$hiddenquestion.questionid == $condition.questionid">
+						<xf:comment><!-- SINGLE LINE TEXT --></xf:comment>
+						<xf:if is="$hiddenquestion.type == 1">
+							<xf:macro name="type_text" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+		
+						<xf:comment><!-- MULTI LINE TEXT --></xf:comment>
+						<xf:if is="$hiddenquestion.type == 2">
+							<xf:macro name="type_text_multi" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:comment><!-- YES/NO --></xf:comment>
+						<xf:if is="$hiddenquestion.type == 3">
+							<xf:macro name="type_yes_no" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}"
+									  arg-conditionQuestions="{{ $conditionQuestions.{$hiddenquestion.questionid} }}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:comment><!-- SINGLE SELECTION RADIO --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 4">
+							<xf:macro name="type_radio" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}"
+									  arg-conditionQuestions="{{ $conditionQuestions.{$hiddenquestion.questionid} }}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:comment><!-- CHECK BOXES --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 5 || {$hiddenquestion.type} == 8">
+							<xf:macro name="type_checkboxes" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}"
+									  arg-conditionQuestions="{{ $conditionQuestions.{$hiddenquestion.questionid} }}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:comment><!-- HEADER PHRASE --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 6">
+							<xf:macro name="type_header" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:comment><!-- SINGLE SELECTION DROPDOWN --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 7">
+							<xf:macro name="type_select" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}"
+									  arg-conditionQuestions="{{ $conditionQuestions.{$hiddenquestion.questionid} }}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:comment><!-- AGREEMENT --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 9">
+							<xf:macro name="type_agreement" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+			
+						<xf:comment><!-- FILE UPLOAD --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 10">
+							<xf:macro name="type_file_upload" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}"
+									  arg-noupload="{$noupload}" arg-attachmentData="{$attachmentData}" arg-row="{$row}" />
+						</xf:if>
+			
+						<xf:comment><!-- DATE PICKER --></xf:comment>
+						<xf:if is="$hiddenquestion.type == 11">
+							<xf:macro name="type_date_input" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:comment><!-- SINGLE SELECTION FORUM LIST --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 12">
+							<xf:macro name="type_forum_select" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}"
+									  arg-nodeTree="{$nodeTree}" />
+						</xf:if>
+			
+						<xf:comment><!-- WYSIWYG EDITOR --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 13">
+							<xf:macro name="type_wisywig" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+			
+						<xf:comment><!--SPINBOX--></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 14">
+							<xf:macro name="type_spinbox" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+			
+						<xf:comment><!-- PREFIX SELECTION --></xf:comment>
+						<xf:if is="{$hiddenquestion.type} == 15">
+							<xf:macro name="type_prefix" arg-form="{$form}" arg-question="{$hiddenquestion}" arg-canSubmit="{canSubmit}" arg-row="{$row}" />
+						</xf:if>
+
+						<xf:if is="$hiddenquestion.hasconditional">
+							<xf:macro name="conditional_questions"
+								arg-question="{$hiddenquestion}"
+								arg-questions="{$questions}"
+								arg-attachmentData="{$attachmentData}"
+								arg-forum="{$forum}"
+								arg-conditionQuestions="{$conditionQuestions}"
+								arg-readOnly="{{ !$canSubmit }}"
+								arg-row="{$row}"
+							/>
+						</xf:if>
+					</xf:if>
+				</xf:foreach>
+			</xf:foreach>
+			<xf:if is="$current">
+				</div>
+			</xf:if>
+		</xf:if>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="public" title="snog_forms_widget" version_id="2002171" version_string="2.0.21.1"><![CDATA[<xf:if is="$forms is not empty">
+	<xf:set var="$headrow" value="" />
+	<div class="block"{{ widget_data($widget) }}>
+		<div class="block-container">
+			<xf:if is="$style == 'full'">
+				<h3 class="block-minorHeader">
+					<a href="{{ link('form') }}" rel="nofollow">{$title}</a>
+				</h3>
+				<div class="block-body">
+					<div class="structItemContainer">
+						<xf:if is="$forms is not empty">
+							<xf:foreach loop="$headervalues" value="$header">
+								<xf:if is="$headrow !== $header">
+									<xf:formrow label="{$header}">
+										<xf:set var="$headrow" value="{{ $header }}" />
+										<xf:set var="$newline" value="0" />
+										<xf:foreach loop="$forms" value="$form">
+											<xf:if is="$form.Type.type == $header">
+												<xf:if is="$newline">
+													<br /><a href="{{ link('form/select', $form) }}">{$form.position}</a>
+												<xf:else />
+													<a href="{{ link('form/select', $form) }}">{$form.position}</a>
+													<xf:set var="$newline" value="1" />
+												</xf:if>
+											</xf:if>
+										</xf:foreach>
+									</xf:formrow>
+								</xf:if>
+							</xf:foreach>
+						<xf:else />
+							<div class="block-row">
+								{{ phrase('no_results_found') }}
+							</div>
+						</xf:if>
+					</div>
+				</div>
+			<xf:else />
+				<h3 class="block-minorHeader">
+					<a href="{{ link('form') }}" rel="nofollow">{$title}</a>
+				</h3>
+				<ul class="block-body">
+					<xf:if is="$forms is not empty">
+						<li>
+						<xf:foreach loop="$headervalues" value="$header">
+							<xf:if is="$headrow !== $header">
+								<xf:if is="$header">
+									<div class="block-footer">
+										{$header}
+									</div>
+								</xf:if>
+								<xf:set var="$headrow" value="{{ $header }}" />
+								<xf:set var="$newline" value="0" />
+								<xf:foreach loop="$forms" value="$form">
+									<xf:if is="$form.Type.type == $header">
+										<div class="block-row">
+										<xf:if is="$newline">
+											<a href="{{ link('form/select', $form) }}">{$form.position}</a>
+										<xf:else />
+											<a href="{{ link('form/select', $form) }}">{$form.position}</a>
+											<xf:set var="$newline" value="1" />
+										</xf:if>
+										</div>
+									</xf:if>
+								</xf:foreach>
+							</xf:if>
+						</xf:foreach>
+						</li>
+					<xf:else />
+						<li class="block-row block-row--minor">
+							{{ phrase('no_results_found') }}
+						</li>
+					</xf:if>
+				</ul>
+			</xf:if>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="snog_forms_widget_form" version_id="2020030" version_string="2.2.0 Beta"><![CDATA[<xf:js src="xf/prefix_menu.js" min="1" />
+<xf:css src="prefix_menu.less" />
+<script src="{{ js_url('vendor/jquery/jquery-3.3.1.min.js') }}"></script>
+
+<div class="block"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader">
+			<a href="{$link}" rel="nofollow">{$title}</a>
+		</h3>
+		<div class="block-body">
+			<xf:macro template="snog_forms_macro" name="form" arg-form="{$form}" arg-warnings="{$warnings}"
+					  arg-questions="{$questions}"
+					  arg-conditionQuestions="{$conditionQuestions}"
+					  arg-expected="{$expected}"
+					  arg-canSubmit="{$canSubmit}"
+					  arg-replyThread="{$replythread}"
+					  arg-attachmentData="{$attachmentData}"
+					  arg-noupload="{$noupload}" 
+					  arg-row="{$row}"
+					  arg-nodeTree="{$nodeTree}" />
+		</div>
+	</div>
+</div>]]></template>
+</templates>

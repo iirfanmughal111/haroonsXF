@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="hou_attachment_exclude_extension" edit_format="textbox" data_type="string">
+    <default_value>png
+jpeg
+pdf</default_value>
+    <edit_format_params>rows=3</edit_format_params>
+    <relation group_id="hou_attachments" display_order="102"/>
+  </option>
+  <option option_id="hou_attachment_exclude_forum" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="hou_attachments" display_order="100"/>
+  </option>
+  <option option_id="hou_attachment_require_like" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="hou_attachments" display_order="3"/>
+  </option>
+</options>

@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "forumGroups",
+    "sub_name": "",
+    "format": ":int<node_id,title>/:int<moderator_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\ForumGroups:ForumGroups",
+    "context": "fs_forumGroups_index",
+    "action_prefix": ""
+}

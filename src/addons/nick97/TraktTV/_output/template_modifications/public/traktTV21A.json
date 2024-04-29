@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Changes post thread button to add season for TV forums (template: trakt_tv_add_season) 2.2",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:pageaction if=\"\\$forum.canCreateThread().+pageaction>/isU",
+    "replace": "<xf:if is=\"$forum.TVForum is not empty && !$forum.TVForum.tv_parent_id\">\n\t<xf:include template=\"trakt_tv_add_season\" />\n<xf:else />\n\t$0\n</xf:if>"
+}

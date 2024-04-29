@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="templater_template_pre_render" execute_order="11" callback_class="FS\WebsiteRanking\Listener" callback_method="templatePreRender_forum_Post_Thread" active="1" hint="public:forum_post_thread" description="public:forum_post_thread"/>
+  <listener event_id="templater_template_pre_render" execute_order="10" callback_class="FS\WebsiteRanking\Listener" callback_method="templatePreRender_thread_edit" active="1" hint="public:thread_edit" description="public:thread_edit"/>
+</code_event_listeners>

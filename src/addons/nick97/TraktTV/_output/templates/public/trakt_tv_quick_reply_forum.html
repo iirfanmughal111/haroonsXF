@@ -1,0 +1,17 @@
+<xf:if is="!$xf.options.traktTvThreads_mix">
+	<xf:set var="$placeholder" value="{{ phrase('trakt_tv_post_show') }}" />
+	<xf:set var="$titleholder" value="{{ phrase('trakt_tv_post_new_show') }}" />
+<xf:else />
+	<xf:set var="$placeholder" value="{{ phrase('trakt_tv_post_show_title') }}" />
+	<xf:set var="$titleholder" value="{{ phrase('trakt_tv_post_show_thread') }}" />	
+</xf:if>
+
+<xf:prefixinput maxlength="{{ max_length('XF.Thread', 'title') }}"
+	placeholder="{$placeholder}"
+	title="{$titleholder}"
+	prefix-value="{$forum.default_prefix_id}"
+	type="thread"
+	prefixes="{{ $forum.getUsablePrefixes() }}"
+	data-xf-init="tooltip" />
+
+<span class="tvhint">{{ phrase('trakt_tv_show_lookup') }}</span>

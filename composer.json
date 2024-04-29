@@ -1,0 +1,8 @@
+{
+    "require": {
+        "corbpie/bunny-cdn-api": "^1.5",
+        "php-ffmpeg/php-ffmpeg": "^0.19.0",
+        "aws/aws-sdk-php": "^3.283",
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}

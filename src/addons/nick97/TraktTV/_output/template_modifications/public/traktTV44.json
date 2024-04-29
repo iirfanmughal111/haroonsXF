@@ -1,0 +1,9 @@
+{
+    "template": "category_view",
+    "description": "Adds required Trakt credit at bottom of category",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"block-container\">\n\t\t\t<div class=\"block-body\">\n\t\t\t\t<xf:macro template=\"forum_list\" name=\"node_list\"\n\t\t\t\t\targ-children=\"{$nodeTree}\"\n\t\t\t\t\targ-extras=\"{$nodeExtras}\"\n\t\t\t\t\targ-depth=\"2\" />\n\t\t\t</div>\n\t\t</div>",
+    "replace": "$0\n<xf:if is=\"in_array($category.node_id, $xf.options.traktTvThreads_category)\">\n\t<span class=\"tvhint\">{{ phrase('trakt_tv_information')}}</span>\n</xf:if>\n\n"
+}

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="app.less" modification_key="Fs_NodeIcon_app" description="Append extra stylesheet" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/^(.*)$/is]]></find>
+    <replace><![CDATA[$0
+
+.nodeIcon--custom {
+	width: 15px;
+	height: 15px;
+	background-size: cover;
+	background-position: center;
+}]]></replace>
+  </modification>
+  <modification type="public" template="extra.less" modification_key="Fs_NodeIcon_extra" description="Append extra stylesheet" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/^(.*)$/is]]></find>
+    <replace><![CDATA[$0
+<xf:include template="Fs_NodeIcon_icon.less" />]]></replace>
+  </modification>
+  <modification type="admin" template="forum_edit" modification_key="Fs_NodeIcon_forum_node_icon_edit" description="Append node icon editor" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="node_edit_macros" name="description" arg-node="{$node}" />]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$xf.visitor.canEditIcon()">
+	<xf:uploadrow name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png"
+				  label="{{ phrase('icon') }}"
+				  explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+						   'width': $xf.options.Fs_NodeIcon_nodeDimensions.width,
+						   'height': $xf.options.Fs_NodeIcon_nodeDimensions.height
+						   }) }}" />
+</xf:if>
+
+<xf:if is="!$forum.isInsert()">
+	<xf:if is="{$node.getIcon()}">
+		<xf:formrow label="{{ phrase('custom_node_icon') }}">
+			<img src="{{ base_url($node.getIcon()) }}" />
+			<br/>
+			<xf:button href="{{ link('forums/delete-icon', $node) }}" icon="delete" overlay="true" />
+		</xf:formrow>
+	<xf:else/>
+		<xf:formrow label="{{ phrase('custom_node_icon') }}">
+			{{ phrase('no_icon') }}
+		</xf:formrow>
+	</xf:if>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="link_forum_edit" modification_key="Fs_NodeIcon_link_node_icon_edit" description="Append node icon editor" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="node_edit_macros" name="description" arg-node="{$node}" />]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$xf.visitor.canEditIcon()">
+	<xf:uploadrow name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png"
+				  label="{{ phrase('icon') }}"
+				  explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+						   'width': $xf.options.Fs_NodeIcon_nodeDimensions.width,
+						   'height': $xf.options.Fs_NodeIcon_nodeDimensions.height
+						   }) }}" />
+</xf:if>
+
+<xf:if is="!$node.isInsert()">
+	<xf:if is="{$node.getIcon()}">
+		<xf:formrow label="{{ phrase('custom_node_icon') }}">
+			<img src="{{ base_url($node.getIcon()) }}" />
+			<br/>
+			<xf:button href="{{ link('forums/delete-icon', $node) }}" icon="delete" overlay="true" />
+		</xf:formrow>
+	<xf:else/>
+		<xf:formrow label="{{ phrase('custom_node_icon') }}">
+			{{ phrase('no_icon') }}
+		</xf:formrow>
+	</xf:if>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="node_list" modification_key="Fs_NodeIcon_node_list" description="Append node icon" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="node_icon" arg-node="{$node}" />]]></find>
+    <replace><![CDATA[<xf:if is="$node.getIcon()">
+	<div class="nodeIcon--custom"
+		 style="background-image: url({{ base_url($node.getIcon()) }})">
+	</div>
+<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="Fs_NodeIcon_node_list_category" description="Append node icon to node category" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<span class="node-icon" aria-hidden="true"><i></i></span>]]></find>
+    <replace><![CDATA[<xf:if is="$node.getIcon()" >
+	<div class="node-icon--custom read" 
+		 style="background-image: url({{ base_url($node.getIcon()) }});
+				width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+	</div>
+<xf:else/>
+	<span class="node-icon" aria-hidden="true"
+		  style="width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				 height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+		<i></i>
+	</span>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="Fs_NodeIcon_node_list_forum" description="Append node icon to node forum" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<span class="node-icon" aria-hidden="true">
+				<xf:fa icon="{{ $node.Data.TypeHandler.getTypeIconClass() ?: 'fa-comments' }}" />
+			</span>]]></find>
+    <replace><![CDATA[<xf:if is="$node.getIcon()" >
+	<div class="node-icon--custom read" 
+		 style="background-image: url({{ base_url($node.getIcon()) }});
+				width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+	</div>
+<xf:else/>
+	<span class="node-icon" aria-hidden="true"
+		  style="width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				 height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+		<xf:fa icon="{{ $node.Data.TypeHandler.getTypeIconClass() ?: 'fa-comments' }}" />
+	</span>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_link_forum" modification_key="Fs_NodeIcon_node_list_link_forum" description="Append node icon to node link forum" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<span class="node-icon" aria-hidden="true"><i></i></span>]]></find>
+    <replace><![CDATA[<xf:if is="$node.getIcon()">
+	<div class="node-icon--custom" 
+		 style="background-image: url({{ base_url($node.getIcon()) }});
+				width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+	</div>
+<xf:else/>
+	<span class="node-icon" aria-hidden="true"
+		  style="width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				 height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+		<i></i>
+	</span>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_page" modification_key="Fs_NodeIcon_node_list_page" description="Append node icon to node page" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<span class="node-icon" aria-hidden="true"><i></i></span>]]></find>
+    <replace><![CDATA[<xf:if is="$node.getIcon()">
+	<div class="node-icon--custom" 
+		 style="background-image: url({{ base_url($node.getIcon()) }});
+				width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+	</div>
+<xf:else/>
+	<span class="node-icon" aria-hidden="true"
+		  style="width: {$xf.options.Fs_NodeIcon_nodeDimensions.width}px;
+				 height: {$xf.options.Fs_NodeIcon_nodeDimensions.height}px;">
+		<i></i>
+	</span>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="page_edit" modification_key="Fs_NodeIcon_page_node_icon_edit" description="Append node icon editor" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="node_edit_macros" name="description" arg-node="{$node}" />]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$xf.visitor.canEditIcon()">
+	<xf:uploadrow name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png"
+				  label="{{ phrase('icon') }}"
+				  explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+						   'width': $xf.options.Fs_NodeIcon_nodeDimensions.width,
+						   'height': $xf.options.Fs_NodeIcon_nodeDimensions.height
+						   }) }}" />
+</xf:if>
+
+<xf:if is="!$page.isInsert()">
+	<xf:if is="{$node.getIcon()}">
+		<xf:formrow label="{{ phrase('custom_node_icon') }}">
+			<img src="{{ base_url($node.getIcon()) }}" />
+			<br/>
+			<xf:button href="{{ link('forums/delete-icon', $node) }}" icon="delete" overlay="true" />
+		</xf:formrow>
+	<xf:else/>
+		<xf:formrow label="{{ phrase('custom_node_icon') }}">
+			{{ phrase('no_icon') }}
+		</xf:formrow>
+	</xf:if>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="permission_node_overview" modification_key="Fs_NodeIcon_permission_node" description="Append node icon" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<i class="nodeIcon nodeIcon--{$node.NodeType.node_type_id}"></i>]]></find>
+    <replace><![CDATA[<xf:if is="$node.getIcon()">
+	<div class="nodeIcon--custom"
+		 style="background-image: url({{ base_url($node.getIcon()) }})">
+	</div>
+<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

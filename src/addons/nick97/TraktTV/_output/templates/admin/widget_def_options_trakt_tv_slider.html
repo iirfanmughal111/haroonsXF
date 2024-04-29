@@ -1,0 +1,49 @@
+<hr class="formRowSep" />
+
+<xf:radiorow name="options[order]" value="{$options.order}" label="{{ phrase('display_order') }}">
+	<xf:option value="latest">{{ phrase('trakt_tv_latest_shows') }}</xf:option>
+	<xf:option value="rating">{{ phrase('trakt_tv_most_rated_shows') }}</xf:option>
+	<xf:option value="random">{{ phrase('trakt_tv_random_shows') }}</xf:option>
+	<xf:option value="last_post_date">{{ phrase('last_reply_date') }}</xf:option>
+</xf:radiorow>
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+				 label="{{ phrase('maximum_entries') }}" />
+
+<xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+	label="{{ phrase('forum_limit') }}"
+	explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+	<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+	<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+		<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+			{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<xf:checkboxrow label="{{ phrase('trakt_tv_slider_widget_shown_elements') }}">
+	<xf:option name="options[show_plot]" value="1" selected="$options.show_plot" label="{{ phrase('trakt_tv_overview') }}" />
+	<xf:option name="options[show_genres]" value="1" selected="$options.show_genres" label="{{ phrase('trakt_tv_genre') }}" />
+	<xf:option name="options[show_director]" value="1" selected="$options.show_genres" label="{{ phrase('trakt_tv_director') }}" />
+	<xf:option name="options[show_cast]" value="1" selected="$options.show_cast" label="{{ phrase('trakt_tv_cast') }}" />
+	<xf:option name="options[show_release]" value="1" selected="$options.show_release" label="{{ phrase('trakt_tv_first_aired') }}" />
+	<xf:option name="options[show_last_air_date]" value="1" selected="$options.show_last_air_date" label="{{ phrase('trakt_tv_last_air_date') }}" />
+	<xf:option name="options[show_status]" value="1" selected="$options.show_status" label="{{ phrase('trakt_tv_status') }}" />
+</xf:checkboxrow>
+
+<xf:checkboxrow label="{{ phrase('trakt_tv_slider_options') }}">
+	<xf:option name="options[slider][auto]" value="1" selected="{$options.slider.auto}"
+			   label="{{ phrase('trakt_tv_slider_auto_play') }}"
+			   data-hide="true">
+		<xf:dependent>
+			<xf:numberbox name="options[slider][pause]" value="{$options.slider.pause}" min="1" />
+			<p class="formRow-explain">{{ phrase('trakt_tv_slider_pause') }}</p>
+		</xf:dependent>
+	</xf:option>
+	
+	<xf:option name="options[slider][controls]" value="1" selected="$options.slider.controls" label="{{ phrase('trakt_tv_slider_controls') }}" />
+	<xf:option name="options[slider][pauseOnHover]" selected="{$options.slider.pauseOnHover}" label="{{ phrase('trakt_tv_slider_pause_on_hover') }}" />
+	<xf:option name="options[slider][loop]" selected="{$options.slider.loop}" label="{{ phrase('trakt_tv_slider_loop_slides') }}" />
+	<xf:option name="options[slider][pager]" selected="{$options.slider.pager}" label="{{ phrase('trakt_tv_slider_pager') }}" />
+</xf:checkboxrow>

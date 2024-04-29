@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_forum_gorups_forum_view_change_view",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"forum_list\" name=\"node_list\"\n\t\t\t\t\targ-children=\"{$nodeTree}\"\n\t\t\t\t\targ-extras=\"{$nodeExtras}\"\n\t\t\t\t\targ-depth=\"2\" />",
+    "replace": "<xf:if is=\"$forum.node_id == $xf.options.fs_forum_groups_applicable_forum\">\n<xf:css src=\"fs_forum_gorups_group_list.less\" />\n<xf:css src=\"fs_forum_gorups_style.less\" />\n<xf:css src=\"fs_forum_gorups_grid_card.less\" />\n\n\t\t\t<div class=\"block groupListBlock\" data-xf-init=\"inline-mod\"\n         data-type=\"tl_group\"\n         data-href=\"{{ link('inline-mod') }}\">\n\t\t\n\t\t\t\t\t<div class=\"groupList h-dFlex h-dFlex--wrap gridCardList--flex--{$xf.options.fs_forum_gorups_per_row}-col\" data-xf-init=\"tl_groups_list\">\n\t\t\t\t<xf:foreach loop=\"$nodeTree\" key=\"$id\" value=\"$child\">\n\t\t\t\t\t<xf:macro\n\t\t\t\t\ttemplate=\"fs_forum_groups_forum_view_list\"\n\t\t\t\t\tname=\"fs_forum_groups_forum_view_list_macro\"\n\t\t\t\t\targ-subForum=\"{$child.record}\"\n\t\t\t\t  />\n\t\t\t\t</xf:foreach>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n<xf:else />\n\t$0\t\n</xf:if>"
+}

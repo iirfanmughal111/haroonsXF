@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="klUIFullTrophyProgress" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="thuserimprovements" display_order="30"/>
+  </option>
+  <option option_id="klUIPostbitShowcase" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="thuserimprovements" display_order="120"/>
+  </option>
+  <option option_id="klUIProfileShowcase" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="thuserimprovements" display_order="110"/>
+  </option>
+  <option option_id="klUIProfileTrophyShowcase" edit_format="radio" data_type="unsigned_integer">
+    <default_value>0</default_value>
+    <edit_format_params>0={{ phrase('thuserimprovements_disabled') }}
+1={{ phrase('thuserimprovements_latest_trophies') }}
+2={{ phrase('thuserimprovements_highest_points_trophies') }}
+3={{ phrase('thuserimprovements_users_choice') }}</edit_format_params>
+    <relation group_id="thuserimprovements" display_order="100"/>
+  </option>
+  <option option_id="klUISeparateTrophyTab" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="thuserimprovements" display_order="200"/>
+  </option>
+  <option option_id="klUIShowPoints" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="thuserimprovements" display_order="10"/>
+  </option>
+  <option option_id="klUITrophyFollowers" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="thuserimprovements" display_order="40"/>
+  </option>
+  <option option_id="klUITrophyProgress" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="thuserimprovements" display_order="20"/>
+  </option>
+  <option option_id="klUiProfileViews" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="users" display_order="1000"/>
+  </option>
+  <option option_id="thuserimprovements_member_tooltip_showcase" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="thuserimprovements" display_order="130"/>
+  </option>
+</options>

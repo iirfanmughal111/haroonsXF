@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="fs_escrow" field_name="alert_handler_class">FS\Escrow\Alert\EscrowListing</field>
+  <field content_type="fs_escrow" field_name="entity">FS\Escrow:Escrow</field>
+</content_type_fields>

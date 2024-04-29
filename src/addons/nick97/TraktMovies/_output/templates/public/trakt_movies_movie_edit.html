@@ -1,0 +1,58 @@
+<xf:title>{{ phrase('trakt_movies_edit_movie') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('traktMovies/edit', $movie) }}" ajax="true" class="block"
+	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $thread.canEdit()) ? ' post-edit' : '' }}"
+	data-preview-url="{{ link('posts/preview', $post) }}">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow label="{{ phrase('title') }}" name="trakt_title" value="{$movie.trakt_title}" />
+
+			<xf:textboxrow label="{{ phrase('trakt_movies_tagline') }}" name="trakt_tagline" value="{$movie.trakt_tagline}" />
+			
+			<xf:textboxrow label="{{ phrase('trakt_movies_genre') }}" name="trakt_genres" value="{$movie.trakt_genres}" />
+
+			<xf:textarearow name="trakt_director" value="{$movie.trakt_director}" label="{{ phrase('trakt_movies_director') }}"
+				autosize="true"
+			/>
+
+			<xf:textarearow name="trakt_cast" value="{$movie.trakt_cast}" label="{{ phrase('trakt_movies_cast') }}" autosize="true"/>
+			
+			<xf:textboxrow label="{{ phrase('trakt_movies_status') }}" name="trakt_status" value="{$movie.trakt_status}" />
+
+			<xf:textboxrow label="{{ phrase('trakt_movies_release') }}" name="trakt_release" value="{$movie.trakt_release}" />
+
+			<xf:textboxrow label="{{ phrase('trakt_movies_runtime') }}" name="trakt_runtime" value="{$movie.trakt_runtime}" />
+
+			<xf:textarearow name="trakt_plot" value="{$movie.trakt_plot}" label="{{ phrase('trakt_movies_plot') }}" autosize="true" />
+			
+			<xf:textboxrow label="{{ phrase('trakt_movies_trailer') }}" name="trakt_trailer" value="{$movie.trakt_trailer}" explain="{{ phrase('trakt_movies_trailer_explain') }}"/>
+
+			<xf:if is="$movie.comment">
+				<xf:editorrow name="message" value="{$movie.comment}"
+					attachments="{$attachmentData.attachments}"
+					data-min-height="100"
+					maxlength="{$xf.options.messageMaxLength}"
+					label="{{ phrase('comment') }}" />
+
+				<xf:formrow rowtype="{{ $quickEdit ? 'fullWidth noLabel' : '' }}">
+					<xf:if is="$attachmentData">
+						<xf:macro template="helper_attach_upload" name="upload_block" arg-attachmentData="{$attachmentData}" />
+					</xf:if>
+					<xf:button class="button--link u-jsOnly" data-xf-click="preview-click" icon="preview" />
+				</xf:formrow>
+			</xf:if>
+	
+		</div>
+
+		<xf:submitrow icon="save" sticky="true" rowtype="{{ $quickEdit ? 'simple' : '' }}">
+			<xf:html>
+				<xf:if is="$quickEdit">
+					<xf:button class="js-cancelButton">{{ phrase('button.cancel') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>

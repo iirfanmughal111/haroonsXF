@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_view" modification_key="pending_approval_thread" description="Guest approval pending for thread" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$pendingApproval">.*?<\/xf:if>/si]]></find>
+    <replace><![CDATA[<xf:if is="!$xf.visitor.user_id && $xf.request.get('pending_approval') && $pendingApproval">
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+ <xf:js> 
+      $(document).ready( function() {
+	
+			 setTimeout(function () {
+			  $('.guest-pending_approval').hide();
+		  }, 20000);
+
+      });
+</xf:js>
+	
+<div class="blockMessage blockMessage--important guest-pending_approval">{{ phrase('content_submitted_displayed_pending_approval') }}</div>	
+</xf:if>	]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="pending_approval_reply" description="Guest approval pending for post" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$pendingApproval">.*?<\/xf:if>/si]]></find>
+    <replace><![CDATA[<xf:if is="!$xf.visitor.user_id && $xf.request.get('pending_approval') && $pendingApproval">
+	
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+ <xf:js> 
+      $(document).ready( function() {
+	
+			 setTimeout(function () {
+			  $('.guest-pending_approval').hide();
+		  }, 20000);
+
+      });
+</xf:js>
+	
+<div class="blockMessage blockMessage--important guest-pending_approval">{{ phrase('content_submitted_displayed_pending_approval') }}</div>	
+</xf:if>	]]></replace>
+  </modification>
+</template_modifications>

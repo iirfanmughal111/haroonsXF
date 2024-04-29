@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.hou_attachment_exclude_extension" version_id="100" version_string="1.0.0"><![CDATA[Excluded extensions]]></phrase>
+  <phrase title="option.hou_attachment_exclude_forum" version_id="100" version_string="1.0.0"><![CDATA[Excluded forums]]></phrase>
+  <phrase title="option.hou_attachment_require_like" version_id="100" version_string="1.0.0"><![CDATA[Require like in order to view attachment]]></phrase>
+  <phrase title="option_explain.hou_attachment_exclude_extension" version_id="100" version_string="1.0.0"><![CDATA[One file extension per line]]></phrase>
+  <phrase title="option_explain.hou_attachment_exclude_forum" version_id="100" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.hou_attachment_require_like" version_id="100" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_group.hou_attachments" version_id="100" version_string="1.0.0"><![CDATA[[HoU] Attachments List with Like]]></phrase>
+  <phrase title="option_group_description.hou_attachments" version_id="100" version_string="1.0.0"><![CDATA[Blocks download of attachments until users have liked.]]></phrase>
+  <phrase title="permission.Like_needLike" version_id="100" version_string="1.0.0"><![CDATA[Needs Likes to see Attachments?]]></phrase>
+  <phrase title="permission_interface.hou_attachment" version_id="100" version_string="1.0.0"><![CDATA[[HoU] Attachment List with Like]]></phrase>
+</phrases>

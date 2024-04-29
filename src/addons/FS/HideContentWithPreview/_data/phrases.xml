@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_bb_code_desc.locked" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[first image if exist else default image will be show on preview]]></phrase>
+  <phrase title="custom_bb_code_example.locked" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[[locked=15] some content [/locked]]]></phrase>
+  <phrase title="custom_bb_code_output.locked" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.locked" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[Hide Content and show preview with image]]></phrase>
+  <phrase title="fs_hcwp_btn_text" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[Get instant access]]></phrase>
+  <phrase title="fs_hcwp_desc" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[Only registered members can access it.]]></phrase>
+  <phrase title="fs_hcwp_title" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[This content is hidden]]></phrase>
+  <phrase title="option.fs_hcwp_btnUrl" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[widget Button Url]]></phrase>
+  <phrase title="option.fs_hcwp_userGroups" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[Hide Content from users]]></phrase>
+  <phrase title="option_explain.fs_hcwp_btnUrl" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[Provide the link for button of hidden content widget]]></phrase>
+  <phrase title="option_explain.fs_hcwp_userGroups" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[The content will be hidden for users belonging to these UserGroups]]></phrase>
+  <phrase title="option_group.fs_hcwp" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[[FS] HideConten-With-Preview]]></phrase>
+  <phrase title="option_group_description.fs_hcwp" version_id="100010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

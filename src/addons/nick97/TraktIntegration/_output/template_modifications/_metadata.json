@@ -1,0 +1,14 @@
+{
+    "public/nick97_add_sync_btn_movies.json": {
+        "hash": "4c597236c5f380613f286fcdcb39f4a9"
+    },
+    "public/snog_movies_post_macros_btn_to_trakt.json": {
+        "hash": "e5c35b360a67ee7b5f5aa3de562defb4"
+    },
+    "public/snog_tv_post_macros_to_trakt.json": {
+        "hash": "6689a8c62fd94ee3b8e427f6f1f6cf17"
+    },
+    "public/snog_tv_thread_view_type_tv_add_sync_btn.json": {
+        "hash": "b8a129dc466e1e02d6e4f99a58e566db"
+    }
+}

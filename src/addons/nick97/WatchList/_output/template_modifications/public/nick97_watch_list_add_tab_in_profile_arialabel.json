@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "nick97_watch_list_add_tab_in_profile_arialabel",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<li data-href=\"{{ link('members/about', $user) }}\" role=\"tabpanel\" aria-labelledby=\"about\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>",
+    "replace": "$0 \n<li data-href=\"{{ link('members/watchlist', $user) }}\" role=\"tabpanel\" aria-labelledby=\"watchlist\">\n\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n</li>"
+}

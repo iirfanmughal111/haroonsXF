@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Message]]></phrase>
+  <phrase title="admin_navigation.allForums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Message]]></phrase>
+  <phrase title="admin_navigation.fsForumAutoReply" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum Auto Reply]]></phrase>
+  <phrase title="cell_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum]]></phrase>
+  <phrase title="cell_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Message]]></phrase>
+  <phrase title="cell_prefix" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Prefix]]></phrase>
+  <phrase title="cell_user_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Group]]></phrase>
+  <phrase title="cell_user_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Name]]></phrase>
+  <phrase title="cell_words" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Words]]></phrase>
+  <phrase title="edit_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Message]]></phrase>
+  <phrase title="enter_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter Message here...!]]></phrase>
+  <phrase title="enter_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter Existing User...!]]></phrase>
+  <phrase title="enter_word" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter Word here...!]]></phrase>
+  <phrase title="forum_auto_reply" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum Auto Reply]]></phrase>
+  <phrase title="fs_fil_reqired_fields" version_id="1000400" version_string="1.0.4"><![CDATA[Fill Require Fields]]></phrase>
+  <phrase title="no_match_enter_message" version_id="1000200" version_string="1.0.2"><![CDATA[Enter Message Here...!]]></phrase>
+  <phrase title="no_match_enter_user" version_id="1000200" version_string="1.0.2"><![CDATA[Enter Existing User...!]]></phrase>
+  <phrase title="no_match_message" version_id="1000200" version_string="1.0.2"><![CDATA[No Word Match (Message)]]></phrase>
+  <phrase title="no_match_prefix" version_id="1000200" version_string="1.0.2"><![CDATA[No Word Match (Prefix)]]></phrase>
+  <phrase title="node_already_exist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sorry this forum already exist...!]]></phrase>
+  <phrase title="thread_prefix" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Prefixes]]></phrase>
+  <phrase title="word_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Word-Message]]></phrase>
+</phrases>

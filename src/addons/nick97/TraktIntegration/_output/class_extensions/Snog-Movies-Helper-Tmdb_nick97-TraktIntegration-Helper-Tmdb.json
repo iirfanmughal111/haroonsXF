@@ -1,0 +1,6 @@
+{
+    "from_class": "Snog\\Movies\\Helper\\Tmdb",
+    "to_class": "nick97\\TraktIntegration\\Helper\\Tmdb",
+    "execute_order": 10,
+    "active": true
+}

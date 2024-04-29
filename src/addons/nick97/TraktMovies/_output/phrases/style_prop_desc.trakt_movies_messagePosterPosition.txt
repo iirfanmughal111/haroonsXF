@@ -1,0 +1,1 @@
+Select the position for the Movie Poster in threads. Note that this will invert the settings below.

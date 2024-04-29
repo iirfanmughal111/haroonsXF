@@ -1,0 +1,9 @@
+{
+    "template": "thread_list_macros",
+    "description": "fs_thread_thumbnail_replace_title_with_thumbnail_title",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<a href=\"{{ link\\('threads' \\. \\(\\(\\$thread\\.isUnread\\(\\) AND !\\$forceRead\\) \\? '\\/unread' : ''\\), \\$thread\\) }}\" class=\"\" data-tp-primary=\"on\" data-xf-init=\"{{ \\$canPreview \\? 'preview-tooltip' : '' }}\" data-preview-url=\"{{ \\$canPreview \\? link\\('threads\\/preview', \\$thread\\) : '' }}\">.*?<\\/a>/is",
+    "replace": "<xf:if is=\"$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)\">\n\t<xf:if is=\"$thread.thumbnail_title\">\n\t\t<a href=\"{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}\" class=\"\" data-tp-primary=\"on\" data-xf-init=\"{{ $canPreview ? 'preview-tooltip' : '' }}\" data-preview-url=\"{{ $canPreview ? link('threads/preview', $thread) : '' }}\">{{ strlen($thread.thumbnail_title) > 45 ? snippet($thread.thumbnail_title, 45, {'stripBbCode': true}) : $thread.thumbnail_title}}</a>\n\t\t<xf:else />\n\t\t<a href=\"{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}\" class=\"\" data-tp-primary=\"on\" data-xf-init=\"{{ $canPreview ? 'preview-tooltip' : '' }}\" data-preview-url=\"{{ $canPreview ? link('threads/preview', $thread) : '' }}\">{{ strlen($thread.title) > 45 ? snippet($thread.title, 45, {'stripBbCode': true}) : $thread.title}}</a>\n\t</xf:if>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

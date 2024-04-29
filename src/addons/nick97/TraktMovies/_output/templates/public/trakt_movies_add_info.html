@@ -1,0 +1,24 @@
+<xf:title>{{ phrase('trakt_movies_add_info') }}</xf:title>
+
+<xf:form action="{{ link('traktMovies/addinfo', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow label="{{ phrase('trakt_movies_link_id') }}" name="trakt" value="" />
+			
+			<xf:checkboxrow>
+				<xf:option name="changetitle" value="1" selected="$group.postview" >{{ phrase('trakt_movies_change_title') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+		
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('trakt_movies_add_info') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:form>

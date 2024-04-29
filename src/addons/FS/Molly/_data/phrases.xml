@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_molly" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Molly]]></phrase>
+  <phrase title="fs_molly_add_chatroom" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Chatroom]]></phrase>
+  <phrase title="fs_molly_add_sub_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Sub Community]]></phrase>
+  <phrase title="fs_molly_moderator" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Moderator]]></phrase>
+  <phrase title="fs_molly_side_community" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sub Communties]]></phrase>
+  <phrase title="fs_molly_upload_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload avatar]]></phrase>
+  <phrase title="fs_molly_upload_cover" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload cover]]></phrase>
+  <phrase title="nav.fs_molly_index" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Forum Groups]]></phrase>
+  <phrase title="nav.mollyAddSubForum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Sub Forum]]></phrase>
+  <phrase title="option.fs_molly_applicable_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Parent Forum Id]]></phrase>
+  <phrase title="option_explain.fs_molly_applicable_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum Id]]></phrase>
+  <phrase title="option_group.fs_molly" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[[FS] Forum Groups]]></phrase>
+  <phrase title="option_group_description.fs_molly" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[[FS] Forum Groups]]></phrase>
+</phrases>

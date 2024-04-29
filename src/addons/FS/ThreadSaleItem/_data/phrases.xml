@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_buy_now" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[BUY Now]]></phrase>
+  <phrase title="fs_sale_item" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sale Item]]></phrase>
+  <phrase title="option.fs_saleforums_allow" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Included Forums]]></phrase>
+  <phrase title="option_explain.fs_saleforums_allow" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Forums To apply Sale Item]]></phrase>
+  <phrase title="option_group.xc_threadsaleitem" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread Sale Item]]></phrase>
+  <phrase title="option_group_description.xc_threadsaleitem" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.fs_attachment_needlike" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Need Like to See Attachment ?]]></phrase>
+  <phrase title="permission.fs_threadsaleitem_fs_saleitem" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Allow to enable Sale Item?]]></phrase>
+  <phrase title="permission_interface.fs_attachment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Like See Attachment]]></phrase>
+  <phrase title="permission_interface.fs_threadsaleitem" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] ThreadSaleItem]]></phrase>
+</phrases>

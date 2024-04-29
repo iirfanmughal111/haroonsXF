@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Adds filter removal links (template: trakt_tv_filter_removal)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$filters.last_days AND {$dateLimits.{$filters.last_days}}\">",
+    "replace": "<xf:include template=\"trakt_tv_filter_removal\" />\n$0"
+}

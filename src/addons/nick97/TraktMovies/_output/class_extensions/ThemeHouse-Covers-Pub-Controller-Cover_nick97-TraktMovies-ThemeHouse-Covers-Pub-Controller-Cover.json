@@ -1,0 +1,6 @@
+{
+    "from_class": "ThemeHouse\\Covers\\Pub\\Controller\\Cover",
+    "to_class": "nick97\\TraktMovies\\ThemeHouse\\Covers\\Pub\\Controller\\Cover",
+    "execute_order": 10,
+    "active": true
+}

@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "Adds update episode link to episode posts (template: trakt_tv_post_macros_action_bar)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$post.edit_count && $post.canViewHistory()\">",
+    "replace": "<xf:include template=\"trakt_tv_post_macros_action_bar\" />\n\t\t\t$0"
+}

@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "float=Float\ndropdown_with_flags=Nice dropdown with flags\npopup=Popup\ndropdown=Dropdown\nflags=Flags\nflags_dropdown=Flags and dropdown\nflags_name=Flags with language name\nflags_code=Flags with language code\nlang_names=Language names\nlang_codes=Language codes\nglobe=Globe",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "flags",
+    "relations": {
+        "fs_translator": 5
+    }
+}

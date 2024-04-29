@@ -1,0 +1,9 @@
+{
+    "template": "snog_movies_post_macros",
+    "description": "snog_movies_post_macros_btn_to_trakt",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:button href=\"{$watchProvider.link}\"  target=\"_blank\">{{ phrase('snog_movies_more_details_on_tmdb') }}</xf:button>",
+    "replace": "<xf:if is=\"$thread.getTraktMovLink($thread.Movie.tmdb_id)\">\n\t<xf:button href=\"https://trakt.tv/movies/{{$thread.getTraktMovLink($thread.Movie.tmdb_id)}}\"  target=\"_blank\">{{ phrase('nick97_trakt_more_details') }}</xf:button>\n\t<xf:else />\n\t<xf:button href=\"{$watchProvider.link}\"  target=\"_blank\">{{ phrase('snog_movies_more_details_on_tmdb') }}</xf:button>\n</xf:if>"
+}

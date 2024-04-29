@@ -1,0 +1,1 @@
+Check this box to use your own CDN for all poster images.

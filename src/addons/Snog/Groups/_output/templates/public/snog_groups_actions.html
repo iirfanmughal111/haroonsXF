@@ -1,0 +1,819 @@
+<xf:if is="$category">
+	<xf:title>{{ phrase('snog_groups_upload_cat_banner') }}</xf:title>
+
+	<xf:form action="{{ link('group_category') }}" upload="true" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:if is="$category.category_image !== ''">
+					<xf:selectrow name="category" label="{{ phrase('snog_groups_banner_cat') }}">
+						<xf:option value="0">{{ phrase('snog_groups_uncategorized') }}</xf:option>
+						<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+							<xf:if is="{$treeEntry.record.node_type_id} == 'Category'">
+								<xf:if is="$settings.categories is not empty && in_array($treeEntry.record.node_id, $settings.categories)">
+									<xf:option value="{$treeEntry.record.node_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+								<xf:else />
+									<xf:if is="$settings.categories is empty">
+										<xf:option value="{$treeEntry.record.node_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+									</xf:if>
+								</xf:if>
+							</xf:if>
+						</xf:foreach>
+					</xf:selectrow>
+				</xf:if>
+
+				<xf:uploadrow label="{{ phrase('snog_groups_upload_banner') }}" name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png" />
+			</div>
+			<xf:submitrow icon="save" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$banner">
+	<xf:title>{{ phrase('snog_groups_upload_banner') }}</xf:title>
+
+	<xf:form action="{{ link('group/banner', $group) }}" upload="true" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:if is="$group.groupbanner !== 'default.png'">
+					<xf:formrow label="{{ phrase('snog_groups_current_banner') }}">
+						<img src="{$group.getBannerImageUrl('b')}" />
+					
+						<div><label><input type="checkbox" name="delete_banner" value="1" /> {{ phrase('snog_groups_delete_banner') }}</label></div>
+					</xf:formrow>
+				</xf:if>
+
+				<xf:uploadrow label="{{ phrase('snog_groups_upload_banner') }}" name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png" />
+			</div>
+			<xf:submitrow icon="save" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'subforum'">
+	<xf:title>{{ phrase('snog_groups_create_sub') }}</xf:title>
+
+	<xf:form action="{{ link('group/subforum', $group) }}" upload="true" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:textboxrow label="{{ phrase('snog_groups_sub_name') }}" name="title" value="{$title}" />
+
+				<xf:selectrow name="parent" value="" label="Parent" explain="Select what forum will be the parent for this subform" hint="{{phrase('required')}}">
+					<xf:foreach loop="$nodeTree.getFlattened()" value="$treeEntry">
+						<xf:option value="{$treeEntry.record.node_id}" selected="!$firstDone ? true : false">{{ repeat('--', $treeEntry.record.depth - $depthAdjust) }} {$treeEntry.record.title}</xf:option>
+						<xf:set var="$firstDone" value="1"/>
+					</xf:foreach>
+				</xf:selectrow>
+
+				<xf:radiorow name="permissions" label="{{ phrase('permissions') }}" explain="{{ phrase('snog_groups_perm_explain') }}">
+					<xf:option value="0">{{ phrase('snog_groups_perm_inherit') }}</xf:option>
+					<xf:option value="1">{{ phrase('snog_groups_perm_private') }}</xf:option>
+					<xf:option value="2">{{ phrase('snog_groups_perm_public') }}</xf:option>
+					<xf:option value="3">{{ phrase('snog_groups_moderator_only') }}</xf:option>
+				</xf:radiorow>
+			</div>
+			
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+			<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('button.save') }}</xf:button>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'selectforum'">
+	<xf:title>{{ phrase('snog_groups_select_sub') }}</xf:title>
+
+	<xf:if is="$d == 0">
+		<xf:set var="$link" value="{{ link('group/selectforum', $group) }}" />
+	<xf:else />
+		<xf:set var="$link" value="{{ link('group/selectforum', $group, {'d': $d}) }}" />
+	</xf:if>
+	<xf:form action="{$link}" upload="true" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:radiorow name="forum" label="{{ !$d ? phrase('snog_groups_sub_edit') : phrase('snog_groups_sub_delete') }}">
+					<xf:foreach loop="$groupTree.getFlattened(0)" value="$treeEntry">
+						<xf:option value="{$treeEntry.record.node_id}" selected="false">{{ repeat('--', $treeEntry.record.depth - $depthAdjust) }} {$treeEntry.record.title}</xf:option>
+					</xf:foreach>
+				</xf:radiorow>
+			</div>
+			
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+			<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('snog_groups_select_sub') }}</xf:button>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'editforum'">
+	<xf:title>{{ phrase('snog_groups_edit_sub') }}</xf:title>
+
+	<xf:form action="{{ link('group/saveforum', $group) }}" upload="true" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:textboxrow label="{{ phrase('snog_groups_sub_name') }}" name="title" value="{$forum.title}" />
+
+				<xf:selectrow name="parent" value="" label="Parent" explain="Select what forum will be the parent for this subform" hint="{{phrase('required')}}">
+					<xf:foreach loop="$groupTree.getFlattened()" value="$treeEntry">
+						<xf:comment>YOU CAN'T MAKE A FORUM A PARENT OF ITSELF OR A CHILD OF IT'S CHILDREN</xf:comment>
+						<xf:if is="$treeEntry.record.node_id !== $forum.node_id && $treeEntry.record.parent_node_id !== $forum.node_id">
+							<xf:option value="{$treeEntry.record.node_id}" selected="$treeEntry.record.node_id == $forum.parent_node_id ? true : false">{{ repeat('--', $treeEntry.record.depth - $depthAdjust) }} {$treeEntry.record.title}</xf:option>
+						</xf:if>
+					</xf:foreach>
+				</xf:selectrow>
+
+				<xf:radiorow name="permissions" label="{{ phrase('permissions') }}" explain="{{ phrase('snog_groups_perm_explain') }}">
+					<xf:option value="0" selected="{{ ($permissions == 0 ? 'selected' :'') }}">{{ phrase('snog_groups_perm_inherit') }}</xf:option>
+					<xf:option value="1" selected="{{ ($permissions == 1 ? 'selected' :'') }}">{{ phrase('snog_groups_perm_private') }}</xf:option>
+					<xf:option value="2" selected="{{ ($permissions == 2 ? 'selected' :'') }}">{{ phrase('snog_groups_perm_public') }}</xf:option>
+					<xf:option value="3" selected="{{ ($permissions == 3 ? 'selected' :'') }}">{{ phrase('snog_groups_moderator_only') }}</xf:option>
+				</xf:radiorow>
+			</div>
+			
+		<div class="formRow formSubmitRow">
+			<div class="formSubmitRow-main">
+			<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<input type="hidden" name="forum" value="{$forum.node_id}" />
+						<xf:button type="submit" accesskey="s" class="button button--icon button--icon--save">{{ phrase('button.save') }}</xf:button>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$photoUpload">
+	<xf:title>{{ phrase('snog_groups_upload_photo') }}</xf:title>
+
+	<xf:form action="{{ link('group_photos/upload', $group) }}" upload="true" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:uploadrow label="{{ phrase('snog_groups_upload_photo') }}" name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png" />
+				<xf:textboxrow label="{{ phrase('snog_groups_photo_title') }}" name="title" value="" />
+			</div>
+			<xf:submitrow icon="save" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$photoTitle">
+	<xf:title>{{ phrase('snog_groups_add_photo_title') }}</xf:title>
+
+	<xf:form action="{{ link('group_photos/title', $group, {'photo_id': $photo.photo_id}) }}" ajax="true" class="block">
+			<div class="block-container">
+			<div class="block-body">
+				<xf:textboxrow label="{{ phrase('snog_groups_photo_title') }}" name="title" value="{$photo.title}" />
+			</div>
+			<xf:submitrow icon="save" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$photoDelete">
+	<xf:title>{{ phrase('snog_groups_delete_photo') }}</xf:title>
+
+	<xf:form action="{{ link('group_photos/delete', $group, {'photo_id': $photo.photo_id}) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$canHardDelete}" />
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'titleedit'">
+	<xf:title>{{ phrase('snog_groups_edit_disc_title') }}</xf:title>
+
+	<xf:form action="{{ link('group_discussions/title', $group, {'post': $post.discussion_id}) }}" ajax="true" class="block">
+			<div class="block-container">
+			<div class="block-body">
+				<xf:textboxrow label="{{ phrase('title') }}" name="title" value="{$post.title}" />
+			</div>
+			<xf:submitrow icon="save" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'remove'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group/remove', $group, {'user_id': $member.user_id}) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					{{ phrase('snog_groups_member_from') }}<strong>{$member.username}</strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'membersearch'">
+	<xf:title>{{ phrase('snog_groups_search_members') }}</xf:title>
+
+	<xf:form action="{{ link('group/searchmembers', $group) }}" class="block" data-force-flash-message="false">
+		<div class="block-container">
+			<div class="block-body">
+					<xf:textboxrow label="{{ phrase('user_name') }}" name="username" value="" type="search" ac="single" placeholder="{{ phrase('user_name...') }}" />
+			</div>
+			
+			<div class="formSubmitRow">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--icon button--icon--search" name="search" value="1">{{ phrase('search') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'invite'">
+	<xf:title>{{ phrase('snog_groups_invite_member') }}</xf:title>
+
+	<xf:form action="{{ link('group/invite', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+					<xf:textboxrow label="{{ phrase('snog_groups_user_invite') }}" name="username" value="" type="search" ac="single" placeholder="{{ phrase('user_name...') }}" explain="{{ phrase('snog_groups_user_invite_explain',{'name': {$group.name}}) }}" />
+			</div>
+			
+			<div class="formSubmitRow">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--icon button--icon--handshake" name="invite" value="1">{{ phrase('snog_groups_invite_member') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'approve'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:if is="in_array($group.groupid, $member.SocialGroups.pending)">
+		<xf:form action="{{ link('group/approve', $group, {'user_id': $member.user_id}) }}" ajax="true" class="block" data-force-flash-message="true">
+			<div class="block-container">
+				<div class="block-body">
+					<xf:inforow rowtype="confirm">
+						{{ phrase('snog_groups_approve_deny', {'name':{$group.name}}) }}
+						<strong>{$member.username}</strong>
+					</xf:inforow>
+				</div>
+			
+				<div class="formSubmitRow">
+					<div class="formSubmitRow-bar"></div>
+					<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+						<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--primary button--icon button--icon--thumbup" name="approve" value="1">{{ phrase('approve') }}</xf:button>
+						<xf:button type="submit" class="button button--icon button--icon--thumbdown" name="deny" value="1">{{ phrase('snog_groups_deny') }}</xf:button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</xf:form>
+	<xf:else />
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body">
+					<xf:inforow rowtype="confirm">
+						<xf:if is="in_array($group.groupid, $member.SocialGroups.groups)">
+							{$member.username} {{ phrase('snog_groups_already_approved') }}
+						<xf:else />
+							{$member.username} {{ phrase('snog_groups_already_denied') }}
+						</xf:if>
+					</xf:inforow>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:if>
+
+<xf:if is="$action == 'cancel'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:if is="in_array($group.groupid, $member.SocialGroups.invites)">
+		<xf:form action="{{ link('group/cancel', $group, {'user_id': $member.user_id}) }}" ajax="true" class="block" data-force-flash-message="true">
+			<div class="block-container">
+				<div class="block-body">
+					<xf:inforow rowtype="confirm">
+						{{ phrase('snog_groups_cancel_question', {'name': {$group.name}}) }}
+						<strong>{$member.username}</strong>
+					</xf:inforow>
+				</div>
+			
+				<div class="formSubmitRow">
+					<div class="formSubmitRow-bar"></div>
+					<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+						<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--primary button--icon button--icon--times" name="approve" value="1">{{ phrase('snog_groups_cancel_invitation') }}</xf:button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</xf:form>
+	<xf:else />
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body">
+					<xf:inforow rowtype="confirm">
+						{{ phrase('snog_groups_already_cancelled', {'name': {$member.username}}) }}
+					</xf:inforow>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:if>
+
+<xf:if is="$action == 'addmod'">
+	<xf:title>{{ phrase('add_moderator') }}</xf:title>
+
+	<xf:form action="{{ link('group/moderator', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+					<xf:textboxrow label="{{ phrase('snog_groups_make_moderator') }}" name="username" value="" type="search" ac="single" placeholder="{{ phrase('user_name...') }}" explain="{{ phrase('snog_groups_make_moderator_explain') }}" />
+			</div>
+			
+			<div class="formSubmitRow">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--primary button--icon button--icon--save" name="invite" value="1">{{ phrase('add_moderator') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'removemod'">
+	<xf:title>{{ phrase('snog_groups_remove_moderator') }}</xf:title>
+
+	<xf:form action="{{ link('group/removemoderator', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+					<xf:textboxrow label="{{ phrase('snog_groups_remove_mod_prompt') }}" name="username" value="" type="search" ac="single" placeholder="{{ phrase('user_name...') }}" explain="{{ phrase('snog_groups_remove_mod_prompt_explain') }}" />
+			</div>
+			
+			<div class="formSubmitRow">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--primary button--icon button--icon--delete" name="invite" value="1">{{ phrase('snog_groups_remove_moderator') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'transfer'">
+	<xf:title>{{ phrase('snog_groups_transfer_ownership') }}</xf:title>
+
+	<xf:form action="{{ link('group/transfer', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+					<xf:textboxrow label="{{ phrase('snog_groups_new_owner') }}" name="username" value="" type="search" ac="single" placeholder="{{ phrase('user_name...') }}" explain="{{ phrase('snog_groups_new_owner_explain') }}" />
+			</div>
+			
+			<div class="formSubmitRow">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--primary button--icon button--icon--save" value="1">{{ phrase('snog_groups_transfer_ownership') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'addevent'">
+	<xf:title>{{ phrase('snog_groups_add_event') }}</xf:title>
+
+	<xf:form action="{{ link('group_events/add', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:textboxrow label="{{ phrase('snog_groups_event_name') }}" name="title" value="" placeholder="{{ phrase('snog_groups_event_name') }}..." />
+
+				<xf:checkboxrow label="{{ phrase('snog_groups_event_public') }}" explain="{{ phrase('snog_groups_event_public_explain') }}">
+					<xf:option name="public" value="1">&nbsp;</xf:option>
+				</xf:checkboxrow>
+
+				<xf:editorrow label="{{ phrase('snog_groups_event_description') }}" name="description" value="" />
+				
+				<xf:formrow label="{{ phrase('start_date') }}">
+					<div class="inputGroup">
+						<xf:dateinput name="start" value="" data-year-range="[{$data.range_low}, {$data.range_high}]" />
+						<span class="inputGroup-text">{{ phrase('snog_groups_time') }}:</span>
+						<div style="width:150px;">
+							<xf:select name="start_time" value="" width="10">
+								<xf:foreach loop="$data.hours" value="$hour">
+									<xf:option value="{$hour}" label="{$hour}" />
+								</xf:foreach>
+							</xf:select>						
+						</div>
+					</div>
+				</xf:formrow>
+				
+				<xf:checkboxrow label="{{ phrase('snog_groups_event_all_day') }}" explain="{{ phrase('snog_groups_event_all_day_explain') }}">
+					<xf:option name="allDay" value="1" data-xf-init="snogenabler" data-invert="true" data-container="#dates" data-hide="true">&nbsp;</xf:option>
+				</xf:checkboxrow>
+				
+				<div id="dates">
+					<xf:formrow label="{{ phrase('end_date') }}">
+						<div class="inputGroup">
+							<xf:dateinput name="end" value="" data-year-range="[{$data.range_low}, {$data.range_high}]" />
+							<span class="inputGroup-text">{{ phrase('snog_groups_time') }}:</span>
+							<div style="width:150px;">
+								<xf:select name="end_time" value="" width="10">
+									<xf:foreach loop="$data.hours" value="$hour">
+										<xf:option value="{$hour}" label="{$hour}" />
+									</xf:foreach>
+								</xf:select>						
+							</div>
+						</div>
+					</xf:formrow>
+				</div>
+			</div>
+			
+			<div class="formSubmitRow">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<xf:button type="submit" class="button button--primary button--icon button--icon--save" value="1">{{ phrase('snog_groups_add_event') }}</xf:button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'editevent'">
+	<xf:title>{{ phrase('snog_groups_edit_event') }} {$event.title}</xf:title>
+
+	<xf:form action="{{ link('group_events/edit', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:textboxrow label="{{ phrase('snog_groups_event_name') }}" name="title" value="{$event.title}" placeholder="{{ phrase('snog_groups_event_name') }}..." />
+
+				<xf:checkboxrow label="{{ phrase('snog_groups_event_public') }}" value="{$event.public}" explain="{{ phrase('snog_groups_event_public_explain') }}">
+					<xf:option name="public" value="1">&nbsp;</xf:option>
+				</xf:checkboxrow>
+				
+				<xf:editorrow label="{{ phrase('snog_groups_event_description') }}" name="description" value="{$event.description}" />
+				
+				<xf:formrow label="{{ phrase('start_date') }}">
+					<div class="inputGroup">
+						<xf:dateinput name="start" value="{$data.start}" data-year-range="[{$data.range_low}, {$data.range_high}]" />
+						<span class="inputGroup-text">{{ phrase('snog_groups_time') }}:</span>
+						<div style="width:150px;">
+							<xf:select name="start_time" value="{$data.start_time}" width="10">
+								<xf:foreach loop="$data.hours" value="$hour">
+									<xf:option value="{$hour}" label="{$hour}" />
+								</xf:foreach>
+							</xf:select>						
+						</div>
+					</div>
+				</xf:formrow>
+				
+				<xf:checkboxrow label="{{ phrase('snog_groups_event_all_day') }}" explain="{{ phrase('snog_groups_event_all_day_explain') }}">
+					<xf:option name="allDay" value="1" checked="{{ ($event.allDay ? 'checked' :'') }}" data-xf-init="snogenabler" data-invert="true" data-container="#eventdates" data-hide="true">&nbsp;</xf:option>
+				</xf:checkboxrow>
+				
+				<div id="eventdates">
+					<xf:formrow label="{{ phrase('end_date') }}">
+						<div class="inputGroup">
+							<xf:dateinput name="end" value="{$data.end}" data-year-range="[{$data.range_low}, {$data.range_high}]" />
+							<span class="inputGroup-text">{{ phrase('snog_groups_time') }}:</span>
+							<div style="width:150px;">
+								<xf:select name="end_time" value="{$data.end_time}" width="10">
+									<xf:foreach loop="$data.hours" value="$hour">
+										<xf:option value="{$hour}" label="{$hour}" />
+									</xf:foreach>
+								</xf:select>						
+							</div>
+						</div>
+					</xf:formrow>
+				</div>
+			</div>
+			
+			<div class="formSubmitRow">
+				<div class="formSubmitRow-bar"></div>
+				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+					<div style="text-align:center;margin-left:auto;margin-right:auto;">
+						<input type="hidden" name="id" value="{$event.event_id}" />
+						<xf:button type="submit" accesskey="s" class="button button--primary button--icon button--icon--save">{{ phrase('snog_groups_event_save') }}</xf:button>
+						<xf:if is="($xf.visitor.user_id == $event.user_id && $permissions.canDeleteEvents) || $permissions.deleteAnyEvent || $xf.visitor.hasAdminPermission('snog_socialgroups_admin')">
+							<a href="{{ link('group_events/delete', $group,{'id': $event.event_id}) }}" class="js-overlayClose button button--icon button--icon--delete" data-xf-click="overlay" data-cache="off"><span class="button-text">{{ phrase('snog_groups_event_delete') }}</span></a>
+						</xf:if>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deleteevent'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group_events/delete', $group, {'id': $event.event_id}) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					{{ phrase('snog_groups_event') }}<strong>{$event.title}</strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'viewevent'">
+	<xf:title>{{ phrase('snog_groups_view_event') }}</xf:title>
+
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:if is="$event is not empty">
+					<div style="width:90%;margin-left:auto;margin-right:auto;">
+						<h2>{$event.title}</h2>
+						<p>
+							{{ bb_code($event.description, 'groupevent', {$xf.visitor}) }}
+						</p>
+					</div>
+				
+					<xf:formrow rowclass="formRow--noColon" label="{{ phrase('snog_groups_starts') }}">
+						{{ date_time($event.start) }}
+					</xf:formrow>
+				
+					<xf:formrow rowclass="formRow--noColon" label="{{ phrase('snog_groups_ends') }}">
+						<xf:if is="$event.end > 0">
+							{{ date_time($event.end) }}
+						<xf:else />
+							{{ phrase('snog_groups_is_allday') }}
+						</xf:if>
+					</xf:formrow>
+				<xf:else />
+					<div style="width:90%;margin-left:auto;margin-right:auto;">
+					{{ phrase('snog_groups_event_not_found') }}
+					</div>
+				</xf:if>
+			</div>
+			
+			<xf:if is="($xf.visitor.user_id == $event.user_id && $permissions.canEditEvents) || $permissions.editAnyEvent || $xf.visitor.hasAdminPermission('snog_socialgroups_admin')">
+				<div class="formSubmitRow">
+					<div class="formSubmitRow-bar"></div>
+					<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
+						<div style="text-align:center;margin-left:auto;margin-right:auto;">
+							<a href="{{ link('group_events/edit', $group,{'id': $event.event_id}) }}" class="js-overlayClose button button--icon button--icon--edit" data-xf-click="overlay" data-cache="off"><span class="button-text">{{ phrase('snog_groups_edit_event') }}</span></a>
+						</div>
+					</div>
+				</div>
+			</xf:if>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$action == 'moddeletediscussion'">
+	<xf:title>{{ phrase('snog_groups_delete_discussions') }}</xf:title>
+
+	<xf:form action="{{ link('inline-mod') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">{{ phrase('snog_groups_delete_x_discussions', {'count': $total}) }}</xf:inforow>
+
+				<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$canHardDelete}" />
+			</div>
+			<xf:submitrow icon="delete" />
+		</div>
+
+		<xf:foreach loop="$discussions" value="$discussion">
+			<xf:hiddenval name="ids[]">{$discussion.discussion_id}</xf:hiddenval>
+		</xf:foreach>
+
+		<xf:hiddenval name="type">group_discussion</xf:hiddenval>
+		<xf:hiddenval name="action">delete</xf:hiddenval>
+		<xf:hiddenval name="confirmed">1</xf:hiddenval>
+		<xf:redirect url="{$redirect}" />
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deletediscussion'">
+	<xf:title>{{ phrase('snog_groups_delete_discussions') }}</xf:title>
+
+	<xf:form action="{{ link('group_discussions/delete', $group, {'id': $discussion.discussion_id}) }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">{{ phrase('snog_groups_delete_x_discussions', {'count': $total}) }}</xf:inforow>
+
+				<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$canHardDelete}" />
+			</div>
+			<xf:submitrow icon="delete" />
+		</div>
+
+		
+		<xf:hiddenval name="action">delete</xf:hiddenval>
+		<xf:hiddenval name="confirmed">1</xf:hiddenval>
+		<xf:redirect url="{$redirect}" />
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deletepost'">
+	<xf:title>{{ phrase('delete_posts') }}</xf:title>
+
+	<xf:form action="{{ link('inline-mod') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">{{ phrase('snog_groups_delete_x_posts', {'count': $total}) }}</xf:inforow>
+
+				<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$canHardDelete}" />
+			</div>
+			<xf:submitrow icon="delete" />
+		</div>
+
+		<xf:foreach loop="$discussions" value="$discussion">
+			<xf:hiddenval name="ids[]">{$discussion.discussion_id}</xf:hiddenval>
+		</xf:foreach>
+
+		<xf:hiddenval name="type">group_post</xf:hiddenval>
+		<xf:hiddenval name="action">delete</xf:hiddenval>
+		<xf:hiddenval name="confirmed">1</xf:hiddenval>
+		<xf:redirect url="{$redirect}" />
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'postdelete'">
+	<xf:title>{{ phrase('delete_post') }}</xf:title>
+
+	<xf:form action="{{ link('group_discussions/deletepost', $group, {'id': $post.discussion_id}) }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">{{ phrase('snog_groups_delete_x_posts', {'count': $total}) }}</xf:inforow>
+
+				<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$canHardDelete}" />
+			</div>
+			<xf:submitrow icon="delete" />
+		</div>
+
+		<xf:hiddenval name="ids">{$post.discussion_id}</xf:hiddenval>
+		<xf:hiddenval name="type">post</xf:hiddenval>
+		<xf:hiddenval name="action">delete</xf:hiddenval>
+		<xf:hiddenval name="confirmed">1</xf:hiddenval>
+		<xf:redirect url="{$redirect}" />
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'commentdelete'">
+	<xf:title>{{ phrase('delete_post') }}</xf:title>
+
+	<xf:form action="{{ link('group_photos/deletecomment', $group, {'post': $post.comment_id}) }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">{{ phrase('snog_groups_delete_x_posts', {'count': $total}) }}</xf:inforow>
+				
+				<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$canHardDelete}" />
+			</div>
+			<xf:submitrow icon="delete" />
+		</div>
+
+		<xf:hiddenval name="type">comment</xf:hiddenval>
+		<xf:hiddenval name="action">delete</xf:hiddenval>
+		<xf:hiddenval name="confirmed">1</xf:hiddenval>
+		<xf:redirect url="{$redirect}" />
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deleteforum'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group/adminforum', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					{{ phrase('snog_groups_group_forum') }}<strong>{$forum.title}</strong>
+					<xf:if is="!$group.hasdiscussion">
+						{{ phrase('snog_groups_forum_delete_warning') }}
+					<xf:else />
+						{{ phrase('snog_groups_group_forum_delete_note') }}
+					</xf:if>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deletesubforum'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group/adminsubforum', $group, {'id': $forum.node_id}) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					{{ phrase('snog_groups_sub_forum') }}<strong>{$forum.title}</strong>
+					{{ phrase('snog_groups_sub_forum_note') }}
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'admindeletediscussion'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group/admindiscussion', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					<strong>{$group.name} {{ phrase('snog_groups_discussions') }}</strong>
+					<xf:if is="!$group.hasforum">
+						{{ phrase('snog_groups_discussion_delete_warning') }}
+					<xf:else />
+						{{ phrase('snog_groups_delete_discussion_explain') }}
+					</xf:if>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deletegroup'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group/admingroup', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					{{ phrase('group') }}<strong>{$group.name}</strong>
+					<xf:if is="$group.node_id">
+					{{ phrase('snog_groups_group_note') }}
+					</xf:if>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deletemedia'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group/adminmedia', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					<strong>{$group.name} {{ phrase('media') }}</strong>
+					{{ phrase('snog_groups_delete_media_explain') }}
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$action == 'deletephoto'">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+	<xf:form action="{{ link('group/adminphoto', $group) }}" ajax="true" class="block" data-force-flash-message="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following') }}
+					<strong>{$group.name} {{ phrase('snog_groups_photos') }}</strong>
+					{{ phrase('snog_groups_delete_group_photos_explain') }}
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</xf:form>
+</xf:if>

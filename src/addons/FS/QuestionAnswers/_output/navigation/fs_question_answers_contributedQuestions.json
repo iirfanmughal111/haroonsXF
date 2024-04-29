@@ -1,0 +1,11 @@
+{
+    "parent_navigation_id": "fs_question_answers_findThreads",
+    "display_order": 200,
+    "navigation_type_id": "basic",
+    "type_config": {
+        "link": "{{ link('forums/') }}{$xf.options.fs_questionAnswerForum}&your_answers=1",
+        "display_condition": "$xf.visitor.user_id && $xf.reply.containerKey == 'node-'.$xf.options.fs_questionAnswerForum",
+        "extra_attributes": []
+    },
+    "enabled": true
+}

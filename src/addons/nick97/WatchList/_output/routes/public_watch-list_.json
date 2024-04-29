@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "watch-list",
+    "sub_name": "",
+    "format": ":int<title,thread_id>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "nick97\\WatchList:WatchList",
+    "context": "nick97WatchList",
+    "action_prefix": ""
+}

@@ -1,0 +1,1 @@
+The client ID that is associated with your <a href="https://trakt.tv/oauth/applications" target="_blank">Trakt application</a> for this domain.

@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "adding_escrow_member_view_tab_content",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:end]-->",
+    "replace": "$0\n<xf:if is=\"$user.user_id == $xf.visitor.user_id OR $xf.visitor.is_admin\">\n<li data-href=\"{{ link('members/my-escrow', $user) }}\" role=\"tabpanel\" aria-labelledby=\"my-escrow\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n</li>\n<li data-href=\"{{ link('members/mentioned-escrow', $user) }}\" role=\"tabpanel\" aria-labelledby=\"mentioned-escrow\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n</li>\n<li data-href=\"{{ link('members/logs', $user) }}\" role=\"tabpanel\" aria-labelledby=\"escrow-logs\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n</li>\n\t</xf:if>"
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="bssp_cancel_publication" version_id="1000070" version_string="1.0.0"><![CDATA[Cancel publication]]></phrase>
+  <phrase title="bssp_minimum_scheduled_posting_time_is_1_minute" version_id="1000070" version_string="1.0.0"><![CDATA[Minimum scheduled posting time is 1 minute]]></phrase>
+  <phrase title="bssp_momentjs.schedule_format" version_id="1000075" version_string="1.0.0g"><![CDATA[Do MMMM YYYY in HH:mm]]></phrase>
+  <phrase title="bssp_now" version_id="1000070" version_string="1.0.0"><![CDATA[Now]]></phrase>
+  <phrase title="bssp_please_confirm_that_you_want_to_cancel_the_publication_of_this_content" version_id="1000070" version_string="1.0.0"><![CDATA[Please confirm that you want to cancel the publication of this content]]></phrase>
+  <phrase title="bssp_scheduled_publication" version_id="1000070" version_string="1.0.0"><![CDATA[Scheduled publication]]></phrase>
+  <phrase title="cron_entry.bsspScheduledPosting" version_id="1000070" version_string="1.0.0"><![CDATA[Scheduled content posting]]></phrase>
+  <phrase title="lfs_tab.test" version_id="1010270" version_string="1.1.2"><![CDATA[ter]]></phrase>
+  <phrase title="permission.forum_scheduledPosting" version_id="1000070" version_string="1.0.0"><![CDATA[Create scheduled publications]]></phrase>
+  <phrase title="permission.forum_viewScheduled" version_id="1000070" version_string="1.0.0"><![CDATA[View scheduled publications]]></phrase>
+  <phrase title="permission.xa_showcase_scheduledPostingShowcase" version_id="1010170" version_string="1.1.1"><![CDATA[Create scheduled showcase items]]></phrase>
+  <phrase title="permission_interface.scheduledPostingInterface" version_id="1000070" version_string="1.0.0"><![CDATA[Scheduled posting permissions]]></phrase>
+  <phrase title="permission_interface.scheduledPostingsModeratorInterface" version_id="1000070" version_string="1.0.0"><![CDATA[Scheduled posting moderator permissions]]></phrase>
+</phrases>

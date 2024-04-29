@@ -1,0 +1,44 @@
+<xf:if is="$userBanned.user_id">
+	<xf:title>{{ phrase('editScheduleBanUser:') }} {$userBanned.User.username}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('scheduleBanUser') }}</xf:title>
+</xf:if>
+<xf:form action="{{ link('scheduleBanUser/save') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+		
+					<input type="hidden" name="user_id" value="{{ $userBanned.user_id ? $userBanned.user_id : $user_id }}">
+					<input type="hidden" name="ban_id" value="{{ $userBanned.ban_id ? $userBanned.ban_id : null }}">
+					
+			 <xf:formrow label="{{ phrase('ban_user_on') }}" rowtype="input">
+          <div class="inputGroup">
+            	<xf:dateinput name="ban_date" value="{{ $userBanned.ban_date ? date($userBanned.ban_date, 'Y-m-d') : date($xf.time, 'Y-m-d') }}"
+				 />
+			  
+            <span class="inputGroup-splitter"></span>
+          
+			 <span class="inputGroup" dir="ltr">
+			  <xf:textbox name="ban_time" class="input--date time start" required="true" type="time"
+						value="{{$userBanned.getbanDate() ?: ''}}"
+						data-xf-init="time-picker" data-moment="{$timeFormat}" data-format="{{ $xf.language.time_format }}" />
+</span>
+          </div>
+        </xf:formrow>
+			
+
+			<xf:textboxrow name="ban_reason" value="{{ $userBanned.ban_reason ? $userBanned.ban_reason : '' }}"
+				label="{{ phrase('fs_schedule_reason_for_banning') }}"
+				explain="{{ phrase('fs_schedule_this_will_be_shown_to_user_if_provided') }}" />
+		</div>
+		<xf:submitrow icon="save">
+			<xf:html>
+				<xf:if is="$userBanned.user_id">
+					<xf:button href="{{ link('scheduleBanUser/delete', $userBanned) }}" overlay="true">
+						{{ phrase('fs_cancel_ban') }}
+					</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+	<xf:redirect />
+</xf:form>

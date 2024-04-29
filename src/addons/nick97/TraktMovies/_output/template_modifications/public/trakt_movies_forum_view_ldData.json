@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Add LD data",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"metadata_macros\" name=\"canonical_url\"",
+    "replace": "<xf:page option=\"ldJsonHtml\">\n\t<xf:extension name=\"structured_data_extra_params\" value=\"{{ [] }}\" />\n\t<xf:extension name=\"structured_data\">\n\t\t<xf:set var=\"$ldJson\"\n\t\t\tvalue=\"{{ $forum.getLdStructuredData($threads, $page, extension_value('structured_data_extra_params')) }}\"\n\t\t/>\n\t\t<xf:if is=\"$ldJson\">\n\t\t\t<script type=\"application/ld+json\">\n\t\t\t\t{$ldJson|json(true)|raw}\n\t\t\t</script>\n\t\t</xf:if>\n\t</xf:extension>\n</xf:page>\n\n$0"
+}

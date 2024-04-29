@@ -1,0 +1,100 @@
+<xf:title>{{ phrase('moderators') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('forumGroups/add-moderator', $forumGroup) }}" icon="add">{{ phrase('add_moderator') }}</xf:button>
+</xf:pageaction>
+
+<xf:if contentcheck="true">
+	<xf:contentcheck>
+
+	<xf:comment>		
+	<xf:if is="$superModerators is not empty">
+		<div class="block">
+			<div class="block-container">
+				<h2 class="block-header">{{ phrase('super_moderators') }}</h2>
+				<div class="block-body">
+					<xf:datalist>
+						<xf:foreach loop="$superModerators" value="$superMod">
+							<xf:datarow>
+								<xf:cell class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall"
+									href="{{ link('forumGroups/super/edit', $superMod) }}">
+									<xf:avatar user="$superMod.User" size="s" href="" />
+								</xf:cell>
+								<xf:main href="{{ link('forumGroups/super/edit', $superMod) }}"
+									label="{$superMod.User.username}" />
+								<xf:action href="{{ link('users/edit', $superMod.User) }}">{{ phrase('user_info') }}</xf:action>
+								<xf:delete href="{{ link('forumGroups/super/delete', $superMod) }}" overlay="true" />
+							</xf:datarow>
+						</xf:foreach>
+					</xf:datalist>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+	</xf:comment>
+
+	<xf:if is="$contentModerators is not empty">
+		<div class="block">
+			<div class="block-outer">
+				<div class="block-outer-main">
+					
+					<xf:comment>
+					<a class="button button--link menuTrigger"
+						data-xf-click="menu"
+						role="button"
+						tabindex="0"
+						aria-expanded="false"
+						aria-haspopup="true">{{ phrase('filter:') }} {{ $userIdFilter ? {$users.{$userIdFilter}.username} : phrase('(all)') }}</a>
+					</xf:comment>
+					
+					<div class="menu" data-menu="menu" aria-hidden="true">
+						<div class="menu-content">
+							<h3 class="menu-header">{{ phrase('content_moderators') }}</h3>
+							<a href="{{ link('forumGroups') }}" class="menu-linkRow {{ !$userIdFilter ? 'is-selected' : '' }}">{{ phrase('(all)') }}</a>
+							<xf:foreach loop="$users" value="$user">
+								<a href="{{ link('forumGroups', null, {'user_id': $user.user_id}) }}"
+									class="menu-linkRow {{ ($userIdFilter && $userIdFilter == $user.user_id) ? 'is-selected' : '' }}">
+									<span>{$user.username}</span>
+								</a>
+							</xf:foreach>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="block-container">
+				<h2 class="block-header">{{ phrase('content_moderators') }}</h2>
+				<div class="block-body">
+					<xf:datalist>
+						<xf:foreach loop="$users" key="$userId" value="$user">
+							<xf:if is="{$contentModerators.{$userId}}">
+								<xf:datarow rowtype="subsection" rowclass="dataList-row--noHover">
+									<xf:cell colspan="2">{$user.username}</xf:cell>
+								</xf:datarow>
+								<tbody class="js-moderatorInsert-{$userId}">
+									<xf:foreach loop="{$contentModerators.{$userId}}" value="$contentMod">
+										<xf:datarow>
+											<xf:main href="{{ link('forumGroups/content/edit', $contentMod) }}"
+												label="{$contentMod.getContentTitle()}" />
+											<xf:delete href="{{ link('forumGroups/content/delete', $contentMod) }}" overlay="true" />
+										</xf:datarow>
+									</xf:foreach>
+									<xf:if is="$displayLimit AND {$contentModeratorTotals.{$userId}} > $displayLimit">
+										<xf:datarow>
+											<xf:cell colspan="2" class="dataList-cell--link">
+												<a href="{{ link('forumGroups', null, {'user_id': $userId}) }}" data-xf-click="inserter" data-replace=".js-moderatorInsert-{$userId}" data-animate-replace="false">{{ phrase('ellipsis_and_x_more', {'count': ({$contentModeratorTotals.{$userId}} - $displayLimit)|number}) }}</a>
+											</xf:cell>
+										</xf:datarow>
+									</xf:if>
+								</tbody>
+							</xf:if>
+						</xf:foreach>
+					</xf:datalist>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+
+	</xf:contentcheck>
+<xf:else />
+	<div class="blockMessage">{{ phrase('there_currently_no_moderators_use_link_create') }}</div>
+</xf:if>

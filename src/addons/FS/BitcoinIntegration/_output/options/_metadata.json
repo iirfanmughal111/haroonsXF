@@ -1,0 +1,41 @@
+{
+    "fs_bitcoin_blockonomics_api_key.json": {
+        "hash": "9d873b2662c44a1f46955be55aa36ce9"
+    },
+    "fs_bitcoin_one_year.json": {
+        "hash": "8928b1b20eb0bd4fc3320eea57c87fcf"
+    },
+    "fs_bitcoin_one_year_widget_uid.json": {
+        "hash": "2b1471607e64cf0dc5ed497fb7386779"
+    },
+    "fs_bitcoin_premium_companion.json": {
+        "hash": "edd6ef6c1d1b21122f198115bde20dbb"
+    },
+    "fs_bitcoin_premium_companion_widget_uid.json": {
+        "hash": "38147074ba4f33214434105bb2c8b6c0"
+    },
+    "fs_bitcoin_provider_city.json": {
+        "hash": "66c030645e852b1a5ee0365665acef9f"
+    },
+    "fs_bitcoin_provider_city_widget_uid.json": {
+        "hash": "d3c0439122076bdfff848b62e62ba58a"
+    },
+    "fs_bitcoin_provider_vip.json": {
+        "hash": "41ac12bfabaf536a6c187167789784a5"
+    },
+    "fs_bitcoin_provider_vip_widget_uid.json": {
+        "hash": "d94356969fc48e2d65b40bb98b25e683"
+    },
+    "fs_bitcoin_six_month.json": {
+        "hash": "09515e676509e59b65e3ec611dbec1d6"
+    },
+    "fs_bitcoin_six_month_widget_uid.json": {
+        "hash": "86a72641e9ac5ed53bb3f31548db6b58"
+    },
+    "fs_bitcoin_vip_companion.json": {
+        "hash": "94599a78941d86f016ba2dab373be32d"
+    },
+    "fs_bitcoin_vip_companion_widget_uid.json": {
+        "hash": "2f8b785ec7c3f69efac12f3c728cf437"
+    }
+}

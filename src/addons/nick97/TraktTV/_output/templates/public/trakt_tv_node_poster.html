@@ -1,0 +1,7 @@
+<div class="tvnode-poster">
+	<xf:if is="$node.TVForum.tv_parent_id">
+		<img src="{$node.TVForum.getSeasonPosterUrl()}" />
+	<xf:else />
+		<img src="{$node.TVForum.getForumPosterUrl()}" />
+	</xf:if>
+</div>

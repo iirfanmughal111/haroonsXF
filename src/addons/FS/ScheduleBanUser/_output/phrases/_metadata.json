@@ -1,0 +1,62 @@
+{
+    "ban_user_on.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d49d4213b2e110a3a8feccbfe0edfdc5"
+    },
+    "fs_ban_info_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5e90b7afa5d1cc201dbc26d74bcfc652"
+    },
+    "fs_sch_ban_on.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6ea45285873538cfddcf262227406c09"
+    },
+    "fs_sch_baninfo_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0e63afbcd48ffb68dd7ed28911eb1431"
+    },
+    "fs_sch_baninfo_header.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6208b8c2f417a7cc63347a5db76bc080"
+    },
+    "fs_schedule_Please_enter_future_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6ddecabd2acfae7530d42f0a2eafa881"
+    },
+    "option.fs_scheduled_ban_user_timezone.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "143f44c1dff35c5f95253d9966bca8d1"
+    },
+    "option_explain.fs_scheduled_ban_user_timezone.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c892e8dfb21f4018e13f47a10fea1879"
+    },
+    "option_group.scheduled.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "62603fff034ee6105818500a95aaf29d"
+    },
+    "option_group_description.scheduled.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

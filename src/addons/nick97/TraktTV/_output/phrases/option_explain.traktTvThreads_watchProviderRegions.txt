@@ -1,0 +1,2 @@
+Leave it empty to disable.<br />
+Phrases can be translated with "snog_tv_country.{countryCode}" key.

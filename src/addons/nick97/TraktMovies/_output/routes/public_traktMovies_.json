@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "traktMovies",
+    "sub_name": "",
+    "format": ":int<thread_id,title>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "nick97\\TraktMovies:Movies",
+    "context": "",
+    "action_prefix": ""
+}

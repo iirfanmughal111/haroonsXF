@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_molly_applicable_forum" edit_format="textbox" data_type="integer">
+    <default_value>0</default_value>
+    <relation group_id="fs_molly" display_order="1"/>
+  </option>
+</options>

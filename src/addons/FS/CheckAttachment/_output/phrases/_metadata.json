@@ -1,0 +1,32 @@
+{
+    "fs_attachment_required.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ddd94c0bc6c5afd2072cb242672df3eb"
+    },
+    "option.ca_applicable_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "216c63c94551f2cfe5e92b3bf1cd8144"
+    },
+    "option_explain.ca_applicable_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e5529413eabad3f4b39822b01cee6bff"
+    },
+    "option_group.checkAttachment.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ffac760212a5605b630f7b30253ce4e2"
+    },
+    "option_group_description.checkAttachment.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cc3f35038a3b88cf93bea66930dc6d22"
+    }
+}

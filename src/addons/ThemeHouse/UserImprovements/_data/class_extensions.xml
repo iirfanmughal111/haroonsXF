@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Admin\Controller\Trophy" to_class="ThemeHouse\UserImprovements\XF\Admin\Controller\Trophy" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\User" to_class="ThemeHouse\UserImprovements\XF\Admin\Controller\User" execute_order="10" active="1"/>
+  <extension from_class="XF\ControllerPlugin\Error" to_class="ThemeHouse\UserImprovements\XF\ControllerPlugin\Error" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\MemberStat" to_class="ThemeHouse\UserImprovements\XF\Entity\MemberStat" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Trophy" to_class="ThemeHouse\UserImprovements\XF\Entity\Trophy" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="ThemeHouse\UserImprovements\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\UserPrivacy" to_class="ThemeHouse\UserImprovements\XF\Entity\UserPrivacy" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\UserTrophy" to_class="ThemeHouse\UserImprovements\XF\Entity\UserTrophy" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Account" to_class="ThemeHouse\UserImprovements\XF\Pub\Controller\Account" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Member" to_class="ThemeHouse\UserImprovements\XF\Pub\Controller\Member" execute_order="10" active="1"/>
+  <extension from_class="XF\Repository\Trophy" to_class="ThemeHouse\UserImprovements\XF\Repository\Trophy" execute_order="10" active="1"/>
+  <extension from_class="XF\Template\Templater" to_class="ThemeHouse\UserImprovements\XF\Template\Templater" execute_order="10" active="1"/>
+</class_extensions>

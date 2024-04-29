@@ -1,0 +1,19 @@
+{
+    "legacy_addon_id": "Snog_TMDBThreads",
+    "title": "[OzzModz] TMDb Movie Thread Starter",
+    "description": "Creates threads for movies using The Movie Database for movie information",
+    "version_id": 2020051,
+    "version_string": "2.2.0 Release Candidate 1",
+    "dev": "Ozzy47/Snog",
+    "dev_url": "https://snogssite.com",
+    "faq_url": "",
+    "support_url": "https://snogssite.com/threads/tmdb-movie-thread-starter-for-xenforo-2-1-paid.2343/",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "fa-film"
+}

@@ -1,0 +1,48 @@
+<xf:if is="$tvShows is not empty">
+
+	<xf:css src="carousel.less" />
+	<xf:css src="lightslider.less" />
+	<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js, xf/carousel.js" />
+	<xf:js dev="nick97/TraktTV/slider.js" prod="nick97/TraktTV/slider.min.js" addon="nick97/TraktTV" />
+
+	<div class="carousel carousel--withFooter" {{ widget_data($widget) }}>
+		<ul class="carousel-body carousel-body--show2" data-xf-init="trakt-tv-slider"
+			data-xf-trakt-tv-slider="{$options.slider|json}">
+			<xf:foreach loop="$tvShows" value="$tv">
+				<li>
+					<div class="carousel-item">
+						<div class="contentRow">
+							<div class="contentRow-figure">
+								<span class="contentRow-figureIcon"><img src="{$tv.getImageUrl()}" /></span>
+							</div>
+
+							<div class="contentRow-main">
+								<div class="contentRow-title">
+									<a href="{{ link('threads', $tv.Thread) }}">{$tv.Thread.title}</a>
+									<span class="label"><xf:fa icon="star" /> {$tv.tv_rating}</span>
+								</div>
+
+								<xf:if is="$options.show_plot && $tv.tv_plot">
+									<div class="contentRow-lesser">
+										{{ snippet($tv.tv_plot, 150) }}
+									</div>
+								</xf:if>
+
+								<div class="contentRow-minor contentRow-minor--smaller">
+									<ul class="listInline listInline--bullet">
+										<xf:if is="$options.show_genres && $tv.tv_genres"><li><b>{{ phrase('trakt_tv_genre') }}:</b> {$tv.tv_genres}</li></xf:if>
+										<xf:if is="$options.show_director && $tv.tv_director"><li><b>{{ phrase('trakt_tv_director') }}:</b> {$tv.tv_director}</li></xf:if>
+										<xf:if is="$options.show_cast && $tv.tv_cast"><li><b>{{ phrase('trakt_tv_cast') }}:</b> {$tv.tv_cast}</li></xf:if>
+										<xf:if is="$options.show_release && $tv.first_air_date"><li><b>{{ phrase('trakt_tv_first_aired') }}:</b> <xf:date time="{$tv.first_air_date}" /></li></xf:if>
+										<xf:if is="$options.show_last_air_date && $tv.last_air_date"><li><b>{{ phrase('trakt_tv_last_air_date') }}:</b> <xf:date time="{$tv.last_air_date}" /></li></xf:if>
+										<xf:if is="$options.show_status && $tv.status is not empty"><li><b>{{ phrase('trakt_tv_status') }}:</b> {$tv.status}</li></xf:if>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</xf:foreach>
+		</ul>
+	</div>
+</xf:if>

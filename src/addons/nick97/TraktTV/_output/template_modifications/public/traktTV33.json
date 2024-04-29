@@ -1,0 +1,9 @@
+{
+    "template": "node_list_forum",
+    "description": "Adds tv show rating stars to node list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"node-stats\">",
+    "replace": "$0\n<xf:if is=\"!$node.TVForum.tv_parent_id && $node.TVForum.tv_id\">\n\t<xf:macro template=\"rating_macros\" name=\"stars\" arg-rating=\"{$node.TVForum.tv_rating}\"/>\n</xf:if>\n"
+}

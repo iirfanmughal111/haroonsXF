@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "[XC] ThreadGPTBot",
+    "description": "BOT Generate Content for Thread",
+    "version_id": 1060000,
+    "version_string": "1.6.0 Alpha",
+    "dev": "[XC]",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": "fa-book"
+}

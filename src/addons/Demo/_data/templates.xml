@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="demo_example" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[{$hello} {$world}]]></template>
+  <template type="public" title="demo_pad.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.chColor{
+    color: aquamarine;
+}]]></template>
+  <template type="public" title="demo_pad_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+  <xf:if is ="$note.note_id"> Edit note {$note.title} <xf:else /> Add new note
+  </xf:if>
+</xf:title>
+
+<xf:form
+  action="{{ link('notes/create-insert', $note) }}"
+  class="block"
+  ajax="1"
+>
+  <div class="block-container">
+    <div class="block-body">
+      <xf:textboxrow name="title" value="{$note.title}" label="Title" />
+      <xf:textarearow
+        name="content"
+        value="{$note.content}"
+        label="Your note"
+        autosize="true"
+        row="5"
+      />
+    </div>
+    <xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+  </div>
+</xf:form>
+]]></template>
+  <template type="public" title="demo_pad_fetch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:foreach loop="$posts" value="$post">
+                <div class="block-row">
+                    <ul class="listInline listInline--bullet">
+                        <li>Post ID = {$post.note_id}</li>
+                        <li>Thread - {$post.title}</li>
+                    </ul>
+                </div>
+            </xf:foreach>
+
+
+
+
+hello]]></template>
+  <template type="public" title="demo_pad_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>Demo pad index page</xf:title>
+
+<xf:css src="demo_pad.less" />
+
+<div class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <div class="block-row">
+                <p class="chColor">Hello There!</p>
+                <p>
+                    <a href="{{link('notes/test')}}">Open the test page</a>
+                </p>
+            </div>
+				
+        </div>
+    </div>
+</div>]]></template>
+  <template type="public" title="demo_pad_pass_param" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>Get parameters and use below</xf:title>
+
+<div class="block">
+    <div class="block-container">
+        <div class="block-body">
+                <div class="block-row">
+                    <p>{$string} Here is some content</p>
+                    <p>The number is {$number|number}</p>
+                    <p>I have {$money|currency('usd')}</p>
+                    <p>Here is some more content</p>
+                    <p>
+                        <a href="{{ link('notes')}}">Back to the index</a>
+                    </p>
+                    <p>I have an array and the third element is {$array.2}</p>
+                    <ol>
+                        <xf:foreach loop="$array" key="$key" value="$value">
+                            <li>{$value}</li>
+                        </xf:foreach>
+                    </ol>
+                    <hr />
+                    <ol>
+                        <xf:foreach loop="$array1" key="$key" value="$value">
+                            <li>
+                                The <i>{$key}</i> is <b>{$value}</b>
+                            </li>
+                        </xf:foreach>
+                    </ol>
+                    <p>The current date and time in unix is : {$xf.time}</p>
+                    <p>The current date and time is : {{ date_time($xf.time)}}</p>
+                    <xf:if is="$xf.visitor.user_id">
+                        You are logged in, with user name <b>{$xf.visitor.username}</b>.
+                    <xf:else />
+                        You are our guest.
+                    </xf:if>
+
+                    {{ dump($xf)}}
+                </div>
+        </div>
+    </div>
+</div>]]></template>
+  <template type="public" title="demo_pad_test" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>Demo pad index page</xf:title>
+
+<div class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:foreach loop="$posts" value="$post">
+                <div class="block-row">
+                    <ul class="listInline listInline--bullet">
+                        <li>Post ID = {$post.post_id}</li>
+                        <li>Thread - {$post.Thread.title}</li>
+                        <li>Username = {$post.username}</li>
+                        <li>Location = {$post.User.Profile.location}</li>
+                        <li>Email address = {$post.User.email}</li>
+                    </ul>
+                </div>
+            </xf:foreach>
+            <!-- <div class="block-row">
+                <p>Here is some content</p>
+                <p>Here is some more content</p>
+                <p>
+                    <a href="{{link('notes')}}">Back to the index page</a>
+                </p>
+            </div> -->
+        </div>
+    </div>
+</div>]]></template>
+</templates>

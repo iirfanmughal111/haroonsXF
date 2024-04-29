@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="bh_ImageExtensions" edit_format="textbox" data_type="string">
+    <default_value>png
+jpg
+jpeg
+jpe
+gif</default_value>
+    <edit_format_params>rows=3</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="5"/>
+  </option>
+  <option option_id="bh_MinimumReviewLength" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>0</default_value>
+    <relation group_id="bh_brand_hub" display_order="2"/>
+  </option>
+  <option option_id="bh_RecentReviewsCount" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>10</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="3"/>
+  </option>
+  <option option_id="bh_ReviewRequired" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="bh_brand_hub" display_order="1"/>
+  </option>
+  <option option_id="bh_ReviewsPerPage" edit_format="spinbox" data_type="integer">
+    <default_value>10</default_value>
+    <relation group_id="bh_brand_hub" display_order="4"/>
+  </option>
+  <option option_id="bh_discussions_on_item" edit_format="spinbox" data_type="integer">
+    <default_value>9</default_value>
+    <relation group_id="bh_brand_hub" display_order="9"/>
+  </option>
+  <option option_id="bh_highest_rated_items" edit_format="spinbox" data_type="integer">
+    <default_value>4</default_value>
+    <relation group_id="bh_brand_hub" display_order="10"/>
+  </option>
+  <option option_id="forum_items_display" edit_format="textbox" data_type="integer">
+    <default_value>40</default_value>
+    <relation group_id="bh_brand_hub" display_order="6"/>
+  </option>
+  <option option_id="hide_forum_items" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="bh_brand_hub" display_order="7"/>
+  </option>
+</options>

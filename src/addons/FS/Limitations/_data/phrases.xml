@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.fs_resetDailyDiscussLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reset Daily Discussion Post Limit]]></phrase>
+  <phrase title="fs_l_conversation_limit_reached_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your conversation limit reached  <b>( {visitorConversationMessageCount} / {conversasionLimit} )</b>.
+Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_l_conversation_not_allowed_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Conversation not allowed please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_l_daily_discussion_limit_reached_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your Discussion limit reached  <b>( {visitorDailyDiscussionCount} / {dailyDiscussionLimit} )</b>.
+Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_l_discussion_not_allowed_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Discussion not allowed. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_l_remaining" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Remaining]]></phrase>
+  <phrase title="fs_l_your_consersation_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your Conversation limit: <b>( {visitorConversationMessageCount} / {conversasionLimit} )</b> .&nbsp;&nbsp;
+Remaining:  <b>{remianingCount}</b>]]></phrase>
+  <phrase title="fs_l_your_conversation_limit_unlimited" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your conversation limit: <b>Unlimited</b>]]></phrase>
+  <phrase title="fs_l_your_daily_discussion_post_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your daily discussion post limit: <b>( {visitorDailyPostCount} / {dailyPostLimit} )</b> .&nbsp;&nbsp;
+Remaining:  <b>{remianingCount}</b>]]></phrase>
+  <phrase title="fs_l_your_daily_discussion_post_limit_unlimited" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your daily discussion post limit: <b>Unlimited</b>]]></phrase>
+  <phrase title="permission.fs_limitations_fs_conversationLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Conversation Limit]]></phrase>
+  <phrase title="permission.fs_limitations_fs_dailyDiscussiontLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Daily Discussion Limit]]></phrase>
+  <phrase title="permission_interface.fs_limitations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Limitations]]></phrase>
+</phrases>

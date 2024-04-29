@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="traktTV1" cron_class="nick97\TraktTV\Cron\EpisodeUpdate" cron_method="Process" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[4],"minutes":[30]}]]></entry>
+  <entry entry_id="traktTvWatchProvider" cron_class="nick97\TraktTV\Cron\TvWatchProviderUpdate" cron_method="runDaily" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="trakt_tv_changes" cron_class="nick97\TraktTV\Cron\TvChanges" cron_method="run" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+</cron>

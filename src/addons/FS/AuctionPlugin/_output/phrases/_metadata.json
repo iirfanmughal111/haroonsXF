@@ -1,0 +1,32 @@
+{
+    "option.fs_auction_applicable_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6 Alpha",
+        "hash": "34ff7f75c5175d74de26ebf3d9e37bfb"
+    },
+    "option.fs_auction_dropDown_list_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6 Alpha",
+        "hash": "6061ecf8f57cb012f14f5d151adf2e31"
+    },
+    "option_explain.fs_auction_applicable_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_auction_dropDown_list_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "permission.fs_auction_permissions_add.txt": {
+        "global_cache": false,
+        "version_id": 1040700,
+        "version_string": "1.4.7 Alpha",
+        "hash": "bee0c8c0cb75f76a6c2e541ee98b1b80"
+    }
+}
